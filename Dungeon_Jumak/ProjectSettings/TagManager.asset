@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Food
+  - Table
   layers:
   - Default
   - TransparentFX
@@ -12,8 +14,8 @@ TagManager:
   - Water
   - UI
   - BackGround
-  - 
-  - 
+  - Player
+  - Objects
   - 
   - 
   - 
@@ -44,11 +46,11 @@ TagManager:
   - name: BackGround
     uniqueID: 489776729
     locked: 0
-  - name: Object
-    uniqueID: 395830841
-    locked: 0
   - name: Player
     uniqueID: 1149754795
+    locked: 0
+  - name: Object
+    uniqueID: 395830841
     locked: 0
   - name: UI
     uniqueID: 3870797167
