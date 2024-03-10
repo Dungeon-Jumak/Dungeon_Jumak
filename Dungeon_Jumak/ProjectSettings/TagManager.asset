@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Table_L
+  - Table_R
+  - Food
   layers:
   - Default
   - TransparentFX
@@ -12,7 +15,7 @@ TagManager:
   - Water
   - UI
   - BackGround
-  - 
+  - Food
   - 
   - 
   - 
@@ -52,4 +55,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3870797167
+    locked: 0
+  - name: Food
+    uniqueID: 2991999681
     locked: 0
