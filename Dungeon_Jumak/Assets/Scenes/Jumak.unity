@@ -480,7 +480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gukbapPrefab: {fileID: 2993203192322491039, guid: 5c804ec6332ddd543bb0ce6da49ec871, type: 3}
   gukbapList: 
-  tableTransform: {fileID: 0}
+  tableTransform: {fileID: 1700190828}
   cookGukbap: {fileID: 666087090}
   previousCount: 0
 --- !u!4 &181118162
@@ -2517,7 +2517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -54863170, y: -2.2375612}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1047.85, y: 1749.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1423798857

@@ -33,12 +33,9 @@ public class Tracker : MonoBehaviour
             if(Input.GetKey(KeyCode.L))
             {
                 furnacePopUp.gameObject.SetActive(true);
+                Debug.Log("L눌림");
             }
             Debug.Log("범위 안");
-        }
-        else
-        {
-            Debug.Log("범위 밖");
         }
     }
 
