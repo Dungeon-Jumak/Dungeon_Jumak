@@ -14,7 +14,7 @@ public class CustomerMovement : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
-        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
     private void Update()
