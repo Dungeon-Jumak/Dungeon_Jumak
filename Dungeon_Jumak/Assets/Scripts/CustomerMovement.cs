@@ -9,14 +9,18 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private bool[] checkSeat; //자리 할당 여부
 
-    //[SerializeField]
-    //private GameObject[] customerPrefab; //손님 프리팹
-
-    [SerializeField]
-    private GameObject cutomerPrefab;
-
     [SerializeField]
     private float cutomerSpeed;
+
+    private void Update()
+    {
+        
+    }
+
+    private void MoveCustomer()
+    {
+        
+    }
 
 
 
