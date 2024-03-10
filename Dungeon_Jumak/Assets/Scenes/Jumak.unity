@@ -777,6 +777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 884498916}
   moveSpeed: 4
+  hand: {fileID: 0}
 --- !u!212 &929537805
 SpriteRenderer:
   m_ObjectHideFlags: 0
