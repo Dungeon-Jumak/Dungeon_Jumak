@@ -1295,8 +1295,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70bd44a44cd62c64fbfc1eea95b24880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   <Order>k__BackingField: 0
   m_navMeshOwner: {fileID: 1408968502}
+=======
+>>>>>>> Stashed changes
   m_OverrideByGrid: 0
   m_UseMeshPrefab: {fileID: 0}
   m_CompressBounds: 0
@@ -1318,6 +1321,10 @@ MonoBehaviour:
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
+<<<<<<< Updated upstream
+=======
+    serializedVersion: 2
+>>>>>>> Stashed changes
     m_Bits: 4294967295
   m_UseGeometry: 0
   m_DefaultArea: 0
@@ -1330,8 +1337,11 @@ MonoBehaviour:
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
   m_NavMeshData: {fileID: 23800000, guid: 6b7c58fb774321d40a80dc98d8aa443d, type: 2}
+<<<<<<< Updated upstream
   m_LastPosition: {x: -0.37791, y: -0.31575003, z: 0.013087247}
   m_LastRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+=======
+>>>>>>> Stashed changes
 --- !u!4 &1408968503
 Transform:
   m_ObjectHideFlags: 0

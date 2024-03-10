@@ -1,28 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CustomerMovement : MonoBehaviour
 {
     [SerializeField]
-    private Transform[] Seats; //손님들이 앉을 자리
-    [SerializeField]
-    private bool[] checkSeat; //자리 할당 여부
+    Transform seat;
 
-    [SerializeField]
-    private float cutomerSpeed;
+    NavMeshAgent agent;
+
+    private void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateRotation = false;
+    }
 
     private void Update()
     {
-        
+        agent.SetDestination(seat.position);
     }
-
-    private void MoveCustomer()
-    {
-        
-    }
-
-
-
 
 }
