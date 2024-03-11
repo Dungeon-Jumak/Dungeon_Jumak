@@ -15,8 +15,11 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 moveVector; // 이동벡터
 
+    [SerializeField]
     private bool checkFood = false; // 음식 들고 있는지 확인
+
     public GameObject hand; // 플레이어 손 위치
+
     private Queue<GameObject> foodQueue = new Queue<GameObject>(); // 충돌한 food 오브젝트를 저장하는 Queue
 
 
@@ -45,7 +48,9 @@ public class PlayerMovement : MonoBehaviour
         // 국밥 충돌 확인
         if (other.gameObject.CompareTag("Food"))
         {
-            if (!checkFood)
+            FoodScript foodScript = other.GetComponent<FoodScript>();
+
+            if (!checkFood && foodScript.IsOnTable == false)
             {
                 foodQueue.Enqueue(other.gameObject);// 충돌한 국밥 queue 저장
                 other.transform.parent = hand.transform;// 플레이어 손 오브젝트 하위로 이동
@@ -53,42 +58,28 @@ public class PlayerMovement : MonoBehaviour
                 checkFood = true;
             }
         }
+    }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
         //테이블 좌측 충돌 확인
-        if (other.gameObject.CompareTag("Table_L"))
+        if (other.gameObject.CompareTag("Table_L") || other.gameObject.CompareTag("Table_R"))
         {
-            if (checkFood)
+            Transform secondChild = other.transform;
+
+            if (checkFood && secondChild.childCount == 0)
             {
-                GameObject food = foodQueue.Dequeue();
-                Transform secondChild = other.transform;
-
-                if (secondChild.childCount == 0)//테이블에 음식 있는지 확인
-                {
-                    food.transform.parent = secondChild;
-                }
-
-                // Food 오브젝트를 테이블 좌측 위치에 고정
-                food.transform.localPosition = Vector3.zero;
                 checkFood = false;
-            }
-        }
-
-        //테이블 우측 충돌 확인
-        if (other.gameObject.CompareTag("Table_R"))
-        {
-            if (checkFood)
-            {
                 GameObject food = foodQueue.Dequeue();
-                Transform secondChild = other.transform;
+                FoodScript foodScript = food.GetComponent<FoodScript>();
 
-                if (secondChild.childCount == 0)//테이블에 음식 있는지 확인
-                {
-                    food.transform.parent = secondChild;
-                }
+                food.transform.parent = secondChild;
 
-                // Food 오브젝트를 테이블 우측 위치에 고정
+                // Food 오브젝트를 테이블 위치에 고정
                 food.transform.localPosition = Vector3.zero;
-                checkFood = false;
+
+                // 상태를 업데이트하여 다음 충돌을 방지
+                foodScript.IsOnTable = true;
             }
         }
     }

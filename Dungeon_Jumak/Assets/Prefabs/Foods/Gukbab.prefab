@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 788383147679903718}
   - component: {fileID: 6791838263853839303}
   - component: {fileID: 2136567899745674018}
+  - component: {fileID: 3863541260676976358}
   m_Layer: 7
   m_Name: Gukbab
   m_TagString: Food
@@ -95,9 +96,22 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.003272295, y: -0.15478809}
   serializedVersion: 2
   m_Radius: 0.52
+--- !u!114 &3863541260676976358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2993203192322491039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca72a1ded1111b4f81921f032f4387c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOnTable: 0
