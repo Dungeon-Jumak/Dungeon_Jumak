@@ -22,10 +22,12 @@ public class PlayerMovement : MonoBehaviour
 
     private Queue<GameObject> foodQueue = new Queue<GameObject>(); // 충돌한 food 오브젝트를 저장하는 Queue
 
+    public CookGukbap cookGukbap; // 국밥 카운트 참조 스크립트
 
     private void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
+
     }
 
     private void Update()
@@ -56,9 +58,13 @@ public class PlayerMovement : MonoBehaviour
                 other.transform.parent = hand.transform;// 플레이어 손 오브젝트 하위로 이동
                 other.transform.localPosition = Vector3.zero;
                 checkFood = true;
+
+                cookGukbap.gukbapCount--;
             }
         }
     }
+
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {

@@ -39,6 +39,8 @@ public class GukbapSetting : MonoBehaviour
             }
             previousCount = cookGukbap.gukbapCount; // 이전 프레임의 국밥 카운트를 업데이트
         }
+
+        CheckGukbapPresence(); // 국밥이 있는지 확인하고 없으면 해당 위치를 false로 만듦
     }
 
     // 국밥 리스트 초기화
@@ -61,5 +63,31 @@ public class GukbapSetting : MonoBehaviour
             }
         }
         return -1; // 추가할 수 있는 위치가 없음
+    }
+
+    void CheckGukbapPresence()
+    {
+        for (int i = 0; i < gukbapList.Count; i++)
+        {
+            Vector3 position = new Vector3(
+                tableTransform.position.x - (tableTransform.localScale.x / 2) + (tableTransform.localScale.x / gukbapList.Count) * (i + 0.5f),
+                tableTransform.position.y,
+                0.0f
+            );
+
+            Collider2D[] colliders = Physics2D.OverlapPointAll(position);
+            bool gukbapPresent = false;
+
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider.gameObject.CompareTag("Food"))
+                {
+                    gukbapPresent = true;
+                    break;
+                }
+            }
+
+            gukbapList[i] = gukbapPresent;
+        }
     }
 }
