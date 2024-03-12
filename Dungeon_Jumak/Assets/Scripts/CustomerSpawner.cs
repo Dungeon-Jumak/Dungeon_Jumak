@@ -11,18 +11,13 @@ public class CustomerSpawner : MonoBehaviour
     [SerializeField]
     private float SpawnDealy; //스폰 딜레이 시간
 
-
     private void Start()
     {
+        // --- 재귀 시작 --- //
         StartCoroutine(SpawnCustomer(SpawnDealy));
     }
 
-    private void Update()
-    {
-
-
-    }
-
+    // --- 코루틴 재귀 (delayTime마다 스폰) --- // 
     IEnumerator SpawnCustomer(float delayTime)
     {
         GameObject customerInstance = Instantiate(customerPrefab[customerNum], this.gameObject.transform);
