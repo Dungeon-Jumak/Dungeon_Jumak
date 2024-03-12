@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3fa566e1d40d940baf50be47bea4e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fire: {fileID: 0}
+  fire: {fileID: 273384763}
   gukbapCount: 0
   TimeSlider: {fileID: 81008450}
 --- !u!114 &81008450
@@ -730,6 +730,9 @@ GameObject:
   - component: {fileID: 273384762}
   - component: {fileID: 273384761}
   - component: {fileID: 273384760}
+  - component: {fileID: 273384765}
+  - component: {fileID: 273384764}
+  - component: {fileID: 273384763}
   m_Layer: 0
   m_Name: Furnace
   m_TagString: Untagged
@@ -847,6 +850,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &273384763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273384758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1292e7a508c3c47a91abd1f69f225f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeText: {fileID: 1340232710}
+  fireSize: 100
+  fireImage: {fileID: 1829641265}
+  cook: 1
+--- !u!58 &273384764
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273384758}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.75
+--- !u!114 &273384765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273384758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22008ce2282f3854fb2111bbbabac1a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contactDistance: 0.5
+  furnacePopUp: {fileID: 1535732775}
 --- !u!1 &355360436
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,7 +958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gukbapPrefab: {fileID: 2993203192322491039, guid: 5c804ec6332ddd543bb0ce6da49ec871, type: 3}
   gukbapList: 
-  tableTransform: {fileID: 0}
+  tableTransform: {fileID: 1156916297}
   cookGukbap: {fileID: 81008449}
   previousCount: 0
 --- !u!4 &386168459
