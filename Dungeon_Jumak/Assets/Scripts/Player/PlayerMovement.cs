@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         //테이블 좌측 충돌 확인
         if (other.gameObject.CompareTag("Table_L") || other.gameObject.CompareTag("Table_R"))
         {
-            Transform secondChild = other.transform;
+            Transform secondChild = other.transform.GetChild(0);
 
             if (checkFood && secondChild.childCount == 0)
             {
