@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-[SerializeField]
+[Serializable]
 public class Data
 {
     //데이터 사용법
@@ -11,8 +9,6 @@ public class Data
     //데이터에 있는 값을 다른 스크립트를 사용하기 위해서는 싱글톤으로서 사용하면 됨
     //ex) Data data = DataManager.Instance.data; => 이를 통해 Data.cs에 있는 변수값을 사용할 수 있음
 
-
-    // --- 손님 이동 관련 데이터 --- //
-    public Transform[] seats;
-    public bool[] isAllocated; //자리 할당 여부
+    //---CustomerSystem---///
+    public bool[] isAllocated = new bool[12];
 }
