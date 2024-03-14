@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
+    //---스폰 관련 변수---//
     [SerializeField]
     private GameObject[] customerPrefab; //손님 프리팹
     [SerializeField]
@@ -24,4 +25,6 @@ public class CustomerSpawner : MonoBehaviour
         yield return new WaitForSeconds(SpawnDealy);
         StartCoroutine(SpawnCustomer(delayTime));
     }
+
+
 }
