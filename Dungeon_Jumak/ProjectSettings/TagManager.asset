@@ -18,9 +18,9 @@ TagManager:
   - Food
   - 
   - 
-  - 
-  - 
-  - 
+  - LightObstacles
+  - LightSource
+  - AmbientLight
   - 
   - 
   - 

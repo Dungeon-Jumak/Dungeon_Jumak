@@ -178,9 +178,10 @@ MonoBehaviour:
   isFull: 0
   isArrive: 0
   isReturn: 0
+  isJustreturn: 0
   CurPosition: {x: 0, y: 0, z: 0}
   WayPointIndex: 0
-  speed: 3
+  speed: 2
   seatIndex: 0
   data:
     maxSeatSize: 2
