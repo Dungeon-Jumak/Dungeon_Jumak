@@ -123,64 +123,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Route1_Left:
   - {fileID: 592371257299673694, guid: f01ca8aebbc332e4383a80ad1694b377, type: 3}
-  - {fileID: 1030439101961220591, guid: 7b351651a0bf5c04989b92e82f84c025, type: 3}
-  - {fileID: 4093632055023698239, guid: d3680319647e58349b90a60bf07e2236, type: 3}
+  - {fileID: 7876294570136212066, guid: f533f1c674348c8448ae6671b71c1aae, type: 3}
+  - {fileID: 3883416099307374138, guid: 5cd282d43ff924b48a88f3a61ee0b3a1, type: 3}
   Route1_Right:
   - {fileID: 9072078913468466247, guid: 6630b102feffff64c9aacd4276e3e2db, type: 3}
-  - {fileID: 8904342436993769842, guid: 526034db29d85104099255c3df399515, type: 3}
-  - {fileID: 7242346095788261739, guid: 7d740a6311e3a8d429f03e648e1d4b5c, type: 3}
+  - {fileID: 5157055652728780927, guid: 51fbe4b16aa906e4d8f1696c76f78f5c, type: 3}
+  - {fileID: 6899252589888680785, guid: e90847d06e90d3d429cb20af529156ba, type: 3}
   Route2_Left:
-  - {fileID: 592371257299673694, guid: f01ca8aebbc332e4383a80ad1694b377, type: 3}
-  - {fileID: 6822175514264842570, guid: 8e3fa0f463e665c4aa5548368402c608, type: 3}
-  - {fileID: 3977348837193262258, guid: 27938493504ae2043a2a392d52cf15ce, type: 3}
-  Route2_Right:
   - {fileID: 9072078913468466247, guid: 6630b102feffff64c9aacd4276e3e2db, type: 3}
-  - {fileID: 7729680526957819553, guid: 5657ef81efda58a428f6f8ce0f657f5b, type: 3}
-  - {fileID: 4181421538370832517, guid: 5cf5f60fd1f29344db4dff151f2d2d69, type: 3}
+  - {fileID: 5157055652728780927, guid: 51fbe4b16aa906e4d8f1696c76f78f5c, type: 3}
+  - {fileID: 6355858251318637568, guid: fed64cd44c1abac4589a380fa790e3d2, type: 3}
+  Route2_Right:
+  - {fileID: 2679968256591990733, guid: da71a6124a1652b43896de71e2ad7f27, type: 3}
+  - {fileID: 141840448235817027, guid: d83569b5e3cc4174bbb19c9a8fc555f7, type: 3}
+  - {fileID: 8994930315938093893, guid: 43f151e472bda734ab4f214a52748fa7, type: 3}
   Route3_Left:
   - {fileID: 592371257299673694, guid: f01ca8aebbc332e4383a80ad1694b377, type: 3}
-  - {fileID: 5839134387481217058, guid: 69babb19253088a4391bfc22ae0c724f, type: 3}
-  - {fileID: 4173032910263674417, guid: 81977e9b9108d9a4886dade74136cc14, type: 3}
+  - {fileID: 727043362811727175, guid: 966abff49aa737042aaa9b25a6d88003, type: 3}
+  - {fileID: 4699432685264691432, guid: 112e3331bc30627409ecc8270254cdab, type: 3}
   Route3_Right:
   - {fileID: 9072078913468466247, guid: 6630b102feffff64c9aacd4276e3e2db, type: 3}
-  - {fileID: 5041614967470134459, guid: 5b68fc639232f2544b2d605858ffbc14, type: 3}
-  - {fileID: 1680480387070175048, guid: d25cb5fcb743601408ea10b4944e0fe8, type: 3}
+  - {fileID: 1803586819275320942, guid: 5657ef81efda58a428f6f8ce0f657f5b, type: 3}
+  - {fileID: 5212907332192546860, guid: 3cdb8c3be5cb5694faeeb890b1903a89, type: 3}
   Route4_Left:
   - {fileID: 9072078913468466247, guid: 6630b102feffff64c9aacd4276e3e2db, type: 3}
-  - {fileID: 8904342436993769842, guid: 526034db29d85104099255c3df399515, type: 3}
-  - {fileID: 8032950361983523971, guid: b3e164f48e05e0c48af37655667aefbe, type: 3}
+  - {fileID: 1803586819275320942, guid: 5657ef81efda58a428f6f8ce0f657f5b, type: 3}
+  - {fileID: 502816484434555376, guid: 37775f781d79695488a136b4a6fd10fd, type: 3}
   Route4_Right:
   - {fileID: 2679968256591990733, guid: da71a6124a1652b43896de71e2ad7f27, type: 3}
-  - {fileID: 2285204627146115791, guid: d024a1b5f941a144e9cea6445faa4623, type: 3}
-  - {fileID: 3053754173384826179, guid: 70214750dafa56d40ada8a4b1a0516a5, type: 3}
+  - {fileID: 4566511902122587425, guid: 370ab4f8f51b2b24f9d3f0b6ba808964, type: 3}
+  - {fileID: 7592112783753053845, guid: 29e97f15506899a4a8fc1d2ac1c9be78, type: 3}
   Route5_Left:
-  - {fileID: 9072078913468466247, guid: 6630b102feffff64c9aacd4276e3e2db, type: 3}
-  - {fileID: 7729680526957819553, guid: 5657ef81efda58a428f6f8ce0f657f5b, type: 3}
-  - {fileID: 4346177251524936603, guid: 88de61ed8b7ab0f47a60fa98b1e2e957, type: 3}
+  - {fileID: 592371257299673694, guid: f01ca8aebbc332e4383a80ad1694b377, type: 3}
+  - {fileID: 3111346234034436438, guid: afaf95ca2b2cee844b36a1d8268d3264, type: 3}
+  - {fileID: 4795391863630407591, guid: 213eadb61c4ffa64490d402b5b08a727, type: 3}
   Route5_Right:
-  - {fileID: 2679968256591990733, guid: da71a6124a1652b43896de71e2ad7f27, type: 3}
-  - {fileID: 8637552580123379608, guid: 98ec173a4c639f240a34f501faef9c23, type: 3}
-  - {fileID: 7403943736178085936, guid: eb477e29736234d4d8f512c10471c071, type: 3}
+  - {fileID: 9072078913468466247, guid: 6630b102feffff64c9aacd4276e3e2db, type: 3}
+  - {fileID: 9125281865431136160, guid: d23d124db07f77444878f98cde01b5f4, type: 3}
+  - {fileID: 8345605140098036582, guid: cce8065479a48a54a8bbb76bd5d93f77, type: 3}
   Route6_Left:
   - {fileID: 9072078913468466247, guid: 6630b102feffff64c9aacd4276e3e2db, type: 3}
-  - {fileID: 5041614967470134459, guid: 5b68fc639232f2544b2d605858ffbc14, type: 3}
-  - {fileID: 6983584716971459711, guid: 4a18cff133a4e63449c12c9e3b88652e, type: 3}
+  - {fileID: 9125281865431136160, guid: d23d124db07f77444878f98cde01b5f4, type: 3}
+  - {fileID: 8888386177414915691, guid: 96173313a67c14d42943a006a9581bad, type: 3}
   Route6_Right:
   - {fileID: 2679968256591990733, guid: da71a6124a1652b43896de71e2ad7f27, type: 3}
-  - {fileID: 9146241410080531403, guid: 5794bbf7c442db3429fec25503de6c8a, type: 3}
-  - {fileID: 1497531263385058566, guid: 8b814239fdae24d4dbfd701bf1a85927, type: 3}
+  - {fileID: 2911309632298159774, guid: 5027a700a9f48ec45ac8b631c810acc4, type: 3}
+  - {fileID: 6284072826648124051, guid: 7eef1db7c6d64224d9ccc8976222abde, type: 3}
   FinRoute:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   StartPoint: {fileID: 7614776794981503770, guid: f6d977643ffff6847932243f949ddd82, type: 3}
+  StopPoint: {fileID: 2679968256591990733, guid: da71a6124a1652b43896de71e2ad7f27, type: 3}
+  isFull: 0
+  isArrive: 0
+  isReturn: 0
   CurPosition: {x: 0, y: 0, z: 0}
   WayPointIndex: 0
   speed: 3
-  isArrive: 0
   seatIndex: 0
   data:
+    maxSeatSize: 2
     isAllocated: 000000000000000000000000
+    curUnlockLevel: 1
+    maxUnlockLevel: 6
 --- !u!50 &5651401891391953691
 Rigidbody2D:
   serializedVersion: 4
