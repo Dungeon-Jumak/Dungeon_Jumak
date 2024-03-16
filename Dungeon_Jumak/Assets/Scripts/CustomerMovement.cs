@@ -28,8 +28,14 @@ public class CustomerMovement : MonoBehaviour
 
     public List<Transform> FinRoute;
 
+    //---특수 waypoint---//
     [SerializeField]
     private Transform StartPoint;
+    [SerializeField]
+    private Transform StopPoint; // 자리가 꽉찼을 경우 멈출 포인트
+
+    [SerializeField]
+    private bool isFull;
 
     [SerializeField]
     private Vector3 CurPosition;
@@ -64,6 +70,7 @@ public class CustomerMovement : MonoBehaviour
         RouteList.Add(Route6_Right);
 
         MovingSystem();
+
         for (int i = 0; i < FinRoute.Count; i++)
         {
             FinRoute[i] = RouteList[seatIndex][i];
@@ -72,51 +79,63 @@ public class CustomerMovement : MonoBehaviour
 
     private void Update()
     {
-        //--- 이동 중인 현재 변수 ---//
-        CurPosition = transform.position;
-
-        //--- 이동지점 배열의 인덱스 0부터 배열크기 -1까지 ---//
-        if (WayPointIndex < FinRoute.Count && !isArrive)
+        if (!isFull)
         {
-            //---프레임당 이동---//
-            float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(CurPosition, FinRoute[WayPointIndex].position, step);
+            //--- 이동 중인 현재 변수 ---//
+            CurPosition = transform.position;
 
-            //---waypoint에 도착하면 인덱스 증가---//
-            if (Vector3.Distance(FinRoute[WayPointIndex].position, CurPosition) == 0f)
-                WayPointIndex++;
-        }
-        else
-        {
-            Invoke("Return", 3f);
-        }
-
-        //---도착했을 경우 3초후 돌아감 Invoke Return을 통해 isArrive를 True로 전환---//
-        if (isArrive)
-        {
-            if (WayPointIndex >= 0)
+            //--- 이동지점 배열의 인덱스 0부터 배열크기 -1까지 ---//
+            if (WayPointIndex < FinRoute.Count && !isArrive)
             {
+                //---프레임당 이동---//
                 float step = speed * Time.deltaTime;
                 transform.position = Vector3.MoveTowards(CurPosition, FinRoute[WayPointIndex].position, step);
 
+                //---waypoint에 도착하면 인덱스 증가---//
                 if (Vector3.Distance(FinRoute[WayPointIndex].position, CurPosition) == 0f)
-                    WayPointIndex--;
+                    WayPointIndex++;
             }
             else
             {
-                float step = speed * Time.deltaTime;
-                transform.position = Vector3.MoveTowards(CurPosition,StartPoint.position, step);
-
-                if (Vector3.Distance(StartPoint.position, CurPosition) == 0f)
-                {
-                    //Destroy(this.gameObject);
-                    this.gameObject.SetActive(false);
-                }
-
+                Invoke("Return", 3f);
             }
+
+            //---도착했을 경우 3초후 돌아감 Invoke Return을 통해 isArrive를 True로 전환---//
+            if (isArrive)
+            {
+                if (WayPointIndex >= 0)
+                {
+                    float step = speed * Time.deltaTime;
+                    transform.position = Vector3.MoveTowards(CurPosition, FinRoute[WayPointIndex].position, step);
+
+                    if (Vector3.Distance(FinRoute[WayPointIndex].position, CurPosition) == 0f)
+                        WayPointIndex--;
+                }
+                else
+                {
+                    float step = speed * Time.deltaTime;
+                    transform.position = Vector3.MoveTowards(CurPosition, StartPoint.position, step);
+
+                    if (Vector3.Distance(StartPoint.position, CurPosition) == 0f)
+                    {
+                        //Destroy(this.gameObject);
+                        this.gameObject.SetActive(false);
+                    }
+
+                }
+            }
+        }
+        else
+        {
+            float step = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(CurPosition, StopPoint.position, step);
+
+            //if (Vector3.Distance(StopPoint.position, CurPosition) == 0f)
+                
         }
     }
 
+    //---자리에서 밖으로 돌아가기---//
     void Return()
     {
         if (!isArrive)
@@ -127,16 +146,28 @@ public class CustomerMovement : MonoBehaviour
         }
     }
 
+    //---목적지 설정---//
     void MovingSystem()
     {
-        for (int i = 0; i < data.isAllocated.Length; i++)
+        for (int i = 0; i < data.maxSeatSize; i++)
         {
             if (!data.isAllocated[i])
             {
                 seatIndex = i;
-                data.isAllocated[i] = true;
+                data.isAllocated[i] = true; //자리 할당
                 break;
             }
         }
     }
+
+    //---자리가 꽉 찼을 경우 돌아감 SeatFull -> ToBack---//
+    void SeatFull()
+    {
+        for (int i = 0; i < data.maxSeatSize; i++)
+        {
+            if (!data.isAllocated[i]) return;   
+        }
+        isFull = true;
+    }
+
 }
