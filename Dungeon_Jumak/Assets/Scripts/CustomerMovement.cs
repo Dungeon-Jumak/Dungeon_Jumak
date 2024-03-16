@@ -34,8 +34,15 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private Transform StopPoint; // 자리가 꽉찼을 경우 멈출 포인트
 
+    //---자리 관련 boolean 값 ---//
     [SerializeField]
-    private bool isFull;
+    private bool isFull = false; //자리가 가득차있는지 아닌지 결정하는 변수
+    [SerializeField]
+    private bool isArrive = false; //도착 여부 판단 변수 (자리)
+    [SerializeField]
+    private bool isReturn = false; //자리에서 돌아갈 때 사용할 변수 (중복 실행 방지)
+    [SerializeField]
+    private bool isJustreturn = false;
 
     [SerializeField]
     private Vector3 CurPosition;
@@ -44,8 +51,6 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private float speed = 3f;
 
-    [SerializeField]
-    private bool isArrive = false;
     [SerializeField]
     private int seatIndex = 0;
 
@@ -79,42 +84,44 @@ public class CustomerMovement : MonoBehaviour
 
     private void Update()
     {
+        //--- 현재 위치값 ---//
+        CurPosition = transform.position;
+
+        //---자리가 가득차 있지 않다면 움직임 수행---//
         if (!isFull)
         {
-            //--- 이동 중인 현재 변수 ---//
-            CurPosition = transform.position;
-
+            //--- 현재 waypointIndex의 값이 경로의 길이보다 작다면 ---//
             //--- 이동지점 배열의 인덱스 0부터 배열크기 -1까지 ---//
             if (WayPointIndex < FinRoute.Count && !isArrive)
             {
                 //---프레임당 이동---//
-                float step = speed * Time.deltaTime;
-                transform.position = Vector3.MoveTowards(CurPosition, FinRoute[WayPointIndex].position, step);
+                CustomerMove(FinRoute[WayPointIndex]);
 
                 //---waypoint에 도착하면 인덱스 증가---//
                 if (Vector3.Distance(FinRoute[WayPointIndex].position, CurPosition) == 0f)
                     WayPointIndex++;
             }
-            else
+            else if(!isArrive)
             {
-                Invoke("Return", 3f);
+                isArrive = true;
+                //---국밥을 먹은 후 돌아가기---//
+                Invoke("ReturnSeatToOut", 3f);
             }
 
-            //---도착했을 경우 3초후 돌아감 Invoke Return을 통해 isArrive를 True로 전환---//
-            if (isArrive)
+            //---도착했을 경우 3초후 돌아감 Invoke Return을 통해 isArrive를 True로 전환(후에 국밥으로 바꿔야됨)---//
+            if (isReturn)
             {
                 if (WayPointIndex >= 0)
                 {
-                    float step = speed * Time.deltaTime;
-                    transform.position = Vector3.MoveTowards(CurPosition, FinRoute[WayPointIndex].position, step);
-
+                    CustomerMove(FinRoute[WayPointIndex]);
+        
                     if (Vector3.Distance(FinRoute[WayPointIndex].position, CurPosition) == 0f)
                         WayPointIndex--;
+
                 }
                 else
                 {
-                    float step = speed * Time.deltaTime;
-                    transform.position = Vector3.MoveTowards(CurPosition, StartPoint.position, step);
+                    CustomerMove(StartPoint);
 
                     if (Vector3.Distance(StartPoint.position, CurPosition) == 0f)
                     {
@@ -125,28 +132,51 @@ public class CustomerMovement : MonoBehaviour
                 }
             }
         }
-        else
+        else if(isFull && !isArrive)
         {
-            float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(CurPosition, StopPoint.position, step);
+            CustomerMove(StopPoint);
 
-            //if (Vector3.Distance(StopPoint.position, CurPosition) == 0f)
-                
+            //---정지 point와 거리가 0이 아니라면 ---//
+            if (Vector3.Distance(StopPoint.position, CurPosition) == 0f)
+            {
+                isArrive = true;
+                //애니메이션 추가 (두리번 두리번?)
+                Invoke("ReturnStopToOut", 2f);
+            }     
+        }
+
+        if (isJustreturn)
+        {
+            CustomerMove(StartPoint);
+
+            if (Vector3.Distance(StartPoint.position, CurPosition) == 0f)
+                this.gameObject.SetActive(false);
         }
     }
+
+    //---손님 기본 움직임---//
+    void CustomerMove(Transform TargetTransform)
+    {
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(CurPosition, TargetTransform.position, step);
+    }
+
 
     //---자리에서 밖으로 돌아가기---//
-    void Return()
+    void ReturnSeatToOut()
     {
-        if (!isArrive)
-        {
-            isArrive = true;
-            data.isAllocated[seatIndex] = false; //자리 할당 해제
-            WayPointIndex--;
-        }
+        isReturn = true;
+        data.isAllocated[seatIndex] = false;
+        WayPointIndex--;
     }
 
-    //---목적지 설정---//
+    //---자리가 없어서 그냥 밖으로 돌아가기---//
+    void ReturnStopToOut()
+    {
+        isJustreturn = true;
+    }
+
+    //---앉을 자리 결정---//
     void MovingSystem()
     {
         for (int i = 0; i < data.maxSeatSize; i++)
@@ -155,19 +185,11 @@ public class CustomerMovement : MonoBehaviour
             {
                 seatIndex = i;
                 data.isAllocated[i] = true; //자리 할당
-                break;
+                return;
             }
         }
-    }
-
-    //---자리가 꽉 찼을 경우 돌아감 SeatFull -> ToBack---//
-    void SeatFull()
-    {
-        for (int i = 0; i < data.maxSeatSize; i++)
-        {
-            if (!data.isAllocated[i]) return;   
-        }
         isFull = true;
+        Debug.Log("자리가 없음");
     }
 
 }

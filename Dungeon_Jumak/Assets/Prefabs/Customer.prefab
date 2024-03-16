@@ -174,10 +174,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   StartPoint: {fileID: 7614776794981503770, guid: f6d977643ffff6847932243f949ddd82, type: 3}
+  StopPoint: {fileID: 2679968256591990733, guid: da71a6124a1652b43896de71e2ad7f27, type: 3}
+  isFull: 0
+  isArrive: 0
+  isReturn: 0
   CurPosition: {x: 0, y: 0, z: 0}
   WayPointIndex: 0
   speed: 3
-  isArrive: 0
   seatIndex: 0
   data:
     maxSeatSize: 2

@@ -11,7 +11,7 @@ public class Data
 
     //---CustomerSystem---//
     public int maxSeatSize = 2;
-    public bool[] isAllocated = new bool[2];
+    public bool[] isAllocated = new bool[12];
 
     //---해금 레벨---//
     public int curUnlockLevel = 1;
