@@ -134,10 +134,8 @@ public class CustomerMovement : MonoBehaviour
                     CustomerMove(StartPoint);
 
                     if (Vector3.Distance(StartPoint.position, CurPosition) == 0f)
-                    {
-                        //수정완료
                         ObjectPool.ReturnObject(this);
-                    }
+                    
 
                 }
             }
@@ -162,7 +160,8 @@ public class CustomerMovement : MonoBehaviour
             CustomerMove(StartPoint);
 
             if (Vector3.Distance(StartPoint.position, CurPosition) == 0f)
-                this.gameObject.SetActive(false);
+                ObjectPool.ReturnObject(this);
+
         }
     }
 
@@ -178,6 +177,7 @@ public class CustomerMovement : MonoBehaviour
     void ReturnSeatToOut()
     {
         isReturn = true;
+        data.curSeatSize--;
         data.isAllocated[seatIndex] = false;
         WayPointIndex--;
     }

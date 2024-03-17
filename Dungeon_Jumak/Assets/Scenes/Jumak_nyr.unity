@@ -6283,7 +6283,13 @@ MonoBehaviour:
   customerPrefab:
   - {fileID: 7285969275275507192, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
   customerNum: 0
-  SpawnDealy: 3
+  delayTime: 3
+  data:
+    maxSeatSize: 2
+    curSeatSize: 0
+    isAllocated: 000000000000000000000000
+    curUnlockLevel: 1
+    maxUnlockLevel: 6
 --- !u!4 &1934456676
 Transform:
   m_ObjectHideFlags: 0
