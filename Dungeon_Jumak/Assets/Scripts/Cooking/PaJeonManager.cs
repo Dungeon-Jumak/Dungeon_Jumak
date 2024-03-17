@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PaJeonManager : MonoBehaviour
 {
@@ -7,11 +8,45 @@ public class PaJeonManager : MonoBehaviour
     private Vector3 dragStartPosition;
     private int[] correctSequence;
     private int currentIndex = 0;
-    private bool hasFailed = false;
+    private bool hasFailed = true;
+    private GameObject[] spawnedPrefabs; // 이전에 생성된 프리팹들을 추적하기 위한 배열
+    public GameObject PaJeonPopUp;
 
-    void Start()
+    void OnEnable()
+    {
+        StartCoroutine(StartGameAfterDelay(0.1f));
+    }
+
+    IEnumerator StartGameAfterDelay(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        RestartGame();
+    }
+
+    public void RestartGame()
+    {
+        currentIndex = 0;
+        dragStartPosition = Vector3.zero;
+
+        // 이전에 생성된 프리팹들 제거
+        if (spawnedPrefabs != null)
+        {
+            foreach (GameObject prefab in spawnedPrefabs)
+            {
+                Destroy(prefab);
+            }
+        }
+
+        RandomGen();
+
+        hasFailed = false;
+    }
+
+    public void RandomGen()
     {
         correctSequence = new int[4];
+        spawnedPrefabs = new GameObject[4]; // 생성된 프리팹들을 추적하기 위한 배열 초기화
+
         for (int i = 0; i < correctSequence.Length; i++)
         {
             correctSequence[i] = Random.Range(0, directionPrefabs.Length);
@@ -20,9 +55,12 @@ public class PaJeonManager : MonoBehaviour
         float xOffset = -1.6f;
         for (int i = 0; i < correctSequence.Length; i++)
         {
-            GameObject directionPrefab = Instantiate(directionPrefabs[correctSequence[i]], transform); // 스크립트를 가지고 있는 오브젝트의 하위에 생성
+            GameObject directionPrefab = Instantiate(directionPrefabs[correctSequence[i]], transform);
             directionPrefab.transform.position = new Vector3(xOffset, 3.86f, 0f);
             xOffset += directionPrefab.GetComponent<SpriteRenderer>().bounds.size.x;
+
+            // 생성된 프리팹들을 추적하기 위해 배열에 추가
+            spawnedPrefabs[i] = directionPrefab;
         }
     }
 
@@ -99,12 +137,14 @@ public class PaJeonManager : MonoBehaviour
             {
                 Debug.Log("성공입니다!");
                 hasFailed = true;
+                PaJeonPopUp.gameObject.SetActive(false);
             }
         }
         else
         {
             Debug.Log("실패입니다.");
-            hasFailed = true;
+            hasFailed = true; 
+            PaJeonPopUp.gameObject.SetActive(false);
         }
     }
 }
