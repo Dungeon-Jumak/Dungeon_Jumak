@@ -135,8 +135,8 @@ public class CustomerMovement : MonoBehaviour
 
                     if (Vector3.Distance(StartPoint.position, CurPosition) == 0f)
                     {
-                        //Destroy(this.gameObject);
-                        this.gameObject.SetActive(false);
+                        //수정완료
+                        ObjectPool.ReturnObject(this);
                     }
 
                 }

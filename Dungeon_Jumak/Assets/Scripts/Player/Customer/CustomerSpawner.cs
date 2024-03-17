@@ -21,7 +21,8 @@ public class CustomerSpawner : MonoBehaviour
     // --- 코루틴 재귀 (delayTime마다 스폰) --- // 
     IEnumerator SpawnCustomer(float delayTime)
     {
-        GameObject customerInstance = Instantiate(customerPrefab[customerNum], this.gameObject.transform);
+        //GameObject customerInstance = Instantiate(customerPrefab[customerNum], this.gameObject.transform);
+        var customer = ObjectPool.GetObject();
         yield return new WaitForSeconds(SpawnDealy);
         StartCoroutine(SpawnCustomer(delayTime));
     }
