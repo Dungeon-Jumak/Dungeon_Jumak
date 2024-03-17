@@ -195,9 +195,13 @@ MonoBehaviour:
   speech_Box_Full: {fileID: 6906199816215992071, guid: 2a74bbfeb1dfc4d4b98d9d94d4e81aa1, type: 3}
   data:
     maxSeatSize: 2
+    curSeatSize: 0
     isAllocated: 000000000000000000000000
     curUnlockLevel: 1
     maxUnlockLevel: 6
+  sitSprite: {fileID: 21300000, guid: cb853022e6d795d4f8ffbb58724c6141, type: 3}
+  standSprite: {fileID: 21300000, guid: 9ca9c6482f602e846b3dff9f1beef6db, type: 3}
+  dir: {x: 0, y: 0}
 --- !u!50 &1398127208680582618
 Rigidbody2D:
   serializedVersion: 4

@@ -66,6 +66,16 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private Data data;
 
+    //---애니메이션 적용전 테스트용 스프라이트---//
+    [SerializeField]
+    private Sprite sitSprite;
+    [SerializeField]
+    private Sprite standSprite;
+
+    //---현재 손님의 방향을 가져올 변수---//
+    [SerializeField]
+    private Vector2 dir;
+
     private void Start()
     {
         data = DataManager.Instance.data;
@@ -93,7 +103,6 @@ public class CustomerMovement : MonoBehaviour
 
     private void Update()
     {
-
         //--- 현재 위치값 ---//
         CurPosition = transform.position;
 
@@ -114,6 +123,12 @@ public class CustomerMovement : MonoBehaviour
             else if(!isArrive)
             {
                 isArrive = true;
+
+                //***나중에 애니메이션으로 수정***//
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = sitSprite;
+                if(seatIndex % 2 != 0)
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+
                 //---국밥을 먹은 후 돌아가기---//
                 Invoke("ReturnSeatToOut", 3f);
             }
@@ -180,6 +195,8 @@ public class CustomerMovement : MonoBehaviour
         data.curSeatSize--;
         data.isAllocated[seatIndex] = false;
         WayPointIndex--;
+
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = standSprite;
     }
 
     //---자리가 없어서 그냥 밖으로 돌아가기---//
