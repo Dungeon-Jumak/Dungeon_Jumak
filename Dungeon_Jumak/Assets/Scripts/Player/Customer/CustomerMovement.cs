@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class CustomerMovement : MonoBehaviour
 {
@@ -24,8 +24,10 @@ public class CustomerMovement : MonoBehaviour
     public List<Transform> Route6_Left;
     public List<Transform> Route6_Right;
 
+    //---다양한 경로를 저장할 경로 리스트---//
     public List<List<Transform>> RouteList = new List<List<Transform>>();
 
+    //---최종 결정된 Route---//
     public List<Transform> FinRoute;
 
     //---특수 waypoint---//
@@ -44,6 +46,7 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private bool isJustreturn = false;
 
+    //---손님 움직임 관련 변수---//
     [SerializeField]
     private Vector3 CurPosition;
     [SerializeField]
@@ -51,9 +54,15 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private float speed = 3f;
 
+    //---자리 관련 변수---//
     [SerializeField]
     private int seatIndex = 0;
 
+    //---UI 관련 변수 (Speech_Box)---//
+    [SerializeField]
+    private GameObject speech_Box_Full; //사람이 가득찼을 때 나올 말풍선 프리팹 
+
+    //---데이터---//
     [SerializeField]
     private Data data;
 
@@ -84,6 +93,7 @@ public class CustomerMovement : MonoBehaviour
 
     private void Update()
     {
+
         //--- 현재 위치값 ---//
         CurPosition = transform.position;
 
@@ -132,6 +142,7 @@ public class CustomerMovement : MonoBehaviour
                 }
             }
         }
+        //---자리가 없을 때 그냥 돌아감---//
         else if(isFull && !isArrive)
         {
             CustomerMove(StopPoint);
@@ -141,6 +152,7 @@ public class CustomerMovement : MonoBehaviour
             {
                 isArrive = true;
                 //애니메이션 추가 (두리번 두리번?)
+                GameObject.Instantiate(speech_Box_Full, GameObject.Find("If_Full").transform);
                 Invoke("ReturnStopToOut", 2f);
             }     
         }
@@ -173,6 +185,8 @@ public class CustomerMovement : MonoBehaviour
     //---자리가 없어서 그냥 밖으로 돌아가기---//
     void ReturnStopToOut()
     {
+        //***수정 필요***//
+        GameObject.Find("UI_Speech_Box_Full(Clone)").SetActive(false);
         isJustreturn = true;
     }
 
@@ -191,5 +205,8 @@ public class CustomerMovement : MonoBehaviour
         isFull = true;
         Debug.Log("자리가 없음");
     }
+
+
+
 
 }

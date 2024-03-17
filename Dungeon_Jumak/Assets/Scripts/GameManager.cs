@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
-{
-
+{ 
     Data data;
 
     //---해금 할 단상 배열---//
