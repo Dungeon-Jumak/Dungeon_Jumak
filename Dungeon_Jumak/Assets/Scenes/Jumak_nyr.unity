@@ -6283,7 +6283,7 @@ MonoBehaviour:
   customerPrefab:
   - {fileID: 7285969275275507192, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
   customerNum: 0
-  delayTime: 3
+  delayTime: 4
   data:
     maxSeatSize: 2
     curSeatSize: 0
