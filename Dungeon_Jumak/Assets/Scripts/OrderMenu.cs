@@ -22,9 +22,23 @@ public class OrderMenu : MonoBehaviour
     [SerializeField]
     private int max = 100;
 
+    [Header("메뉴 넘버링")]
+    [SerializeField]
+    private int gukBabNum = 0;
+    [SerializeField]
+    private int riceJuiceNum = 1;
+    [SerializeField]
+    private int paJeonNum = 2;
+
     [Header("오더 관련 불 변수")]
     [SerializeField]
     private bool isOrder = false;
+    [SerializeField]
+    private bool isGukBab = false;
+    [SerializeField]
+    private bool isRiceJuice = false;
+    [SerializeField]
+    private bool isPaJeon = false;
 
     //---데이터---//
     [SerializeField]
@@ -67,7 +81,7 @@ public class OrderMenu : MonoBehaviour
     }
 
     //---메뉴 주문 결정 함수---//
-    void OrderNewMenu()
+    public void OrderNewMenu()
     {
         int randNum = Random.Range(min, max);
 
@@ -83,18 +97,21 @@ public class OrderMenu : MonoBehaviour
     //---국밥 주문 함수---// 
     void OrderGukBab()
     {
-
+        transform.GetChild(gukBabNum).gameObject.SetActive(true);
+        isGukBab = true;
     }
 
     //---식혜 주문 함수---//
     void OrderRiceJuice()
     {
-
+        transform.GetChild(riceJuiceNum).gameObject.SetActive(true);
+        isRiceJuice = true;
     }
 
     //---파전 주문 함수---//
     void OrderPajeon()
     {
-
+        transform.GetChild(paJeonNum).gameObject.SetActive(true);
+        isRiceJuice = true;
     }
 }

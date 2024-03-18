@@ -1703,7 +1703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573ba81edc8f8a543a3e9d600dcc3fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingCustomerPrefab: {fileID: 7285969275275507192, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
+  poolingCustomerPrefab: {fileID: 7053660020489628967, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
 --- !u!4 &588326956
 Transform:
   m_ObjectHideFlags: 0
@@ -6281,7 +6281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customerPrefab:
-  - {fileID: 7285969275275507192, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
+  - {fileID: 7053660020489628967, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
   customerNum: 0
   delayTime: 4
   data:
@@ -6290,6 +6290,7 @@ MonoBehaviour:
     isAllocated: 000000000000000000000000
     curUnlockLevel: 1
     maxUnlockLevel: 6
+    menuUnlockLevel: 0
 --- !u!4 &1934456676
 Transform:
   m_ObjectHideFlags: 0

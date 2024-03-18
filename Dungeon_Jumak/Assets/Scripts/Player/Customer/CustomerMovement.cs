@@ -134,8 +134,10 @@ public class CustomerMovement : MonoBehaviour
                 if(seatIndex % 2 != 0)
                     transform.rotation = Quaternion.Euler(0, 0, 0);
 
+                orderMenu.OrderNewMenu();
+
                 //---국밥을 먹은 후 돌아가기---//
-                Invoke("ReturnSeatToOut", 3f);
+                //Invoke("ReturnSeatToOut", 3f);
             }
 
             //---도착했을 경우 3초후 돌아감 Invoke Return을 통해 isArrive를 True로 전환(후에 국밥으로 바꿔야됨)---//

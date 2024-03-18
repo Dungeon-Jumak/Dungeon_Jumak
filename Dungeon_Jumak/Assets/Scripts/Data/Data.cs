@@ -20,4 +20,7 @@ public class Data
 
     //---메뉴 해금 레벨---//
     public int menuUnlockLevel = 1;
+
+    //---테이블 배열---//
+    public bool[] tables = new bool[12];
 }

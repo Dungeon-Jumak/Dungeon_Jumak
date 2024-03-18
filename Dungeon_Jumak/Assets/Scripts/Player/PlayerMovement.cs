@@ -5,6 +5,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public CookGukbap cookGukbap; // 국밥 카운트 참조 스크립트
 
+    public GameObject hand; // 플레이어 손 위치
+
     [SerializeField] 
     private FloatingJoystick joystick;
     [SerializeField] 
@@ -12,9 +14,9 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D playerRb;
     private Vector2 moveVector; // 이동벡터
+
     [SerializeField] 
     private bool isCarryingFood = false; // 음식을 들고 있는지 확인
-    public GameObject hand; // 플레이어 손 위치
 
     private Queue<GameObject> foodQueue = new Queue<GameObject>(); // 충돌한 Food 오브젝트를 저장하는 Queue
 
@@ -114,4 +116,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+
 }
