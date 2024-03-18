@@ -1507,6 +1507,7 @@ MonoBehaviour:
   - {fileID: 6182253740691619120, guid: 81291beaa67976e488c66b11bbcbe6a4, type: 3}
   - {fileID: 2172009987680681406, guid: 41508b3d7aff5af4994aa8e51d4ad3ec, type: 3}
   PaJeonPopUp: {fileID: 418789271}
+  PaJeonPrefab: {fileID: 5754116617699617044, guid: c4d82e799ddd0f64c95e79b5a8510206, type: 3}
 --- !u!1 &418789271
 GameObject:
   m_ObjectHideFlags: 0

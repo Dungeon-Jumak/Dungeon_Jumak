@@ -11,7 +11,7 @@ public class PaJeonManager : MonoBehaviour
     private bool hasFailed = true;
     private GameObject[] spawnedPrefabs; // 이전에 생성된 프리팹들을 추적하기 위한 배열
     public GameObject PaJeonPopUp;
-
+    public GameObject PaJeonPrefab;
     void OnEnable()
     {
         StartCoroutine(StartGameAfterDelay(0.1f));
@@ -137,10 +137,11 @@ public class PaJeonManager : MonoBehaviour
             {
                 Debug.Log("성공입니다!");
                 hasFailed = true;
-                PaJeonPopUp.gameObject.SetActive(false);
                 GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+                Instantiate(PaJeonPrefab, playerObject.transform.position, Quaternion.identity);
                 PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
                 playerMovement.isCarryingFood= false;
+                PaJeonPopUp.gameObject.SetActive(false);
             }
         }
         else

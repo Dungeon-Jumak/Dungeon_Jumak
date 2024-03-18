@@ -6,7 +6,8 @@ TagManager:
   tags:
   - Table_L
   - Table_R
-  - Food
+  - Gukbap
+  - Pajeon
   layers:
   - Default
   - TransparentFX

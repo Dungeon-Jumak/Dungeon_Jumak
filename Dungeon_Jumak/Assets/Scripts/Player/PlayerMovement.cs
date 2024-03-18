@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // 음식 충돌 확인
-        if (other.gameObject.CompareTag("Food"))
+        if (other.gameObject.CompareTag("Gukbap"))
         {
             FoodScript foodScript = other.GetComponent<FoodScript>();
 
@@ -81,6 +81,19 @@ public class PlayerMovement : MonoBehaviour
                 isCarryingFood = true;
 
                 cookGukbap.gukbapCount--;
+            }
+        }
+
+        if (other.gameObject.CompareTag("Pajeon"))
+        {
+            FoodScript foodScript = other.GetComponent<FoodScript>();
+
+            if (!isCarryingFood && !foodScript.IsOnTable)
+            {
+                foodQueue.Enqueue(other.gameObject); // 충돌한 음식을 Queue에 저장
+                other.transform.parent = hand.transform; // 플레이어 손 아래로 이동
+                other.transform.localPosition = Vector3.zero;
+                isCarryingFood = true;
             }
         }
     }

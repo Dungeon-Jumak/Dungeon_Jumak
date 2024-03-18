@@ -77,12 +77,14 @@ public class GukbapSetting : MonoBehaviour
 
             Collider2D[] colliders = Physics2D.OverlapPointAll(position);
             bool gukbapPresent = false;
+            
 
             foreach (Collider2D collider in colliders)
             {
-                if (collider.gameObject.CompareTag("Food"))
+                if (collider.gameObject.CompareTag("Gukbap"))
                 {
                     gukbapPresent = true;
+
                     break;
                 }
             }
