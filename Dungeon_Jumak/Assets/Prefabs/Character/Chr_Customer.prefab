@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 1797908325053506012}
   - component: {fileID: 2562591077531768633}
   - component: {fileID: 1398127208680582618}
+  - component: {fileID: -8986466777494316083}
   m_Layer: 0
   m_Name: Chr_Customer
   m_TagString: Player
@@ -199,9 +200,11 @@ MonoBehaviour:
     isAllocated: 000000000000000000000000
     curUnlockLevel: 1
     maxUnlockLevel: 6
+    menuUnlockLevel: 0
   sitSprite: {fileID: 21300000, guid: cb853022e6d795d4f8ffbb58724c6141, type: 3}
   standSprite: {fileID: 21300000, guid: 9ca9c6482f602e846b3dff9f1beef6db, type: 3}
   dir: {x: 0, y: 0}
+  orderMenu: {fileID: 0}
 --- !u!50 &1398127208680582618
 Rigidbody2D:
   serializedVersion: 4
@@ -223,3 +226,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-8986466777494316083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7285969275275507192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9fad899ca2c52f438916bcaf957e217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speechBox: []
+  percentOfMenu: 0
+  gukBabMax: 60
+  riceJuiceMax: 80
+  paJeonMax: 100
+  min: 0
+  max: 100
+  isOrder: 0
+  data:
+    maxSeatSize: 2
+    curSeatSize: 0
+    isAllocated: 000000000000000000000000
+    curUnlockLevel: 1
+    maxUnlockLevel: 6
+    menuUnlockLevel: 1
+  customerMovement: {fileID: 0}

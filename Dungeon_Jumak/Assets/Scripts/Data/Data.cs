@@ -14,7 +14,10 @@ public class Data
     public int curSeatSize = 0;
     public bool[] isAllocated = new bool[12];
 
-    //---해금 레벨---//
+    //---자리 해금 레벨---//
     public int curUnlockLevel = 1;
     public int maxUnlockLevel = 6;
+
+    //---메뉴 해금 레벨---//
+    public int menuUnlockLevel = 1;
 }

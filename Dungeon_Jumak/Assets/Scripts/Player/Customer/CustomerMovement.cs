@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CustomerMovement : MonoBehaviour
 {
-    //각 경로로 가는 Waypoints를 담을 리스트 
+    //---각 경로로 가는 Waypoints를 담을 리스트---// 
     public List<Transform> Route1_Left;
     public List<Transform> Route1_Right;
 
@@ -76,9 +76,14 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private Vector2 dir;
 
+    //---주문 관련---//
+    [SerializeField]
+    private OrderMenu orderMenu;
+
     private void Start()
     {
         data = DataManager.Instance.data;
+        orderMenu = GetComponent<OrderMenu>();
 
         RouteList.Add(Route1_Left);
         RouteList.Add(Route1_Right);
