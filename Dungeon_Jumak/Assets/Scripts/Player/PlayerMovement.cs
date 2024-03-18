@@ -110,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
 
                 food.transform.parent = tableChild;
 
+                //테이블 위에 음식을 두었음
                 //isPlace = true;
 
                 // 음식을 테이블 위치에 고정

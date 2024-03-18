@@ -24,6 +24,8 @@ public class OrderSystem : MonoBehaviour
                 tables[i].isOnFood = false;
                 data.isFinEat[i] = false;
                 Destroy(tables[i].transform.GetChild(0).GetChild(0).gameObject);
+                //아래에 코인 지급 추가 //
+
             }
             //---음식이 올라올 경우 데이터 값 변경---//
             if (tables[i].isOnFood)

@@ -52,6 +52,10 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private bool isJustreturn = false;
 
+    //---오브젝트 풀링 초기화를 위한 boolean 값---//
+    [SerializeField]
+    private bool isInitialize = false;
+
     //---손님 움직임 관련 변수---//
     [SerializeField]
     private Vector3 CurPosition;
@@ -110,6 +114,10 @@ public class CustomerMovement : MonoBehaviour
 
     private void Update()
     {
+        //---변수 값 초기화---//
+        if (isInitialize) Initialize();
+
+
         //--- 현재 위치값 ---//
         CurPosition = transform.position;
 
@@ -161,9 +169,10 @@ public class CustomerMovement : MonoBehaviour
                     CustomerMove(StartPoint);
 
                     if (Vector3.Distance(StartPoint.position, CurPosition) == 0f)
+                    {
                         ObjectPool.ReturnObject(this);
-                    
-
+                        isInitialize = true;
+                    }                  
                 }
             }
         }
@@ -187,7 +196,10 @@ public class CustomerMovement : MonoBehaviour
             CustomerMove(StartPoint);
 
             if (Vector3.Distance(StartPoint.position, CurPosition) == 0f)
+            {
                 ObjectPool.ReturnObject(this);
+                isInitialize = true;
+            }
 
         }
     }
@@ -231,6 +243,7 @@ public class CustomerMovement : MonoBehaviour
             {
                 seatIndex = i;
                 data.isAllocated[i] = true; //자리 할당
+                isFull = false;
                 return;
             }
         }
@@ -238,7 +251,24 @@ public class CustomerMovement : MonoBehaviour
         Debug.Log("자리가 없음");
     }
 
+    //---셋팅 초기화---//
+    void Initialize()
+    {
+        WayPointIndex = 0;
 
+        MovingSystem();
+
+        for (int i = 0; i < FinRoute.Count; i++)
+        {
+            FinRoute[i] = RouteList[seatIndex][i];
+        }
+
+        isEat = false;
+        isArrive = false;
+        isReturn = false;
+        isJustreturn = false;
+        isInitialize = false;
+    }
 
 
 }
