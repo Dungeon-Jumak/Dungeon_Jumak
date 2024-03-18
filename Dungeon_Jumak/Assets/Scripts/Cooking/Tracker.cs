@@ -4,40 +4,95 @@ using UnityEngine;
 
 public class Tracker : MonoBehaviour
 {
-    Rigidbody2D rb;
     Transform target;
 
     bool furnaceCheck = false;
 
-    [Header ("거리")]
+    [Header("거리")]
     [SerializeField][Range(0f, 3f)] float contactDistance = 1f;
 
-    public GameObject furnacePopUp;
+    public GameObject firePopUp;
+    public GameObject PaJeonPopUp;
+    public PaJeonManager paJeonManager;
+ 
+
     void Start()
     {
-        furnacePopUp.gameObject.SetActive(false);
-        //rb = GetComponent<Rigidbody2D>();
+        firePopUp.gameObject.SetActive(false);
+        PaJeonPopUp.gameObject.SetActive(false);
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        checkTarget();
+        CheckTarget();
     }
 
-    private void checkTarget()
+    void CheckInput()
     {
-        if(Vector2.Distance(transform.position, target.position) > contactDistance && furnaceCheck)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            if(Input.GetKey(KeyCode.L))
+            Vector3 touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            RaycastHit2D hit = Physics2D.Raycast(touchPos, Vector2.zero);
+
+            if (hit.collider != null && hit.collider.gameObject == gameObject)
             {
-                furnacePopUp.gameObject.SetActive(true);
-                Debug.Log("L눌림");
+                if (touchPos.x < transform.position.x)
+                {
+                    GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+                    PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
+                    if (playerMovement.isCarryingFood == false)
+                    {
+                        PaJeonPopUp.gameObject.SetActive(true);
+                        Debug.Log("왼쪽 터치됨");
+                        playerMovement.isCarryingFood = true;
+                    }
+                    
+                }
+                else
+                {
+                    firePopUp.gameObject.SetActive(true);
+                    Debug.Log("오른쪽 터치됨");
+                }
             }
-            Debug.Log("범위 안");
+        }
+        else if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+
+            if (hit.collider != null && hit.collider.gameObject == gameObject)
+            {
+                if (mousePos.x < transform.position.x)
+                {
+                    GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+                    PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
+                    if (playerMovement.isCarryingFood == false)
+                    {
+                        PaJeonPopUp.gameObject.SetActive(true);
+                        Debug.Log("왼쪽 터치됨");
+                        playerMovement.isCarryingFood = true;
+                    }
+
+                }
+                else
+                {
+                    firePopUp.gameObject.SetActive(true);
+                    Debug.Log("오른쪽 클릭됨");
+                }
+            }
         }
     }
+
+
+    void CheckTarget()
+    {
+        if (Vector2.Distance(transform.position, target.position) > contactDistance && furnaceCheck)
+        {
+            CheckInput();
+        }
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

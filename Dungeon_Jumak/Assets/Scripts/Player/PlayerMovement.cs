@@ -3,29 +3,19 @@ using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CookGukbap cookGukbap; // 국밥 카운트 참조 스크립트
-
-    public GameObject hand; // 플레이어 손 위치
-
-    public bool isPlace; //음식을 두었는지 판단할 변수
-
-    [SerializeField] 
-    private FloatingJoystick joystick;
-    [SerializeField] 
-    private float moveSpeed; // 이동속도
+    [SerializeField] private FloatingJoystick joystick;
+    [SerializeField] private float moveSpeed; // 이동속도
 
     private Rigidbody2D playerRb;
     private Vector2 moveVector; // 이동벡터
-
-    [SerializeField] 
-    private bool isCarryingFood = false; // 음식을 들고 있는지 확인
+    public bool isCarryingFood = false; // 음식을 들고 있는지 확인
+    public GameObject hand; // 플레이어 손 위치
 
     private Queue<GameObject> foodQueue = new Queue<GameObject>(); // 충돌한 Food 오브젝트를 저장하는 Queue
+    public CookGukbap cookGukbap; // 국밥 카운트 참조 스크립트
 
     private Animator animator;
     private SpriteRenderer spriter;
-
-    //---Order System 관련---//
 
     private void Awake()
     {
@@ -79,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // 음식 충돌 확인
-        if (other.gameObject.CompareTag("Food"))
+        if (other.gameObject.CompareTag("Gukbap"))
         {
             FoodScript foodScript = other.GetComponent<FoodScript>();
 
@@ -91,6 +81,19 @@ public class PlayerMovement : MonoBehaviour
                 isCarryingFood = true;
 
                 cookGukbap.gukbapCount--;
+            }
+        }
+
+        if (other.gameObject.CompareTag("Pajeon"))
+        {
+            FoodScript foodScript = other.GetComponent<FoodScript>();
+
+            if (!isCarryingFood && !foodScript.IsOnTable)
+            {
+                foodQueue.Enqueue(other.gameObject); // 충돌한 음식을 Queue에 저장
+                other.transform.parent = hand.transform; // 플레이어 손 아래로 이동
+                other.transform.localPosition = Vector3.zero;
+                isCarryingFood = true;
             }
         }
     }
@@ -110,9 +113,6 @@ public class PlayerMovement : MonoBehaviour
 
                 food.transform.parent = tableChild;
 
-                //테이블 위에 음식을 두었음
-                //isPlace = true;
-
                 // 음식을 테이블 위치에 고정
                 food.transform.localPosition = Vector3.zero;
 
@@ -121,6 +121,4 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-
-
 }
