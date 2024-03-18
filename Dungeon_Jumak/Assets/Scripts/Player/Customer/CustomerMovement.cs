@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class CustomerMovement : MonoBehaviour
 {
-    //각 경로로 가는 Waypoints를 담을 리스트 
+    //---각 경로로 가는 Waypoints를 담을 리스트---// 
     public List<Transform> Route1_Left;
     public List<Transform> Route1_Right;
 
@@ -24,9 +24,17 @@ public class CustomerMovement : MonoBehaviour
     public List<Transform> Route6_Left;
     public List<Transform> Route6_Right;
 
+    //---다양한 경로를 저장할 경로 리스트---//
     public List<List<Transform>> RouteList = new List<List<Transform>>();
 
+    //---최종 결정된 Route---//
     public List<Transform> FinRoute;
+
+    //---자리 관련 변수---//
+    public int seatIndex = 0;
+
+    //---먹기 시작을 알리는 변수---//
+    public bool isEat = false;
 
     //---특수 waypoint---//
     [SerializeField]
@@ -44,6 +52,11 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private bool isJustreturn = false;
 
+    //---오브젝트 풀링 초기화를 위한 boolean 값---//
+    [SerializeField]
+    private bool isInitialize = false;
+
+    //---손님 움직임 관련 변수---//
     [SerializeField]
     private Vector3 CurPosition;
     [SerializeField]
@@ -51,15 +64,32 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private float speed = 3f;
 
+    //---UI 관련 변수 (Speech_Box)---//
     [SerializeField]
-    private int seatIndex = 0;
+    private GameObject speech_Box_Full; //사람이 가득찼을 때 나올 말풍선 프리팹 
 
+    //---데이터---//
     [SerializeField]
     private Data data;
+
+    //---애니메이션 적용전 테스트용 스프라이트---//
+    [SerializeField]
+    private Sprite sitSprite;
+    [SerializeField]
+    private Sprite standSprite;
+
+    //---현재 손님의 방향을 가져올 변수---//
+    [SerializeField]
+    private Vector2 dir;
+
+    //---주문 관련---//
+    [SerializeField]
+    private OrderMenu orderMenu;
 
     private void Start()
     {
         data = DataManager.Instance.data;
+        orderMenu = GetComponent<OrderMenu>();
 
         RouteList.Add(Route1_Left);
         RouteList.Add(Route1_Right);
@@ -84,8 +114,18 @@ public class CustomerMovement : MonoBehaviour
 
     private void Update()
     {
+        //---변수 값 초기화---//
+        if (isInitialize) Initialize();
+
+
         //--- 현재 위치값 ---//
         CurPosition = transform.position;
+
+        if (isEat)
+        {
+            isEat = false;
+            Invoke("ReturnSeatToOut", 3f);
+        }
 
         //---자리가 가득차 있지 않다면 움직임 수행---//
         if (!isFull)
@@ -104,8 +144,13 @@ public class CustomerMovement : MonoBehaviour
             else if(!isArrive)
             {
                 isArrive = true;
-                //---국밥을 먹은 후 돌아가기---//
-                Invoke("ReturnSeatToOut", 3f);
+
+                //***나중에 애니메이션으로 수정***//
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = sitSprite;
+                if(seatIndex % 2 != 0)
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+
+                orderMenu.OrderNewMenu();
             }
 
             //---도착했을 경우 3초후 돌아감 Invoke Return을 통해 isArrive를 True로 전환(후에 국밥으로 바꿔야됨)---//
@@ -125,13 +170,13 @@ public class CustomerMovement : MonoBehaviour
 
                     if (Vector3.Distance(StartPoint.position, CurPosition) == 0f)
                     {
-                        //Destroy(this.gameObject);
-                        this.gameObject.SetActive(false);
-                    }
-
+                        ObjectPool.ReturnObject(this);
+                        isInitialize = true;
+                    }                  
                 }
             }
         }
+        //---자리가 없을 때 그냥 돌아감---//
         else if(isFull && !isArrive)
         {
             CustomerMove(StopPoint);
@@ -141,6 +186,7 @@ public class CustomerMovement : MonoBehaviour
             {
                 isArrive = true;
                 //애니메이션 추가 (두리번 두리번?)
+                GameObject.Instantiate(speech_Box_Full, GameObject.Find("If_Full").transform);
                 Invoke("ReturnStopToOut", 2f);
             }     
         }
@@ -150,7 +196,11 @@ public class CustomerMovement : MonoBehaviour
             CustomerMove(StartPoint);
 
             if (Vector3.Distance(StartPoint.position, CurPosition) == 0f)
-                this.gameObject.SetActive(false);
+            {
+                ObjectPool.ReturnObject(this);
+                isInitialize = true;
+            }
+
         }
     }
 
@@ -163,16 +213,24 @@ public class CustomerMovement : MonoBehaviour
 
 
     //---자리에서 밖으로 돌아가기---//
-    void ReturnSeatToOut()
+    public void ReturnSeatToOut()
     {
         isReturn = true;
+        data.curSeatSize--;
         data.isAllocated[seatIndex] = false;
         WayPointIndex--;
+
+        data.onTables[seatIndex] = false;
+        data.isFinEat[seatIndex] = true;
+
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = standSprite;
     }
 
     //---자리가 없어서 그냥 밖으로 돌아가기---//
     void ReturnStopToOut()
     {
+        //***수정 필요***//
+        GameObject.Find("UI_Speech_Box_Full(Clone)").SetActive(false);
         isJustreturn = true;
     }
 
@@ -185,11 +243,32 @@ public class CustomerMovement : MonoBehaviour
             {
                 seatIndex = i;
                 data.isAllocated[i] = true; //자리 할당
+                isFull = false;
                 return;
             }
         }
         isFull = true;
         Debug.Log("자리가 없음");
     }
+
+    //---셋팅 초기화---//
+    void Initialize()
+    {
+        WayPointIndex = 0;
+
+        MovingSystem();
+
+        for (int i = 0; i < FinRoute.Count; i++)
+        {
+            FinRoute[i] = RouteList[seatIndex][i];
+        }
+
+        isEat = false;
+        isArrive = false;
+        isReturn = false;
+        isJustreturn = false;
+        isInitialize = false;
+    }
+
 
 }

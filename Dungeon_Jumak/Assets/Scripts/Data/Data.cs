@@ -11,9 +11,17 @@ public class Data
 
     //---CustomerSystem---//
     public int maxSeatSize = 2;
+    public int curSeatSize = 0;
     public bool[] isAllocated = new bool[12];
 
-    //---해금 레벨---//
+    //---자리 해금 레벨---//
     public int curUnlockLevel = 1;
     public int maxUnlockLevel = 6;
+
+    //---메뉴 해금 레벨---//
+    public int menuUnlockLevel = 1;
+
+    //---테이블 배열---//
+    public bool[] onTables = new bool[12]; //테이블 위에 음식을 체크하기 위한 변수
+    public bool[] isFinEat = new bool[12]; //다 먹었음을 알리는 변수
 }
