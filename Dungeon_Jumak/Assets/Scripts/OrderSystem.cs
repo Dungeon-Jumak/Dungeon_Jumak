@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class OrderSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private GameObject[] tables;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
