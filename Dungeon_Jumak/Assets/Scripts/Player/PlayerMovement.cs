@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject hand; // 플레이어 손 위치
 
+    public bool isPlace; //음식을 두었는지 판단할 변수
+
     [SerializeField] 
     private FloatingJoystick joystick;
     [SerializeField] 
@@ -107,6 +109,8 @@ public class PlayerMovement : MonoBehaviour
                 FoodScript foodScript = food.GetComponent<FoodScript>();
 
                 food.transform.parent = tableChild;
+
+                //isPlace = true;
 
                 // 음식을 테이블 위치에 고정
                 food.transform.localPosition = Vector3.zero;

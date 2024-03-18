@@ -372,7 +372,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -424170129
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
@@ -660,7 +660,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -424170129
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0.8537736, b: 0.8537736, a: 1}
@@ -5125,7 +5125,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -424170129
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 0.2627451}
@@ -5252,7 +5252,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -424170129
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.11792451, b: 0.11792451, a: 1}
@@ -5563,6 +5563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1692111739}
   - component: {fileID: 1692111740}
+  - component: {fileID: 1692111741}
   m_Layer: 0
   m_Name: Table_1_L
   m_TagString: Table_L
@@ -5612,6 +5613,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3532071, y: 1.4778497}
   m_EdgeRadius: 0
+--- !u!114 &1692111741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692111738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b56a6d1a6b4b4444957ba3a2b8ce868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOnFood: 0
+  player: {fileID: 1928863693}
 --- !u!1 &1697179183
 GameObject:
   m_ObjectHideFlags: 0
@@ -6053,6 +6068,62 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.91441524, y: 1.0674918}
   m_EdgeRadius: 0
+--- !u!1 &1797544386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1797544388}
+  - component: {fileID: 1797544387}
+  m_Layer: 0
+  m_Name: OrderSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1797544387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797544386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e4fc7ec91c1a147a103122d5eae1d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tables:
+  - {fileID: 1692111741}
+  - {fileID: 2082984457}
+  data:
+    maxSeatSize: 2
+    curSeatSize: 0
+    isAllocated: 000000000000000000000000
+    curUnlockLevel: 1
+    maxUnlockLevel: 6
+    menuUnlockLevel: 1
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+--- !u!4 &1797544388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797544386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1811587766
 GameObject:
   m_ObjectHideFlags: 0
@@ -6220,6 +6291,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3030956760492415765, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
   m_PrefabInstance: {fileID: 1928863688}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1928863693 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+  m_PrefabInstance: {fileID: 1928863688}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc3911e25f0753459cf549d4ab4d080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1931269487
 GameObject:
   m_ObjectHideFlags: 0
@@ -6291,6 +6373,8 @@ MonoBehaviour:
     curUnlockLevel: 1
     maxUnlockLevel: 6
     menuUnlockLevel: 0
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
 --- !u!4 &1934456676
 Transform:
   m_ObjectHideFlags: 0
@@ -6470,6 +6554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2082984455}
   - component: {fileID: 2082984456}
+  - component: {fileID: 2082984457}
   m_Layer: 0
   m_Name: Table_1_R
   m_TagString: Table_R
@@ -6519,6 +6604,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.91441524, y: 1.0674918}
   m_EdgeRadius: 0
+--- !u!114 &2082984457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082984454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b56a6d1a6b4b4444957ba3a2b8ce868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOnFood: 0
+  player: {fileID: 1928863693}
 --- !u!1 &2091105708
 GameObject:
   m_ObjectHideFlags: 0

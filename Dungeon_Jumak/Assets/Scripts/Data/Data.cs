@@ -22,5 +22,6 @@ public class Data
     public int menuUnlockLevel = 1;
 
     //---테이블 배열---//
-    public bool[] tables = new bool[12];
+    public bool[] onTables = new bool[12]; //테이블 위에 음식을 체크하기 위한 변수
+    public bool[] isFinEat = new bool[12]; //다 먹었음을 알리는 변수
 }

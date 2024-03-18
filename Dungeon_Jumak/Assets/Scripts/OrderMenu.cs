@@ -32,8 +32,6 @@ public class OrderMenu : MonoBehaviour
 
     [Header("오더 관련 불 변수")]
     [SerializeField]
-    private bool isOrder = false;
-    [SerializeField]
     private bool isGukBab = false;
     [SerializeField]
     private bool isRiceJuice = false;
@@ -72,11 +70,14 @@ public class OrderMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isOrder)
+        if (isGukBab)
         {
-            isOrder = true;
-
-
+            //현재 자리에 음식이 올라갔다면
+            if (data.onTables[customerMovement.seatIndex])
+            {
+                isGukBab = false; //반복 방지
+                EatGukBab();
+            }
         }
     }
 
@@ -113,5 +114,26 @@ public class OrderMenu : MonoBehaviour
     {
         transform.GetChild(paJeonNum).gameObject.SetActive(true);
         isRiceJuice = true;
+    }
+
+    void EatGukBab()
+    {
+        transform.GetChild(gukBabNum).gameObject.SetActive(false);
+        isGukBab = false;
+        customerMovement.isEat = true;
+    }
+
+    void EatRiceJuice()
+    {
+        transform.GetChild(riceJuiceNum).gameObject.SetActive(false);
+        isRiceJuice = false;
+        customerMovement.isEat = true;
+    }
+
+    void EatPaJeon()
+    {
+        transform.GetChild(paJeonNum).gameObject.SetActive(false);
+        isPaJeon = false;
+        customerMovement.isEat = true;
     }
 }

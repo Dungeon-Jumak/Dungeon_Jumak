@@ -30,6 +30,12 @@ public class CustomerMovement : MonoBehaviour
     //---최종 결정된 Route---//
     public List<Transform> FinRoute;
 
+    //---자리 관련 변수---//
+    public int seatIndex = 0;
+
+    //---먹기 시작을 알리는 변수---//
+    public bool isEat = false;
+
     //---특수 waypoint---//
     [SerializeField]
     private Transform StartPoint;
@@ -53,10 +59,6 @@ public class CustomerMovement : MonoBehaviour
     private int WayPointIndex = 0;
     [SerializeField]
     private float speed = 3f;
-
-    //---자리 관련 변수---//
-    [SerializeField]
-    private int seatIndex = 0;
 
     //---UI 관련 변수 (Speech_Box)---//
     [SerializeField]
@@ -111,6 +113,12 @@ public class CustomerMovement : MonoBehaviour
         //--- 현재 위치값 ---//
         CurPosition = transform.position;
 
+        if (isEat)
+        {
+            isEat = false;
+            Invoke("ReturnSeatToOut", 3f);
+        }
+
         //---자리가 가득차 있지 않다면 움직임 수행---//
         if (!isFull)
         {
@@ -135,9 +143,6 @@ public class CustomerMovement : MonoBehaviour
                     transform.rotation = Quaternion.Euler(0, 0, 0);
 
                 orderMenu.OrderNewMenu();
-
-                //---국밥을 먹은 후 돌아가기---//
-                //Invoke("ReturnSeatToOut", 3f);
             }
 
             //---도착했을 경우 3초후 돌아감 Invoke Return을 통해 isArrive를 True로 전환(후에 국밥으로 바꿔야됨)---//
@@ -196,12 +201,15 @@ public class CustomerMovement : MonoBehaviour
 
 
     //---자리에서 밖으로 돌아가기---//
-    void ReturnSeatToOut()
+    public void ReturnSeatToOut()
     {
         isReturn = true;
         data.curSeatSize--;
         data.isAllocated[seatIndex] = false;
         WayPointIndex--;
+
+        data.onTables[seatIndex] = false;
+        data.isFinEat[seatIndex] = true;
 
         this.gameObject.GetComponent<SpriteRenderer>().sprite = standSprite;
     }
