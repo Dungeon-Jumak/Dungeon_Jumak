@@ -14,6 +14,8 @@ public class Tracker : MonoBehaviour
     public GameObject firePopUp;
     public GameObject PaJeonPopUp;
     public PaJeonManager paJeonManager;
+ 
+
     void Start()
     {
         firePopUp.gameObject.SetActive(false);
@@ -37,8 +39,14 @@ public class Tracker : MonoBehaviour
             {
                 if (touchPos.x < transform.position.x)
                 {
-                    PaJeonPopUp.gameObject.SetActive(true);
-                    Debug.Log("¿ÞÂÊ ÅÍÄ¡µÊ");
+                    GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+                    PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
+                    if (playerMovement.isCarryingFood == false)
+                    {
+                        PaJeonPopUp.gameObject.SetActive(true);
+                        Debug.Log("¿ÞÂÊ ÅÍÄ¡µÊ");
+                        playerMovement.isCarryingFood = true;
+                    }
                     
                 }
                 else
@@ -57,9 +65,15 @@ public class Tracker : MonoBehaviour
             {
                 if (mousePos.x < transform.position.x)
                 {
-                    PaJeonPopUp.gameObject.SetActive(true);
-                    Debug.Log("¿ÞÂÊ Å¬¸¯µÊ");
-                    
+                    GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+                    PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
+                    if (playerMovement.isCarryingFood == false)
+                    {
+                        PaJeonPopUp.gameObject.SetActive(true);
+                        Debug.Log("¿ÞÂÊ ÅÍÄ¡µÊ");
+                        playerMovement.isCarryingFood = true;
+                    }
+
                 }
                 else
                 {

@@ -138,6 +138,9 @@ public class PaJeonManager : MonoBehaviour
                 Debug.Log("성공입니다!");
                 hasFailed = true;
                 PaJeonPopUp.gameObject.SetActive(false);
+                GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+                PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
+                playerMovement.isCarryingFood= false;
             }
         }
         else
@@ -145,6 +148,9 @@ public class PaJeonManager : MonoBehaviour
             Debug.Log("실패입니다.");
             hasFailed = true; 
             PaJeonPopUp.gameObject.SetActive(false);
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+            PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
+            playerMovement.isCarryingFood = false;
         }
     }
 }
