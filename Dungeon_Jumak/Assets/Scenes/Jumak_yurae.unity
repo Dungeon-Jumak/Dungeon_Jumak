@@ -4573,7 +4573,7 @@ PrefabInstance:
       objectReference: {fileID: 560700804}
     - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
       propertyPath: tables.Array.size
-      value: 2
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
       propertyPath: tables.Array.data[0]
@@ -4583,6 +4583,46 @@ PrefabInstance:
       propertyPath: tables.Array.data[1]
       value: 
       objectReference: {fileID: 670178413}
+    - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: tables.Array.data[2]
+      value: 
+      objectReference: {fileID: 413909345}
+    - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: tables.Array.data[3]
+      value: 
+      objectReference: {fileID: 997097108}
+    - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: tables.Array.data[4]
+      value: 
+      objectReference: {fileID: 429816113}
+    - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: tables.Array.data[5]
+      value: 
+      objectReference: {fileID: 1415005125}
+    - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: tables.Array.data[6]
+      value: 
+      objectReference: {fileID: 1689074687}
+    - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: tables.Array.data[7]
+      value: 
+      objectReference: {fileID: 1665087151}
+    - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: tables.Array.data[8]
+      value: 
+      objectReference: {fileID: 1326679380}
+    - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: tables.Array.data[9]
+      value: 
+      objectReference: {fileID: 44256039}
+    - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: tables.Array.data[10]
+      value: 
+      objectReference: {fileID: 1552797980}
+    - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: tables.Array.data[11]
+      value: 
+      objectReference: {fileID: 469389090}
     - target: {fileID: 3030956760492415765, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
       propertyPath: m_RootOrder
       value: 0
