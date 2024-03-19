@@ -25,4 +25,10 @@ public class Data
     //---테이블 배열---//
     public bool[] onTables = new bool[12]; //테이블 위에 음식을 체크하기 위한 변수
     public bool[] isFinEat = new bool[12]; //다 먹었음을 알리는 변수
+
+    //---타임 아웃 관련---//
+    public bool[] timeOut = new bool[12];
+
+    //---메뉴 관련---//
+    public int[] menuNums = new int[12];
 }

@@ -36,6 +36,9 @@ public class CustomerMovement : MonoBehaviour
     //---먹기 시작을 알리는 변수---//
     public bool isEat = false;
 
+    //---타임 아웃을 알리는 변수---//
+    public bool isTimeOut = false;
+
     //---특수 waypoint---//
     [SerializeField]
     private Transform StartPoint;
@@ -51,6 +54,7 @@ public class CustomerMovement : MonoBehaviour
     private bool isReturn = false; //자리에서 돌아갈 때 사용할 변수 (중복 실행 방지)
     [SerializeField]
     private bool isJustreturn = false;
+
 
     //---오브젝트 풀링 초기화를 위한 boolean 값---//
     [SerializeField]
@@ -121,6 +125,7 @@ public class CustomerMovement : MonoBehaviour
         //--- 현재 위치값 ---//
         CurPosition = transform.position;
 
+        //---음식을 먹기 시작했을 때---//
         if (isEat)
         {
             isEat = false;
@@ -270,6 +275,18 @@ public class CustomerMovement : MonoBehaviour
         isReturn = false;
         isJustreturn = false;
         isInitialize = false;
+        orderMenu.isRun = true;
+    }
+
+    public void TimeOut()
+    {
+        Debug.Log("이즈타임아웃통과");
+
+
+        isReturn = true;
+        data.curSeatSize--;
+        data.isAllocated[seatIndex] = false;
+        WayPointIndex--;
     }
 
 

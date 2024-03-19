@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class OrderMenu : MonoBehaviour
 {
+    public int menuNum;
+    public bool isRun = true;
+
     [Header("메뉴 말풍선")]
     [SerializeField]
     private GameObject[] speechBox;
@@ -24,19 +28,11 @@ public class OrderMenu : MonoBehaviour
 
     [Header("메뉴 넘버링")]
     [SerializeField]
-    private int gukBabNum = 0;
+    private int gukBabNum = 1;
     [SerializeField]
-    private int riceJuiceNum = 1;
+    private int riceJuiceNum = 2;
     [SerializeField]
-    private int paJeonNum = 2;
-
-    [Header("오더 관련 불 변수")]
-    [SerializeField]
-    private bool isGukBab = false;
-    [SerializeField]
-    private bool isRiceJuice = false;
-    [SerializeField]
-    private bool isPaJeon = false;
+    private int paJeonNum = 3;
 
     //---데이터---//
     [SerializeField]
@@ -48,7 +44,12 @@ public class OrderMenu : MonoBehaviour
     void Start()
     {
         data = DataManager.Instance.data;
+        customerMovement = GetComponent<CustomerMovement>();
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
         //현재 메뉴 해금 레벨에 따라 max값을 바꿈
         switch (data.curMenuUnlockLevel)
         {
@@ -63,20 +64,24 @@ public class OrderMenu : MonoBehaviour
                 break;
         }
 
-
-        customerMovement = GetComponent<CustomerMovement>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (isGukBab)
+        if (data.timeOut[customerMovement.seatIndex])
         {
-            //현재 자리에 음식이 올라갔다면
-            if (data.onTables[customerMovement.seatIndex])
+            data.timeOut[customerMovement.seatIndex] = false;
+            Debug.Log("통과");
+
+
+        }
+
+        if (isRun)
+        {
+            if (data.menuNums[customerMovement.seatIndex] == gukBabNum)
             {
-                isGukBab = false; //반복 방지
-                EatGukBab();
+                //현재 자리에 음식이 올라갔다면
+                if (data.onTables[customerMovement.seatIndex])
+                {
+                    isRun = false;
+                    EatFood(data.menuNums[customerMovement.seatIndex] - 1);
+                }
             }
         }
     }
@@ -87,53 +92,33 @@ public class OrderMenu : MonoBehaviour
         int randNum = Random.Range(min, max);
 
         if (randNum >= min && randNum < gukBabMax)
-            OrderGukBab();
+            data.menuNums[customerMovement.seatIndex] = gukBabNum;
         else if (randNum >= gukBabMax && randNum < riceJuiceMax)
-            OrderRiceJuice();
+            data.menuNums[customerMovement.seatIndex] = riceJuiceNum;
         else if (randNum >= riceJuiceMax && randNum < paJeonMax)
-            OrderPajeon();
-       
+            data.menuNums[customerMovement.seatIndex] = paJeonNum;
+
+        OrederSelectMenu(data.menuNums[customerMovement.seatIndex] - 1);
+
     }
 
-    //---국밥 주문 함수---// 
-    void OrderGukBab()
+    //주문 그림 보이게 하는 함수
+    void OrederSelectMenu(int nums)
     {
-        transform.GetChild(gukBabNum).gameObject.SetActive(true);
-        isGukBab = true;
+        transform.GetChild(nums).gameObject.SetActive(true);
     }
 
-    //---식혜 주문 함수---//
-    void OrderRiceJuice()
+    //말풍선 지우는 함수
+    void EatFood(int nums)
     {
-        transform.GetChild(riceJuiceNum).gameObject.SetActive(true);
-        isRiceJuice = true;
-    }
-
-    //---파전 주문 함수---//
-    void OrderPajeon()
-    {
-        transform.GetChild(paJeonNum).gameObject.SetActive(true);
-        isRiceJuice = true;
-    }
-
-    void EatGukBab()
-    {
-        transform.GetChild(gukBabNum).gameObject.SetActive(false);
-        isGukBab = false;
+        transform.GetChild(nums).gameObject.SetActive(false);
         customerMovement.isEat = true;
     }
 
-    void EatRiceJuice()
+    public void TimeOut()
     {
-        transform.GetChild(riceJuiceNum).gameObject.SetActive(false);
-        isRiceJuice = false;
-        customerMovement.isEat = true;
+        transform.GetChild(data.menuNums[customerMovement.seatIndex] - 1).gameObject.SetActive(false);
+        customerMovement.TimeOut();
     }
 
-    void EatPaJeon()
-    {
-        transform.GetChild(paJeonNum).gameObject.SetActive(false);
-        isPaJeon = false;
-        customerMovement.isEat = true;
-    }
 }
