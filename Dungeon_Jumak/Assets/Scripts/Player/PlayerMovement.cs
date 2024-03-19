@@ -3,25 +3,36 @@ using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private FloatingJoystick joystick;
-    [SerializeField] private float moveSpeed; // 이동속도
+    public bool isPlace = false;
+    public bool isCarryingFood = false; // 음식을 들고 있는지 확인
+    public GameObject hand; // 플레이어 손 위치
+    public CookGukbap cookGukbap; // 국밥 카운트 참조 스크립트
+
+    [SerializeField] 
+    private FloatingJoystick joystick;
+    [SerializeField] 
+    private float moveSpeed; // 이동속도
 
     private Rigidbody2D playerRb;
     private Vector2 moveVector; // 이동벡터
-    public bool isCarryingFood = false; // 음식을 들고 있는지 확인
-    public GameObject hand; // 플레이어 손 위치
 
     private Queue<GameObject> foodQueue = new Queue<GameObject>(); // 충돌한 Food 오브젝트를 저장하는 Queue
-    public CookGukbap cookGukbap; // 국밥 카운트 참조 스크립트
 
     private Animator animator;
     private SpriteRenderer spriter;
+
+    [SerializeField]
+    private Transform[] tables;
+
+    [SerializeField]
+    private Data data;
 
     private void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriter = GetComponent<SpriteRenderer>();
+        data = DataManager.Instance.data;
     }
 
     private void Update()
@@ -107,6 +118,12 @@ public class PlayerMovement : MonoBehaviour
 
             if (isCarryingFood && tableChild.childCount == 0)
             {
+                for (int i = 0; i < tables.Length; i++)
+                {
+                    if (other.transform == tables[i])
+                        data.onTables[i] = true;
+                }
+
                 isCarryingFood = false;
                 GameObject food = foodQueue.Dequeue();
                 FoodScript foodScript = food.GetComponent<FoodScript>();

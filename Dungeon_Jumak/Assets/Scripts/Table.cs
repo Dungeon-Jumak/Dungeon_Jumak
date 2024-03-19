@@ -14,17 +14,21 @@ public class Table : MonoBehaviour
         isOnFood = false;
     }
 
-
     //--- 음식이 감지 되면 isOnFood를 True로 변환---//
     //나중에 태그 따로 추가하는게 좋을 듯
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Gukbap")
         {
-            Debug.Log("국밥이 테이블 위에 올라갔습니다");
-            isOnFood = true;
-            //player.isPlace = false;
+            if (player.isPlace)
+            {
+                player.isPlace = false;
+                Debug.Log("국밥이 테이블 위에 올라갔습니다");
+                isOnFood = true;
+            }
         }
-
     }
+
+
 }

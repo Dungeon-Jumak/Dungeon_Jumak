@@ -146,9 +146,10 @@ public class CustomerMovement : MonoBehaviour
                 isArrive = true;
 
                 //***나중에 애니메이션으로 수정***//
-                this.gameObject.GetComponent<SpriteRenderer>().sprite = sitSprite;
+                /*this.gameObject.GetComponent<SpriteRenderer>().sprite = sitSprite;
                 if(seatIndex % 2 != 0)
                     transform.rotation = Quaternion.Euler(0, 0, 0);
+                */
 
                 orderMenu.OrderNewMenu();
             }
@@ -223,7 +224,8 @@ public class CustomerMovement : MonoBehaviour
         data.onTables[seatIndex] = false;
         data.isFinEat[seatIndex] = true;
 
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = standSprite;
+        //일어나는 애니메이션 추가
+        //this.gameObject.GetComponent<SpriteRenderer>().sprite = standSprite;
     }
 
     //---자리가 없어서 그냥 밖으로 돌아가기---//

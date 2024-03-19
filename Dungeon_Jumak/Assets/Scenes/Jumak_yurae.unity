@@ -164,7 +164,6 @@ GameObject:
   m_Component:
   - component: {fileID: 44256039}
   - component: {fileID: 44256041}
-  - component: {fileID: 44256040}
   m_Layer: 0
   m_Name: Table_5_R
   m_TagString: Table_R
@@ -188,20 +187,6 @@ Transform:
   m_Father: {fileID: 684852497}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &44256040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44256038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b56a6d1a6b4b4444957ba3a2b8ce868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOnFood: 0
-  player: {fileID: 1374657019}
 --- !u!61 &44256041
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1078,7 +1063,6 @@ GameObject:
   m_Component:
   - component: {fileID: 413909345}
   - component: {fileID: 413909347}
-  - component: {fileID: 413909346}
   m_Layer: 0
   m_Name: Table_2_L
   m_TagString: Table_L
@@ -1102,20 +1086,6 @@ Transform:
   m_Father: {fileID: 666759535}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &413909346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413909344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b56a6d1a6b4b4444957ba3a2b8ce868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOnFood: 0
-  player: {fileID: 1374657019}
 --- !u!61 &413909347
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1152,7 +1122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 429816113}
   - component: {fileID: 429816115}
-  - component: {fileID: 429816114}
   m_Layer: 0
   m_Name: Table_3_L
   m_TagString: Table_L
@@ -1176,20 +1145,6 @@ Transform:
   m_Father: {fileID: 1893173645}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &429816114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 429816112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b56a6d1a6b4b4444957ba3a2b8ce868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOnFood: 0
-  player: {fileID: 1374657019}
 --- !u!61 &429816115
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1460,7 +1415,6 @@ GameObject:
   m_Component:
   - component: {fileID: 469389090}
   - component: {fileID: 469389092}
-  - component: {fileID: 469389091}
   m_Layer: 0
   m_Name: Table_6_R
   m_TagString: Table_R
@@ -1484,20 +1438,6 @@ Transform:
   m_Father: {fileID: 1051984973}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &469389091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469389089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b56a6d1a6b4b4444957ba3a2b8ce868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOnFood: 0
-  player: {fileID: 1374657019}
 --- !u!61 &469389092
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2332,7 +2272,6 @@ GameObject:
   m_Component:
   - component: {fileID: 670178413}
   - component: {fileID: 670178415}
-  - component: {fileID: 670178414}
   m_Layer: 0
   m_Name: Table_1_R
   m_TagString: Table_R
@@ -2356,20 +2295,6 @@ Transform:
   m_Father: {fileID: 1106679936}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &670178414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670178412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b56a6d1a6b4b4444957ba3a2b8ce868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOnFood: 0
-  player: {fileID: 1374657019}
 --- !u!61 &670178415
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3684,7 +3609,6 @@ GameObject:
   m_Component:
   - component: {fileID: 997097108}
   - component: {fileID: 997097110}
-  - component: {fileID: 997097109}
   m_Layer: 0
   m_Name: Table_2_R
   m_TagString: Table_R
@@ -3708,20 +3632,6 @@ Transform:
   m_Father: {fileID: 666759535}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &997097109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997097107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b56a6d1a6b4b4444957ba3a2b8ce868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOnFood: 0
-  player: {fileID: 1374657019}
 --- !u!61 &997097110
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3778,18 +3688,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tables:
-  - {fileID: 1271105733}
-  - {fileID: 670178414}
-  - {fileID: 413909346}
-  - {fileID: 997097109}
-  - {fileID: 429816114}
-  - {fileID: 1415005126}
-  - {fileID: 1689074688}
-  - {fileID: 1665087152}
-  - {fileID: 1326679381}
-  - {fileID: 44256040}
-  - {fileID: 1552797981}
-  - {fileID: 469389091}
+  - {fileID: 1271105732}
+  - {fileID: 670178413}
+  - {fileID: 413909345}
+  - {fileID: 997097108}
+  - {fileID: 429816113}
+  - {fileID: 1415005125}
+  - {fileID: 1689074687}
+  - {fileID: 1665087151}
+  - {fileID: 1326679380}
+  - {fileID: 44256039}
+  - {fileID: 1552797980}
+  - {fileID: 469389090}
   data:
     maxSeatSize: 2
     curSeatSize: 0
@@ -4336,7 +4246,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1271105732}
   - component: {fileID: 1271105734}
-  - component: {fileID: 1271105733}
   m_Layer: 0
   m_Name: Table_1_L
   m_TagString: Table_L
@@ -4360,20 +4269,6 @@ Transform:
   m_Father: {fileID: 1106679936}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1271105733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1271105731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b56a6d1a6b4b4444957ba3a2b8ce868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOnFood: 0
-  player: {fileID: 1374657019}
 --- !u!61 &1271105734
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4486,7 +4381,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1326679380}
   - component: {fileID: 1326679382}
-  - component: {fileID: 1326679381}
   m_Layer: 0
   m_Name: Table_5_L
   m_TagString: Table_L
@@ -4510,20 +4404,6 @@ Transform:
   m_Father: {fileID: 684852497}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1326679381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326679379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b56a6d1a6b4b4444957ba3a2b8ce868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOnFood: 0
-  player: {fileID: 1374657019}
 --- !u!61 &1326679382
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4691,6 +4571,18 @@ PrefabInstance:
       propertyPath: cookGukbap
       value: 
       objectReference: {fileID: 560700804}
+    - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: tables.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: tables.Array.data[0]
+      value: 
+      objectReference: {fileID: 1271105732}
+    - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: tables.Array.data[1]
+      value: 
+      objectReference: {fileID: 670178413}
     - target: {fileID: 3030956760492415765, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4737,17 +4629,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
---- !u!114 &1374657019 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
-  m_PrefabInstance: {fileID: 1374657018}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcc3911e25f0753459cf549d4ab4d080, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1374657020 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3030956759883869791, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
@@ -4853,7 +4734,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1415005125}
   - component: {fileID: 1415005127}
-  - component: {fileID: 1415005126}
   m_Layer: 0
   m_Name: Table_3_R
   m_TagString: Table_R
@@ -4877,20 +4757,6 @@ Transform:
   m_Father: {fileID: 1893173645}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1415005126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1415005124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b56a6d1a6b4b4444957ba3a2b8ce868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOnFood: 0
-  player: {fileID: 1374657019}
 --- !u!61 &1415005127
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5622,7 +5488,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1552797980}
   - component: {fileID: 1552797982}
-  - component: {fileID: 1552797981}
   m_Layer: 0
   m_Name: Table_6_L
   m_TagString: Table_L
@@ -5646,20 +5511,6 @@ Transform:
   m_Father: {fileID: 1051984973}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1552797981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552797979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b56a6d1a6b4b4444957ba3a2b8ce868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOnFood: 0
-  player: {fileID: 1374657019}
 --- !u!61 &1552797982
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6002,7 +5853,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1665087151}
   - component: {fileID: 1665087153}
-  - component: {fileID: 1665087152}
   m_Layer: 0
   m_Name: Table_4_R
   m_TagString: Table_R
@@ -6026,20 +5876,6 @@ Transform:
   m_Father: {fileID: 1442036302}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1665087152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665087150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b56a6d1a6b4b4444957ba3a2b8ce868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOnFood: 0
-  player: {fileID: 1374657019}
 --- !u!61 &1665087153
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6156,7 +5992,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1689074687}
   - component: {fileID: 1689074689}
-  - component: {fileID: 1689074688}
   m_Layer: 0
   m_Name: Table_4_L
   m_TagString: Table_L
@@ -6180,20 +6015,6 @@ Transform:
   m_Father: {fileID: 1442036302}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1689074688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689074686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b56a6d1a6b4b4444957ba3a2b8ce868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOnFood: 0
-  player: {fileID: 1374657019}
 --- !u!61 &1689074689
 BoxCollider2D:
   m_ObjectHideFlags: 0
