@@ -137,5 +137,19 @@ public class PlayerMovement : MonoBehaviour
                 foodScript.IsOnTable = true;
             }
         }
+
+        if (other.gameObject.CompareTag("Trash"))
+        {
+            Transform trash = other.transform.GetChild(0);
+
+            if (isCarryingFood && trash.childCount == 0)
+            {
+                isCarryingFood = false;
+                GameObject food = foodQueue.Dequeue();
+
+                Destroy(food);
+
+            }
+        }
     }
 }

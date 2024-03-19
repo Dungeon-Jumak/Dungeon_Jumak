@@ -8,6 +8,7 @@ TagManager:
   - Table_R
   - Gukbap
   - Pajeon
+  - Trash
   layers:
   - Default
   - TransparentFX
