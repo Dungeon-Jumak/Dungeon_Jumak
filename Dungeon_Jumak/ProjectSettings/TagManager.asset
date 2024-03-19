@@ -57,9 +57,9 @@ TagManager:
   - name: Above Object
     uniqueID: 3700751555
     locked: 0
-  - name: UI
-    uniqueID: 3870797167
-    locked: 0
   - name: Food
     uniqueID: 2991999681
+    locked: 0
+  - name: UI
+    uniqueID: 3870797167
     locked: 0

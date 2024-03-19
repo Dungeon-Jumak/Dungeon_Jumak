@@ -25,6 +25,7 @@ public class OrderSystem : MonoBehaviour
                 data.isFinEat[i] = false;
                 Destroy(tables[i].transform.GetChild(0).GetChild(0).gameObject);
                 //아래에 코인 지급 추가 //
+                DataManager.Instance.UpdateCoin();
 
             }
             //---음식이 올라올 경우 데이터 값 변경---//

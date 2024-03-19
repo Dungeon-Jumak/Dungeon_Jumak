@@ -1,5 +1,8 @@
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
+using System.IO;
+using TMPro;
 
 public class DataManager : MonoBehaviour
 {
@@ -8,6 +11,10 @@ public class DataManager : MonoBehaviour
 
     // --- 싱글톤 선언 --- //
     static DataManager instance;
+
+    private int coin = 0;//코인 변수
+    private int level = 1;//레벨 변수
+  
     public static DataManager Instance
     {
         get
@@ -51,5 +58,19 @@ public class DataManager : MonoBehaviour
 
         //이미 저장된 파일 있다면 덮어쓰고, 없다면 새로 만들어서 저장
         File.WriteAllText(filePath, ToJsonData);
+    }
+
+    //레벨 변경
+    public void UpdateLevel()
+    {
+        level++;
+        GameObject.Find("UI_LevelText").GetComponent<TextMeshProUGUI>().text = level.ToString();
+    }
+
+    //코인 변경
+    public void UpdateCoin()
+    {
+        coin++;
+        GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = coin.ToString();
     }
 }
