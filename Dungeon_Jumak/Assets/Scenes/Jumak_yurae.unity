@@ -3018,7 +3018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573ba81edc8f8a543a3e9d600dcc3fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingCustomerPrefab: {fileID: 8661866428741639243, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
+  poolingCustomerPrefab: {fileID: 2079486021633642370, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
 --- !u!4 &816780591
 Transform:
   m_ObjectHideFlags: 0
@@ -3710,6 +3710,8 @@ MonoBehaviour:
     maxMenuUnlockLevel: 3
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    timeOut: 000000000000000000000000
+    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &1021416531
 Transform:
   m_ObjectHideFlags: 0
@@ -4952,7 +4954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customerPrefab:
-  - {fileID: 8661866428741639243, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
+  - {fileID: 2079486021633642370, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
   customerNum: 0
   delayTime: 5
   data:
@@ -4965,6 +4967,8 @@ MonoBehaviour:
     maxMenuUnlockLevel: 3
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    timeOut: 000000000000000000000000
+    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &1422914692
 Transform:
   m_ObjectHideFlags: 0
