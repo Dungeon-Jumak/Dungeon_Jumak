@@ -50,7 +50,7 @@ public class OrderMenu : MonoBehaviour
         data = DataManager.Instance.data;
 
         //현재 메뉴 해금 레벨에 따라 max값을 바꿈
-        switch (data.menuUnlockLevel)
+        switch (data.curMenuUnlockLevel)
         {
             case 1:
                 max = 60; //국밥

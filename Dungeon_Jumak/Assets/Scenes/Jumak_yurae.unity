@@ -3018,7 +3018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573ba81edc8f8a543a3e9d600dcc3fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingCustomerPrefab: {fileID: 7053660020489628967, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
+  poolingCustomerPrefab: {fileID: 8661866428741639243, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
 --- !u!4 &816780591
 Transform:
   m_ObjectHideFlags: 0
@@ -3706,7 +3706,8 @@ MonoBehaviour:
     isAllocated: 000000000000000000000000
     curUnlockLevel: 1
     maxUnlockLevel: 6
-    menuUnlockLevel: 1
+    curMenuUnlockLevel: 1
+    maxMenuUnlockLevel: 3
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
 --- !u!4 &1021416531
@@ -3814,7 +3815,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f6ac79d5612515f4ca203f55d51bb4ee, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.95573616, b: 0.7122642, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4951,7 +4952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customerPrefab:
-  - {fileID: 7053660020489628967, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
+  - {fileID: 8661866428741639243, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
   customerNum: 0
   delayTime: 5
   data:
@@ -4960,7 +4961,8 @@ MonoBehaviour:
     isAllocated: 000000000000000000000000
     curUnlockLevel: 1
     maxUnlockLevel: 6
-    menuUnlockLevel: 1
+    curMenuUnlockLevel: 1
+    maxMenuUnlockLevel: 3
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
 --- !u!4 &1422914692

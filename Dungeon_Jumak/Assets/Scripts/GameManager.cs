@@ -30,6 +30,12 @@ public class GameManager : MonoBehaviour
 
         }
 
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if(data.curMenuUnlockLevel < data.maxMenuUnlockLevel)
+                data.curMenuUnlockLevel++;
+        }
+
 
 
 

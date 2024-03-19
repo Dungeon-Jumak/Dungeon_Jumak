@@ -19,7 +19,8 @@ public class Data
     public int maxUnlockLevel = 6;
 
     //---메뉴 해금 레벨---//
-    public int menuUnlockLevel = 1;
+    public int curMenuUnlockLevel = 1;
+    public int maxMenuUnlockLevel = 3;
 
     //---테이블 배열---//
     public bool[] onTables = new bool[12]; //테이블 위에 음식을 체크하기 위한 변수
