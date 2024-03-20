@@ -12,6 +12,7 @@ public class PaJeonManager : MonoBehaviour
     private GameObject[] spawnedPrefabs; // 이전에 생성된 프리팹들을 추적하기 위한 배열
     public GameObject PaJeonPopUp;
     public GameObject PaJeonPrefab;
+    public Tracker tracker;
     void OnEnable()
     {
         StartCoroutine(StartGameAfterDelay(0.1f));
@@ -142,6 +143,7 @@ public class PaJeonManager : MonoBehaviour
                 PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
                 playerMovement.isCarryingFood= false;
                 PaJeonPopUp.gameObject.SetActive(false);
+                tracker.inputEnabled = true;
             }
         }
         else
@@ -152,6 +154,7 @@ public class PaJeonManager : MonoBehaviour
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
             PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
             playerMovement.isCarryingFood = false;
+            tracker.inputEnabled = true;
         }
     }
 }

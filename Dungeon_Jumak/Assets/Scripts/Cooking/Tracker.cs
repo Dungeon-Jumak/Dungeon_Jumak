@@ -14,7 +14,9 @@ public class Tracker : MonoBehaviour
     public GameObject firePopUp;
     public GameObject PaJeonPopUp;
     public PaJeonManager paJeonManager;
- 
+
+    public bool inputEnabled = true;
+
 
     void Start()
     {
@@ -30,6 +32,9 @@ public class Tracker : MonoBehaviour
 
     void CheckInput()
     {
+        if (!inputEnabled) // 이벤트가 비활성화되어 있으면 함수를 바로 종료합니다.
+            return;
+
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             Vector3 touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
@@ -46,6 +51,8 @@ public class Tracker : MonoBehaviour
                         PaJeonPopUp.gameObject.SetActive(true);
                         Debug.Log("왼쪽 터치됨");
                         playerMovement.isCarryingFood = true;
+                        inputEnabled = false;
+
                     }
                     
                 }
@@ -53,6 +60,8 @@ public class Tracker : MonoBehaviour
                 {
                     firePopUp.gameObject.SetActive(true);
                     Debug.Log("오른쪽 터치됨");
+                    
+
                 }
             }
         }
@@ -72,6 +81,7 @@ public class Tracker : MonoBehaviour
                         PaJeonPopUp.gameObject.SetActive(true);
                         Debug.Log("왼쪽 터치됨");
                         playerMovement.isCarryingFood = true;
+                        inputEnabled = false;
                     }
 
                 }
@@ -79,6 +89,7 @@ public class Tracker : MonoBehaviour
                 {
                     firePopUp.gameObject.SetActive(true);
                     Debug.Log("오른쪽 클릭됨");
+                    
                 }
             }
         }

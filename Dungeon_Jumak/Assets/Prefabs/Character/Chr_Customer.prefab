@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 26facadde9dfa5c4eafdd6e6f9d542fe, type: 3}
-  m_Color: {r: 0.6039216, g: 0.58431375, b: 0.17254902, a: 1}
+  m_Color: {r: 1, g: 0.9081161, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1137,8 +1137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60f60f23b5ae86448c1b838d07be32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RiceJuicePopUp: {fileID: 5053172771569890061, guid: 8c83d0271f9776f4698801850ffe3b6d, type: 3}
-  RiceJuiceMiniGame: {fileID: 7918114542073999866, guid: bf25fbf53a1f1034e96ed617c7917f15, type: 3}
 --- !u!58 &7290059921090689156
 CircleCollider2D:
   m_ObjectHideFlags: 0
