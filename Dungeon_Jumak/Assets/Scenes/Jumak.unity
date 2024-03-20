@@ -1024,10 +1024,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5315eeaccd3164aa3856de05f7c51a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minMaxTerm: 3
   customerPrefab:
   - {fileID: 2079486021633642370, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
   customerNum: 0
-  delayTime: 5
+  minDelayTime: 7
+  maxSeatSize: 2
   data:
     maxSeatSize: 2
     curSeatSize: 0
@@ -1039,7 +1041,6 @@ MonoBehaviour:
     maxMenuUnlockLevel: 3
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
-    timeOut: 000000000000000000000000
     menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &350892002
 Transform:
@@ -2073,7 +2074,6 @@ MonoBehaviour:
     maxMenuUnlockLevel: 3
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
-    timeOut: 000000000000000000000000
     menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &490998630
 Transform:
