@@ -49,23 +49,43 @@ public class PlayerMovement : MonoBehaviour
         // 조이스틱 입력을 기반으로 플레이어의 이동 방향을 설정
         if (moveVector != Vector2.zero)
         {
-            // 조이스틱 입력에 따라 플레이어의 애니메이션을 설정
-            if (moveVector.x > 0)
+            float angle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
+            // 4개의 구역으로 나누어 핸들 돌리기
+            if (angle > -45f && angle <= 45f)
             {
-                // 오른쪽 방향으로 이동
+                // 오른쪽 방향
                 // 애니메이터에 오른쪽 방향을 나타내는 파라미터 값을 설정
-                animator.SetFloat("Horizontal", moveVector.x);
-                animator.SetFloat("isWalk", 1f);
-                spriter.flipX = true;
-            }
-            else if (moveVector.x < 0)
-            {
-                // 왼쪽 방향으로 이동
-                // 애니메이터에 왼쪽 방향을 나타내는 파라미터 값을 설정
-                animator.SetFloat("Horizontal", moveVector.x);
-                animator.SetFloat("isWalk", 1f);
-                spriter.flipX = false;
+                animator.SetFloat("Horizontal", 1f);
+                animator.SetFloat("Vertical", 0f);
 
+                animator.SetFloat("isWalk", 1f);
+            }
+            else if (angle > 45f && angle <= 135f)
+            {
+                // 위쪽 방향
+                // 애니메이터에 위쪽 방향을 나타내는 파라미터 값을 설정
+                animator.SetFloat("Horizontal", 0f);
+                animator.SetFloat("Vertical", 1f);
+
+                animator.SetFloat("isWalk", 1f);
+            }
+            else if (angle > 135f || angle <= -135f)
+            {
+                // 왼쪽 방향
+                // 애니메이터에 왼쪽 방향을 나타내는 파라미터 값을 설정
+                animator.SetFloat("Horizontal", -1f);
+                animator.SetFloat("Vertical", 0f);
+
+                animator.SetFloat("isWalk", 1f);
+            }
+            else if (angle > -135f && angle <= -45f)
+            {
+                // 아래쪽 방향
+                // 애니메이터에 아래쪽 방향을 나타내는 파라미터 값을 설정
+                animator.SetFloat("Vertical", -1f);
+                animator.SetFloat("Horizontal", 0f);
+
+                animator.SetFloat("isWalk", 1f);
             }
         }
         else
@@ -76,6 +96,8 @@ public class PlayerMovement : MonoBehaviour
         // Rigidbody2D를 사용하여 위치를 업데이트
         playerRb.MovePosition(playerRb.position + moveVector);
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
