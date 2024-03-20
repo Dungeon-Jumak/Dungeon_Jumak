@@ -64,14 +64,6 @@ public class OrderMenu : MonoBehaviour
                 break;
         }
 
-        if (data.timeOut[customerMovement.seatIndex])
-        {
-            data.timeOut[customerMovement.seatIndex] = false;
-            Debug.Log("Åë°ú");
-
-
-        }
-
         if (isRun)
         {
             if (data.menuNums[customerMovement.seatIndex] == gukBabNum)
