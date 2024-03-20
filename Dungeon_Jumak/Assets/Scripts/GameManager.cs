@@ -36,9 +36,6 @@ public class GameManager : MonoBehaviour
                 data.curMenuUnlockLevel++;
         }
 
-
-
-
     }
 
     //---게임 로드시 데이터 값에 따라 해금---//

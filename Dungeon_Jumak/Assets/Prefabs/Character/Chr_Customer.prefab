@@ -256,6 +256,7 @@ MonoBehaviour:
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
+    isCustomer: 000000000000000000000000
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
@@ -299,6 +300,7 @@ MonoBehaviour:
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
+    isCustomer: 000000000000000000000000
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
@@ -436,6 +438,7 @@ MonoBehaviour:
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
+    isCustomer: 000000000000000000000000
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
@@ -551,6 +554,7 @@ MonoBehaviour:
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
+    isCustomer: 000000000000000000000000
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
@@ -666,6 +670,7 @@ MonoBehaviour:
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
+    isCustomer: 000000000000000000000000
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
@@ -991,6 +996,8 @@ GameObject:
   - component: {fileID: 3084739122403473657}
   - component: {fileID: 8054961392915589343}
   - component: {fileID: 7792778096881139748}
+  - component: {fileID: 8861830117304992368}
+  - component: {fileID: 7290059921090689156}
   m_Layer: 0
   m_Name: Speech_Box_RiceJuice
   m_TagString: Untagged
@@ -1118,6 +1125,36 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8861830117304992368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7752168335414057276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60f60f23b5ae86448c1b838d07be32b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RiceJuicePopUp: {fileID: 5053172771569890061, guid: 8c83d0271f9776f4698801850ffe3b6d, type: 3}
+  RiceJuiceMiniGame: {fileID: 7918114542073999866, guid: bf25fbf53a1f1034e96ed617c7917f15, type: 3}
+--- !u!58 &7290059921090689156
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7752168335414057276}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -6.5}
+  serializedVersion: 2
+  m_Radius: 14.5
 --- !u!1 &8584532120638795016
 GameObject:
   m_ObjectHideFlags: 0

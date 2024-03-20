@@ -6,12 +6,11 @@ public class BallController : MonoBehaviour
     public float moveSpeed = 10f; // 공의 이동 속도
 
     private bool isMovingLeft = false; // 왼쪽으로 이동 중인지 여부를 나타내는 플래그
-    private float inputLeftEdge; // InputObject의 왼쪽 끝 x값
-    private float inputRightEdge; // InputObject의 오른쪽 끝 x값
+    private float inputLeftEdge; 
+    private float inputRightEdge; 
 
     void Start()
     {
-        // InputObject의 왼쪽 끝과 오른쪽 끝을 계산
         float inputObjectWidth = InputObject.transform.localScale.x;
         inputLeftEdge = InputObject.transform.position.x - inputObjectWidth / 2 + 0.5f;
         inputRightEdge = InputObject.transform.position.x + inputObjectWidth / 2 - 0.5f;
@@ -20,7 +19,7 @@ public class BallController : MonoBehaviour
     void Update()
     {
         // 마우스 왼쪽 버튼이 눌렸을 때
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
         {
             isMovingLeft = true;
         }
