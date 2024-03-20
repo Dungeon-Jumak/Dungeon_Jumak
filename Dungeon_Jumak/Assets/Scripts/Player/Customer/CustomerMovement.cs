@@ -150,6 +150,8 @@ public class CustomerMovement : MonoBehaviour
             {
                 isArrive = true;
 
+                data.isCustomer[seatIndex] = true; // 손님이 테이블 도착 체크
+
                 //***나중에 애니메이션으로 수정***//
                 /*this.gameObject.GetComponent<SpriteRenderer>().sprite = sitSprite;
                 if(seatIndex % 2 != 0)
@@ -231,6 +233,8 @@ public class CustomerMovement : MonoBehaviour
 
         //일어나는 애니메이션 추가
         //this.gameObject.GetComponent<SpriteRenderer>().sprite = standSprite;
+
+        data.isCustomer[seatIndex] = false; // 손님 테이블에서 나가는 것 체크
     }
 
     //---자리가 없어서 그냥 밖으로 돌아가기---//

@@ -4838,6 +4838,7 @@ MonoBehaviour:
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
+    isCustomer: 000000000000000000000000
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
@@ -5456,6 +5457,7 @@ MonoBehaviour:
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
+    isCustomer: 000000000000000000000000
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
@@ -6831,11 +6833,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3030956760492415765, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.25
+      value: -1.92
       objectReference: {fileID: 0}
     - target: {fileID: 3030956760492415765, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 2.65
       objectReference: {fileID: 0}
     - target: {fileID: 3030956760492415765, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
       propertyPath: m_LocalPosition.z

@@ -13,6 +13,7 @@ public class Data
     public int maxSeatSize = 2;
     public int curSeatSize = 0;
     public bool[] isAllocated = new bool[12];
+    public bool[] isCustomer = new bool[12]; // 고객 테이블에 도착했는지 체크하기 위한 변수
 
     //---자리 해금 레벨---//
     public int curUnlockLevel = 1;

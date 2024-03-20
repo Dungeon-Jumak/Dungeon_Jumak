@@ -121,20 +121,26 @@ public class PlayerMovement : MonoBehaviour
                 for (int i = 0; i < tables.Length; i++)
                 {
                     if (other.transform == tables[i])
+                    {
                         data.onTables[i] = true;
+
+                        // --- 국밥 놓기 전 손님 테이블에 있는지 확인 --- //
+                        if (data.isCustomer[i])
+                        {
+                            isCarryingFood = false;
+                            GameObject food = foodQueue.Dequeue();
+                            FoodScript foodScript = food.GetComponent<FoodScript>();
+
+                            food.transform.parent = tableChild;
+
+                            // 음식을 테이블 위치에 고정
+                            food.transform.localPosition = Vector3.zero;
+
+                            // 상태를 업데이트하여 다음 충돌을 방지
+                            foodScript.IsOnTable = true;
+                        }
+                    }
                 }
-
-                isCarryingFood = false;
-                GameObject food = foodQueue.Dequeue();
-                FoodScript foodScript = food.GetComponent<FoodScript>();
-
-                food.transform.parent = tableChild;
-
-                // 음식을 테이블 위치에 고정
-                food.transform.localPosition = Vector3.zero;
-
-                // 상태를 업데이트하여 다음 충돌을 방지
-                foodScript.IsOnTable = true;
             }
         }
 
