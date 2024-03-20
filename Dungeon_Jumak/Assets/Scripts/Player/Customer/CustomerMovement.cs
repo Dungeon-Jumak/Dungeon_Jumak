@@ -90,10 +90,15 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private OrderMenu orderMenu;
 
+    //---렌더링 변경할 스프라이트렌더러---//
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
+
     private void Start()
     {
         data = DataManager.Instance.data;
         orderMenu = GetComponent<OrderMenu>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         RouteList.Add(Route1_Left);
         RouteList.Add(Route1_Right);
@@ -121,9 +126,14 @@ public class CustomerMovement : MonoBehaviour
         //---변수 값 초기화---//
         if (isInitialize) Initialize();
 
-
         //--- 현재 위치값 ---//
         CurPosition = transform.position;
+
+        //---렌더링 변경---//
+        if (CurPosition.y < GameObject.Find("Player").transform.position.y) //손님이 아래에 있다면
+            spriteRenderer.sortingOrder = 2; //플레이어보다 위에 렌더링
+        else
+            spriteRenderer.sortingOrder = 0; //플레이어보다 아래 렌더링
 
         //---음식을 먹기 시작했을 때---//
         if (isEat)

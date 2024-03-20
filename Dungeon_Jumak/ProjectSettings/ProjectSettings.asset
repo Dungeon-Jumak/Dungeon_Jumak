@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: NangMan_Gukbab
   productName: Dungeon_Jumak
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -134,8 +134,11 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0.2
-  preloadedAssets: []
+  bundleVersion: 1.0.0
+  preloadedAssets:
+  - {fileID: 11400000, guid: 68abe7202c4a8cb45a7b1691ff9da0ad, type: 2}
+  - {fileID: 11400000, guid: 08d920f06b485a44f90a6d9a913bccee, type: 2}
+  - {fileID: -5626399348438716981, guid: e03e4f01c117ed6418791cfc43563781, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -167,7 +170,7 @@ PlayerSettings:
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 22
-  AndroidTargetSdkVersion: 0
+  AndroidTargetSdkVersion: 30
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
@@ -249,19 +252,19 @@ PlayerSettings:
   useCustomBaseGradleTemplate: 0
   useCustomGradlePropertiesTemplate: 0
   useCustomProguardFile: 0
-  AndroidTargetArchitectures: 1
+  AndroidTargetArchitectures: 3
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: "C:/Users/yuura/OneDrive/\uBC14\uD0D5 \uD654\uBA74/DungeonJumak_ProtoType_Key.keystore"
+  AndroidKeyaliasName: prototypekey
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -673,7 +676,8 @@ PlayerSettings:
   scriptingDefineSymbols: {}
   additionalCompilerArguments: {}
   platformArchitecture: {}
-  scriptingBackend: {}
+  scriptingBackend:
+    Android: 1
   il2cppCompilerConfiguration: {}
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}
