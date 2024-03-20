@@ -284,13 +284,12 @@ public class CustomerMovement : MonoBehaviour
 
     public void TimeOut()
     {
-        Debug.Log("이즈타임아웃통과");
-
-
         isReturn = true;
         data.curSeatSize--;
         data.isAllocated[seatIndex] = false;
         WayPointIndex--;
+
+        data.isCustomer[seatIndex] = false; // 손님 테이블에서 나가는 것 체크
     }
 
 

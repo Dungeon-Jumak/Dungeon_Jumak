@@ -2535,7 +2535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gukbapPrefab: {fileID: 1110046530495576071, guid: 5c804ec6332ddd543bb0ce6da49ec871, type: 3}
   gukbapList: 
-  tableTransform: {fileID: 742693343}
+  tableTransform: {fileID: 1572383408}
   cookGukbap: {fileID: 580805930}
   previousCount: 0
 --- !u!4 &590453534

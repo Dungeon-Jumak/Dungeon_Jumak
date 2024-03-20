@@ -144,11 +144,11 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if (other.transform == tables[i])
                     {
-                        data.onTables[i] = true;
-
                         // --- 국밥 놓기 전 손님 테이블에 있는지 확인 --- //
                         if (data.isCustomer[i])
                         {
+                            data.onTables[i] = true;
+
                             isCarryingFood = false;
                             GameObject food = foodQueue.Dequeue();
                             FoodScript foodScript = food.GetComponent<FoodScript>();
