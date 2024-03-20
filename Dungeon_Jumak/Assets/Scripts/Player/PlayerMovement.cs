@@ -27,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Data data;
 
+    //---서빙 관련---//
+    [SerializeField]
+    private int menuNumsOfHand;
+
     private void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
@@ -113,6 +117,9 @@ public class PlayerMovement : MonoBehaviour
                 other.transform.localPosition = Vector3.zero;
                 isCarryingFood = true;
 
+                //손에 든 음식 메뉴로 변경
+                menuNumsOfHand = 1;
+
                 cookGukbap.gukbapCount--;
             }
         }
@@ -127,6 +134,9 @@ public class PlayerMovement : MonoBehaviour
                 other.transform.parent = hand.transform; // 플레이어 손 아래로 이동
                 other.transform.localPosition = Vector3.zero;
                 isCarryingFood = true;
+
+                //손에 든 음식 메뉴로 변경
+                menuNumsOfHand = 3;
             }
         }
     }
@@ -145,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
                     if (other.transform == tables[i])
                     {
                         // --- 국밥 놓기 전 손님 테이블에 있는지 확인 --- //
-                        if (data.isCustomer[i])
+                        if (data.isCustomer[i] && data.menuNums[i] == menuNumsOfHand)
                         {
                             data.onTables[i] = true;
 

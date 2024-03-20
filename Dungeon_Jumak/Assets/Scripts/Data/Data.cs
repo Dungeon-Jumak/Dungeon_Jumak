@@ -29,4 +29,5 @@ public class Data
 
     //---메뉴 관련---//
     public int[] menuNums = new int[12];
+
 }
