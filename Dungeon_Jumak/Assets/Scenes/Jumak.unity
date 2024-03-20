@@ -559,14 +559,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81240845}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.047200006, y: 3.8802085, z: 0}
+  m_LocalPosition: {x: 0.38570008, y: 4.293625, z: -0.06833179}
   m_LocalScale: {x: 4.9943, y: 0.4461256, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1541103746}
   - {fileID: 778259926}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1527233642}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &81240847
 SpriteRenderer:
@@ -1912,6 +1912,38 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &349959444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 349959445}
+  m_Layer: 0
+  m_Name: RiceJuiceMiniGame
+  m_TagString: RiceJuiceMiniGame
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &349959445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349959444}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -64.99202, y: -79.37596, z: -17266.88}
+  m_LocalScale: {x: 192, y: 192, z: 192}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1543101094}
+  m_Father: {fileID: 832002799}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &357300229
 GameObject:
   m_ObjectHideFlags: 0
@@ -3811,7 +3843,7 @@ RectTransform:
   m_Children:
   - {fileID: 442169966}
   - {fileID: 95330924}
-  - {fileID: 1543101094}
+  - {fileID: 349959445}
   m_Father: {fileID: 1255211397}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5991,6 +6023,38 @@ Transform:
   m_Father: {fileID: 896082833}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1527233641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1527233642}
+  m_Layer: 0
+  m_Name: RiceJuiceMiniGame
+  m_TagString: RiceJuiceMiniGame
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1527233642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527233641}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.33850008, y: -0.41341648, z: 0.06833179}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 81240846}
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1541103742
 GameObject:
   m_ObjectHideFlags: 0
@@ -6134,18 +6198,18 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543101093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.00032, y: 1.00032, z: 1.00032}
+  m_LocalPosition: {x: 0, y: 0, z: 89.93167}
+  m_LocalScale: {x: 0.00521, y: 0.00521, z: 0.00521}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 158792833}
   - {fileID: 1414804284}
-  m_Father: {fileID: 832002799}
-  m_RootOrder: 2
+  m_Father: {fileID: 349959445}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.3385001, y: 0.41341648}
   m_SizeDelta: {x: 1047, y: 1749}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1543101095
@@ -6167,6 +6231,8 @@ MonoBehaviour:
   waterIncreaseAmount: 5
   riceIncreaseAmount: 5
   increaseDuration: 2
+  RiceJuicePopup: {fileID: 1543101093}
+  RiceJuiceBar: {fileID: 81240845}
 --- !u!114 &1543101096
 MonoBehaviour:
   m_ObjectHideFlags: 0
