@@ -22,6 +22,7 @@ public class OrderSystem : MonoBehaviour
             if (data.isFinEat[i])
             {
                 data.isFinEat[i] = false;
+                Debug.Log("국밥 파괴!");
                 Destroy(tables[i].transform.GetChild(0).GetChild(0).gameObject);
                 //아래에 코인 지급 추가 //
                 DataManager.Instance.UpdateCoin();
