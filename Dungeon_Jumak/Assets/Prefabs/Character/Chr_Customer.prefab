@@ -113,7 +113,7 @@ Transform:
   m_GameObject: {fileID: 2079486021633642370}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 3.25, y: -4.5, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3422800512687753117}
@@ -163,7 +163,7 @@ SpriteRenderer:
   m_SortingLayerID: 1149754795
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9ca9c6482f602e846b3dff9f1beef6db, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8089016a1c2a9d44fbf2bf6b3ce9a1c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -263,7 +263,6 @@ MonoBehaviour:
     maxMenuUnlockLevel: 3
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
-    timeOut: 000000000000000000000000
     menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   sitSprite: {fileID: 21300000, guid: cb853022e6d795d4f8ffbb58724c6141, type: 3}
   standSprite: {fileID: 21300000, guid: 9ca9c6482f602e846b3dff9f1beef6db, type: 3}
@@ -307,7 +306,6 @@ MonoBehaviour:
     maxMenuUnlockLevel: 3
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
-    timeOut: 000000000000000000000000
     menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   customerMovement: {fileID: 6509672829581274435}
 --- !u!50 &7683143958085441440
@@ -445,7 +443,6 @@ MonoBehaviour:
     maxMenuUnlockLevel: 3
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
-    timeOut: 000000000000000000000000
     menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &2535246204620157105
 GameObject:
@@ -561,7 +558,6 @@ MonoBehaviour:
     maxMenuUnlockLevel: 3
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
-    timeOut: 000000000000000000000000
     menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &2535246205775898510
 GameObject:
@@ -677,7 +673,6 @@ MonoBehaviour:
     maxMenuUnlockLevel: 3
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
-    timeOut: 000000000000000000000000
     menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &3133416356401655640
 GameObject:
@@ -873,8 +868,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5926945349073352597}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_LocalPosition: {x: 0, y: 8.48, z: 0}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4647897157270843479}
@@ -1013,8 +1008,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7752168335414057276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_LocalPosition: {x: 0, y: 8.48, z: 0}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4440592651398795600}
@@ -1179,8 +1174,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8584532120638795016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_LocalPosition: {x: 0, y: 8.48, z: 0}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2777587871596484916}
