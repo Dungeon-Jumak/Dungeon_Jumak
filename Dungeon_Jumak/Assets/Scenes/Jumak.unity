@@ -3408,7 +3408,7 @@ PrefabInstance:
       objectReference: {fileID: 814667197}
     - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
       propertyPath: moveSpeed
-      value: 4
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 3030956760492415763, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
       propertyPath: cookGukbap

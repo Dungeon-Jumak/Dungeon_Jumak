@@ -22,7 +22,7 @@ public class Fire : MonoBehaviour
 
         if (cook == true)
         {
-            fireSize -= (1f / 15f) * Time.deltaTime;
+            fireSize -= (1f / 1f) * Time.deltaTime;
             fireImage.transform.localScale = Vector3.one * (fireSize / 100f);
         }
 
