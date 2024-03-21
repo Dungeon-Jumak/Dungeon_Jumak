@@ -76,12 +76,6 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private Data data;
 
-    //---애니메이션 적용전 테스트용 스프라이트---//
-    [SerializeField]
-    private Sprite sitSprite;
-    [SerializeField]
-    private Sprite standSprite;
-
     //---현재 손님의 방향을 가져올 변수---//
     [SerializeField]
     private Vector2 dir;
@@ -95,14 +89,20 @@ public class CustomerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     //---손님 애니메이터---//
-    private Animator customerAnimator;
+    private Animator animator;
+
+    //---위치 계산을 할 이전 벡터---//
+    private Vector3 lastPosition;
+    private Vector3 currentDir;
 
     private void Start()
     {
         data = DataManager.Instance.data;
         orderMenu = GetComponent<OrderMenu>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        customerAnimator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
+
+        lastPosition = transform.position;
 
         RouteList.Add(Route1_Left);
         RouteList.Add(Route1_Right);
@@ -133,6 +133,18 @@ public class CustomerMovement : MonoBehaviour
         //--- 현재 위치값 ---//
         CurPosition = transform.position;
 
+        currentDir = (CurPosition - lastPosition).normalized;
+
+        if (currentDir != Vector3.zero)
+        {
+            animator.SetFloat("dirX", currentDir.x);
+            animator.SetFloat("dirY", currentDir.y);
+            lastPosition = CurPosition;
+        }
+        else animator.SetFloat("dirY", -1f);
+
+
+        
         //---렌더링 변경---//
         if (CurPosition.y < GameObject.Find("Player").transform.position.y) //손님이 아래에 있다면
             spriteRenderer.sortingOrder = 2; //플레이어보다 위에 렌더링
@@ -143,6 +155,7 @@ public class CustomerMovement : MonoBehaviour
         if (isEat)
         {
             isEat = false;
+            animator.SetBool("isEat", true);
             Invoke("ReturnSeatToOut", 3f);
         }
 
@@ -166,15 +179,7 @@ public class CustomerMovement : MonoBehaviour
 
                 data.isCustomer[seatIndex] = true; // 손님이 테이블 도착 체크
 
-                //---앉는 애니메이션 추가---//
-                customerAnimator.SetFloat("isSeat", 1f);
-
-                //---오른쪽 테이블에 앉았을 경우 스프라이트 flip---//
-                if(seatIndex % 2 != 0)
-                {
-                    spriteRenderer.flipX = true;
-                }
-
+                animator.SetBool("isSit", true);
 
                 orderMenu.OrderNewMenu();
             }
@@ -211,6 +216,7 @@ public class CustomerMovement : MonoBehaviour
             if (Vector3.Distance(StopPoint.position, CurPosition) == 0f)
             {
                 isArrive = true;
+                animator.SetBool("isStop", true);
                 //애니메이션 추가 (두리번 두리번?)
                 GameObject.Instantiate(speech_Box_Full, GameObject.Find("If_Full").transform);
                 Invoke("ReturnStopToOut", 2f);
@@ -241,6 +247,11 @@ public class CustomerMovement : MonoBehaviour
     //---자리에서 밖으로 돌아가기---//
     public void ReturnSeatToOut()
     {
+        //일어나는 애니메이션 추가
+        animator.SetBool("isEat", false);
+        animator.SetBool("isSit", false);
+        animator.SetFloat("dirX", -currentDir.x);
+
         isReturn = true;
         data.curSeatSize--;
         data.isAllocated[seatIndex] = false;
@@ -249,16 +260,13 @@ public class CustomerMovement : MonoBehaviour
         data.onTables[seatIndex] = false;
         data.isFinEat[seatIndex] = true;
 
-        //일어나는 애니메이션 추가
-        customerAnimator.SetFloat("isSeat", -1f);
-        //this.gameObject.GetComponent<SpriteRenderer>().sprite = standSprite;
-
         data.isCustomer[seatIndex] = false; // 손님 테이블에서 나가는 것 체크
     }
 
     //---자리가 없어서 그냥 밖으로 돌아가기---//
     void ReturnStopToOut()
     {
+        animator.SetBool("isStop", false);
         //***수정 필요***//
         GameObject.Find("UI_Speech_Box_Full(Clone)").SetActive(false);
         isJustreturn = true;
@@ -307,6 +315,9 @@ public class CustomerMovement : MonoBehaviour
         data.curSeatSize--;
         data.isAllocated[seatIndex] = false;
         WayPointIndex--;
+
+        animator.SetBool("isSit", false);
+        animator.SetFloat("dirX", currentDir.x * -1);
 
         data.isCustomer[seatIndex] = false; // 손님 테이블에서 나가는 것 체크
     }
