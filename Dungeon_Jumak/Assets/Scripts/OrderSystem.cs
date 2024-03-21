@@ -8,10 +8,15 @@ public class OrderSystem : MonoBehaviour
     private Transform[] tables;
     [SerializeField]
     private Data data;
+    [SerializeField]
+    private AudioManager audioManager;
+    [SerializeField]
+    private string coinSound;
 
     private void Start()
     {
         data = DataManager.Instance.data;
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void Update()
@@ -27,7 +32,7 @@ public class OrderSystem : MonoBehaviour
                     Destroy(tables[i].transform.GetChild(0).GetChild(0).gameObject);
 
                 DataManager.Instance.UpdateCoin();//코인 지급
-
+                audioManager.Play(coinSound);
             }
 
         }

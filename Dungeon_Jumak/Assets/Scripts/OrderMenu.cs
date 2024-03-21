@@ -66,14 +66,11 @@ public class OrderMenu : MonoBehaviour
 
         if (isRun)
         {
-            if (data.menuNums[customerMovement.seatIndex] == gukBabNum)
+            //현재 자리에 음식이 올라갔다면
+            if (data.onTables[customerMovement.seatIndex])
             {
-                //현재 자리에 음식이 올라갔다면
-                if (data.onTables[customerMovement.seatIndex])
-                {
-                    isRun = false;
-                    EatFood(data.menuNums[customerMovement.seatIndex] - 1);
-                }
+                isRun = false;
+                EatFood(data.menuNums[customerMovement.seatIndex] - 1);
             }
         }
     }

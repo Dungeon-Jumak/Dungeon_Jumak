@@ -3,22 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
-{ 
-    Data data;
+{
+    [SerializeField] 
+    private Data data;
 
     //---해금 할 단상 배열---//
     [SerializeField]
     private GameObject[] Dansangs;
 
+    //---배경 음악---//
+    [SerializeField]
+    private BGMManager bgmManager;
+    [SerializeField]
+    private int baseBGMTrackNum;
+
     // Start is called before the first frame update
     void Start()
     {
         data = DataManager.Instance.data;
+        bgmManager = FindObjectOfType<BGMManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!data.isPlayBGM)
+        {
+            data.isPlayBGM = true;
+            bgmManager.Play(baseBGMTrackNum);
+            bgmManager.FadeInMusic();
+            bgmManager.SetLoop();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if(data.curUnlockLevel < data.maxUnlockLevel) 

@@ -31,16 +31,39 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private int menuNumsOfHand;
 
+    //---소리 관련---//
+    [SerializeField]
+    private AudioManager audioManager;
+    [SerializeField]
+    private string walkSound;
+    [SerializeField]
+    private string servingSound;
+    [SerializeField]
+    private string pickUpSound;
+    [SerializeField]
+    private string cookingSound;
+    [SerializeField]
+    private string trashCanSound;
+
     private void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriter = GetComponent<SpriteRenderer>();
         data = DataManager.Instance.data;
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void Update()
     {
+        //요리하는 사운드 계속 재생
+        if (!audioManager.isPlaying(cookingSound))
+        {
+            audioManager.Play(cookingSound);
+            audioManager.SetLoop(cookingSound);
+            audioManager.Setvolume(cookingSound, 0.1f);
+        }
+
         MovePlayer();
     }
 
@@ -53,6 +76,13 @@ public class PlayerMovement : MonoBehaviour
         // 조이스틱 입력을 기반으로 플레이어의 이동 방향을 설정
         if (moveVector != Vector2.zero)
         {
+            if (!audioManager.isPlaying(walkSound))
+            {
+                audioManager.Setvolume(walkSound, 0.2f);
+                audioManager.Play(walkSound);
+            }
+
+
             float angle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
             // 4개의 구역으로 나누어 핸들 돌리기
             if (angle > -45f && angle <= 45f)
@@ -96,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // 조이스틱 입력이 없을 때, 정지 상태로 애니메이션을 설정
             animator.SetFloat("isWalk", -1f);
+            audioManager.Stop(walkSound);
         }
         // Rigidbody2D를 사용하여 위치를 업데이트
         playerRb.MovePosition(playerRb.position + moveVector);
@@ -112,6 +143,9 @@ public class PlayerMovement : MonoBehaviour
 
             if (!isCarryingFood && !foodScript.IsOnTable)
             {
+                //음식 잡는 사운드 재생
+                audioManager.Play(pickUpSound);
+
                 // 음식 드는 순간 srpite renderer 레이어 Food_Up으로 변경
                 SpriteRenderer otherSpriteRenderer = other.GetComponent<SpriteRenderer>();
                 otherSpriteRenderer.sortingLayerName = "Food_Up";
@@ -169,8 +203,11 @@ public class PlayerMovement : MonoBehaviour
                         if (data.isCustomer[i] && data.menuNums[i] == menuNumsOfHand)
                         {
                             data.onTables[i] = true;
-
                             isCarryingFood = false;
+
+                            //음식 놓는 사운드 재생
+                            audioManager.Play(servingSound);
+
                             GameObject food = foodQueue.Dequeue();
                             FoodScript foodScript = food.GetComponent<FoodScript>();
 
@@ -198,6 +235,8 @@ public class PlayerMovement : MonoBehaviour
             if (isCarryingFood && trash.childCount == 0)
             {
                 isCarryingFood = false;
+
+                audioManager.Play(trashCanSound);
                 GameObject food = foodQueue.Dequeue();
 
                 Destroy(food);

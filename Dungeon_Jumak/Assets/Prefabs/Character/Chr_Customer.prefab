@@ -781,6 +781,7 @@ MonoBehaviour:
   dir: {x: 0, y: 0}
   orderMenu: {fileID: 6488744439891724049}
   spriteRenderer: {fileID: 0}
+  eatSound: eatSound
 --- !u!114 &6488744439891724049
 MonoBehaviour:
   m_ObjectHideFlags: 0

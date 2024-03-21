@@ -95,12 +95,19 @@ public class CustomerMovement : MonoBehaviour
     private Vector3 lastPosition;
     private Vector3 currentDir;
 
+    //---소리 관련---//
+    private AudioManager audioManager;
+    [SerializeField]
+    private string eatSound; //국밥 먹는 소리
+
     private void Start()
     {
         data = DataManager.Instance.data;
         orderMenu = GetComponent<OrderMenu>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        audioManager = FindObjectOfType<AudioManager>();
 
         lastPosition = transform.position;
 
@@ -146,7 +153,7 @@ public class CustomerMovement : MonoBehaviour
 
         
         //---렌더링 변경---//
-        if (CurPosition.y < GameObject.Find("Player").transform.position.y) //손님이 아래에 있다면
+        if (CurPosition.y < GameObject.Find("Chr_Player").transform.position.y) //손님이 아래에 있다면
             spriteRenderer.sortingOrder = 2; //플레이어보다 위에 렌더링
         else
             spriteRenderer.sortingOrder = 0; //플레이어보다 아래 렌더링
@@ -155,6 +162,13 @@ public class CustomerMovement : MonoBehaviour
         if (isEat)
         {
             isEat = false;
+
+            if (!audioManager.isPlaying(eatSound))
+            {
+                audioManager.SetLoop(eatSound);
+                audioManager.Play(eatSound);
+            }
+
             animator.SetBool("isEat", true);
             Invoke("ReturnSeatToOut", 3f);
         }
@@ -247,6 +261,9 @@ public class CustomerMovement : MonoBehaviour
     //---자리에서 밖으로 돌아가기---//
     public void ReturnSeatToOut()
     {
+        //사운드 종료
+        audioManager.Stop(eatSound);
+
         //일어나는 애니메이션 추가
         animator.SetBool("isEat", false);
         animator.SetBool("isSit", false);

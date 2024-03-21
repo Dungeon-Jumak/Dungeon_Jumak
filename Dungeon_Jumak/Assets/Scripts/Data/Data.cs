@@ -30,4 +30,7 @@ public class Data
     //---메뉴 관련---//
     public int[] menuNums = new int[12];
 
+    //---사운드 관련---//
+    public bool isPlayBGM = false;
+
 }
