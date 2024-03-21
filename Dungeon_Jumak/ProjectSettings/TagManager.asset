@@ -18,8 +18,8 @@ TagManager:
   - Water
   - UI
   - BackGround
-  - Food
-  - 
+  - Food_Up
+  - Food_Down
   - 
   - LightObstacles
   - LightSource
@@ -53,10 +53,13 @@ TagManager:
   - name: Object
     uniqueID: 395830841
     locked: 0
+  - name: Food_Down
+    uniqueID: 3767924025
+    locked: 0
   - name: Player
     uniqueID: 1149754795
     locked: 0
-  - name: Food
+  - name: Food_Up
     uniqueID: 2991999681
     locked: 0
   - name: Above Object

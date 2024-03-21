@@ -112,6 +112,11 @@ public class PlayerMovement : MonoBehaviour
 
             if (!isCarryingFood && !foodScript.IsOnTable)
             {
+                // 음식 드는 순간 srpite renderer 레이어 Food_Up으로 변경
+                SpriteRenderer otherSpriteRenderer = other.GetComponent<SpriteRenderer>();
+                otherSpriteRenderer.sortingLayerName = "Food_Up";
+
+                other.gameObject.layer = 7;
                 foodQueue.Enqueue(other.gameObject); // 충돌한 음식을 Queue에 저장
                 other.transform.parent = hand.transform; // 플레이어 손 아래로 이동
                 other.transform.localPosition = Vector3.zero;
@@ -126,10 +131,16 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.gameObject.CompareTag("Pajeon"))
         {
+            other.gameObject.layer = 7;
+
             FoodScript foodScript = other.GetComponent<FoodScript>();
 
             if (!isCarryingFood && !foodScript.IsOnTable)
             {
+                // 음식 드는 순간 srpite renderer 레이어 Food_Up으로 변경
+                SpriteRenderer otherSpriteRenderer = other.GetComponent<SpriteRenderer>();
+                otherSpriteRenderer.sortingLayerName = "Food_Up";
+
                 foodQueue.Enqueue(other.gameObject); // 충돌한 음식을 Queue에 저장
                 other.transform.parent = hand.transform; // 플레이어 손 아래로 이동
                 other.transform.localPosition = Vector3.zero;
@@ -162,6 +173,10 @@ public class PlayerMovement : MonoBehaviour
                             isCarryingFood = false;
                             GameObject food = foodQueue.Dequeue();
                             FoodScript foodScript = food.GetComponent<FoodScript>();
+
+                            //음식 Sprite Renderer 레이어 Food_Down으로 변경
+                            SpriteRenderer foodSpriteRenderer = food.GetComponent<SpriteRenderer>();
+                            foodSpriteRenderer.sortingLayerName = "Food_Down";
 
                             food.transform.parent = tableChild;
 
