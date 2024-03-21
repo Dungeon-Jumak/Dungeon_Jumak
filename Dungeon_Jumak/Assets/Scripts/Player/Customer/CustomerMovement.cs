@@ -94,11 +94,15 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private SpriteRenderer spriteRenderer;
 
+    //---손님 애니메이터---//
+    private Animator customerAnimator;
+
     private void Start()
     {
         data = DataManager.Instance.data;
         orderMenu = GetComponent<OrderMenu>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        customerAnimator = GetComponent<Animator>();
 
         RouteList.Add(Route1_Left);
         RouteList.Add(Route1_Right);
@@ -162,11 +166,15 @@ public class CustomerMovement : MonoBehaviour
 
                 data.isCustomer[seatIndex] = true; // 손님이 테이블 도착 체크
 
-                //***나중에 애니메이션으로 수정***//
-                /*this.gameObject.GetComponent<SpriteRenderer>().sprite = sitSprite;
+                //---앉는 애니메이션 추가---//
+                customerAnimator.SetFloat("isSeat", 1f);
+
+                //---오른쪽 테이블에 앉았을 경우 스프라이트 flip---//
                 if(seatIndex % 2 != 0)
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
-                */
+                {
+                    spriteRenderer.flipX = true;
+                }
+
 
                 orderMenu.OrderNewMenu();
             }
@@ -242,6 +250,7 @@ public class CustomerMovement : MonoBehaviour
         data.isFinEat[seatIndex] = true;
 
         //일어나는 애니메이션 추가
+        customerAnimator.SetFloat("isSeat", -1f);
         //this.gameObject.GetComponent<SpriteRenderer>().sprite = standSprite;
 
         data.isCustomer[seatIndex] = false; // 손님 테이블에서 나가는 것 체크
