@@ -26,11 +26,6 @@ public class Fire : MonoBehaviour
             fireImage.transform.localScale = Vector3.one * (fireSize / 100f);
         }
 
-        if (fireSize <= 0f)
-        {
-            fireImage.gameObject.SetActive(false);
-        }
-
         sizeText.text = Mathf.FloorToInt(fireSize) + "%";
 
         if (fireSize < 0)
