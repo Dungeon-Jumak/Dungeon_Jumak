@@ -16,9 +16,9 @@ public class OrderMenu : MonoBehaviour
     [SerializeField]
     private int percentOfMenu;
     [SerializeField]
-    private int gukBabMax = 60;
+    private int gukBabMax = 50;
     [SerializeField]
-    private int riceJuiceMax = 80;
+    private int riceJuiceMax = 70;
     [SerializeField]
     private int paJeonMax = 100;
     [SerializeField]
@@ -54,10 +54,10 @@ public class OrderMenu : MonoBehaviour
         switch (data.curMenuUnlockLevel)
         {
             case 1:
-                max = 60; //±¹¹ä
+                max = 50; //±¹¹ä
                 break;
             case 2:
-                max = 80; //½ÄÇý
+                max = 70; //½ÄÇý
                 break;
             case 3:
                 max = 100; //ÆÄÀü

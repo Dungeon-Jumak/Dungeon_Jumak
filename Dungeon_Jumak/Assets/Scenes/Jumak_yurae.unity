@@ -1469,6 +1469,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 989922071}
     - target: {fileID: 2174443558969673366, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: walkSound1
+      value: walkSound1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174443558969673366, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: walkSound2
+      value: walkSound2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174443558969673366, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: walkSound3
+      value: walkSound3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174443558969673366, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
+      propertyPath: walkSound4
+      value: walkSound4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174443558969673366, guid: 9ed8dd8fa2833c646aacc43d0861b2e2, type: 3}
       propertyPath: pickUpSound
       value: pickUpSound
       objectReference: {fileID: 0}
@@ -2341,10 +2357,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 789985579}
   - {fileID: 1797340446}
   - {fileID: 1167737417}
   - {fileID: 2080797418}
-  - {fileID: 789985579}
   - {fileID: 1910516116}
   - {fileID: 1481913660}
   m_Father: {fileID: 0}
@@ -3367,7 +3383,7 @@ RectTransform:
   m_Children:
   - {fileID: 989922070}
   m_Father: {fileID: 588364193}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4979,7 +4995,7 @@ GameObject:
   - component: {fileID: 1063514935}
   - component: {fileID: 1063514932}
   - component: {fileID: 1063514934}
-  - component: {fileID: 1063514933}
+  - component: {fileID: 1063514936}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5030,18 +5046,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &1063514933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063514931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f969137a8ebb4134891443d8c80c4613, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!81 &1063514934
 AudioListener:
   m_ObjectHideFlags: 0
@@ -5065,6 +5069,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1063514936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063514931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f969137a8ebb4134891443d8c80c4613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1077195212
 GameObject:
   m_ObjectHideFlags: 0
@@ -5360,7 +5376,7 @@ RectTransform:
   m_Children:
   - {fileID: 1717456569}
   m_Father: {fileID: 588364193}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5981,6 +5997,30 @@ MonoBehaviour:
     loop: 0
   - name: pauseSound
     clip: {fileID: 8300000, guid: b82fbd15741acce4fa467f541b02edca, type: 3}
+    volume: 0
+    loop: 0
+  - name: walkSound2
+    clip: {fileID: 8300000, guid: 45729c8db97d9ba4eb4ff20fcb15d3d4, type: 3}
+    volume: 0
+    loop: 0
+  - name: walkSound3
+    clip: {fileID: 8300000, guid: f0b51f037fdcd2d4dbaa8fe665bc5a6d, type: 3}
+    volume: 0
+    loop: 0
+  - name: walkSound4
+    clip: {fileID: 8300000, guid: e6a1c63637e17dd47b804c5ba9ec6ae0, type: 3}
+    volume: 0
+    loop: 0
+  - name: successSound
+    clip: {fileID: 8300000, guid: 379a099806db0b54195f1b854ec07bf3, type: 3}
+    volume: 0
+    loop: 0
+  - name: failureSound
+    clip: {fileID: 8300000, guid: c311a15c0e47dbb44a8baa0e47cc7d7f, type: 3}
+    volume: 0
+    loop: 0
+  - name: timeOut
+    clip: {fileID: 8300000, guid: 80fb104e6d50abb4bbfe1d089ac22654, type: 3}
     volume: 0
     loop: 0
 --- !u!4 &1282739071
@@ -6616,6 +6656,9 @@ MonoBehaviour:
   PaJeonPopUp: {fileID: 20707749}
   PaJeonPrefab: {fileID: 5754116617699617044, guid: c4d82e799ddd0f64c95e79b5a8510206, type: 3}
   tracker: {fileID: 821077761}
+  audioManager: {fileID: 0}
+  successSound: 
+  failureSound: 
 --- !u!1 &1571269508
 GameObject:
   m_ObjectHideFlags: 0
@@ -7705,7 +7748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_AnchorMax.x
@@ -8909,7 +8952,7 @@ RectTransform:
   - {fileID: 320719777}
   - {fileID: 1831248175}
   m_Father: {fileID: 588364193}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

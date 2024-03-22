@@ -19,10 +19,20 @@ public class BubbleShadowController : MonoBehaviour
     [SerializeField]
     private Data data;
 
+    [SerializeField]
+    private AudioManager audioManager;
+    [SerializeField]
+    private string timeOutSound;
+
     private void Start()
     {
         shadowRenderer = GetComponent<SpriteRenderer>();
+        
+        //---사운드 관련---//
+        audioManager = FindObjectOfType<AudioManager>();
+        timeOutSound = "timeOut";
 
+        //--- 기본 위치 초기화 ---//
         transform.localPosition
             = new Vector3(transform.localPosition.x, startY, transform.localPosition.z);
 
@@ -42,6 +52,7 @@ public class BubbleShadowController : MonoBehaviour
 
         if (timer >= fadeInDuration)
         {
+            audioManager.Play(timeOutSound);
             orderMenu.TimeOut();
             Initialize();
         }

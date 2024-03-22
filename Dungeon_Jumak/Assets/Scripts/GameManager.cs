@@ -63,4 +63,5 @@ public class GameManager : MonoBehaviour
             Dansangs[i].SetActive(true);
         }
     }
+
 }

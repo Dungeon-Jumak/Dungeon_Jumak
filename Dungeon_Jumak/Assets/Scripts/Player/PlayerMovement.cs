@@ -36,7 +36,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private AudioManager audioManager;
     [SerializeField]
-    private string walkSound;
+    private string walkSound1;
+    [SerializeField]
+    private string walkSound2;
+    [SerializeField]
+    private string walkSound3;
+    [SerializeField]
+    private string walkSound4;
     [SerializeField]
     private string servingSound;
     [SerializeField]
@@ -62,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         {
             audioManager.Play(cookingSound);
             audioManager.SetLoop(cookingSound);
-            audioManager.Setvolume(cookingSound, 0.1f);
+            audioManager.Setvolume(cookingSound, 0.2f);
         }
 
         MovePlayer();
@@ -77,12 +83,35 @@ public class PlayerMovement : MonoBehaviour
         // 조이스틱 입력을 기반으로 플레이어의 이동 방향을 설정
         if (moveVector != Vector2.zero)
         {
-            if (!audioManager.isPlaying(walkSound))
-            {
-                audioManager.Setvolume(walkSound, 0.2f);
-                audioManager.Play(walkSound);
-            }
+            int randNum = Random.Range(1, 5);
 
+            if (!audioManager.isPlaying(walkSound1) && !audioManager.isPlaying(walkSound2)
+                && !audioManager.isPlaying(walkSound3) && !audioManager.isPlaying(walkSound4))
+            {
+                switch (randNum)
+                {
+                    case 1:
+                        audioManager.Setvolume(walkSound1, 0.2f);
+                        audioManager.Play(walkSound1);
+                        break;
+
+                    case 2:
+                        audioManager.Setvolume(walkSound2, 0.2f);
+                        audioManager.Play(walkSound2);
+                        break;
+
+                    case 3:
+                        audioManager.Setvolume(walkSound3, 0.5f);
+                        audioManager.Play(walkSound3);
+                        break;
+
+                    case 4:
+                        audioManager.Setvolume(walkSound4, 0.2f);
+                        audioManager.Play(walkSound4);
+                        break;
+
+                }
+            }
 
             float angle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
             // 4개의 구역으로 나누어 핸들 돌리기
@@ -127,7 +156,10 @@ public class PlayerMovement : MonoBehaviour
         {
             // 조이스틱 입력이 없을 때, 정지 상태로 애니메이션을 설정
             animator.SetFloat("isWalk", -1f);
-            audioManager.Stop(walkSound);
+            audioManager.Stop(walkSound1);
+            audioManager.Stop(walkSound2);
+            audioManager.Stop(walkSound3);
+            audioManager.Stop(walkSound4);
         }
         // Rigidbody2D를 사용하여 위치를 업데이트
         playerRb.MovePosition(playerRb.position + moveVector);
@@ -248,8 +280,8 @@ public class PlayerMovement : MonoBehaviour
         //---임의로 넘어둠. 나중에 프로토 끝나고 싹 정리해야 할듯?---//
         if (other.gameObject.CompareTag("Door_Ju"))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("ComingSoon");
             DataInitialize();
+            UnityEngine.SceneManagement.SceneManager.LoadScene("ComingSoon");
         }
         else if (other.gameObject.CompareTag("Door_Shop"))
         {
@@ -261,7 +293,15 @@ public class PlayerMovement : MonoBehaviour
     //씬이 변경될 때 현재 데이터 값 초기화
     private void DataInitialize()
     {
+        audioManager.Stop(walkSound1);
+        audioManager.Stop(walkSound2);
+        audioManager.Stop(walkSound3);
+        audioManager.Stop(walkSound4);
+        audioManager.Stop(cookingSound);
+
+
         Debug.Log("모든 테이블이 초기화 됩니다.");
+
         data.curSeatSize = 0;
         
         for (int i = 0; i < data.isAllocated.Length; i++)

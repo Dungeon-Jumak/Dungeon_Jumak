@@ -4,15 +4,31 @@ using System.Collections;
 public class PaJeonManager : MonoBehaviour
 {
     public GameObject[] directionPrefabs;
+    public GameObject PaJeonPopUp;
+    public GameObject PaJeonPrefab;
+    public Tracker tracker;
 
     private Vector3 dragStartPosition;
     private int[] correctSequence;
     private int currentIndex = 0;
     private bool hasFailed = true;
     private GameObject[] spawnedPrefabs; // 이전에 생성된 프리팹들을 추적하기 위한 배열
-    public GameObject PaJeonPopUp;
-    public GameObject PaJeonPrefab;
-    public Tracker tracker;
+
+    [SerializeField]
+    private AudioManager audioManager;
+    [SerializeField]
+    private string successSound;
+    [SerializeField]
+    private string failureSound;
+
+    private void Start()
+    {
+        //오디오 설정
+        audioManager = FindObjectOfType<AudioManager>();
+        successSound = "successSound";
+        failureSound = "failureSound";
+    }
+
     void OnEnable()
     {
         StartCoroutine(StartGameAfterDelay(0.1f));
@@ -136,6 +152,8 @@ public class PaJeonManager : MonoBehaviour
 
             if (currentIndex >= correctSequence.Length)
             {
+                audioManager.Play(successSound);
+
                 Debug.Log("성공입니다!");
                 hasFailed = true;
                 GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -148,6 +166,8 @@ public class PaJeonManager : MonoBehaviour
         }
         else
         {
+            audioManager.Play(failureSound);
+
             Debug.Log("실패입니다.");
             hasFailed = true; 
             PaJeonPopUp.gameObject.SetActive(false);
