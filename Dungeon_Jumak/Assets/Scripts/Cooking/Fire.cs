@@ -54,6 +54,6 @@ public class Fire : MonoBehaviour
 
     public void IncreaseFireSize()
     {
-        data.fireSize += 1f;
+        data.fireSize += 5f;
     }
 }
