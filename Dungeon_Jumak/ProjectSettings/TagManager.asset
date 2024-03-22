@@ -10,6 +10,8 @@ TagManager:
   - Pajeon
   - Trash
   - RiceJuiceMiniGame
+  - Door_Ju
+  - Door_Shop
   layers:
   - Default
   - TransparentFX

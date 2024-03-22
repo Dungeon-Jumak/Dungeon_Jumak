@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -242,6 +243,16 @@ public class PlayerMovement : MonoBehaviour
                 Destroy(food);
 
             }
+        }
+
+        //---임의로 넘어둠. 나중에 프로토 끝나고 싹 정리해야 할듯?---//
+        if (other.gameObject.CompareTag("Door_Ju"))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("ComingSoon");
+        }
+        else if (other.gameObject.CompareTag("Door_Shop"))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("ComingSoon");
         }
     }
 }
