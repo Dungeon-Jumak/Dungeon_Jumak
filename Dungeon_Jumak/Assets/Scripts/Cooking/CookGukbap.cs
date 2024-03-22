@@ -4,14 +4,17 @@ using UnityEngine.UI;
 public class CookGukbap : MonoBehaviour
 {
     public Fire fire;
-    private float cookingTime = 5f;
     public int gukbapCount = 0;
     public Slider TimeSlider;
 
+    private float cookingTime = 5f;
     private float decreaseRate = 1f;
+    [SerializeField]
+    private Data data;
 
     private void Start()
     {
+        data = DataManager.Instance.data;
         SetTime(cookingTime);
     }
 
@@ -20,12 +23,12 @@ public class CookGukbap : MonoBehaviour
         // 새로운 불 크기에 따른 감소 비율 적용
         float decreaseAmount = Time.deltaTime * decreaseRate;
 
-        if (fire.fireSize > 0 && cookingTime > 0 && gukbapCount < 5)
+        if (data.fireSize > 0 && cookingTime > 0 && gukbapCount < 5)
         {
             fire.cook = true;
             Decrease(decreaseAmount);
         }
-        else if (fire.fireSize <= 0 || gukbapCount >= 5)
+        else if (data.fireSize <= 0 || gukbapCount >= 5)
         {
             StopCooking();
         }
@@ -52,7 +55,7 @@ public class CookGukbap : MonoBehaviour
 
         decreaseRate = 1f;
 
-        if (fire.fireSize >= 0.0001 && fire.fireSize <= 50)
+        if (data.fireSize >= 0.0001 && data.fireSize <= 50)
         {
             decreaseRate = 1f / 7f; // 7초에 1씩 감소
         }

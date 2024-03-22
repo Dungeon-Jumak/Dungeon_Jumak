@@ -5,14 +5,19 @@ using UnityEngine.UI;
 
 public class Fire : MonoBehaviour
 {
-    public Text sizeText; 
-    public float fireSize = 100f; // 불의 초기 크기
+    public Text sizeText;
     public Image fireImage;
 
     public bool cook = true;
 
+    [SerializeField]
+    private Data data;
+
+
+
     void Start()
     {
+        data = DataManager.Instance.data;
         ResetAnim();
     }
 
@@ -22,19 +27,19 @@ public class Fire : MonoBehaviour
 
         if (cook == true)
         {
-            fireSize -= (1f / 1f) * Time.deltaTime;
-            fireImage.transform.localScale = Vector3.one * (fireSize / 100f);
+            data.fireSize -= (1f / 1f) * Time.deltaTime;
+            fireImage.transform.localScale = Vector3.one * (data.fireSize / 100f);
         }
 
-        sizeText.text = Mathf.FloorToInt(fireSize) + "%";
+        sizeText.text = Mathf.FloorToInt(data.fireSize) + "%";
 
-        if (fireSize < 0)
+        if (data.fireSize < 0)
         {
-            fireSize = 0; 
+            data.fireSize = 0; 
             sizeText.text = "0%";
         }
 
-        if (fireSize > 0) 
+        if (data.fireSize > 0) 
         {
             fireImage.gameObject.SetActive(true);
         }
@@ -43,13 +48,12 @@ public class Fire : MonoBehaviour
     public void ResetAnim()
     {
         // 시간 및 불의 크기를 초기화
-        fireSize = 100f;
         fireImage.transform.localScale = Vector3.one;
         fireImage.gameObject.SetActive(true);
     }
 
     public void IncreaseFireSize()
     {
-        fireSize += 1f;
+        data.fireSize += 1f;
     }
 }

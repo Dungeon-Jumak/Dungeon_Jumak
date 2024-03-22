@@ -33,4 +33,8 @@ public class Data
     //---사운드 관련---//
     public bool isPlayBGM = false;
 
+    //---불 미니게임 관련---//
+    public float fireSize = 100f;
+
+
 }

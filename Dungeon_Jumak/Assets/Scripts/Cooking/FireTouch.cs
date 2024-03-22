@@ -15,9 +15,12 @@ public class FireTouch : MonoBehaviour
     private AudioManager audioManager;
     [SerializeField]
     private string fireClickSound;
+    [SerializeField]
+    private Data data;
 
     private void Start()
     {
+        data = DataManager.Instance.data;
         audioManager = FindObjectOfType<AudioManager>();
     }
 
@@ -33,7 +36,7 @@ public class FireTouch : MonoBehaviour
                 audioManager.Setvolume(fireClickSound, 0.5f);
             }
 
-            if (touchCount % 3 == 0 && fire.fireSize <= 100)
+            if (touchCount % 3 == 0 && data.fireSize <= 100)
             {
                 fire.IncreaseFireSize();
             }
