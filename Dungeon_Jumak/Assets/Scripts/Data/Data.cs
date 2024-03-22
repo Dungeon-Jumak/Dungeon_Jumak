@@ -36,5 +36,8 @@ public class Data
     //---불 미니게임 관련---//
     public float fireSize = 100f;
 
+    //---게임 정지 관련---//
+    public bool isPause = false;
+
 
 }

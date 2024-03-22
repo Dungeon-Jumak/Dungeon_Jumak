@@ -17,11 +17,20 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int baseBGMTrackNum;
 
+    //---효과음---//
+    [SerializeField]
+    private AudioManager audioManager;
+    [SerializeField]
+    private string pauseSound;
+
     // Start is called before the first frame update
     void Start()
     {
         data = DataManager.Instance.data;
         bgmManager = FindObjectOfType<BGMManager>();
+
+        audioManager = FindObjectOfType<AudioManager>();
+        pauseSound = "pauseSound";
     }
 
     // Update is called once per frame
@@ -61,6 +70,28 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < data.curUnlockLevel; i++)
         {
             Dansangs[i].SetActive(true);
+        }
+    }
+
+    //---일시 정지 기능---//
+    public void Pause()
+    {
+        if (!data.isPause)
+        {
+            data.isPause = true;
+            audioManager.Play(pauseSound);
+            Time.timeScale = 0f;
+        }
+    }
+
+    //---일시 정지 취소 기능---//
+    public void Resume()
+    {
+        if (data.isPause)
+        {
+            data.isPause = false;
+            audioManager.Play(pauseSound);
+            Time.timeScale = 1f;
         }
     }
 
