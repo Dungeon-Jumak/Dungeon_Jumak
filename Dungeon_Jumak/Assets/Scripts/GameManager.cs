@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        unlockTable();
+
         if (!data.isPlayBGM)
         {
             data.isPlayBGM = true;
@@ -41,7 +43,6 @@ public class GameManager : MonoBehaviour
             {
                 data.curUnlockLevel++;
                 data.maxSeatSize += 2;
-                unlockTable();
             }
 
         }

@@ -12,11 +12,11 @@ public class CustomerSpawner : MonoBehaviour
     private GameObject[] customerPrefab; //손님 프리팹
     [SerializeField]
     private int customerNum;
-    [SerializeField]
-    private int minDelayTime = 7;
 
     [SerializeField]
-    private int maxSeatSize = 2;
+    private int minDelayTime; //최소 딜레이 시간
+    [SerializeField]
+    private int newMinDelayTime;  //업데이트 된 딜레이 시간
 
     //---데이터---//
     [SerializeField]
@@ -25,25 +25,18 @@ public class CustomerSpawner : MonoBehaviour
     private void Start()
     {
         data = DataManager.Instance.data;
-        maxSeatSize = data.maxSeatSize;
+        minDelayTime = 5;
 
         // --- 재귀 시작 --- //
         StartCoroutine(SpawnCustomer());
     }
 
-    private void Update()
-    {
-        if (maxSeatSize < data.maxSeatSize)
-        {
-            minDelayTime += data.maxSeatSize - maxSeatSize;
-            maxSeatSize = data.maxSeatSize;
-        }
-    }
-
     // --- 코루틴 재귀 (delayTime마다 스폰) --- // 
     IEnumerator SpawnCustomer()
     {
-        int newDelayTime = minDelayTime - (data.maxSeatSize - data.curSeatSize);
+        UpdateMinDelayTime();
+
+        int newDelayTime = newMinDelayTime - (data.maxSeatSize - data.curSeatSize);
         int realDelayTime = Random.Range(newDelayTime, newDelayTime + minMaxTerm + 1);
 
         Debug.Log("다음 손님이 오는 시간 : " + realDelayTime);
@@ -56,5 +49,9 @@ public class CustomerSpawner : MonoBehaviour
         StartCoroutine(SpawnCustomer());
     }
 
+    private void UpdateMinDelayTime()
+    {
+        newMinDelayTime = minDelayTime + data.maxSeatSize;
+    }
 
 }

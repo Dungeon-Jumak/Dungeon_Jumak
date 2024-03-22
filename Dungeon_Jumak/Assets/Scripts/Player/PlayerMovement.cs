@@ -249,10 +249,29 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Door_Ju"))
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("ComingSoon");
+            DataInitialize();
         }
         else if (other.gameObject.CompareTag("Door_Shop"))
         {
+            DataInitialize();
             UnityEngine.SceneManagement.SceneManager.LoadScene("ComingSoon");
+        }
+    }
+
+    //씬이 변경될 때 현재 데이터 값 초기화
+    private void DataInitialize()
+    {
+        Debug.Log("모든 테이블이 초기화 됩니다.");
+        data.curSeatSize = 0;
+        
+        for (int i = 0; i < data.isAllocated.Length; i++)
+        {
+            data.isAllocated[i] = false;
+            data.isCustomer[i] = false;
+            data.onTables[i] = false;
+            data.isFinEat[i] = false;
+
+            data.menuNums[i] = 0;
         }
     }
 }

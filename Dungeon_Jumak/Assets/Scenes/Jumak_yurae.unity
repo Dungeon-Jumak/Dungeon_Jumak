@@ -1488,6 +1488,7 @@ MonoBehaviour:
     curSeatSize: 0
     isAllocated: 000000000000000000000000
     isCustomer: 000000000000000000000000
+    minDelayTime: 5
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
@@ -4164,6 +4165,7 @@ MonoBehaviour:
     curSeatSize: 0
     isAllocated: 000000000000000000000000
     isCustomer: 000000000000000000000000
+    minDelayTime: 5
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
@@ -8348,13 +8350,14 @@ MonoBehaviour:
   customerPrefab:
   - {fileID: 4348780489430493476, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
   customerNum: 0
-  minDelayTime: 7
-  maxSeatSize: 2
+  minDelayTime: 5
+  newMinDelayTime: 0
   data:
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
     isCustomer: 000000000000000000000000
+    minDelayTime: 5
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
