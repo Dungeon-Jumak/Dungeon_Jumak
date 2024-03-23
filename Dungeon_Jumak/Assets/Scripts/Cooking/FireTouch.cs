@@ -30,7 +30,7 @@ public class FireTouch : MonoBehaviour
         {
             touchCount++;
 
-            if (!audioManager.isPlaying(fireClickSound))
+            if (!audioManager.IsPlaying(fireClickSound))
             {
                 audioManager.Play(fireClickSound);
                 audioManager.Setvolume(fireClickSound, 0.5f);

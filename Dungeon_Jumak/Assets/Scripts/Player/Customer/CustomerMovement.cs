@@ -163,7 +163,7 @@ public class CustomerMovement : MonoBehaviour
         {
             isEat = false;
 
-            if (!audioManager.isPlaying(eatSound))
+            if (!audioManager.IsPlaying(eatSound))
             {
                 audioManager.SetLoop(eatSound);
                 audioManager.Play(eatSound);

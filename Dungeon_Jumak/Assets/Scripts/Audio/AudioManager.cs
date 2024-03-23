@@ -45,7 +45,7 @@ public class Sound
         source.volume = volume;
     }
 
-    public bool isPlaying()
+    public bool IsPlaying()
     {
         return source.isPlaying;
     }
@@ -143,13 +143,13 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public bool isPlaying(string _name)
+    public bool IsPlaying(string _name)
     {
         for (int i = 0; i < sounds.Length; i++)
         {
             if (_name == sounds[i].name)
             {
-                return sounds[i].isPlaying();
+                return sounds[i].IsPlaying();
             }
         }
         return false;
