@@ -48,18 +48,12 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(data.curUnlockLevel < data.maxUnlockLevel) 
-            {
-                data.curUnlockLevel++;
-                data.maxSeatSize += 2;
-            }
-
+            AddTable();
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if(data.curMenuUnlockLevel < data.maxMenuUnlockLevel)
-                data.curMenuUnlockLevel++;
+            AddRecipe();
         }
 
     }
@@ -93,6 +87,26 @@ public class GameManager : MonoBehaviour
             audioManager.Play(pauseSound);
             Time.timeScale = 1f;
         }
+    }
+
+    public void AddTable()
+    {
+        if (data.curUnlockLevel < data.maxUnlockLevel)
+        {
+            audioManager.Play(pauseSound);
+            data.curUnlockLevel++;
+            data.maxSeatSize += 2;
+        }
+    }
+
+    public void AddRecipe()
+    {
+        if (data.curMenuUnlockLevel < data.maxMenuUnlockLevel)
+        {
+            audioManager.Play(pauseSound);
+            data.curMenuUnlockLevel++;
+        }
+
     }
 
 }
