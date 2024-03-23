@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         //요리하는 사운드 계속 재생
-        if (!audioManager.isPlaying(cookingSound))
+        if (!audioManager.IsPlaying(cookingSound))
         {
             audioManager.Play(cookingSound);
             audioManager.SetLoop(cookingSound);
@@ -85,8 +85,8 @@ public class PlayerMovement : MonoBehaviour
         {
             int randNum = Random.Range(1, 5);
 
-            if (!audioManager.isPlaying(walkSound1) && !audioManager.isPlaying(walkSound2)
-                && !audioManager.isPlaying(walkSound3) && !audioManager.isPlaying(walkSound4))
+            if (!audioManager.IsPlaying(walkSound1) && !audioManager.IsPlaying(walkSound2)
+                && !audioManager.IsPlaying(walkSound3) && !audioManager.IsPlaying(walkSound4))
             {
                 switch (randNum)
                 {
