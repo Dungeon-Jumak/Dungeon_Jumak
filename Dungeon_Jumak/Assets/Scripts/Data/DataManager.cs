@@ -6,15 +6,8 @@ using TMPro;
 
 public class DataManager : MonoBehaviour
 {
-    // --- 컨테이너 게임 오브젝트 --- //
-    static GameObject container; 
-
     // --- 싱글톤 선언 --- //
     static DataManager instance;
-
-    private int coin = 0;//코인 변수
-    private int level = 1;//레벨 변수
-  
     public static DataManager Instance
     {
         get
@@ -29,6 +22,9 @@ public class DataManager : MonoBehaviour
             return instance;
         }
     }
+
+    // --- 컨테이너 게임 오브젝트 --- //
+    static GameObject container;
 
     // --- 게임 데이터 파일이름 설정 ("원하는 이름.json) --- //
     string gameDataFileName = "GameData.json";
@@ -63,14 +59,14 @@ public class DataManager : MonoBehaviour
     // --- 레벨 변경 함수 --- //
     public void UpdateLevel()
     {
-        level++;
-        GameObject.Find("UI_LevelText").GetComponent<TextMeshProUGUI>().text = level.ToString();
+        data.level++;
+        GameObject.Find("UI_LevelText").GetComponent<TextMeshProUGUI>().text = data.coin.ToString();
     }
 
     // --- 코인 변경 --- //
     public void UpdateCoin()
     {
-        coin++;
-        GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = coin.ToString();
+        data.coin++;
+        GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = data.level.ToString();
     }
 }

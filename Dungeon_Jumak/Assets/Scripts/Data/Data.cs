@@ -26,6 +26,8 @@ public class Data
     public int[] menuNums = new int[12];
     public int curCoin = 0;
     public int maxCoin = 999999;
+    public int coin = 0;//코인 변수
+    public int level = 1;//레벨 변수
     public int[] foodIngredients; //음식 재료
 
     //---자리 해금 레벨---//
