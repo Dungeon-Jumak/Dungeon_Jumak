@@ -9,7 +9,7 @@ public class Data
     //데이터에 있는 값을 다른 스크립트를 사용하기 위해서는 싱글톤으로서 사용하면 됨
     //ex) Data data = DataManager.Instance.data; => 이를 통해 Data.cs에 있는 변수값을 사용할 수 있음
 
-    public int curPlayerLV;
+    public int curPlayerLV = 1;
     public int maxPlayerLV;
 
     //---설정 관련---//
@@ -26,8 +26,6 @@ public class Data
     public int[] menuNums = new int[12];
     public int curCoin = 0;
     public int maxCoin = 999999;
-    public int coin = 0;//코인 변수
-    public int level = 1;//레벨 변수
     public int[] foodIngredients; //음식 재료
 
     //---자리 해금 레벨---//
