@@ -14,7 +14,7 @@ public class CustomerSpawner : MonoBehaviour
     private int customerNum;
 
     [SerializeField]
-    private int minDelayTime; //최소 딜레이 시간
+    private int minDelayTime = 3; //최소 딜레이 시간
     [SerializeField]
     private int newMinDelayTime;  //업데이트 된 딜레이 시간
 
@@ -25,7 +25,7 @@ public class CustomerSpawner : MonoBehaviour
     private void Start()
     {
         data = DataManager.Instance.data;
-        minDelayTime = 5;
+        minDelayTime = 3;
 
         // --- 재귀 시작 --- //
         StartCoroutine(SpawnCustomer());
