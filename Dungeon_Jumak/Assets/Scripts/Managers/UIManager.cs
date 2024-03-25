@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
 
     public void Awake()
     {
-        GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.coin.ToString();
+        GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curCoin.ToString();
     }
 
     public void exitOptionPanel()
