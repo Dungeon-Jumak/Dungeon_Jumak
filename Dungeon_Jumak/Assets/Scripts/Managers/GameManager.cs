@@ -5,6 +5,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    //---GameManager.cs ½Ì±ÛÅæ ¼±¾ğ---//
+    static GameManager instance;
+    public GameManager Instance
+    {
+        get
+        {
+            if (null == instance)
+            {
+                return null;
+            }
+            return instance;
+        }
+    }
+
     [SerializeField] 
     private Data data;
 
