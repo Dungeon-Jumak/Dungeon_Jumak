@@ -31,7 +31,7 @@ public class OrderSystem : MonoBehaviour
                 if (tables[i].transform.GetChild(0).childCount != 0)
                     Destroy(tables[i].transform.GetChild(0).GetChild(0).gameObject);
 
-                DataManager.Instance.UpdateCoin();//코인 지급
+                data.curCoin++;//코인 지급
                 audioManager.Play(coinSound);
             }
 

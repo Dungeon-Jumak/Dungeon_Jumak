@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -56,6 +57,9 @@ public class GameManager : MonoBehaviour
             AddRecipe();
         }
 
+        UpdateCoin();
+        UpdateLevel();
+
     }
 
     //---게임 로드시 데이터 값에 따라 해금---//
@@ -109,4 +113,15 @@ public class GameManager : MonoBehaviour
 
     }
 
+    // --- 레벨 변경 함수 --- //
+    public void UpdateLevel()
+    {
+        GameObject.Find("UI_LevelText").GetComponent<TextMeshProUGUI>().text = data.curPlayerLV.ToString();
+    }
+
+    // --- 코인 변경 --- //
+    public void UpdateCoin()
+    {
+        GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = data.curCoin.ToString();
+    }
 }

@@ -60,17 +60,4 @@ public class DataManager : MonoBehaviour
         File.WriteAllText(filePath, ToJsonData);
     }
 
-    // --- 레벨 변경 함수 --- //
-    public void UpdateLevel()
-    {
-        level++;
-        GameObject.Find("UI_LevelText").GetComponent<TextMeshProUGUI>().text = level.ToString();
-    }
-
-    // --- 코인 변경 --- //
-    public void UpdateCoin()
-    {
-        coin++;
-        GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = coin.ToString();
-    }
 }
