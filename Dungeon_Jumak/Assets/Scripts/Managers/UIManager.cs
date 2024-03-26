@@ -8,11 +8,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject optionPanel;
     [SerializeField] private GameObject firePanel;
 
-    public void Awake()
-    {
-        GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curCoin.ToString();
-    }
-
     public void exitOptionPanel()
     {
         optionPanel.SetActive(false);

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Resources;
 using TMPro;
 using UnityEngine;
 
@@ -18,6 +19,12 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
+
+    SceneManagerEx _sceneManager = new SceneManagerEx();//SceneManagerEx 持失
+    ResourceManager _resource = new ResourceManager();//ResourceManager 持失
+
+    public static SceneManagerEx Scene { get { return instance._sceneManager; } }
+    public static ResourceManager Resource { get { return instance._resource; } }
 
     [SerializeField] 
     private Data data;
