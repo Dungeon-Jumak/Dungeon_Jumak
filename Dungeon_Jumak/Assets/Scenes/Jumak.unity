@@ -5493,6 +5493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionPanel: {fileID: 1659467286}
   firePanel: {fileID: 1433638102}
+  tracker: {fileID: 1312212645}
 --- !u!4 &1068413467
 Transform:
   m_ObjectHideFlags: 0
@@ -6642,11 +6643,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22008ce2282f3854fb2111bbbabac1a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contactDistance: 0.4
   firePopUp: {fileID: 1433638102}
-  PaJeonPopUp: {fileID: 461809313}
+  paJeonPopUp: {fileID: 461809313}
   paJeonManager: {fileID: 1535124751}
   inputEnabled: 1
+  contactDistance: 0.4
 --- !u!61 &1312212646
 BoxCollider2D:
   m_ObjectHideFlags: 0
