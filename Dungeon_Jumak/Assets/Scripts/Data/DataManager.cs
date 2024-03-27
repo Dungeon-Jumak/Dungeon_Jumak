@@ -11,10 +11,6 @@ public class DataManager : MonoBehaviour
 
     // --- 싱글톤 선언 --- //
     static DataManager instance;
-
-    private int coin = 0;//코인 변수
-    private int level = 1;//레벨 변수
-  
     public static DataManager Instance
     {
         get

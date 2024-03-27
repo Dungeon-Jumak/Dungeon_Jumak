@@ -101,7 +101,7 @@ public class OrderMenu : MonoBehaviour
     void EatFood(int nums)
     {
         transform.GetChild(nums).gameObject.SetActive(false);
-        customerMovement.isEat = true;
+        customerMovement.EatFood();
     }
 
     public void TimeOut()
