@@ -7137,13 +7137,6 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-  Dansangs:
-  - {fileID: 1606444471}
-  - {fileID: 525707022}
-  - {fileID: 342020283}
-  - {fileID: 932901508}
-  - {fileID: 2042047559}
-  - {fileID: 1716219176}
   bgmManager: {fileID: 1036737120}
   baseBGMTrackNum: 0
   audioManager: {fileID: 253032256}
