@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour
     private Data data;
 
     //---해금 할 단상 배열---//
-    [SerializeField]
     private GameObject[] Dansangs;
 
     //---배경 음악---//
@@ -67,12 +66,13 @@ public class GameManager : MonoBehaviour
 
         audioManager = FindObjectOfType<AudioManager>();
         pauseSound = "pauseSound";
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        unlockTable();
+        //unlockTable();
 
         if (!data.isPlayBGM)
         {
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
     }
 
     //---게임 로드시 데이터 값에 따라 해금---//
-    void unlockTable()
+   /* void unlockTable()
     {
         for (int i = 0; i < data.curUnlockLevel; i++)
         {
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
                 Dansangs[i].SetActive(true);
             }
         }
-    }
+    }*/
 
     //---일시 정지 기능---//
     public void Pause()
