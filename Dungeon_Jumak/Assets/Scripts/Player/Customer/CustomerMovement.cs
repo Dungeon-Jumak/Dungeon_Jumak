@@ -143,11 +143,8 @@ public class CustomerMovement : MonoBehaviour
             else if (!isArrive)
             {
                 isArrive = true;
-
                 data.isCustomer[seatIndex] = true; // 손님이 테이블 도착 체크
-
                 animator.SetBool("isSit", true);
-
                 orderMenu.OrderNewMenu();
             }
 
@@ -183,9 +180,7 @@ public class CustomerMovement : MonoBehaviour
             if (Vector3.Distance(StopPoint.position, CurPosition) == 0f)
             {
                 isArrive = true;
-
                 animator.SetBool("isStop", true);
-
                 GameObject.Instantiate(speech_Box_Full, GameObject.Find("If_Full").transform);
                 Invoke("JustOut", 2f);
             }
@@ -216,6 +211,7 @@ public class CustomerMovement : MonoBehaviour
             FinRoute[i] = RouteList[seatIndex][i];
         }
 
+        //기본 변수 초기화 for 오브젝트 풀링
         isInitialize = false;
         isArrive = false;
         isReturn = false;
@@ -295,8 +291,7 @@ public class CustomerMovement : MonoBehaviour
         data.isAllocated[seatIndex] = true;
     }
 
-    
-
+    //--- 타임 아웃 ---//
     public void TimeOut()
     {
         isReturn = true;

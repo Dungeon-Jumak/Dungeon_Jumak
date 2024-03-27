@@ -5,6 +5,21 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    static UIManager instance;
+    public UIManager Instance
+    {
+        get
+        {
+            if (null == instance)
+            {
+                return null;
+            }
+            return instance;
+        }
+    }
+
+
+
     [SerializeField] private GameObject optionPanel;
     [SerializeField] private GameObject firePanel;
 
