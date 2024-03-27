@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class CominScene : BaseScene
+public class ComingScene : BaseScene
 {
     protected override void Init()
     {
@@ -20,6 +21,6 @@ public class CominScene : BaseScene
     //---UI 자동화 전이라 임의로 만들어놓은 함수에용---//
     public void cangeToJumakScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Jumak");
+        GameManager.Scene.LoadScene(Define.Scene.Jumak);
     }
 }

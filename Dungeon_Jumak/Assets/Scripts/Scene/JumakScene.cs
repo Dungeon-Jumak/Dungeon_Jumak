@@ -16,8 +16,26 @@ public class JumakScene : BaseScene
         GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curCoin.ToString();
     }
 
+    public void Update()
+    {
+        UpdateCoin();
+        UpdateLevel();
+    }
+
     public override void Clear()
     {
 
+    }
+
+    // --- 레벨 변경 함수 --- //
+    public void UpdateLevel()
+    {
+        GameObject.Find("UI_LevelText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curPlayerLV.ToString();
+    }
+
+    // --- 코인 변경 --- //
+    public void UpdateCoin()
+    {
+        GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curCoin.ToString();
     }
 }
