@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //Managers.Input.MouseAction -=
+        //Managers.UI.ShowPop
     }
 
     // Update is called once per frame

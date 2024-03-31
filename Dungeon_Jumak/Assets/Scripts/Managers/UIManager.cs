@@ -5,7 +5,8 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    static UIManager instance;
+    static public UIManager instance;
+    /*
     public UIManager Instance
     {
         get
@@ -15,6 +16,20 @@ public class UIManager : MonoBehaviour
                 return null;
             }
             return instance;
+        }
+    }
+    */
+    //---½Ì±ÛÅæ Àû¿ë---//
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+            instance = this;
         }
     }
 
