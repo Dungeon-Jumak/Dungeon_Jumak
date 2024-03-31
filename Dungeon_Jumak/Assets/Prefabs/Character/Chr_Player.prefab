@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 2174443558969673367}
   - component: {fileID: 2174443558969673364}
   - component: {fileID: 1398392935614929993}
+  - component: {fileID: -3399969502134677881}
   m_Layer: 0
   m_Name: Chr_Player
   m_TagString: Player
@@ -152,21 +153,31 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   data:
+    curPlayerLV: 0
+    maxPlayerLV: 0
+    isPlayBGM: 0
+    isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
     isCustomer: 000000000000000000000000
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    curCoin: 0
+    maxCoin: 999999
+    foodIngredients: 
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    isPlayBGM: 0
+    fireSize: 100
   menuNumsOfHand: 0
   audioManager: {fileID: 0}
-  walkSound: walkSound
+  walkSound1: 
+  walkSound2: 
+  walkSound3: 
+  walkSound4: 
   servingSound: 
   pickUpSound: 
   cookingSound: 
@@ -238,3 +249,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &-3399969502134677881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2174443558969673365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841c3da6d8214284ca1916d336b11726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 0}

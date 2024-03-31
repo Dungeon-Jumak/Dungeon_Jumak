@@ -4,8 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-
-public class SceneManagerEx 
+public class SceneManagerEx : MonoBehaviour
 {
     public BaseScene CurrentScene { get { return GameObject.FindObjectOfType<BaseScene>(); } }
 

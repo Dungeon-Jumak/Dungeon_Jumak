@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject optionPanel;
     [SerializeField] private GameObject firePanel;
+    [SerializeField] private Tracker tracker;
 
     public void exitOptionPanel()
     {
@@ -50,5 +51,6 @@ public class UIManager : MonoBehaviour
 
     public void exitFirePanel() {
         firePanel.SetActive(false);
+        tracker.inputEnabled = true;
     }
 }

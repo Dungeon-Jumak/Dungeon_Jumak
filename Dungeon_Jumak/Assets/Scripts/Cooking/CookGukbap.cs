@@ -9,6 +9,7 @@ public class CookGukbap : MonoBehaviour
 
     private float cookingTime = 5f;
     private float decreaseRate = 1f;
+
     [SerializeField]
     private Data data;
 
@@ -20,7 +21,7 @@ public class CookGukbap : MonoBehaviour
 
     private void Update()
     {
-        // 새로운 불 크기에 따른 감소 비율 적용
+        //---새로운 불 크기에 따른 감소 비율 적용---//
         float decreaseAmount = Time.deltaTime * decreaseRate;
 
         if (data.fireSize > 0 && cookingTime > 0 && gukbapCount < 5)
@@ -55,9 +56,10 @@ public class CookGukbap : MonoBehaviour
 
         decreaseRate = 1f;
 
+        // 불이 50 밑으로 떨어질 경우 7초에 1씩 감소 //
         if (data.fireSize >= 0.0001 && data.fireSize <= 50)
         {
-            decreaseRate = 1f / 7f; // 7초에 1씩 감소
+            decreaseRate = 1f / 7f;
         }
 
         cookingTime -= decrease;

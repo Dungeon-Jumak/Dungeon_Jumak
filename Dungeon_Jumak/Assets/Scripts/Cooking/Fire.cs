@@ -23,15 +23,15 @@ public class Fire : MonoBehaviour
 
     void Update()
     {
-        // 불의 크기를 시간에 따라 조절
+        fireImage.transform.localScale = Vector3.one * (data.fireSize / 100f);
+        sizeText.text = Mathf.FloorToInt(data.fireSize) + "%";
+
+        //---불의 크기를 시간에 따라 조절---//
 
         if (cook == true)
         {
             data.fireSize -= (1f / 1f) * Time.deltaTime;
-            fireImage.transform.localScale = Vector3.one * (data.fireSize / 100f);
         }
-
-        sizeText.text = Mathf.FloorToInt(data.fireSize) + "%";
 
         if (data.fireSize < 0)
         {
@@ -43,11 +43,17 @@ public class Fire : MonoBehaviour
         {
             fireImage.gameObject.SetActive(true);
         }
+
+        if (data.fireSize > 100)
+        {
+            data.fireSize = 100;
+            sizeText.text = "100%";
+        }
     }
 
     public void ResetAnim()
     {
-        // 시간 및 불의 크기를 초기화
+        //---시간 및 불의 크기를 초기화---//
         fireImage.transform.localScale = Vector3.one;
         fireImage.gameObject.SetActive(true);
     }
@@ -55,6 +61,5 @@ public class Fire : MonoBehaviour
     public void IncreaseFireSize()
     {
         data.fireSize += 5f;
-        if(data.fireSize > 100) data.fireSize = 100;
     }
 }
