@@ -12,7 +12,7 @@ using UnityEngine.UI;
 /// 확장 메소드 기능을 통해 PointButton을 클릭할 시 OnButtonCliked() 함수를 실행하도록 함
 /// 또한 람다식을 통해 ItemIcon 이미지를 드래그할 수 있도록 함   
 /// </summary>
-public class UI_Button : UI_Base
+public class UI_Button : UI_Base    
 {
     // 버튼과 관련한 요소들 enum에 추가
     enum Buttons
