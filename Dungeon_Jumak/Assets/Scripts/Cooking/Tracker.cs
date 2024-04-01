@@ -16,8 +16,6 @@ public class Tracker : MonoBehaviour
     [Header("°Å¸®")]
     [SerializeField][Range(0f, 3f)] float contactDistance = 1f;
 
-
-
     void Start()
     {
         firePopUp.gameObject.SetActive(false);

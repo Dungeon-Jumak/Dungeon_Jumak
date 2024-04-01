@@ -36,9 +36,12 @@ public class GameManager : MonoBehaviour
 
     SceneManagerEx _sceneManager = new SceneManagerEx();//SceneManagerEx 持失
     ResourceManager _resource = new ResourceManager();//ResourceManager 持失
+    UIManager _uiManager = new UIManager();
 
     public static SceneManagerEx Scene { get { return instance._sceneManager; } }
     public static ResourceManager Resource { get { return instance._resource; } }
+    
+    public static UIManager UI { get { return instance._uiManager; } }
 
     [SerializeField] 
     private Data data;

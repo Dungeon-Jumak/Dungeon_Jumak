@@ -1,56 +1,100 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
-public class UIManager : MonoBehaviour
+public class UIManager
 {
-    static public UIManager instance;
-    /*
-    public UIManager Instance
+    int _order = 10;
+
+    Stack<UI_PopUp> _popupStack = new Stack<UI_PopUp>();
+    UI_Scene _sceneUI = null;
+
+    public GameObject Root
     {
         get
         {
-            if (null == instance)
-            {
-                return null;
-            }
-            return instance;
+            GameObject root = GameObject.Find("@UI_Root");
+            if (root == null)
+                root = new GameObject { name = "@UI_Root" };
+            return root;
         }
     }
-    */
-    //---½Ì±ÛÅæ Àû¿ë---//
-    private void Awake()
+    public void SetCanvas(GameObject go, bool sort = true)
     {
-        if (instance != null)
+        Canvas canvas = Util.GetOrAddComponent<Canvas>(go);
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.overrideSorting = true;
+
+        if (sort)
         {
-            Destroy(this.gameObject);
+            canvas.sortingOrder = _order;
+            _order++;
         }
         else
         {
-            DontDestroyOnLoad(this.gameObject);
-            instance = this;
+            canvas.sortingOrder = 0;
         }
     }
 
-
-
-    [SerializeField] private GameObject optionPanel;
-    [SerializeField] private GameObject firePanel;
-    [SerializeField] private Tracker tracker;
-
-    public void exitOptionPanel()
+    public T ShowSceneUI<T>(string name = null) where T : UI_Scene
     {
-        optionPanel.SetActive(false);
+        if (string.IsNullOrEmpty(name))
+            name = typeof(T).Name;
+
+        GameObject go = GameManager.Resource.Instantiate($"UI/Scene/{name}");
+
+        T SceneUI = Util.GetOrAddComponent<T>(go);
+        _sceneUI = SceneUI;
+
+        go.transform.SetParent(Root.transform);
+
+        return SceneUI;
     }
 
-    public void openOptionPanel()
+    public T ShowPopupUI<T>(string name = null) where T : UI_PopUp
     {
-        optionPanel.SetActive(true);
+        if (string.IsNullOrEmpty(name))
+            name = typeof(T).Name;
+
+        GameObject go = GameManager.Resource.Instantiate($"UI/Popup/{name}");
+
+        T popup = Util.GetOrAddComponent<T>(go);
+        _popupStack.Push(popup);
+
+        go.transform.SetParent(Root.transform);
+
+        return popup;
     }
 
-    public void exitFirePanel() {
-        firePanel.SetActive(false);
-        tracker.inputEnabled = true;
+    public void ClosePopupUI(UI_PopUp popup)
+    {
+        if (_popupStack.Count == 0)
+            return;
+
+        if (_popupStack.Peek() != popup)
+        {
+            Debug.Log("Close Popup Failed");
+            return;
+        }
+
+        ClosePopupUI();
+    }
+
+    public void ClosePopupUI()
+    {
+        if (_popupStack.Count == 0)
+            return;
+
+        UI_PopUp popup = _popupStack.Pop();
+        GameManager.Resource.Destroy(popup.gameObject);
+        popup = null;
+
+        _order--;
+    }
+
+    public void CloseAllPopupUI()
+    {
+        while (_popupStack.Count > 0)
+            ClosePopupUI();
     }
 }
