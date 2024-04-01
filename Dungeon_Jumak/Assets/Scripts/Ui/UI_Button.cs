@@ -7,8 +7,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_Button : UI_PopUp
+/// <summary>
+/// UI 버튼에 관한 스크립트
+/// 확장 메소드 기능을 통해 PointButton을 클릭할 시 OnButtonCliked() 함수를 실행하도록 함
+/// 또한 람다식을 통해 ItemIcon 이미지를 드래그할 수 있도록 함   
+/// </summary>
+public class UI_Button : UI_Base
 {
+    // 버튼과 관련한 요소들 enum에 추가
     enum Buttons
     {
         PointButton
@@ -32,25 +38,30 @@ public class UI_Button : UI_PopUp
 
     private void Start()
     {
-        Init();
-    }
 
-    public override void Init()
-    {
-        base.Init();
+        //enum들 각 타입에 맞게 Bind
+        //Bind() : 각 타입에 맞는 오브젝트 리스트에 추가
+        
+        //---바인드---//
         Bind<Button>(typeof(Buttons));
         Bind<Text>(typeof(Texts));
         Bind<GameObject>(typeof(GameObjects));
         Bind<Image>(typeof(Images));
 
+        //---이벤트 추가---//
+
+        //---Test---//  
+        //Buttons의 PointButton에 위치값 = 0 즉, idx가 0인 버튼을 반환 후 OnButtonClicked를 BindEvent함
         GetButton((int)Buttons.PointButton).gameObject.BindEvent(OnButtonClicked);
 
-        GameObject go = GetImage((int)Images.ItemIcon).gameObject;
-        BindEvent(go, (PointerEventData data) => { go.transform.position = data.position; }, Define.UIEvent.Drag);
+        GameObject go = GetImage((int)Images.ItemIcon).gameObject;                                                  //ItemIcon에 해당하는 이미지 go에 반환
+        BindEvent(go, (PointerEventData data) => { go.transform.position = data.position; }, Define.UIEvent.Drag);  //람다식을 통해 이벤트 연결
     }
-
+    
+    //---버튼 이벤트 추가---//
     int _score = 0;
 
+    //버튼 클릭시 점수 증가
     public void OnButtonClicked(PointerEventData data)
     {
         _score++;
