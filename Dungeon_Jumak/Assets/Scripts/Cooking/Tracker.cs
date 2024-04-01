@@ -13,8 +13,8 @@ public class Tracker : MonoBehaviour
     private Transform target;
     private bool isNearFurnace = false;
 
-    [Header("거리")]
-    [SerializeField][Range(0f, 3f)] float contactDistance = 1f;
+    //[Header("거리")]
+    //[SerializeField][Range(0f, 3f)] float contactDistance = 1f;
 
 
 
