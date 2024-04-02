@@ -13,6 +13,8 @@ public class Fire : MonoBehaviour
     [SerializeField]
     private Data data;
 
+    [SerializeField]
+    private GameObject fire;
 
 
     void Start()

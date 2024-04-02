@@ -5,23 +5,19 @@ using UnityEngine.UI;
 
 public class FireTouch : MonoBehaviour
 {
-    public Text sizeText;
-    public Image fireImage;
+    private Fire fire;
     private int touchCount = 0;
 
-    public Fire fire;
-
-    [SerializeField]
     private AudioManager audioManager;
-    [SerializeField]
-    private string fireClickSound;
-    [SerializeField]
+    [SerializeField] private string fireClickSound;
+
     private Data data;
 
     private void Start()
     {
         data = DataManager.Instance.data;
         audioManager = FindObjectOfType<AudioManager>();
+        fire = FindObjectOfType<Fire>();
     }
 
     void Update()

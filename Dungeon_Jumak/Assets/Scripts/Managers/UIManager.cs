@@ -52,7 +52,7 @@ public class UIManager
         T SceneUI = Util.GetOrAddComponent<T>(go);  //씬 UI에 컴포넌트 추가
         _sceneUI = SceneUI;                         //씬 UI 할당
 
-        go.transform.SetParent(Root.transform);     //프리팹의 부모 설정
+        go.transform.SetParent(Root.transform, false);     //프리팹의 부모 설정
 
         return SceneUI;                             //씬 UI 반환
     }
@@ -68,7 +68,7 @@ public class UIManager
         T popup = Util.GetOrAddComponent<T>(go);    //컴포넌트 추가
         _popupStack.Push(popup);                    //팝업을 스택에 푸쉬
 
-        go.transform.SetParent(Root.transform);
+        go.transform.SetParent(Root.transform, false);
 
         return popup;
     }
