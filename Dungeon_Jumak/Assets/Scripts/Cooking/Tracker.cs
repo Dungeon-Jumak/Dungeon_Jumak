@@ -50,7 +50,7 @@ public class Tracker : MonoBehaviour
                 {
                     PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
 
-                    //---왼쪽을 클릭했을 때---//
+                    //===왼쪽을 클릭했을 때===//
                     if (playerMovement != null && !playerMovement.isCarryingFood)
                     {
                         paJeonPopUp.SetActive(true);
@@ -60,7 +60,7 @@ public class Tracker : MonoBehaviour
                 }
                 else
                 {
-                    //---오른쪽을 클릭했을 때---//
+                    //===오른쪽을 클릭했을 때===//
                     firePopUp.SetActive(true);
                     inputEnabled = false;
                 }

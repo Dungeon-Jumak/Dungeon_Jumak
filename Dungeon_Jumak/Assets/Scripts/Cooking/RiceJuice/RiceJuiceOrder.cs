@@ -18,7 +18,7 @@ public class RiceJuiceOrder : MonoBehaviour
     {
         if (playerInsideCollider)
         {
-            // 마우스 입력 확인
+            //===마우스 입력 확인===//
             if (Input.GetMouseButtonDown(0))
             {
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -39,7 +39,7 @@ public class RiceJuiceOrder : MonoBehaviour
                 }
             }
 
-            // 터치 입력 확인
+            //===터치 입력 확인===//
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
