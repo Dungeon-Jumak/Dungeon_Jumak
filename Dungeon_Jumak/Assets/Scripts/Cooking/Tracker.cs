@@ -13,8 +13,8 @@ public class Tracker : MonoBehaviour
     private Transform target;
     private bool isNearFurnace = false;
 
-    [Header("거리")]
-    [SerializeField][Range(0f, 3f)] float contactDistance = 1f;
+    //[Header("거리")]
+    //[SerializeField][Range(0f, 3f)] float contactDistance = 1f;
 
     void Start()
     {
@@ -48,7 +48,7 @@ public class Tracker : MonoBehaviour
                 {
                     PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
 
-                    //---왼쪽을 클릭했을 때---//
+                    //===왼쪽을 클릭했을 때===//
                     if (playerMovement != null && !playerMovement.isCarryingFood)
                     {
                         paJeonPopUp.SetActive(true);
@@ -58,7 +58,7 @@ public class Tracker : MonoBehaviour
                 }
                 else
                 {
-                    //---오른쪽을 클릭했을 때---//
+                    //===오른쪽을 클릭했을 때===//
                     firePopUp.SetActive(true);
                     inputEnabled = false;
                 }

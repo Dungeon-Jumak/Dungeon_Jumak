@@ -12,6 +12,8 @@ TagManager:
   - RiceJuiceMiniGame
   - Door_Ju
   - Door_Shop
+  - Kettle
+  - CheckKettle
   layers:
   - Default
   - TransparentFX
