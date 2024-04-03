@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class StartScene : MonoBehaviour
 {
-    public string sceneName;
-
     [SerializeField]
     private BGMManager bgmManager;
     [SerializeField]
