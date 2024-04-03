@@ -2590,17 +2590,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1068413466}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: openOptionPanel
-        m_Mode: 1
+      - m_Target: {fileID: 1659467286}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &478583409
 MonoBehaviour:
@@ -3192,7 +3192,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1068413466}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: exitFirePanel
         m_Mode: 1
@@ -3599,7 +3599,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &724732601
 GameObject:
@@ -3894,31 +3894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0174326933339484a8400391f0286f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeText: {fileID: 2070845111}
-  fireImage: {fileID: 759884521}
-  fire: {fileID: 1312212643}
-  audioManager: {fileID: 0}
   fireClickSound: fireClickSound
-  data:
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 0
-    isPause: 0
-    maxSeatSize: 2
-    curSeatSize: 0
-    isAllocated: 000000000000000000000000
-    isCustomer: 000000000000000000000000
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    curCoin: 0
-    maxCoin: 999999
-    foodIngredients: 
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 1
-    maxMenuUnlockLevel: 3
-    fireSize: 100
 --- !u!222 &759884523
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5046,6 +5022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1000972236}
+  - component: {fileID: 1000972237}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -5078,6 +5055,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1000972237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000972235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0799e4833033394b8227a3efae43cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dansangs:
+  - {fileID: 1606444471}
+  - {fileID: 525707022}
+  - {fileID: 342020283}
+  - {fileID: 932901508}
+  - {fileID: 2042047559}
+  - {fileID: 1716219176}
+  data:
+    curPlayerLV: 1
+    maxPlayerLV: 0
+    isPlayBGM: 0
+    isPause: 0
+    maxSeatSize: 2
+    curSeatSize: 0
+    isAllocated: 000000000000000000000000
+    isCustomer: 000000000000000000000000
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    curCoin: 0
+    maxCoin: 999999
+    foodIngredients: 
+    curUnlockLevel: 1
+    maxUnlockLevel: 6
+    curMenuUnlockLevel: 1
+    maxMenuUnlockLevel: 3
+    fireSize: 100
 --- !u!1 &1005465378
 GameObject:
   m_ObjectHideFlags: 0
@@ -5564,53 +5580,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059228034}
   m_CullTransparentMesh: 1
---- !u!1 &1068413465
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1068413467}
-  - component: {fileID: 1068413466}
-  m_Layer: 0
-  m_Name: UIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1068413466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068413465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23f81a0474ee6eb4c9b63a2147d21a54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  optionPanel: {fileID: 1659467286}
-  firePanel: {fileID: 1433638102}
-  tracker: {fileID: 1312212645}
---- !u!4 &1068413467
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068413465}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1068505455
 GameObject:
   m_ObjectHideFlags: 0
@@ -5696,7 +5665,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2722280276972479291, guid: c2882d565393fe440bdb6ec6345c9444, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2722280276972479291, guid: c2882d565393fe440bdb6ec6345c9444, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6740,6 +6709,7 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
+  fire: {fileID: 0}
 --- !u!58 &1312212644
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7278,7 +7248,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1391960940
 GameObject:
