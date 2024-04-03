@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartScene : MonoBehaviour
 {
+    public string sceneName;
+
     [SerializeField]
     private BGMManager bgmManager;
     [SerializeField]
@@ -13,6 +17,7 @@ public class StartScene : MonoBehaviour
 
     [SerializeField]
     private Data data;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,5 +38,11 @@ public class StartScene : MonoBehaviour
             bgmManager.FadeInMusic(maxVolume);
             bgmManager.SetLoop();
         }
+    }
+
+    public void ConvertScene(string _sceneName)
+    {
+        bgmManager.FadeOutMusic();
+        SceneManager.LoadScene(_sceneName);
     }
 }
