@@ -17,8 +17,7 @@ public class UI_Button : UI_PopUp
     // 버튼과 관련한 요소들 enum에 추가
     enum Buttons
     {
-        PointButton,
-        TestButton
+        OptionButton
     }
 
     enum Texts
@@ -53,16 +52,19 @@ public class UI_Button : UI_PopUp
 
         //---Test---//  
         //Buttons의 PointButton에 위치값 = 0 즉, idx가 0인 버튼을 반환 후 OnButtonClicked를 BindEvent함
-        GetButton((int)Buttons.PointButton).gameObject.BindEvent(OnButtonClicked);
+        //GetButton((int)Buttons.PointButton).gameObject.BindEvent(OnButtonClicked);
 
-        GetButton((int)Buttons.TestButton).gameObject.BindEvent(TestShowPopUp);
+        //---옵션 팝업을 띄우는 버튼을 불러옴---//
+        GetButton((int)Buttons.OptionButton).gameObject.BindEvent(ShowOptionPopUp);
 
-        GameObject go = GetImage((int)Images.ItemIcon).gameObject;                                                  //ItemIcon에 해당하는 이미지 go에 반환
-        BindEvent(go, (PointerEventData data) => { go.transform.position = data.position; }, Define.UIEvent.Drag);  //람다식을 통해 이벤트 연결
+        //GameObject go = GetImage((int)Images.ItemIcon).gameObject;                                                  //ItemIcon에 해당하는 이미지 go에 반환
+        //BindEvent(go, (PointerEventData data) => { go.transform.position = data.position; }, Define.UIEvent.Drag);  //람다식을 통해 이벤트 연결
     }
     
     //---버튼 이벤트 추가---//
     int _score = 0;
+
+    //---옵션 버튼
 
     //버튼 클릭시 점수 증가
     public void OnButtonClicked(PointerEventData data)
@@ -71,10 +73,12 @@ public class UI_Button : UI_PopUp
         GetText((int)Texts.ScoreText).text = $"점수 : {_score}";
     }
 
-    public void TestShowPopUp(PointerEventData data)
+    //---옵션 팝업 띄움---//
+    public void ShowOptionPopUp(PointerEventData data)
     {
-        Debug.Log("실행성공!");
-        GameManager.UI.ShowPopupUI<UI_PopUp>("FirePopup");
+        Debug.Log("옵션 팝업");
+        GetButton((int)Buttons.OptionButton).gameObject.GetComponent<Button>().interactable = false;
+        GameManager.UI.ShowPopupUI<UI_PopUp>("OptionPopup");
     }
 
     public void ClosePopUp(PointerEventData data)
