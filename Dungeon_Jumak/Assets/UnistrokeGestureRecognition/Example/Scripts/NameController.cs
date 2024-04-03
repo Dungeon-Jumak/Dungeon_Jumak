@@ -22,6 +22,11 @@ namespace UnistrokeGestureRecognition.Example {
         public void Set(string name) {
             _text.text = name;
             StartCoroutine(ShowNameAndHide());
+
+            if (name == "Hi")
+            {
+                Debug.Log("마법 발동 짜라란~");
+            }
         }
 
         private IEnumerator ShowNameAndHide() {
