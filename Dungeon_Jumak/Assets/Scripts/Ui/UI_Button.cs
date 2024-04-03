@@ -22,18 +22,14 @@ public class UI_Button : UI_PopUp
 
     enum Texts
     {
-        PointText,
-        ScoreText,
     }
 
     enum GameObjects
     {
-        TestObject,
     }
 
     enum Images
     {
-        ItemIcon,
     }
 
     private void Start()
