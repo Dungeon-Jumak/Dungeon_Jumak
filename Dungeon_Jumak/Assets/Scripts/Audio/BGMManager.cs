@@ -60,15 +60,15 @@ public class BGMManager : MonoBehaviour
         }
     }
 
-    public void FadeInMusic()
+    public void FadeInMusic(float maxVol = 0.5f)
     {
-        StartCoroutine(FadeInMusicCoroutine());
+        StartCoroutine(FadeInMusicCoroutine(maxVol));
     }
 
     //---페이드 인을 위한 코루틴---//
-    IEnumerator FadeInMusicCoroutine()
+    IEnumerator FadeInMusicCoroutine(float maxVol)
     {
-        for (float i = 0f; i <= 0.3f; i += 0.01f)
+        for (float i = 0f; i <= maxVol; i += 0.01f)
         {
             source.volume = i;
             yield return waitTime;

@@ -46,12 +46,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] 
     private Data data;
 
-    //---배경 음악---//
-    [SerializeField]
-    private BGMManager bgmManager;
-    [SerializeField]
-    private int baseBGMTrackNum;
-
     //---효과음---//
     [SerializeField]
     private AudioManager audioManager;
@@ -62,7 +56,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         data = DataManager.Instance.data;
-        bgmManager = FindObjectOfType<BGMManager>();
 
         audioManager = FindObjectOfType<AudioManager>();
         pauseSound = "pauseSound";
@@ -72,14 +65,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!data.isPlayBGM)
-        {
-            data.isPlayBGM = true;
-            bgmManager.Play(baseBGMTrackNum);
-            bgmManager.FadeInMusic();
-            bgmManager.SetLoop();
-        }
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             AddTable();
