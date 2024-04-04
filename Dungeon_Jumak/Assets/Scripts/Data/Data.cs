@@ -13,7 +13,8 @@ public class Data
     public int maxPlayerLV;
 
     //---설정 관련---//
-    public bool isPlayBGM = false;
+    public bool isPlayBGM = true;
+    public bool isSound = true;
     public bool isPause = false;
 
     //---CustomerSystem---//

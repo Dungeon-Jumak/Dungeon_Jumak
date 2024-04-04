@@ -16,6 +16,8 @@ public class Define : MonoBehaviour
     {
         Jumak,
         ComingSoon,
+        StartScene,
+        WaitingScene,
     }
 
     //---UI 클릭과 드래그를 구분하기 위해 Define.cs UIEvent enum을 추가---//

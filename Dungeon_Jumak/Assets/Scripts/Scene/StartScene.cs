@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class StartScene : MonoBehaviour
 {
-    public string sceneName;
-
     [SerializeField]
     private BGMManager bgmManager;
     [SerializeField]
@@ -18,14 +16,23 @@ public class StartScene : MonoBehaviour
     [SerializeField]
     private Data data;
 
+    private bool playBGM = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        playBGM = false;
+
         data = DataManager.Instance.data;
         bgmManager = FindObjectOfType<BGMManager>();
 
+        //---BGM 사운드 트랙 설정---//
         bgmSoundTrack = 1;
+
+        //---기본 BGM 실행---//
         bgmManager.Play(bgmSoundTrack);
+        bgmManager.FadeInMusic(maxVolume);
+        bgmManager.SetLoop();
     }
 
     // Update is called once per frame
@@ -33,13 +40,37 @@ public class StartScene : MonoBehaviour
     {
         if (!data.isPlayBGM)
         {
-            data.isPlayBGM = true;
+            playBGM = false;
+
+            bgmManager.CancelLoop();
+            bgmManager.Stop();
+        }
+
+        if(!playBGM && data.isPlayBGM)
+        {
+            playBGM = true;
+
             bgmManager.Play(bgmSoundTrack);
             bgmManager.FadeInMusic(maxVolume);
             bgmManager.SetLoop();
         }
     }
 
+    public void BGMON()
+    {
+        data.isPlayBGM = true;
+    }
+
+    public void BGMOFF()
+    {
+        data.isPlayBGM = false;
+    }
+
+
+    /// <summary>
+    /// 씬매니저로 바꿔야 함
+    /// </summary>
+    /// <param name="_sceneName"></param>
     public void ConvertScene(string _sceneName)
     {
         bgmManager.FadeOutMusic();
