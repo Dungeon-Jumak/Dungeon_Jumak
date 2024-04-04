@@ -1,7 +1,6 @@
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
 using TMPro;
 
 public class DataManager : MonoBehaviour

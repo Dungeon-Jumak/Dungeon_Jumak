@@ -14,6 +14,9 @@ TagManager:
   - Door_Shop
   - Kettle
   - CheckKettle
+  - Obstacle
+  - Monster
+  - Recovery
   layers:
   - Default
   - TransparentFX
