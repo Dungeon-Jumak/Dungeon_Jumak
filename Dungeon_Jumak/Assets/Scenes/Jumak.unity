@@ -2281,6 +2281,7 @@ MonoBehaviour:
     curPlayerLV: 1
     maxPlayerLV: 0
     isPlayBGM: 0
+    isSound: 1
     isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
@@ -3586,6 +3587,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b1785460318884eb95d86fcafe4309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmManager: {fileID: 1036737120}
+  bgmSoundTrack: 0
+  maxVolume: 0
+  data:
+    curPlayerLV: 1
+    maxPlayerLV: 0
+    isPlayBGM: 1
+    isSound: 1
+    isPause: 0
+    maxSeatSize: 2
+    curSeatSize: 0
+    isAllocated: 000000000000000000000000
+    isCustomer: 000000000000000000000000
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    curCoin: 0
+    maxCoin: 999999
+    foodIngredients: 
+    curUnlockLevel: 1
+    maxUnlockLevel: 6
+    curMenuUnlockLevel: 1
+    maxMenuUnlockLevel: 3
+    fireSize: 100
 --- !u!4 &721462261
 Transform:
   m_ObjectHideFlags: 0
@@ -5078,6 +5103,7 @@ MonoBehaviour:
     curPlayerLV: 1
     maxPlayerLV: 0
     isPlayBGM: 0
+    isSound: 1
     isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
@@ -5284,7 +5310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgms:
   - {fileID: 8300000, guid: 34888b3dff37e514284b72216f3f3414, type: 3}
-  source: {fileID: 0}
+  source: {fileID: 1036737121}
 --- !u!82 &1036737121
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6693,6 +6719,7 @@ MonoBehaviour:
     curPlayerLV: 1
     maxPlayerLV: 0
     isPlayBGM: 0
+    isSound: 1
     isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
@@ -7215,6 +7242,7 @@ MonoBehaviour:
     curPlayerLV: 1
     maxPlayerLV: 0
     isPlayBGM: 0
+    isSound: 1
     isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
@@ -7231,8 +7259,6 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-  bgmManager: {fileID: 1036737120}
-  baseBGMTrackNum: 0
   audioManager: {fileID: 253032256}
   pauseSound: 
 --- !u!4 &1388285638
@@ -8706,6 +8732,7 @@ MonoBehaviour:
     curPlayerLV: 1
     maxPlayerLV: 0
     isPlayBGM: 0
+    isSound: 1
     isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
@@ -10059,6 +10086,7 @@ MonoBehaviour:
     curPlayerLV: 1
     maxPlayerLV: 0
     isPlayBGM: 0
+    isSound: 1
     isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
