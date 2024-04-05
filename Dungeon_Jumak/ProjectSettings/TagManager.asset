@@ -17,6 +17,7 @@ TagManager:
   - Obstacle
   - Monster
   - Recovery
+  - floor
   layers:
   - Default
   - TransparentFX

@@ -26,7 +26,7 @@ public class JumakScene : BaseScene
 
         //---BGM 사운드 트랙 설정---//
         bgmSoundTrack = 0;
-        maxVolume = 0.3f;
+        maxVolume = 0.05f;
 
         //---기본 BGM 실행---//
         bgmManager.Play(bgmSoundTrack);
