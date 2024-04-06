@@ -56,35 +56,35 @@ public class DunjeonPlayerMoving : MonoBehaviour
                 endPosition = Input.mousePosition;
                 DragPlayer();
             }
-            //}
-        }
-
-        void DragPlayer()
-        {
-            // 드래그 거리 계산
-            dragDistance = endPosition.x - startPosition.x;
-
-            if (Mathf.Abs(dragDistance) > 100) // 드래그 거리가 충분히 큰 경우에만 이동 처리
-            {
-                if (dragDistance > 0 && laneNumber < lanesCount - 1)
-                {
-                    // 오른쪽으로 드래그하면 레인 번호 증가
-                    laneNumber++;
-                }
-                else if (dragDistance < 0 && laneNumber > 0)
-                {
-                    // 왼쪽으로 드래그하면 레인 번호 감소
-                    laneNumber--;
-                }
-                MovePlayer();
-            }
-        }
-
-        void MovePlayer()
-        {
-            // 지정된 레인 위치로 플레이어 이동
-            Vector3 newPosition = lanePositions[laneNumber];
-            transform.position = newPosition;
         }
     }
+
+    void DragPlayer()
+    {
+        // 드래그 거리 계산
+        dragDistance = endPosition.x - startPosition.x;
+
+        if (Mathf.Abs(dragDistance) > 100) // 드래그 거리가 충분히 큰 경우에만 이동 처리
+        {
+            if (dragDistance > 0 && laneNumber < lanesCount - 1)
+            {
+                // 오른쪽으로 드래그하면 레인 번호 증가
+                laneNumber++;
+            }
+            else if (dragDistance < 0 && laneNumber > 0)
+            {
+                // 왼쪽으로 드래그하면 레인 번호 감소
+                laneNumber--;
+            }
+            MovePlayer();
+        }
+    }
+
+    void MovePlayer()
+    {
+        // 지정된 레인 위치로 플레이어 이동
+        Vector3 newPosition = lanePositions[laneNumber];
+        transform.position = newPosition;
+    }
+    
 }

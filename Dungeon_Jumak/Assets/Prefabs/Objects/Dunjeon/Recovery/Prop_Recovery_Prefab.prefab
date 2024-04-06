@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3140491472819515330}
   - component: {fileID: 1337805334049901754}
-  - component: {fileID: 796065706584873619}
-  - component: {fileID: 1515668862761414052}
+  - component: {fileID: -5003191196262760590}
+  - component: {fileID: 521700666575720521}
   m_Layer: 0
-  m_Name: Prop_Monster_Prefab
-  m_TagString: Monster
+  m_Name: Prop_Recovery_Prefab
+  m_TagString: Recovery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7836252462816823815}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 395830841
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 748ae8b33df036b46a86e0387f1602cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3b05325e9a80f75438a200bc544fd760, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &796065706584873619
+--- !u!114 &-5003191196262760590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,11 +95,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7836252462816823815}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 620b04f040e10fd4f8f89bf3b9e27d2a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e51fe25dea106c4390f8cfafba2bd26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
---- !u!58 &1515668862761414052
+  speed: 5
+--- !u!58 &521700666575720521
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,6 +112,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.04190473}
+  m_Offset: {x: -0.018935502, y: 0}
   serializedVersion: 2
-  m_Radius: 0.27809525
+  m_Radius: 3.2606218

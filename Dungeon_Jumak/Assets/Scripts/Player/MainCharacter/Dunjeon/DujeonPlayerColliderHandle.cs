@@ -4,6 +4,14 @@ using System.Collections.Generic;
 
 public class DujeonPlayerColliderHandle : MonoBehaviour
 {
+    [SerializeField]
+    private Data data;
+
+    void Awake()
+    {
+        data = DataManager.Instance.data;
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Obstacle"))
@@ -11,15 +19,19 @@ public class DujeonPlayerColliderHandle : MonoBehaviour
             //---Àå¾Ö¹°°ú ºÎµúÇûÀ» ¶§---//
             Debug.Log("Àå¾Ö¹°°ú ºÎµúÈû ¤Ð");
             Destroy(other.gameObject);
+            data.isObstacle = false;
         }
         else if (other.gameObject.CompareTag("Monster"))
         {
             //---¸ó½ºÅÍ¶û ºÎµúÇûÀ» ¶§---//
             Debug.Log("¸ó½ºÅÍ¶û ºÎµúÈû ¤Ð");
             Destroy(other.gameObject);
-        }/*else if (other.gameObject.CompareTag("RecoveryItem"))
+            data.isMonster = false;
+        }else if (other.gameObject.CompareTag("Recovery"))
         {
-            //È¸º¹ÃÊ¶û ºÎµúÇûÀ» ¶§
-        }*/
+            //---È¸º¹ÃÊ¶û ºÎµúÇûÀ» ¶§---//
+            Debug.Log("È¸º¹ÃÊ¶û ºÎµúÈû ¤Ð");
+            Destroy(other.gameObject);
+        }
     }
 }

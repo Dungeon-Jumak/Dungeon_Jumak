@@ -41,5 +41,9 @@ public class Data
     public float fireSize = 100f;
 
     //---던전 관련---//
+    public bool isMonster = false;//Monster spawn 여부 확인
+    public bool isObstacle = false;//Obstacle spawn 여부 확인
+    public float runningTime = 0;//달리기 게임 실행 시간
+    public int playerHP = 0;//HP - 하트 
 
 }

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class MonsterMovement : MonoBehaviour
+public class Obstacle : MonoBehaviour
 {
-    public float speed = 1.2f; // 장애물이 내려오는 속도
+    public float speed = 1f; // 장애물이 내려오는 속도
 
     void Update()
     {
