@@ -106,16 +106,19 @@ namespace UnistrokeGestureRecognition.Example {
             _gestureRecorder.Reset();
         }
 
-        private void RecordNewPoint() {
+        private void RecordNewPoint()
+        {
             var screenPosition = Input.mousePosition;
             Vector2 point = _camera.ScreenToWorldPoint(screenPosition);
 
-            if (Input.GetKey(KeyCode.Mouse0)) {
+            if (screenPosition.x >= 30 && screenPosition.x <= 260 && screenPosition.y <= 250 && screenPosition.y >= 30 && Input.GetKey(KeyCode.Mouse0))
+            {
                 _gestureRecorder.RecordPoint(new Vector2(screenPosition.x, screenPosition.y));
                 // Show gesture path
                 _pathDrawer.AddPoint(point);
             }
         }
+
 
         private void OnValidate() {
             if (Application.isPlaying && _recognizer != null) {
