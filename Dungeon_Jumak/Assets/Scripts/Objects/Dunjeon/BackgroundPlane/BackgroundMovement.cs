@@ -30,11 +30,11 @@ public class BackgroundMovement : MonoBehaviour
         Vector3 nextPos = Vector3.back * speed * Time.deltaTime;
         transform.position = curPos + nextPos;
 
-        if (sprites[endIndex].position.z < -1)
+        if (sprites[endIndex].position.z < -2)
         {
             Vector3 backSpritePos = sprites[startIndex].position;
             Vector3 frontSpritePos = sprites[endIndex].position;
-            sprites[endIndex].transform.position = backSpritePos + Vector3.back * 4;
+            sprites[endIndex].transform.position = backSpritePos + Vector3.back * (-5);
 
             int startIndexSave = startIndex;
             startIndex = endIndex;
