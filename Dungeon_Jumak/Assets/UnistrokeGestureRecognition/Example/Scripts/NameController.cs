@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 namespace UnistrokeGestureRecognition.Example {
     public sealed class NameController : MonoBehaviour {
+
+        public CoolTime cooltime;
+
         private static readonly Color _transparent = new(1, 1, 1, 0);
 
         [SerializeField] private Text _text;
@@ -26,7 +29,9 @@ namespace UnistrokeGestureRecognition.Example {
             if (name == "Hi")
             {
                 Debug.Log("마법 발동 짜라란~");
+                cooltime.CoolStart();
             }
+
         }
 
         private IEnumerator ShowNameAndHide() {
