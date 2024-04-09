@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using System;
 using static Unity.VisualScripting.Member;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,9 +13,6 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject hand; // 플레이어 손 위치
     public CookGukbap cookGukbap; // 국밥 카운트 참조 스크립트
-
-    [SerializeField] 
-    private float moveSpeed; // 이동속도
 
     private Queue<GameObject> foodQueue = new Queue<GameObject>(); // 충돌한 Food 오브젝트를 저장하는 Queue
 
@@ -42,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private string trashCanSound;
 
-    [SerializeField]
     private bool isMove;
     [SerializeField]
     private float delaySecond;
@@ -72,12 +69,12 @@ public class PlayerMovement : MonoBehaviour
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //레이 방향 설정
             hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero); //hit object 반환
-
-            PlayerMove();
+            PlayerMove();       
 
         }
     }
 
+    //플레이어 이동 및 애니메이션 작동
     private void PlayerMove()
     {
         animator.SetTrigger("tpTrigger"); //트리거 작동
@@ -86,12 +83,13 @@ public class PlayerMovement : MonoBehaviour
         Invoke("MoveDelay", delaySecond);
     }
 
+    //플레이어 텔포
     private void Teleport()
     {
         transform.position = hit.point;
     }
 
-
+    //텔포 쿨타임을 위해 Invoke로 실행하기 위한 함수
     private void MoveDelay()
     {
         isMove = false;

@@ -90,6 +90,6 @@ public class JumakScene : BaseScene
     // --- 코인 변경 --- //
     public void UpdateCoin()
     {
-        GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curCoin.ToString();
+        GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curCoin.ToString() + "전";
     }
 }

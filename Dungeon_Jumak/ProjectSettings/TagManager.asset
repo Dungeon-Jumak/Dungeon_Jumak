@@ -18,6 +18,8 @@ TagManager:
   - Monster
   - Recovery
   - floor
+  - Grandma
+  - UI
   layers:
   - Default
   - TransparentFX

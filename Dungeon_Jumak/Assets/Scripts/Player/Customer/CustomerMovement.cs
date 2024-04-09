@@ -181,7 +181,7 @@ public class CustomerMovement : MonoBehaviour
             {
                 isArrive = true;
                 animator.SetBool("isStop", true);
-                GameObject.Instantiate(speech_Box_Full, GameObject.Find("If_Full").transform);
+                GameObject.Instantiate(speech_Box_Full, GameObject.Find("Speech_Boxes").transform);
                 Invoke("JustOut", 2f);
             }
         }
@@ -253,7 +253,9 @@ public class CustomerMovement : MonoBehaviour
     {
         animator.SetBool("isStop", false);
         //***수정 필요***//
-        GameObject.Find("UI_Speech_Box_Full(Clone)").SetActive(false);
+        //GameObject.Find("UI_Speech_Box_Full(Clone)").SetActive(false);
+        Destroy(GameObject.Find("UI_Speech_Box_Full(Clone)"));
+        //speech_Box_Full.gameObject.SetActive(false);
         isJustreturn = true;
     }
 

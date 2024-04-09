@@ -104,18 +104,25 @@ MonoBehaviour:
   timer: 0
   orderMenu: {fileID: 6488744439891724049}
   data:
+    curPlayerLV: 1
+    maxPlayerLV: 0
+    isPlayBGM: 0
+    isSound: 1
+    isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
     isCustomer: 000000000000000000000000
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    curCoin: 0
+    maxCoin: 999999
+    foodIngredients: 
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    isPlayBGM: 0
     fireSize: 100
   audioManager: {fileID: 0}
   timeOutSound: 
@@ -223,18 +230,25 @@ MonoBehaviour:
   timer: 0
   orderMenu: {fileID: 6488744439891724049}
   data:
+    curPlayerLV: 1
+    maxPlayerLV: 0
+    isPlayBGM: 0
+    isSound: 1
+    isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
     isCustomer: 000000000000000000000000
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    curCoin: 0
+    maxCoin: 999999
+    foodIngredients: 
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    isPlayBGM: 0
     fireSize: 100
   audioManager: {fileID: 0}
   timeOutSound: 
@@ -342,18 +356,25 @@ MonoBehaviour:
   timer: 0
   orderMenu: {fileID: 6488744439891724049}
   data:
+    curPlayerLV: 1
+    maxPlayerLV: 0
+    isPlayBGM: 0
+    isSound: 1
+    isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
     isCustomer: 000000000000000000000000
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    curCoin: 0
+    maxCoin: 999999
+    foodIngredients: 
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    isPlayBGM: 0
     fireSize: 100
   audioManager: {fileID: 0}
   timeOutSound: 
@@ -519,7 +540,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.8, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -765,34 +786,38 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   seatIndex: 0
-  isEat: 0
-  isTimeOut: 0
   StartPoint: {fileID: 7614776794981503770, guid: f6d977643ffff6847932243f949ddd82, type: 3}
   StopPoint: {fileID: 2679968256591990733, guid: da71a6124a1652b43896de71e2ad7f27, type: 3}
   isFull: 0
   isArrive: 0
   isReturn: 0
   isJustreturn: 0
-  isInitialize: 0
   CurPosition: {x: 0, y: 0, z: 0}
   WayPointIndex: 0
   speed: 2
-  speech_Box_Full: {fileID: 6906199816215992071, guid: 2a74bbfeb1dfc4d4b98d9d94d4e81aa1, type: 3}
+  isInitialize: 0
+  speech_Box_Full: {fileID: 773121011443230919, guid: 2a74bbfeb1dfc4d4b98d9d94d4e81aa1, type: 3}
   data:
+    curPlayerLV: 1
+    maxPlayerLV: 0
+    isPlayBGM: 0
+    isSound: 1
+    isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
     isCustomer: 000000000000000000000000
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    curCoin: 0
+    maxCoin: 999999
+    foodIngredients: 
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    isPlayBGM: 0
     fireSize: 100
-  dir: {x: 0, y: 0}
   orderMenu: {fileID: 6488744439891724049}
   spriteRenderer: {fileID: 0}
   eatSound: eatSound
@@ -824,18 +849,25 @@ MonoBehaviour:
   riceJuiceNum: 2
   paJeonNum: 3
   data:
+    curPlayerLV: 1
+    maxPlayerLV: 0
+    isPlayBGM: 0
+    isSound: 1
+    isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
     isCustomer: 000000000000000000000000
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    curCoin: 0
+    maxCoin: 999999
+    foodIngredients: 
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    isPlayBGM: 0
     fireSize: 100
   customerMovement: {fileID: 8851026437609507813}
 --- !u!50 &5341880407600492806
