@@ -17,24 +17,17 @@ public class BackgroundMovement : MonoBehaviour
     [SerializeField]
     private Transform[] sprites;
 
-    //private float viewHeight;
-
-    /*private void Awake()
-    {
-        viewHeight = Camera.main.orthographicSize * 2;
-    }*/
-
     void Update()
     {
         Vector3 curPos = transform.position;
-        Vector3 nextPos = Vector3.back * speed * Time.deltaTime;
+        Vector3 nextPos = Vector3.left * speed * Time.deltaTime;
         transform.position = curPos + nextPos;
 
-        if (sprites[endIndex].position.z < -2)
+        if (sprites[endIndex].position.x < -20)
         {
             Vector3 backSpritePos = sprites[startIndex].position;
             Vector3 frontSpritePos = sprites[endIndex].position;
-            sprites[endIndex].transform.position = backSpritePos + Vector3.back * (-5);
+            sprites[endIndex].transform.position = backSpritePos + Vector3.left * (-20);
 
             int startIndexSave = startIndex;
             startIndex = endIndex;
