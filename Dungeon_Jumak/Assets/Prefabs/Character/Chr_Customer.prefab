@@ -137,6 +137,7 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
+    riceJuiceClear: 0
   audioManager: {fileID: 0}
   timeOutSound: 
 --- !u!1 &264913759732028951
@@ -276,6 +277,7 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
+    riceJuiceClear: 0
   audioManager: {fileID: 0}
   timeOutSound: 
 --- !u!1 &264913761009631528
@@ -415,6 +417,7 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
+    riceJuiceClear: 0
   audioManager: {fileID: 0}
   timeOutSound: 
 --- !u!1 &864137831654771198
@@ -870,6 +873,7 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
+    riceJuiceClear: 0
   orderMenu: {fileID: 6488744439891724049}
   spriteRenderer: {fileID: 0}
   eatSound: eatSound
@@ -886,10 +890,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEat: 0
-  speechBox:
-  - {fileID: 1837208283847051793, guid: 080885fc4612fa9429deaa9939bfa384, type: 3}
-  - {fileID: 1571768706591317675, guid: 2f5d1090e7644b94588aa1fd5ca6a651, type: 3}
-  - {fileID: 4496908661966911722, guid: b00e88e2f7d090446b5d0b3bbb960768, type: 3}
   percentOfMenu: 0
   gukBabMax: 50
   paJeonMax: 100
@@ -930,6 +930,7 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
+    riceJuiceClear: 0
   customerMovement: {fileID: 8851026437609507813}
 --- !u!50 &5341880407600492806
 Rigidbody2D:
@@ -1125,6 +1126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackPanelIdx: 8
+  riceJuicePrefab: {fileID: 3502175190827869967, guid: 366380a53953f6f498a2ba84f5e26448, type: 3}
 --- !u!58 &5019639514857365026
 CircleCollider2D:
   m_ObjectHideFlags: 0

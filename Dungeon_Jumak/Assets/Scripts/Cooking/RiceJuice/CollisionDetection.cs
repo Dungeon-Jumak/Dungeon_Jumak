@@ -6,8 +6,6 @@ public class CollisionDetection : MonoBehaviour
     public GameObject kettleObject;
     public GameObject checkKettleObject;
 
-    public GameObject sikhyePrefab;
-
     public GameObject blackPanel;
 
     private int MatchKettle = 0;
@@ -92,13 +90,11 @@ public class CollisionDetection : MonoBehaviour
         {
             foreach (Transform child in parentObject.transform)
             {
+                DataManager.Instance.data.riceJuiceClear = true;
                 child.gameObject.SetActive(false);
                 blackPanel.SetActive(false);
             }
         }
-
-        //===테이블에 놓이는 기능 추가↓===//
-
     }
 
     void FailRiceJuiceMiniGame()

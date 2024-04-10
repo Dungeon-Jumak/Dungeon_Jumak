@@ -41,8 +41,10 @@ public class Data
     public int curMenuUnlockLevel = 1;
     public int maxMenuUnlockLevel = 3;
 
-    //---불 미니게임 관련---//
+    //---미니게임 관련---//
     public float fireSize = 100f;
+    public int tableIndex = 0;
+    public bool riceJuiceClear = false; //식혜 미니게임 성공 여부
 
     //---던전 관련---//
 

@@ -11,6 +11,7 @@ public class PlayerServing : MonoBehaviour
 {
     public bool isPlace = false;
     public bool isCarryingFood = false; // 음식을 들고 있는지 확인
+    public Transform[] tables;
 
     public GameObject hand; // 플레이어 손 위치
     public CookGukbap cookGukbap; // 국밥 카운트 참조 스크립트
@@ -19,8 +20,7 @@ public class PlayerServing : MonoBehaviour
 
     private Animator animator;//애니메이터
 
-    [SerializeField]
-    private Transform[] tables;
+
 
     [SerializeField]
     private Data data; // Data 스크립트
@@ -163,6 +163,18 @@ public class PlayerServing : MonoBehaviour
             audioManager.Play(trashCanSound);
             GameObject food = foodQueue.Dequeue();
             Destroy(food);
+        }
+    }
+
+    //테이블 인덱스 업데이트
+    public void CheckTable(GameObject go)
+    {
+        for (int i = 0; i < tables.Length; i++)
+        {
+            if (go.gameObject == tables[i].gameObject)
+            {
+                data.tableIndex = i;
+            }
         }
     }
 

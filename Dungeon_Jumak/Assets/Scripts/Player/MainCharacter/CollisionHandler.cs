@@ -28,6 +28,7 @@ public class CollisionHandler : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Table_L") || other.gameObject.CompareTag("Table_R"))
         {
+            playerServing.CheckTable(other.gameObject);
             playerServing.PlaceFoodOnTable(other.gameObject);
         }
         else if (other.gameObject.CompareTag("Trash"))
