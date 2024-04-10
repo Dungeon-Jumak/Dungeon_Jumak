@@ -7,6 +7,22 @@ public class Grandma : MonoBehaviour
     [SerializeField]
     private GameObject grandmaSpeechBox;
 
+    [SerializeField]
+    private AudioManager audioManager;
+
+    [SerializeField]
+    private string cookingSound;
+
+    private void Start()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
+
+    private void Update()
+    {
+        PlayCookingSound();
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         grandmaSpeechBox.SetActive(true);
@@ -15,5 +31,16 @@ public class Grandma : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         grandmaSpeechBox.SetActive(false);
+    }
+
+    //---cookingSound 관련 함수---//
+    private void PlayCookingSound()
+    {
+        if (!audioManager.IsPlaying(cookingSound))
+        {
+            audioManager.Play(cookingSound);
+            audioManager.SetLoop(cookingSound);
+            audioManager.Setvolume(cookingSound, 0.2f);
+        }
     }
 }

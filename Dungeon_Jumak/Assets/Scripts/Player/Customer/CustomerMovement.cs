@@ -216,7 +216,7 @@ public class CustomerMovement : MonoBehaviour
         isArrive = false;
         isReturn = false;
         isJustreturn = false;
-        orderMenu.isRun = true;
+        orderMenu.isEat = false;
     }
 
     //---손님 기본 움직임---//
@@ -238,9 +238,10 @@ public class CustomerMovement : MonoBehaviour
         animator.SetFloat("dirX", -currentDir.x);
 
         isReturn = true;
-        data.curSeatSize--;
         data.isAllocated[seatIndex] = false;
         WayPointIndex--;
+
+        data.curSeatSize--;
 
         data.onTables[seatIndex] = false;
         data.isFinEat[seatIndex] = true;
@@ -252,10 +253,7 @@ public class CustomerMovement : MonoBehaviour
     void JustOut()
     {
         animator.SetBool("isStop", false);
-        //***수정 필요***//
-        //GameObject.Find("UI_Speech_Box_Full(Clone)").SetActive(false);
         Destroy(GameObject.Find("UI_Speech_Box_Full(Clone)"));
-        //speech_Box_Full.gameObject.SetActive(false);
         isJustreturn = true;
     }
 

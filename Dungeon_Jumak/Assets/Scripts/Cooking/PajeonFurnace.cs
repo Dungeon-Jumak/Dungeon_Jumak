@@ -9,7 +9,7 @@ public class PajeonFurnace : MonoBehaviour
     [SerializeField]
     private GameObject pajeonMiniGamePopup;
     [SerializeField]
-    private PlayerMovement player;
+    private PlayerServing player;
 
     [SerializeField]
     private Animator animator;

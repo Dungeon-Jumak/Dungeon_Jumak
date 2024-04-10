@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3735126296206357679}
   m_Layer: 8
   m_Name: Env_Gookbab_Prefab
-  m_TagString: Gukbap
+  m_TagString: Gukbab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: -527043271
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5b05e71cd5d0fe54db763213d29b079c, type: 3}
-  m_Color: {r: 1, g: 0.7881289, b: 0.6367924, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 457d9894a91ffd44f96607bfaccdd7b9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,7 +103,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.74, y: 0.71}
+    oldSize: {x: 0.78, y: 0.74}
     newSize: {x: 0.74, y: 0.71}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

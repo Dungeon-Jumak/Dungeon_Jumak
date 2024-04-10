@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class RiceJuiceOrder : MonoBehaviour
 {
+    public int blackPanelIdx; //블랙 패널 인덱스
+
     CircleCollider2D circleCollider;
 
     bool playerInsideCollider = false;
+
+    private PlayerServing player;
 
 
     void Start()
     {
         circleCollider = GetComponent<CircleCollider2D>();
+        player = FindObjectOfType<PlayerServing>();
     }
 
     void Update()
@@ -19,7 +24,7 @@ public class RiceJuiceOrder : MonoBehaviour
         if (playerInsideCollider)
         {
             //===마우스 입력 확인===//
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !player.isCarryingFood)
             {
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 mousePosition.z = transform.position.z;
@@ -33,6 +38,7 @@ public class RiceJuiceOrder : MonoBehaviour
                         foreach (Transform child in parentObject.transform)
                         {
                             child.gameObject.SetActive(true);
+                            GameObject.Find("Home_Panel").transform.GetChild(blackPanelIdx);
                         }
                     }
 

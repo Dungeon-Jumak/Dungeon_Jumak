@@ -165,8 +165,8 @@ public class PaJeonManager : MonoBehaviour
                 hasFailed = true;
                 GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
                 Instantiate(PaJeonPrefab, playerObject.transform.position, Quaternion.identity);
-                PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
-                playerMovement.isCarryingFood= false;
+                PlayerServing playerServing = playerObject.GetComponent<PlayerServing>();
+                playerServing.isCarryingFood= false;
 
                 furnace.ExitPajeonMiniGame();
             }
@@ -179,8 +179,8 @@ public class PaJeonManager : MonoBehaviour
             hasFailed = true;
 
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-            PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
-            playerMovement.isCarryingFood = false;
+            PlayerServing playerServing = playerObject.GetComponent<PlayerServing>();
+            playerServing.isCarryingFood = false;
 
             furnace.ExitPajeonMiniGame();
         }

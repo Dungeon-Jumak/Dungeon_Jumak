@@ -24,6 +24,7 @@ public class BubbleShadowController : MonoBehaviour
     [SerializeField]
     private string timeOutSound;
 
+
     private void Start()
     {
         shadowRenderer = GetComponent<SpriteRenderer>();
@@ -58,7 +59,7 @@ public class BubbleShadowController : MonoBehaviour
         }
     }
 
-    void Initialize()
+    public void Initialize()
     {
         timer = 0;
         //그림자 시작 위치 초기화

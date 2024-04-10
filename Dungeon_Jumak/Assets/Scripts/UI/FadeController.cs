@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class FadeController : MonoBehaviour
 {
     public Image black;
+
     private Color color;
 
     private WaitForSeconds waitTime = new WaitForSeconds(0.01f);
+
+
 
     public void FadeOut(float speed = 0.02f)
     {

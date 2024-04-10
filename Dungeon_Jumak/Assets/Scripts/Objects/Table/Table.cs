@@ -7,7 +7,7 @@ public class Table : MonoBehaviour
     public bool isOnFood;
 
     [SerializeField]
-    private PlayerMovement player;
+    private PlayerServing player;
 
     private void Start()
     {
