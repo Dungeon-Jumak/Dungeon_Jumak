@@ -2067,8 +2067,16 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
+    tableIndex: 0
     riceJuiceClear: 0
   fadeController: {fileID: 1814742710}
+  Dansangs:
+  - {fileID: 1281771844}
+  - {fileID: 516219986}
+  - {fileID: 831017352}
+  - {fileID: 216387723}
+  - {fileID: 1361945491}
+  - {fileID: 1893696422}
 --- !u!4 &368599870
 Transform:
   m_ObjectHideFlags: 0
@@ -2077,7 +2085,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368599868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.31390563, y: -0.2537233, z: -0.004500015}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2946,7 +2954,6 @@ GameObject:
   m_Component:
   - component: {fileID: 517113926}
   - component: {fileID: 517113928}
-  - component: {fileID: 517113927}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -2976,32 +2983,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &517113927
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 517113925}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 1.4767823, y: -1.097871}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.0687237, y: 3.1957414}
-  m_EdgeRadius: 0
 --- !u!114 &517113928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3014,13 +2995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0799e4833033394b8227a3efae43cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dansangs:
-  - {fileID: 1281771844}
-  - {fileID: 516219986}
-  - {fileID: 831017352}
-  - {fileID: 216387723}
-  - {fileID: 1361945491}
-  - {fileID: 1893696422}
   data:
     curPlayerLV: 1
     maxPlayerLV: 0
@@ -3029,10 +3003,10 @@ MonoBehaviour:
     isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
-    isAllocated: 000000000000000000000000
-    isCustomer: 000000000000000000000000
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
+    isAllocated: 
+    isCustomer: 
+    onTables: 
+    isFinEat: 
     menuCategories:
     - 
     - 
@@ -3055,6 +3029,7 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
+    tableIndex: 0
     riceJuiceClear: 0
 --- !u!1 &517448830
 GameObject:
@@ -3670,6 +3645,7 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
+    tableIndex: 0
     riceJuiceClear: 0
   menuCategori: 
   menuValue: 0
@@ -3753,6 +3729,7 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
+    tableIndex: 0
     riceJuiceClear: 0
   audioManager: {fileID: 0}
   coinSound: coinSound
@@ -5716,6 +5693,7 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
+    tableIndex: 0
     riceJuiceClear: 0
   fire: {fileID: 958047950}
 --- !u!212 &958047953
@@ -7056,6 +7034,7 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
+    tableIndex: 0
     riceJuiceClear: 0
   audioManager: {fileID: 1712978252}
   pauseSound: 
@@ -10464,6 +10443,7 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
+    tableIndex: 0
     riceJuiceClear: 0
 --- !u!114 &1563115938
 MonoBehaviour:
@@ -12469,6 +12449,7 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
+    tableIndex: 0
     riceJuiceClear: 0
 --- !u!4 &1849868252
 Transform:

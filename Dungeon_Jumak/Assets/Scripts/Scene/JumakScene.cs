@@ -21,6 +21,10 @@ public class JumakScene : BaseScene
     [SerializeField]
     private FadeController fadeController;
 
+    //---해금 할 단상 배열---//
+    [SerializeField]
+    private GameObject[] Dansangs;
+
     private void Start()
     {
         playBGM = false;
@@ -49,6 +53,7 @@ public class JumakScene : BaseScene
     {
         UpdateCoin();
         UpdateLevel();
+        unlockTable();
 
         if (!data.isPlayBGM)
         {
@@ -98,5 +103,17 @@ public class JumakScene : BaseScene
     {
         bgmManager.Stop();
         SceneManager.LoadScene(_sceneName);
+    }
+
+    //---게임 로드시 데이터 값에 따라 해금---//
+    void unlockTable()
+    {
+        for (int i = 0; i < data.curUnlockLevel; i++)
+        {
+            if (Dansangs[i] != null) // 해당 게임 오브젝트가 파괴되지 않았는지 확인
+            {
+                Dansangs[i].SetActive(true);
+            }
+        }
     }
 }
