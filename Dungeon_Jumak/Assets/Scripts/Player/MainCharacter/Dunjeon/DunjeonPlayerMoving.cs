@@ -13,9 +13,9 @@ public class DunjeonPlayerMoving : MonoBehaviour
 
     // 레인 별 위치 설정
     private Vector3[] lanePositions = {
-        new Vector3(-1.4f, -4.0f, 0),
-        new Vector3(0.0f, -4.0f, 0),
-        new Vector3(1.4f, -4.0f, 0)
+        new Vector3(-3.7f, -1.3f, 13.5f),
+        new Vector3(-3.7f, -1.3f, 13f),
+        new Vector3(-3.7f, -1.3f, 12.5f)
     };
 
     void Start()
