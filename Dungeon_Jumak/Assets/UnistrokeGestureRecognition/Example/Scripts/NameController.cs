@@ -5,7 +5,8 @@ using UnityEngine.UI;
 namespace UnistrokeGestureRecognition.Example {
     public sealed class NameController : MonoBehaviour {
 
-        public CoolTime cooltime;
+        public FireBall fireball;
+        public BigBang bigbang;
 
         private static readonly Color _transparent = new(1, 1, 1, 0);
 
@@ -26,10 +27,14 @@ namespace UnistrokeGestureRecognition.Example {
             _text.text = name;
             StartCoroutine(ShowNameAndHide());
 
-            if (name == "Hi")
+            if (name == "FireBall")
             {
-                Debug.Log("마법 발동 짜라란~");
-                cooltime.CoolStart();
+                fireball.FireBallCoolStart();
+            }
+
+            if (name == "BigBang")
+            {
+                bigbang.BigBangCoolStart();
             }
 
         }

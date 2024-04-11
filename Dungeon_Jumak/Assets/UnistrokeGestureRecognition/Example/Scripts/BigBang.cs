@@ -2,17 +2,19 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using Newtonsoft.Json.Bson;
 
-public class CoolTime : MonoBehaviour
+public class BigBang : MonoBehaviour
 {
-    private float coolTime = 1.0f;
-    private float coolTime_max = 1.0f;
-    private bool CoolCheck = false;
+    public MonsterBuChu monsterBuChu;
     public Image disable;
 
+    private float coolTime = 4.0f;
+    private float coolTime_max = 4.0f;
+    private bool CoolCheck = false;
+    
 
-    IEnumerator CoolTimeFunc()
+
+    IEnumerator BigBangCoolTimeFunc()
     {
         while (coolTime > 0.0f)
         {
@@ -32,23 +34,23 @@ public class CoolTime : MonoBehaviour
         }
     }
 
-    public void CoolStart()
+    public void BigBangCoolStart()
     {
 
         if (CoolCheck == false)
         {
             coolTime = coolTime_max;
-            disable.fillAmount = 1.0f; 
+            disable.fillAmount = 1.0f;
 
-            StartCoroutine(CoolTimeFunc());
+            StartCoroutine(BigBangCoolTimeFunc());
 
-            FireBallMagic();
+            BigBangMagic();
             CoolCheck = true;
         }
     }
 
-    public void FireBallMagic()
+    public void BigBangMagic()
     {
-        Debug.Log("µ¥¹ÌÁö : 0.5");
+        monsterBuChu.MonsterHPs -= 3f;
     }
 }
