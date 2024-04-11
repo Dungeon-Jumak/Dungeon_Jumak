@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BubbleShadowController : MonoBehaviour
 {
+    public bool isStop;
+    
     public float fadeInDuration = 10f; //그림자가 나타나는 시간
     public float startY = -10f; //시작 Y 위치
     public float endY = 0f; // 종료 Y 위치
@@ -25,8 +27,11 @@ public class BubbleShadowController : MonoBehaviour
     private string timeOutSound;
 
 
+
     private void Start()
     {
+        fadeInDuration = 13f;
+
         shadowRenderer = GetComponent<SpriteRenderer>();
         
         //---사운드 관련---//
@@ -46,6 +51,7 @@ public class BubbleShadowController : MonoBehaviour
 
     void Update()
     {
+        //if(!isStop) //시간 정지 기능 추가 하고 싶을 때 사용
         timer += Time.deltaTime;
 
         float newY = Mathf.Lerp(startY, endY, timer / fadeInDuration);
@@ -61,6 +67,7 @@ public class BubbleShadowController : MonoBehaviour
 
     public void Initialize()
     {
+        isStop = false;
         timer = 0;
         //그림자 시작 위치 초기화
         transform.localPosition = new Vector3(transform.localPosition.x, startY, transform.localPosition.z);

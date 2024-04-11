@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfef575f641bb347900f87f3e9b34c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStop: 0
   fadeInDuration: 13
   startY: -7
   endY: 0
@@ -238,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfef575f641bb347900f87f3e9b34c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStop: 0
   fadeInDuration: 13
   startY: -7
   endY: 0
@@ -379,6 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfef575f641bb347900f87f3e9b34c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStop: 0
   fadeInDuration: 13
   startY: -7
   endY: 0
@@ -1093,7 +1096,7 @@ GameObject:
   - component: {fileID: 5019639514857365026}
   m_Layer: 0
   m_Name: Speech_Box_RiceJuice
-  m_TagString: Untagged
+  m_TagString: SpeechBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1262,7 +1265,7 @@ GameObject:
   - component: {fileID: 5616664000885067518}
   m_Layer: 0
   m_Name: Speech_Box_Pajeon
-  m_TagString: Untagged
+  m_TagString: SpeechBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1400,7 +1403,7 @@ GameObject:
   - component: {fileID: 8240791771548434112}
   m_Layer: 0
   m_Name: Speech_Box_GukBab
-  m_TagString: Untagged
+  m_TagString: SpeechBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
