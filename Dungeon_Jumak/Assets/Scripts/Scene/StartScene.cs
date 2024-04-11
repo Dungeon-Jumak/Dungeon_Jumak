@@ -27,7 +27,7 @@ public class StartScene : MonoBehaviour
         bgmManager = FindObjectOfType<BGMManager>();
 
         //---BGM 사운드 트랙 설정---//
-        bgmSoundTrack = 1;
+        bgmSoundTrack = 0;
 
         //---기본 BGM 실행---//
         bgmManager.Play(bgmSoundTrack);
@@ -54,16 +54,6 @@ public class StartScene : MonoBehaviour
             bgmManager.FadeInMusic(maxVolume);
             bgmManager.SetLoop();
         }
-    }
-
-    public void BGMON()
-    {
-        data.isPlayBGM = true;
-    }
-
-    public void BGMOFF()
-    {
-        data.isPlayBGM = false;
     }
 
 

@@ -2277,6 +2277,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272100846}
   m_CullTransparentMesh: 1
+--- !u!114 &1274304067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3940366710970974263, guid: f863823d1c6bf5046803706f22683219, type: 3}
+  m_PrefabInstance: {fileID: 96677668}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40d0c981b68c34f4d89fef73f6bc5c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1441964797
 GameObject:
   m_ObjectHideFlags: 0
@@ -2384,8 +2395,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1854808335}
-        m_TargetAssemblyTypeName: StartScene, Assembly-CSharp
+      - m_Target: {fileID: 1274304067}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: BGMON
         m_Mode: 1
         m_Arguments:
@@ -2521,8 +2532,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1854808335}
-        m_TargetAssemblyTypeName: StartScene, Assembly-CSharp
+      - m_Target: {fileID: 1274304067}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: BGMOFF
         m_Mode: 1
         m_Arguments:
@@ -2646,6 +2657,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7559385798956409406, guid: bded53e50852a0541b1bd50ae72e1286, type: 3}
+      propertyPath: bgms.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0851ccdc5b2b6b6468582ad16c492a79, type: 3}
+    - target: {fileID: 7559385798956409406, guid: bded53e50852a0541b1bd50ae72e1286, type: 3}
+      propertyPath: bgms.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: c1b295729f5ed5d4eb56efaddcd05bf4, type: 3}
+    - target: {fileID: 7559385798956409406, guid: bded53e50852a0541b1bd50ae72e1286, type: 3}
+      propertyPath: bgms.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 34888b3dff37e514284b72216f3f3414, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bded53e50852a0541b1bd50ae72e1286, type: 3}
 --- !u!1 &1586989880

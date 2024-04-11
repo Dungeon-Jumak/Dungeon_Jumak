@@ -28,6 +28,9 @@ public class JumakScene : BaseScene
     [SerializeField]
     private GameObject[] Dansangs;
 
+    [SerializeField]
+    private string pauseSound;
+
     private void Start()
     {
         playBGM = false;
@@ -41,6 +44,8 @@ public class JumakScene : BaseScene
         bgmManager.Play(bgmSoundTrack);
         bgmManager.FadeInMusic(maxVolume);
         bgmManager.SetLoop();
+
+        pauseSound = "pauseSound";
     }
     protected override void Init()
     {
@@ -75,17 +80,36 @@ public class JumakScene : BaseScene
             bgmManager.FadeInMusic(maxVolume);
             bgmManager.SetLoop();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            AddTable();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            AddRecipe();
+        }
     }
-    public void BGMON()
+    public void AddTable()
     {
-        data.isPlayBGM = true;
+        if (data.curUnlockLevel < data.maxUnlockLevel)
+        {
+            audioManager.Play(pauseSound);
+            data.curUnlockLevel++;
+            data.maxSeatSize += 2;
+        }
     }
 
-    public void BGMOFF()
+    public void AddRecipe()
     {
-        data.isPlayBGM = false;
-    }
+        if (data.curMenuUnlockLevel < data.maxMenuUnlockLevel)
+        {
+            audioManager.Play(pauseSound);
+            data.curMenuUnlockLevel++;
+        }
 
+    }
     public override void Clear()
     {
 

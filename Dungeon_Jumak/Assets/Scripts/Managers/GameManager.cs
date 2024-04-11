@@ -60,20 +60,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            AddTable();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            AddRecipe();
-        }
-    }
-
     //---일시 정지 기능---//
     public void Pause()
     {
@@ -96,24 +82,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddTable()
+
+    public void BGMON()
     {
-        if (data.curUnlockLevel < data.maxUnlockLevel)
-        {
-            audioManager.Play(pauseSound);
-            data.curUnlockLevel++;
-            data.maxSeatSize += 2;
-        }
+        data.isPlayBGM = true;
     }
 
-    public void AddRecipe()
+    public void BGMOFF()
     {
-        if (data.curMenuUnlockLevel < data.maxMenuUnlockLevel)
-        {
-            audioManager.Play(pauseSound);
-            data.curMenuUnlockLevel++;
-        }
-
+        data.isPlayBGM = false;
     }
 
 }

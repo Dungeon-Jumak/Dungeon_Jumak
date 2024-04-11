@@ -16,7 +16,8 @@ public class Grandma : MonoBehaviour
     private void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
-        PlayCookingSound();
+        //PlayCookingSound();
+        Invoke("PlayCookingSound", 0.5f);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
