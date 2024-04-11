@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class MonsterMovement : MonoBehaviour
 {
-    public float speed = 2.5f; // 장애물이 내려오는 속도
+    public float speed = 1.5f; // 장애물이 내려오는 속도
 
     void Update()
     {
         // 장애물을 아래로 이동
-        transform.position += Vector3.down * speed * Time.deltaTime;
+        transform.position += Vector3.left * speed * Time.deltaTime;
 
         // 장애물이 화면 밖으로 나갔는지 확인하고, 나갔으면 삭제
         if (transform.position.y < -6f) // 화면 하단 경계 설정

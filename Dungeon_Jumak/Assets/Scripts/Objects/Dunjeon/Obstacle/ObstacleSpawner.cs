@@ -48,13 +48,15 @@ public class ObstacleSpawner : MonoBehaviour
         float chance = Random.Range(0f, 100f);
         GameObject prefabToSpawn = chance < 80 ? obstaclePrefab : recoveryPrefab;
 
-        // 선택된 레인에 프리팹 생성
-        Vector3 spawnPosition = lanePositions[lane] + transform.position;
-        GameObject instance = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
-        instance.transform.Rotate(0, 90, 0); // y축 기준으로 90도 회전
+        if(data.isMonster == false)
+        {
+            // 선택된 레인에 프리팹 생성
+            Vector3 spawnPosition = lanePositions[lane] + transform.position;
+            GameObject instance = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+            instance.transform.Rotate(0, 90, 0); // y축 기준으로 90도 회전
 
-        // 확률에 따라 isObstacle 설정
-        data.isObstacle = true;
+            data.isObstacle = true;
+        }
 
         // 장애물 생성 딜레이를 랜덤하게 설정
         spawnDelay = Random.Range(1f, 6f);
