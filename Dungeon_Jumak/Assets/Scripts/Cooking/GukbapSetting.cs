@@ -81,7 +81,7 @@ public class GukbapSetting : MonoBehaviour
 
             foreach (Collider2D collider in colliders)
             {
-                if (collider.gameObject.CompareTag("Gukbap"))
+                if (collider.gameObject.CompareTag("Gukbab"))
                 {
                     gukbapPresent = true;
 

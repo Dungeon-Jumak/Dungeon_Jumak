@@ -20,14 +20,18 @@ public class Data
     //---CustomerSystem---//
     public int maxSeatSize = 2;
     public int curSeatSize = 0;
+
     public bool[] isAllocated = new bool[12];
-    public bool[] isCustomer = new bool[12]; // 고객 테이블에 도착했는지 체크하기 위한 변수
-    public bool[] onTables = new bool[12]; //테이블 위에 음식을 체크하기 위한 변수
-    public bool[] isFinEat = new bool[12]; //다 먹었음을 알리는 변수
-    public int[] menuNums = new int[12];
+    public bool[] isCustomer = new bool[12];            //고객 테이블에 도착했는지 체크하기 위한 변수
+    public bool[] onTables = new bool[12];              //테이블 위에 음식을 체크하기 위한 변수
+    public bool[] isFinEat = new bool[12];              //다 먹었음을 알리는 변수
+
+    public string[] menuCategories = new string[12]; //각 자리에 있는 메뉴의 카테고리
+    public int[] menuLV = new int[12];              //각 테이블에 있는 메뉴의 벨류
+    public int[] ingredient = new int[5];           //0: 돼지고기, 1: 부추, 2: 콩나물, 3: 오징어, 4: 소고기
+
     public int curCoin = 0;
     public int maxCoin = 999999;
-    public int[] foodIngredients; //음식 재료
 
     //---자리 해금 레벨---//
     public int curUnlockLevel = 1;
@@ -37,8 +41,10 @@ public class Data
     public int curMenuUnlockLevel = 1;
     public int maxMenuUnlockLevel = 3;
 
-    //---불 미니게임 관련---//
+    //---미니게임 관련---//
     public float fireSize = 100f;
+    public int tableIndex = 0;
+    public bool riceJuiceClear = false; //식혜 미니게임 성공 여부
 
     //---던전 관련---//
     public bool isMonster = false;//Monster spawn 여부 확인

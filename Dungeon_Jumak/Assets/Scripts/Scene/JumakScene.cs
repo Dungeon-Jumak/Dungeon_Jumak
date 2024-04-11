@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class JumakScene : BaseScene
 {
@@ -17,16 +18,20 @@ public class JumakScene : BaseScene
 
     private bool playBGM = false;
 
+    [SerializeField]
+    private FadeController fadeController;
+
+    //---해금 할 단상 배열---//
+    [SerializeField]
+    private GameObject[] Dansangs;
+
     private void Start()
     {
         playBGM = false;
 
         data = DataManager.Instance.data;
         bgmManager = FindObjectOfType<BGMManager>();
-
-        //---BGM 사운드 트랙 설정---//
-        bgmSoundTrack = 0;
-        maxVolume = 0.3f;
+        fadeController = FindObjectOfType<FadeController>();
 
         //---기본 BGM 실행---//
         bgmManager.Play(bgmSoundTrack);
@@ -48,6 +53,7 @@ public class JumakScene : BaseScene
     {
         UpdateCoin();
         UpdateLevel();
+        unlockTable();
 
         if (!data.isPlayBGM)
         {
@@ -90,6 +96,24 @@ public class JumakScene : BaseScene
     // --- 코인 변경 --- //
     public void UpdateCoin()
     {
-        GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curCoin.ToString();
+        GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curCoin.ToString() + "전";
+    }
+
+    public void ConvertScene(string _sceneName)
+    {
+        bgmManager.Stop();
+        SceneManager.LoadScene(_sceneName);
+    }
+
+    //---게임 로드시 데이터 값에 따라 해금---//
+    void unlockTable()
+    {
+        for (int i = 0; i < data.curUnlockLevel; i++)
+        {
+            if (Dansangs[i] != null) // 해당 게임 오브젝트가 파괴되지 않았는지 확인
+            {
+                Dansangs[i].SetActive(true);
+            }
+        }
     }
 }

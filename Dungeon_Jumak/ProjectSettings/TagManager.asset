@@ -6,17 +6,19 @@ TagManager:
   tags:
   - Table_L
   - Table_R
-  - Gukbap
   - Pajeon
   - Trash
   - RiceJuiceMiniGame
-  - Door_Ju
-  - Door_Shop
   - Kettle
   - CheckKettle
   - Obstacle
   - Monster
   - Recovery
+  - floor
+  - Grandma
+  - UI
+  - RiceJuice
+  - Gukbab
   layers:
   - Default
   - TransparentFX

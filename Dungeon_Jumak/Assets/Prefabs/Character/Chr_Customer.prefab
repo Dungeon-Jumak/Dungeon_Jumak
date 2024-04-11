@@ -104,19 +104,41 @@ MonoBehaviour:
   timer: 0
   orderMenu: {fileID: 6488744439891724049}
   data:
+    curPlayerLV: 1
+    maxPlayerLV: 0
+    isPlayBGM: 0
+    isSound: 1
+    isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
     isCustomer: 000000000000000000000000
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+    menuCategories:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    ingredient: 0000000000000000000000000000000000000000
+    curCoin: 0
+    maxCoin: 999999
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    isPlayBGM: 0
     fireSize: 100
+    tableIndex: 0
+    riceJuiceClear: 0
   audioManager: {fileID: 0}
   timeOutSound: 
 --- !u!1 &264913759732028951
@@ -223,19 +245,41 @@ MonoBehaviour:
   timer: 0
   orderMenu: {fileID: 6488744439891724049}
   data:
+    curPlayerLV: 1
+    maxPlayerLV: 0
+    isPlayBGM: 0
+    isSound: 1
+    isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
     isCustomer: 000000000000000000000000
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+    menuCategories:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    ingredient: 0000000000000000000000000000000000000000
+    curCoin: 0
+    maxCoin: 999999
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    isPlayBGM: 0
     fireSize: 100
+    tableIndex: 0
+    riceJuiceClear: 0
   audioManager: {fileID: 0}
   timeOutSound: 
 --- !u!1 &264913761009631528
@@ -342,19 +386,41 @@ MonoBehaviour:
   timer: 0
   orderMenu: {fileID: 6488744439891724049}
   data:
+    curPlayerLV: 1
+    maxPlayerLV: 0
+    isPlayBGM: 0
+    isSound: 1
+    isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
     isCustomer: 000000000000000000000000
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+    menuCategories:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    ingredient: 0000000000000000000000000000000000000000
+    curCoin: 0
+    maxCoin: 999999
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    isPlayBGM: 0
     fireSize: 100
+    tableIndex: 0
+    riceJuiceClear: 0
   audioManager: {fileID: 0}
   timeOutSound: 
 --- !u!1 &864137831654771198
@@ -430,8 +496,8 @@ SpriteRenderer:
   m_SortingLayerID: -594215741
   m_SortingLayer: 6
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 806f83fa75aef78408214d03f2eb9314, type: 3}
-  m_Color: {r: 0.65882355, g: 0.38431376, b: 0.18823531, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 457d9894a91ffd44f96607bfaccdd7b9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -519,7 +585,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.8, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -643,8 +709,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1081448553928007995}
-  - {fileID: 742276691264642655}
   - {fileID: 4442289131433002471}
+  - {fileID: 742276691264642655}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -765,34 +831,53 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   seatIndex: 0
-  isEat: 0
-  isTimeOut: 0
   StartPoint: {fileID: 7614776794981503770, guid: f6d977643ffff6847932243f949ddd82, type: 3}
   StopPoint: {fileID: 2679968256591990733, guid: da71a6124a1652b43896de71e2ad7f27, type: 3}
   isFull: 0
   isArrive: 0
   isReturn: 0
   isJustreturn: 0
-  isInitialize: 0
   CurPosition: {x: 0, y: 0, z: 0}
   WayPointIndex: 0
   speed: 2
-  speech_Box_Full: {fileID: 6906199816215992071, guid: 2a74bbfeb1dfc4d4b98d9d94d4e81aa1, type: 3}
+  isInitialize: 0
+  speech_Box_Full: {fileID: 773121011443230919, guid: 2a74bbfeb1dfc4d4b98d9d94d4e81aa1, type: 3}
   data:
+    curPlayerLV: 1
+    maxPlayerLV: 0
+    isPlayBGM: 0
+    isSound: 1
+    isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
     isCustomer: 000000000000000000000000
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+    menuCategories:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    ingredient: 0000000000000000000000000000000000000000
+    curCoin: 0
+    maxCoin: 999999
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    isPlayBGM: 0
     fireSize: 100
-  dir: {x: 0, y: 0}
+    tableIndex: 0
+    riceJuiceClear: 0
   orderMenu: {fileID: 6488744439891724049}
   spriteRenderer: {fileID: 0}
   eatSound: eatSound
@@ -808,35 +893,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9fad899ca2c52f438916bcaf957e217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuNum: 0
-  isRun: 1
-  speechBox:
-  - {fileID: 1837208283847051793, guid: 080885fc4612fa9429deaa9939bfa384, type: 3}
-  - {fileID: 1571768706591317675, guid: 2f5d1090e7644b94588aa1fd5ca6a651, type: 3}
-  - {fileID: 4496908661966911722, guid: b00e88e2f7d090446b5d0b3bbb960768, type: 3}
+  isEat: 0
   percentOfMenu: 0
   gukBabMax: 50
-  riceJuiceMax: 70
   paJeonMax: 100
+  riceJuiceMax: 70
   min: 0
   max: 50
-  gukBabNum: 1
-  riceJuiceNum: 2
-  paJeonNum: 3
   data:
+    curPlayerLV: 1
+    maxPlayerLV: 0
+    isPlayBGM: 0
+    isSound: 1
+    isPause: 0
     maxSeatSize: 2
     curSeatSize: 0
     isAllocated: 000000000000000000000000
     isCustomer: 000000000000000000000000
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+    menuCategories:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    ingredient: 0000000000000000000000000000000000000000
+    curCoin: 0
+    maxCoin: 999999
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    isPlayBGM: 0
     fireSize: 100
+    tableIndex: 0
+    riceJuiceClear: 0
   customerMovement: {fileID: 8851026437609507813}
 --- !u!50 &5341880407600492806
 Rigidbody2D:
@@ -907,14 +1006,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5410816926405935002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.48, z: 0}
-  m_LocalScale: {x: 0.45, y: 0.45, z: 0.3}
+  m_LocalPosition: {x: 0, y: 8.2, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2099255948495271926}
   - {fileID: 264913759244315604}
   m_Father: {fileID: 1940172851354618647}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5713609842313285241
 SpriteRenderer:
@@ -1031,6 +1130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60f60f23b5ae86448c1b838d07be32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackPanelIdx: 8
+  riceJuicePrefab: {fileID: 3502175190827869967, guid: 366380a53953f6f498a2ba84f5e26448, type: 3}
+  idx: 0
 --- !u!58 &5019639514857365026
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1073,14 +1175,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6314129345122225070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.48, z: 0}
-  m_LocalScale: {x: 0.45, y: 0.45, z: 0.3}
+  m_LocalPosition: {x: 0, y: 8.2, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 435107706660683666}
   - {fileID: 264913759732028950}
   m_Father: {fileID: 1940172851354618647}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7416638533090195391
 SpriteRenderer:
@@ -1211,8 +1313,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8269334800000733491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.48, z: 0}
-  m_LocalScale: {x: 0.45, y: 0.45, z: 0.3}
+  m_LocalPosition: {x: 0, y: 8.2, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6918246469041870577}

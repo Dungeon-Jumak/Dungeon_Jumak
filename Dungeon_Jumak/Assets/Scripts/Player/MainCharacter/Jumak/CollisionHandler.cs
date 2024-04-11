@@ -5,18 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-    private PlayerMovement playerMovement;
+    private PlayerServing playerServing;
 
     private void Start()
     {
-        playerMovement = GetComponent<PlayerMovement>();
+        playerServing = GetComponent<PlayerServing>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Gukbap") || other.gameObject.CompareTag("Pajeon"))
+        if (other.gameObject.tag.Contains("Gukbab"))
         {
-            playerMovement.PickUpFood(other.gameObject);
+            playerServing.PickUpGukBab(other.gameObject);
+        }
+        else if (other.gameObject.tag.Contains("Pajeon"))
+        {
+            playerServing.PickUpPajeon(other.gameObject);
         }
     }
 
@@ -24,16 +28,12 @@ public class CollisionHandler : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Table_L") || other.gameObject.CompareTag("Table_R"))
         {
-            playerMovement.PlaceFoodOnTable(other.gameObject);
+            playerServing.CheckTable(other.gameObject);
+            playerServing.PlaceFoodOnTable(other.gameObject);
         }
         else if (other.gameObject.CompareTag("Trash"))
         {
-            playerMovement.ThrowAwayFood();
-        }
-        else if (other.gameObject.CompareTag("Door_Ju") || other.gameObject.CompareTag("Door_Shop"))
-        {
-            playerMovement.DataInitialize();
-            GameManager.Scene.LoadScene(Define.Scene.ComingSoon);
+            playerServing.ThrowAwayFood();
         }
     }
 }

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Fire : MonoBehaviour
 {
-    public Text sizeText;
+    public TextMeshProUGUI sizeText;
     public Image fireImage;
 
     public bool cook = true;

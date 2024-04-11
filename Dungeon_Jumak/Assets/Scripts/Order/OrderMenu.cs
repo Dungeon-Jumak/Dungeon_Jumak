@@ -5,34 +5,21 @@ using UnityEngine;
 
 public class OrderMenu : MonoBehaviour
 {
-    public int menuNum;
-    public bool isRun = true;
-
-    [Header("메뉴 말풍선")]
-    [SerializeField]
-    private GameObject[] speechBox;
+    public bool isEat;
 
     [Header("메뉴 결정 확률 변수")]
     [SerializeField]
     private int percentOfMenu;
     [SerializeField]
-    private int gukBabMax = 50;
+    private int gukBabMax;
     [SerializeField]
-    private int riceJuiceMax = 70;
+    private int paJeonMax;
     [SerializeField]
-    private int paJeonMax = 100;
+    private int riceJuiceMax;
     [SerializeField]
     private int min = 0;
     [SerializeField]
     private int max = 100;
-
-    [Header("메뉴 넘버링")]
-    [SerializeField]
-    private int gukBabNum = 1;
-    [SerializeField]
-    private int riceJuiceNum = 2;
-    [SerializeField]
-    private int paJeonNum = 3;
 
     //---데이터---//
     [SerializeField]
@@ -43,6 +30,12 @@ public class OrderMenu : MonoBehaviour
 
     void Start()
     {
+        isEat = false;
+
+        gukBabMax = 50;
+        paJeonMax = 80;
+        riceJuiceMax = 100;
+
         data = DataManager.Instance.data;
         customerMovement = GetComponent<CustomerMovement>();
     }
@@ -57,20 +50,20 @@ public class OrderMenu : MonoBehaviour
                 max = 50; //국밥
                 break;
             case 2:
-                max = 70; //식혜
+                max = 80; //파전
                 break;
             case 3:
-                max = 100; //파전
+                max = 100; //식혜
                 break;
         }
 
-        if (isRun)
+        if (!isEat)
         {
             //현재 자리에 음식이 올라갔다면
             if (data.onTables[customerMovement.seatIndex])
             {
-                isRun = false;
-                EatFood(data.menuNums[customerMovement.seatIndex] - 1);
+                isEat = true;
+                EatFood(data.menuCategories[customerMovement.seatIndex]);
             }
         }
     }
@@ -78,35 +71,86 @@ public class OrderMenu : MonoBehaviour
     //---메뉴 주문 결정 함수---//
     public void OrderNewMenu()
     {
-        int randNum = Random.Range(min, max);
+        int randNum = Random.Range(min, max); //랜덤 값
 
+        //확률에 따라 카테고리 결정
         if (randNum >= min && randNum < gukBabMax)
-            data.menuNums[customerMovement.seatIndex] = gukBabNum;
-        else if (randNum >= gukBabMax && randNum < riceJuiceMax)
-            data.menuNums[customerMovement.seatIndex] = riceJuiceNum;
-        else if (randNum >= riceJuiceMax && randNum < paJeonMax)
-            data.menuNums[customerMovement.seatIndex] = paJeonNum;
+            data.menuCategories[customerMovement.seatIndex] = "Gukbab";
+        else if (randNum >= gukBabMax && randNum < paJeonMax)
+            data.menuCategories[customerMovement.seatIndex] = "Pajeon";
+        else if (randNum >= paJeonMax && randNum < riceJuiceMax)
+            data.menuCategories[customerMovement.seatIndex] = "RiceJuice";
 
-        OrederSelectMenu(data.menuNums[customerMovement.seatIndex] - 1);
+        OrederSelectMenu(data.menuCategories[customerMovement.seatIndex]);
 
     }
 
     //주문 그림 보이게 하는 함수
-    void OrederSelectMenu(int nums)
+    void OrederSelectMenu(string _menuCategories)
     {
-        transform.GetChild(nums).gameObject.SetActive(true);
+        switch (_menuCategories)
+        {
+            case "Gukbab":
+                transform.GetChild(0).gameObject.SetActive(true);
+                break;
+            case "Pajeon":
+                transform.GetChild(1).gameObject.SetActive(true);
+                break;
+            case "RiceJuice":
+                transform.GetChild(2).gameObject.SetActive(true);
+                break;
+            default:
+                Debug.Log("에러 : 없는 메뉴 카테고리를 선택했습니다");
+                break;
+        }
+
     }
 
     //말풍선 지우는 함수
-    void EatFood(int nums)
+    void EatFood(string _menuCategories)
     {
-        transform.GetChild(nums).gameObject.SetActive(false);
+
+        switch (_menuCategories)
+        {
+            case "Gukbab":
+                BubbleShadowController bsc0 = transform.GetChild(0).GetChild(1).GetComponent<BubbleShadowController>();
+                bsc0.Initialize();
+                transform.GetChild(0).gameObject.SetActive(false);
+                break;
+            case "Pajeon":
+                BubbleShadowController bsc1 = transform.GetChild(1).GetChild(1).GetComponent<BubbleShadowController>();
+                bsc1.Initialize();
+                transform.GetChild(1).gameObject.SetActive(false);
+                break;
+            case "RiceJuice":
+                BubbleShadowController bsc2 = transform.GetChild(2).GetChild(1).GetComponent<BubbleShadowController>();
+                bsc2.Initialize();
+                transform.GetChild(2).gameObject.SetActive(false);
+                break;
+            default:
+                Debug.Log("에러 : EatFood(In OrderMenu)");
+                break;
+        }
         customerMovement.EatFood();
     }
 
     public void TimeOut()
     {
-        transform.GetChild(data.menuNums[customerMovement.seatIndex] - 1).gameObject.SetActive(false);
+        switch (data.menuCategories[customerMovement.seatIndex])
+        {
+            case "Gukbab":
+                transform.GetChild(0).gameObject.SetActive(false);
+                break;
+            case "Pajeon":
+                transform.GetChild(1).gameObject.SetActive(false);
+                break;
+            case "RiceJuice":
+                transform.GetChild(2).gameObject.SetActive(false);
+                break;
+            default:
+                Debug.Log("에러 : Time Out(In OrderMenu)");
+                break;
+        }
         customerMovement.TimeOut();
     }
 

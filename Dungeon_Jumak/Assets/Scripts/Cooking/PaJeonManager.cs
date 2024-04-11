@@ -6,7 +6,6 @@ public class PaJeonManager : MonoBehaviour
     public GameObject[] directionPrefabs;
     public GameObject PaJeonPopUp;
     public GameObject PaJeonPrefab;
-    public Tracker tracker;
 
     private Vector3 dragStartPosition;
     private int[] correctSequence;
@@ -20,6 +19,12 @@ public class PaJeonManager : MonoBehaviour
     private string successSound;
     [SerializeField]
     private string failureSound;
+
+    [SerializeField]
+    private Animator animator;
+
+    [SerializeField]
+    private PajeonFurnace furnace;
 
     private void Start()
     {
@@ -148,6 +153,8 @@ public class PaJeonManager : MonoBehaviour
     {
         if (correctSequence[currentIndex] == directionIndex)
         {
+            animator.SetTrigger("isAnim");
+
             currentIndex++;
 
             if (currentIndex >= correctSequence.Length)
@@ -158,10 +165,10 @@ public class PaJeonManager : MonoBehaviour
                 hasFailed = true;
                 GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
                 Instantiate(PaJeonPrefab, playerObject.transform.position, Quaternion.identity);
-                PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
-                playerMovement.isCarryingFood= false;
-                PaJeonPopUp.gameObject.SetActive(false);
-                tracker.inputEnabled = true;
+                PlayerServing playerServing = playerObject.GetComponent<PlayerServing>();
+                playerServing.isCarryingFood= false;
+
+                furnace.ExitPajeonMiniGame();
             }
         }
         else
@@ -169,12 +176,13 @@ public class PaJeonManager : MonoBehaviour
             audioManager.Play(failureSound);
 
             Debug.Log("실패입니다.");
-            hasFailed = true; 
-            PaJeonPopUp.gameObject.SetActive(false);
+            hasFailed = true;
+
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-            PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
-            playerMovement.isCarryingFood = false;
-            tracker.inputEnabled = true;
+            PlayerServing playerServing = playerObject.GetComponent<PlayerServing>();
+            playerServing.isCarryingFood = false;
+
+            furnace.ExitPajeonMiniGame();
         }
     }
 }
