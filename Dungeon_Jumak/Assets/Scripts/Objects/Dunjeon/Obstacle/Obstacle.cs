@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public float speed = 1f; // 장애물이 내려오는 속도
+    public float speed = 1.5f; // 장애물이 내려오는 속도
 
     void Update()
     {
@@ -10,7 +10,7 @@ public class Obstacle : MonoBehaviour
         transform.position += Vector3.left * speed * Time.deltaTime;
 
         // 장애물이 화면 밖으로 나갔는지 확인하고, 나갔으면 삭제
-        if (transform.position.x < -3f) // 화면 하단 경계 설정
+        if (transform.position.x < -5f) // 화면 하단 경계 설정
         {
             Destroy(gameObject); // 현재 게임 오브젝트(장애물) 삭제
         }

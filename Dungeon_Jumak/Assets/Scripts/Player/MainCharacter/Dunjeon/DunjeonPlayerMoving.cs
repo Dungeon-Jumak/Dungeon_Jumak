@@ -13,12 +13,12 @@ public class DunjeonPlayerMoving : MonoBehaviour
 
     // 레인 별 위치 설정
     private Vector3[] lanePositions = {
-        new Vector3(-3.7f, -1.3f, 13.5f),
-        new Vector3(-3.7f, -1.3f, 13f),
-        new Vector3(-3.7f, -1.3f, 12.5f)
+        new Vector3(-3.7f, -1.25f, 13.5f),
+        new Vector3(-3.7f, -1.25f, 13f),
+        new Vector3(-3.7f, -1.25f, 12.5f)
     };
 
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
         animator.SetFloat("isWalk", 1f);

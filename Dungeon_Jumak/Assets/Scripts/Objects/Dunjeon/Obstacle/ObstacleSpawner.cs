@@ -11,9 +11,9 @@ public class ObstacleSpawner : MonoBehaviour
 
     // 레인 위치 설정
     private Vector3[] lanePositions = {
-        new Vector3(28f, -1.3f, 13.5f), // 왼쪽 레인
-        new Vector3(28f, -1.3f, 13f), // 중앙 레인
-        new Vector3(28f, -1.3f, 12.5f)  // 오른쪽 레인
+        new Vector3(28f, -1.2f, 13.5f), // 왼쪽 레인
+        new Vector3(28f, -1.2f, 13f), // 중앙 레인
+        new Vector3(28f, -1.2f, 12.5f)  // 오른쪽 레인
     };
 
     [SerializeField]
@@ -54,7 +54,7 @@ public class ObstacleSpawner : MonoBehaviour
         instance.transform.Rotate(0, 90, 0); // y축 기준으로 90도 회전
 
         // 확률에 따라 isObstacle 설정
-        data.isObstacle = prefabToSpawn == obstaclePrefab;
+        data.isObstacle = true;
 
         // 장애물 생성 딜레이를 랜덤하게 설정
         spawnDelay = Random.Range(1f, 6f);

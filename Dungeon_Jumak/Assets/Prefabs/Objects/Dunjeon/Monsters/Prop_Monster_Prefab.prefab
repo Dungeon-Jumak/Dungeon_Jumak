@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3140491472819515330}
   - component: {fileID: 1337805334049901754}
   - component: {fileID: 796065706584873619}
-  - component: {fileID: 1515668862761414052}
+  - component: {fileID: 4253077392154364307}
   m_Layer: 0
   m_Name: Prop_Monster_Prefab
   m_TagString: Monster
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 395830841
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 748ae8b33df036b46a86e0387f1602cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f595212789d584244b9c08e07bde98e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
---- !u!58 &1515668862761414052
-CircleCollider2D:
+--- !u!61 &4253077392154364307
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -112,6 +112,16 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.04190473}
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10.24, y: 10.24}
+    newSize: {x: 19.2, y: 10.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.27809525
+  m_Size: {x: 10.24, y: 10.24}
+  m_EdgeRadius: 0
