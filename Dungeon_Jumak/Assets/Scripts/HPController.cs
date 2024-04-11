@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RunningScene : MonoBehaviour
+public class HPController : MonoBehaviour
 {
     public GameObject hpImage1;
     public GameObject hpImage2;
     public GameObject hpImage3;
-    public GameObject progressBar;
 
     private Image hpImg1;
     private Image hpImg2;
     private Image hpImg3;
-    private Image progressImg;
 
     private Data data;
 
@@ -27,7 +25,6 @@ public class RunningScene : MonoBehaviour
         hpImg1 = hpImage1.GetComponent<Image>();
         hpImg2 = hpImage2.GetComponent<Image>();
         hpImg3 = hpImage3.GetComponent<Image>();
-        progressImg = progressBar.GetComponent<Image>();
     }
 
     void Update()

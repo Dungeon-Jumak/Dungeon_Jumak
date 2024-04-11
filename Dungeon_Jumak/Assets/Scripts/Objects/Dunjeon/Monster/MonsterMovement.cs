@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MonsterMovement : MonoBehaviour
 {
-    public float speed = 1.5f; // 장애물이 내려오는 속도
+    public float speed = 5f; // 장애물이 내려오는 속도
 
     void Update()
     {
