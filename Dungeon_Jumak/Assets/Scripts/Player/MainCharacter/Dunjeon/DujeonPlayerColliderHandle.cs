@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class DujeonPlayerColliderHandle : MonoBehaviour
 {
-    [SerializeField]
     private Data data;
 
     void Awake()
@@ -12,7 +11,7 @@ public class DujeonPlayerColliderHandle : MonoBehaviour
         data = DataManager.Instance.data;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
@@ -32,6 +31,7 @@ public class DujeonPlayerColliderHandle : MonoBehaviour
             //---È¸º¹ÃÊ¶û ºÎµúÇûÀ» ¶§---//
             Debug.Log("È¸º¹ÃÊ¶û ºÎµúÈû ¤Ð");
             Destroy(other.gameObject);
+            data.isObstacle = false;
         }
     }
 }
