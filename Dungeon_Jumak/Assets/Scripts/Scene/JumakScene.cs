@@ -14,6 +14,9 @@ public class JumakScene : BaseScene
     private float maxVolume;
 
     [SerializeField]
+    private AudioManager audioManager;
+
+    [SerializeField]
     private Data data;
 
     private bool playBGM = false;
@@ -31,6 +34,7 @@ public class JumakScene : BaseScene
 
         data = DataManager.Instance.data;
         bgmManager = FindObjectOfType<BGMManager>();
+        audioManager = FindObjectOfType<AudioManager>();
         fadeController = FindObjectOfType<FadeController>();
 
         //---기본 BGM 실행---//
@@ -102,6 +106,7 @@ public class JumakScene : BaseScene
     public void ConvertScene(string _sceneName)
     {
         bgmManager.Stop();
+        audioManager.AllStop();
         SceneManager.LoadScene(_sceneName);
     }
 

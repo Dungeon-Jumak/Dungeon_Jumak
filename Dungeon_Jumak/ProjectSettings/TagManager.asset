@@ -19,6 +19,7 @@ TagManager:
   - UI
   - RiceJuice
   - Gukbab
+  - SpeechBox
   layers:
   - Default
   - TransparentFX

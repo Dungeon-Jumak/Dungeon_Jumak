@@ -106,6 +106,14 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void AllStop()
+    {
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            sounds[i].Stop();
+        }
+    }
+
     public void SetLoop(string _name)
     {
         for (int i = 0; i < sounds.Length; i++)
