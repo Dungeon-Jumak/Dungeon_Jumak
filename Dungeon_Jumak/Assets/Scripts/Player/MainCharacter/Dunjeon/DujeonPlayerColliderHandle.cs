@@ -20,7 +20,6 @@ public class DujeonPlayerColliderHandle : MonoBehaviour
             Debug.Log("Àå¾Ö¹°°ú ºÎµúÈû ¤Ð");
             Destroy(other.gameObject);
 
-            data.isObstacle = false;
             if (data.playerHP != 0f)
             {
                 data.playerHP -= 0.5f;
@@ -41,7 +40,6 @@ public class DujeonPlayerColliderHandle : MonoBehaviour
             Debug.Log("È¸º¹ÃÊ¶û ºÎµúÈû ¤Ð");
             Destroy(other.gameObject);
 
-            data.isObstacle = false;
             if(data.playerHP != 3f)
             {
                 data.playerHP += 0.5f;

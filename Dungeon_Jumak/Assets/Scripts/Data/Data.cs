@@ -48,7 +48,6 @@ public class Data
 
     //---던전 관련---//
     public bool isMonster = false;//Monster spawn 여부 확인
-    public bool isObstacle = false;//Obstacle spawn 여부 확인
     public float runningTime = 0;//달리기 게임 실행 시간
     public float playerHP = 3;//HP - 하트 
     public float monsterHP; // 몬스터HP - 하트 
