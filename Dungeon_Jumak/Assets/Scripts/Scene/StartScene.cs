@@ -73,7 +73,7 @@ public class StartScene : MonoBehaviour
     /// <param name="_sceneName"></param>
     public void ConvertScene(string _sceneName)
     {
-        bgmManager.FadeOutMusic();
+        bgmManager.Stop();
         SceneManager.LoadScene(_sceneName);
     }
 }
