@@ -2995,42 +2995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0799e4833033394b8227a3efae43cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 0
-    isSound: 1
-    isPause: 0
-    maxSeatSize: 2
-    curSeatSize: 0
-    isAllocated: 
-    isCustomer: 
-    onTables: 
-    isFinEat: 
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0000000000000000000000000000000000000000
-    curCoin: 0
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 1
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    tableIndex: 0
-    riceJuiceClear: 0
 --- !u!1 &517448830
 GameObject:
   m_ObjectHideFlags: 0
