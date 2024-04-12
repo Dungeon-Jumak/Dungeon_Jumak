@@ -22,6 +22,11 @@ public class FightingScene : MonoBehaviour
                 data.monsterSpawn[i] = false;
             }
 
+            if (data.isThirdMonster == true)
+            {
+                SceneManager.LoadScene("RunningScene");
+            }
+
             SceneManager.LoadScene("RunningScene");
         }
         else if(data.playerHP == 0)
