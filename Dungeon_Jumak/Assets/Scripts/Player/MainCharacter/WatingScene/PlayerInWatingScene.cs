@@ -74,7 +74,8 @@ public class PlayerInWatingScene : MonoBehaviour
     {
         isMove = true;
 
-        audioManager.Play(hillWalkSound);
+        if(DataManager.Instance.data.isSound)
+            audioManager.Play(hillWalkSound);
 
         animator.SetInteger("DirX", -1);
         targetTransform = jumakSign.transform;
@@ -86,7 +87,8 @@ public class PlayerInWatingScene : MonoBehaviour
     {
         isMove = true;
 
-        audioManager.Play(hillWalkSound);
+        if (DataManager.Instance.data.isSound)
+            audioManager.Play(hillWalkSound);
 
         animator.SetInteger("DirX", 1);
         DataManager.Instance.data.playerHP = 3;
