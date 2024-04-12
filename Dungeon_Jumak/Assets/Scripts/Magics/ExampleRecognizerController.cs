@@ -61,6 +61,23 @@ namespace UnistrokeGestureRecognition.Example {
                 Clear();
             }
 
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+
+
+                if (touch.phase == TouchPhase.Began)
+                {
+                    Clear();
+                }
+
+
+                if (touch.phase == TouchPhase.Ended)
+                {
+                    RecognizeRecordedGesture();
+                }
+            }
+
             RecordNewPoint();
         }
 
@@ -108,14 +125,31 @@ namespace UnistrokeGestureRecognition.Example {
 
         private void RecordNewPoint()
         {
-            var screenPosition = Input.mousePosition;
-            Vector2 point = _camera.ScreenToWorldPoint(screenPosition);
 
-            if (screenPosition.x >= 100 && screenPosition.x <= 980 && screenPosition.y >= 100 && screenPosition.y <= 800 && Input.GetKey(KeyCode.Mouse0))
+            if (Input.touchCount > 0)
             {
-                _gestureRecorder.RecordPoint(new Vector2(screenPosition.x, screenPosition.y));
-                // Show gesture path
-                _pathDrawer.AddPoint(point);
+                Touch touch = Input.GetTouch(0);
+                Vector2 touchPosition = touch.position;
+
+                if (touchPosition.x >= 100 && touchPosition.x <= 980 && touchPosition.y >= 100 && touchPosition.y <= 800 && touch.phase == TouchPhase.Moved)
+                {
+                    Vector2 point = _camera.ScreenToWorldPoint(touchPosition);
+                    _gestureRecorder.RecordPoint(point);
+                    // Show gesture path
+                    _pathDrawer.AddPoint(point);
+                }
+            }
+
+            else if (Input.GetMouseButton(0))
+            {
+                var screenPosition = Input.mousePosition;
+                if (screenPosition.x >= 100 && screenPosition.x <= 980 && screenPosition.y >= 100 && screenPosition.y <= 800)
+                {
+                    Vector2 point = _camera.ScreenToWorldPoint(screenPosition);
+                    _gestureRecorder.RecordPoint(new Vector2(screenPosition.x, screenPosition.y));
+                    // Show gesture path
+                    _pathDrawer.AddPoint(point);
+                }
             }
         }
 
