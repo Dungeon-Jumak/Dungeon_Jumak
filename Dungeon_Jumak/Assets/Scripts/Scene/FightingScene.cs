@@ -24,10 +24,12 @@ public class FightingScene : MonoBehaviour
 
             if (data.isThirdMonster == true)
             {
+                SceneManager.LoadScene("WaitingScene");
+            }
+            else
+            {
                 SceneManager.LoadScene("RunningScene");
             }
-
-            SceneManager.LoadScene("RunningScene");
         }
         else if(data.playerHP == 0)
         {
