@@ -54,6 +54,6 @@ public class ObstacleSpawner : MonoBehaviour
         instance.transform.Rotate(0, 90, 0); // y축 기준으로 90도 회전
 
         // 장애물 생성 딜레이를 랜덤하게 설정
-        spawnDelay = Random.Range(1f, 3f);
+        spawnDelay = Random.Range(0.5f, 1.2f);
     }
 }
