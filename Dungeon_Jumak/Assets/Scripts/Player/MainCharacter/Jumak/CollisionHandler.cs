@@ -26,14 +26,21 @@ public class CollisionHandler : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Table_L") || other.gameObject.CompareTag("Table_R"))
+        if (other.gameObject.CompareTag("Table_L"))
         {
-            playerServing.CheckTable(other.gameObject);
+            Debug.Log(other.gameObject.name);
+            playerServing.PlaceFoodOnTable(other.gameObject);
+        }
+        else if (other.gameObject.CompareTag("Table_R"))
+        {
+            Debug.Log(other.gameObject.name);
             playerServing.PlaceFoodOnTable(other.gameObject);
         }
         else if (other.gameObject.CompareTag("Trash"))
         {
             playerServing.ThrowAwayFood();
         }
+
     }
+
 }

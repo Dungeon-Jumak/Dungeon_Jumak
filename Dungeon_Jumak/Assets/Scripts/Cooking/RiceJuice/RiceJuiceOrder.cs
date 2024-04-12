@@ -32,10 +32,19 @@ public class RiceJuiceOrder : MonoBehaviour
             data.riceJuiceClear = false;
             if (data.riceJuiceClear) return;
 
-            GameObject instance = Instantiate(riceJuicePrefab, player.tables[data.tableIndex].transform.GetChild(0));
-            instance.transform.localPosition = Vector3.zero;
+            GameObject go = transform.parent.gameObject;
 
-            data.onTables[data.tableIndex] = true;
+            for (int i = 0; i <data.onTables.Length; i++)
+            {
+                if (i == go.GetComponent<CustomerMovement>().seatIndex)
+                {
+                    GameObject instance = Instantiate(riceJuicePrefab, player.tables[i].transform.GetChild(0));
+                    instance.transform.localPosition = Vector3.zero;
+                    data.onTables[i] = true;
+                }
+
+            }
+
         }
 
 
@@ -47,9 +56,13 @@ public class RiceJuiceOrder : MonoBehaviour
             {
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 mousePosition.z = transform.position.z;
-                if (circleCollider.OverlapPoint(mousePosition))
+
+                if (circleCollider.OverlapPoint(mousePosition) && !data.isMiniGame)
                 {
                     Debug.Log("°¨Áö");
+
+                    data.isMiniGame = true;
+
                     GameObject[] parentObjects = GameObject.FindGameObjectsWithTag("RiceJuiceMiniGame");
 
                     GameObject shadow = transform.GetChild(1).gameObject;

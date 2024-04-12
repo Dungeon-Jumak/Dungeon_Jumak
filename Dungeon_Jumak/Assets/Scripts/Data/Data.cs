@@ -43,8 +43,8 @@ public class Data
 
     //---미니게임 관련---//
     public float fireSize = 100f;
-    public int tableIndex = 0;
     public bool riceJuiceClear = false; //식혜 미니게임 성공 여부
+    public bool isMiniGame;
 
     //---던전 관련---//
     public bool isMonster = false;//Monster spawn 여부 확인

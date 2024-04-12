@@ -166,18 +166,6 @@ public class PlayerServing : MonoBehaviour
         }
     }
 
-    //테이블 인덱스 업데이트
-    public void CheckTable(GameObject go)
-    {
-        for (int i = 0; i < tables.Length; i++)
-        {
-            if (go.gameObject == tables[i].gameObject)
-            {
-                data.tableIndex = i;
-            }
-        }
-    }
-
     //씬이 변경될 때 현재 데이터 값 초기화
     public void DataInitialize()
     {

@@ -115,6 +115,13 @@ public class CollisionDetection : MonoBehaviour
                 blackPanel.SetActive(false);
             }
         }
+
+        Invoke("DelayNextMiniGame", 0.5f);
+    }
+
+    void DelayNextMiniGame()
+    {
+        DataManager.Instance.data.isMiniGame = false;
     }
 
     void FailRiceJuiceMiniGame()
@@ -145,5 +152,7 @@ public class CollisionDetection : MonoBehaviour
                 blackPanel.SetActive(false);
             }
         }
+
+        Invoke("DelayNextMiniGame", 0.5f);
     }
 }
