@@ -452,7 +452,7 @@ Transform:
   m_GameObject: {fileID: 864137831654771198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 7, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1081448553928007995}
@@ -536,7 +536,7 @@ Transform:
   m_GameObject: {fileID: 1435609803102975521}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4442289131433002471}
@@ -618,14 +618,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4128963008747235950}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 742276691264642655}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &610645739954712047
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60f60f23b5ae86448c1b838d07be32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackPanelIdx: 8
+  blackPanelIdx: 9
   riceJuicePrefab: {fileID: 3502175190827869967, guid: 366380a53953f6f498a2ba84f5e26448, type: 3}
   idx: 0
 --- !u!58 &5019639514857365026
