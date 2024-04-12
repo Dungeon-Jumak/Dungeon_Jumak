@@ -113,3 +113,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 80fb104e6d50abb4bbfe1d089ac22654, type: 3}
     volume: 0
     loop: 0
+  - name: hillWalk
+    clip: {fileID: 8300000, guid: 627aed190610f4e45bbbb5748cc4e4f6, type: 3}
+    volume: 0
+    loop: 0

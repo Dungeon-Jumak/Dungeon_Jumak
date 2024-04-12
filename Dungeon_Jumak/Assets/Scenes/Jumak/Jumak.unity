@@ -1849,6 +1849,12 @@ MonoBehaviour:
     fireSize: 100
     tableIndex: 0
     riceJuiceClear: 0
+    isMonster: 0
+    runningTime: 0
+    playerHP: 3
+    monsterHP: 0
+    monsterSpawn: 0000
+    isThirdMonster: 0
 --- !u!114 &272777875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2596,6 +2602,12 @@ MonoBehaviour:
     fireSize: 100
     tableIndex: 0
     riceJuiceClear: 0
+    isMonster: 0
+    runningTime: 0
+    playerHP: 3
+    monsterHP: 0
+    monsterSpawn: 0000
+    isThirdMonster: 0
   audioManager: {fileID: 0}
   coinSound: coinSound
 --- !u!4 &340276929
@@ -7133,7 +7145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1150267272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8041,6 +8053,12 @@ MonoBehaviour:
     fireSize: 100
     tableIndex: 0
     riceJuiceClear: 0
+    isMonster: 0
+    runningTime: 0
+    playerHP: 3
+    monsterHP: 0
+    monsterSpawn: 0000
+    isThirdMonster: 0
 --- !u!4 &1267971907
 Transform:
   m_ObjectHideFlags: 0
@@ -8260,6 +8278,12 @@ MonoBehaviour:
     fireSize: 100
     tableIndex: 0
     riceJuiceClear: 0
+    isMonster: 0
+    runningTime: 0
+    playerHP: 3
+    monsterHP: 0
+    monsterSpawn: 0000
+    isThirdMonster: 0
   fire: {fileID: 1269737220}
 --- !u!212 &1269737222
 SpriteRenderer:
@@ -13367,6 +13391,12 @@ MonoBehaviour:
     fireSize: 100
     tableIndex: 0
     riceJuiceClear: 0
+    isMonster: 0
+    runningTime: 0
+    playerHP: 3
+    monsterHP: 0
+    monsterSpawn: 0000
+    isThirdMonster: 0
   fadeController: {fileID: 255461528}
   Dansangs:
   - {fileID: 1674350436}
@@ -13978,6 +14008,12 @@ MonoBehaviour:
     fireSize: 100
     tableIndex: 0
     riceJuiceClear: 0
+    isMonster: 0
+    runningTime: 0
+    playerHP: 3
+    monsterHP: 0
+    monsterSpawn: 0000
+    isThirdMonster: 0
   menuCategori: 
   menuValue: 0
   audioManager: {fileID: 0}

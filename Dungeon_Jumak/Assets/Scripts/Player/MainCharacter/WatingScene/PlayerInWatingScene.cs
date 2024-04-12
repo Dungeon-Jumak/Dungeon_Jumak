@@ -30,6 +30,11 @@ public class PlayerInWatingScene : MonoBehaviour
     [SerializeField]
     private string sceneName;
 
+    [SerializeField]
+    private AudioManager audioManager;
+    [SerializeField]
+    private string hillWalkSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +43,7 @@ public class PlayerInWatingScene : MonoBehaviour
         speed = 3f;
 
         animator = GetComponent<Animator>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -77,6 +83,8 @@ public class PlayerInWatingScene : MonoBehaviour
     {
         isMove = true;
         animator.SetInteger("DirX", 1);
+        DataManager.Instance.data.playerHP = 3;
+        DataManager.Instance.data.runningTime = 0f;
         targetTransform = dungeonSign.transform;
         sceneName = dungeonSceneName;
     }

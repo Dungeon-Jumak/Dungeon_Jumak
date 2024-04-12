@@ -40,6 +40,16 @@ public class JumakScene : BaseScene
         audioManager = FindObjectOfType<AudioManager>();
         fadeController = FindObjectOfType<FadeController>();
 
+        for (int i = 0; i < data.onTables.Length; i++)
+        {
+            data.isAllocated[i] = false;
+            data.isCustomer[i] = false;
+            data.onTables[i] = false;
+            data.isFinEat[i] = false;
+        }
+
+        data.curSeatSize = 0;
+
         //---기본 BGM 실행---//
         bgmManager.Play(bgmSoundTrack);
         bgmManager.FadeInMusic(maxVolume);

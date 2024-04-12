@@ -15,17 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Jumak/Jumak.unity
     guid: 288a4e65869e599449e262d2abfd38c1
   - enabled: 1
-    path: Assets/Scenes/Ect/ComingSoon.unity
-    guid: 47d7690d0c90f094594152bc0fc68740
-  - enabled: 1
-    path: Assets/Scenes/Dunjeon/Test.unity
-    guid: feeef595f9b7b8f4e895abb9d4c607a7
+    path: Assets/Scenes/Dunjeon/RunningScene.unity
+    guid: d8c48ce3db750ed4bab76d598e2ebbe4
   - enabled: 1
     path: Assets/Scenes/Dunjeon/FightScene.unity
     guid: 4152e6fc568a63a408bbeced069ed0d3
-  - enabled: 1
-    path: Assets/Scenes/Dunjeon/RunningScene.unity
-    guid: d8c48ce3db750ed4bab76d598e2ebbe4
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 68abe7202c4a8cb45a7b1691ff9da0ad, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: e03e4f01c117ed6418791cfc43563781, type: 2}
