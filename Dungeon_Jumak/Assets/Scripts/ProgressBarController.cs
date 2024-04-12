@@ -29,8 +29,6 @@ public class ProgressBarController : MonoBehaviour
 
     private IEnumerator UpdateProgressBar()
     {
-        data.runningTime = 0f; // 현재 목표 값
-
         while (data.runningTime < 1.0f) //1.0이 될 때까지 반복
         {
             data.runningTime += 0.005f;
