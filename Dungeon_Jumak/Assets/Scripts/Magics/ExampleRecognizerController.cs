@@ -132,10 +132,15 @@ namespace UnistrokeGestureRecognition.Example {
 
                 if (touch.phase == TouchPhase.Moved)
                 {
-                    Vector2 normalizedTouchPosition = new Vector2(touchPosition.x / Screen.width, touchPosition.y / Screen.height);
-                    Vector2 mobileTouchPosition = new Vector2(normalizedTouchPosition.x * 1080, normalizedTouchPosition.y * 1920);
+                    Vector2 mobileTouchPosition = new Vector2(touch.position.x, touch.position.y);
 
-                    if (mobileTouchPosition.x >= 100 && mobileTouchPosition.x <= 980 && mobileTouchPosition.y >= 100 && mobileTouchPosition.y <= 800)
+                    float minX = (Screen.width - 1000) / 2;
+                    float maxX = 1080 - minX;
+
+                    float minY = ((Screen.height / 2) - 850) / 2;
+                    float maxY = 850 + minY;
+
+                    if (mobileTouchPosition.x >= minX && mobileTouchPosition.x <= maxX && mobileTouchPosition.y >= minY && mobileTouchPosition.y <= maxY)
                     {
                         Vector2 point = _camera.ScreenToWorldPoint(mobileTouchPosition);
                         _gestureRecorder.RecordPoint(point);

@@ -51,7 +51,7 @@ public class BubbleShadowController : MonoBehaviour
 
     void Update()
     {
-        //if(!isStop) //시간 정지 기능 추가 하고 싶을 때 사용
+        if(!isStop) //시간 정지 기능 추가 하고 싶을 때 사용
         timer += Time.deltaTime;
 
         float newY = Mathf.Lerp(startY, endY, timer / fadeInDuration);
