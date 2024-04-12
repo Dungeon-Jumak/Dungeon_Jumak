@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
 public class BigBang : MonoBehaviour
 {
     public MonsterBuChu monsterBuChu;
@@ -11,8 +10,19 @@ public class BigBang : MonoBehaviour
     private float coolTime = 4.0f;
     private float coolTime_max = 4.0f;
     private bool CoolCheck = false;
-    
+    private Data data;
 
+    void Awake()
+    {
+        data = DataManager.Instance.data;
+    }
+    private void Update()
+    {
+        if (coolTime <= 0.0f)
+        {
+            CoolCheck = false;
+        }
+    }
 
     IEnumerator BigBangCoolTimeFunc()
     {
@@ -23,14 +33,6 @@ public class BigBang : MonoBehaviour
             disable.fillAmount = coolTime / coolTime_max;
 
             yield return new WaitForSeconds(0.01f);
-        }
-    }
-
-    private void Update()
-    {
-        if (coolTime <= 0.0f)
-        {
-            CoolCheck = false;
         }
     }
 
@@ -51,6 +53,6 @@ public class BigBang : MonoBehaviour
 
     public void BigBangMagic()
     {
-        monsterBuChu.MonsterHPs -= 3f;
+        data.monsterHP -= 3f;
     }
 }
