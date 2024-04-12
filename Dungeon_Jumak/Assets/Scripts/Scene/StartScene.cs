@@ -55,15 +55,4 @@ public class StartScene : MonoBehaviour
             bgmManager.SetLoop();
         }
     }
-
-
-    /// <summary>
-    /// ¾À¸Å´ÏÀú·Î ¹Ù²ã¾ß ÇÔ
-    /// </summary>
-    /// <param name="_sceneName"></param>
-    public void ConvertScene(string _sceneName)
-    {
-        bgmManager.Stop();
-        SceneManager.LoadScene(_sceneName);
-    }
 }

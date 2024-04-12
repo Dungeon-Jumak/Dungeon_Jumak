@@ -60,7 +60,7 @@ public class PlayerInWatingScene : MonoBehaviour
 
     public void ConvertScene()
     {
-        SceneManager.LoadScene(sceneName);
+        GameManager.Instance.ConvertScene(sceneName);
     }
 
     //주막 방향으로 이동

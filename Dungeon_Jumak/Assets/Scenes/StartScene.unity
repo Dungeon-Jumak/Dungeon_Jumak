@@ -3456,8 +3456,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1854808335}
-        m_TargetAssemblyTypeName: StartScene, Assembly-CSharp
+      - m_Target: {fileID: 1274304067}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ConvertScene
         m_Mode: 5
         m_Arguments:

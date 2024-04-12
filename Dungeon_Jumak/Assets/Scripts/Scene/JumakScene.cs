@@ -127,12 +127,7 @@ public class JumakScene : BaseScene
         GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curCoin.ToString() + "전";
     }
 
-    public void ConvertScene(string _sceneName)
-    {
-        bgmManager.Stop();
-        audioManager.AllStop();
-        SceneManager.LoadScene(_sceneName);
-    }
+
 
     //---게임 로드시 데이터 값에 따라 해금---//
     void unlockTable()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Resources;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -48,6 +49,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private AudioManager audioManager;
     [SerializeField]
+    private BGMManager bgmManager;
+    [SerializeField]
     private string pauseSound;
 
     // Start is called before the first frame update
@@ -56,6 +59,8 @@ public class GameManager : MonoBehaviour
         data = DataManager.Instance.data;
 
         audioManager = FindObjectOfType<AudioManager>();
+        bgmManager = FindObjectOfType<BGMManager>();
+
         pauseSound = "pauseSound";
 
     }
@@ -93,4 +98,10 @@ public class GameManager : MonoBehaviour
         data.isPlayBGM = false;
     }
 
+    public void ConvertScene(string _sceneName)
+    {
+        bgmManager.Stop();
+        audioManager.AllStop();
+        SceneManager.LoadScene(_sceneName);
+    }
 }

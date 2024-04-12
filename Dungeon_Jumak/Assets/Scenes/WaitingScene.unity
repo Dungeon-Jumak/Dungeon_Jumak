@@ -453,7 +453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.8500366, y: 90.1}
+  m_AnchoredPosition: {x: -4.8500366, y: 90.100006}
   m_SizeDelta: {x: -69.700005, y: -220.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &328700175
@@ -973,15 +973,30 @@ MonoBehaviour:
     isCustomer: 000000000000000000000000
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
-    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    menuCategories:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    ingredient: 0000000000000000000000000000000000000000
     curCoin: 0
     maxCoin: 999999
-    foodIngredients: 
     curUnlockLevel: 1
     maxUnlockLevel: 6
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
+    tableIndex: 0
+    riceJuiceClear: 0
 --- !u!1 &1926061169
 GameObject:
   m_ObjectHideFlags: 0
