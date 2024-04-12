@@ -117,3 +117,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 627aed190610f4e45bbbb5748cc4e4f6, type: 3}
     volume: 0
     loop: 0
+  - name: pajeonSound
+    clip: {fileID: 8300000, guid: b6641c4d6abe95a408e356efbe63b475, type: 3}
+    volume: 0
+    loop: 0

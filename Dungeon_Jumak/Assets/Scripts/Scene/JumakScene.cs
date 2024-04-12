@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class JumakScene : BaseScene
 {
@@ -30,6 +31,16 @@ public class JumakScene : BaseScene
 
     [SerializeField]
     private string pauseSound;
+
+    [SerializeField]
+    private GameObject bgmOn;
+    [SerializeField]
+    private GameObject bgmOff;
+
+    [SerializeField]
+    private GameObject soundOn;
+    [SerializeField]
+    private GameObject soundOff;
 
     private void Start()
     {
@@ -74,6 +85,24 @@ public class JumakScene : BaseScene
         UpdateLevel();
         unlockTable();
 
+        BGMControl();
+        SoundControl();
+
+        BGMPlayer();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            AddTable();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            AddRecipe();
+        }
+    }
+
+    public void BGMPlayer()
+    {
         if (!data.isPlayBGM)
         {
             playBGM = false;
@@ -90,17 +119,8 @@ public class JumakScene : BaseScene
             bgmManager.FadeInMusic(maxVolume);
             bgmManager.SetLoop();
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            AddTable();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            AddRecipe();
-        }
     }
+
     public void AddTable()
     {
         if (data.curUnlockLevel < data.maxUnlockLevel)
@@ -155,5 +175,65 @@ public class JumakScene : BaseScene
                 Dansangs[i].SetActive(true);
             }
         }
+    }
+
+    public void BGMControl()
+    {
+        if (data.isPlayBGM)
+        {
+            bgmOn.SetActive(true);
+            bgmOff.SetActive(false);
+        }
+        else
+        {
+            bgmOn.SetActive(false);
+            bgmOff.SetActive(true);
+        }
+    }
+
+    public void SoundControl()
+    {
+        if (data.isSound)
+        {
+            soundOn.SetActive(true);
+            soundOff.SetActive(false);
+
+            for (int i = 0; i < audioManager.sounds.Length; i++)
+            {
+                audioManager.sounds[i].volume = 1f;
+                audioManager.sounds[i].Setvolume();
+            }
+        }
+        else
+        {
+            soundOn.SetActive(false);
+            soundOff.SetActive(true);
+
+            for (int i = 0; i < audioManager.sounds.Length; i++)
+            {
+                audioManager.sounds[i].volume = 0f;
+                audioManager.sounds[i].Setvolume();
+            }
+        }
+    }
+
+    public void BGMON()
+    {
+        data.isPlayBGM = true;
+    }
+
+    public void BGMOFF()
+    {
+        data.isPlayBGM = false;
+    }
+
+    public void SoundON()
+    {
+        data.isSound = true;
+    }
+
+    public void SoundOFF()
+    {
+        data.isSound = false;
     }
 }

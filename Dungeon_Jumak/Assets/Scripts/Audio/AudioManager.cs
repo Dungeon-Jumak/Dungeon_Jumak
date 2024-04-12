@@ -57,6 +57,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     public Sound[] sounds;
 
+    private Data data;
+
     //---싱글톤 적용---//
     private void Awake()
     {
@@ -74,6 +76,8 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        data = DataManager.Instance.data;
+
         for (int i = 0; i < sounds.Length; i++)
         {
             GameObject soundObj = new GameObject("사운드 파일 이름 : " + i + " = " + sounds[i].name);
@@ -86,7 +90,7 @@ public class AudioManager : MonoBehaviour
     {
         for (int i = 0; i < sounds.Length; i++)
         {
-            if(_name == sounds[i].name)
+            if (_name == sounds[i].name)
             {
                 sounds[i].Play();
                 return;

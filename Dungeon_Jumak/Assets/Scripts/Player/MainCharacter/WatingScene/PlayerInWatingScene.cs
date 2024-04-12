@@ -73,6 +73,9 @@ public class PlayerInWatingScene : MonoBehaviour
     public void MoveJumak()
     {
         isMove = true;
+
+        audioManager.Play(hillWalkSound);
+
         animator.SetInteger("DirX", -1);
         targetTransform = jumakSign.transform;
         sceneName = jumakSceneName;
@@ -82,6 +85,9 @@ public class PlayerInWatingScene : MonoBehaviour
     public void MoveDungeon()
     {
         isMove = true;
+
+        audioManager.Play(hillWalkSound);
+
         animator.SetInteger("DirX", 1);
         DataManager.Instance.data.playerHP = 3;
         DataManager.Instance.data.runningTime = 0f;

@@ -20,6 +20,16 @@ public class StartScene : MonoBehaviour
 
     private bool playBGM = false;
 
+    [SerializeField]
+    private GameObject bgmOn;
+    [SerializeField]
+    private GameObject bgmOff;
+
+    [SerializeField]
+    private GameObject soundOn;
+    [SerializeField]
+    private GameObject soundOff;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +51,22 @@ public class StartScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        BGMControl();
+        SoundControl();
+        BGMPlayer();
+
+
+    }
+
+    public void ConvertScene(string _sceneName)
+    {
+        bgmManager.Stop();
+        audioManager.AllStop();
+        SceneManager.LoadScene(_sceneName);
+    }
+
+    public void BGMPlayer()
+    {
         if (!data.isPlayBGM)
         {
             playBGM = false;
@@ -49,7 +75,7 @@ public class StartScene : MonoBehaviour
             bgmManager.Stop();
         }
 
-        if(!playBGM && data.isPlayBGM)
+        if (!playBGM && data.isPlayBGM)
         {
             playBGM = true;
 
@@ -59,10 +85,52 @@ public class StartScene : MonoBehaviour
         }
     }
 
-    public void ConvertScene(string _sceneName)
+    public void BGMControl()
     {
-        bgmManager.Stop();
-        audioManager.AllStop();
-        SceneManager.LoadScene(_sceneName);
+        if (data.isPlayBGM)
+        {
+            bgmOn.SetActive(true);
+            bgmOff.SetActive(false);
+        }
+        else
+        {
+            bgmOn.SetActive(false);
+            bgmOff.SetActive(true);
+        }
     }
+
+    public void SoundControl()
+    {
+        if (data.isSound)
+        {
+            soundOn.SetActive(true);
+            soundOff.SetActive(false);
+        }
+        else
+        {
+            soundOn.SetActive(false);
+            soundOff.SetActive(true);
+        }
+    }
+
+    public void BGMON()
+    {
+        data.isPlayBGM = true;
+    }
+
+    public void BGMOFF()
+    {
+        data.isPlayBGM = false;
+    }
+
+    public void SoundON()
+    {
+        data.isSound = true;
+    }
+
+    public void SoundOFF()
+    {
+        data.isSound = false;
+    }
+
 }

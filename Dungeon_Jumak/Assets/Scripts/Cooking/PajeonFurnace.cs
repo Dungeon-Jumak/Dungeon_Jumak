@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PajeonFurnace : MonoBehaviour
 {
@@ -16,6 +17,15 @@ public class PajeonFurnace : MonoBehaviour
 
     [SerializeField]
     private GameObject blackPanel;
+
+    AudioManager audioManager;
+    [SerializeField]
+    private string pajeonSound;
+
+    private void Start()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
 
     public void StartPajeonMiniGame()
     {
@@ -35,6 +45,8 @@ public class PajeonFurnace : MonoBehaviour
 
     public void ExitPajeonMiniGame()
     {
+        audioManager.Stop(pajeonSound);
+
         pajeonMiniGamePopup.gameObject.SetActive(false);
         blackPanel.gameObject.SetActive(false);
     }
@@ -47,5 +59,10 @@ public class PajeonFurnace : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         pajeonSpeechBox.gameObject.SetActive(false);
+    }
+
+    public void PlayPajeonSound()
+    {
+        audioManager.Play(pajeonSound);
     }
 }

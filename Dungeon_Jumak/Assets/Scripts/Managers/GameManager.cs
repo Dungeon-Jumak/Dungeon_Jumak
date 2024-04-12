@@ -87,17 +87,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-    public void BGMON()
-    {
-        data.isPlayBGM = true;
-    }
-
-    public void BGMOFF()
-    {
-        data.isPlayBGM = false;
-    }
-
     public void ConvertScene(string _sceneName)
     {
         bgmManager.Stop();

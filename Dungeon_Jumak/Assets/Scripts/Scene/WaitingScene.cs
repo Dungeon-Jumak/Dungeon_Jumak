@@ -35,6 +35,12 @@ public class WaitingScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        BGMPlayer();
+
+    }
+
+    public void BGMPlayer()
+    {
         if (!data.isPlayBGM)
         {
             playBGM = false;
@@ -42,7 +48,8 @@ public class WaitingScene : MonoBehaviour
             bgmManager.CancelLoop();
             bgmManager.Stop();
         }
-        else if (!playBGM && data.isPlayBGM)
+
+        if (!playBGM && data.isPlayBGM)
         {
             playBGM = true;
 
@@ -50,7 +57,6 @@ public class WaitingScene : MonoBehaviour
             bgmManager.FadeInMusic(maxVolume);
             bgmManager.SetLoop();
         }
-
     }
 
 }
