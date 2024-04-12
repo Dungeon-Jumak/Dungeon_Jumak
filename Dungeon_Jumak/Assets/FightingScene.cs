@@ -26,8 +26,7 @@ public class FightingScene : MonoBehaviour
         }
         else if(data.playerHP == 0)
         {
-            SceneManager.LoadScene("RunningScene");
+            SceneManager.LoadScene("WaitingScene");
         }
     }
-
 }
