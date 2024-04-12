@@ -5,7 +5,7 @@ using UnityEngine;
 public class CustomerSpawner : MonoBehaviour
 {
     //---최소 스폰 시간과 최대 스폰 시간의 차이---//
-    public int minMaxTerm; 
+    public float minMaxTerm; 
 
     //---스폰 관련 변수---//
     [SerializeField]
@@ -14,9 +14,9 @@ public class CustomerSpawner : MonoBehaviour
     private int customerNum;
 
     [SerializeField]
-    private int minDelayTime = 3; //최소 딜레이 시간
+    private float minDelayTime = 3f; //최소 딜레이 시간
     [SerializeField]
-    private int newMinDelayTime;  //업데이트 된 딜레이 시간
+    private float newMinDelayTime;  //업데이트 된 딜레이 시간
 
     //---데이터---//
     [SerializeField]
@@ -25,7 +25,6 @@ public class CustomerSpawner : MonoBehaviour
     private void Start()
     {
         data = DataManager.Instance.data;
-        minDelayTime = 3;
 
         // --- 재귀 시작 --- //
         StartCoroutine(SpawnCustomer());
@@ -36,8 +35,8 @@ public class CustomerSpawner : MonoBehaviour
     {
         UpdateMinDelayTime();
 
-        int newDelayTime = newMinDelayTime - (data.maxSeatSize - data.curSeatSize);
-        int realDelayTime = Random.Range(newDelayTime, newDelayTime + minMaxTerm + 1);
+        float newDelayTime = newMinDelayTime - (data.maxSeatSize - data.curSeatSize);
+        float realDelayTime = Random.Range(newDelayTime, newDelayTime + minMaxTerm + 1);
 
         Debug.Log("다음 손님이 오는 시간 : " + realDelayTime);
 

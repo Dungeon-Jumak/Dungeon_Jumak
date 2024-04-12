@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Resources;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -48,6 +49,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private AudioManager audioManager;
     [SerializeField]
+    private BGMManager bgmManager;
+    [SerializeField]
     private string pauseSound;
 
     // Start is called before the first frame update
@@ -56,22 +59,10 @@ public class GameManager : MonoBehaviour
         data = DataManager.Instance.data;
 
         audioManager = FindObjectOfType<AudioManager>();
+        bgmManager = FindObjectOfType<BGMManager>();
+
         pauseSound = "pauseSound";
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            AddTable();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            AddRecipe();
-        }
     }
 
     //---일시 정지 기능---//
@@ -96,24 +87,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddTable()
+
+    public void BGMON()
     {
-        if (data.curUnlockLevel < data.maxUnlockLevel)
-        {
-            audioManager.Play(pauseSound);
-            data.curUnlockLevel++;
-            data.maxSeatSize += 2;
-        }
+        data.isPlayBGM = true;
     }
 
-    public void AddRecipe()
+    public void BGMOFF()
     {
-        if (data.curMenuUnlockLevel < data.maxMenuUnlockLevel)
-        {
-            audioManager.Play(pauseSound);
-            data.curMenuUnlockLevel++;
-        }
-
+        data.isPlayBGM = false;
     }
 
+    public void ConvertScene(string _sceneName)
+    {
+        bgmManager.Stop();
+        audioManager.AllStop();
+        SceneManager.LoadScene(_sceneName);
+    }
 }

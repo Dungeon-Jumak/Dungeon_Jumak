@@ -19,6 +19,7 @@ TagManager:
   - UI
   - RiceJuice
   - Gukbab
+  - SpeechBox
   layers:
   - Default
   - TransparentFX
@@ -70,6 +71,9 @@ TagManager:
     locked: 0
   - name: Food_Up
     uniqueID: 2991999681
+    locked: 0
+  - name: Customer_Up
+    uniqueID: 1966264649
     locked: 0
   - name: Above Object
     uniqueID: 3700751555

@@ -25,6 +25,10 @@ public class PaJeonManager : MonoBehaviour
 
     [SerializeField]
     private PajeonFurnace furnace;
+    private string direction;
+
+    [SerializeField]
+    private GameObject pajeonImage;
 
     private void Start()
     {
@@ -126,10 +130,12 @@ public class PaJeonManager : MonoBehaviour
                     {
                         if (dragDirection.x > 0)
                         {
+                            direction = "Right";
                             CheckDirection(3);
                         }
                         else
                         {
+                            direction = "Left";
                             CheckDirection(2);
                         }
                     }
@@ -137,10 +143,12 @@ public class PaJeonManager : MonoBehaviour
                     {
                         if (dragDirection.y > 0)
                         {
+                            direction = "Up";
                             CheckDirection(0);
                         }
                         else
                         {
+                            direction = "Down";
                             CheckDirection(1);
                         }
                     }
@@ -153,6 +161,21 @@ public class PaJeonManager : MonoBehaviour
     {
         if (correctSequence[currentIndex] == directionIndex)
         {
+            pajeonImage.transform.rotation = Quaternion.Euler(0, 0, 0);
+            switch (direction)
+            {
+                case "Up":
+                    break;
+                case "Right":
+                    pajeonImage.transform.rotation = Quaternion.Euler(0, 0, 90);
+                    break;
+                case "Down":
+                    pajeonImage.transform.rotation = Quaternion.Euler(0, 0, 180);
+                    break;
+                case "Left":
+                    pajeonImage.transform.rotation = Quaternion.Euler(0, 0, 270);
+                    break;
+            }
             animator.SetTrigger("isAnim");
 
             currentIndex++;
@@ -167,6 +190,8 @@ public class PaJeonManager : MonoBehaviour
                 Instantiate(PaJeonPrefab, playerObject.transform.position, Quaternion.identity);
                 PlayerServing playerServing = playerObject.GetComponent<PlayerServing>();
                 playerServing.isCarryingFood= false;
+
+                pajeonImage.transform.rotation = Quaternion.Euler(0, 0, 0);
 
                 furnace.ExitPajeonMiniGame();
             }

@@ -206,19 +206,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 128572417}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 416453959}
-        m_TargetAssemblyTypeName: PlayerInWatingScene, Assembly-CSharp
-        m_MethodName: MoveDungeon
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &128572417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,7 +958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befa1f1f23ef16041b5e64aefe2cb601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmManager: {fileID: 5101654607891939950, guid: bded53e50852a0541b1bd50ae72e1286, type: 3}
+  bgmManager: {fileID: 0}
   bgmSoundTrack: 1
   maxVolume: 1
   data:
@@ -1009,11 +997,6 @@ MonoBehaviour:
     fireSize: 100
     tableIndex: 0
     riceJuiceClear: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 0000
 --- !u!1 &1926061169
 GameObject:
   m_ObjectHideFlags: 0

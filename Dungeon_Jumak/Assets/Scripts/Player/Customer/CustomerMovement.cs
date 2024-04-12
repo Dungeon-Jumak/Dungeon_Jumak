@@ -83,10 +83,10 @@ public class CustomerMovement : MonoBehaviour
     private Vector3 lastPosition;
     private Vector3 currentDir;
 
-    //---소리 관련---//
-    private AudioManager audioManager;
     [SerializeField]
-    private string eatSound; //국밥 먹는 소리
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip[] audioClips;
 
     private void Start()
     {
@@ -95,7 +95,7 @@ public class CustomerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
-        audioManager = FindObjectOfType<AudioManager>();
+        audioSource = GetComponent<AudioSource>();
 
         lastPosition = transform.position;
 
@@ -230,7 +230,7 @@ public class CustomerMovement : MonoBehaviour
     public void EatAndLeave()
     {
         //사운드 종료
-        audioManager.Stop(eatSound);
+        audioSource.Stop();
 
         //일어나는 애니메이션 추가
         animator.SetBool("isEat", false);
@@ -323,19 +323,21 @@ public class CustomerMovement : MonoBehaviour
 
         //---렌더링 변경---//
         if (CurPosition.y < GameObject.Find("Chr_Player").transform.position.y) //손님이 아래에 있다면
-            spriteRenderer.sortingOrder = 2; //플레이어보다 위에 렌더링
+            spriteRenderer.sortingLayerName = "Customer_Up"; //플레이어보다 위에 렌더링
         else
-            spriteRenderer.sortingOrder = 0; //플레이어보다 아래 렌더링
+            spriteRenderer.sortingLayerName = "Player";
     }
 
     //---음식을 먹기 시작했을 때--//
     public void EatFood()
     {
-        if (!audioManager.IsPlaying(eatSound))
-        {
-            audioManager.SetLoop(eatSound);
-            audioManager.Play(eatSound);
-        }
+        if (data.menuCategories[seatIndex].Contains("Gukbab") || data.menuCategories[seatIndex].Contains("Pajeon"))
+            audioSource.clip = audioClips[0];
+        else if (data.menuCategories[seatIndex].Equals("RiceJuice"))
+            audioSource.clip = audioClips[1];
+
+        audioSource.loop = true;
+        audioSource.Play();
 
         animator.SetBool("isEat", true);
         Invoke("EatAndLeave", 3f);

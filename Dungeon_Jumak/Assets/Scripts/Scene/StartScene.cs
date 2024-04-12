@@ -14,6 +14,9 @@ public class StartScene : MonoBehaviour
     private float maxVolume;
 
     [SerializeField]
+    private AudioManager audioManager;
+
+    [SerializeField]
     private Data data;
 
     private bool playBGM = false;
@@ -25,9 +28,10 @@ public class StartScene : MonoBehaviour
 
         data = DataManager.Instance.data;
         bgmManager = FindObjectOfType<BGMManager>();
+        audioManager = FindObjectOfType<AudioManager>();
 
         //---BGM 사운드 트랙 설정---//
-        bgmSoundTrack = 1;
+        bgmSoundTrack = 0;
 
         //---기본 BGM 실행---//
         bgmManager.Play(bgmSoundTrack);
@@ -56,24 +60,10 @@ public class StartScene : MonoBehaviour
         }
     }
 
-    public void BGMON()
-    {
-        data.isPlayBGM = true;
-    }
-
-    public void BGMOFF()
-    {
-        data.isPlayBGM = false;
-    }
-
-
-    /// <summary>
-    /// 씬매니저로 바꿔야 함
-    /// </summary>
-    /// <param name="_sceneName"></param>
     public void ConvertScene(string _sceneName)
     {
         bgmManager.Stop();
+        audioManager.AllStop();
         SceneManager.LoadScene(_sceneName);
     }
 }

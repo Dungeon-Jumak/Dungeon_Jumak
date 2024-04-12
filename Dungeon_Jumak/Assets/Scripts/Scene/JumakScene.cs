@@ -14,6 +14,9 @@ public class JumakScene : BaseScene
     private float maxVolume;
 
     [SerializeField]
+    private AudioManager audioManager;
+
+    [SerializeField]
     private Data data;
 
     private bool playBGM = false;
@@ -25,18 +28,24 @@ public class JumakScene : BaseScene
     [SerializeField]
     private GameObject[] Dansangs;
 
+    [SerializeField]
+    private string pauseSound;
+
     private void Start()
     {
         playBGM = false;
 
         data = DataManager.Instance.data;
         bgmManager = FindObjectOfType<BGMManager>();
+        audioManager = FindObjectOfType<AudioManager>();
         fadeController = FindObjectOfType<FadeController>();
 
         //---기본 BGM 실행---//
         bgmManager.Play(bgmSoundTrack);
         bgmManager.FadeInMusic(maxVolume);
         bgmManager.SetLoop();
+
+        pauseSound = "pauseSound";
     }
     protected override void Init()
     {
@@ -71,17 +80,36 @@ public class JumakScene : BaseScene
             bgmManager.FadeInMusic(maxVolume);
             bgmManager.SetLoop();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            AddTable();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            AddRecipe();
+        }
     }
-    public void BGMON()
+    public void AddTable()
     {
-        data.isPlayBGM = true;
+        if (data.curUnlockLevel < data.maxUnlockLevel)
+        {
+            audioManager.Play(pauseSound);
+            data.curUnlockLevel++;
+            data.maxSeatSize += 2;
+        }
     }
 
-    public void BGMOFF()
+    public void AddRecipe()
     {
-        data.isPlayBGM = false;
-    }
+        if (data.curMenuUnlockLevel < data.maxMenuUnlockLevel)
+        {
+            audioManager.Play(pauseSound);
+            data.curMenuUnlockLevel++;
+        }
 
+    }
     public override void Clear()
     {
 
@@ -102,8 +130,10 @@ public class JumakScene : BaseScene
     public void ConvertScene(string _sceneName)
     {
         bgmManager.Stop();
+        audioManager.AllStop();
         SceneManager.LoadScene(_sceneName);
     }
+
 
     //---게임 로드시 데이터 값에 따라 해금---//
     void unlockTable()
