@@ -51,6 +51,6 @@ public class Data
     public bool isObstacle = false;//Obstacle spawn 여부 확인
     public float runningTime = 0;//달리기 게임 실행 시간
     public float playerHP = 3;//HP - 하트 
-    public float monsterHP; // 몬스터HP - 하트 
+    public float monsterHP = 10; // 몬스터HP - 하트 
 
 }

@@ -2,17 +2,36 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using Newtonsoft.Json.Bson;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class FireBall : MonoBehaviour
 {
     public Image disable;
-    public MonsterBuChu monsterBuChu;
 
     private float coolTime = 1.0f;
     private float coolTime_max = 1.0f;
     private bool CoolCheck = false;
 
+    private Data data;
+
+    void Awake()
+    {
+        data = DataManager.Instance.data;
+    }
+
+    void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        if (coolTime <= 0.0f)
+        {
+            CoolCheck = false;
+        }
+    }
 
     IEnumerator FireBallCoolTimeFunc()
     {
@@ -23,14 +42,6 @@ public class FireBall : MonoBehaviour
             disable.fillAmount = coolTime / coolTime_max;
 
             yield return new WaitForSeconds(0.01f);
-        }
-    }
-
-    private void Update()
-    {
-        if (coolTime <= 0.0f)
-        {
-            CoolCheck = false;
         }
     }
 
@@ -51,6 +62,6 @@ public class FireBall : MonoBehaviour
 
     public void FireBallMagic()
     {
-        monsterBuChu.MonsterHPs -= 0.5f;
+        data.monsterHP -= 0.5f;
     }
 }
