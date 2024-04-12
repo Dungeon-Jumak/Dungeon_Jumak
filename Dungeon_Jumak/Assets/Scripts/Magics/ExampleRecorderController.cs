@@ -34,22 +34,20 @@ namespace UnistrokeGestureRecognition.Example {
                 if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
                 {
                     Vector2 touchPosition = touch.position;
-                    if (touchPosition.x >= 100 && touchPosition.x <= 980 && touchPosition.y >= 100 && touchPosition.y <= 800)
-                    {
-                        Vector2 point = _camera.ScreenToWorldPoint(touchPosition);
-                        UpdatePath(point);
-                    }
+
+                    Vector2 point = _camera.ScreenToWorldPoint(touchPosition);
+                    UpdatePath(point);
+
                 }
             }
 
             else if (Input.GetMouseButton(0))
             {
                 var screenPosition = Input.mousePosition;
-                if (screenPosition.x >= 100 && screenPosition.x <= 980 && screenPosition.y >= 100 && screenPosition.y <= 800)
-                {
-                    Vector2 point = _camera.ScreenToWorldPoint(screenPosition);
-                    UpdatePath(point);
-                }
+                
+                Vector2 point = _camera.ScreenToWorldPoint(screenPosition);
+                UpdatePath(point);
+                
             }
         }
 

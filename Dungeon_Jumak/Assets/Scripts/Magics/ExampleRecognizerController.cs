@@ -125,21 +125,25 @@ namespace UnistrokeGestureRecognition.Example {
 
         private void RecordNewPoint()
         {
-
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
                 Vector2 touchPosition = touch.position;
 
-                if (touchPosition.x >= 100 && touchPosition.x <= 980 && touchPosition.y >= 100 && touchPosition.y <= 800 && touch.phase == TouchPhase.Moved)
+                if (touch.phase == TouchPhase.Moved)
                 {
-                    Vector2 point = _camera.ScreenToWorldPoint(touchPosition);
-                    _gestureRecorder.RecordPoint(point);
-                    // Show gesture path
-                    _pathDrawer.AddPoint(point);
+                    Vector2 normalizedTouchPosition = new Vector2(touchPosition.x / Screen.width, touchPosition.y / Screen.height);
+                    Vector2 mobileTouchPosition = new Vector2(normalizedTouchPosition.x * 1080, normalizedTouchPosition.y * 1920);
+
+                    if (mobileTouchPosition.x >= 100 && mobileTouchPosition.x <= 980 && mobileTouchPosition.y >= 100 && mobileTouchPosition.y <= 800)
+                    {
+                        Vector2 point = _camera.ScreenToWorldPoint(mobileTouchPosition);
+                        _gestureRecorder.RecordPoint(point);
+                        // Show gesture path
+                        _pathDrawer.AddPoint(point);
+                    }
                 }
             }
-
             else if (Input.GetMouseButton(0))
             {
                 var screenPosition = Input.mousePosition;
@@ -152,6 +156,7 @@ namespace UnistrokeGestureRecognition.Example {
                 }
             }
         }
+
 
 
         private void OnValidate() {
