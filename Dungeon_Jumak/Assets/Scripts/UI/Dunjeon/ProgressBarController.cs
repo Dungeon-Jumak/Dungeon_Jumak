@@ -49,6 +49,8 @@ public class ProgressBarController : MonoBehaviour
             {
                 SpawnMonster();
                 monsterSpawnedAt0_9 = true;
+
+                data.isThirdMonster = true;
             }
         }
     }
