@@ -14,6 +14,9 @@ public class WaitingScene : MonoBehaviour
     [SerializeField]
     private Data data;
 
+    [SerializeField]
+    private AudioManager audioManager;
+
     private bool playBGM = false;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,10 @@ public class WaitingScene : MonoBehaviour
 
         data = DataManager.Instance.data;
         bgmManager = FindObjectOfType<BGMManager>();
+        audioManager = FindObjectOfType<AudioManager>();
+
+        audioManager.AllStop();
+        bgmManager.Stop();
 
         //---BGM 사운드 트랙 설정---//
         bgmSoundTrack = 1;
@@ -56,6 +63,26 @@ public class WaitingScene : MonoBehaviour
             bgmManager.Play(bgmSoundTrack);
             bgmManager.FadeInMusic(maxVolume);
             bgmManager.SetLoop();
+        }
+    }
+
+    public void SoundControl()
+    {
+        if (data.isSound)
+        {
+            for (int i = 0; i < audioManager.sounds.Length; i++)
+            {
+                audioManager.sounds[i].volume = 1f;
+                audioManager.sounds[i].Setvolume();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < audioManager.sounds.Length; i++)
+            {
+                audioManager.sounds[i].volume = 0f;
+                audioManager.sounds[i].Setvolume();
+            }
         }
     }
 

@@ -987,6 +987,7 @@ MonoBehaviour:
     isCustomer: 000000000000000000000000
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
     menuCategories:
     - 
     - 
@@ -1009,14 +1010,15 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-    tableIndex: 0
     riceJuiceClear: 0
+    isMiniGame: 0
     isMonster: 0
     runningTime: 0
     playerHP: 3
     monsterHP: 0
     monsterSpawn: 0000
     isThirdMonster: 0
+  audioManager: {fileID: 0}
 --- !u!1 &1926061169
 GameObject:
   m_ObjectHideFlags: 0

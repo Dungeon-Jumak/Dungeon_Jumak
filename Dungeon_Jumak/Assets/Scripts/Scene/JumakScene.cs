@@ -59,6 +59,8 @@ public class JumakScene : BaseScene
             data.isFinEat[i] = false;
         }
 
+        bgmManager.Stop();
+
         data.curSeatSize = 0;
 
         //---기본 BGM 실행---//

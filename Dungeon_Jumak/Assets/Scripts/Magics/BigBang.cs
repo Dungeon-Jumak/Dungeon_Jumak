@@ -12,10 +12,18 @@ public class BigBang : MonoBehaviour
     private bool CoolCheck = false;
     private Data data;
 
+    private AudioManager audioManager;
+
     void Awake()
     {
         data = DataManager.Instance.data;
     }
+
+    private void Start()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
+
     private void Update()
     {
         if (coolTime <= 0.0f)
@@ -46,13 +54,22 @@ public class BigBang : MonoBehaviour
 
             StartCoroutine(BigBangCoolTimeFunc());
 
-            BigBangMagic();
+            StartCoroutine(BigBangMagic());
             CoolCheck = true;
         }
     }
 
-    public void BigBangMagic()
+    IEnumerator BigBangMagic()
     {
+        if (data.isSound)
+        {
+            audioManager.Play("magicSketch");
+            yield return new WaitForSeconds(1f);
+            audioManager.Stop("magicSketch");
+
+            audioManager.Play("bigBang");
+        }
         data.monsterHP -= 3f;
+        yield return null;
     }
 }

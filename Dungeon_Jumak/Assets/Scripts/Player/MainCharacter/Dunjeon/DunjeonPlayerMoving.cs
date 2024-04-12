@@ -26,6 +26,10 @@ public class DunjeonPlayerMoving : MonoBehaviour
         transform.position = lanePositions[laneNumber];// 게임 시작 시 플레이어를 1레인의 위치로 초기화
     }
 
+    private void Start()
+    {
+    }
+
     void Update()
     {
         // 터치 입력 처리

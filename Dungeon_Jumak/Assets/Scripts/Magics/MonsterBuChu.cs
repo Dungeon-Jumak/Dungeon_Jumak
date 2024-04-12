@@ -1,14 +1,23 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class MonsterBuChu : MonoBehaviour
 {
     // public Text hpText;
     private Data data;
+
+    private AudioManager audioManager;
     void Awake()
     {
         data = DataManager.Instance.data;
+    }
+
+    private void Start()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+        StartCoroutine(StartBattle());
     }
 
     private void Update()
@@ -21,7 +30,7 @@ public class MonsterBuChu : MonoBehaviour
     }
 
 
-    IEnumerator Start()
+    IEnumerator StartBattle()
     {
         while (true)
         {
@@ -32,6 +41,8 @@ public class MonsterBuChu : MonoBehaviour
 
     void CallHpFunc()
     {
+        if (data.isSound)
+            audioManager.Play("damagedSound");
         data.playerHP -= 0.5f;
     }
 }

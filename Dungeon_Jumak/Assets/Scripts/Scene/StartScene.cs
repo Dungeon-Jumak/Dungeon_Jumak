@@ -39,6 +39,8 @@ public class StartScene : MonoBehaviour
         bgmManager = FindObjectOfType<BGMManager>();
         audioManager = FindObjectOfType<AudioManager>();
 
+        bgmManager.Stop();
+
         //---BGM 사운드 트랙 설정---//
         bgmSoundTrack = 0;
 

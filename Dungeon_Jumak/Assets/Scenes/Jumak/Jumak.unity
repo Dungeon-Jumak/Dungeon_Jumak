@@ -1666,6 +1666,7 @@ MonoBehaviour:
     isCustomer: 000000000000000000000000
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
     menuCategories:
     - 
     - 
@@ -1688,8 +1689,8 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-    tableIndex: 0
     riceJuiceClear: 0
+    isMiniGame: 0
     isMonster: 0
     runningTime: 0
     playerHP: 3
@@ -2397,6 +2398,7 @@ MonoBehaviour:
     isCustomer: 000000000000000000000000
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
     menuCategories:
     - 
     - 
@@ -2419,8 +2421,8 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-    tableIndex: 0
     riceJuiceClear: 0
+    isMiniGame: 0
     isMonster: 0
     runningTime: 0
     playerHP: 3
@@ -7769,6 +7771,7 @@ MonoBehaviour:
     isCustomer: 000000000000000000000000
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
     menuCategories:
     - 
     - 
@@ -7791,8 +7794,8 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-    tableIndex: 0
     riceJuiceClear: 0
+    isMiniGame: 0
     isMonster: 0
     runningTime: 0
     playerHP: 3
@@ -7994,6 +7997,7 @@ MonoBehaviour:
     isCustomer: 000000000000000000000000
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
     menuCategories:
     - 
     - 
@@ -8016,8 +8020,8 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-    tableIndex: 0
     riceJuiceClear: 0
+    isMiniGame: 0
     isMonster: 0
     runningTime: 0
     playerHP: 3
@@ -13486,6 +13490,7 @@ MonoBehaviour:
     isCustomer: 000000000000000000000000
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
     menuCategories:
     - 
     - 
@@ -13508,8 +13513,8 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-    tableIndex: 0
     riceJuiceClear: 0
+    isMiniGame: 0
     isMonster: 0
     runningTime: 0
     playerHP: 3
@@ -14107,6 +14112,7 @@ MonoBehaviour:
     isCustomer: 000000000000000000000000
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
     menuCategories:
     - 
     - 
@@ -14129,8 +14135,8 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-    tableIndex: 0
     riceJuiceClear: 0
+    isMiniGame: 0
     isMonster: 0
     runningTime: 0
     playerHP: 3

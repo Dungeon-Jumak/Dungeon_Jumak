@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6645319082299647833
+--- !u!1 &6175188020798981413
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6645319082299647839}
-  - component: {fileID: 6645319082299647838}
+  - component: {fileID: 6175188020798981411}
+  - component: {fileID: 6175188020798981410}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6645319082299647839
+--- !u!4 &6175188020798981411
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6645319082299647833}
+  m_GameObject: {fileID: 6175188020798981413}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,13 +32,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6645319082299647838
+--- !u!114 &6175188020798981410
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6645319082299647833}
+  m_GameObject: {fileID: 6175188020798981413}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a516c620d6382384c938c49a3be49957, type: 3}
@@ -119,5 +119,41 @@ MonoBehaviour:
     loop: 0
   - name: pajeonSound
     clip: {fileID: 8300000, guid: b6641c4d6abe95a408e356efbe63b475, type: 3}
+    volume: 0
+    loop: 0
+  - name: runSound
+    clip: {fileID: 8300000, guid: dade6c7bd09103945a4c526d13ba957a, type: 3}
+    volume: 0
+    loop: 0
+  - name: obstacleSound
+    clip: {fileID: 8300000, guid: 49a8cfca591566e41b2935674950e5d0, type: 3}
+    volume: 0
+    loop: 0
+  - name: healSound
+    clip: {fileID: 8300000, guid: 66390604de49e3546990736ef13d1f01, type: 3}
+    volume: 0
+    loop: 0
+  - name: battleWinSound
+    clip: {fileID: 8300000, guid: aaa465a62c4193a41a3d1f75d5289912, type: 3}
+    volume: 0
+    loop: 0
+  - name: battleDefeatSound
+    clip: {fileID: 8300000, guid: 8eabc8ccbd87bef4bb044e4fdeb53cf5, type: 3}
+    volume: 0
+    loop: 0
+  - name: fireBall
+    clip: {fileID: 8300000, guid: a287ab47222e8ee48b190a490e5a4d93, type: 3}
+    volume: 0
+    loop: 0
+  - name: bigBang
+    clip: {fileID: 8300000, guid: 223361b12ed7e3f4c8fcae5ed8d8ccb8, type: 3}
+    volume: 0
+    loop: 0
+  - name: damagedSound
+    clip: {fileID: 8300000, guid: 90c0cf4a10d3147499a443ae1e28404b, type: 3}
+    volume: 0
+    loop: 0
+  - name: magicSketch
+    clip: {fileID: 8300000, guid: 03c0594be40f3c34f95c6310a3c6e63b, type: 3}
     volume: 0
     loop: 0

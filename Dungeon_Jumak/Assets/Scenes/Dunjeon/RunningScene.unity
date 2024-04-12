@@ -2602,6 +2602,7 @@ MonoBehaviour:
     isCustomer: 000000000000000000000000
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
     menuCategories:
     - 
     - 
@@ -2624,8 +2625,8 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-    tableIndex: 0
     riceJuiceClear: 0
+    isMiniGame: 0
     isMonster: 0
     runningTime: 0
     playerHP: 3
@@ -2718,6 +2719,10 @@ PrefabInstance:
     - target: {fileID: 3970961028892638182, guid: 1b2d7243bf9e16441b0d7d52f074ba87, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926779797411404845, guid: 1b2d7243bf9e16441b0d7d52f074ba87, type: 3}
+      propertyPath: audioManager
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7093830614230141476, guid: 1b2d7243bf9e16441b0d7d52f074ba87, type: 3}
       propertyPath: m_Enabled
@@ -3748,6 +3753,7 @@ MonoBehaviour:
     isCustomer: 000000000000000000000000
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
     menuCategories:
     - 
     - 
@@ -3770,8 +3776,8 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-    tableIndex: 0
     riceJuiceClear: 0
+    isMiniGame: 0
     isMonster: 0
     runningTime: 0
     playerHP: 0
@@ -4889,6 +4895,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8e0558d4f85394d8a28c4c5cb98aea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmSoundTrack: 3
+  maxVolume: 0.5
 --- !u!4 &1876478104
 Transform:
   m_ObjectHideFlags: 0
