@@ -9,7 +9,6 @@ public class MonsterBuChu : MonoBehaviour
     void Awake()
     {
         data = DataManager.Instance.data;
-        data.monsterHP = 10f;
     }
 
     private void Update()

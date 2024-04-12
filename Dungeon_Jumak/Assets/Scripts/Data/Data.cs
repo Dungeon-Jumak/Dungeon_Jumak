@@ -50,6 +50,6 @@ public class Data
     public bool isMonster = false;//Monster spawn 여부 확인
     public float runningTime = 0;//달리기 게임 실행 시간
     public float playerHP = 3;//HP - 하트 
-    public float monsterHP = 10; // 몬스터HP - 하트 
-
+    public float monsterHP; // 몬스터HP - 하트 
+    public bool[] monsterSpawn = new bool[2];           //0: 부추, 1: 돼지
 }

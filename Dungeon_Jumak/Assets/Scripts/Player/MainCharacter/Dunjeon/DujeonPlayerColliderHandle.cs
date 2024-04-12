@@ -32,7 +32,8 @@ public class DujeonPlayerColliderHandle : MonoBehaviour
             Destroy(other.gameObject);
 
             data.isMonster = false;
-            SceneManager.LoadScene("Test");//몬스터랑 부딪히면 씬 넘어가는 파트. 임의로 test씬 만들어둠.
+            data.monsterSpawn[0] = true;
+            SceneManager.LoadScene("FightScene");//몬스터랑 부딪히면 씬 넘어가는 파트. 임의로 test씬 만들어둠.
         }
         //---회복초랑 부딪혔을 때---//
         else if (other.gameObject.CompareTag("Recovery"))
