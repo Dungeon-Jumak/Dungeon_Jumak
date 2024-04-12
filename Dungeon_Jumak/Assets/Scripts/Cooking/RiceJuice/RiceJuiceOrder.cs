@@ -52,15 +52,9 @@ public class RiceJuiceOrder : MonoBehaviour
                     Debug.Log("감지");
                     GameObject[] parentObjects = GameObject.FindGameObjectsWithTag("RiceJuiceMiniGame");
 
-                    GameObject[] speechBoxes = GameObject.FindGameObjectsWithTag("SpeechBox");
-                    GameObject[] shadows = new GameObject[data.onTables.Length];
-
-                    for (int i = 0; i <speechBoxes.Length; i++)
-                    {
-                        //그림자들을 불러옴
-                        shadows[i] =speechBoxes[i].transform.GetChild(1).gameObject;
-                        shadows[i].GetComponent<BubbleShadowController>().isStop = true;
-                    }
+                    GameObject shadow = transform.GetChild(1).gameObject;
+                    shadow.GetComponent<BubbleShadowController>().isStop = true;
+                    shadow.GetComponent<BubbleShadowController>().isMiniGame = true;
 
                     foreach (GameObject parentObject in parentObjects)
                     {

@@ -10,10 +10,13 @@ public class BubbleShadowController : MonoBehaviour
     public float startY = -10f; //시작 Y 위치
     public float endY = 0f; // 종료 Y 위치
 
+    public float timer = 0f;
+
+    public bool isMiniGame;
+
     [SerializeField]
     private SpriteRenderer shadowRenderer; //그림자의 SpriteRenderer 컴포넌트
-    [SerializeField]
-    private float timer = 0f;
+   
 
     [SerializeField]
     private OrderMenu orderMenu;
@@ -30,6 +33,8 @@ public class BubbleShadowController : MonoBehaviour
 
     private void Start()
     {
+        isMiniGame = false;
+
         fadeInDuration = 13f;
 
         shadowRenderer = GetComponent<SpriteRenderer>();

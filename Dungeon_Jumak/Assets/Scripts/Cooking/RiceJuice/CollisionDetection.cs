@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CollisionDetection : MonoBehaviour
 {
@@ -102,15 +103,7 @@ public class CollisionDetection : MonoBehaviour
 
     void SuccessRiceJuiceMiniGame()
     {
-        GameObject[] speechBoxes = GameObject.FindGameObjectsWithTag("SpeechBox");
-        GameObject[] shadows = new GameObject[DataManager.Instance.data.onTables.Length];
-
-        for (int i = 0; i < speechBoxes.Length; i++)
-        {
-            //그림자들을 불러옴
-            shadows[i] = speechBoxes[i].transform.GetChild(1).gameObject;
-            shadows[i].GetComponent<BubbleShadowController>().isStop = false;
-        }
+        DataManager.Instance.data.riceJuiceClear = true;
 
         GameObject[] parentObjects = GameObject.FindGameObjectsWithTag("RiceJuiceMiniGame");
 
@@ -118,7 +111,6 @@ public class CollisionDetection : MonoBehaviour
         {
             foreach (Transform child in parentObject.transform)
             {
-                DataManager.Instance.data.riceJuiceClear = true;
                 child.gameObject.SetActive(false);
                 blackPanel.SetActive(false);
             }
@@ -127,6 +119,22 @@ public class CollisionDetection : MonoBehaviour
 
     void FailRiceJuiceMiniGame()
     {
+        GameObject[] speechBox = GameObject.FindGameObjectsWithTag("SpeechBox");
+        GameObject[] shadows = new GameObject[DataManager.Instance.data.onTables.Length];
+
+        for (int i = 0; i < speechBox.Length; i++)
+        {
+            shadows[i] = speechBox[i].transform.GetChild(1).gameObject;
+
+            if (shadows[i].GetComponent<BubbleShadowController>().isMiniGame)
+            {
+                shadows[i].GetComponent<BubbleShadowController>().isMiniGame = false;
+                shadows[i].GetComponent<BubbleShadowController>().timer =
+                    shadows[i].GetComponent<BubbleShadowController>().fadeInDuration;
+            }
+
+        }
+
         GameObject[] parentObjects = GameObject.FindGameObjectsWithTag("RiceJuiceMiniGame");
 
         foreach (GameObject parentObject in parentObjects)

@@ -101,8 +101,8 @@ MonoBehaviour:
   fadeInDuration: 13
   startY: -7
   endY: 0
-  shadowRenderer: {fileID: 0}
   timer: 0
+  shadowRenderer: {fileID: 0}
   orderMenu: {fileID: 6488744439891724049}
   data:
     curPlayerLV: 1
@@ -140,6 +140,12 @@ MonoBehaviour:
     fireSize: 100
     tableIndex: 0
     riceJuiceClear: 0
+    isMonster: 0
+    runningTime: 0
+    playerHP: 3
+    monsterHP: 0
+    monsterSpawn: 0000
+    isThirdMonster: 0
   audioManager: {fileID: 0}
   timeOutSound: 
 --- !u!1 &264913759732028951
@@ -243,8 +249,8 @@ MonoBehaviour:
   fadeInDuration: 13
   startY: -7
   endY: 0
-  shadowRenderer: {fileID: 0}
   timer: 0
+  shadowRenderer: {fileID: 0}
   orderMenu: {fileID: 6488744439891724049}
   data:
     curPlayerLV: 1
@@ -282,6 +288,12 @@ MonoBehaviour:
     fireSize: 100
     tableIndex: 0
     riceJuiceClear: 0
+    isMonster: 0
+    runningTime: 0
+    playerHP: 3
+    monsterHP: 0
+    monsterSpawn: 0000
+    isThirdMonster: 0
   audioManager: {fileID: 0}
   timeOutSound: 
 --- !u!1 &264913761009631528
@@ -385,8 +397,8 @@ MonoBehaviour:
   fadeInDuration: 13
   startY: -7
   endY: 0
-  shadowRenderer: {fileID: 0}
   timer: 0
+  shadowRenderer: {fileID: 0}
   orderMenu: {fileID: 6488744439891724049}
   data:
     curPlayerLV: 1
@@ -424,6 +436,12 @@ MonoBehaviour:
     fireSize: 100
     tableIndex: 0
     riceJuiceClear: 0
+    isMonster: 0
+    runningTime: 0
+    playerHP: 3
+    monsterHP: 0
+    monsterSpawn: 0000
+    isThirdMonster: 0
   audioManager: {fileID: 0}
   timeOutSound: 
 --- !u!1 &864137831654771198
@@ -882,6 +900,12 @@ MonoBehaviour:
     fireSize: 100
     tableIndex: 0
     riceJuiceClear: 0
+    isMonster: 0
+    runningTime: 0
+    playerHP: 3
+    monsterHP: 0
+    monsterSpawn: 0000
+    isThirdMonster: 0
   orderMenu: {fileID: 6488744439891724049}
   spriteRenderer: {fileID: 0}
   audioSource: {fileID: 0}
@@ -943,6 +967,12 @@ MonoBehaviour:
     fireSize: 100
     tableIndex: 0
     riceJuiceClear: 0
+    isMonster: 0
+    runningTime: 0
+    playerHP: 3
+    monsterHP: 0
+    monsterSpawn: 0000
+    isThirdMonster: 0
   customerMovement: {fileID: 8851026437609507813}
 --- !u!50 &5341880407600492806
 Rigidbody2D:

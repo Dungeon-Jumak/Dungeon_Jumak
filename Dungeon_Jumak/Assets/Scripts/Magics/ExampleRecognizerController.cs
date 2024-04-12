@@ -134,11 +134,20 @@ namespace UnistrokeGestureRecognition.Example {
                 {
                     Vector2 mobileTouchPosition = new Vector2(touch.position.x, touch.position.y);
 
-                    float minX = (Screen.width - 1000) / 2;
+                    Camera camera = FindObjectOfType<Camera>();
+
+                    //float minX = (Screen.width - 1000) / 2;
+                    //float maxX = 1080 - minX;
+
+                    //float minY = ((Screen.height / 2) - 850) / 2;
+                    //float maxY = 850 + minY;
+
+                    float minX = (camera.rect.width - 1000) / 2;
                     float maxX = 1080 - minX;
 
-                    float minY = ((Screen.height / 2) - 850) / 2;
+                    float minY = ((camera.rect.height / 2) - 850) / 2;
                     float maxY = 850 + minY;
+
 
                     if (mobileTouchPosition.x >= minX && mobileTouchPosition.x <= maxX && mobileTouchPosition.y >= minY && mobileTouchPosition.y <= maxY)
                     {
