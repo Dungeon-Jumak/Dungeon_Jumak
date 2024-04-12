@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.Rendering;
 
 [Serializable]
 public class Data
@@ -25,6 +26,7 @@ public class Data
     public bool[] isCustomer = new bool[12];            //고객 테이블에 도착했는지 체크하기 위한 변수
     public bool[] onTables = new bool[12];              //테이블 위에 음식을 체크하기 위한 변수
     public bool[] isFinEat = new bool[12];              //다 먹었음을 알리는 변수
+    public bool[] tableMiniGame = new bool[12];
 
     public string[] menuCategories = new string[12]; //각 자리에 있는 메뉴의 카테고리
     public int[] menuLV = new int[12];              //각 테이블에 있는 메뉴의 벨류

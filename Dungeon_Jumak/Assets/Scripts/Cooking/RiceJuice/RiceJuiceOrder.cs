@@ -36,8 +36,10 @@ public class RiceJuiceOrder : MonoBehaviour
 
             for (int i = 0; i <data.onTables.Length; i++)
             {
-                if (i == go.GetComponent<CustomerMovement>().seatIndex)
+                if (data.tableMiniGame[i])
                 {
+                    data.tableMiniGame[i] = false;
+
                     GameObject instance = Instantiate(riceJuicePrefab, player.tables[i].transform.GetChild(0));
                     instance.transform.localPosition = Vector3.zero;
                     data.onTables[i] = true;
@@ -65,6 +67,16 @@ public class RiceJuiceOrder : MonoBehaviour
 
                     GameObject[] parentObjects = GameObject.FindGameObjectsWithTag("RiceJuiceMiniGame");
 
+                    GameObject go = transform.parent.gameObject;
+
+                    for (int i = 0; i < data.onTables.Length; i++)
+                    {
+                        if (i == go.GetComponent<CustomerMovement>().seatIndex)
+                            data.tableMiniGame[i] = true;
+                    }
+
+
+
                     GameObject shadow = transform.GetChild(1).gameObject;
                     shadow.GetComponent<BubbleShadowController>().isStop = true;
                     shadow.GetComponent<BubbleShadowController>().isMiniGame = true;
@@ -86,19 +98,41 @@ public class RiceJuiceOrder : MonoBehaviour
             //===터치 입력 확인===//
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-                touchPosition.z = transform.position.z;
-                if (circleCollider.OverlapPoint(touchPosition))
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mousePosition.z = transform.position.z;
+
+                if (circleCollider.OverlapPoint(mousePosition) && !data.isMiniGame)
                 {
+                    Debug.Log("감지");
+
+                    data.isMiniGame = true;
+
                     GameObject[] parentObjects = GameObject.FindGameObjectsWithTag("RiceJuiceMiniGame");
+
+                    GameObject go = transform.parent.gameObject;
+
+                    for (int i = 0; i < data.onTables.Length; i++)
+                    {
+                        if (i == go.GetComponent<CustomerMovement>().seatIndex)
+                            data.tableMiniGame[i] = true;
+                    }
+
+
+
+                    GameObject shadow = transform.GetChild(1).gameObject;
+                    shadow.GetComponent<BubbleShadowController>().isStop = true;
+                    shadow.GetComponent<BubbleShadowController>().isMiniGame = true;
 
                     foreach (GameObject parentObject in parentObjects)
                     {
                         foreach (Transform child in parentObject.transform)
                         {
                             child.gameObject.SetActive(true);
+                            GameObject.Find("Home_Panel").transform.GetChild(blackPanelIdx).gameObject.SetActive(true);
                         }
                     }
+
+
 
                 }
             }
