@@ -21,5 +21,6 @@ public class CameraResolution : MonoBehaviour
             rect.x = (1f - scalewidth) / 2f;
         }
         camera.rect = rect;
+        Debug.Log(camera.rect);
     }
 }
