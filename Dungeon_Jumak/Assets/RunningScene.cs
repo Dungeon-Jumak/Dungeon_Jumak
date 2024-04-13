@@ -51,6 +51,7 @@ public class RunningScene : MonoBehaviour
         if (data.playerHP == 0)
         {
             SceneManager.LoadScene("WaitingScene");
+            data.isMonster = false;
         }
     }
 
