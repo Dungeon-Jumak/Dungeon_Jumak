@@ -32,6 +32,7 @@ public class PajeonFurnace : MonoBehaviour
 
         if (!player.isCarryingFood)
         {
+            audioManager.Play(pajeonSound);
             pajeonMiniGamePopup.SetActive(true);
             blackPanel.SetActive(true);
             player.isCarryingFood = true;
@@ -61,8 +62,4 @@ public class PajeonFurnace : MonoBehaviour
         pajeonSpeechBox.gameObject.SetActive(false);
     }
 
-    public void PlayPajeonSound()
-    {
-        audioManager.Play(pajeonSound);
-    }
 }

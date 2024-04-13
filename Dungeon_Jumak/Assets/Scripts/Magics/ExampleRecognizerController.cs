@@ -136,8 +136,8 @@ namespace UnistrokeGestureRecognition.Example {
 
                     Camera camera = FindObjectOfType<Camera>();
 
-                    float minX = (Screen.width - 1000) / 2;
-                    float maxX = 1080 - minX;
+                    float minX = ((Screen.width - 1000) / 2);
+                    float maxX = Screen.width - (Screen.width * camera.rect.x);
 
                     float minY = (((Screen.height / 2) - 850) / 2) + (Screen.height * camera.rect.y);
                     float maxY = 850 + (((Screen.height / 2) - 850) / 2);
