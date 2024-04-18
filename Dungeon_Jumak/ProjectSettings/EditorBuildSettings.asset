@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Ect/StartScene.unity
     guid: c707fbec9cc0eb6418284e7db06bf5e4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Ect/WaitingScene.unity
     guid: a916bdbfa359b2d4898a1583af499055
   - enabled: 1
     path: Assets/Scenes/Jumak/Jumak.unity
     guid: 288a4e65869e599449e262d2abfd38c1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Dunjeon/RunningScene.unity
     guid: d8c48ce3db750ed4bab76d598e2ebbe4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Dunjeon/FightScene.unity
     guid: 4152e6fc568a63a408bbeced069ed0d3
   m_configObjects:

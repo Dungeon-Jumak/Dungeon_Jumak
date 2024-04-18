@@ -142,12 +142,6 @@ namespace UnistrokeGestureRecognition.Example {
                     float minY = (((Screen.height / 2) - 850) / 2) + (Screen.height * camera.rect.y);
                     float maxY = 850 + (((Screen.height / 2) - 850) / 2);
 
-                    //float minX = (camera.rect.width - 1000) / 2;
-                    //float maxX = 1080 - minX;
-
-                    //float minY = ((camera.rect.height / 2) - 850) / 2;
-                    //float maxY = 850 + minY;
-
 
                     if (mobileTouchPosition.x >= minX && mobileTouchPosition.x <= maxX && mobileTouchPosition.y >= minY && mobileTouchPosition.y <= maxY)
                     {

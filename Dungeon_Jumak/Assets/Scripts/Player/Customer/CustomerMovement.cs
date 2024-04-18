@@ -90,14 +90,82 @@ public class CustomerMovement : MonoBehaviour
 
     private void Start()
     {
+        //손님 스케일 조정
+        float newScale = ((float)Screen.width / Screen.height) / 4.5f;
+        transform.localScale = new Vector3(newScale, newScale, transform.localScale.z);
+
+
         data = DataManager.Instance.data;
         orderMenu = GetComponent<OrderMenu>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-
         audioSource = GetComponent<AudioSource>();
 
         lastPosition = transform.position;
+
+        StartPoint = GameObject.Find("StartPoint").transform;
+        StopPoint = GameObject.Find("StopPoint").transform;
+
+        //Route1 = Table1 왼쪽 자리
+        Route1_Left.Add(GameObject.Find("Left_4").transform);
+        Route1_Left.Add(GameObject.Find("Left_1").transform);
+        Route1_Left.Add(GameObject.Find("Seat_L1").transform);
+
+        //Route2 = Table1 오른쪽
+        Route1_Right.Add(GameObject.Find("Center_4").transform);
+        Route1_Right.Add(GameObject.Find("Center_1").transform);
+        Route1_Right.Add(GameObject.Find("Seat_R1").transform);
+
+        //Route3 = Table2 왼쪽 자리
+        Route2_Left.Add(GameObject.Find("Center_4").transform);
+        Route2_Left.Add(GameObject.Find("Center_1").transform);
+        Route2_Left.Add(GameObject.Find("Seat_L2").transform);
+
+        //Route4 = Table2 오른쪽 자리
+        Route2_Right.Add(GameObject.Find("Right_4").transform);
+        Route2_Right.Add(GameObject.Find("Right_1").transform);
+        Route2_Right.Add(GameObject.Find("Seat_R2").transform);
+
+        //Route5 = Table3 왼쪽 자리
+        Route3_Left.Add(GameObject.Find("Left_4").transform);
+        Route3_Left.Add(GameObject.Find("Left_2").transform);
+        Route3_Left.Add(GameObject.Find("Seat_L3").transform);
+
+        //Route6 = Table3 오른쪽 자리
+        Route3_Right.Add(GameObject.Find("Center_4").transform);
+        Route3_Right.Add(GameObject.Find("Center_2").transform);
+        Route3_Right.Add(GameObject.Find("Seat_R3").transform);
+
+        //Route7 = Table4 왼쪽 자리
+        Route4_Left.Add(GameObject.Find("Center_4").transform);
+        Route4_Left.Add(GameObject.Find("Center_2").transform);
+        Route4_Left.Add(GameObject.Find("Seat_L4").transform);
+
+        //Route8 = Table4 오른쪽 자리
+        Route4_Right.Add(GameObject.Find("Right_4").transform);
+        Route4_Right.Add(GameObject.Find("Right_2").transform);
+        Route4_Right.Add(GameObject.Find("Seat_R4").transform);
+
+        //Route9 = Table5 왼쪽 자리
+        Route5_Left.Add(GameObject.Find("Left_4").transform);
+        Route5_Left.Add(GameObject.Find("Left_3").transform);
+        Route5_Left.Add(GameObject.Find("Seat_L5").transform);
+
+        //Route10 = Table5 오른쪽 자리
+        Route5_Right.Add(GameObject.Find("Center_4").transform);
+        Route5_Right.Add(GameObject.Find("Center_3").transform);
+        Route5_Right.Add(GameObject.Find("Seat_R5").transform);
+
+        //Route11 = Table6 왼쪽 자리
+        Route6_Left.Add(GameObject.Find("Center_4").transform);
+        Route6_Left.Add(GameObject.Find("Center_3").transform);
+        Route6_Left.Add(GameObject.Find("Seat_L6").transform);
+
+        //Route12 = Table6 오른쪽 자리
+        Route6_Right.Add(GameObject.Find("Right_4").transform);
+        Route6_Right.Add(GameObject.Find("Right_3").transform);
+        Route6_Right.Add(GameObject.Find("Seat_R6").transform);
+
 
         RouteList.Add(Route1_Left);
         RouteList.Add(Route1_Right);
@@ -312,6 +380,8 @@ public class CustomerMovement : MonoBehaviour
         CurPosition = transform.position;
 
         currentDir = (CurPosition - lastPosition).normalized;
+
+        Debug.Log(currentDir);
 
         if (currentDir != Vector3.zero)
         {

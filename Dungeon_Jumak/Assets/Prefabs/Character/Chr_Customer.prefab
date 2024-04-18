@@ -102,6 +102,7 @@ MonoBehaviour:
   startY: -7
   endY: 0
   timer: 0
+  isMiniGame: 0
   shadowRenderer: {fileID: 0}
   orderMenu: {fileID: 6488744439891724049}
   data:
@@ -116,6 +117,7 @@ MonoBehaviour:
     isCustomer: 000000000000000000000000
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
     menuCategories:
     - 
     - 
@@ -138,8 +140,8 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-    tableIndex: 0
     riceJuiceClear: 0
+    isMiniGame: 0
     isMonster: 0
     runningTime: 0
     playerHP: 3
@@ -250,6 +252,7 @@ MonoBehaviour:
   startY: -7
   endY: 0
   timer: 0
+  isMiniGame: 0
   shadowRenderer: {fileID: 0}
   orderMenu: {fileID: 6488744439891724049}
   data:
@@ -264,6 +267,7 @@ MonoBehaviour:
     isCustomer: 000000000000000000000000
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
     menuCategories:
     - 
     - 
@@ -286,8 +290,8 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-    tableIndex: 0
     riceJuiceClear: 0
+    isMiniGame: 0
     isMonster: 0
     runningTime: 0
     playerHP: 3
@@ -398,6 +402,7 @@ MonoBehaviour:
   startY: -7
   endY: 0
   timer: 0
+  isMiniGame: 0
   shadowRenderer: {fileID: 0}
   orderMenu: {fileID: 6488744439891724049}
   data:
@@ -412,6 +417,7 @@ MonoBehaviour:
     isCustomer: 000000000000000000000000
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
     menuCategories:
     - 
     - 
@@ -434,8 +440,8 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-    tableIndex: 0
     riceJuiceClear: 0
+    isMiniGame: 0
     isMonster: 0
     runningTime: 0
     playerHP: 3
@@ -727,7 +733,7 @@ Transform:
   m_GameObject: {fileID: 4348780489430493476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.25, y: -4.5, z: 0}
-  m_LocalScale: {x: 0.13, y: 0.13, z: 0.1}
+  m_LocalScale: {x: 0.125, y: 0.125, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1081448553928007995}
@@ -800,61 +806,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef9382ede82e7548967304a5bb2b5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Route1_Left:
-  - {fileID: 592371257299673694, guid: f01ca8aebbc332e4383a80ad1694b377, type: 3}
-  - {fileID: 7876294570136212066, guid: f533f1c674348c8448ae6671b71c1aae, type: 3}
-  - {fileID: 3883416099307374138, guid: 5cd282d43ff924b48a88f3a61ee0b3a1, type: 3}
-  Route1_Right:
-  - {fileID: 9072078913468466247, guid: 6630b102feffff64c9aacd4276e3e2db, type: 3}
-  - {fileID: 5157055652728780927, guid: 51fbe4b16aa906e4d8f1696c76f78f5c, type: 3}
-  - {fileID: 6899252589888680785, guid: e90847d06e90d3d429cb20af529156ba, type: 3}
-  Route2_Left:
-  - {fileID: 9072078913468466247, guid: 6630b102feffff64c9aacd4276e3e2db, type: 3}
-  - {fileID: 5157055652728780927, guid: 51fbe4b16aa906e4d8f1696c76f78f5c, type: 3}
-  - {fileID: 6355858251318637568, guid: fed64cd44c1abac4589a380fa790e3d2, type: 3}
-  Route2_Right:
-  - {fileID: 2679968256591990733, guid: da71a6124a1652b43896de71e2ad7f27, type: 3}
-  - {fileID: 141840448235817027, guid: d83569b5e3cc4174bbb19c9a8fc555f7, type: 3}
-  - {fileID: 8994930315938093893, guid: 43f151e472bda734ab4f214a52748fa7, type: 3}
-  Route3_Left:
-  - {fileID: 592371257299673694, guid: f01ca8aebbc332e4383a80ad1694b377, type: 3}
-  - {fileID: 727043362811727175, guid: 966abff49aa737042aaa9b25a6d88003, type: 3}
-  - {fileID: 4699432685264691432, guid: 112e3331bc30627409ecc8270254cdab, type: 3}
-  Route3_Right:
-  - {fileID: 9072078913468466247, guid: 6630b102feffff64c9aacd4276e3e2db, type: 3}
-  - {fileID: 1803586819275320942, guid: 5657ef81efda58a428f6f8ce0f657f5b, type: 3}
-  - {fileID: 5212907332192546860, guid: 3cdb8c3be5cb5694faeeb890b1903a89, type: 3}
-  Route4_Left:
-  - {fileID: 9072078913468466247, guid: 6630b102feffff64c9aacd4276e3e2db, type: 3}
-  - {fileID: 1803586819275320942, guid: 5657ef81efda58a428f6f8ce0f657f5b, type: 3}
-  - {fileID: 502816484434555376, guid: 37775f781d79695488a136b4a6fd10fd, type: 3}
-  Route4_Right:
-  - {fileID: 2679968256591990733, guid: da71a6124a1652b43896de71e2ad7f27, type: 3}
-  - {fileID: 4566511902122587425, guid: 370ab4f8f51b2b24f9d3f0b6ba808964, type: 3}
-  - {fileID: 7592112783753053845, guid: 29e97f15506899a4a8fc1d2ac1c9be78, type: 3}
-  Route5_Left:
-  - {fileID: 592371257299673694, guid: f01ca8aebbc332e4383a80ad1694b377, type: 3}
-  - {fileID: 3111346234034436438, guid: afaf95ca2b2cee844b36a1d8268d3264, type: 3}
-  - {fileID: 4795391863630407591, guid: 213eadb61c4ffa64490d402b5b08a727, type: 3}
-  Route5_Right:
-  - {fileID: 9072078913468466247, guid: 6630b102feffff64c9aacd4276e3e2db, type: 3}
-  - {fileID: 9125281865431136160, guid: d23d124db07f77444878f98cde01b5f4, type: 3}
-  - {fileID: 8345605140098036582, guid: cce8065479a48a54a8bbb76bd5d93f77, type: 3}
-  Route6_Left:
-  - {fileID: 9072078913468466247, guid: 6630b102feffff64c9aacd4276e3e2db, type: 3}
-  - {fileID: 9125281865431136160, guid: d23d124db07f77444878f98cde01b5f4, type: 3}
-  - {fileID: 8888386177414915691, guid: 96173313a67c14d42943a006a9581bad, type: 3}
-  Route6_Right:
-  - {fileID: 2679968256591990733, guid: da71a6124a1652b43896de71e2ad7f27, type: 3}
-  - {fileID: 2911309632298159774, guid: 5027a700a9f48ec45ac8b631c810acc4, type: 3}
-  - {fileID: 6284072826648124051, guid: 7eef1db7c6d64224d9ccc8976222abde, type: 3}
+  Route1_Left: []
+  Route1_Right: []
+  Route2_Left: []
+  Route2_Right: []
+  Route3_Left: []
+  Route3_Right: []
+  Route4_Left: []
+  Route4_Right: []
+  Route5_Left: []
+  Route5_Right: []
+  Route6_Left: []
+  Route6_Right: []
   FinRoute:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   seatIndex: 0
-  StartPoint: {fileID: 7614776794981503770, guid: f6d977643ffff6847932243f949ddd82, type: 3}
-  StopPoint: {fileID: 2679968256591990733, guid: da71a6124a1652b43896de71e2ad7f27, type: 3}
+  StartPoint: {fileID: 0}
+  StopPoint: {fileID: 0}
   isFull: 0
   isArrive: 0
   isReturn: 0
@@ -876,6 +846,7 @@ MonoBehaviour:
     isCustomer: 000000000000000000000000
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
     menuCategories:
     - 
     - 
@@ -898,8 +869,8 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-    tableIndex: 0
     riceJuiceClear: 0
+    isMiniGame: 0
     isMonster: 0
     runningTime: 0
     playerHP: 3
@@ -943,6 +914,7 @@ MonoBehaviour:
     isCustomer: 000000000000000000000000
     onTables: 000000000000000000000000
     isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
     menuCategories:
     - 
     - 
@@ -965,8 +937,8 @@ MonoBehaviour:
     curMenuUnlockLevel: 1
     maxMenuUnlockLevel: 3
     fireSize: 100
-    tableIndex: 0
     riceJuiceClear: 0
+    isMiniGame: 0
     isMonster: 0
     runningTime: 0
     playerHP: 3
