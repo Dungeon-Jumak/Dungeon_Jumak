@@ -90,9 +90,6 @@ public class CustomerMovement : MonoBehaviour
 
     private void Start()
     {
-        //손님 스케일 조정
-        float newScale = ((float)Screen.width / Screen.height) / 4.5f;
-        transform.localScale = new Vector3(newScale, newScale, transform.localScale.z);
 
 
         data = DataManager.Instance.data;

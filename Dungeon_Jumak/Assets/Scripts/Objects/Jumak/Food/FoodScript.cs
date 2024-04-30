@@ -16,6 +16,7 @@ public class FoodScript : MonoBehaviour
     private void Start()
     {
         //음식 스케일 조정
+        /*
         if (gameObject.CompareTag("Gukbab"))
         {
             float newScale = ((float)Screen.width / Screen.height) * 0.9f;
@@ -26,6 +27,6 @@ public class FoodScript : MonoBehaviour
             float newScale = ((float)Screen.width / Screen.height) * 0.09f;
             transform.localScale = new Vector3(newScale, newScale, transform.localScale.z);
         }
-
+        */
     }
 }
