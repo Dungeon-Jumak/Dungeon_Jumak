@@ -6,14 +6,22 @@ using static Unity.VisualScripting.Member;
 using Unity.VisualScripting;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Pathfinding;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField]
+    private AIPath aiPath;
+    
+    [SerializeField]
+    private Transform target;
+
     private bool isMove;
     [SerializeField]
     private float delaySecond;
 
     private RaycastHit2D hit;
+    Vector2 direction;
 
     //---텔포 예외 처리---//
     public Canvas m_canvas;
@@ -27,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
         m_canvas = GameObject.Find("UI_Canvas").GetComponent<Canvas>();
         m_gr = m_canvas.GetComponent<GraphicRaycaster>();
         m_ped = new PointerEventData(null);
+
+        target.transform.position = this.transform.position;
 
         //플레이어 스케일 조정
         /*
@@ -86,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
     //플레이어 텔포
     private void Teleport()
     {
-        transform.position = hit.point;
+        target.transform.position = hit.point;
     }
 
     //텔포 쿨타임을 위해 Invoke로 실행하기 위한 함수
