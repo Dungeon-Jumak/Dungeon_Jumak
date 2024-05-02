@@ -119,8 +119,6 @@ public class PlayerServing : MonoBehaviour
         //음식을 들고 있을 때
         if (isCarryingFood && tableChild.childCount == 0)
         {
-            moveStop = true;
-
             for (int i = 0; i < tables.Length; i++)
             {
                 if (tableObject.transform == tables[i])
@@ -128,6 +126,8 @@ public class PlayerServing : MonoBehaviour
                     // --- 국밥 놓기 전 손님 테이블에 있는지 확인 --- //
                     if (data.isCustomer[i] && menuCategori.Contains(data.menuCategories[i]))
                     {
+                        moveStop = true;
+
                         data.onTables[i] = true;
                         data.menuLV[i] = menuValue;
 

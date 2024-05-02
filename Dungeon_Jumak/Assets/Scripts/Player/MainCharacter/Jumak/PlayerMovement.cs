@@ -77,8 +77,6 @@ public class PlayerMovement : MonoBehaviour
         SetDirection();
         SetAnimation();
 
-
-
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //레이 방향 설정
@@ -107,36 +105,6 @@ public class PlayerMovement : MonoBehaviour
         //현재 위치와 방향 업데이트
         curPos = transform.position;
         direction = (curPos - lastPos).normalized;
-
-        /*
-        xPos = hit.point.x;
-        yPos = hit.point.y;
-
-        //상하 이동 우선
-        if (Mathf.Abs(hit.point.x) <= Mathf.Abs(hit.point.y))
-        {
-            if(!nextMove)
-                target.transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
-            if (Mathf.Abs(transform.position.y - yPos) < 0.1f)
-            {
-                nextMove = true;
-                target.transform.position = new Vector3(xPos, yPos, transform.position.z);
-            }
-
-        }
-        //좌우 이동 우선
-        else if (Mathf.Abs(hit.point.x) > Mathf.Abs(hit.point.y))
-        {
-            if(!nextMove)
-                target.transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
-            if (Mathf.Abs(transform.position.x - xPos) < 0.1f)
-            {
-                nextMove = true;
-                target.transform.position = new Vector3(xPos, yPos, transform.position.z);
-            }
-
-        }
-        */
     }
 
     void SetAnimation()
@@ -147,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isWalk", true);
 
             //절댓값 y가 절댓값 x보다 더 크다면 (상하이동)
-            if (Mathf.Abs(direction.x) <= Mathf.Abs(direction.y))
+            if (Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
             {
                 if (direction.y > 0f)
                 {
@@ -159,18 +127,8 @@ public class PlayerMovement : MonoBehaviour
                     animator.SetFloat("dirX", 0f);
                     animator.SetFloat("dirY", -1f);
                 }
-                else if (direction.x > 0f)
-                {
-                    animator.SetFloat("dirX", 1f);
-                    animator.SetFloat("dirY", 0f);
-                }
-                else if (direction.x < 0f)
-                {
-                    animator.SetFloat("dirX", -1f);
-                    animator.SetFloat("dirY", 0f);
-                }
             }
-            else if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+            else if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
             {
                 if (direction.x > 0f)
                 {
@@ -187,8 +145,12 @@ public class PlayerMovement : MonoBehaviour
             //최근 위치 업데이트
             lastPos = curPos;
         }
-        else if (direction == Vector3.zero) 
+        else if (Vector3.Distance(transform.position, target.transform.position) < 0.3f)
+        {
+            target.transform.position = transform.position;
             animator.SetBool("isWalk", false);
+        }
+
 
     }
 

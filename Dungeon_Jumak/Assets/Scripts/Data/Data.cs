@@ -19,7 +19,7 @@ public class Data
     public bool isPause = false;
 
     //---CustomerSystem---//
-    public int maxSeatSize = 2;
+    public int maxSeatSize = 12;
     public int curSeatSize = 0;
 
     public bool[] isAllocated = new bool[12];

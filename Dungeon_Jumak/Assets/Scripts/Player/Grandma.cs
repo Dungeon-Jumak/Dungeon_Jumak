@@ -21,12 +21,14 @@ public class Grandma : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        grandmaSpeechBox.SetActive(true);
+        if (collision.CompareTag("Player"))
+            grandmaSpeechBox.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        grandmaSpeechBox.SetActive(false);
+        if (collision.CompareTag("Player"))
+            grandmaSpeechBox.SetActive(false);
     }
 
     //---cookingSound 관련 함수---//

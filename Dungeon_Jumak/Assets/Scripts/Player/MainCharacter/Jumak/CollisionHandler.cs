@@ -30,14 +30,14 @@ public class CollisionHandler : MonoBehaviour
         {
             playerServing.PlaceFoodOnTable(other.gameObject);
         }
+        else if (other.gameObject.CompareTag("Trash"))
+        {
+            playerServing.ThrowAwayFood();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Trash"))
-        {
-            playerServing.ThrowAwayFood();
-        }
 
     }
 

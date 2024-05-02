@@ -7,8 +7,6 @@ public class GukbapSetting : MonoBehaviour
 
     public List<bool> gukbapList; // 국밥 리스트 (true면 해당 위치에 국밥이 있는 상태)를 담는 public 변수
 
-    public Transform tableTransform; // 테이블 오브젝트의 Transform을 담는 public 변수
-
     public CookGukbap cookGukbap; // 다른 스크립트에 있는 CookGukbap 스크립트의 인스턴스를 담는 public 변수
 
     [SerializeField] private int previousCount; // 이전 프레임에서의 국밥 카운트를 저장하기 위한 private 변수
@@ -18,8 +16,6 @@ public class GukbapSetting : MonoBehaviour
     {
         previousCount = cookGukbap.gukbapCount; // 이전 프레임의 국밥 카운트를 초기화
         InitializeGukbapList(); // 국밥 리스트 초기화
-
-        tableTransform = GameObject.Find("ServingRange").transform;
     }
 
     void Update() // 매 프레임마다 호출되는 함수

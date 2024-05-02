@@ -84,18 +84,10 @@ public class JumakScene : BaseScene
     public void Update()
     {
         UpdateCoin();
-        UpdateLevel();
-        unlockTable();
-
         BGMControl();
         SoundControl();
 
         BGMPlayer();
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            AddTable();
-        }
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -123,16 +115,6 @@ public class JumakScene : BaseScene
         }
     }
 
-    public void AddTable()
-    {
-        if (data.curUnlockLevel < data.maxUnlockLevel)
-        {
-            audioManager.Play(pauseSound);
-            data.curUnlockLevel++;
-            data.maxSeatSize += 2;
-        }
-    }
-
     public void AddRecipe()
     {
         if (data.curMenuUnlockLevel < data.maxMenuUnlockLevel)
@@ -145,12 +127,6 @@ public class JumakScene : BaseScene
     public override void Clear()
     {
 
-    }
-
-    // --- 레벨 변경 함수 --- //
-    public void UpdateLevel()
-    {
-        GameObject.Find("UI_LevelText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curPlayerLV.ToString();
     }
 
     // --- 코인 변경 --- //
@@ -166,18 +142,6 @@ public class JumakScene : BaseScene
         SceneManager.LoadScene(_sceneName);
     }
 
-
-    //---게임 로드시 데이터 값에 따라 해금---//
-    void unlockTable()
-    {
-        for (int i = 0; i < data.curUnlockLevel; i++)
-        {
-            if (Dansangs[i] != null) // 해당 게임 오브젝트가 파괴되지 않았는지 확인
-            {
-                Dansangs[i].SetActive(true);
-            }
-        }
-    }
 
     public void BGMControl()
     {

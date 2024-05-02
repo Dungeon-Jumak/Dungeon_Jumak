@@ -54,12 +54,14 @@ public class PajeonFurnace : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        pajeonSpeechBox.gameObject.SetActive(true);
+        if (collision.CompareTag("Player"))
+            pajeonSpeechBox.gameObject.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        pajeonSpeechBox.gameObject.SetActive(false);
+        if (collision.CompareTag("Player"))
+            pajeonSpeechBox.gameObject.SetActive(false);
     }
 
 }
