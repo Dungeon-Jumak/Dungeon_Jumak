@@ -14,7 +14,7 @@ public class FireBall : MonoBehaviour
     private bool CoolCheck = false;
 
     private Data data;
-    private AudioManager audioManager;
+    //private AudioManager audioManager;
 
     void Awake()
     {
@@ -23,7 +23,7 @@ public class FireBall : MonoBehaviour
 
     void Start()
     {
-        audioManager = FindObjectOfType<AudioManager>();
+        //audioManager = FindObjectOfType<AudioManager>();
     }
 
     void Update()
@@ -63,14 +63,14 @@ public class FireBall : MonoBehaviour
 
     IEnumerator FireBallMagic()
     {
-        if (data.isSound)
+       /* if (data.isSound)
         {
             audioManager.Play("magicSketch");
             yield return new WaitForSeconds(1f);
             audioManager.Stop("magicSketch");
 
             audioManager.Play("fireBall");
-        }
+        }*/
         data.monsterHP -= 0.5f;
         yield return null;
     }

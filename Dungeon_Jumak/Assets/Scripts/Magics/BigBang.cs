@@ -12,7 +12,7 @@ public class BigBang : MonoBehaviour
     private bool CoolCheck = false;
     private Data data;
 
-    private AudioManager audioManager;
+    //private AudioManager audioManager;
 
     void Awake()
     {
@@ -21,7 +21,7 @@ public class BigBang : MonoBehaviour
 
     private void Start()
     {
-        audioManager = FindObjectOfType<AudioManager>();
+        //audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void Update()
@@ -61,14 +61,14 @@ public class BigBang : MonoBehaviour
 
     IEnumerator BigBangMagic()
     {
-        if (data.isSound)
+        /*if (data.isSound)
         {
             audioManager.Play("magicSketch");
             yield return new WaitForSeconds(1f);
             audioManager.Stop("magicSketch");
 
             audioManager.Play("bigBang");
-        }
+        }*/
         data.monsterHP -= 3f;
         yield return null;
     }

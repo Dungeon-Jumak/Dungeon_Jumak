@@ -140,7 +140,7 @@ namespace UnistrokeGestureRecognition.Example {
                     float maxX = Screen.width - (Screen.width * camera.rect.x);
 
                     float minY = (((Screen.height / 2) - 850) / 2) + (Screen.height * camera.rect.y);
-                    float maxY = 850 + (((Screen.height / 2) - 850) / 2);
+                    float maxY = 850 + (((Screen.height / 2) - 1200) / 2);
 
                     //float minX = (camera.rect.width - 1000) / 2;
                     //float maxX = 1080 - minX;
@@ -161,7 +161,8 @@ namespace UnistrokeGestureRecognition.Example {
             else if (Input.GetMouseButton(0))
             {
                 var screenPosition = Input.mousePosition;
-                if (screenPosition.x >= 100 && screenPosition.x <= 980 && screenPosition.y >= 100 && screenPosition.y <= 800)
+
+                if (screenPosition.x >= 100 && screenPosition.x <= 980 && screenPosition.y >= 100 && screenPosition.y <= 500)
                 {
                     Vector2 point = _camera.ScreenToWorldPoint(screenPosition);
                     _gestureRecorder.RecordPoint(new Vector2(screenPosition.x, screenPosition.y));
