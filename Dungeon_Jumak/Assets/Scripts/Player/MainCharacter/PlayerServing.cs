@@ -9,22 +9,8 @@ using UnityEngine.UI;
 
 public class PlayerServing : MonoBehaviour
 {
-    public bool isPlace = false;
-    public bool isCarryingFood = false; // 음식을 들고 있는지 확인
-    public Transform[] tables;
-
-    public GameObject hand; // 플레이어 손 위치
-    public CookGukbap cookGukbap; // 국밥 카운트 참조 스크립트
-
-    private Queue<GameObject> foodQueue = new Queue<GameObject>(); // 충돌한 Food 오브젝트를 저장하는 Queue
-
-    private Animator animator;//애니메이터
-
-
-
     [SerializeField]
-    private Data data; // Data 스크립트
-
+    private Data data;
     //---서빙 관련---//
     [SerializeField]
     private string menuCategori;
@@ -41,6 +27,19 @@ public class PlayerServing : MonoBehaviour
     [SerializeField]
     private string trashCanSound;
 
+    private Queue<GameObject> foodQueue = new Queue<GameObject>(); // 충돌한 Food 오브젝트를 저장하는 Queue
+
+    private Animator animator;//애니메이터
+
+    public bool isPlace = false;
+    public bool isCarryingFood = false; // 음식을 들고 있는지 확인
+    public Transform[] tables;
+
+    public GameObject hand; // 플레이어 손 위치
+    public CookGukbap cookGukbap; // 국밥 카운트 참조 스크립트
+
+    public bool moveStop;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -51,6 +50,8 @@ public class PlayerServing : MonoBehaviour
 
     public void PickUpFood(GameObject foodObject)
     {
+        moveStop = true;
+
         //음식 잡는 사운드 재생
         audioManager.Play(pickUpSound);
 
@@ -118,6 +119,8 @@ public class PlayerServing : MonoBehaviour
         //음식을 들고 있을 때
         if (isCarryingFood && tableChild.childCount == 0)
         {
+            moveStop = true;
+
             for (int i = 0; i < tables.Length; i++)
             {
                 if (tableObject.transform == tables[i])

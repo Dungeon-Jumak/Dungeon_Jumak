@@ -16,19 +16,32 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Transform target;
 
-    private bool isMove;
     [SerializeField]
     private float delaySecond;
 
     private RaycastHit2D hit;
-    Vector2 direction;
+    private Vector3 direction;
+    private Animator animator;//애니메이터
+
+    private float xPos;
+    private float yPos;
+
+    private bool nextMove;
 
     //---텔포 예외 처리---//
     public Canvas m_canvas;
+
     GraphicRaycaster m_gr;
     PointerEventData m_ped;
 
-    private Animator animator;//애니메이터
+    Vector3 curPos;
+    Vector3 lastPos;
+
+    Rigidbody2D rigidBody;
+
+    PlayerServing playerServing;
+
+
 
     private void Start()
     {
@@ -36,7 +49,19 @@ public class PlayerMovement : MonoBehaviour
         m_gr = m_canvas.GetComponent<GraphicRaycaster>();
         m_ped = new PointerEventData(null);
 
+        rigidBody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        playerServing = GetComponent<PlayerServing>();
+
+        xPos = transform.position.x;
+        yPos = transform.position.y;
+
+        hit.point = transform.position;
+
+        lastPos = transform.position;
+
         target.transform.position = this.transform.position;
+        nextMove = false;
 
         //플레이어 스케일 조정
         /*
@@ -45,24 +70,17 @@ public class PlayerMovement : MonoBehaviour
         */
     }
 
-    private void Awake()
-    {
-        isMove = false;
-        delaySecond = 0.5f;
-
-        animator = GetComponent<Animator>();
-    }
-
     private void Update()
     {
+        MoveControl();
 
-        if (Input.GetMouseButtonDown(0) && !isMove)
+        SetDirection();
+        SetAnimation();
+
+
+
+        if (Input.GetMouseButtonDown(0))
         {
-            if (isMove == true) return;
-
-
-            isMove = true;
-
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //레이 방향 설정
             hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero); //hit object 반환
 
@@ -73,36 +91,114 @@ public class PlayerMovement : MonoBehaviour
 
             if (results.Count == 0)
             {
-                isMove = false;
                 return;
             }
 
             if (results[0].gameObject.name == "Home_Panel") //홈 패널을 클릭한 곳만 이동이 가능하도록 변경
-                PlayerMove();
-            else isMove = false;
-
+            {
+                target.transform.position = hit.point;
+                nextMove = false;
+            }
         }
     }
 
-    //플레이어 이동 및 애니메이션 작동
-    private void PlayerMove()
+    void SetDirection()
     {
-        animator.SetTrigger("tpTrigger"); //트리거 작동
+        //현재 위치와 방향 업데이트
+        curPos = transform.position;
+        direction = (curPos - lastPos).normalized;
 
-        Invoke("Teleport", 0.2f); //애니메이션 작동 후 티피
-        Invoke("MoveDelay", delaySecond);
+        /*
+        xPos = hit.point.x;
+        yPos = hit.point.y;
+
+        //상하 이동 우선
+        if (Mathf.Abs(hit.point.x) <= Mathf.Abs(hit.point.y))
+        {
+            if(!nextMove)
+                target.transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
+            if (Mathf.Abs(transform.position.y - yPos) < 0.1f)
+            {
+                nextMove = true;
+                target.transform.position = new Vector3(xPos, yPos, transform.position.z);
+            }
+
+        }
+        //좌우 이동 우선
+        else if (Mathf.Abs(hit.point.x) > Mathf.Abs(hit.point.y))
+        {
+            if(!nextMove)
+                target.transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
+            if (Mathf.Abs(transform.position.x - xPos) < 0.1f)
+            {
+                nextMove = true;
+                target.transform.position = new Vector3(xPos, yPos, transform.position.z);
+            }
+
+        }
+        */
     }
 
-    //플레이어 텔포
-    private void Teleport()
+    void SetAnimation()
     {
-        target.transform.position = hit.point;
+        if (direction != Vector3.zero)
+        {
+
+            animator.SetBool("isWalk", true);
+
+            //절댓값 y가 절댓값 x보다 더 크다면 (상하이동)
+            if (Mathf.Abs(direction.x) <= Mathf.Abs(direction.y))
+            {
+                if (direction.y > 0f)
+                {
+                    animator.SetFloat("dirX", 0f);
+                    animator.SetFloat("dirY", 1f);
+                }
+                else if (direction.y < 0f)
+                {
+                    animator.SetFloat("dirX", 0f);
+                    animator.SetFloat("dirY", -1f);
+                }
+                else if (direction.x > 0f)
+                {
+                    animator.SetFloat("dirX", 1f);
+                    animator.SetFloat("dirY", 0f);
+                }
+                else if (direction.x < 0f)
+                {
+                    animator.SetFloat("dirX", -1f);
+                    animator.SetFloat("dirY", 0f);
+                }
+            }
+            else if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+            {
+                if (direction.x > 0f)
+                {
+                    animator.SetFloat("dirX", 1f);
+                    animator.SetFloat("dirY", 0f);
+                }
+                else if (direction.x < 0f)
+                {
+                    animator.SetFloat("dirX", -1f);
+                    animator.SetFloat("dirY", 0f);
+                }
+            }
+
+            //최근 위치 업데이트
+            lastPos = curPos;
+        }
+        else if (direction == Vector3.zero) 
+            animator.SetBool("isWalk", false);
+
     }
 
-    //텔포 쿨타임을 위해 Invoke로 실행하기 위한 함수
-    private void MoveDelay()
+    void MoveControl()
     {
-        isMove = false;
+        if (playerServing.moveStop)
+        {
+            playerServing.moveStop = false;
+            target.transform.position = transform.position;
+            animator.SetBool("isWalk", false);
+        }
     }
-
 }

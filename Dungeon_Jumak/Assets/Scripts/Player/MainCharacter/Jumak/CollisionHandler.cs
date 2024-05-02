@@ -22,21 +22,19 @@ public class CollisionHandler : MonoBehaviour
         {
             playerServing.PickUpPajeon(other.gameObject);
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Table_L"))
+        else if (other.gameObject.CompareTag("Table_L"))
         {
-            Debug.Log(other.gameObject.name);
             playerServing.PlaceFoodOnTable(other.gameObject);
         }
         else if (other.gameObject.CompareTag("Table_R"))
         {
-            Debug.Log(other.gameObject.name);
             playerServing.PlaceFoodOnTable(other.gameObject);
         }
-        else if (other.gameObject.CompareTag("Trash"))
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Trash"))
         {
             playerServing.ThrowAwayFood();
         }

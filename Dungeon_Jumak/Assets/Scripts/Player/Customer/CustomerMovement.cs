@@ -378,8 +378,6 @@ public class CustomerMovement : MonoBehaviour
 
         currentDir = (CurPosition - lastPosition).normalized;
 
-        Debug.Log(currentDir);
-
         if (currentDir != Vector3.zero)
         {
             animator.SetFloat("dirX", currentDir.x);

@@ -2381,23 +2381,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b0e04d4c01b159409412c3a758f93b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlace: 0
-  isCarryingFood: 0
-  tables:
-  - {fileID: 870257377}
-  - {fileID: 741079587}
-  - {fileID: 1509418199}
-  - {fileID: 1097148788}
-  - {fileID: 292420724}
-  - {fileID: 1737593997}
-  - {fileID: 2043934179}
-  - {fileID: 2099142082}
-  - {fileID: 789561890}
-  - {fileID: 1812141240}
-  - {fileID: 378422603}
-  - {fileID: 1052071466}
-  hand: {fileID: 2086663310}
-  cookGukbap: {fileID: 1589012059}
   data:
     curPlayerLV: 1
     maxPlayerLV: 0
@@ -2447,6 +2430,24 @@ MonoBehaviour:
   servingSound: servingSound
   pickUpSound: pickUpSound
   trashCanSound: trashCan
+  isPlace: 0
+  isCarryingFood: 0
+  tables:
+  - {fileID: 870257377}
+  - {fileID: 741079587}
+  - {fileID: 1509418199}
+  - {fileID: 1097148788}
+  - {fileID: 292420724}
+  - {fileID: 1737593997}
+  - {fileID: 2043934179}
+  - {fileID: 2099142082}
+  - {fileID: 789561890}
+  - {fileID: 1812141240}
+  - {fileID: 378422603}
+  - {fileID: 1052071466}
+  hand: {fileID: 2086663310}
+  cookGukbap: {fileID: 1589012059}
+  moveStop: 0
 --- !u!4 &294088118
 Transform:
   m_ObjectHideFlags: 0
@@ -2574,7 +2575,7 @@ MonoBehaviour:
   orientation: 1
   enableRotation: 0
   autoRepath:
-    mode: 2
+    mode: 1
     interval: 0.01
     sensitivity: 10
     maximumInterval: 2
@@ -2582,9 +2583,9 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.15
-  pickNextWaypointDist: 0.05
-  endReachedDistance: 0.28
+  slowdownDistance: 0
+  pickNextWaypointDist: 0.2
+  endReachedDistance: 0.3
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -4947,7 +4948,7 @@ MonoBehaviour:
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
-  maxFrameTime: 1
+  maxFrameTime: 10
   batchGraphUpdates: 0
   graphUpdateBatchingInterval: 0.2
   euclideanEmbedding:
@@ -5744,7 +5745,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.30030537, y: 0.4768547}
   m_AnchorMax: {x: 0.6996107, y: 0.8534274}
-  m_AnchoredPosition: {x: -0.40000153, y: 7.3999634}
+  m_AnchoredPosition: {x: -0.3999939, y: 7.3999634}
   m_SizeDelta: {x: 78, y: 81}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &728960695
@@ -5912,10 +5913,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.6103657, y: -0.03828633}
+  m_Offset: {x: 0.8061, y: -0.12956238}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5926,7 +5927,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2409934, y: 1.8920829}
+  m_Size: {x: 1.632462, y: 2.4837623}
   m_EdgeRadius: 0
 --- !u!1 &751928969
 GameObject:
@@ -6386,10 +6387,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.6379195, y: -0.039247394}
+  m_Offset: {x: -0.86023605, y: -0.1397478}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6400,7 +6401,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2961012, y: 1.8901603}
+  m_Size: {x: 1.7407343, y: 2.4818392}
   m_EdgeRadius: 0
 --- !u!1001 &870488203
 PrefabInstance:
@@ -15012,7 +15013,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086663310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.64, y: -1.39, z: 0}
+  m_LocalPosition: {x: 1.64, y: 0.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
