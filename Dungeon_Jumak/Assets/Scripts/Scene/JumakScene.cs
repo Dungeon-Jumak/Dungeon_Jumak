@@ -51,6 +51,9 @@ public class JumakScene : BaseScene
     [SerializeField] private float timer;
     [SerializeField] private float duration;
 
+    [SerializeField]
+    private TextMeshProUGUI timerTxt;
+
     private bool playBGM = false;
 
 
@@ -114,6 +117,9 @@ public class JumakScene : BaseScene
             timer -= duration;
             JumakOff();
         }
+
+        int newTime = Mathf.FloorToInt(duration - timer);
+        timerTxt.text = newTime.ToString();
     }
 
     private void JumakOff()
