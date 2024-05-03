@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 
 public class MonsterBuChu : MonoBehaviour
 {
-    // public Text hpText;
+    
     private Data data;
 
     private AudioManager audioManager;

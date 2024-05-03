@@ -11,7 +11,7 @@ public class PaJeonManager : MonoBehaviour
     private int[] correctSequence;
     private int currentIndex = 0;
     private bool hasFailed = true;
-    private GameObject[] spawnedPrefabs; // ÀÌÀü¿¡ »ı¼ºµÈ ÇÁ¸®ÆÕµéÀ» ÃßÀûÇÏ±â À§ÇÑ ¹è¿­
+    private GameObject[] spawnedPrefabs; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­
 
     [SerializeField]
     private AudioManager audioManager;
@@ -30,9 +30,12 @@ public class PaJeonManager : MonoBehaviour
     [SerializeField]
     private GameObject pajeonImage;
 
+    [SerializeField]
+    private const float SpawnHeight = 3.86f;
+
     private void Start()
     {
-        //¿Àµğ¿À ¼³Á¤
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         audioManager = FindObjectOfType<AudioManager>();
         successSound = "successSound";
         failureSound = "failureSound";
@@ -54,7 +57,7 @@ public class PaJeonManager : MonoBehaviour
         currentIndex = 0;
         dragStartPosition = Vector3.zero;
 
-        // ÀÌÀü¿¡ »ı¼ºµÈ ÇÁ¸®ÆÕµé Á¦°Å
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ ï¿½ï¿½ï¿½ï¿½
         if (spawnedPrefabs != null)
         {
             foreach (GameObject prefab in spawnedPrefabs)
@@ -71,7 +74,7 @@ public class PaJeonManager : MonoBehaviour
     public void RandomGen()
     {
         correctSequence = new int[4];
-        spawnedPrefabs = new GameObject[4]; // »ı¼ºµÈ ÇÁ¸®ÆÕµéÀ» ÃßÀûÇÏ±â À§ÇÑ ¹è¿­ ÃÊ±âÈ­
+        spawnedPrefabs = new GameObject[4]; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ ï¿½Ê±ï¿½È­
 
         for (int i = 0; i < correctSequence.Length; i++)
         {
@@ -81,11 +84,18 @@ public class PaJeonManager : MonoBehaviour
         float xOffset = -1.6f;
         for (int i = 0; i < correctSequence.Length; i++)
         {
+            // ë°©í–¥ í”„ë¦¬íŒ¹ ì¸ìŠ¤í„´ìŠ¤í™”
             GameObject directionPrefab = Instantiate(directionPrefabs[correctSequence[i]], transform);
-            directionPrefab.transform.position = new Vector3(xOffset, 3.86f, 0f);
-            xOffset += directionPrefab.GetComponent<SpriteRenderer>().bounds.size.x;
 
-            // »ı¼ºµÈ ÇÁ¸®ÆÕµéÀ» ÃßÀûÇÏ±â À§ÇØ ¹è¿­¿¡ Ãß°¡
+            // ìœ„ì¹˜ ì„¤ì •
+            float prefabWidth = directionPrefab.GetComponent<SpriteRenderer>().bounds.size.x;
+            Vector3 newPosition = new Vector3(xOffset, SpawnHeight, 0f);
+            directionPrefab.transform.position = newPosition;
+
+            // xOffset ì—…ë°ì´íŠ¸
+            xOffset += prefabWidth;
+
+            // ìƒì„±ëœ í”„ë¦¬íŒ¹ ë°°ì—´ì— ì¶”ê°€
             spawnedPrefabs[i] = directionPrefab;
         }
     }
@@ -184,7 +194,7 @@ public class PaJeonManager : MonoBehaviour
             {
                 audioManager.Play(successSound);
 
-                Debug.Log("¼º°øÀÔ´Ï´Ù!");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½!");
                 hasFailed = true;
                 GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
                 Instantiate(PaJeonPrefab, playerObject.transform.position, Quaternion.identity);
@@ -200,7 +210,7 @@ public class PaJeonManager : MonoBehaviour
         {
             audioManager.Play(failureSound);
 
-            Debug.Log("½ÇÆĞÀÔ´Ï´Ù.");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
             hasFailed = true;
 
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8005446774869624683}
   - component: {fileID: 7101583691738347816}
   m_Layer: 5
-  m_Name: Image
+  m_Name: hearPerfab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

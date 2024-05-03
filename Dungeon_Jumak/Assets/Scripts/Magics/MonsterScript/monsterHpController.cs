@@ -22,10 +22,10 @@ public class monsterHpController : MonoBehaviour
         UpdateHPImages();
     }
 
-    //===HP ÀÌ¹ÌÁöµéÀ» ÃÊ±âÈ­ÇÏ´Â ÇÔ¼ö===//
+    //===HP ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½===//
     private void InitializeHPImages()
     {
-        //===±âÁ¸¿¡ »ý¼ºµÈ HP ÀÌ¹ÌÁö°¡ ÀÖ´Ù¸é ¸ðµÎ »èÁ¦===//
+        //===ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ HP ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½===//
         foreach (Image image in hpImages)
         {
             Destroy(image.gameObject);
@@ -33,7 +33,7 @@ public class monsterHpController : MonoBehaviour
 
         hpImages.Clear();
 
-        //===data.monsterHP °ª¿¡ µû¶ó HP ÀÌ¹ÌÁöµéÀ» »ý¼ºÇÏ°í ¸®½ºÆ®¿¡ Ãß°¡===//
+        //===data.monsterHP ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ HP ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ß°ï¿½===//
         int imageCount = Mathf.CeilToInt(data.monsterHP);
         for (int i = 0; i < imageCount; i++)
         {
@@ -46,7 +46,7 @@ public class monsterHpController : MonoBehaviour
 
     private void UpdateHPImages()
     {
-        //===°¢ HP ÀÌ¹ÌÁöÀÇ fillAmount °ªÀ» ¼³Á¤===//
+        //===ï¿½ï¿½ HP ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ fillAmount ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½===//
         for (int i = 0; i < hpImages.Count; i++)
         {
             float fillAmount = CalculateFillAmount(i);
@@ -54,7 +54,7 @@ public class monsterHpController : MonoBehaviour
         }
     }
 
-    //===°¢ HP ÀÌ¹ÌÁöÀÇ fillAmount °ªÀ» °è»êÇÏ´Â ÇÔ¼ö===//
+    //===ï¿½ï¿½ HP ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ fillAmount ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½===//
     private float CalculateFillAmount(int index)
     {
         float remainingHP = data.monsterHP - index;
