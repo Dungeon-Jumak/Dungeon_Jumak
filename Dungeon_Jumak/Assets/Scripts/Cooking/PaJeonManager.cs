@@ -30,9 +30,6 @@ public class PaJeonManager : MonoBehaviour
     [SerializeField]
     private GameObject pajeonImage;
 
-    [SerializeField]
-    private const float SpawnHeight = 3.86f;
-
     private void Start()
     {
         //����� ����
@@ -84,18 +81,11 @@ public class PaJeonManager : MonoBehaviour
         float xOffset = -1.6f;
         for (int i = 0; i < correctSequence.Length; i++)
         {
-            // 방향 프리팹 인스턴스화
             GameObject directionPrefab = Instantiate(directionPrefabs[correctSequence[i]], transform);
+            directionPrefab.transform.position = new Vector3(xOffset, 3.86f, 0f);
+            xOffset += directionPrefab.GetComponent<SpriteRenderer>().bounds.size.x;
 
-            // 위치 설정
-            float prefabWidth = directionPrefab.GetComponent<SpriteRenderer>().bounds.size.x;
-            Vector3 newPosition = new Vector3(xOffset, SpawnHeight, 0f);
-            directionPrefab.transform.position = newPosition;
-
-            // xOffset 업데이트
-            xOffset += prefabWidth;
-
-            // 생성된 프리팹 배열에 추가
+            // ������ �����յ��� �����ϱ� ���� �迭�� �߰�
             spawnedPrefabs[i] = directionPrefab;
         }
     }
@@ -199,7 +189,7 @@ public class PaJeonManager : MonoBehaviour
                 GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
                 Instantiate(PaJeonPrefab, playerObject.transform.position, Quaternion.identity);
                 PlayerServing playerServing = playerObject.GetComponent<PlayerServing>();
-                playerServing.isCarryingFood= false;
+                playerServing.isCarryingFood = false;
 
                 pajeonImage.transform.rotation = Quaternion.Euler(0, 0, 0);
 
