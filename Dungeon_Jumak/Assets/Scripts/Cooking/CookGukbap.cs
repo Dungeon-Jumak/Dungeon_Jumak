@@ -13,6 +13,9 @@ public class CookGukbap : MonoBehaviour
     [SerializeField]
     private Data data;
 
+    [SerializeField]
+    private JumakScene jumakScene;
+
     private void Start()
     {
         data = DataManager.Instance.data;
@@ -21,17 +24,20 @@ public class CookGukbap : MonoBehaviour
 
     private void Update()
     {
-        //---새로운 불 크기에 따른 감소 비율 적용---//
-        float decreaseAmount = Time.deltaTime * decreaseRate;
+        if (jumakScene.isStart)
+        {
+            //---새로운 불 크기에 따른 감소 비율 적용---//
+            float decreaseAmount = Time.deltaTime * decreaseRate;
 
-        if (data.fireSize > 0 && cookingTime > 0 && gukbapCount < 5)
-        {
-            fire.cook = true;
-            Decrease(decreaseAmount);
-        }
-        else if (data.fireSize <= 0 || gukbapCount >= 5)
-        {
-            StopCooking();
+            if (data.fireSize > 0 && cookingTime > 0 && gukbapCount < 5)
+            {
+                fire.cook = true;
+                Decrease(decreaseAmount);
+            }
+            else if (data.fireSize <= 0 || gukbapCount >= 5)
+            {
+                StopCooking();
+            }
         }
     }
 

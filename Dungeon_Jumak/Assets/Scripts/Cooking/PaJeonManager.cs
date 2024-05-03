@@ -3,23 +3,6 @@ using System.Collections;
 
 public class PaJeonManager : MonoBehaviour
 {
-    public GameObject[] directionPrefabs;
-    public GameObject PaJeonPopUp;
-    public GameObject PaJeonPrefab;
-
-    private Vector3 dragStartPosition;
-    private int[] correctSequence;
-    private int currentIndex = 0;
-    private bool hasFailed = true;
-    private GameObject[] spawnedPrefabs; // 이전에 생성된 프리팹들을 추적하기 위한 배열
-
-    [SerializeField]
-    private AudioManager audioManager;
-    [SerializeField]
-    private string successSound;
-    [SerializeField]
-    private string failureSound;
-
     [SerializeField]
     private Animator animator;
 
@@ -29,6 +12,27 @@ public class PaJeonManager : MonoBehaviour
 
     [SerializeField]
     private GameObject pajeonImage;
+
+    [SerializeField]
+    private AudioManager audioManager;
+    [SerializeField]
+    private string successSound;
+    [SerializeField]
+    private string failureSound;
+
+    [SerializeField]
+    private Transform[] locTransform;
+
+    private Vector3 dragStartPosition;
+    private int[] correctSequence;
+    private int currentIndex = 0;
+    private bool hasFailed = true;
+    private GameObject[] spawnedPrefabs; // 이전에 생성된 프리팹들을 추적하기 위한 배열
+
+
+    public GameObject[] directionPrefabs;
+    public GameObject PaJeonPopUp;
+    public GameObject PaJeonPrefab;
 
     private void Start()
     {
@@ -78,12 +82,10 @@ public class PaJeonManager : MonoBehaviour
             correctSequence[i] = Random.Range(0, directionPrefabs.Length);
         }
 
-        float xOffset = -1.6f;
         for (int i = 0; i < correctSequence.Length; i++)
         {
             GameObject directionPrefab = Instantiate(directionPrefabs[correctSequence[i]], transform);
-            directionPrefab.transform.position = new Vector3(xOffset, 3.86f, 0f);
-            xOffset += directionPrefab.GetComponent<SpriteRenderer>().bounds.size.x;
+            directionPrefab.transform.position = locTransform[i].position;
 
             // 생성된 프리팹들을 추적하기 위해 배열에 추가
             spawnedPrefabs[i] = directionPrefab;

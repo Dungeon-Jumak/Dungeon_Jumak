@@ -17,11 +17,16 @@ public class Fire : MonoBehaviour
     [SerializeField]
     private GameObject fire;
 
+    [SerializeField]
+    private JumakScene jumakScene;
+
 
     void Start()
     {
         data = DataManager.Instance.data;
         ResetAnim();
+
+        data.fireSize = 100f;
     }
 
     void Update()
@@ -33,7 +38,8 @@ public class Fire : MonoBehaviour
 
         if (cook == true)
         {
-            data.fireSize -= (1f / 1f) * Time.deltaTime;
+            if(jumakScene.isStart)
+                data.fireSize -= (1f / 1f) * Time.deltaTime;
         }
 
         if (data.fireSize < 0)
@@ -49,7 +55,7 @@ public class Fire : MonoBehaviour
 
         if (data.fireSize > 100)
         {
-            data.fireSize = 100;
+            data.fireSize = 100f;
             sizeText.text = "100%";
         }
     }

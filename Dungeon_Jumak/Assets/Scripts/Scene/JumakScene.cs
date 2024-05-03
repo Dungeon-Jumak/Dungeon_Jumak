@@ -7,6 +7,8 @@ using UnityEngine.Audio;
 
 public class JumakScene : BaseScene
 {
+    public bool isStart;
+
     [SerializeField]
     private BGMManager bgmManager;
     [SerializeField]
@@ -19,8 +21,6 @@ public class JumakScene : BaseScene
 
     [SerializeField]
     private Data data;
-
-    private bool playBGM = false;
 
     [SerializeField]
     private FadeController fadeController;
@@ -41,6 +41,18 @@ public class JumakScene : BaseScene
     private GameObject soundOn;
     [SerializeField]
     private GameObject soundOff;
+
+    [SerializeField]
+    private GameObject[] JumakSystemObj;
+
+    [SerializeField]
+    private GameObject receiptPopup;
+
+    [SerializeField] private float timer;
+    [SerializeField] private float duration;
+
+    private bool playBGM = false;
+
 
     private void Start()
     {
@@ -69,6 +81,9 @@ public class JumakScene : BaseScene
         bgmManager.SetLoop();
 
         pauseSound = "pauseSound";
+
+        timer = 0;
+        isStart = false;
     }
     protected override void Init()
     {
@@ -89,10 +104,32 @@ public class JumakScene : BaseScene
 
         BGMPlayer();
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if(isStart)
+            timer += Time.deltaTime;
+
+        if(timer >= duration)
         {
-            AddRecipe();
+            isStart = false;
+
+            timer -= duration;
+            JumakOff();
         }
+    }
+
+    private void JumakOff()
+    {
+        for (int i = 0; i < JumakSystemObj.Length; i++)
+        {
+            JumakSystemObj[i].SetActive(false);
+        }
+        receiptPopup.SetActive(true);
+
+        audioManager.AllStop();
+    }
+
+    public void JumakStart()
+    {
+        isStart = true;
     }
 
     public void BGMPlayer()

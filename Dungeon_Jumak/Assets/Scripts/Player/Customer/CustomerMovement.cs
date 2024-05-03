@@ -88,6 +88,9 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private AudioClip[] audioClips;
 
+    [SerializeField]
+    private JumakScene jumakScene;
+
     private void Start()
     {
 
@@ -97,6 +100,8 @@ public class CustomerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+
+        jumakScene = GameObject.Find("@Scene").GetComponent<JumakScene>();
 
         lastPosition = transform.position;
 
@@ -187,7 +192,15 @@ public class CustomerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (isInitialize) Initialize();
+        //초기화 신호를 받았을 때 초기화 함
+        //if (isInitialize) Initialize();
+
+        //게임 오버시 초기화 하고 모든 손님을 디풀링함
+        if (!jumakScene.isStart)
+        {
+            Initialize();
+            //ObjectPool.ReturnObject(this);
+        }
 
         SetDirection();
 
@@ -230,8 +243,9 @@ public class CustomerMovement : MonoBehaviour
 
                     if (Vector3.Distance(StartPoint.position, CurPosition) == 0f)
                     {
-                        ObjectPool.ReturnObject(this);
-                        isInitialize = true;
+                        //isInitialize = true;
+                        Initialize();
+                        //ObjectPool.ReturnObject(this);
                     }
                 }
             }
@@ -241,7 +255,7 @@ public class CustomerMovement : MonoBehaviour
         {
             CustomerMove(StopPoint);
 
-            //---정지 point와 거리가 0이 아니라면 ---//
+            //---정지 point와 거리가 0이라면 ---//
             if (Vector3.Distance(StopPoint.position, CurPosition) == 0f)
             {
                 isArrive = true;
@@ -257,8 +271,9 @@ public class CustomerMovement : MonoBehaviour
 
             if (Vector3.Distance(StartPoint.position, CurPosition) == 0f)
             {
-                ObjectPool.ReturnObject(this);
-                isInitialize = true;
+                //isInitialize = true;
+                Initialize();
+                //ObjectPool.ReturnObject(this);
             }
 
         }
@@ -282,6 +297,8 @@ public class CustomerMovement : MonoBehaviour
         isReturn = false;
         isJustreturn = false;
         orderMenu.isEat = false;
+
+        ObjectPool.ReturnObject(this);
     }
 
     //---손님 기본 움직임---//
@@ -388,7 +405,7 @@ public class CustomerMovement : MonoBehaviour
 
         //---렌더링 변경---//
         if (CurPosition.y < GameObject.Find("Chr_Player").transform.position.y) //손님이 아래에 있다면
-            spriteRenderer.sortingLayerName = "Customer_Up"; //플레이어보다 위에 렌더링
+            spriteRenderer.sortingLayerName = "UpThanPlayer"; //플레이어보다 위에 렌더링
         else
             spriteRenderer.sortingLayerName = "Player";
     }

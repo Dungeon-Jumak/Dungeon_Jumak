@@ -55,6 +55,8 @@ public class PlayerServing : MonoBehaviour
         //음식 잡는 사운드 재생
         audioManager.Play(pickUpSound);
 
+        animator.SetBool("isServing", true);
+
         // 음식 드는 순간 srpite renderer 레이어 Food_Up으로 변경
         SpriteRenderer otherSpriteRenderer = foodObject.GetComponent<SpriteRenderer>();
         otherSpriteRenderer.sortingLayerName = "Food_Up";
@@ -136,6 +138,9 @@ public class PlayerServing : MonoBehaviour
 
                         //음식 놓는 사운드 재생
                         audioManager.Play(servingSound);
+
+                        //애니메이션 변경
+                        animator.SetBool("isServing", false);
 
                         GameObject food = foodQueue.Dequeue();
                         FoodScript foodScript = food.GetComponent<FoodScript>();

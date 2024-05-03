@@ -72,7 +72,7 @@ TagManager:
   - name: Food_Up
     uniqueID: 2991999681
     locked: 0
-  - name: Customer_Up
+  - name: UpThanPlayer
     uniqueID: 1966264649
     locked: 0
   - name: Above Object

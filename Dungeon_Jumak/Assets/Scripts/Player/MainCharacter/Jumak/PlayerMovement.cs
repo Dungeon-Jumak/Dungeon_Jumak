@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float delaySecond;
 
+    [SerializeField]
+    private Transform hand;
+
     private RaycastHit2D hit;
     private Vector3 direction;
     private Animator animator;//애니메이터
@@ -26,10 +29,11 @@ public class PlayerMovement : MonoBehaviour
     private float xPos;
     private float yPos;
 
-    private bool nextMove;
 
     //---텔포 예외 처리---//
     public Canvas m_canvas;
+
+    public Animator clickAnim;
 
     GraphicRaycaster m_gr;
     PointerEventData m_ped;
@@ -61,13 +65,9 @@ public class PlayerMovement : MonoBehaviour
         lastPos = transform.position;
 
         target.transform.position = this.transform.position;
-        nextMove = false;
 
-        //플레이어 스케일 조정
-        /*
-        float newScale = ((float)Screen.width / Screen.height) / 4.5f;
-        transform.localScale = new Vector3(newScale, newScale, transform.localScale.z);
-        */
+        animator.SetFloat("dirX", 0f);
+        animator.SetFloat("dirY", -1f);
     }
 
     private void Update()
@@ -94,8 +94,8 @@ public class PlayerMovement : MonoBehaviour
 
             if (results[0].gameObject.name == "Home_Panel") //홈 패널을 클릭한 곳만 이동이 가능하도록 변경
             {
+                clickAnim.SetTrigger("click");
                 target.transform.position = hit.point;
-                nextMove = false;
             }
         }
     }
@@ -105,6 +105,9 @@ public class PlayerMovement : MonoBehaviour
         //현재 위치와 방향 업데이트
         curPos = transform.position;
         direction = (curPos - lastPos).normalized;
+
+        lastPos = curPos;
+        
     }
 
     void SetAnimation()
@@ -119,31 +122,61 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (direction.y > 0f)
                 {
+                    //위로 가는 모션
+                    /*
                     animator.SetFloat("dirX", 0f);
                     animator.SetFloat("dirY", 1f);
+
+                    if (hand.localPosition.x < 0f)
+                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
+                    */
+
+                    //뒷 모습을 빼는건 어떤가?
+                    if (direction.x >= 0.1f)
+                    {
+                        animator.SetFloat("dirX", 1f);
+                        animator.SetFloat("dirY", 0f);
+
+                        if (hand.localPosition.x > 0f)
+                            hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
+                    }
+                    else if (direction.x < 0.1f)
+                    {
+                        animator.SetFloat("dirX", -1f);
+                        animator.SetFloat("dirY", 0f);
+
+                        if (hand.localPosition.x < 0f)
+                            hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
+                    }
                 }
-                else if (direction.y < 0f)
+                else if (direction.y <= 0f)
                 {
                     animator.SetFloat("dirX", 0f);
                     animator.SetFloat("dirY", -1f);
+
+                    if (hand.localPosition.x < 0f)
+                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
                 }
             }
             else if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
             {
-                if (direction.x > 0f)
+                if (direction.x >= 0f)
                 {
                     animator.SetFloat("dirX", 1f);
                     animator.SetFloat("dirY", 0f);
+
+                    if (hand.localPosition.x > 0f)
+                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
                 }
                 else if (direction.x < 0f)
                 {
                     animator.SetFloat("dirX", -1f);
                     animator.SetFloat("dirY", 0f);
+
+                    if (hand.localPosition.x < 0f)
+                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
                 }
             }
-
-            //최근 위치 업데이트
-            lastPos = curPos;
         }
         else if (Vector3.Distance(transform.position, target.transform.position) < 0.3f)
         {
