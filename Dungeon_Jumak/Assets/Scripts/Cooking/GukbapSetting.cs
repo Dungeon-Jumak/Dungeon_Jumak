@@ -7,11 +7,10 @@ public class GukbapSetting : MonoBehaviour
 
     public List<bool> gukbapList; // 국밥 리스트 (true면 해당 위치에 국밥이 있는 상태)를 담는 public 변수
 
-    public Transform tableTransform; // 테이블 오브젝트의 Transform을 담는 public 변수
-
     public CookGukbap cookGukbap; // 다른 스크립트에 있는 CookGukbap 스크립트의 인스턴스를 담는 public 변수
 
     [SerializeField] private int previousCount; // 이전 프레임에서의 국밥 카운트를 저장하기 위한 private 변수
+    [SerializeField] Transform[] idxs;
 
     void Start() // 게임 오브젝트가 활성화될 때 호출되는 함수
     {
@@ -30,9 +29,8 @@ public class GukbapSetting : MonoBehaviour
                 int index = GetNextAvailableIndex(); // 다음으로 추가할 수 있는 국밥의 인덱스를 가져옴
                 if (index != -1) // 추가할 수 있는 위치가 있는지 확인
                 {
-                    float sectionWidth = tableTransform.localScale.x / gukbapList.Count; // 테이블의 너비를 국밥 리스트의 개수로 나누어 각 섹션의 너비를 계산
-                    float xPos = tableTransform.position.x - (tableTransform.localScale.x / 2) + sectionWidth * (index + 0.5f); // 국밥을 배치할 x 위치 계산
-                    GameObject newGukbap = Instantiate(gukbapPrefab, new Vector3(xPos, tableTransform.position.y, 0.0f), Quaternion.identity); // 새로운 국밥을 생성하고 배치
+                    Debug.Log("국밥 인덱스 : " + index);
+                    GameObject newGukbap = Instantiate(gukbapPrefab, idxs[index].position, Quaternion.identity); // 새로운 국밥을 생성하고 배치
                     newGukbap.transform.parent = transform; // 새로운 국밥을 이 스크립트의 자식으로 설정
                     gukbapList[index] = true; // 국밥 리스트에서 해당 위치의 값을 true로 설정하여 차지한 것으로 표시
                 }
@@ -69,13 +67,7 @@ public class GukbapSetting : MonoBehaviour
     {
         for (int i = 0; i < gukbapList.Count; i++)
         {
-            Vector3 position = new Vector3(
-                tableTransform.position.x - (tableTransform.localScale.x / 2) + (tableTransform.localScale.x / gukbapList.Count) * (i + 0.5f),
-                tableTransform.position.y,
-                0.0f
-            );
-
-            Collider2D[] colliders = Physics2D.OverlapPointAll(position);
+            Collider2D[] colliders = Physics2D.OverlapPointAll(idxs[i].transform.position);
             bool gukbapPresent = false;
             
 

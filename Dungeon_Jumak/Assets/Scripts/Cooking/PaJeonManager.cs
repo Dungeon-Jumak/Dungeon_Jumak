@@ -3,23 +3,6 @@ using System.Collections;
 
 public class PaJeonManager : MonoBehaviour
 {
-    public GameObject[] directionPrefabs;
-    public GameObject PaJeonPopUp;
-    public GameObject PaJeonPrefab;
-
-    private Vector3 dragStartPosition;
-    private int[] correctSequence;
-    private int currentIndex = 0;
-    private bool hasFailed = true;
-    private GameObject[] spawnedPrefabs; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­
-
-    [SerializeField]
-    private AudioManager audioManager;
-    [SerializeField]
-    private string successSound;
-    [SerializeField]
-    private string failureSound;
-
     [SerializeField]
     private Animator animator;
 
@@ -30,9 +13,30 @@ public class PaJeonManager : MonoBehaviour
     [SerializeField]
     private GameObject pajeonImage;
 
+    [SerializeField]
+    private AudioManager audioManager;
+    [SerializeField]
+    private string successSound;
+    [SerializeField]
+    private string failureSound;
+
+    [SerializeField]
+    private Transform[] locTransform;
+
+    private Vector3 dragStartPosition;
+    private int[] correctSequence;
+    private int currentIndex = 0;
+    private bool hasFailed = true;
+    private GameObject[] spawnedPrefabs; // ÀÌÀü¿¡ »ý¼ºµÈ ÇÁ¸®ÆÕµéÀ» ÃßÀûÇÏ±â À§ÇÑ ¹è¿­
+
+
+    public GameObject[] directionPrefabs;
+    public GameObject PaJeonPopUp;
+    public GameObject PaJeonPrefab;
+
     private void Start()
     {
-        //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        //¿Àµð¿À ¼³Á¤
         audioManager = FindObjectOfType<AudioManager>();
         successSound = "successSound";
         failureSound = "failureSound";
@@ -54,7 +58,7 @@ public class PaJeonManager : MonoBehaviour
         currentIndex = 0;
         dragStartPosition = Vector3.zero;
 
-        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ ï¿½ï¿½ï¿½ï¿½
+        // ÀÌÀü¿¡ »ý¼ºµÈ ÇÁ¸®ÆÕµé Á¦°Å
         if (spawnedPrefabs != null)
         {
             foreach (GameObject prefab in spawnedPrefabs)
@@ -71,21 +75,19 @@ public class PaJeonManager : MonoBehaviour
     public void RandomGen()
     {
         correctSequence = new int[4];
-        spawnedPrefabs = new GameObject[4]; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ ï¿½Ê±ï¿½È­
+        spawnedPrefabs = new GameObject[4]; // »ý¼ºµÈ ÇÁ¸®ÆÕµéÀ» ÃßÀûÇÏ±â À§ÇÑ ¹è¿­ ÃÊ±âÈ­
 
         for (int i = 0; i < correctSequence.Length; i++)
         {
             correctSequence[i] = Random.Range(0, directionPrefabs.Length);
         }
 
-        float xOffset = -1.6f;
         for (int i = 0; i < correctSequence.Length; i++)
         {
             GameObject directionPrefab = Instantiate(directionPrefabs[correctSequence[i]], transform);
-            directionPrefab.transform.position = new Vector3(xOffset, 3.86f, 0f);
-            xOffset += directionPrefab.GetComponent<SpriteRenderer>().bounds.size.x;
+            directionPrefab.transform.position = locTransform[i].position;
 
-            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ß°ï¿½
+            // »ý¼ºµÈ ÇÁ¸®ÆÕµéÀ» ÃßÀûÇÏ±â À§ÇØ ¹è¿­¿¡ Ãß°¡
             spawnedPrefabs[i] = directionPrefab;
         }
     }
@@ -184,12 +186,12 @@ public class PaJeonManager : MonoBehaviour
             {
                 audioManager.Play(successSound);
 
-                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½!");
+                Debug.Log("¼º°øÀÔ´Ï´Ù!");
                 hasFailed = true;
                 GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
                 Instantiate(PaJeonPrefab, playerObject.transform.position, Quaternion.identity);
                 PlayerServing playerServing = playerObject.GetComponent<PlayerServing>();
-                playerServing.isCarryingFood = false;
+                playerServing.isCarryingFood= false;
 
                 pajeonImage.transform.rotation = Quaternion.Euler(0, 0, 0);
 
@@ -200,7 +202,7 @@ public class PaJeonManager : MonoBehaviour
         {
             audioManager.Play(failureSound);
 
-            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
+            Debug.Log("½ÇÆÐÀÔ´Ï´Ù.");
             hasFailed = true;
 
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");

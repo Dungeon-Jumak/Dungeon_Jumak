@@ -88,16 +88,86 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private AudioClip[] audioClips;
 
+    [SerializeField]
+    private JumakScene jumakScene;
+
     private void Start()
     {
+
+
         data = DataManager.Instance.data;
         orderMenu = GetComponent<OrderMenu>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-
         audioSource = GetComponent<AudioSource>();
 
+        jumakScene = GameObject.Find("@Scene").GetComponent<JumakScene>();
+
         lastPosition = transform.position;
+
+        StartPoint = GameObject.Find("StartPoint").transform;
+        StopPoint = GameObject.Find("StopPoint").transform;
+
+        //Route1 = Table1 왼쪽 자리
+        Route1_Left.Add(GameObject.Find("Left_4").transform);
+        Route1_Left.Add(GameObject.Find("Left_1").transform);
+        Route1_Left.Add(GameObject.Find("Seat_L1").transform);
+
+        //Route2 = Table1 오른쪽
+        Route1_Right.Add(GameObject.Find("Center_4").transform);
+        Route1_Right.Add(GameObject.Find("Center_1").transform);
+        Route1_Right.Add(GameObject.Find("Seat_R1").transform);
+
+        //Route3 = Table2 왼쪽 자리
+        Route2_Left.Add(GameObject.Find("Center_4").transform);
+        Route2_Left.Add(GameObject.Find("Center_1").transform);
+        Route2_Left.Add(GameObject.Find("Seat_L2").transform);
+
+        //Route4 = Table2 오른쪽 자리
+        Route2_Right.Add(GameObject.Find("Right_4").transform);
+        Route2_Right.Add(GameObject.Find("Right_1").transform);
+        Route2_Right.Add(GameObject.Find("Seat_R2").transform);
+
+        //Route5 = Table3 왼쪽 자리
+        Route3_Left.Add(GameObject.Find("Left_4").transform);
+        Route3_Left.Add(GameObject.Find("Left_2").transform);
+        Route3_Left.Add(GameObject.Find("Seat_L3").transform);
+
+        //Route6 = Table3 오른쪽 자리
+        Route3_Right.Add(GameObject.Find("Center_4").transform);
+        Route3_Right.Add(GameObject.Find("Center_2").transform);
+        Route3_Right.Add(GameObject.Find("Seat_R3").transform);
+
+        //Route7 = Table4 왼쪽 자리
+        Route4_Left.Add(GameObject.Find("Center_4").transform);
+        Route4_Left.Add(GameObject.Find("Center_2").transform);
+        Route4_Left.Add(GameObject.Find("Seat_L4").transform);
+
+        //Route8 = Table4 오른쪽 자리
+        Route4_Right.Add(GameObject.Find("Right_4").transform);
+        Route4_Right.Add(GameObject.Find("Right_2").transform);
+        Route4_Right.Add(GameObject.Find("Seat_R4").transform);
+
+        //Route9 = Table5 왼쪽 자리
+        Route5_Left.Add(GameObject.Find("Left_4").transform);
+        Route5_Left.Add(GameObject.Find("Left_3").transform);
+        Route5_Left.Add(GameObject.Find("Seat_L5").transform);
+
+        //Route10 = Table5 오른쪽 자리
+        Route5_Right.Add(GameObject.Find("Center_4").transform);
+        Route5_Right.Add(GameObject.Find("Center_3").transform);
+        Route5_Right.Add(GameObject.Find("Seat_R5").transform);
+
+        //Route11 = Table6 왼쪽 자리
+        Route6_Left.Add(GameObject.Find("Center_4").transform);
+        Route6_Left.Add(GameObject.Find("Center_3").transform);
+        Route6_Left.Add(GameObject.Find("Seat_L6").transform);
+
+        //Route12 = Table6 오른쪽 자리
+        Route6_Right.Add(GameObject.Find("Right_4").transform);
+        Route6_Right.Add(GameObject.Find("Right_3").transform);
+        Route6_Right.Add(GameObject.Find("Seat_R6").transform);
+
 
         RouteList.Add(Route1_Left);
         RouteList.Add(Route1_Right);
@@ -122,7 +192,15 @@ public class CustomerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (isInitialize) Initialize();
+        //초기화 신호를 받았을 때 초기화 함
+        //if (isInitialize) Initialize();
+
+        //게임 오버시 초기화 하고 모든 손님을 디풀링함
+        if (!jumakScene.isStart)
+        {
+            Initialize();
+            //ObjectPool.ReturnObject(this);
+        }
 
         SetDirection();
 
@@ -165,8 +243,9 @@ public class CustomerMovement : MonoBehaviour
 
                     if (Vector3.Distance(StartPoint.position, CurPosition) == 0f)
                     {
-                        ObjectPool.ReturnObject(this);
-                        isInitialize = true;
+                        //isInitialize = true;
+                        Initialize();
+                        //ObjectPool.ReturnObject(this);
                     }
                 }
             }
@@ -176,7 +255,7 @@ public class CustomerMovement : MonoBehaviour
         {
             CustomerMove(StopPoint);
 
-            //---정지 point와 거리가 0이 아니라면 ---//
+            //---정지 point와 거리가 0이라면 ---//
             if (Vector3.Distance(StopPoint.position, CurPosition) == 0f)
             {
                 isArrive = true;
@@ -192,8 +271,9 @@ public class CustomerMovement : MonoBehaviour
 
             if (Vector3.Distance(StartPoint.position, CurPosition) == 0f)
             {
-                ObjectPool.ReturnObject(this);
-                isInitialize = true;
+                //isInitialize = true;
+                Initialize();
+                //ObjectPool.ReturnObject(this);
             }
 
         }
@@ -217,6 +297,8 @@ public class CustomerMovement : MonoBehaviour
         isReturn = false;
         isJustreturn = false;
         orderMenu.isEat = false;
+
+        ObjectPool.ReturnObject(this);
     }
 
     //---손님 기본 움직임---//
@@ -323,7 +405,7 @@ public class CustomerMovement : MonoBehaviour
 
         //---렌더링 변경---//
         if (CurPosition.y < GameObject.Find("Chr_Player").transform.position.y) //손님이 아래에 있다면
-            spriteRenderer.sortingLayerName = "Customer_Up"; //플레이어보다 위에 렌더링
+            spriteRenderer.sortingLayerName = "UpThanPlayer"; //플레이어보다 위에 렌더링
         else
             spriteRenderer.sortingLayerName = "Player";
     }

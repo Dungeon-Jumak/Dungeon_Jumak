@@ -7,7 +7,7 @@ public class BubbleShadowController : MonoBehaviour
     public bool isStop;
     
     public float fadeInDuration = 10f; //그림자가 나타나는 시간
-    public float startY = -10f; //시작 Y 위치
+    public float startY = -0.8f; //시작 Y 위치
     public float endY = 0f; // 종료 Y 위치
 
     public float timer = 0f;

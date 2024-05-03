@@ -28,11 +28,13 @@ public class FireFurnace : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        fireSpeechBox.gameObject.SetActive(true);
+        if(collision.CompareTag("Player"))
+            fireSpeechBox.gameObject.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        fireSpeechBox.gameObject.SetActive(false);
+        if (collision.CompareTag("Player"))
+            fireSpeechBox.gameObject.SetActive(false);
     }
 }

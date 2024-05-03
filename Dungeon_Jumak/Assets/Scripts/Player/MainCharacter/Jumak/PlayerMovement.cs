@@ -6,47 +6,79 @@ using static Unity.VisualScripting.Member;
 using Unity.VisualScripting;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Pathfinding;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private bool isMove;
+    [SerializeField]
+    private AIPath aiPath;
+    
+    [SerializeField]
+    private Transform target;
+
     [SerializeField]
     private float delaySecond;
 
+    [SerializeField]
+    private Transform hand;
+
     private RaycastHit2D hit;
+    private Vector3 direction;
+    private Animator animator;//애니메이터
+
+    private float xPos;
+    private float yPos;
+
 
     //---텔포 예외 처리---//
     public Canvas m_canvas;
+
+    public Animator clickAnim;
+
     GraphicRaycaster m_gr;
     PointerEventData m_ped;
 
-    private Animator animator;//애니메이터
+    Vector3 curPos;
+    Vector3 lastPos;
+
+    Rigidbody2D rigidBody;
+
+    PlayerServing playerServing;
+
+
 
     private void Start()
     {
         m_canvas = GameObject.Find("UI_Canvas").GetComponent<Canvas>();
         m_gr = m_canvas.GetComponent<GraphicRaycaster>();
         m_ped = new PointerEventData(null);
-    }
 
-    private void Awake()
-    {
-        isMove = false;
-        delaySecond = 0.5f;
-
+        rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        playerServing = GetComponent<PlayerServing>();
+
+        xPos = transform.position.x;
+        yPos = transform.position.y;
+
+        hit.point = transform.position;
+
+        lastPos = transform.position;
+
+        target.transform.position = this.transform.position;
+
+        animator.SetFloat("dirX", 0f);
+        animator.SetFloat("dirY", -1f);
     }
 
     private void Update()
     {
+        MoveControl();
 
-        if (Input.GetMouseButtonDown(0) && !isMove)
+        SetDirection();
+        SetAnimation();
+
+        if (Input.GetMouseButtonDown(0))
         {
-            if (isMove == true) return;
-
-
-            isMove = true;
-
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //레이 방향 설정
             hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero); //hit object 반환
 
@@ -57,36 +89,111 @@ public class PlayerMovement : MonoBehaviour
 
             if (results.Count == 0)
             {
-                isMove = false;
                 return;
             }
 
             if (results[0].gameObject.name == "Home_Panel") //홈 패널을 클릭한 곳만 이동이 가능하도록 변경
-                PlayerMove();
-            else isMove = false;
-
+            {
+                clickAnim.SetTrigger("click");
+                target.transform.position = hit.point;
+            }
         }
     }
 
-    //플레이어 이동 및 애니메이션 작동
-    private void PlayerMove()
+    void SetDirection()
     {
-        animator.SetTrigger("tpTrigger"); //트리거 작동
+        //현재 위치와 방향 업데이트
+        curPos = transform.position;
+        direction = (curPos - lastPos).normalized;
 
-        Invoke("Teleport", 0.2f); //애니메이션 작동 후 티피
-        Invoke("MoveDelay", delaySecond);
+        lastPos = curPos;
+        
     }
 
-    //플레이어 텔포
-    private void Teleport()
+    void SetAnimation()
     {
-        transform.position = hit.point;
+        if (direction != Vector3.zero)
+        {
+
+            animator.SetBool("isWalk", true);
+
+            //절댓값 y가 절댓값 x보다 더 크다면 (상하이동)
+            if (Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
+            {
+                if (direction.y > 0f)
+                {
+                    //위로 가는 모션
+                    /*
+                    animator.SetFloat("dirX", 0f);
+                    animator.SetFloat("dirY", 1f);
+
+                    if (hand.localPosition.x < 0f)
+                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
+                    */
+
+                    //뒷 모습을 빼는건 어떤가?
+                    if (direction.x >= 0.1f)
+                    {
+                        animator.SetFloat("dirX", 1f);
+                        animator.SetFloat("dirY", 0f);
+
+                        if (hand.localPosition.x > 0f)
+                            hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
+                    }
+                    else if (direction.x < 0.1f)
+                    {
+                        animator.SetFloat("dirX", -1f);
+                        animator.SetFloat("dirY", 0f);
+
+                        if (hand.localPosition.x < 0f)
+                            hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
+                    }
+                }
+                else if (direction.y <= 0f)
+                {
+                    animator.SetFloat("dirX", 0f);
+                    animator.SetFloat("dirY", -1f);
+
+                    if (hand.localPosition.x < 0f)
+                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
+                }
+            }
+            else if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
+            {
+                if (direction.x >= 0f)
+                {
+                    animator.SetFloat("dirX", 1f);
+                    animator.SetFloat("dirY", 0f);
+
+                    if (hand.localPosition.x > 0f)
+                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
+                }
+                else if (direction.x < 0f)
+                {
+                    animator.SetFloat("dirX", -1f);
+                    animator.SetFloat("dirY", 0f);
+
+                    if (hand.localPosition.x < 0f)
+                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
+                }
+            }
+        }
+        else if (Vector3.Distance(transform.position, target.transform.position) < 0.3f)
+        {
+            target.transform.position = transform.position;
+            animator.SetBool("isWalk", false);
+        }
+
+
     }
 
-    //텔포 쿨타임을 위해 Invoke로 실행하기 위한 함수
-    private void MoveDelay()
+    void MoveControl()
     {
-        isMove = false;
+        if (playerServing.moveStop)
+        {
+            playerServing.moveStop = false;
+            target.transform.position = transform.position;
+            animator.SetBool("isWalk", false);
+        }
     }
-
 }

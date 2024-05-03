@@ -7,6 +7,8 @@ using UnityEngine.Audio;
 
 public class JumakScene : BaseScene
 {
+    public bool isStart;
+
     [SerializeField]
     private BGMManager bgmManager;
     [SerializeField]
@@ -19,8 +21,6 @@ public class JumakScene : BaseScene
 
     [SerializeField]
     private Data data;
-
-    private bool playBGM = false;
 
     [SerializeField]
     private FadeController fadeController;
@@ -41,6 +41,18 @@ public class JumakScene : BaseScene
     private GameObject soundOn;
     [SerializeField]
     private GameObject soundOff;
+
+    [SerializeField]
+    private GameObject[] JumakSystemObj;
+
+    [SerializeField]
+    private GameObject receiptPopup;
+
+    [SerializeField] private float timer;
+    [SerializeField] private float duration;
+
+    private bool playBGM = false;
+
 
     private void Start()
     {
@@ -69,6 +81,9 @@ public class JumakScene : BaseScene
         bgmManager.SetLoop();
 
         pauseSound = "pauseSound";
+
+        timer = 0;
+        isStart = false;
     }
     protected override void Init()
     {
@@ -84,23 +99,37 @@ public class JumakScene : BaseScene
     public void Update()
     {
         UpdateCoin();
-        UpdateLevel();
-        unlockTable();
-
         BGMControl();
         SoundControl();
 
         BGMPlayer();
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            AddTable();
-        }
+        if(isStart)
+            timer += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if(timer >= duration)
         {
-            AddRecipe();
+            isStart = false;
+
+            timer -= duration;
+            JumakOff();
         }
+    }
+
+    private void JumakOff()
+    {
+        for (int i = 0; i < JumakSystemObj.Length; i++)
+        {
+            JumakSystemObj[i].SetActive(false);
+        }
+        receiptPopup.SetActive(true);
+
+        audioManager.AllStop();
+    }
+
+    public void JumakStart()
+    {
+        isStart = true;
     }
 
     public void BGMPlayer()
@@ -123,16 +152,6 @@ public class JumakScene : BaseScene
         }
     }
 
-    public void AddTable()
-    {
-        if (data.curUnlockLevel < data.maxUnlockLevel)
-        {
-            audioManager.Play(pauseSound);
-            data.curUnlockLevel++;
-            data.maxSeatSize += 2;
-        }
-    }
-
     public void AddRecipe()
     {
         if (data.curMenuUnlockLevel < data.maxMenuUnlockLevel)
@@ -145,12 +164,6 @@ public class JumakScene : BaseScene
     public override void Clear()
     {
 
-    }
-
-    // --- 레벨 변경 함수 --- //
-    public void UpdateLevel()
-    {
-        GameObject.Find("UI_LevelText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curPlayerLV.ToString();
     }
 
     // --- 코인 변경 --- //
@@ -166,18 +179,6 @@ public class JumakScene : BaseScene
         SceneManager.LoadScene(_sceneName);
     }
 
-
-    //---게임 로드시 데이터 값에 따라 해금---//
-    void unlockTable()
-    {
-        for (int i = 0; i < data.curUnlockLevel; i++)
-        {
-            if (Dansangs[i] != null) // 해당 게임 오브젝트가 파괴되지 않았는지 확인
-            {
-                Dansangs[i].SetActive(true);
-            }
-        }
-    }
 
     public void BGMControl()
     {

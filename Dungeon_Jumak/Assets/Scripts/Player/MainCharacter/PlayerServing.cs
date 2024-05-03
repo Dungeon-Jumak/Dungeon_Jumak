@@ -9,22 +9,8 @@ using UnityEngine.UI;
 
 public class PlayerServing : MonoBehaviour
 {
-    public bool isPlace = false;
-    public bool isCarryingFood = false; // 음식을 들고 있는지 확인
-    public Transform[] tables;
-
-    public GameObject hand; // 플레이어 손 위치
-    public CookGukbap cookGukbap; // 국밥 카운트 참조 스크립트
-
-    private Queue<GameObject> foodQueue = new Queue<GameObject>(); // 충돌한 Food 오브젝트를 저장하는 Queue
-
-    private Animator animator;//애니메이터
-
-
-
     [SerializeField]
-    private Data data; // Data 스크립트
-
+    private Data data;
     //---서빙 관련---//
     [SerializeField]
     private string menuCategori;
@@ -41,6 +27,19 @@ public class PlayerServing : MonoBehaviour
     [SerializeField]
     private string trashCanSound;
 
+    private Queue<GameObject> foodQueue = new Queue<GameObject>(); // 충돌한 Food 오브젝트를 저장하는 Queue
+
+    private Animator animator;//애니메이터
+
+    public bool isPlace = false;
+    public bool isCarryingFood = false; // 음식을 들고 있는지 확인
+    public Transform[] tables;
+
+    public GameObject hand; // 플레이어 손 위치
+    public CookGukbap cookGukbap; // 국밥 카운트 참조 스크립트
+
+    public bool moveStop;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -51,8 +50,12 @@ public class PlayerServing : MonoBehaviour
 
     public void PickUpFood(GameObject foodObject)
     {
+        moveStop = true;
+
         //음식 잡는 사운드 재생
         audioManager.Play(pickUpSound);
+
+        animator.SetBool("isServing", true);
 
         // 음식 드는 순간 srpite renderer 레이어 Food_Up으로 변경
         SpriteRenderer otherSpriteRenderer = foodObject.GetComponent<SpriteRenderer>();
@@ -125,6 +128,8 @@ public class PlayerServing : MonoBehaviour
                     // --- 국밥 놓기 전 손님 테이블에 있는지 확인 --- //
                     if (data.isCustomer[i] && menuCategori.Contains(data.menuCategories[i]))
                     {
+                        moveStop = true;
+
                         data.onTables[i] = true;
                         data.menuLV[i] = menuValue;
 
@@ -133,6 +138,9 @@ public class PlayerServing : MonoBehaviour
 
                         //음식 놓는 사운드 재생
                         audioManager.Play(servingSound);
+
+                        //애니메이션 변경
+                        animator.SetBool("isServing", false);
 
                         GameObject food = foodQueue.Dequeue();
                         FoodScript foodScript = food.GetComponent<FoodScript>();
