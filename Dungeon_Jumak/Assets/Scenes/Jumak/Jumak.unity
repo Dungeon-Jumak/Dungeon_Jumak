@@ -1490,11 +1490,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5315eeaccd3164aa3856de05f7c51a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minMaxTerm: 3
+  minMaxTerm: 1.5
   customerPrefab:
   - {fileID: 538358156667541571, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
   customerNum: 0
-  minDelayTime: 2
+  minDelayTime: 0.5
   newMinDelayTime: 0
   data:
     curPlayerLV: 1
@@ -2646,7 +2646,7 @@ MonoBehaviour:
   radius: 2.93
   height: 1
   canMove: 1
-  maxSpeed: 1
+  maxSpeed: 1.5
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
