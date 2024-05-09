@@ -175,7 +175,7 @@ public class JumakScene : BaseScene
     // --- 코인 변경 --- //
     public void UpdateCoin()
     {
-        GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curCoin.ToString() + "전";
+        //GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curCoin.ToString() + "전";
     }
 
     public void ConvertScene(string _sceneName)
