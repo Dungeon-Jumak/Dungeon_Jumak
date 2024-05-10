@@ -133,55 +133,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc3911e25f0753459cf549d4ab4d080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlace: 0
-  isCarryingFood: 0
+  aiPath: {fileID: 0}
+  target: {fileID: 0}
+  delaySecond: 0
   hand: {fileID: 2174443558361920474}
-  cookGukbap: {fileID: 0}
-  joystick: {fileID: 0}
-  moveSpeed: 3.5
-  tables:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  data:
-    curPlayerLV: 0
-    maxPlayerLV: 0
-    isPlayBGM: 0
-    isPause: 0
-    maxSeatSize: 2
-    curSeatSize: 0
-    isAllocated: 000000000000000000000000
-    isCustomer: 000000000000000000000000
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    menuNums: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    curCoin: 0
-    maxCoin: 999999
-    foodIngredients: 
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 1
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-  menuNumsOfHand: 0
-  audioManager: {fileID: 0}
-  walkSound1: 
-  walkSound2: 
-  walkSound3: 
-  walkSound4: 
-  servingSound: 
-  pickUpSound: 
-  cookingSound: 
-  trashCanSound: 
+  m_canvas: {fileID: 0}
+  clickAnim: {fileID: 0}
 --- !u!50 &2174443558969673367
 Rigidbody2D:
   serializedVersion: 4
@@ -219,7 +176,7 @@ BoxCollider2D:
   m_Offset: {x: -0.034565568, y: -1.953378}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.15}
     oldSize: {x: 5.99, y: 6.6}
     newSize: {x: 0.31, y: 0.45}
     adaptiveTilingThreshold: 0.5
@@ -261,4 +218,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841c3da6d8214284ca1916d336b11726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 0}

@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jumak/Jumak.unity
     guid: 288a4e65869e599449e262d2abfd38c1
-  - enabled: 0
-    path: Assets/Scenes/Dunjeon/RunningScene.unity
+  - enabled: 1
+    path: Assets/Scenes/Dunjeon/Running/RunningScene.unity
     guid: d8c48ce3db750ed4bab76d598e2ebbe4
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Dunjeon/FightScene.unity
     guid: 4152e6fc568a63a408bbeced069ed0d3
   m_configObjects:
