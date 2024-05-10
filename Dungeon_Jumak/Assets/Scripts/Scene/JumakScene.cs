@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using Pathfinding;
 
 public class JumakScene : BaseScene
 {

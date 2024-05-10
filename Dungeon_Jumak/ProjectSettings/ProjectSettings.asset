@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0.4
+  bundleVersion: 1.0.7
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -253,8 +253,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/yuura/AppData/Roaming/Microsoft/Windows/Network Shortcuts/alpha_key.keystore
-  AndroidKeyaliasName: alpha_key
+  AndroidKeystoreName: "C:/Users/Noh Yu Rae/OneDrive/\uBC14\uD0D5 \uD654\uBA74/testbuild.keystore"
+  AndroidKeyaliasName: testbuildkey
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
