@@ -4,16 +4,16 @@ using UnityEngine.Rendering;
 [Serializable]
 public class Data
 {
-    //µ¥ÀÌÅÍ »ç¿ë¹ı
-    //°ÔÀÓ ÁøÇà¿¡ ÀÖ¾î Àü¹İÀûÀ¸·Î ÇÊ¿äÇÑ µ¥ÀÌÅÍ´Â Data.cs¿¡ publicÁ¢±Ù ÁöÁ¤ÀÚ·Î º¯¼ö·Î¼­ µÑ °Í
-    //ex) ·¹º§, ¼³Á¤ °ª µîµî
-    //µ¥ÀÌÅÍ¿¡ ÀÖ´Â °ªÀ» ´Ù¸¥ ½ºÅ©¸³Æ®¸¦ »ç¿ëÇÏ±â À§ÇØ¼­´Â ½Ì±ÛÅæÀ¸·Î¼­ »ç¿ëÇÏ¸é µÊ
-    //ex) Data data = DataManager.Instance.data; => ÀÌ¸¦ ÅëÇØ Data.cs¿¡ ÀÖ´Â º¯¼ö°ªÀ» »ç¿ëÇÒ ¼ö ÀÖÀ½
+    //ë°ì´í„° ì‚¬ìš©ë²•
+    //ê²Œì„ ì§„í–‰ì— ìˆì–´ ì „ë°˜ì ìœ¼ë¡œ í•„ìš”í•œ ë°ì´í„°ëŠ” Data.csì— publicì ‘ê·¼ ì§€ì •ìë¡œ ë³€ìˆ˜ë¡œì„œ ë‘˜ ê²ƒ
+    //ex) ë ˆë²¨, ì„¤ì • ê°’ ë“±ë“±
+    //ë°ì´í„°ì— ìˆëŠ” ê°’ì„ ë‹¤ë¥¸ ìŠ¤í¬ë¦½íŠ¸ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„œëŠ” ì‹±ê¸€í†¤ìœ¼ë¡œì„œ ì‚¬ìš©í•˜ë©´ ë¨
+    //ex) Data data = DataManager.Instance.data; => ì´ë¥¼ í†µí•´ Data.csì— ìˆëŠ” ë³€ìˆ˜ê°’ì„ ì‚¬ìš©í•  ìˆ˜ ìˆìŒ
 
     public int curPlayerLV = 1;
     public int maxPlayerLV;
 
-    //---¼³Á¤ °ü·Ã---//
+    //---ì„¤ì • ê´€ë ¨---//
     public bool isPlayBGM = true;
     public bool isSound = true;
     public bool isPause = false;
@@ -23,36 +23,36 @@ public class Data
     public int curSeatSize = 0;
 
     public bool[] isAllocated = new bool[12];
-    public bool[] isCustomer = new bool[12];            //°í°´ Å×ÀÌºí¿¡ µµÂøÇß´ÂÁö Ã¼Å©ÇÏ±â À§ÇÑ º¯¼ö
-    public bool[] onTables = new bool[12];              //Å×ÀÌºí À§¿¡ À½½ÄÀ» Ã¼Å©ÇÏ±â À§ÇÑ º¯¼ö
-    public bool[] isFinEat = new bool[12];              //´Ù ¸Ô¾úÀ½À» ¾Ë¸®´Â º¯¼ö
+    public bool[] isCustomer = new bool[12];            //ê³ ê° í…Œì´ë¸”ì— ë„ì°©í–ˆëŠ”ì§€ ì²´í¬í•˜ê¸° ìœ„í•œ ë³€ìˆ˜
+    public bool[] onTables = new bool[12];              //í…Œì´ë¸” ìœ„ì— ìŒì‹ì„ ì²´í¬í•˜ê¸° ìœ„í•œ ë³€ìˆ˜
+    public bool[] isFinEat = new bool[12];              //ë‹¤ ë¨¹ì—ˆìŒì„ ì•Œë¦¬ëŠ” ë³€ìˆ˜
     public bool[] tableMiniGame = new bool[12];
 
-    public string[] menuCategories = new string[12]; //°¢ ÀÚ¸®¿¡ ÀÖ´Â ¸Ş´ºÀÇ Ä«Å×°í¸®
-    public int[] menuLV = new int[12];              //°¢ Å×ÀÌºí¿¡ ÀÖ´Â ¸Ş´ºÀÇ º§·ù
-    public int[] ingredient = new int[5];           //0: µÅÁö°í±â, 1: ºÎÃß, 2: Äá³ª¹°, 3: ¿ÀÂ¡¾î, 4: ¼Ò°í±â
+    public string[] menuCategories = new string[12]; //ê° ìë¦¬ì— ìˆëŠ” ë©”ë‰´ì˜ ì¹´í…Œê³ ë¦¬
+    public int[] menuLV = new int[12];              //ê° í…Œì´ë¸”ì— ìˆëŠ” ë©”ë‰´ì˜ ë²¨ë¥˜
+    public int[] ingredient = new int[5];           //0: ë¼ì§€ê³ ê¸°, 1: ë¶€ì¶”, 2: ì½©ë‚˜ë¬¼, 3: ì˜¤ì§•ì–´, 4: ì†Œê³ ê¸°
 
     public int curCoin = 0;
     public int maxCoin = 999999;
 
-    //---ÀÚ¸® ÇØ±İ ·¹º§---//
+    //---ìë¦¬ í•´ê¸ˆ ë ˆë²¨---//
     public int curUnlockLevel = 1;
     public int maxUnlockLevel = 6;
 
-    //---¸Ş´º ÇØ±İ ·¹º§---//
+    //---ë©”ë‰´ í•´ê¸ˆ ë ˆë²¨---//
     public int curMenuUnlockLevel = 1;
     public int maxMenuUnlockLevel = 3;
 
-    //---¹Ì´Ï°ÔÀÓ °ü·Ã---//
+    //---ë¯¸ë‹ˆê²Œì„ ê´€ë ¨---//
     public float fireSize = 100f;
-    public bool riceJuiceClear = false; //½ÄÇı ¹Ì´Ï°ÔÀÓ ¼º°ø ¿©ºÎ
+    public bool riceJuiceClear = false; //ì‹í˜œ ë¯¸ë‹ˆê²Œì„ ì„±ê³µ ì—¬ë¶€
     public bool isMiniGame;
 
-    //---´øÀü °ü·Ã---//
-    public bool isMonster = false;//Monster spawn ¿©ºÎ È®ÀÎ
-    public float runningTime = 0;//´Ş¸®±â °ÔÀÓ ½ÇÇà ½Ã°£
-    public float playerHP = 3;//HP - ÇÏÆ® 
-    public float monsterHP; // ¸ó½ºÅÍHP - ÇÏÆ® 
-    public bool[] monsterSpawn = new bool[2];//0: ºÎÃß, 1: µÅÁö
+    //---ë˜ì „ ê´€ë ¨---//
+    public bool isMonster = false;//Monster spawn ì—¬ë¶€ í™•ì¸
+    public float runningTime = 0;//ë‹¬ë¦¬ê¸° ê²Œì„ ì‹¤í–‰ ì‹œê°„
+    public float playerHP = 3;//HP - í•˜íŠ¸ 
+    public float monsterHP; // ëª¬ìŠ¤í„°HP - í•˜íŠ¸ 
+    public bool[] monsterSpawn = new bool[2];//0: ë¶€ì¶”, 1: ë¼ì§€
     public bool isThirdMonster = false;
 }
