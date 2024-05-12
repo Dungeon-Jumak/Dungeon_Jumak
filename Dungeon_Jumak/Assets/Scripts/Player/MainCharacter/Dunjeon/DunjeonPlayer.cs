@@ -91,7 +91,9 @@ public class DunjeonPlayer : MonoBehaviour
 
             if (results[0].gameObject.name == "Home_Panel") //홈 패널을 클릭한 곳만 이동이 가능하도록 변경
             {
+                Debug.Log("d");
                 clickAnim.SetTrigger("click");
+                Debug.Log(hit.point);
                 target.transform.position = hit.point;
             }
         }
