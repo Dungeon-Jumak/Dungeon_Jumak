@@ -17,9 +17,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dunjeon/Running/RunningScene.unity
     guid: d8c48ce3db750ed4bab76d598e2ebbe4
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Dunjeon/FightScene.unity
-    guid: 4152e6fc568a63a408bbeced069ed0d3
+    path: Assets/Scenes/Dunjeon/MainDunjeon.unity
+    guid: ccc6679b23f272245877e58ae5a0f614
+  - enabled: 1
+    path: Assets/Scenes/Dunjeon/Map.unity
+    guid: 77fb6cd932af5a840a04685da53c96f2
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 68abe7202c4a8cb45a7b1691ff9da0ad, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: e03e4f01c117ed6418791cfc43563781, type: 2}
