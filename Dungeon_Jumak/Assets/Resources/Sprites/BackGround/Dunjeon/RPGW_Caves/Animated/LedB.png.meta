@@ -907,7 +907,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      LedB_0: 21300000
+      LedB_9: 21300018
       LedB_15: 21300030
       LedB_16: 21300032
       LedB_24: 21300048
@@ -937,8 +937,8 @@ TextureImporter:
       LedB_17: 21300034
       LedB_21: 21300042
       LedB_26: 21300052
-      LedB_9: 21300018
       LedB_31: 21300062
+      LedB_0: 21300000
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
