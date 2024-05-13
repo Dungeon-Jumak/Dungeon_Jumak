@@ -123,31 +123,13 @@ public class PlayerMovement : MonoBehaviour
                 if (direction.y > 0f)
                 {
                     //위로 가는 모션
-                    /*
+                    
                     animator.SetFloat("dirX", 0f);
                     animator.SetFloat("dirY", 1f);
 
                     if (hand.localPosition.x < 0f)
                         hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
-                    */
-
-                    //뒷 모습을 빼는건 어떤가?
-                    if (direction.x >= 0.1f)
-                    {
-                        animator.SetFloat("dirX", 1f);
-                        animator.SetFloat("dirY", 0f);
-
-                        if (hand.localPosition.x > 0f)
-                            hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
-                    }
-                    else if (direction.x < 0.1f)
-                    {
-                        animator.SetFloat("dirX", -1f);
-                        animator.SetFloat("dirY", 0f);
-
-                        if (hand.localPosition.x < 0f)
-                            hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
-                    }
+                    
                 }
                 else if (direction.y <= 0f)
                 {

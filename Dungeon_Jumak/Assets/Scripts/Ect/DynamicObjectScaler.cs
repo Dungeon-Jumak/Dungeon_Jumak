@@ -13,5 +13,7 @@ public class DynamicObjectScaler : MonoBehaviour
 
         transform.localScale = new Vector3(newWidth, height, transform.localScale.z);
         transform.position = Vector3.zero;
+
+        AstarPath.active.Scan();
     }
 }
