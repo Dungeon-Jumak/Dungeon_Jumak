@@ -55,4 +55,14 @@ public class Data
     public float monsterHP; // 몬스터HP - 하트 
     public bool[] monsterSpawn = new bool[2];//0: 부추, 1: 돼지
     public bool isThirdMonster = false;
+
+    //--상점 관련--//
+    public int[] chairPrice = new int[4];
+    public int chairLevel = 0;
+
+    public int[] tablePrice = new int[4];
+    public int tableLevel = 0;
+
+    public int[] backgroundPrice = new int[4];
+    public int backgroundLevel = 0;
 }
