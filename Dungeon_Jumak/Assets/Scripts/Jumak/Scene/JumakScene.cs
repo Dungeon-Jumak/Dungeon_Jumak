@@ -245,4 +245,9 @@ public class JumakScene : BaseScene
     {
         data.isSound = false;
     }
+
+    public void InitialTransfrom(GameObject go)
+    {
+        go.transform.localPosition = new Vector3(go.transform.localPosition.x, 0, go.transform.localPosition.z);
+    }
 }
