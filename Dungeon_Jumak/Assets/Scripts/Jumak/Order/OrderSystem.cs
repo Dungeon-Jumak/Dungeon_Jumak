@@ -15,6 +15,10 @@ public class OrderSystem : MonoBehaviour
 
     private void Start()
     {
+        data.gukbapCount= 0;
+        data.pajeonCount= 0;
+        data.riceJuiceCount= 0;
+
         data = DataManager.Instance.data;
         audioManager = FindObjectOfType<AudioManager>();
     }
@@ -23,16 +27,16 @@ public class OrderSystem : MonoBehaviour
     {
         for (int i = 0; i < tables.Length; i++)
         {
-            //---´Ù ¸Ô¾úÀ¸¸é tableÀ» ÃÊ±âÈ­---//
+            //---ë‹¤ ë¨¹ì—ˆìœ¼ë©´ tableì„ ì´ˆê¸°í™”---//
             if (data.isFinEat[i])
             {
                 data.isFinEat[i] = false;
 
-                //---ÀÌÁß ÆÄ±« ¿À·ù ¼öÁ¤---//
+                //---ì´ì¤‘ íŒŒê´´ ì˜¤ë¥˜ ìˆ˜ì •---//
                 if (tables[i].transform.GetChild(0).childCount != 0)
                     Destroy(tables[i].transform.GetChild(0).GetChild(0).gameObject);
 
-                CoinUpdate(i);//ÄÚÀÎ Áö±Þ
+                CoinUpdate(i);//ì½”ì¸ ì§€ê¸‰
                 audioManager.Play(coinSound);
             }
 
@@ -48,21 +52,33 @@ public class OrderSystem : MonoBehaviour
                 {
                     case 1:
                         data.curCoin += 5;
+                        data.gukbapCount++;
+                        data.nowGukbapPrice = 5;
                         break;
                     case 2:
                         data.curCoin += 10;
+                        data.gukbapCount++;
+                        data.nowGukbapPrice = 10;
                         break;
                     case 3:
                         data.curCoin += 15;
+                        data.gukbapCount++;
+                        data.nowGukbapPrice = 15;
                         break;
                     case 4:
                         data.curCoin += 8;
+                        data.gukbapCount++;
+                        data.nowGukbapPrice = 8;
                         break;
                     case 5:
                         data.curCoin += 15;
+                        data.gukbapCount++;
+                        data.nowGukbapPrice = 15;
                         break;
                     case 6:
                         data.curCoin += 20;
+                        data.gukbapCount++;
+                        data.nowGukbapPrice = 20;
                         break;
                     default:
                         break;
@@ -74,24 +90,38 @@ public class OrderSystem : MonoBehaviour
                 {
                     case 1:
                         data.curCoin += 7;
+                        data.pajeonCount++;
+                        data.nowPajeonPrice = 7;
                         break;
                     case 2:
                         data.curCoin += 9;
+                        data.pajeonCount++;
+                        data.nowPajeonPrice = 9;
                         break;
                     case 3:
                         data.curCoin += 10;
+                        data.pajeonCount++;
+                        data.nowPajeonPrice = 10;
                         break;
                     case 4:
                         data.curCoin += 13;
+                        data.pajeonCount++;
+                        data.nowPajeonPrice = 13;
                         break;
                     case 5:
                         data.curCoin += 15;
+                        data.pajeonCount++;
+                        data.nowPajeonPrice = 15;
                         break;
                     case 6:
                         data.curCoin += 13;
+                        data.pajeonCount++;
+                        data.nowPajeonPrice = 13;
                         break;
                     case 7:
                         data.curCoin += 15;
+                        data.pajeonCount++;
+                        data.nowPajeonPrice = 15;
                         break;
                     default:
                         break;
@@ -100,6 +130,8 @@ public class OrderSystem : MonoBehaviour
 
             case "RiceJuice":
                 data.curCoin += 4;
+                data.riceJuiceCount++;
+                data.nowRiceJuicePrice = 4;
                 break;
 
             default:

@@ -48,6 +48,14 @@ public class Data
     public bool riceJuiceClear = false; //식혜 미니게임 성공 여부
     public bool isMiniGame;
 
+    //--정산 관련--//
+    public int gukbapCount;
+    public int pajeonCount;
+    public int riceJuiceCount;
+    public int nowGukbapPrice;
+    public int nowPajeonPrice;
+    public int nowRiceJuicePrice;
+
     //---던전 관련---//
     public bool isMonster = false;//Monster spawn 여부 확인
     public float runningTime = 0;//달리기 게임 실행 시간

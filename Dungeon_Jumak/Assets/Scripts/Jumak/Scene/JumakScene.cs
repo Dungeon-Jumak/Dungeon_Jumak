@@ -25,7 +25,7 @@ public class JumakScene : BaseScene
     [SerializeField]
     private FadeController fadeController;
 
-    //---ÇØ±İ ÇÒ ´Ü»ó ¹è¿­---//
+    //---í•´ê¸ˆ í•  ë‹¨ìƒ ë°°ì—´---//
     [SerializeField]
     private GameObject[] Dansangs;
 
@@ -54,6 +54,9 @@ public class JumakScene : BaseScene
     [SerializeField]
     private TextMeshProUGUI timerTxt;
 
+    [SerializeField]
+    int totalPrice;
+
     private bool playBGM = false;
 
 
@@ -78,7 +81,7 @@ public class JumakScene : BaseScene
 
         data.curSeatSize = 0;
 
-        //---±âº» BGM ½ÇÇà---//
+        //---ê¸°ë³¸ BGM ì‹¤í–‰---//
         bgmManager.Play(bgmSoundTrack);
         bgmManager.FadeInMusic(maxVolume);
         bgmManager.SetLoop();
@@ -92,10 +95,10 @@ public class JumakScene : BaseScene
     {
         base.Init();
 
-        //---Define.cs enum ÅëÇÑ ÇöÀç Scene ¼³Á¤---//
+        //---Define.cs enum í†µí•œ í˜„ì¬ Scene ì„¤ì •---//
         SceneType = Define.Scene.Jumak;
 
-        //---¾À ´Ù½Ã ·Îµå µÇ¸é ¹Ù·Î DataÀÇ coin ·Îµå---//
+        //---ì”¬ ë‹¤ì‹œ ë¡œë“œ ë˜ë©´ ë°”ë¡œ Dataì˜ coin ë¡œë“œ---//
         GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curCoin.ToString();
     }
 
@@ -130,7 +133,26 @@ public class JumakScene : BaseScene
         }
         receiptPopup.SetActive(true);
 
+        StartCoroutine(ActivateTextSequentially());
+
+        totalPrice = (data.gukbapCount * data.nowGukbapPrice) + (data.riceJuiceCount * data.nowRiceJuicePrice) + (data.pajeonCount * data.nowPajeonPrice);
         audioManager.AllStop();
+    }
+
+    private IEnumerator ActivateTextSequentially()
+    {
+        yield return new WaitForSeconds(1f);
+
+        GameObject.Find("GukBap_Recipt").GetComponent<TextMeshProUGUI>().text = "êµ­ë°¥ x " + data.gukbapCount.ToString() + " = " + data.gukbapCount * data.nowGukbapPrice;
+        yield return new WaitForSeconds(1f);
+
+        GameObject.Find("Pajeon_Recipt").GetComponent<TextMeshProUGUI>().text = "íŒŒì „ x " + data.pajeonCount.ToString() + " = " + data.pajeonCount * data.nowPajeonPrice;
+        yield return new WaitForSeconds(1f);
+
+        GameObject.Find("RiceJuice_Recipt").GetComponent<TextMeshProUGUI>().text = "ì‹í˜œ x " + data.riceJuiceCount.ToString() + " = " + data.riceJuiceCount * data.nowRiceJuicePrice;
+
+        yield return new WaitForSeconds(1f);
+        GameObject.Find("Total_Recipt").GetComponent<TextMeshProUGUI>().text = "ì´ ë§¤ì¶œ = " + totalPrice.ToString() + "ì „";
     }
 
     public void JumakStart()
@@ -172,10 +194,10 @@ public class JumakScene : BaseScene
 
     }
 
-    // --- ÄÚÀÎ º¯°æ --- //
+    // --- ì½”ì¸ ë³€ê²½ --- //
     public void UpdateCoin()
     {
-        //GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curCoin.ToString() + "Àü";
+        //GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curCoin.ToString() + "ì „";
     }
 
     public void ConvertScene(string _sceneName)
