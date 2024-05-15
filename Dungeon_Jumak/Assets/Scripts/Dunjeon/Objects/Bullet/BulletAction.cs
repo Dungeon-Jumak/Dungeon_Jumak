@@ -23,7 +23,7 @@ public class BulletAction : MonoBehaviour
             monsterPos = collision.transform.position;
             StartCoroutine(BeforeAttack());
 
-            a.SetActive(true);
+            /*a.SetActive(true);
             b.SetActive(true);
             c.SetActive(true);
 
@@ -37,11 +37,11 @@ public class BulletAction : MonoBehaviour
                 b.SetActive(false);
                 c.SetActive(false);
                 DataManager.Instance.data.isSkillSuc = false;
-            }
+            }*/
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    /*private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Monster"))
         {
@@ -49,7 +49,7 @@ public class BulletAction : MonoBehaviour
             b.SetActive(false);
             c.SetActive(false);
         }
-    }
+    }*/
 
 
     private IEnumerator BeforeAttack()
@@ -57,7 +57,7 @@ public class BulletAction : MonoBehaviour
         if (isAttacking == false)
         {
             isAttacking = true;
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(1f);
             StartCoroutine("Attack");
         }
     }
@@ -68,7 +68,7 @@ public class BulletAction : MonoBehaviour
         bullet.transform.position = bulletSpawnPoint.transform.position;
         dir = monsterPos - bulletSpawnPoint.transform.position;
         bullet.gameObject.GetComponent<Rigidbody2D>().AddForce(dir * bulletSpeed, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(1f);
         isAttacking = false;
     }
 }
