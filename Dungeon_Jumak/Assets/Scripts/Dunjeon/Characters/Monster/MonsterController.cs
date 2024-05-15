@@ -23,7 +23,12 @@ public class MonsterController : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         hp -= damageAmount;
-        if (hp <= 0) Destroy(transform.parent.gameObject);  
+        if (hp <= 0)
+        {
+            Destroy(transform.parent.gameObject);
+            DataManager.Instance.data.ingredient[0]++;
+            Debug.Log(DataManager.Instance.data.ingredient[0]);
+        }
     }
 
     private void SetChildActive(int index, bool isActive)
