@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8255179479036184723}
   - component: {fileID: 8276220467368652510}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HP_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,8 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 629226701575980666}
   - component: {fileID: 720751730198196943}
-  m_Layer: 0
-  m_Name: HP
+  m_Layer: 9
+  m_Name: HP_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -263,8 +263,8 @@ GameObject:
   - component: {fileID: 6031018358152851499}
   - component: {fileID: 6031018358152851498}
   - component: {fileID: 6031018358152851497}
-  m_Layer: 3
-  m_Name: Monster
+  m_Layer: 9
+  m_Name: Monster_Pos
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 6031018358703910842}
   - component: {fileID: 6031018358703910822}
   m_Layer: 3
-  m_Name: Monster_Test
+  m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -394,7 +394,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1149754795
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -436,7 +436,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   distance: 0
-  targetPlayer: {fileID: 172908246992961776, guid: b394a1ddf513f8943a26bd21f0434cc6, type: 3}
   isFollow: 0
 --- !u!50 &6031018358703910822
 Rigidbody2D:
@@ -446,7 +445,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6031018358703910844}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -469,7 +468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5627690953159395105}
   - component: {fileID: 3389664126521165791}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HP_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

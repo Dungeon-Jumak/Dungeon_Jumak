@@ -14,7 +14,7 @@ public class TargetController : MonoBehaviour
     [SerializeField]
     [Range(0f, 3f)] float distance = 0.3f;
 
-    public Transform targetPlayer;//플레이어 게임 오브젝트
+    private Transform targetPlayer;//플레이어 게임 오브젝트
 
     [SerializeField]
     private bool isFollow = false;
@@ -23,7 +23,7 @@ public class TargetController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        GameObject playerObject = GameObject.Find("Chr_Player");
+        GameObject playerObject = GameObject.Find("Player");
         if (playerObject != null)
         {
             targetPlayer = playerObject.transform;
@@ -37,13 +37,16 @@ public class TargetController : MonoBehaviour
 
     private void FollowPlayer()
     {
-        if (Vector2.Distance(transform.position, targetPlayer.position) > distance && isFollow)
+        if (targetPlayer != null)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPlayer.position, speed*Time.deltaTime);
-        }
-        else
-        {
-            rb.velocity = Vector2.zero;
+            if (Vector2.Distance(transform.position, targetPlayer.position) > distance && isFollow)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, targetPlayer.position, speed * Time.deltaTime);
+            }
+            else
+            {
+                rb.velocity = Vector2.zero;
+            }
         }
     }
 
