@@ -32,10 +32,7 @@ namespace UnistrokeGestureRecognition.Example {
                 fireball.FireBallCoolStart();
             }
 
-            if (name == "BigBang")
-            {
-                bigbang.BigBangCoolStart();
-            }
+
 
         }
 
