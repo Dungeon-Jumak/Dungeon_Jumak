@@ -44,6 +44,16 @@ public class SetFood : MonoBehaviour
     [SerializeField]
     private int[] foodNums;
 
+    [SerializeField]
+    private GameObject[] gukbabPrefabs;
+    [SerializeField]
+    private GameObject[] pajeonsPrefabs;
+    [SerializeField]
+    private GameObject[] riceJuicePrefabs;
+
+    [SerializeField]
+    private GukbapSetting gukbapSetting;
+
     private SelectFood selectFood;
 
     private int gukbabIdx;
@@ -140,6 +150,7 @@ public class SetFood : MonoBehaviour
                     if (gukbabs[gukbabIdx].isIngredients[i])
                         data.ingredient[i] -= gukbabs[gukbabIdx].needIngredients[i] * count;
                 }
+                gukbapSetting.gukbapPrefab = gukbabPrefabs[gukbabIdx];
                 break;
 
             case "Pajeon":

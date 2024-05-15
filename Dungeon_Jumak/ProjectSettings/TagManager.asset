@@ -20,6 +20,7 @@ TagManager:
   - RiceJuice
   - Gukbab
   - SpeechBox
+  - PigGukbab
   layers:
   - Default
   - TransparentFX

@@ -84,6 +84,10 @@ public class PlayerServing : MonoBehaviour
                     menuCategori = "Gukbab";
                     menuValue = 1; //태그별로 음식의 밸류 설정
                     break;
+                case "PigGukbab":
+                    menuCategori = "Gukbab";
+                    menuValue = 2;
+                    break;
 
                     //---국밥 카테고리의 음식 확장---//
             }

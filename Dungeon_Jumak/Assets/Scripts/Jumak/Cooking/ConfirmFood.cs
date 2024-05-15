@@ -6,6 +6,8 @@ using TMPro;
 
 public class ConfirmFood : MonoBehaviour
 {
+    public int wantCookingFood;
+
     [SerializeField]
     private SetFood setFood;
     [SerializeField]
@@ -29,7 +31,6 @@ public class ConfirmFood : MonoBehaviour
     private Image foodImage;
 
     private int maxCookingFood;
-    private int wantCookingFood;
 
     Data data;
     
@@ -61,7 +62,8 @@ public class ConfirmFood : MonoBehaviour
             chooseFoodPanel.SetActive(false);
         }
 
-        countTMP.text = wantCookingFood.ToString();
+        if (freeFood) countTMP.text = "무한";
+        else countTMP.text = wantCookingFood.ToString();
 
     }
 
@@ -126,11 +128,7 @@ public class ConfirmFood : MonoBehaviour
                 break;
         }
 
-        if (freeFood) countTMP.text = "무한";
-        else
-        {
-            wantCookingFood = maxCookingFood;
-        }
+        wantCookingFood = maxCookingFood;
 
     }
     

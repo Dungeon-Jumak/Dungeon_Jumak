@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8124337146408283779}
   - component: {fileID: 3735126296206357679}
   m_Layer: 8
-  m_Name: Env_Gookbab_Prefab
-  m_TagString: Gukbab
+  m_Name: Env_PigGukbab_Prefab
+  m_TagString: PigGukbab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

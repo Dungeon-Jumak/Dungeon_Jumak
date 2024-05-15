@@ -5,12 +5,17 @@ public class GukbapSetting : MonoBehaviour
 {
     public GameObject gukbapPrefab; // 생성할 이미지 프리팹을 담는 public 변수
 
+    public GameObject baseGukbabPrefab;
+
     public List<bool> gukbapList; // 국밥 리스트 (true면 해당 위치에 국밥이 있는 상태)를 담는 public 변수
 
     public CookGukbap cookGukbap; // 다른 스크립트에 있는 CookGukbap 스크립트의 인스턴스를 담는 public 변수
 
     [SerializeField] private int previousCount; // 이전 프레임에서의 국밥 카운트를 저장하기 위한 private 변수
     [SerializeField] Transform[] idxs;
+
+    [SerializeField]
+    private ConfirmFood confirmFood;
 
     void Start() // 게임 오브젝트가 활성화될 때 호출되는 함수
     {
@@ -29,8 +34,10 @@ public class GukbapSetting : MonoBehaviour
                 int index = GetNextAvailableIndex(); // 다음으로 추가할 수 있는 국밥의 인덱스를 가져옴
                 if (index != -1) // 추가할 수 있는 위치가 있는지 확인
                 {
-                    Debug.Log("국밥 인덱스 : " + index);
+                    if (confirmFood.wantCookingFood <= 0) gukbapPrefab = baseGukbabPrefab; //소진 개수가 다되면 자동으로 기본 국밥으로 변경
                     GameObject newGukbap = Instantiate(gukbapPrefab, idxs[index].position, Quaternion.identity); // 새로운 국밥을 생성하고 배치
+                    if(confirmFood.wantCookingFood > 0) confirmFood.wantCookingFood--; //갯수 감소
+
                     newGukbap.transform.parent = transform; // 새로운 국밥을 이 스크립트의 자식으로 설정
                     gukbapList[index] = true; // 국밥 리스트에서 해당 위치의 값을 true로 설정하여 차지한 것으로 표시
                 }
