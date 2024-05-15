@@ -32,6 +32,11 @@ public class DunjeonScene : MonoBehaviour
     void Update()
     {
         countTime();
+
+        if(DataManager.Instance.data.ingredient[0] == 4)
+        {
+            resultPanel.SetActive(true);
+        }
     }
 
     private void countTime()

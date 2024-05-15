@@ -69,7 +69,7 @@ public class BigBang : MonoBehaviour
 
             audioManager.Play("bigBang");
         }*/
-        data.monsterHP -= 3f;
+        DataManager.Instance.data.isSkillSuc = true;
         yield return null;
     }
 }

@@ -63,15 +63,15 @@ public class FireBall : MonoBehaviour
 
     IEnumerator FireBallMagic()
     {
-       /* if (data.isSound)
-        {
-            audioManager.Play("magicSketch");
-            yield return new WaitForSeconds(1f);
-            audioManager.Stop("magicSketch");
+        /* if (data.isSound)
+         {
+             audioManager.Play("magicSketch");
+             yield return new WaitForSeconds(1f);
+             audioManager.Stop("magicSketch");
 
-            audioManager.Play("fireBall");
-        }*/
-        data.monsterHP -= 0.5f;
+             audioManager.Play("fireBall");
+         }*/
+        DataManager.Instance.data.isSkillSuc = true;
         yield return null;
     }
 }
