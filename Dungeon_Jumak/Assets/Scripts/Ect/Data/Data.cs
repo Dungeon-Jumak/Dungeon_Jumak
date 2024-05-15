@@ -55,6 +55,8 @@ public class Data
     public int nowGukbapPrice;
     public int nowPajeonPrice;
     public int nowRiceJuicePrice;
+    public int currentTotalPrice;
+    public int yesterdayTotalPrice;
 
     //---던전 관련---//
     public bool isMonster = false;//Monster spawn 여부 확인
