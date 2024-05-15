@@ -4,37 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Table_L
-  - Table_R
-  - Pajeon
-  - Trash
-  - RiceJuiceMiniGame
-  - Kettle
-  - CheckKettle
-  - Obstacle
-  - Monster
-  - Recovery
   - floor
-  - Grandma
-  - UI
-  - RiceJuice
-  - Gukbab
-  - SpeechBox
+  - Monster
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Characters
+  - 
   - Water
   - UI
-  - BackGround
-  - Food_Up
-  - Food_Down
-  - 
-  - LightObstacles
-  - LightSource
-  - AmbientLight
-  - Environment
   - 
   - 
   - 
@@ -44,6 +22,14 @@ TagManager:
   - 
   - 
   - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Layer 1
+  - Layer 2
+  - Layer 3
   - 
   - 
   - 
@@ -54,30 +40,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Layer 1
+    uniqueID: 2425651459
+    locked: 0
+  - name: Layer 2
+    uniqueID: 4250941897
+    locked: 0
+  - name: Layer 3
+    uniqueID: 4189426099
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: BackGround
-    uniqueID: 489776729
-    locked: 0
-  - name: Object
-    uniqueID: 395830841
-    locked: 0
-  - name: Food_Down
-    uniqueID: 3767924025
-    locked: 0
-  - name: Player
-    uniqueID: 1149754795
-    locked: 0
-  - name: Food_Up
-    uniqueID: 2991999681
-    locked: 0
-  - name: UpThanPlayer
-    uniqueID: 1966264649
-    locked: 0
-  - name: Above Object
-    uniqueID: 3700751555
-    locked: 0
-  - name: UI
-    uniqueID: 3870797167
     locked: 0

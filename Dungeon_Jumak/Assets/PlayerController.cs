@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case 0:
                 SetChildActive(0, false);
+                resultPanel.SetActive(true);
                 break;
         }
 
@@ -30,11 +31,6 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         hp -= damageAmount;
-        if (hp <= 0)
-        {
-            this.gameObject.SetActive(false);
-            resultPanel.SetActive(true);
-        }
     }
 
     private void SetChildActive(int index, bool isActive)
