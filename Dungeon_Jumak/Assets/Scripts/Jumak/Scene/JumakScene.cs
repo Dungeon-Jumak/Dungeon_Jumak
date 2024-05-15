@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using Unity.PlasticSCM.Editor.WebApi;
 
 public class JumakScene : BaseScene
 {
@@ -55,7 +56,7 @@ public class JumakScene : BaseScene
     private TextMeshProUGUI timerTxt;
 
     [SerializeField]
-    int totalPrice;
+    int compareTotalPrice;
 
     [SerializeField]
     private GameObject startPanel;
@@ -66,6 +67,7 @@ public class JumakScene : BaseScene
     private TextMeshProUGUI coinTMP;
 
     private bool playBGM = false;
+    private bool endPanel = false;
 
 
     private void Start()
@@ -117,13 +119,12 @@ public class JumakScene : BaseScene
         SoundControl();
 
         BGMPlayer();
-
         coinTMP.text = data.curCoin.ToString() + "전";
 
-        if(isStart)
+        if (isStart)
             timer += Time.deltaTime;
 
-        if(timer >= duration)
+        if (timer >= duration)
         {
             isStart = false;
 
@@ -133,6 +134,12 @@ public class JumakScene : BaseScene
 
         int newTime = Mathf.FloorToInt(duration - timer);
         timerTxt.text = newTime.ToString();
+
+        if (endPanel && (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began || Input.GetMouseButtonDown(0)))
+        {
+            SceneManager.LoadScene("WaitingScene");
+        }
+
     }
 
     private void JumakOff()
@@ -145,7 +152,7 @@ public class JumakScene : BaseScene
 
         StartCoroutine(ActivateTextSequentially());
 
-        totalPrice = (data.gukbapCount * data.nowGukbapPrice) + (data.riceJuiceCount * data.nowRiceJuicePrice) + (data.pajeonCount * data.nowPajeonPrice);
+        data.currentTotalPrice = (data.gukbapCount * data.nowGukbapPrice) + (data.riceJuiceCount * data.nowRiceJuicePrice) + (data.pajeonCount * data.nowPajeonPrice);
         audioManager.AllStop();
     }
 
@@ -162,7 +169,20 @@ public class JumakScene : BaseScene
         GameObject.Find("RiceJuice_Recipt").GetComponent<TextMeshProUGUI>().text = "식혜 x " + data.riceJuiceCount.ToString() + " = " + data.riceJuiceCount * data.nowRiceJuicePrice;
 
         yield return new WaitForSeconds(1f);
-        GameObject.Find("Total_Recipt").GetComponent<TextMeshProUGUI>().text = "총 매출 = " + totalPrice.ToString() + "전";
+        GameObject.Find("Total_Recipt").GetComponent<TextMeshProUGUI>().text = "총 매출 = " + data.currentTotalPrice.ToString() + "전";
+
+        yield return new WaitForSeconds(1f);
+        compareTotalPrice = data.currentTotalPrice - data.yesterdayTotalPrice;
+        if (compareTotalPrice > 0)
+        {
+            GameObject.Find("Compare_Recipt").GetComponent<TextMeshProUGUI>().text = compareTotalPrice.ToString() + "↑";
+        }
+        else
+        {
+            GameObject.Find("Compare_Recipt").GetComponent<TextMeshProUGUI>().text = compareTotalPrice.ToString() + "↓";
+        }
+        data.yesterdayTotalPrice = data.currentTotalPrice;
+        endPanel = true;
     }
 
     public void JumakStart()
