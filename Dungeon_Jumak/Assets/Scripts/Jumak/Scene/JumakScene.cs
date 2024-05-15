@@ -57,6 +57,11 @@ public class JumakScene : BaseScene
     [SerializeField]
     int totalPrice;
 
+    [SerializeField]
+    private GameObject startPanel;
+    [SerializeField]
+    private GameObject[] panelForStart;
+
     private bool playBGM = false;
 
 
@@ -158,6 +163,12 @@ public class JumakScene : BaseScene
     public void JumakStart()
     {
         isStart = true;
+
+        startPanel.SetActive(false);
+        for (int i = 0; i < panelForStart.Length; i++)
+        {
+            panelForStart[i].SetActive(true);
+        }
     }
 
     public void BGMPlayer()
