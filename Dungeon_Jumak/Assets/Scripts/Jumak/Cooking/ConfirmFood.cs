@@ -9,6 +9,9 @@ public class ConfirmFood : MonoBehaviour
     public int wantCookingFood;
 
     [SerializeField]
+    private GukbapSetting gukbapSetting;
+
+    [SerializeField]
     private SetFood setFood;
     [SerializeField]
     private GameObject confirmPopUp;
@@ -141,6 +144,7 @@ public class ConfirmFood : MonoBehaviour
             {
                 case "Gukbab":
                     setFood.subIngredient("Gukbab", wantCookingFood);
+                    gukbapSetting.wantCookingNum = wantCookingFood;
                     break;
 
                 case "Pajeon":

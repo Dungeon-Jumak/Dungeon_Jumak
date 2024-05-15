@@ -62,6 +62,9 @@ public class JumakScene : BaseScene
     [SerializeField]
     private GameObject[] panelForStart;
 
+    [SerializeField]
+    private TextMeshProUGUI coinTMP;
+
     private bool playBGM = false;
 
 
@@ -114,6 +117,8 @@ public class JumakScene : BaseScene
         SoundControl();
 
         BGMPlayer();
+
+        coinTMP.text = data.curCoin.ToString() + "전";
 
         if(isStart)
             timer += Time.deltaTime;
