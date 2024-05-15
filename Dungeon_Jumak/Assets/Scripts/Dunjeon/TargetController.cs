@@ -22,6 +22,12 @@ public class TargetController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        GameObject playerObject = GameObject.Find("Chr_Player");
+        if (playerObject != null)
+        {
+            targetPlayer = playerObject.transform;
+        }
     }
 
     void Update()

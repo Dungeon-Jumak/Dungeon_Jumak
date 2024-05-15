@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DunjeonScene : MonoBehaviour
 {
+    public GameObject resultPanel;
+    public GameObject monsterPrefab;
+
     private GameObject secTextObj;
     private GameObject minTextObj;
 
@@ -13,13 +17,16 @@ public class DunjeonScene : MonoBehaviour
 
     private float time = 120;
 
+    public int numberOfMonsters = 4; // 스폰할 몬스터의 수
+
     void Start()
     {
-        //---타이머 관련 변수 할당---//
         secTextObj = GameObject.Find("SecText");
         secText = secTextObj.GetComponent<TextMeshProUGUI>();
         minTextObj = GameObject.Find("MinText");
         minText = minTextObj.GetComponent<TextMeshProUGUI>();
+
+        SpawnMonsters();
     }
 
     void Update()
@@ -41,8 +48,25 @@ public class DunjeonScene : MonoBehaviour
         }
         else
         {
-            // 타이머가 0 이하가 되면 타이쿤 파트처럼 결과나오는 팝업창이 나오고 거기서 터치하면 날짜 넘어가도록
+            resultPanel.SetActive(true);
         }
     }
 
+    void SpawnMonsters()
+    {
+        for (int i = 0; i < numberOfMonsters; i++)
+        {
+            Vector3 spawnPosition = new Vector3(
+                Random.Range(-10f, 10f),
+                Random.Range(-10f, 10f),
+                0 
+            );
+            Instantiate(monsterPrefab, spawnPosition, Quaternion.identity);
+        }
+    }
+
+    public void ChangeToWaitingScene()
+    {
+        SceneManager.LoadScene("WaitingScene");
+    }
 }
