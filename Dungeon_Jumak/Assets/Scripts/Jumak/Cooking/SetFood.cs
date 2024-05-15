@@ -20,6 +20,10 @@ public class SetFood : MonoBehaviour
     public int[] subPajeonIngredient;
     public int[] subRiceJuiceIngredient;
 
+    public bool freeGukbab;
+    public bool freePajeon;
+    public bool freeRiceJuice;
+
     //음식 리스트의 각 스프라이트와 버튼 배열
     [SerializeField]
     private Sprite[] gukbabSprites;
@@ -41,6 +45,10 @@ public class SetFood : MonoBehaviour
     private int[] foodNums;
 
     private SelectFood selectFood;
+
+    private int gukbabIdx;
+    private int pajeonIdx;
+    private int riceJuiceIdx;
 
     Data data;
 
@@ -67,19 +75,15 @@ public class SetFood : MonoBehaviour
                     if (gukbabs[i].onClick)
                     { 
                         gukbabs[i].OffClick();
-
+                        //확정 버튼 이미지 변경
                         gukbabImage.sprite = gukbabSprites[i];
 
                         gukbabMaxNum = gukbabs[i].maxCookNum;
 
-                        for (int k = 0; k < data.ingredient.Length; k++)
-                        {
-                            if (gukbabs[i].isIngredients[k])
-                            {
-                                subGukbabIngredient[k] = gukbabs[i].needIngredients[k] * gukbabMaxNum;
-                            }
-                        }
+                        if(gukbabs[i].freeMenu) freeGukbab = true;
+                        else freeGukbab = false;
 
+                        gukbabIdx = i;
                     }
                 }
                 break;
@@ -89,10 +93,15 @@ public class SetFood : MonoBehaviour
                 {
                     if (pajeons[i].onClick)
                     {
-
                         pajeons[i].OffClick();
                         pajeonImage.sprite = pajeonSprites[i];
 
+                        pajeonMaxNum = pajeons[i].maxCookNum;
+
+                        if (pajeons[i].freeMenu) freePajeon = true;
+                        else freePajeon = false;
+
+                        pajeonIdx = i;
                     }
                 }
                 break;
@@ -102,10 +111,15 @@ public class SetFood : MonoBehaviour
                 {
                     if (riceJuices[i].onClick)
                     {
-
                         riceJuices[i].OffClick();
                         riceJuiceImage.sprite = riceJuiceSprites[i];
 
+                        riceJuiceMaxNum = riceJuices[i].maxCookNum;
+
+                        if(riceJuices[i].freeMenu) freeRiceJuice = true;
+                        else freeRiceJuice = false;
+
+                        riceJuiceIdx = i;
                     }
                 }
                 break;
@@ -115,4 +129,35 @@ public class SetFood : MonoBehaviour
         }
     }
 
+    //재료를 빼기 위한 스크립트
+    public void subIngredient(string category, int count)
+    {
+        switch (category)
+        {
+            case "Gukbab":
+                for (int i = 0; i < data.ingredient.Length; i++)
+                {
+                    if (gukbabs[gukbabIdx].isIngredients[i])
+                        data.ingredient[i] -= gukbabs[gukbabIdx].needIngredients[i] * count;
+                }
+                break;
+
+            case "Pajeon":
+                for (int i = 0; i < data.ingredient.Length; i++)
+                {
+                    if (pajeons[pajeonIdx].isIngredients[i])
+                        data.ingredient[i] -= pajeons[pajeonIdx].needIngredients[i] * count;
+                }
+                break;
+
+            case "RiceJuice":
+                for (int i = 0; i < data.ingredient.Length; i++)
+                {
+                    if (riceJuices[riceJuiceIdx].isIngredients[i])
+                        data.ingredient[i] -= riceJuices[riceJuiceIdx].needIngredients[i] * count;
+                }
+                break;
+        }
+
+    }
 }
