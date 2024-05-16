@@ -40,7 +40,7 @@ public class Data
     public int maxUnlockLevel = 6;
 
     //---메뉴 해금 레벨---//
-    public int curMenuUnlockLevel = 1;
+    public int curMenuUnlockLevel = 3;
     public int maxMenuUnlockLevel = 3;
 
     //---미니게임 관련---//
