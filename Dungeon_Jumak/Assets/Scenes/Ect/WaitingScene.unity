@@ -769,7 +769,7 @@ MonoBehaviour:
   speed: 3
   jumakSceneName: Jumak
   jumakSign: {fileID: 1029808175}
-  dungeonSceneName: MainDunjeon
+  dungeonSceneName: Map
   dungeonSign: {fileID: 391847518}
   targetTransform: {fileID: 0}
   sceneName: 
