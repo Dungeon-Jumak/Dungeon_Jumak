@@ -72,6 +72,9 @@ public class JumakScene : BaseScene
 
     private void Start()
     {
+        data.gukbapCount = 0;
+        data.pajeonCount = 0;
+        data.riceJuiceCount = 0;
         playBGM = false;
 
         data = DataManager.Instance.data;
