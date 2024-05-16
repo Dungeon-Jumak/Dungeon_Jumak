@@ -32,7 +32,7 @@ public class FightingScene : MonoBehaviour
         data = DataManager.Instance.data;
 
         bgmManager = FindObjectOfType<BGMManager>();
-        //audioManager = FindObjectOfType<AudioManager>();
+        audioManager = FindObjectOfType<AudioManager>();
 
         //audioManager.AllStop();
         bgmManager.Stop();

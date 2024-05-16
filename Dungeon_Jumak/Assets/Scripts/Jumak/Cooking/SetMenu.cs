@@ -6,7 +6,6 @@ using TMPro;
 public class SetMenu : MonoBehaviour
 {
     public int number;
-    public string name;
     public int[] needIngredients = new int[5];
     public bool[] isIngredients = new bool[5]; //재료 필요 여부에 대한
     public int needIngredientNum; //재료 갯수

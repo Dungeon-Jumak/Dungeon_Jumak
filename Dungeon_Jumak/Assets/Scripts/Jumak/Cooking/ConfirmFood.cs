@@ -138,25 +138,33 @@ public class ConfirmFood : MonoBehaviour
     //국밥을 확정할 경우 버튼의 Interaction을 false로 변경하고 데이터의 재료를 감소시킴
     public void ConfirmCookFood()
     {
-        if (!freeFood)
+        switch (category)
         {
-            switch (category)
-            {
-                case "Gukbab":
-                    setFood.subIngredient("Gukbab", wantCookingFood);
+            case "Gukbab":
+                if (!freeFood)
+                {
+                    setFood.subIngredient(category, wantCookingFood);
                     gukbapSetting.wantCookingNum = wantCookingFood;
-                    break;
+                }
+                setFood.ButtonBloker(category);
+                break;
 
-                case "Pajeon":
-                    setFood.subIngredient("Pajeon", wantCookingFood);
-                    break;
+            case "Pajeon":
+                if (!freeFood)
+                {
+                    setFood.subIngredient(category, wantCookingFood);
+                }
+                setFood.ButtonBloker(category);
+                break;
 
-                case "RiceJuice":
-                    setFood.subIngredient("RiceJuice", wantCookingFood);
-                    break;
-            }
+            case "RiceJuice":
+                if (!freeFood)
+                {
+                    setFood.subIngredient(category, wantCookingFood);
+                }
+                setFood.ButtonBloker(category);
+                break;
         }
-
         curConfirmButton.interactable = false;
     }
 }

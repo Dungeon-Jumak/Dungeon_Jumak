@@ -76,4 +76,6 @@ public class Data
 
     public int[] backgroundPrice = new int[4];
     public int backgroundLevel = 0;
+
+    public int days = 1;
 }

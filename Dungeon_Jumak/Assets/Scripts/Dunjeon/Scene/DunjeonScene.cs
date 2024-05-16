@@ -74,4 +74,9 @@ public class DunjeonScene : MonoBehaviour
     {
         SceneManager.LoadScene("WaitingScene");
     }
+
+    public void AddDay()
+    {
+        DataManager.Instance.data.days++;
+    }
 }

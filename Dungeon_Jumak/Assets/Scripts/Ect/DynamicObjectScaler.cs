@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DynamicObjectScaler : MonoBehaviour
 {
-    private float width = 1.08f;
     private float height = 1.92f;
 
     private void Start()

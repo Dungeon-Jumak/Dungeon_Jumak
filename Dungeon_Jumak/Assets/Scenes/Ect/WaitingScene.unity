@@ -491,7 +491,8 @@ MonoBehaviour:
   m_text: "\uB358\uC804"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be1b9d0b5a5fec44680ac44b46c63de5, type: 2}
-  m_sharedMaterial: {fileID: 7365746016766532832, guid: be1b9d0b5a5fec44680ac44b46c63de5, type: 2}
+  m_sharedMaterial: {fileID: 7365746016766532832, guid: be1b9d0b5a5fec44680ac44b46c63de5,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -768,7 +769,7 @@ MonoBehaviour:
   speed: 3
   jumakSceneName: Jumak
   jumakSign: {fileID: 1029808175}
-  dungeonSceneName: RunningScene
+  dungeonSceneName: MainDunjeon
   dungeonSign: {fileID: 391847518}
   targetTransform: {fileID: 0}
   sceneName: 
@@ -1012,12 +1013,28 @@ MonoBehaviour:
     fireSize: 100
     riceJuiceClear: 0
     isMiniGame: 0
+    gukbapCount: 0
+    pajeonCount: 0
+    riceJuiceCount: 0
+    nowGukbapPrice: 0
+    nowPajeonPrice: 0
+    nowRiceJuicePrice: 0
+    currentTotalPrice: 0
+    yesterdayTotalPrice: 0
     isMonster: 0
     runningTime: 0
     playerHP: 3
     monsterHP: 0
     monsterSpawn: 0000
     isThirdMonster: 0
+    isSkillSuc: 1
+    chairPrice: 00000000000000000000000000000000
+    chairLevel: 0
+    tablePrice: 00000000000000000000000000000000
+    tableLevel: 0
+    backgroundPrice: 00000000000000000000000000000000
+    backgroundLevel: 0
+    days: 1
   audioManager: {fileID: 0}
 --- !u!1 &1926061169
 GameObject:
@@ -1214,7 +1231,8 @@ MonoBehaviour:
   m_text: "\uC8FC\uB9C9 "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be1b9d0b5a5fec44680ac44b46c63de5, type: 2}
-  m_sharedMaterial: {fileID: 7365746016766532832, guid: be1b9d0b5a5fec44680ac44b46c63de5, type: 2}
+  m_sharedMaterial: {fileID: 7365746016766532832, guid: be1b9d0b5a5fec44680ac44b46c63de5,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

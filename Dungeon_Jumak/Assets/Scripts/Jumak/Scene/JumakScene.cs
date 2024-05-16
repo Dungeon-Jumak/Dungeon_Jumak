@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
-using Unity.PlasticSCM.Editor.WebApi;
 
 public class JumakScene : BaseScene
 {
@@ -66,6 +65,9 @@ public class JumakScene : BaseScene
     [SerializeField]
     private TextMeshProUGUI coinTMP;
 
+    [SerializeField]
+    private TextMeshProUGUI dayTMP;
+
     private bool playBGM = false;
     private bool endPanel = false;
 
@@ -120,6 +122,7 @@ public class JumakScene : BaseScene
 
         BGMPlayer();
         coinTMP.text = data.curCoin.ToString() + "전";
+        dayTMP.text = data.days.ToString() + " 일차";
 
         if (isStart)
             timer += Time.deltaTime;
@@ -172,6 +175,8 @@ public class JumakScene : BaseScene
         GameObject.Find("Total_Recipt").GetComponent<TextMeshProUGUI>().text = "총 매출 = " + data.currentTotalPrice.ToString() + "전";
 
         yield return new WaitForSeconds(1f);
+
+        /*
         compareTotalPrice = data.currentTotalPrice - data.yesterdayTotalPrice;
         if (compareTotalPrice > 0)
         {
@@ -179,15 +184,18 @@ public class JumakScene : BaseScene
         }
         else
         {
-            GameObject.Find("Compare_Recipt").GetComponent<TextMeshProUGUI>().text = compareTotalPrice.ToString() + "↓";
+            ameObject.Find("Compare_Recipt").GetComponent<TextMeshProUGUI>().text = compareTotalPrice.ToString() + "↓";
         }
         data.yesterdayTotalPrice = data.currentTotalPrice;
+        */
         endPanel = true;
     }
 
     public void JumakStart()
     {
         isStart = true;
+
+        data.days++;
 
         startPanel.SetActive(false);
         for (int i = 0; i < panelForStart.Length; i++)

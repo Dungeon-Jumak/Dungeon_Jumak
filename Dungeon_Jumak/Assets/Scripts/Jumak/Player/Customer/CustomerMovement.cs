@@ -57,9 +57,6 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private float speed = 3f;
 
-    [SerializeField]
-    private bool isInitialize = false;
-
     //---UI 관련 변수 (Speech_Box)---//
     [SerializeField]
     private GameObject speech_Box_Full; //사람이 가득찼을 때 나올 말풍선 프리팹 
@@ -292,7 +289,6 @@ public class CustomerMovement : MonoBehaviour
         }
 
         //기본 변수 초기화 for 오브젝트 풀링
-        isInitialize = false;
         isArrive = false;
         isReturn = false;
         isJustreturn = false;

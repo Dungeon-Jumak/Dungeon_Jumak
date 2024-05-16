@@ -171,4 +171,31 @@ public class SetFood : MonoBehaviour
         }
 
     }
+
+    public void ButtonBloker(string category)
+    {
+        switch (category)
+        {
+            case "Gukbab":
+                for (int j = 0; j < gukbabs.Length; j++)
+                {
+                    gukbabs[j].gameObject.GetComponent<Button>().interactable = false;
+                }
+                break;
+
+            case "Pajeon":
+                for (int j = 0; j < pajeons.Length; j++)
+                {
+                    pajeons[j].gameObject.GetComponent<Button>().interactable = false;
+                }
+                break;
+
+            case "RiceJuice":
+                for (int j = 0; j < riceJuices.Length; j++)
+                {
+                    riceJuices[j].gameObject.GetComponent<Button>().interactable = false;
+                }
+                break;
+        }
+    }
 }
