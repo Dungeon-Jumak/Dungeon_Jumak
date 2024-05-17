@@ -68,13 +68,13 @@ public class Data
     public bool isSkillSuc = true;
 
     //--상점 관련--//
-    public int[] chairPrice = new int[4];
+    public int[] chairPrice = new int[3];
     public int chairLevel = 0;
 
-    public int[] tablePrice = new int[4];
+    public int[] tablePrice = new int[3];
     public int tableLevel = 0;
 
-    public int[] backgroundPrice = new int[4];
+    public int[] backgroundPrice = new int[3];
     public int backgroundLevel = 0;
 
     public int days = 1;
