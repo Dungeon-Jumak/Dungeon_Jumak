@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Dungeon_Jumak/Assets/Resources/Sprites/Characters/Player/jangban.png.meta
-guid: 6906db7d1e33c6f4b9b86f9b5d87c259
-========
-guid: 942e629638279cf4eb872acb9a4588fb
->>>>>>>> Yurae:Dungeon_Jumak/Assets/Resources/Sprites/BackGround/Jumak/0514_jumakguide.png.meta
+guid: 406afb8cf18ec554ba3826b998fb4125
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -51,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 21
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
