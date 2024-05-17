@@ -19,9 +19,6 @@ public class Dun_PlayerMoving : MonoBehaviour
     [SerializeField]
     private float delaySecond;
 
-    [SerializeField]
-    private Transform hand;
-
     private RaycastHit2D hit;
     private Vector3 direction;
     private Animator animator;//애니메이터
@@ -121,36 +118,11 @@ public class Dun_PlayerMoving : MonoBehaviour
                 {                    
                     animator.SetFloat("dirX", 0f);
                     animator.SetFloat("dirY", 1f);
-
-                    if (hand.localPosition.x < 0f)
-                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
-                    
-
-                    //뒷 모습을 빼는건 어떤가?
-                    if (direction.x >= 0.1f)
-                    {
-                        animator.SetFloat("dirX", 1f);
-                        animator.SetFloat("dirY", 0f);
-
-                        if (hand.localPosition.x > 0f)
-                            hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
-                    }
-                    else if (direction.x < 0.1f)
-                    {
-                        animator.SetFloat("dirX", -1f);
-                        animator.SetFloat("dirY", 0f);
-
-                        if (hand.localPosition.x < 0f)
-                            hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
-                    }
                 }
                 else if (direction.y <= 0f)
                 {
                     animator.SetFloat("dirX", 0f);
                     animator.SetFloat("dirY", -1f);
-
-                    if (hand.localPosition.x < 0f)
-                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
                 }
             }
             else if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
@@ -159,17 +131,11 @@ public class Dun_PlayerMoving : MonoBehaviour
                 {
                     animator.SetFloat("dirX", 1f);
                     animator.SetFloat("dirY", 0f);
-
-                    if (hand.localPosition.x > 0f)
-                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
                 }
                 else if (direction.x < 0f)
                 {
                     animator.SetFloat("dirX", -1f);
                     animator.SetFloat("dirY", 0f);
-
-                    if (hand.localPosition.x < 0f)
-                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
                 }
             }
         }
