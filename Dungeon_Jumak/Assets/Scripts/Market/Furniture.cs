@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Furniture : MonoBehaviour
 {
     private Data data;
-    public Text chairPriceText;
-    public Text tablePriceText;
-    public Text backgroundPriceText;
-
+    public TextMeshPro chairPriceText;
+    public TextMeshPro tablePriceText;
+    public TextMeshPro backgroundPriceText;
 
     void Awake()
     {
@@ -18,25 +18,14 @@ public class Furniture : MonoBehaviour
 
     void Start()
     {
-        data.chairPrice[0] = 10;
-        data.chairPrice[1] = 20;
-        data.chairPrice[2] = 30;
-        data.chairPrice[3] = 40;
-        ChairUI();
-
-        data.tablePrice[0] = 20;
-        data.tablePrice[1] = 30;
-        data.tablePrice[2] = 40;
-        data.tablePrice[3] = 50;
-        TableUI();
-
-        data.backgroundPrice[0] = 30;
-        data.backgroundPrice[1] = 40;
-        data.backgroundPrice[2] = 50;
-        data.backgroundPrice[3] = 60;
-        BackgroundUI();
-
         data.curCoin = 1000;
+        data.chairPrice = new int[] { 10, 20, 30 };
+        data.tablePrice = new int[] { 20, 30, 40 };
+        data.backgroundPrice = new int[] { 30, 40, 50 };
+
+        ChairUI();
+        TableUI();
+        BackgroundUI();
     }
 
     // Update is called once per frame
@@ -62,20 +51,29 @@ public class Furniture : MonoBehaviour
 
     public void ChairUI()
     {
-        if (chairPriceText != null)
+        if (data.chairLevel < data.chairPrice.Length)
         {
-            if (data.chairLevel < data.chairPrice.Length)
-            {
-                chairPriceText.text = data.chairPrice[data.chairLevel].ToString();
-            }
-            else
-            {
-                chairPriceText.text = "MAX";
-            }
+            GameObject.Find("ChairPrice_Text").GetComponent<TextMeshProUGUI>().text = data.chairPrice[data.chairLevel].ToString();
         }
         else
         {
-            Debug.LogWarning("Chair Price Text is not assigned!");
+            GameObject.Find("ChairPrice_Text").GetComponent<TextMeshProUGUI>().text = "MAX";
+        }
+
+        switch (data.chairLevel)
+        {
+            case 0:
+                GameObject.Find("Chair_Text").GetComponent<TextMeshProUGUI>().text = "평범한 마루";
+                break;
+            case 1:
+                GameObject.Find("Chair_Text").GetComponent<TextMeshProUGUI>().text = "중급 마루";
+                break;
+            case 2:
+                GameObject.Find("Chair_Text").GetComponent<TextMeshProUGUI>().text = "고급 마루";
+                break;
+            default:
+                GameObject.Find("Chair_Text").GetComponent<TextMeshProUGUI>().text = "";
+                break;
         }
     }
 
@@ -96,24 +94,33 @@ public class Furniture : MonoBehaviour
 
     public void TableUI()
     {
-        if (tablePriceText != null)
+        if (data.tableLevel < data.tablePrice.Length)
         {
-            if (data.tableLevel < data.tablePrice.Length)
-            {
-                tablePriceText.text = data.tablePrice[data.tableLevel].ToString();
-            }
-            else
-            {
-                tablePriceText.text = "MAX";
-            }
+            GameObject.Find("TablePrice_Text").GetComponent<TextMeshProUGUI>().text = data.tablePrice[data.tableLevel].ToString();
         }
         else
         {
-            Debug.LogWarning("Table Price Text is not assigned!");
+            GameObject.Find("TablePrice_Text").GetComponent<TextMeshProUGUI>().text = "MAX";
+        }
+
+        switch (data.tableLevel)
+        {
+            case 0:
+                GameObject.Find("Table_Text").GetComponent<TextMeshProUGUI>().text = "낡은 상";
+                break;
+            case 1:
+                GameObject.Find("Table_Text").GetComponent<TextMeshProUGUI>().text = "평범한 손님 상";
+                break;
+            case 2:
+                GameObject.Find("Table_Text").GetComponent<TextMeshProUGUI>().text = "고-급 상";
+                break;
+            default:
+                GameObject.Find("Table_Text").GetComponent<TextMeshProUGUI>().text = "";
+                break;
         }
     }
 
-    public void BackgroundSystem()
+    public void BackgroundBuySystem()
     {
         if (data.backgroundLevel < data.backgroundPrice.Length && data.curCoin - data.backgroundPrice[data.backgroundLevel] >= 0)
         {
@@ -130,20 +137,29 @@ public class Furniture : MonoBehaviour
 
     public void BackgroundUI()
     {
-        if (backgroundPriceText != null)
+        if (data.backgroundLevel < data.backgroundPrice.Length)
         {
-            if (data.backgroundLevel < data.backgroundPrice.Length)
-            {
-                backgroundPriceText.text = data.backgroundPrice[data.backgroundLevel].ToString();
-            }
-            else
-            {
-                backgroundPriceText.text = "MAX";
-            }
-        }       
+            GameObject.Find("BackgroundPrice_Text").GetComponent<TextMeshProUGUI>().text = data.backgroundPrice[data.backgroundLevel].ToString();
+        }
         else
         {
-            Debug.LogWarning("background Price Text is not assigned!");
+            GameObject.Find("BackgroundPrice_Text").GetComponent<TextMeshProUGUI>().text = "MAX";
+        }
+
+        switch (data.backgroundLevel)
+        {
+            case 0:
+                GameObject.Find("Backgr_Text").GetComponent<TextMeshProUGUI>().text = "초가집";
+                break;
+            case 1:
+                GameObject.Find("Backgr_Text").GetComponent<TextMeshProUGUI>().text = "기와집";
+                break;
+            case 2:
+                GameObject.Find("Backgr_Text").GetComponent<TextMeshProUGUI>().text = "삐까뻔쩍 고급 기와집";
+                break;
+            default:
+                GameObject.Find("Backgr_Text").GetComponent<TextMeshProUGUI>().text = "";
+                break;
         }
     }
 }

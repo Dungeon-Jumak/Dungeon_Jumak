@@ -68,6 +68,7 @@ public class JumakScene : BaseScene
     [SerializeField]
     private TextMeshProUGUI dayTMP;
 
+
     private bool playBGM = false;
     private bool endPanel = false;
 
@@ -105,6 +106,42 @@ public class JumakScene : BaseScene
 
         timer = 0;
         isStart = false;
+
+        switch (data.backgroundLevel) 
+        {
+            case 0:
+                GameObject.Find("Level1_Backgr").gameObject.SetActive(false);
+                GameObject.Find("Level2_Backgr").gameObject.SetActive(true); 
+                break;
+            case 1:
+                GameObject.Find("Level2_Backgr").gameObject.SetActive(false);
+                GameObject.Find("Level3_Backgr").gameObject.SetActive(true);
+                break;
+        }
+
+        switch (data.chairLevel)
+        {
+            case 0:
+                GameObject.Find("Level1_Chair").gameObject.SetActive(false);
+                GameObject.Find("Level2_Chair").gameObject.SetActive(true);
+                break;
+            case 1:
+                GameObject.Find("Level2_Chair").gameObject.SetActive(false);
+                GameObject.Find("Level3_Chair").gameObject.SetActive(true);
+                break;
+        }
+
+        switch (data.tableLevel)
+        {
+            case 0:
+                GameObject.Find("Level1_Table").gameObject.SetActive(false);
+                GameObject.Find("Level2_table").gameObject.SetActive(true);
+                break;
+            case 1:
+                GameObject.Find("Level2_Table").gameObject.SetActive(false);
+                GameObject.Find("Level3_Table").gameObject.SetActive(true);
+                break;
+        }
     }
     protected override void Init()
     {
