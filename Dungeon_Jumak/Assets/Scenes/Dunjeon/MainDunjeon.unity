@@ -19084,9 +19084,6 @@ MonoBehaviour:
   _patterns:
   - {fileID: 11400000, guid: cf42164158483364e97fae51bb21ea62, type: 2}
   - {fileID: 11400000, guid: 2efaa89e086e81c489b160dbb5247796, type: 2}
-  - {fileID: 11400000, guid: ba8f1c82a52afe141b29792d963cf3f3, type: 2}
-  - {fileID: 11400000, guid: 0dabe6210198f2641b6b5333029f7632, type: 2}
-  - {fileID: 11400000, guid: 97df5f4fe110b1c41bfc003e5fcf2018, type: 2}
   - {fileID: 11400000, guid: fef9437f8c4b6fe47a6837a29295ec5f, type: 2}
   - {fileID: 11400000, guid: b726f003ee7fc894795e98d9926f8010, type: 2}
   - {fileID: 11400000, guid: e549ad957b417584ca0e372dd879ff68, type: 2}
@@ -19279,9 +19276,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7127313736728985058, guid: 4add0d4a233709143ae550593d7ec0a4,
     type: 3}
   bulletSpawnPoint: {fileID: 2070297002}
-  a: {fileID: 0}
-  b: {fileID: 0}
-  c: {fileID: 0}
+  a: {fileID: 1891711396}
+  b: {fileID: 1814217818}
+  c: {fileID: 910035066}
 --- !u!58 &1531114353
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -20993,8 +20990,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891711396}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.759998, y: -649, z: -17108.91}
-  m_LocalScale: {x: 900, y: 482.61057, z: 190.099}
+  m_LocalPosition: {x: 5.76, y: -649, z: -17108.91}
+  m_LocalScale: {x: 1001.24994, y: 482.61057, z: 190.099}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2067961858}
@@ -21353,6 +21350,69 @@ MonoBehaviour:
   monsterPrefab: {fileID: 6031018358703910844, guid: f0a8cd054d57f7a4da43b09e3b52d6ee,
     type: 3}
   numberOfMonsters: 4
+  bgmManager: {fileID: 0}
+  bgmSoundTrack: 0
+  maxVolume: 1
+  data:
+    curPlayerLV: 1
+    maxPlayerLV: 0
+    isPlayBGM: 1
+    isSound: 1
+    isPause: 0
+    maxSeatSize: 12
+    curSeatSize: 0
+    isAllocated: 000000000000000000000000
+    isCustomer: 000000000000000000000000
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
+    menuCategories:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    ingredient: 0000000000000000000000000000000000000000
+    curCoin: 0
+    maxCoin: 999999
+    curUnlockLevel: 1
+    maxUnlockLevel: 6
+    curMenuUnlockLevel: 3
+    maxMenuUnlockLevel: 3
+    fireSize: 100
+    riceJuiceClear: 0
+    isMiniGame: 0
+    gukbapCount: 0
+    pajeonCount: 0
+    riceJuiceCount: 0
+    nowGukbapPrice: 0
+    nowPajeonPrice: 0
+    nowRiceJuicePrice: 0
+    currentTotalPrice: 0
+    yesterdayTotalPrice: 0
+    isMonster: 0
+    runningTime: 0
+    playerHP: 3
+    monsterHP: 0
+    monsterSpawn: 0000
+    isThirdMonster: 0
+    isSkillSuc: 1
+    chairPrice: 000000000000000000000000
+    chairLevel: 0
+    tablePrice: 000000000000000000000000
+    tableLevel: 0
+    backgroundPrice: 000000000000000000000000
+    backgroundLevel: 0
+    days: 1
+  audioManager: {fileID: 0}
 --- !u!4 &2013991404
 Transform:
   m_ObjectHideFlags: 0

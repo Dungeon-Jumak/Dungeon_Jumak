@@ -1877,6 +1877,69 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingPanel: {fileID: 2099649506}
+  bgmManager: {fileID: 0}
+  bgmSoundTrack: 0
+  maxVolume: 1
+  data:
+    curPlayerLV: 1
+    maxPlayerLV: 0
+    isPlayBGM: 1
+    isSound: 1
+    isPause: 0
+    maxSeatSize: 12
+    curSeatSize: 0
+    isAllocated: 000000000000000000000000
+    isCustomer: 000000000000000000000000
+    onTables: 000000000000000000000000
+    isFinEat: 000000000000000000000000
+    tableMiniGame: 000000000000000000000000
+    menuCategories:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    ingredient: 0000000000000000000000000000000000000000
+    curCoin: 0
+    maxCoin: 999999
+    curUnlockLevel: 1
+    maxUnlockLevel: 6
+    curMenuUnlockLevel: 3
+    maxMenuUnlockLevel: 3
+    fireSize: 100
+    riceJuiceClear: 0
+    isMiniGame: 0
+    gukbapCount: 0
+    pajeonCount: 0
+    riceJuiceCount: 0
+    nowGukbapPrice: 0
+    nowPajeonPrice: 0
+    nowRiceJuicePrice: 0
+    currentTotalPrice: 0
+    yesterdayTotalPrice: 0
+    isMonster: 0
+    runningTime: 0
+    playerHP: 3
+    monsterHP: 0
+    monsterSpawn: 0000
+    isThirdMonster: 0
+    isSkillSuc: 1
+    chairPrice: 000000000000000000000000
+    chairLevel: 0
+    tablePrice: 000000000000000000000000
+    tableLevel: 0
+    backgroundPrice: 000000000000000000000000
+    backgroundLevel: 0
+    days: 1
+  audioManager: {fileID: 0}
 --- !u!4 &1280602725
 Transform:
   m_ObjectHideFlags: 0

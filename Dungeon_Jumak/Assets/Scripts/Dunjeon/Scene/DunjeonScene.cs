@@ -19,8 +19,41 @@ public class DunjeonScene : MonoBehaviour
 
     public int numberOfMonsters = 4; // 스폰할 몬스터의 수
 
+
+    [SerializeField]
+    private BGMManager bgmManager;
+    [SerializeField]
+    private int bgmSoundTrack;
+    [SerializeField]
+    private float maxVolume;
+
+    [SerializeField]
+    private Data data;
+
+    [SerializeField]
+    private AudioManager audioManager;
+
+    private bool playBGM = false;
+    // Start is called before the first frame update
     void Start()
     {
+        playBGM = false;
+
+        data = DataManager.Instance.data;
+        bgmManager = FindObjectOfType<BGMManager>();
+        audioManager = FindObjectOfType<AudioManager>();
+
+        audioManager.AllStop();
+        bgmManager.Stop();
+
+        //---BGM 사운드 트랙 설정---//
+        bgmSoundTrack = 6;
+
+        //---기본 BGM 실행---//
+        bgmManager.Play(bgmSoundTrack);
+        bgmManager.FadeInMusic(maxVolume);
+        bgmManager.SetLoop();
+
         secTextObj = GameObject.Find("SecText");
         secText = secTextObj.GetComponent<TextMeshProUGUI>();
         minTextObj = GameObject.Find("MinText");
@@ -33,9 +66,52 @@ public class DunjeonScene : MonoBehaviour
     {
         countTime();
 
-        if(DataManager.Instance.data.ingredient[0] == 4)
+        if (DataManager.Instance.data.ingredient[0] == 4)
         {
             resultPanel.SetActive(true);
+        }
+
+        BGMPlayer();
+
+    }
+
+    public void BGMPlayer()
+    {
+        if (!data.isPlayBGM)
+        {
+            playBGM = false;
+
+            bgmManager.CancelLoop();
+            bgmManager.Stop();
+        }
+
+        if (!playBGM && data.isPlayBGM)
+        {
+            playBGM = true;
+
+            bgmManager.Play(bgmSoundTrack);
+            bgmManager.FadeInMusic(maxVolume);
+            bgmManager.SetLoop();
+        }
+    }
+
+    public void SoundControl()
+    {
+        if (data.isSound)
+        {
+            for (int i = 0; i < audioManager.sounds.Length; i++)
+            {
+                audioManager.sounds[i].volume = 1f;
+                audioManager.sounds[i].Setvolume();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < audioManager.sounds.Length; i++)
+            {
+                audioManager.sounds[i].volume = 0f;
+                audioManager.sounds[i].Setvolume();
+            }
         }
     }
 

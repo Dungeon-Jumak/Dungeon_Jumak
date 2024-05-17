@@ -2028,6 +2028,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2533592097164062472, guid: bded53e50852a0541b1bd50ae72e1286,
+        type: 3}
+      propertyPath: bgms.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2533592097164062472, guid: bded53e50852a0541b1bd50ae72e1286,
+        type: 3}
+      propertyPath: bgms.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 38f40020862ff2344928612602962b91, type: 3}
     - target: {fileID: 2533592097164062474, guid: bded53e50852a0541b1bd50ae72e1286,
         type: 3}
       propertyPath: m_RootOrder

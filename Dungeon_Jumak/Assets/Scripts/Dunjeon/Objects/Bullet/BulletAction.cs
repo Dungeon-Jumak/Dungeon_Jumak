@@ -21,27 +21,46 @@ public class BulletAction : MonoBehaviour
         if (collision.gameObject.CompareTag("Monster"))
         {
             monsterPos = collision.transform.position;
-            StartCoroutine(BeforeAttack());
 
-            /*a.SetActive(true);
+            if (!isAttacking)
+            {
+                //StartCoroutine(Attack());
+            }
+
+            a.SetActive(true);
             b.SetActive(true);
             c.SetActive(true);
 
-            if (DataManager.Instance.data.isSkillSuc == true)
+            Debug.Log(DataManager.Instance.data.isSkillSuc);
+            if (DataManager.Instance.data.isSkillSuc)
             {
                 MonsterController monsterController = collision.gameObject.GetComponent<MonsterController>();
                 Debug.Log("Attack the monster with skill");
                 monsterController.TakeDamage(1);
+                DataManager.Instance.data.isSkillSuc = false;
 
                 a.SetActive(false);
                 b.SetActive(false);
                 c.SetActive(false);
-                DataManager.Instance.data.isSkillSuc = false;
-            }*/
+            }
         }
     }
 
-    /*private void OnTriggerExit2D(Collider2D collision)
+    private IEnumerator Attack()
+    {
+        isAttacking = true;
+        yield return new WaitForSeconds(1f);  // Or however long you want the delay to be
+
+        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+        dir = (monsterPos - bulletSpawnPoint.position).normalized;
+        bullet.GetComponent<Rigidbody2D>().AddForce(dir * bulletSpeed, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(10f);  // Delay after shooting, before another shot can be fired
+        isAttacking = false;
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Monster"))
         {
@@ -49,26 +68,5 @@ public class BulletAction : MonoBehaviour
             b.SetActive(false);
             c.SetActive(false);
         }
-    }*/
-
-
-    private IEnumerator BeforeAttack()
-    {
-        if (isAttacking == false)
-        {
-            isAttacking = true;
-            yield return new WaitForSeconds(1f);
-            StartCoroutine("Attack");
-        }
-    }
-
-    private IEnumerator Attack()
-    {
-        GameObject bullet = Instantiate(bulletPrefab);
-        bullet.transform.position = bulletSpawnPoint.transform.position;
-        dir = monsterPos - bulletSpawnPoint.transform.position;
-        bullet.gameObject.GetComponent<Rigidbody2D>().AddForce(dir * bulletSpeed, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(1f);
-        isAttacking = false;
     }
 }
