@@ -30,6 +30,8 @@ public class CollisionDetection : MonoBehaviour
     private GameObject juiceLiquid;
     [SerializeField]
     private Sprite juiceInCup;
+    [SerializeField]
+    private Sprite emptyCup;
 
     [SerializeField]
     private SpriteRenderer cup;
@@ -75,16 +77,30 @@ public class CollisionDetection : MonoBehaviour
         //===성공 할 경우===//
         if (MatchKettle == 3)
         {
-            SuccessRiceJuiceMiniGame();
+            StartCoroutine(SuccessDelay());
             jumakScene.isPause = false;
         }
 
         //===실패 할 경우===//
         if (FailMatchKettle == 2)
         {
-            FailRiceJuiceMiniGame();
+            StartCoroutine(FailDelay());
             jumakScene.isPause = false;
         }
+    }
+
+    IEnumerator SuccessDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        SuccessRiceJuiceMiniGame();
+        cup.sprite = emptyCup;
+    }
+
+    IEnumerator FailDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        FailRiceJuiceMiniGame();
+        cup.sprite = emptyCup;
     }
 
     IEnumerator PourLiquid()

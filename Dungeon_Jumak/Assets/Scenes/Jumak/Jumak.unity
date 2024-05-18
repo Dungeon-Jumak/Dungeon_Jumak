@@ -17499,6 +17499,7 @@ MonoBehaviour:
   failureAni: {fileID: 253461298}
   juiceLiquid: {fileID: 1965250547}
   juiceInCup: {fileID: 21300000, guid: 398ebc33e40f4a04bbef7e6cca122ce5, type: 3}
+  emptyCup: {fileID: 21300000, guid: 6bcc6833596ed954fb2797198e72e6fc, type: 3}
   cup: {fileID: 2014553618}
   jumakScene: {fileID: 1464183232}
 --- !u!212 &1209648275
