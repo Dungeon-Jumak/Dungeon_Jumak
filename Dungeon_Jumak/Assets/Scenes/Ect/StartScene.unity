@@ -2031,13 +2031,18 @@ PrefabInstance:
     - target: {fileID: 2533592097164062472, guid: bded53e50852a0541b1bd50ae72e1286,
         type: 3}
       propertyPath: bgms.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2533592097164062472, guid: bded53e50852a0541b1bd50ae72e1286,
         type: 3}
       propertyPath: bgms.Array.data[6]
       value: 
       objectReference: {fileID: 8300000, guid: 38f40020862ff2344928612602962b91, type: 3}
+    - target: {fileID: 2533592097164062472, guid: bded53e50852a0541b1bd50ae72e1286,
+        type: 3}
+      propertyPath: bgms.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: bf36dbc016b4e6f429b069b0761a05cb, type: 3}
     - target: {fileID: 2533592097164062474, guid: bded53e50852a0541b1bd50ae72e1286,
         type: 3}
       propertyPath: m_RootOrder
@@ -3613,11 +3618,11 @@ MonoBehaviour:
     isThirdMonster: 0
     isSkillSuc: 1
     chairPrice: 00000000000000000000000000000000
-    chairLevel: 0
     tablePrice: 00000000000000000000000000000000
-    tableLevel: 0
     backgroundPrice: 00000000000000000000000000000000
-    backgroundLevel: 0
+    houseLV: 0
+    dansangLV: 0
+    tableLV: 0
     days: 1
   bgmOn: {fileID: 1557567066}
   bgmOff: {fileID: 1441964797}
