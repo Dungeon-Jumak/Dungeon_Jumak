@@ -17,12 +17,16 @@ public class RiceJuiceOrder : MonoBehaviour
 
     Data data;
 
+    private JumakScene jumakScene;
+
     void Start()
     {
         circleCollider = GetComponent<CircleCollider2D>();
         player = FindObjectOfType<PlayerServing>();
 
         data = DataManager.Instance.data;
+
+        jumakScene = FindObjectOfType<JumakScene>();
     }
 
     void Update()
@@ -106,6 +110,7 @@ public class RiceJuiceOrder : MonoBehaviour
                     Debug.Log("°¨Áö");
 
                     data.isMiniGame = true;
+                    jumakScene.isPause = true;
 
                     GameObject[] parentObjects = GameObject.FindGameObjectsWithTag("RiceJuiceMiniGame");
 

@@ -8,6 +8,7 @@ using UnityEngine.Audio;
 public class JumakScene : BaseScene
 {
     public bool isStart;
+    public bool isPause;
 
     [SerializeField]
     private BGMManager bgmManager;
@@ -106,6 +107,7 @@ public class JumakScene : BaseScene
 
         timer = 0;
         isStart = false;
+        isPause = false;
 
       
     }
@@ -130,7 +132,7 @@ public class JumakScene : BaseScene
         coinTMP.text = data.curCoin.ToString() + "전";
         dayTMP.text = data.days.ToString() + " 일차";
 
-        if (isStart)
+        if (isStart && !isPause)
             timer += Time.deltaTime;
 
         if (timer >= duration)

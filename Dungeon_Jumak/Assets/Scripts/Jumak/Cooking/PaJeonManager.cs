@@ -4,6 +4,8 @@ using System.Collections;
 public class PaJeonManager : MonoBehaviour
 {
     [SerializeField]
+    private JumakScene jumakScene;
+    [SerializeField]
     private Animator animator;
 
     [SerializeField]
@@ -36,6 +38,7 @@ public class PaJeonManager : MonoBehaviour
 
     private void Start()
     {
+        jumakScene = FindObjectOfType<JumakScene>();
         //오디오 설정
         audioManager = FindObjectOfType<AudioManager>();
         successSound = "successSound";
@@ -186,6 +189,8 @@ public class PaJeonManager : MonoBehaviour
             {
                 audioManager.Play(successSound);
 
+                jumakScene.isPause = false;
+
                 Debug.Log("성공입니다!");
                 hasFailed = true;
                 GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -201,6 +206,8 @@ public class PaJeonManager : MonoBehaviour
         else
         {
             audioManager.Play(failureSound);
+
+            jumakScene.isPause = false;
 
             Debug.Log("실패입니다.");
             hasFailed = true;

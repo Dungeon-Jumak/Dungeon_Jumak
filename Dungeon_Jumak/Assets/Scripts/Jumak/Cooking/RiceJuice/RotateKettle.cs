@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class RotateKettle : MonoBehaviour
 {
-    [SerializeField] private float minRotation = -80f;
-    [SerializeField] private float maxRotation = 105f;
+    [SerializeField] private float minRotation = 80f;
+    [SerializeField] private float maxRotation = 180f;
     [SerializeField] private float rotationDuration = 3f; //===회전에 걸리는 시간===//
 
     private float currentRotation; //===현재 회전 각도===//

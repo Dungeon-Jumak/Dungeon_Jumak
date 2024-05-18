@@ -26,6 +26,16 @@ public class CollisionDetection : MonoBehaviour
     [SerializeField]
     private Animator failureAni;
 
+    [SerializeField]
+    private GameObject juiceLiquid;
+    [SerializeField]
+    private Sprite juiceInCup;
+
+    [SerializeField]
+    private SpriteRenderer cup;
+    [SerializeField]
+    private JumakScene jumakScene;
+
     void OnEnable()
     {
         MatchKettle = 0;
@@ -66,13 +76,22 @@ public class CollisionDetection : MonoBehaviour
         if (MatchKettle == 3)
         {
             SuccessRiceJuiceMiniGame();
+            jumakScene.isPause = false;
         }
 
         //===실패 할 경우===//
         if (FailMatchKettle == 2)
         {
             FailRiceJuiceMiniGame();
+            jumakScene.isPause = false;
         }
+    }
+
+    IEnumerator PourLiquid()
+    {
+        juiceLiquid.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        juiceLiquid.SetActive(false);
     }
 
     IEnumerator ProcessInput()
@@ -85,6 +104,8 @@ public class CollisionDetection : MonoBehaviour
             Debug.Log("성공");
             successAni.SetTrigger("notice");
             audioManager.Play(successSound);
+            StartCoroutine(PourLiquid());
+            cup.sprite = juiceInCup;
             MatchKettle++;
 
         }

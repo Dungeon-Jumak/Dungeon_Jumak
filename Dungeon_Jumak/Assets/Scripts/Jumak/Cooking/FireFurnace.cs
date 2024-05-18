@@ -13,17 +13,21 @@ public class FireFurnace : MonoBehaviour
 
     [SerializeField]
     private GameObject blackPanel;
+    [SerializeField]
+    private JumakScene jumakScene;
 
     public void StartFireMiniGame()
     {
          blackPanel.SetActive(true);
          fireMiniGamePopup.SetActive(true);
+         jumakScene.isPause = true;
     }
 
     public void ExitFireMiniGame()
     {
         blackPanel.SetActive(false);
         fireMiniGamePopup.SetActive(false);
+        jumakScene.isPause = false;
     }
 
     private void OnTriggerStay2D(Collider2D collision)

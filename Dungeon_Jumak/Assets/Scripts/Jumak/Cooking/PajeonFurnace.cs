@@ -22,6 +22,9 @@ public class PajeonFurnace : MonoBehaviour
     [SerializeField]
     private string pajeonSound;
 
+    [SerializeField]
+    private JumakScene jumakScene;
+
     private void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
@@ -36,6 +39,7 @@ public class PajeonFurnace : MonoBehaviour
             pajeonMiniGamePopup.SetActive(true);
             blackPanel.SetActive(true);
             player.isCarryingFood = true;
+            jumakScene.isPause = true;
         }
         else
         {
