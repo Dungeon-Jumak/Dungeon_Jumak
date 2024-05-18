@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using Unity.VisualScripting;
 
 public class JumakScene : BaseScene
 {
@@ -69,6 +70,27 @@ public class JumakScene : BaseScene
     [SerializeField]
     private TextMeshProUGUI dayTMP;
 
+    [SerializeField]
+    private Sprite[] houseSprites;
+    [SerializeField]
+    private Sprite[] leftFenceSprites;
+    [SerializeField]
+    private Sprite[] rightFenceSprites;
+    [SerializeField]
+    private Sprite[] dansangSprites;
+    [SerializeField]
+    private Sprite[] tableSprites;
+
+    [SerializeField]
+    private SpriteRenderer house;
+    [SerializeField]
+    private SpriteRenderer leftFence;
+    [SerializeField]
+    private SpriteRenderer rightFence;
+    [SerializeField]
+    private SpriteRenderer[] dansangs;
+    [SerializeField]
+    private SpriteRenderer[] tables;
 
     private bool playBGM = false;
     private bool endPanel = false;
@@ -128,6 +150,8 @@ public class JumakScene : BaseScene
         BGMControl();
         SoundControl();
 
+        UpdateJumakFurniture();
+
         BGMPlayer();
         coinTMP.text = data.curCoin.ToString() + "전";
         dayTMP.text = data.days.ToString() + " 일차";
@@ -151,6 +175,19 @@ public class JumakScene : BaseScene
             SceneManager.LoadScene("WaitingScene");
         }
 
+    }
+
+    private void UpdateJumakFurniture()
+    {
+        house.sprite = houseSprites[data.houseLV];
+        leftFence.sprite = leftFenceSprites[data.houseLV];
+        rightFence.sprite = rightFenceSprites[data.houseLV];
+
+        for (int i = 0; i < dansangs.Length; i++)
+        {
+            dansangs[i].sprite = dansangSprites[data.dansangLV];
+            tables[i].sprite = tableSprites[data.tableLV];
+        }
     }
 
     private void JumakOff()

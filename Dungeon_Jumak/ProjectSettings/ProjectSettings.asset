@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.5.2
+  bundleVersion: 1.5.3
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -155,6 +155,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.NangMan_Gukbab.Dungeon_Jumak
     Standalone: com.Company.ProductName
   buildNumber:
     Standalone: 0
@@ -249,8 +250,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{inproject}: testBuild.keystore'
-  AndroidKeyaliasName: testbuildkey
+  AndroidKeystoreName: '{inproject}: DJ_Beta.keystore'
+  AndroidKeyaliasName: dj_beta
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
   AndroidIsGame: 1

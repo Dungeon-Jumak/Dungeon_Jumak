@@ -68,6 +68,7 @@ public class RiceJuiceOrder : MonoBehaviour
                     Debug.Log("°¨Áö");
 
                     data.isMiniGame = true;
+                    jumakScene.isPause = true;
 
                     GameObject[] parentObjects = GameObject.FindGameObjectsWithTag("RiceJuiceMiniGame");
 

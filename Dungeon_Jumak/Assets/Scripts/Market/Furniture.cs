@@ -36,13 +36,13 @@ public class Furniture : MonoBehaviour
 
     public void ChairBuySystem()
     {
-        if (data.chairLevel < data.chairPrice.Length && data.curCoin - data.chairPrice[data.chairLevel] >= 0)
+        if (data.dansangLV < data.chairPrice.Length && data.curCoin - data.chairPrice[data.dansangLV] >= 0)
         {
-            data.curCoin -= data.chairPrice[data.chairLevel];
-            data.chairLevel += 1;
+            data.curCoin -= data.chairPrice[data.dansangLV];
+            data.dansangLV += 1;
             ChairUI();
         }
-        else if (data.chairLevel >= data.chairPrice.Length)
+        else if (data.dansangLV >= data.chairPrice.Length)
         {
             Debug.Log("MAX");
             ChairUI();
@@ -51,16 +51,16 @@ public class Furniture : MonoBehaviour
 
     public void ChairUI()
     {
-        if (data.chairLevel < data.chairPrice.Length)
+        if (data.dansangLV < data.chairPrice.Length)
         {
-            GameObject.Find("ChairPrice_Text").GetComponent<TextMeshProUGUI>().text = data.chairPrice[data.chairLevel].ToString();
+            GameObject.Find("ChairPrice_Text").GetComponent<TextMeshProUGUI>().text = data.chairPrice[data.dansangLV].ToString();
         }
         else
         {
             GameObject.Find("ChairPrice_Text").GetComponent<TextMeshProUGUI>().text = "MAX";
         }
 
-        switch (data.chairLevel)
+        switch (data.dansangLV)
         {
             case 0:
                 GameObject.Find("Chair_Text").GetComponent<TextMeshProUGUI>().text = "평범한 마루";
@@ -79,13 +79,13 @@ public class Furniture : MonoBehaviour
 
     public void TableBuySystem()
     {
-        if (data.tableLevel < data.tablePrice.Length && data.curCoin - data.tablePrice[data.tableLevel] >= 0)
+        if (data.tableLV < data.tablePrice.Length && data.curCoin - data.tablePrice[data.tableLV] >= 0)
         {
-            data.curCoin -= data.tablePrice[data.tableLevel];
-            data.tableLevel += 1;
+            data.curCoin -= data.tablePrice[data.tableLV];
+            data.tableLV += 1;
             TableUI();
         }
-        else if (data.tableLevel >= data.tablePrice.Length)
+        else if (data.tableLV >= data.tablePrice.Length)
         {
             Debug.Log("MAX");
             TableUI();
@@ -94,16 +94,16 @@ public class Furniture : MonoBehaviour
 
     public void TableUI()
     {
-        if (data.tableLevel < data.tablePrice.Length)
+        if (data.tableLV < data.tablePrice.Length)
         {
-            GameObject.Find("TablePrice_Text").GetComponent<TextMeshProUGUI>().text = data.tablePrice[data.tableLevel].ToString();
+            GameObject.Find("TablePrice_Text").GetComponent<TextMeshProUGUI>().text = data.tablePrice[data.tableLV].ToString();
         }
         else
         {
             GameObject.Find("TablePrice_Text").GetComponent<TextMeshProUGUI>().text = "MAX";
         }
 
-        switch (data.tableLevel)
+        switch (data.tableLV)
         {
             case 0:
                 GameObject.Find("Table_Text").GetComponent<TextMeshProUGUI>().text = "낡은 상";
@@ -122,13 +122,13 @@ public class Furniture : MonoBehaviour
 
     public void BackgroundBuySystem()
     {
-        if (data.backgroundLevel < data.backgroundPrice.Length && data.curCoin - data.backgroundPrice[data.backgroundLevel] >= 0)
+        if (data.houseLV < data.backgroundPrice.Length && data.curCoin - data.backgroundPrice[data.houseLV] >= 0)
         {
-            data.curCoin -= data.backgroundPrice[data.backgroundLevel];
-            data.backgroundLevel += 1;
+            data.curCoin -= data.backgroundPrice[data.houseLV];
+            data.houseLV += 1;
             BackgroundUI();
         }
-        else if (data.backgroundLevel >= data.backgroundPrice.Length)
+        else if (data.houseLV >= data.backgroundPrice.Length)
         {
             Debug.Log("MAX");
             BackgroundUI();
@@ -137,16 +137,16 @@ public class Furniture : MonoBehaviour
 
     public void BackgroundUI()
     {
-        if (data.backgroundLevel < data.backgroundPrice.Length)
+        if (data.houseLV < data.backgroundPrice.Length)
         {
-            GameObject.Find("BackgroundPrice_Text").GetComponent<TextMeshProUGUI>().text = data.backgroundPrice[data.backgroundLevel].ToString();
+            GameObject.Find("BackgroundPrice_Text").GetComponent<TextMeshProUGUI>().text = data.backgroundPrice[data.houseLV].ToString();
         }
         else
         {
             GameObject.Find("BackgroundPrice_Text").GetComponent<TextMeshProUGUI>().text = "MAX";
         }
 
-        switch (data.backgroundLevel)
+        switch (data.houseLV)
         {
             case 0:
                 GameObject.Find("Backgr_Text").GetComponent<TextMeshProUGUI>().text = "초가집";

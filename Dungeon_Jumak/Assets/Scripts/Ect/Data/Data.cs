@@ -69,13 +69,15 @@ public class Data
 
     //--상점 관련--//
     public int[] chairPrice = new int[3];
-    public int chairLevel = 0;
 
     public int[] tablePrice = new int[3];
-    public int tableLevel = 0;
 
     public int[] backgroundPrice = new int[3];
-    public int backgroundLevel = 0;
+
+    //--가구 관련--//
+    public int houseLV = 0;
+    public int dansangLV = 0;
+    public int tableLV = 0;
 
     public int days = 1;
 }

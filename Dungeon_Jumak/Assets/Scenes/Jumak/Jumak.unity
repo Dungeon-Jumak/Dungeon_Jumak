@@ -1455,11 +1455,11 @@ MonoBehaviour:
     isThirdMonster: 0
     isSkillSuc: 1
     chairPrice: 00000000000000000000000000000000
-    chairLevel: 0
     tablePrice: 00000000000000000000000000000000
-    tableLevel: 0
     backgroundPrice: 00000000000000000000000000000000
-    backgroundLevel: 0
+    houseLV: 0
+    dansangLV: 0
+    tableLV: 0
     days: 1
   fire: {fileID: 74687333}
   jumakScene: {fileID: 1464183232}
@@ -9641,11 +9641,11 @@ MonoBehaviour:
     isThirdMonster: 0
     isSkillSuc: 1
     chairPrice: 00000000000000000000000000000000
-    chairLevel: 0
     tablePrice: 00000000000000000000000000000000
-    tableLevel: 0
     backgroundPrice: 00000000000000000000000000000000
-    backgroundLevel: 0
+    houseLV: 0
+    dansangLV: 0
+    tableLV: 0
     days: 1
   jumakScene: {fileID: 1464183232}
 --- !u!114 &596245848
@@ -18528,11 +18528,11 @@ MonoBehaviour:
     isThirdMonster: 0
     isSkillSuc: 1
     chairPrice: 00000000000000000000000000000000
-    chairLevel: 0
     tablePrice: 00000000000000000000000000000000
-    tableLevel: 0
     backgroundPrice: 00000000000000000000000000000000
-    backgroundLevel: 0
+    houseLV: 0
+    dansangLV: 0
+    tableLV: 0
     days: 1
   audioManager: {fileID: 0}
   coinSound: coinSound
@@ -21454,11 +21454,11 @@ MonoBehaviour:
     isThirdMonster: 0
     isSkillSuc: 1
     chairPrice: 00000000000000000000000000000000
-    chairLevel: 0
     tablePrice: 00000000000000000000000000000000
-    tableLevel: 0
     backgroundPrice: 00000000000000000000000000000000
-    backgroundLevel: 0
+    houseLV: 0
+    dansangLV: 0
+    tableLV: 0
     days: 1
   fadeController: {fileID: 0}
   Dansangs:
@@ -21490,6 +21490,43 @@ MonoBehaviour:
   - {fileID: 1966199031}
   coinTMP: {fileID: 773651095}
   dayTMP: {fileID: 320425204}
+  houseSprites:
+  - {fileID: 21300000, guid: 2bc998523b81d664ba6dcbdbffac124e, type: 3}
+  - {fileID: 21300000, guid: f0e5c4e524f05714c8a61821824703c1, type: 3}
+  - {fileID: 21300000, guid: d802012057adde540a5e42f98324bf38, type: 3}
+  leftFenceSprites:
+  - {fileID: 21300000, guid: 317fdd954c81c7a48851c4b44e7adcf8, type: 3}
+  - {fileID: 21300000, guid: 518ed39492134fa489fbbad3a038f6f7, type: 3}
+  - {fileID: 21300000, guid: 2d57664e3c1bbbb4386cfe15e87ef5c1, type: 3}
+  rightFenceSprites:
+  - {fileID: 21300000, guid: bc8223b35120e54409132b6a50bcb2fa, type: 3}
+  - {fileID: 21300000, guid: d27264d069ea81a49990a8bfc81bc246, type: 3}
+  - {fileID: 21300000, guid: 37474b9a8dd4c2b4fa0bed9141fa8eb4, type: 3}
+  dansangSprites:
+  - {fileID: 21300000, guid: 5933c417db69176488ecfdf13f5315c2, type: 3}
+  - {fileID: 21300000, guid: 38844f5a6edf13046863daa93c76e6a9, type: 3}
+  - {fileID: 21300000, guid: 538b4e20fcb66534da7e5f54dc465696, type: 3}
+  tableSprites:
+  - {fileID: 21300000, guid: a5a78b01a61453c4b911342ad4409588, type: 3}
+  - {fileID: 21300000, guid: d3b8db9e965168a40ac3850596f965f7, type: 3}
+  - {fileID: 21300000, guid: c985c27a029339f4594ba6a883085e3e, type: 3}
+  house: {fileID: 1317888334}
+  leftFence: {fileID: 149858811}
+  rightFence: {fileID: 1272379509}
+  dansangs:
+  - {fileID: 933484439}
+  - {fileID: 583251553}
+  - {fileID: 496744992}
+  - {fileID: 738344223}
+  - {fileID: 972390405}
+  - {fileID: 36157451}
+  tables:
+  - {fileID: 1290659074}
+  - {fileID: 1398283332}
+  - {fileID: 1093415681}
+  - {fileID: 1176157872}
+  - {fileID: 1071824322}
+  - {fileID: 271952598}
 --- !u!4 &1464183233
 Transform:
   m_ObjectHideFlags: 0
@@ -23135,11 +23172,11 @@ MonoBehaviour:
     isThirdMonster: 0
     isSkillSuc: 1
     chairPrice: 00000000000000000000000000000000
-    chairLevel: 0
     tablePrice: 00000000000000000000000000000000
-    tableLevel: 0
     backgroundPrice: 00000000000000000000000000000000
-    backgroundLevel: 0
+    houseLV: 0
+    dansangLV: 0
+    tableLV: 0
     days: 1
   menuCategori: 
   menuValue: 0
@@ -27597,11 +27634,11 @@ MonoBehaviour:
     isThirdMonster: 0
     isSkillSuc: 1
     chairPrice: 00000000000000000000000000000000
-    chairLevel: 0
     tablePrice: 00000000000000000000000000000000
-    tableLevel: 0
     backgroundPrice: 00000000000000000000000000000000
-    backgroundLevel: 0
+    houseLV: 0
+    dansangLV: 0
+    tableLV: 0
     days: 1
 --- !u!4 &1966199033
 Transform:
