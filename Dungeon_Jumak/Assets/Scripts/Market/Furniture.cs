@@ -18,7 +18,6 @@ public class Furniture : MonoBehaviour
 
     void Start()
     {
-        data.curCoin = 1000;
         data.chairPrice = new int[] { 10, 20, 30 };
         data.tablePrice = new int[] { 20, 30, 40 };
         data.backgroundPrice = new int[] { 30, 40, 50 };
@@ -36,7 +35,7 @@ public class Furniture : MonoBehaviour
 
     public void ChairBuySystem()
     {
-        if (data.dansangLV < data.chairPrice.Length && data.curCoin - data.chairPrice[data.dansangLV] >= 0)
+        if (data.dansangLV < data.chairPrice.Length - 1 && data.curCoin - data.chairPrice[data.dansangLV] >= 0)
         {
             data.curCoin -= data.chairPrice[data.dansangLV];
             data.dansangLV += 1;
@@ -51,7 +50,7 @@ public class Furniture : MonoBehaviour
 
     public void ChairUI()
     {
-        if (data.dansangLV < data.chairPrice.Length)
+        if (data.dansangLV < data.chairPrice.Length - 1)
         {
             GameObject.Find("ChairPrice_Text").GetComponent<TextMeshProUGUI>().text = data.chairPrice[data.dansangLV].ToString();
         }
@@ -79,7 +78,7 @@ public class Furniture : MonoBehaviour
 
     public void TableBuySystem()
     {
-        if (data.tableLV < data.tablePrice.Length && data.curCoin - data.tablePrice[data.tableLV] >= 0)
+        if (data.tableLV < data.tablePrice.Length - 1 && data.curCoin - data.tablePrice[data.tableLV] >= 0)
         {
             data.curCoin -= data.tablePrice[data.tableLV];
             data.tableLV += 1;
@@ -94,7 +93,7 @@ public class Furniture : MonoBehaviour
 
     public void TableUI()
     {
-        if (data.tableLV < data.tablePrice.Length)
+        if (data.tableLV < data.tablePrice.Length - 1)
         {
             GameObject.Find("TablePrice_Text").GetComponent<TextMeshProUGUI>().text = data.tablePrice[data.tableLV].ToString();
         }
@@ -122,7 +121,7 @@ public class Furniture : MonoBehaviour
 
     public void BackgroundBuySystem()
     {
-        if (data.houseLV < data.backgroundPrice.Length && data.curCoin - data.backgroundPrice[data.houseLV] >= 0)
+        if (data.houseLV < data.backgroundPrice.Length - 1 && data.curCoin - data.backgroundPrice[data.houseLV] >= 0)
         {
             data.curCoin -= data.backgroundPrice[data.houseLV];
             data.houseLV += 1;
@@ -137,7 +136,7 @@ public class Furniture : MonoBehaviour
 
     public void BackgroundUI()
     {
-        if (data.houseLV < data.backgroundPrice.Length)
+        if (data.houseLV < data.backgroundPrice.Length - 1)
         {
             GameObject.Find("BackgroundPrice_Text").GetComponent<TextMeshProUGUI>().text = data.backgroundPrice[data.houseLV].ToString();
         }

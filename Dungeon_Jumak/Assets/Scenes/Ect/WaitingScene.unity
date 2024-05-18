@@ -733,7 +733,7 @@ SpriteRenderer:
   m_Size: {x: 5.142857, y: 7.1904764}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &416453958
@@ -839,7 +839,7 @@ GameObject:
   - component: {fileID: 1132584798}
   - component: {fileID: 1132584797}
   m_Layer: 5
-  m_Name: Dungeon_Button (1)
+  m_Name: Market_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -912,7 +912,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 416453959}
         m_TargetAssemblyTypeName: PlayerInWatingScene, Assembly-CSharp
-        m_MethodName: MoveDungeon
+        m_MethodName: MoveMarket
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1300,11 +1300,11 @@ MonoBehaviour:
     isThirdMonster: 0
     isSkillSuc: 1
     chairPrice: 00000000000000000000000000000000
-    chairLevel: 0
     tablePrice: 00000000000000000000000000000000
-    tableLevel: 0
     backgroundPrice: 00000000000000000000000000000000
-    backgroundLevel: 0
+    houseLV: 0
+    dansangLV: 0
+    tableLV: 0
     days: 1
   audioManager: {fileID: 0}
 --- !u!1 &1926061169

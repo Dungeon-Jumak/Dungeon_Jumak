@@ -96,4 +96,15 @@ public class PlayerInWatingScene : MonoBehaviour
         targetTransform = dungeonSign.transform;
         sceneName = dungeonSceneName;
     }
+
+    public void MoveMarket()
+    {
+        //isMove = true;
+
+        if (DataManager.Instance.data.isSound)
+            audioManager.Play(hillWalkSound);
+
+        SceneManager.LoadScene("Market");
+    }
+
 }
