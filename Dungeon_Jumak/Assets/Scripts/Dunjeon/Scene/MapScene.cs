@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class MapScene : MonoBehaviour
 {
@@ -98,7 +97,8 @@ public class MapScene : MonoBehaviour
 
     IEnumerator LoadSceneAfterDelay(float delay)
     {
-        yield return new WaitForSeconds(delay);  
-        SceneManager.LoadScene("MainDunjeon");  
+        yield return new WaitForSeconds(delay);
+        //SceneManager.LoadScene("MainDunjeon");  
+        GameManager.Scene.LoadScene(Define.Scene.MainDunjeon);
     }
 }

@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
     SceneManagerEx _sceneManager = new SceneManagerEx();//SceneManagerEx 持失
     ResourceManager _resource = new ResourceManager();//ResourceManager 持失
 
-    public static SceneManagerEx Scene { get { return instance._sceneManager; } }
-    public static ResourceManager Resource { get { return instance._resource; } }
+    public static SceneManagerEx Scene { get { return Instance._sceneManager; } }
+    public static ResourceManager Resource { get { return Instance._resource; } }
    
 
     [SerializeField] 

@@ -11,7 +11,7 @@ public class SceneManagerEx : MonoBehaviour
     //---씬 로드하는 함수---//
     public void LoadScene(Define.Scene type)
     {
-        CurrentScene.Clear();
+        //CurrentScene.Clear();
         SceneManager.LoadScene(GetSceneName(type));
     }
 
