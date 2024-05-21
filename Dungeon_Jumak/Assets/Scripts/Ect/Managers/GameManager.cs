@@ -7,6 +7,17 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    private Data data;
+
+    //---효과음---//
+    [SerializeField]
+    private AudioManager audioManager;
+    [SerializeField]
+    private BGMManager bgmManager;
+    [SerializeField]
+    private string pauseSound;
+
     //---GameManager.cs 싱글톤 선언---//
     private static GameManager instance;
 
@@ -36,22 +47,10 @@ public class GameManager : MonoBehaviour
     }
 
     SceneManagerEx _sceneManager = new SceneManagerEx();//SceneManagerEx 생성
-    ResourceManager _resource = new ResourceManager();//ResourceManager 생성
+    //ResourceManager _resource = new ResourceManager();//ResourceManager 생성
 
     public static SceneManagerEx Scene { get { return Instance._sceneManager; } }
-    public static ResourceManager Resource { get { return Instance._resource; } }
-   
-
-    [SerializeField] 
-    private Data data;
-
-    //---효과음---//
-    [SerializeField]
-    private AudioManager audioManager;
-    [SerializeField]
-    private BGMManager bgmManager;
-    [SerializeField]
-    private string pauseSound;
+    //public static ResourceManager Resource { get { return Instance._resource; } }
 
     // Start is called before the first frame update
     void Start()

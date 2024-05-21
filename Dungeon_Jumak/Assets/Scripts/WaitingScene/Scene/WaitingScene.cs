@@ -18,7 +18,7 @@ public class WaitingScene : MonoBehaviour
     private AudioManager audioManager;
 
     private bool playBGM = false;
-    // Start is called before the first frame update
+
     void Start()
     {
         playBGM = false;

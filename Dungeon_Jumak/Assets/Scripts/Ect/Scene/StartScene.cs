@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class StartScene : MonoBehaviour
 {
@@ -50,21 +49,11 @@ public class StartScene : MonoBehaviour
         bgmManager.SetLoop();
     }
 
-    // Update is called once per frame
     void Update()
     {
         BGMControl();
         SoundControl();
         BGMPlayer();
-
-
-    }
-
-    public void ConvertScene(string _sceneName)
-    {
-        bgmManager.Stop();
-        audioManager.AllStop();
-        SceneManager.LoadScene(_sceneName);
     }
 
     public void BGMPlayer()
@@ -135,4 +124,10 @@ public class StartScene : MonoBehaviour
         data.isSound = false;
     }
 
+    public void ConvertScene()
+    {
+        bgmManager.Stop();
+        audioManager.AllStop();
+        GameManager.Scene.LoadScene(Define.Scene.WaitingScene);
+    }
 }

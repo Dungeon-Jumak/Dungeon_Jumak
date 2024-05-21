@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerInWatingScene : MonoBehaviour
 {
@@ -17,25 +17,17 @@ public class PlayerInWatingScene : MonoBehaviour
     private float speed;
 
     [SerializeField]
-    private string jumakSceneName;
-    [SerializeField]
     private Transform jumakSign;
-    [SerializeField]
-    private string dungeonSceneName;
     [SerializeField]
     private Transform dungeonSign;
     [SerializeField]
     private Transform targetTransform;
 
     [SerializeField]
-    private string sceneName;
-
-    [SerializeField]
     private AudioManager audioManager;
     [SerializeField]
     private string hillWalkSound;
 
-    // Start is called before the first frame update
     void Start()
     {
         curPosition = new Vector3(0f, -3.8f);
@@ -51,22 +43,16 @@ public class PlayerInWatingScene : MonoBehaviour
     {
         if (isMove)
         {
-            curPosition = transform.position;
-
-            float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(curPosition, targetTransform.position, step);
-
-            if (Vector3.Distance(targetTransform.position, curPosition) == 0f)
-            {
-                isMove = false;
-                ConvertScene();
-            }
+            MoveToTarget();
         }
     }
 
-    public void ConvertScene()
+    private void MoveToTarget()
     {
-        GameManager.Instance.ConvertScene(sceneName);
+        curPosition = transform.position;
+
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(curPosition, targetTransform.position, step);
     }
 
     //주막 방향으로 이동
@@ -74,12 +60,11 @@ public class PlayerInWatingScene : MonoBehaviour
     {
         isMove = true;
 
-        if(DataManager.Instance.data.isSound)
+        if (DataManager.Instance.data.isSound)
             audioManager.Play(hillWalkSound);
 
         animator.SetInteger("DirX", -1);
         targetTransform = jumakSign.transform;
-        sceneName = jumakSceneName;
     }
 
     //던전 방향으로 이동
@@ -94,17 +79,20 @@ public class PlayerInWatingScene : MonoBehaviour
         DataManager.Instance.data.playerHP = 3;
         DataManager.Instance.data.runningTime = 0f;
         targetTransform = dungeonSign.transform;
-        sceneName = dungeonSceneName;
     }
 
+    //상점 방향으로 이동
     public void MoveMarket()
     {
         //isMove = true;
-
         if (DataManager.Instance.data.isSound)
             audioManager.Play(hillWalkSound);
-
-        SceneManager.LoadScene("Market");
     }
 
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Target_Jumak")) GameManager.Scene.LoadScene(Define.Scene.Jumak);
+        else if(col.CompareTag("Target_Dunjeon")) GameManager.Scene.LoadScene(Define.Scene.Map);
+        //else if(col.CompareTag("Target_Market")) GameManager.Scene.LoadScene(Define.Scene.Market);
+    }
 }

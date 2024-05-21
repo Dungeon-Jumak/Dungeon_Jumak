@@ -21,6 +21,9 @@ TagManager:
   - Gukbab
   - SpeechBox
   - PigGukbab
+  - Target_Jumak
+  - Target_Junjeon
+  - Target_Dunjeon
   layers:
   - Default
   - TransparentFX
