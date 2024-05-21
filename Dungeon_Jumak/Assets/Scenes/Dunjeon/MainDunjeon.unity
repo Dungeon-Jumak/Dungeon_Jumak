@@ -1553,7 +1553,6 @@ GameObject:
   - component: {fileID: 717933300}
   - component: {fileID: 717933302}
   - component: {fileID: 717933301}
-  - component: {fileID: 717933303}
   m_Layer: 5
   m_Name: UI_Canvas
   m_TagString: Untagged
@@ -1647,18 +1646,6 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &717933303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717933298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f969137a8ebb4134891443d8c80c4613, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &771548501
 GameObject:
   m_ObjectHideFlags: 0
@@ -11309,6 +11296,9 @@ MonoBehaviour:
   resultPanel: {fileID: 1359830612}
   monsterPrefab: {fileID: 6031018358703910844, guid: f0a8cd054d57f7a4da43b09e3b52d6ee,
     type: 3}
+  secTextObj: {fileID: 1522810375}
+  minTextObj: {fileID: 382828466}
+  time: 120
   numberOfMonsters: 4
   bgmManager: {fileID: 0}
   bgmSoundTrack: 0

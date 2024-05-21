@@ -7,13 +7,10 @@ public abstract class BaseScene : MonoBehaviour
 {
     public Define.Scene SceneType { get; protected set; } = Define.Scene.Jumak;
 
-    /*protected virtual void Init()
+    protected virtual void Init()
     {
-        Object obj = GameObject.FindObjectOfType(typeof(EventSystem));
-        if(obj != null) {
-            GameManager.Resource.Instantiate("EventSystem").name = "@EventSystem";
-        }
-    }*/
+        //추가하고 싶은 부분 있으면 추가해도 됨.
+    }
 
     //public abstract void Clear();
 }

@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Dunjeon/MainDunjeon.unity
     guid: ccc6679b23f272245877e58ae5a0f614
   - enabled: 1
-    path: Assets/Scenes/Market/Market.unity
+    path: Assets/Scenes/Ect/Market.unity
     guid: 1d2f22a420bc01d418b0e95e235f4740
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000,

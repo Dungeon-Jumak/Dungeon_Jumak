@@ -8,15 +8,16 @@ public class DunjeonScene : MonoBehaviour
     public GameObject resultPanel;
     public GameObject monsterPrefab;
 
-    private GameObject secTextObj;
-    private GameObject minTextObj;
+    public GameObject secTextObj;
+    public GameObject minTextObj;
 
     private TextMeshProUGUI secText;
     private TextMeshProUGUI minText;
 
-    private float time = 120;
-
-    public int numberOfMonsters = 4; // 스폰할 몬스터의 수
+    [SerializeField]
+    private float time = 120; // timer 초
+    [SerializeField]
+    private int numberOfMonsters = 4; // 스폰할 몬스터의 수
 
 
     [SerializeField]
@@ -33,7 +34,7 @@ public class DunjeonScene : MonoBehaviour
     private AudioManager audioManager;
 
     private bool playBGM = false;
-    // Start is called before the first frame update
+
     void Start()
     {
         playBGM = false;
@@ -53,9 +54,7 @@ public class DunjeonScene : MonoBehaviour
         bgmManager.FadeInMusic(maxVolume);
         bgmManager.SetLoop();
 
-        secTextObj = GameObject.Find("SecText");
         secText = secTextObj.GetComponent<TextMeshProUGUI>();
-        minTextObj = GameObject.Find("MinText");
         minText = minTextObj.GetComponent<TextMeshProUGUI>();
 
         SpawnMonsters();
@@ -71,7 +70,6 @@ public class DunjeonScene : MonoBehaviour
         }
 
         BGMPlayer();
-
     }
 
     public void BGMPlayer()
