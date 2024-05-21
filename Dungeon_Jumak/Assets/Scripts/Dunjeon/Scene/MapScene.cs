@@ -42,11 +42,9 @@ public class MapScene : MonoBehaviour
         bgmManager.SetLoop();
     }
 
-    // Update is called once per frame
     void Update()
     {
         BGMPlayer();
-
     }
 
     public void BGMPlayer()
@@ -98,7 +96,6 @@ public class MapScene : MonoBehaviour
     IEnumerator LoadSceneAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        //SceneManager.LoadScene("MainDunjeon");  
         GameManager.Scene.LoadScene(Define.Scene.MainDunjeon);
     }
 }

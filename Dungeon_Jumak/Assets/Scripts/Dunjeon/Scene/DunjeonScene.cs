@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class DunjeonScene : MonoBehaviour
 {
@@ -148,7 +147,7 @@ public class DunjeonScene : MonoBehaviour
 
     public void ChangeToWaitingScene()
     {
-        SceneManager.LoadScene("WaitingScene");
+        GameManager.Scene.LoadScene(Define.Scene.Map);
     }
 
     public void AddDay()
