@@ -347,4 +347,10 @@ public class JumakScene : BaseScene
     {
         go.transform.localPosition = new Vector3(go.transform.localPosition.x, 0, go.transform.localPosition.z);
     }
+
+    //씬 전환할 때 필요한 기능
+    public override void Clear()
+    {
+        Debug.Log("Jumak Scene changed!");
+    }
 }

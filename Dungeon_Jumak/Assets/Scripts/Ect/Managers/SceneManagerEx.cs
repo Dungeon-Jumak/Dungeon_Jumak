@@ -11,7 +11,7 @@ public class SceneManagerEx : MonoBehaviour
     //---¾À ÀüÈ¯ ÇÔ¼ö---//
     public void LoadScene(Define.Scene type)
     {
-        //CurrentScene.Clear();
+        GameManager.Clear();
         SceneManager.LoadScene(GetSceneName(type));
     }
 
@@ -19,5 +19,10 @@ public class SceneManagerEx : MonoBehaviour
     {
         string name  = System.Enum.GetName(typeof(Define.Scene), type);
         return name;
+    }
+
+    public void Clear()
+    {
+        CurrentScene.Clear();
     }
 }

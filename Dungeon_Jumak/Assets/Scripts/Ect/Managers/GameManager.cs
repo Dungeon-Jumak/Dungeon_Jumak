@@ -48,9 +48,11 @@ public class GameManager : MonoBehaviour
 
     SceneManagerEx _sceneManager = new SceneManagerEx();//SceneManagerEx 积己
     ResourceManager _resource = new ResourceManager();//ResourceManager 积己
+    SoundManager _soundManager = new SoundManager();//SoundManager 积己
 
     public static SceneManagerEx Scene { get { return Instance._sceneManager; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
+    public static SoundManager Sound { get { return Instance._soundManager; } }
 
     void Start()
     {
@@ -60,7 +62,13 @@ public class GameManager : MonoBehaviour
         bgmManager = FindObjectOfType<BGMManager>();
 
         pauseSound = "pauseSound";
+        _soundManager.Init();
+    }
 
+    public static void Clear()
+    {
+        Scene.Clear();
+        Sound.Clear();
     }
 
     //---老矫 沥瘤 扁瓷---//

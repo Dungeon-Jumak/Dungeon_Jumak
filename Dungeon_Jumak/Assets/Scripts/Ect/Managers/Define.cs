@@ -26,7 +26,7 @@ public class Define : MonoBehaviour
     {
         Bgm,
         Effect,
-        Maxcount,//브금과 효과음들의 모든 개수
+        MaxCount,//브금과 효과음들의 모든 개수
     }
 
     //---UI 클릭과 드래그를 구분하기 위해 Define.cs UIEvent enum을 추가---//
