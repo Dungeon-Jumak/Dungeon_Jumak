@@ -18,6 +18,11 @@ public class StartScene : BaseScene
         GameManager.Scene.LoadScene(Define.Scene.WaitingScene);
     }
 
+    public void ClickSound()
+    {
+        GameManager.Sound.Play("PickFood", Define.Sound.Effect);
+    }
+
     //씬 전환할 때 필요한 기능
     public override void Clear()
     {
