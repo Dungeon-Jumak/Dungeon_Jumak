@@ -11,6 +11,8 @@ public class ResourceManager
         return Resources.Load<T>(path);
     }
 
+    //---Instantiate 함수---//
+    //GameManager.Resource.Instantiate("인스턴스화 하고 싶은 Prefabs 폴더 안의 이름")
     public GameObject Instantiate(string path, Transform parent = null)
     {
         GameObject prefab = Load<GameObject>($"Prefabs/{path}");
@@ -20,6 +22,7 @@ public class ResourceManager
             return null;
         }
 
+        //---(Clone) 텍스트 삭제---//
         GameObject go = Object.Instantiate(prefab, parent);
         int index = go.name.IndexOf("(Clone)");
         if (index > 0)
@@ -29,6 +32,8 @@ public class ResourceManager
         return go;
     }
 
+    //---destroy 함수---//
+    //GameManager.Resource.Destroy(게임오브젝트)
     public void Destroy(GameObject go)
     {
         if(go == null) {

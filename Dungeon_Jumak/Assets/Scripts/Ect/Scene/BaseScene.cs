@@ -12,5 +12,5 @@ public abstract class BaseScene : MonoBehaviour
         //추가하고 싶은 부분 있으면 추가해도 됨.
     }
 
-    //public abstract void Clear();
+    public abstract void Clear();
 }

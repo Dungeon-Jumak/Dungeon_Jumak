@@ -47,12 +47,11 @@ public class GameManager : MonoBehaviour
     }
 
     SceneManagerEx _sceneManager = new SceneManagerEx();//SceneManagerEx 持失
-    //ResourceManager _resource = new ResourceManager();//ResourceManager 持失
+    ResourceManager _resource = new ResourceManager();//ResourceManager 持失
 
     public static SceneManagerEx Scene { get { return Instance._sceneManager; } }
-    //public static ResourceManager Resource { get { return Instance._resource; } }
+    public static ResourceManager Resource { get { return Instance._resource; } }
 
-    // Start is called before the first frame update
     void Start()
     {
         data = DataManager.Instance.data;

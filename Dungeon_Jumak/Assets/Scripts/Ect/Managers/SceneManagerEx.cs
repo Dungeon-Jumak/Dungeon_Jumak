@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerEx : MonoBehaviour
 {
-    //public BaseScene CurrentScene { get { return GameObject.FindObjectOfType<BaseScene>(); } }
+    public BaseScene CurrentScene { get { return GameObject.FindObjectOfType<BaseScene>(); } }
 
     //---씬 전환 함수---//
     public void LoadScene(Define.Scene type)
