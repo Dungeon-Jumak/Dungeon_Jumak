@@ -10,7 +10,7 @@ public class StartScene : BaseScene
     void Start()
     {
         data = DataManager.Instance.data;
-        GameManager.Sound.Play("13 Victory", Define.Sound.Bgm);
+        //GameManager.Sound.Play("13 Victory", Define.Sound.Bgm);
     }
 
     public void ConvertScene()
@@ -20,7 +20,7 @@ public class StartScene : BaseScene
 
     public void ClickSound()
     {
-        GameManager.Sound.Play("PickFood", Define.Sound.Effect);
+        //GameManager.Sound.Play("PickFood", Define.Sound.Effect);
     }
 
     //씬 전환할 때 필요한 기능

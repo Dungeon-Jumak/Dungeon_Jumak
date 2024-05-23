@@ -24,8 +24,6 @@ public class PlayerInWatingScene : MonoBehaviour
     private Transform targetTransform;
 
     [SerializeField]
-    private AudioManager audioManager;
-    [SerializeField]
     private string hillWalkSound;
 
     void Start()
@@ -35,7 +33,6 @@ public class PlayerInWatingScene : MonoBehaviour
         speed = 3f;
 
         animator = GetComponent<Animator>();
-        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -60,9 +57,6 @@ public class PlayerInWatingScene : MonoBehaviour
     {
         isMove = true;
 
-        if (DataManager.Instance.data.isSound)
-            audioManager.Play(hillWalkSound);
-
         animator.SetInteger("DirX", -1);
         targetTransform = jumakSign.transform;
     }
@@ -72,9 +66,6 @@ public class PlayerInWatingScene : MonoBehaviour
     {
         isMove = true;
 
-        if (DataManager.Instance.data.isSound)
-            audioManager.Play(hillWalkSound);
-
         animator.SetInteger("DirX", 1);
         DataManager.Instance.data.playerHP = 3;
         DataManager.Instance.data.runningTime = 0f;
@@ -82,12 +73,10 @@ public class PlayerInWatingScene : MonoBehaviour
     }
 
     //상점 방향으로 이동
+    /*
     public void MoveMarket()
     {
-        //isMove = true;
-        if (DataManager.Instance.data.isSound)
-            audioManager.Play(hillWalkSound);
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D col)
     {

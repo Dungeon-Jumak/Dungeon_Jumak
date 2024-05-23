@@ -26,7 +26,6 @@ public class Dun_PlayerMoving : MonoBehaviour
     private float xPos;
     private float yPos;
 
-
     //---텔포 예외 처리---//
     public Canvas m_canvas;
 
@@ -39,10 +38,6 @@ public class Dun_PlayerMoving : MonoBehaviour
     Vector3 lastPos;
 
     Rigidbody2D rigidBody;
-
-    PlayerServing playerServing;
-
-
 
     private void Start()
     {
@@ -99,16 +94,13 @@ public class Dun_PlayerMoving : MonoBehaviour
         //현재 위치와 방향 업데이트
         curPos = transform.position;
         direction = (curPos - lastPos).normalized;
-
         lastPos = curPos;
-
     }
 
     void SetAnimation()
     {
         if (direction != Vector3.zero)
         {
-
             animator.SetBool("isWalk", true);
 
             //절댓값 y가 절댓값 x보다 더 크다면 (상하이동)
@@ -144,7 +136,5 @@ public class Dun_PlayerMoving : MonoBehaviour
             target.transform.position = transform.position;
             animator.SetBool("isWalk", false);
         }
-
-
     }
 }

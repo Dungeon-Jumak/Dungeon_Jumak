@@ -3,88 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MapScene : MonoBehaviour
+public class MapScene : BaseScene
 {
     public GameObject movingPanel;
 
     [SerializeField]
-    private BGMManager bgmManager;
-    [SerializeField]
-    private int bgmSoundTrack;
-    [SerializeField]
-    private float maxVolume = 1;
-
-    [SerializeField]
     private Data data;
 
-    [SerializeField]
-    private AudioManager audioManager;
-
-    private bool playBGM = false;
-    // Start is called before the first frame update
     void Start()
     {
-        playBGM = false;
-
         data = DataManager.Instance.data;
-        bgmManager = FindObjectOfType<BGMManager>();
-        audioManager = FindObjectOfType<AudioManager>();
-
-        audioManager.AllStop();
-        bgmManager.Stop();
-
-        //---BGM 사운드 트랙 설정---//
-        bgmSoundTrack = 5;
-
-        //---기본 BGM 실행---//
-        bgmManager.Play(bgmSoundTrack);
-        bgmManager.FadeInMusic(maxVolume);
-        bgmManager.SetLoop();
+        GameManager.Sound.Play("Map_Front", Define.Sound.Effect);
     }
 
-    void Update()
+    protected override void Init()
     {
-        BGMPlayer();
+        SceneType = Define.Scene.Map;
     }
 
-    public void BGMPlayer()
+    public override void Clear()
     {
-        if (!data.isPlayBGM)
-        {
-            playBGM = false;
-
-            bgmManager.CancelLoop();
-            bgmManager.Stop();
-        }
-
-        if (!playBGM && data.isPlayBGM)
-        {
-            playBGM = true;
-
-            bgmManager.Play(bgmSoundTrack);
-            bgmManager.FadeInMusic(maxVolume);
-            bgmManager.SetLoop();
-        }
-    }
-
-    public void SoundControl()
-    {
-        if (data.isSound)
-        {
-            for (int i = 0; i < audioManager.sounds.Length; i++)
-            {
-                audioManager.sounds[i].volume = 1f;
-                audioManager.sounds[i].Setvolume();
-            }
-        }
-        else
-        {
-            for (int i = 0; i < audioManager.sounds.Length; i++)
-            {
-                audioManager.sounds[i].volume = 0f;
-                audioManager.sounds[i].Setvolume();
-            }
-        }
+        Debug.Log("Map Scene changed!");
     }
 
     public void OpenMovingPanel()

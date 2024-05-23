@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject effectImg;
+
     [SerializeField]
     private int hp = 3;
 
@@ -42,7 +44,16 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Monster"))
         {
+            effectImg.SetActive(true);
             TakeDamage(1);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Monster"))
+        {
+            effectImg.SetActive(false);
         }
     }
 }
