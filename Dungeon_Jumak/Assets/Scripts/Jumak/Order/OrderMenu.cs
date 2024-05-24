@@ -5,45 +5,49 @@ using UnityEngine;
 
 public class OrderMenu : MonoBehaviour
 {
+    //--- 음식 먹음을 감지하는 bool 변수 ---//
     public bool isEat;
 
-    [Header("메뉴 결정 확률 변수")]
+    //--- 메뉴 결정 확률 변수 ---//
     [SerializeField]
-    private int percentOfMenu;
+    private int gukBabMax;          //--- 국밥 최대 확률 ---//
     [SerializeField]
-    private int gukBabMax;
+    private int paJeonMax;          //--- 파전 최대 확률 ---//
     [SerializeField]
-    private int paJeonMax;
-    [SerializeField]
-    private int riceJuiceMax;
-    [SerializeField]
+    private int riceJuiceMax;       //--- 식혜 최대 확률 ---//
+
+    //--- 최소 확률 값과 최대 확률 값 변수 ---//
     private int min = 0;
-    [SerializeField]
     private int max = 100;
 
-    //---데이터---//
-    [SerializeField]
+    //--- 데이터 ---//
     Data data;
 
-    [SerializeField]
+    //--- CustomerMovement Componet ---//
     private CustomerMovement customerMovement;
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
     void Start()
     {
+        //--- Initialize Variables ---//
         isEat = false;
 
         gukBabMax = 50;
         paJeonMax = 80;
         riceJuiceMax = 100;
 
+        //--- Get Component ---//
         data = DataManager.Instance.data;
         customerMovement = GetComponent<CustomerMovement>();
     }
 
-    // Update is called once per frame
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     void Update()
     {
-        //현재 메뉴 해금 레벨에 따라 max값을 바꿈
+        //--- 현재 메뉴 해금 레벨에 따라 max값을 바꿈 ---//
+        //*** 해금을 어떻게 추가 할 것인지에 대한 확실한 기획이 나오면 코드 변경 ***//
         switch (data.curMenuUnlockLevel)
         {
             case 1:
@@ -57,23 +61,29 @@ public class OrderMenu : MonoBehaviour
                 break;
         }
 
+        //--- 음식을 먹고 있지 않을때 ---//
         if (!isEat)
         {
-            //현재 자리에 음식이 올라갔다면
+            //--- 현재 자리에 음식이 올라갔다면 ---//
             if (data.onTables[customerMovement.seatIndex])
             {
+                //--- 중복 실행 방지 bool 변수 변환 ---//
                 isEat = true;
+                //--- EatFood 함수 실행 ---//
                 EatFood(data.menuCategories[customerMovement.seatIndex]);
             }
         }
     }
 
-    //---메뉴 주문 결정 함수---//
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //--- 메뉴의 카테고리를 결정하기 위한 함수 ---//
     public void OrderNewMenu()
     {
-        int randNum = Random.Range(min, max); //랜덤 값
+        //--- 음식의 랜덤 확률 변수를 갖고옴 ---//
+        int randNum = Random.Range(min, max);
 
-        //확률에 따라 카테고리 결정
+        //--- 확률에 따라 카테고리 결정 ---//
         if (randNum >= min && randNum < gukBabMax)
             data.menuCategories[customerMovement.seatIndex] = "Gukbab";
         else if (randNum >= gukBabMax && randNum < paJeonMax)
@@ -81,13 +91,15 @@ public class OrderMenu : MonoBehaviour
         else if (randNum >= paJeonMax && randNum < riceJuiceMax)
             data.menuCategories[customerMovement.seatIndex] = "RiceJuice";
 
+        //--- 메뉴가 결정되면 해당되는 메뉴의 말풍선을 손님위에 띄우도록 함 ---//
         OrederSelectMenu(data.menuCategories[customerMovement.seatIndex]);
 
     }
 
-    //주문 그림 보이게 하는 함수
-    void OrederSelectMenu(string _menuCategories)
+    //--- 결정된 메뉴의 말풍선을 띄우기 위한 함수 ---//
+    private void OrederSelectMenu(string _menuCategories)
     {
+        //--- 메뉴 카테고리에 따라 Switch 문으로 분기를 나눔 ---//
         switch (_menuCategories)
         {
             case "Gukbab":
@@ -106,10 +118,10 @@ public class OrderMenu : MonoBehaviour
 
     }
 
-    //말풍선 지우는 함수
-    void EatFood(string _menuCategories)
+    //--- 음식 먹음 신호를 감지하고 말풍선을 지우는 함수 ---//
+    private void EatFood(string _menuCategories)
     {
-
+        //--- 카테고리로 말풍선의 SetActive를 전환하는 분기문 ---//
         switch (_menuCategories)
         {
             case "Gukbab":
@@ -131,11 +143,15 @@ public class OrderMenu : MonoBehaviour
                 Debug.Log("에러 : EatFood(In OrderMenu)");
                 break;
         }
+
+        //--- CustomerMovement -> EatFood 메소드 실행 ---//
         customerMovement.EatFood();
     }
 
+    //--- 시간이 다 되었을 때 말풍선을 끄고 손님이 돌아가게 하는 함수 ---//
     public void TimeOut()
     {
+        //--- 카테고리에 따른 Switch 분기문 ---//
         switch (data.menuCategories[customerMovement.seatIndex])
         {
             case "Gukbab":
@@ -151,6 +167,8 @@ public class OrderMenu : MonoBehaviour
                 Debug.Log("에러 : Time Out(In OrderMenu)");
                 break;
         }
+
+        //--- CustomerMovement -> TimeOut 메소드 실행 ---//
         customerMovement.TimeOut();
     }
 

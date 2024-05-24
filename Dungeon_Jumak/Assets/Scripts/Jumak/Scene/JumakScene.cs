@@ -118,7 +118,7 @@ public class JumakScene : BaseScene
 
         bgmManager.Stop();
 
-        data.curSeatSize = 0;
+        data.customerHeadCount = 0;
 
         //---기본 BGM 실행---//
         bgmManager.Play(bgmSoundTrack);

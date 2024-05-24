@@ -84,7 +84,6 @@ public class RiceJuiceOrder : MonoBehaviour
 
                     GameObject shadow = transform.GetChild(1).gameObject;
                     shadow.GetComponent<BubbleShadowController>().isStop = true;
-                    shadow.GetComponent<BubbleShadowController>().isMiniGame = true;
 
                     foreach (GameObject parentObject in parentObjects)
                     {
@@ -127,7 +126,6 @@ public class RiceJuiceOrder : MonoBehaviour
 
                     GameObject shadow = transform.GetChild(1).gameObject;
                     shadow.GetComponent<BubbleShadowController>().isStop = true;
-                    shadow.GetComponent<BubbleShadowController>().isMiniGame = true;
 
                     foreach (GameObject parentObject in parentObjects)
                     {

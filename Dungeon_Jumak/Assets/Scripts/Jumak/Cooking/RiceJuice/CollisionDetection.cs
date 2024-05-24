@@ -163,21 +163,6 @@ public class CollisionDetection : MonoBehaviour
 
     void FailRiceJuiceMiniGame()
     {
-        GameObject[] speechBox = GameObject.FindGameObjectsWithTag("SpeechBox");
-        GameObject[] shadows = new GameObject[DataManager.Instance.data.onTables.Length];
-
-        for (int i = 0; i < speechBox.Length; i++)
-        {
-            shadows[i] = speechBox[i].transform.GetChild(1).gameObject;
-
-            if (shadows[i].GetComponent<BubbleShadowController>().isMiniGame)
-            {
-                shadows[i].GetComponent<BubbleShadowController>().isMiniGame = false;
-                shadows[i].GetComponent<BubbleShadowController>().timer =
-                    shadows[i].GetComponent<BubbleShadowController>().fadeInDuration;
-            }
-
-        }
 
         GameObject[] parentObjects = GameObject.FindGameObjectsWithTag("RiceJuiceMiniGame");
 

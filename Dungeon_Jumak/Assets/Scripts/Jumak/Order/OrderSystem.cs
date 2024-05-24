@@ -6,43 +6,50 @@ public class OrderSystem : MonoBehaviour
 {
     [SerializeField]
     private Transform[] tables;
-    [SerializeField]
+
     private Data data;
-    [SerializeField]
-    private AudioManager audioManager;
-    [SerializeField]
-    private string coinSound;
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void Start()
     {
+        //--- Get Componet ---//
+        data = DataManager.Instance.data;
+
+        //--- Initialize data's Variables ---//
+        //--- 주문 전표 출력을 위한 카운팅 변수 -> 씬이 시작 될때마다 초기화 되도록 해당 스크립트에서 초기화 함 ---//
         data.gukbapCount= 0;
         data.pajeonCount= 0;
         data.riceJuiceCount= 0;
-
-        data = DataManager.Instance.data;
-        audioManager = FindObjectOfType<AudioManager>();
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void Update()
     {
+        //--- 모든 테이블 순회 ---//
         for (int i = 0; i < tables.Length; i++)
         {
-            //---다 먹었으면 table을 초기화---//
+            //--- 다 먹은 테이블 감지 ---//
             if (data.isFinEat[i])
             {
+                //--- 중복 실행 방지를 위한 bool 변수 변환 ---//
                 data.isFinEat[i] = false;
 
                 //---이중 파괴 오류 수정---//
                 if (tables[i].transform.GetChild(0).childCount != 0)
                     Destroy(tables[i].transform.GetChild(0).GetChild(0).gameObject);
 
-                CoinUpdate(i);//코인 지급
-                audioManager.Play(coinSound);
+                //--- 다 먹은 테이블의 경우 카테고리와 벨류에 맞게 코인 지급 ---//
+                CoinUpdate(i);
             }
 
         }
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //--- 음식의 카테고리와 벨류에 따라 코인을 달리 얻기 위한 메소드 ---//
     private void CoinUpdate(int idx)
     {
         switch (data.menuCategories[idx])

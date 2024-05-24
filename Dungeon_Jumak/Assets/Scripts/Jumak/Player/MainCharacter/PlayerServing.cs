@@ -183,7 +183,7 @@ public class PlayerServing : MonoBehaviour
     {
         Debug.Log("모든 테이블이 초기화 됩니다.");
 
-        data.curSeatSize = 0;
+        data.customerHeadCount = 0;
 
         for (int i = 0; i < data.isAllocated.Length; i++)
         {

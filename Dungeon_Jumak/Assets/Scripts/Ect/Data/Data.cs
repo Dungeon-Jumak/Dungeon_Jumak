@@ -20,7 +20,7 @@ public class Data
 
     //---CustomerSystem---//
     public int maxSeatSize = 12;
-    public int curSeatSize = 0;
+    public int customerHeadCount = 0;
 
     public bool[] isAllocated = new bool[12];
     public bool[] isCustomer = new bool[12];            //고객 테이블에 도착했는지 체크하기 위한 변수
