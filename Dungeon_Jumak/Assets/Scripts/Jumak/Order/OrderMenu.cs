@@ -6,14 +6,16 @@ using UnityEngine;
 public class OrderMenu : MonoBehaviour
 {
     //--- 음식 먹음을 감지하는 bool 변수 ---//
+    [Header("음식 먹음을 감지하는 변수(Don't touch!)")]
     public bool isEat;
 
     //--- 메뉴 결정 확률 변수 ---//
-    [SerializeField]
+    [Header("확률 변수 : 순차적으로 확률 만큼 더해서 나누도록 함 ex) 50, 80, 100")]
+    [SerializeField, Header("국밥 최대 확률")]
     private int gukBabMax;          //--- 국밥 최대 확률 ---//
-    [SerializeField]
+    [SerializeField, Header("파전 최대 확률")]
     private int paJeonMax;          //--- 파전 최대 확률 ---//
-    [SerializeField]
+    [SerializeField, Header("식혜 최대 확률")]
     private int riceJuiceMax;       //--- 식혜 최대 확률 ---//
 
     //--- 최소 확률 값과 최대 확률 값 변수 ---//
@@ -32,10 +34,6 @@ public class OrderMenu : MonoBehaviour
     {
         //--- Initialize Variables ---//
         isEat = false;
-
-        gukBabMax = 50;
-        paJeonMax = 80;
-        riceJuiceMax = 100;
 
         //--- Get Component ---//
         data = DataManager.Instance.data;

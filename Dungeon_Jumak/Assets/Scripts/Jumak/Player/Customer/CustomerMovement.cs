@@ -7,13 +7,14 @@ using System.Runtime.CompilerServices;          // 시스템 런타임 컴파일러 서비스
 public class CustomerMovement : MonoBehaviour
 {
     //---자리 관련 변수---//
+    [Header("배정받은 자리 인덱스(Don't touch!)")]
     public int seatIndex;
 
     [SerializeField, Header("손님의 이동속도")]
     private float speed = 3f;
 
     //---UI 관련 변수 (Speech_Box)---//
-    [SerializeField]
+    [SerializeField, Header("사람이 가득 찼을 때 나올 말풍선 프리팹")]
     private GameObject speech_Box_Full; //사람이 가득찼을 때 나올 말풍선 프리팹 
 
     //---자리 관련 boolean 값 ---//
