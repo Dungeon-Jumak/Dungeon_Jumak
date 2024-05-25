@@ -33,7 +33,7 @@ public class Define : MonoBehaviour
     public enum UIEvent
     {
         Click,
-        Drag,
+        //Drag,
     }
 
     //---마우스 이벤트를 구분하기 위해 Define.cs MouseEvent enum을 추가---//
