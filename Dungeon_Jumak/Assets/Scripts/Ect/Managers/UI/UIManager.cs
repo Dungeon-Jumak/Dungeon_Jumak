@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UIManager 
 {
-    int _order = 0; //최근에 사용한 sort order 번호
+    int _order = 10; //최근에 사용한 sort order 번호
 
     Stack<UI_Popup> _popupStacks = new Stack<UI_Popup> ();
     UI_Scene _sceneUI = null;
