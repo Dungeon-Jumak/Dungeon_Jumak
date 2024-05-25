@@ -49,10 +49,12 @@ public class GameManager : MonoBehaviour
     SceneManagerEx _sceneManager = new SceneManagerEx();//SceneManagerEx 持失
     ResourceManager _resource = new ResourceManager();//ResourceManager 持失
     SoundManager _soundManager = new SoundManager();//SoundManager 持失
+    UIManager _ui = new UIManager();//UIManager 持失
 
     public static SceneManagerEx Scene { get { return Instance._sceneManager; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
     public static SoundManager Sound { get { return Instance._soundManager; } }
+    public static UIManager UI { get { return Instance._ui; } }
 
     void Start()
     {

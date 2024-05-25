@@ -11,6 +11,8 @@ public class StartScene : BaseScene
     {
         data = DataManager.Instance.data;
         //GameManager.Sound.Play("13 Victory", Define.Sound.Bgm);
+        UI_Button ui = GameManager.UI.ShowPopupUI<UI_Button>();
+        GameManager.UI.ClosePopupUI(ui);
     }
 
     public void ConvertScene()
