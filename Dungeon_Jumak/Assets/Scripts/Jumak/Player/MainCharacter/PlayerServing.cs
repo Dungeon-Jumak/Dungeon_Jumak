@@ -32,7 +32,7 @@ public class PlayerServing : MonoBehaviour
 
     //CookGukBab Component
     [Header("국밥 자동 생성 관련 스크립트")]
-    [SerializeField] private CookGukbap cookGukbap;
+    [SerializeField] private FireManager fireManager;
 
     //Categori of Menu
     [Header("음식 카테고리")]
@@ -144,7 +144,7 @@ public class PlayerServing : MonoBehaviour
             }
 
             //Decrease Gukbab Count
-            if (foodObject.tag.Contains("Gukbab")) cookGukbap.gukbapCount--;
+            if (foodObject.tag.Contains("Gukbab")) fireManager.gukbabCount--;
         }
     }
 

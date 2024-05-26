@@ -1362,7 +1362,6 @@ GameObject:
   m_Component:
   - component: {fileID: 74687334}
   - component: {fileID: 74687336}
-  - component: {fileID: 74687335}
   m_Layer: 0
   m_Name: Furnace
   m_TagString: Untagged
@@ -1387,82 +1386,6 @@ Transform:
   m_Father: {fileID: 1058618892}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &74687335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 74687333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b1292e7a508c3c47a91abd1f69f225f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sizeText: {fileID: 88270415}
-  fireImage: {fileID: 275349685}
-  cook: 1
-  data:
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 0
-    isSound: 1
-    isPause: 0
-    maxSeatSize: 2
-    customerHeadCount: 0
-    isAllocated: 000000000000000000000000
-    isCustomer: 000000000000000000000000
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    tableMiniGame: 000000000000000000000000
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0000000000000000000000000000000000000000
-    curCoin: 0
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 1
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    riceJuiceClear: 0
-    isMiniGame: 0
-    gukbapCount: 0
-    pajeonCount: 0
-    riceJuiceCount: 0
-    nowGukbapPrice: 0
-    nowPajeonPrice: 0
-    nowRiceJuicePrice: 0
-    currentTotalPrice: 0
-    yesterdayTotalPrice: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 0000
-    isThirdMonster: 0
-    isSkillSuc: 1
-    chairPrice: 00000000000000000000000000000000
-    tablePrice: 00000000000000000000000000000000
-    backgroundPrice: 00000000000000000000000000000000
-    houseLV: 0
-    dansangLV: 0
-    tableLV: 0
-    days: 1
-  fire: {fileID: 74687333}
-  jumakScene: {fileID: 1464183232}
 --- !u!212 &74687336
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5146,7 +5069,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0174326933339484a8400391f0286f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fire: {fileID: 0}
+  touchCount: 0
+  audioManager: {fileID: 0}
   fireClickSound: fireClickSound
+  data:
+    curPlayerLV: 1
+    maxPlayerLV: 0
+    isPlayBGM: 1
+    isSound: 1
+    isPause: 0
+    maxSeatSize: 12
+    customerHeadCount: 0
+    isAllocated: 
+    isCustomer: 
+    onTables: 
+    isFinEat: 
+    tableMiniGame: 
+    menuCategories:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    ingredient: 0a00000000000000000000000000000000000000
+    curCoin: 500
+    maxCoin: 999999
+    curUnlockLevel: 1
+    maxUnlockLevel: 6
+    curMenuUnlockLevel: 3
+    maxMenuUnlockLevel: 3
+    fireSize: 100
+    riceJuiceClear: 0
+    isMiniGame: 0
+    gukbapCount: 0
+    pajeonCount: 0
+    riceJuiceCount: 0
+    nowGukbapPrice: 0
+    nowPajeonPrice: 0
+    nowRiceJuicePrice: 0
+    currentTotalPrice: 0
+    yesterdayTotalPrice: 0
+    isMonster: 0
+    runningTime: 0
+    playerHP: 3
+    monsterHP: 0
+    monsterSpawn: 
+    isThirdMonster: 0
+    isSkillSuc: 1
+    chairPrice: 000000000000000000000000
+    tablePrice: 000000000000000000000000
+    backgroundPrice: 000000000000000000000000
+    houseLV: 0
+    dansangLV: 0
+    tableLV: 0
+    days: 1
 --- !u!114 &275349685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5990,7 +5975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &332557827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9584,69 +9569,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3fa566e1d40d940baf50be47bea4e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fire: {fileID: 74687335}
-  gukbapCount: 0
-  TimeSlider: {fileID: 596245848}
-  data:
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 0
-    isSound: 1
-    isPause: 0
-    maxSeatSize: 2
-    customerHeadCount: 0
-    isAllocated: 000000000000000000000000
-    isCustomer: 000000000000000000000000
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    tableMiniGame: 000000000000000000000000
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0000000000000000000000000000000000000000
-    curCoin: 0
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 1
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    riceJuiceClear: 0
-    isMiniGame: 0
-    gukbapCount: 0
-    pajeonCount: 0
-    riceJuiceCount: 0
-    nowGukbapPrice: 0
-    nowPajeonPrice: 0
-    nowRiceJuicePrice: 0
-    currentTotalPrice: 0
-    yesterdayTotalPrice: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 0000
-    isThirdMonster: 0
-    isSkillSuc: 1
-    chairPrice: 00000000000000000000000000000000
-    tablePrice: 00000000000000000000000000000000
-    backgroundPrice: 00000000000000000000000000000000
-    houseLV: 0
-    dansangLV: 0
-    tableLV: 0
-    days: 1
-  jumakScene: {fileID: 1464183232}
+  gukbabCount: 0
+  timeSlider: {fileID: 596245848}
+  usuallyCookingTime: 5
+  slowCookingTime: 7
+  fireSizeTMP: {fileID: 88270415}
+  fireImage: {fileID: 275349685}
+  decreaseRate: 1
 --- !u!114 &596245848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21983,7 +21912,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.17934787, y: 0.3447941}
   m_AnchorMax: {x: 0.801187, y: 0.88100004}
-  m_AnchoredPosition: {x: 0.40000153, y: -54.000008}
+  m_AnchoredPosition: {x: 0.40000153, y: -54.000015}
   m_SizeDelta: {x: 68.75, y: 54.79}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!95 &1480842454
@@ -23262,7 +23191,7 @@ MonoBehaviour:
   - {fileID: 1856965603}
   - {fileID: 86083890}
   - {fileID: 1615712037}
-  cookGukbap: {fileID: 596245847}
+  fireManager: {fileID: 0}
   menuCategori: 
   menuValue: 0
 --- !u!4 &1590345070
@@ -24382,9 +24311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireSpeechBox: {fileID: 1243691859}
   fireMiniGamePopup: {fileID: 1513881630}
-  player: {fileID: 1590345071}
   blackPanel: {fileID: 95345043}
-  jumakScene: {fileID: 1464183232}
 --- !u!61 &1694382095
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26690,21 +26617,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ab444d5eae93442bb0a4fd30808c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gukbapPrefab: {fileID: 1110046530495576071, guid: 095ae0a6245436d45989761927674442,
-    type: 3}
+  wantGukbabCount: 0
+  gukbabPrefab: {fileID: 0}
   baseGukbabPrefab: {fileID: 1110046530495576071, guid: 095ae0a6245436d45989761927674442,
     type: 3}
-  wantCookingNum: 0
-  gukbapList: 
-  cookGukbap: {fileID: 596245847}
-  previousCount: 0
+  fireManager: {fileID: 596245847}
   idxs:
   - {fileID: 1975376820}
   - {fileID: 1528291734}
   - {fileID: 1145746033}
   - {fileID: 1090459645}
   - {fileID: 1944825314}
-  confirmFood: {fileID: 734917249}
 --- !u!4 &1902875263
 Transform:
   m_ObjectHideFlags: 0
@@ -27751,10 +27674,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5315eeaccd3164aa3856de05f7c51a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDelayTime: 0.5
-  delayTerm: 0
+  minDelayTime: 2
+  delayTerm: 2
   customerPrefab:
-  - {fileID: 6255801191618920546, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
+  - {fileID: 3758197614297234253, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
 --- !u!4 &1966199033
 Transform:
   m_ObjectHideFlags: 0

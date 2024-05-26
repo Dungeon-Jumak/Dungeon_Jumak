@@ -44,23 +44,23 @@ public class CustomerMovement : MonoBehaviour
     ///                                                             ///
     ///////////////////////////////////////////////////////////////////
 
-    private List<Transform> Route1_Left;        //Seat0
-    private List<Transform> Route1_Right;       //Seat1
+    [SerializeField] private List<Transform> Route1_Left;        //Seat0
+    [SerializeField] private List<Transform> Route1_Right;       //Seat1
 
-    private List<Transform> Route2_Left;        //Seat2
-    private List<Transform> Route2_Right;       //Seat3
+    [SerializeField] private List<Transform> Route2_Left;        //Seat2
+    [SerializeField] private List<Transform> Route2_Right;       //Seat3
 
-    private List<Transform> Route3_Left;        //Seat4
-    private List<Transform> Route3_Right;       //Seat5
+    [SerializeField] private List<Transform> Route3_Left;        //Seat4
+    [SerializeField] private List<Transform> Route3_Right;       //Seat5
 
-    private List<Transform> Route4_Left;        //Seat6
-    private List<Transform> Route4_Right;       //Seat7
+    [SerializeField] private List<Transform> Route4_Left;        //Seat6
+    [SerializeField] private List<Transform> Route4_Right;       //Seat7
 
-    private List<Transform> Route5_Left;        //Seat8
-    private List<Transform> Route5_Right;       //Seat9
+    [SerializeField] private List<Transform> Route5_Left;        //Seat8
+    [SerializeField] private List<Transform> Route5_Right;       //Seat9
 
-    private List<Transform> Route6_Left;        //Seat10
-    private List<Transform> Route6_Right;       //Seat11
+    [SerializeField] private List<Transform> Route6_Left;        //Seat10
+    [SerializeField] private List<Transform> Route6_Right;       //Seat11
 
     //---다양한 경로를 저장할 경로 리스트---//
     private List<List<Transform>> RouteList = new List<List<Transform>>();
@@ -106,8 +106,7 @@ public class CustomerMovement : MonoBehaviour
 
         wayPointIndex = 0;
 
-        //--- 경로를 초기화 하기 위한 인라인 함수 ---//
-        InitializeRoute();
+        FinRoute = new List<Transform> { };
 
         StartPoint = GameObject.Find("StartPoint").transform;   //손님의 시작 위치
         StopPoint = GameObject.Find("StopPoint").transform;     //손님의 정지 위치 (자리가 가득 찼을 경우 멈추는 Point)
@@ -139,8 +138,6 @@ public class CustomerMovement : MonoBehaviour
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //--- 셋팅을 초기화하기 위한 인라인 함수 ---//
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void Initialize()
     {
         //--- Initialize Customer Movement's Variables ---//
@@ -161,10 +158,9 @@ public class CustomerMovement : MonoBehaviour
         ObjectPool.ReturnObject(this);
     }
 
-    //--- 손님들의 동선 Waypoints를 초기화하는 인라인 함수 ---//
-    [MethodImpl(MethodImplOptions. AggressiveInlining)] //AggressiveInlinng : 가능할 경우 인라인
     private void InitializeRoute()
     {
+        //--- 경로를 초기화 하기 위한 인라인 함수 ---//
         //Route1 = Table1 왼쪽 자리
         Route1_Left.Add(GameObject.Find("Left_4").transform);
         Route1_Left.Add(GameObject.Find("Left_1").transform);
@@ -240,8 +236,7 @@ public class CustomerMovement : MonoBehaviour
         RouteList.Add(Route6_Right);
     }
 
-    //--- 앉을 자리 결정하는 인라인 함수 ---//
-    [MethodImpl(MethodImplOptions. AggressiveInlining)]
+    //--- 앉을 자리 결정하는 인라인 함수 ---// 
     private void SetNewSeat()
     {
         int count = 0; //반복 횟수를 따질 변수
@@ -281,16 +276,12 @@ public class CustomerMovement : MonoBehaviour
         }
     }
 
-    //---손님 기본 움직임에 관여하는 인라인 함수---//
-    [MethodImpl(MethodImplOptions. AggressiveInlining)]
     private void CustomerMove(Transform TargetTransform)
     {
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(curPosition, TargetTransform.position, step);
     }
 
-    //--- 손님 기본 움직임 시스템을 총괄하는 인라인 함수 ---//
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void CustomerMovingSystem()
     {
         //--- 게임 오버시 초기화 ---//
@@ -382,8 +373,6 @@ public class CustomerMovement : MonoBehaviour
         }
     }
 
-    //--- 현재 손님 오브젝트의 방향 설정 및 렌더링 변경하기 위한 인라인 함수 ---//
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void SetDirection()
     {
         //--- 현재 위치값을 불러옴 ---//

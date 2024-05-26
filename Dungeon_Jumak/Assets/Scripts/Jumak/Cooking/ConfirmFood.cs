@@ -9,7 +9,7 @@ public class ConfirmFood : MonoBehaviour
     public int wantCookingFood;
 
     [SerializeField]
-    private GukbapSetting gukbapSetting;
+    private GukbabGenerator gukbapSetting;
 
     [SerializeField]
     private SetFood setFood;
@@ -144,7 +144,7 @@ public class ConfirmFood : MonoBehaviour
                 if (!freeFood)
                 {
                     setFood.subIngredient(category, wantCookingFood);
-                    gukbapSetting.wantCookingNum = wantCookingFood;
+                    gukbapSetting.wantGukbabCount = wantCookingFood;
                 }
                 setFood.ButtonBloker(category);
                 break;
