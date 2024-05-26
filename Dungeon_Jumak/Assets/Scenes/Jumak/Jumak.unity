@@ -9425,7 +9425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &587767522
 Transform:
   m_ObjectHideFlags: 0
@@ -9454,7 +9454,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grandmaSpeechBox: {fileID: 884549860}
-  audioManager: {fileID: 0}
   cookingSound: cookingSound
   spriteRenderer: {fileID: 0}
 --- !u!95 &587767524
@@ -18542,67 +18541,6 @@ MonoBehaviour:
   - {fileID: 1856965603}
   - {fileID: 86083890}
   - {fileID: 1615712037}
-  data:
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 0
-    isSound: 1
-    isPause: 0
-    maxSeatSize: 2
-    customerHeadCount: 0
-    isAllocated: 000000000000000000000000
-    isCustomer: 000000000000000000000000
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    tableMiniGame: 000000000000000000000000
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0000000000000000000000000000000000000000
-    curCoin: 0
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 1
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    riceJuiceClear: 0
-    isMiniGame: 0
-    gukbapCount: 0
-    pajeonCount: 0
-    riceJuiceCount: 0
-    nowGukbapPrice: 0
-    nowPajeonPrice: 0
-    nowRiceJuicePrice: 0
-    currentTotalPrice: 0
-    yesterdayTotalPrice: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 0000
-    isThirdMonster: 0
-    isSkillSuc: 1
-    chairPrice: 00000000000000000000000000000000
-    tablePrice: 00000000000000000000000000000000
-    backgroundPrice: 00000000000000000000000000000000
-    houseLV: 0
-    dansangLV: 0
-    tableLV: 0
-    days: 1
-  audioManager: {fileID: 0}
-  coinSound: coinSound
 --- !u!4 &1249902242
 Transform:
   m_ObjectHideFlags: 0
@@ -21557,69 +21495,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStart: 0
   isPause: 0
-  bgmManager: {fileID: 0}
-  bgmSoundTrack: 2
-  maxVolume: 0.5
-  audioManager: {fileID: 0}
-  data:
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 1
-    isSound: 1
-    isPause: 0
-    maxSeatSize: 2
-    customerHeadCount: 0
-    isAllocated: 000000000000000000000000
-    isCustomer: 000000000000000000000000
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    tableMiniGame: 000000000000000000000000
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0000000000000000000000000000000000000000
-    curCoin: 0
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 1
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    riceJuiceClear: 0
-    isMiniGame: 0
-    gukbapCount: 0
-    pajeonCount: 0
-    riceJuiceCount: 0
-    nowGukbapPrice: 0
-    nowPajeonPrice: 0
-    nowRiceJuicePrice: 0
-    currentTotalPrice: 0
-    yesterdayTotalPrice: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 0000
-    isThirdMonster: 0
-    isSkillSuc: 1
-    chairPrice: 00000000000000000000000000000000
-    tablePrice: 00000000000000000000000000000000
-    backgroundPrice: 00000000000000000000000000000000
-    houseLV: 0
-    dansangLV: 0
-    tableLV: 0
-    days: 1
   fadeController: {fileID: 0}
   Dansangs:
   - {fileID: 933484436}
@@ -21628,11 +21503,6 @@ MonoBehaviour:
   - {fileID: 738344220}
   - {fileID: 972390402}
   - {fileID: 36157448}
-  pauseSound: pauseSound
-  bgmOn: {fileID: 2126115371}
-  bgmOff: {fileID: 421632120}
-  soundOn: {fileID: 849426703}
-  soundOff: {fileID: 429703123}
   JumakSystemObj:
   - {fileID: 587767521}
   - {fileID: 1902875261}
@@ -22113,7 +21983,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.17934787, y: 0.3447941}
   m_AnchorMax: {x: 0.801187, y: 0.88100004}
-  m_AnchoredPosition: {x: 0.40000153, y: -54}
+  m_AnchoredPosition: {x: 0.40000153, y: -54.000008}
   m_SizeDelta: {x: 68.75, y: 54.79}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!95 &1480842454
@@ -23350,14 +23220,14 @@ GameObject:
   - component: {fileID: 1590345070}
   - component: {fileID: 1590345079}
   - component: {fileID: 1590345078}
+  - component: {fileID: 1590345074}
+  - component: {fileID: 1590345073}
   - component: {fileID: 1590345071}
-  - component: {fileID: 1590345077}
   - component: {fileID: 1590345069}
+  - component: {fileID: 1590345077}
   - component: {fileID: 1590345076}
   - component: {fileID: 1590345072}
   - component: {fileID: 1590345075}
-  - component: {fileID: 1590345074}
-  - component: {fileID: 1590345073}
   m_Layer: 0
   m_Name: Chr_Player
   m_TagString: Player
@@ -23377,73 +23247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b0e04d4c01b159409412c3a758f93b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 1
-    isSound: 1
-    isPause: 0
-    maxSeatSize: 2
-    customerHeadCount: 0
-    isAllocated: 000000000000000000000000
-    isCustomer: 000000000000000000000000
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    tableMiniGame: 000000000000000000000000
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0000000000000000000000000000000000000000
-    curCoin: 0
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 1
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    riceJuiceClear: 0
-    isMiniGame: 0
-    gukbapCount: 0
-    pajeonCount: 0
-    riceJuiceCount: 0
-    nowGukbapPrice: 0
-    nowPajeonPrice: 0
-    nowRiceJuicePrice: 0
-    currentTotalPrice: 0
-    yesterdayTotalPrice: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 0000
-    isThirdMonster: 0
-    isSkillSuc: 1
-    chairPrice: 00000000000000000000000000000000
-    tablePrice: 00000000000000000000000000000000
-    backgroundPrice: 00000000000000000000000000000000
-    houseLV: 0
-    dansangLV: 0
-    tableLV: 0
-    days: 1
-  menuCategori: 
-  menuValue: 0
-  audioManager: {fileID: 0}
-  servingSound: servingSound
-  pickUpSound: pickUpSound
-  trashCanSound: trashCan
-  isPlace: 0
   isCarryingFood: 0
+  moveStop: 0
   tables:
   - {fileID: 1134207570}
   - {fileID: 1380647041}
@@ -23457,9 +23262,9 @@ MonoBehaviour:
   - {fileID: 1856965603}
   - {fileID: 86083890}
   - {fileID: 1615712037}
-  hand: {fileID: 946361063}
   cookGukbap: {fileID: 596245847}
-  moveStop: 0
+  menuCategori: 
+  menuValue: 0
 --- !u!4 &1590345070
 Transform:
   m_ObjectHideFlags: 0
@@ -23489,12 +23294,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc3911e25f0753459cf549d4ab4d080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiPath: {fileID: 1590345072}
-  target: {fileID: 1719715269}
-  delaySecond: 0
   hand: {fileID: 946361064}
-  m_canvas: {fileID: 275265097}
-  clickAnim: {fileID: 1719715265}
+  aiPath: {fileID: 1590345072}
+  clickAnim: {fileID: 1719715270}
+  target: {fileID: 1719715269}
 --- !u!114 &1590345072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23555,7 +23358,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.2}
     oldSize: {x: 6.095238, y: 7.095238}
-    newSize: {x: 1.28, y: 1.49}
+    newSize: {x: 6.095238, y: 7.095238}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -23704,7 +23507,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.28, y: 1.49}
+  m_Size: {x: 6.095238, y: 7.095238}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -25039,7 +24842,7 @@ GameObject:
   - component: {fileID: 1719715268}
   - component: {fileID: 1719715267}
   - component: {fileID: 1719715266}
-  - component: {fileID: 1719715265}
+  - component: {fileID: 1719715270}
   m_Layer: 0
   m_Name: Player's Target
   m_TagString: Untagged
@@ -25047,26 +24850,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &1719715265
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719715264}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a7a56521aa0440644ba2b969b9e5bcdc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!212 &1719715266
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25109,7 +24892,7 @@ SpriteRenderer:
   m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 87454f3c826fd4019a0b71460b684c50, type: 3}
-  m_Color: {r: 0.8584906, g: 0.34800202, b: 0, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -25181,6 +24964,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1719715270
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719715264}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a7a56521aa0440644ba2b969b9e5bcdc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1740503339
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,174 +1,152 @@
-using UnityEngine;
+// System
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using System;
+
+// Unity
+using UnityEngine.SceneManagement;
 using static Unity.VisualScripting.Member;
 using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Pathfinding;
 
+// PathFinding
+using Pathfinding;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
+
+
+//This Script For Player Moving
+[DisallowMultipleComponent]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private AIPath aiPath;
-    
-    [SerializeField]
-    private Transform target;
+    #region Variables
 
-    [SerializeField]
-    private float delaySecond;
+    //Player's Hand
+    [Header("플레이어 손 오브젝트")]
+    public Transform hand;
 
-    [SerializeField]
-    private Transform hand;
+    //For Distinguish Click Ui and Object
+    //For Click Exception Handilng
+    private Canvas m_canvas;
+    //GraphicRaycaster for Click
+    private GraphicRaycaster m_gr;
+    //PointerEventData for Click
+    private PointerEventData m_ped;
 
+    //RayCastHHIt2D
     private RaycastHit2D hit;
-    private Vector3 direction;
-    private Animator animator;//애니메이터
 
+    //AiPath For Click Moving
+    [Header("자동으로 움직이기 위한 AI Path")]
+    [SerializeField] private AIPath aiPath;
+
+    //Click Animation Component
+    [Header("클릭했을 때 나오는 커서 애니메이션")]
+    [SerializeField] private Animator clickAnim;
+
+    //Player Animator Component
+    private Animator animator;
+
+    //RigidBody Component
+    private Rigidbody2D rigidBody;
+
+    //Player Serving Component for Food Serving
+    private PlayerServing playerServing;
+
+    //Tracking Object For Click Moving 
+    [Header("플레이어가 자동으로 따라갈 타겟")]
+    [SerializeField] private Transform target;
+
+    //Direction Decision
+    private Vector3 direction;
+    private Vector3 curPos;
+    private Vector3 lastPos;
+
+    //Player's xPos
     private float xPos;
+
+    //Player's yPos
     private float yPos;
 
-
-    //---텔포 예외 처리---//
-    public Canvas m_canvas;
-
-    public Animator clickAnim;
-
-    GraphicRaycaster m_gr;
-    PointerEventData m_ped;
-
-    Vector3 curPos;
-    Vector3 lastPos;
-
-    Rigidbody2D rigidBody;
-
-    PlayerServing playerServing;
-
-
+    #endregion
 
     private void Start()
     {
+        //Initialize Variables
         m_canvas = GameObject.Find("UI_Canvas").GetComponent<Canvas>();
         m_gr = m_canvas.GetComponent<GraphicRaycaster>();
         m_ped = new PointerEventData(null);
 
-        rigidBody = GetComponent<Rigidbody2D>();
+        hit.point = transform.position;
+
+        //Add Component
         animator = GetComponent<Animator>();
+        rigidBody = GetComponent<Rigidbody2D>();
         playerServing = GetComponent<PlayerServing>();
+
+        //Initialize Location Variables
+        target.transform.position = this.transform.position;
+
+        curPos = transform.position;
+        lastPos = transform.position;
 
         xPos = transform.position.x;
         yPos = transform.position.y;
 
-        hit.point = transform.position;
-
-        lastPos = transform.position;
-
-        target.transform.position = this.transform.position;
-
+        //Initialize Start Animation
         animator.SetFloat("dirX", 0f);
         animator.SetFloat("dirY", -1f);
     }
 
     private void Update()
     {
+        //Checking touch HomePanel
+        CheckTouchPanel();
+
+        //Moving (Change Target Transform)
+        //Player track target to auto
         MoveControl();
 
+        //Method for Decision Direction
         SetDirection();
-        SetAnimation();
+    }
 
+    //this is method for checking to touch panel
+    private void CheckTouchPanel()
+    {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //레이 방향 설정
-            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero); //hit object 반환
+            //Decision ray direction
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
 
-            //---UI Raycast---//
+            //Return hit object
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+            //UI raycasting
             m_ped.position = Input.mousePosition;
             List<RaycastResult> results = new List<RaycastResult>();
             m_gr.Raycast(m_ped, results);
 
+            //Exception handling
             if (results.Count == 0)
             {
                 return;
             }
 
-            if (results[0].gameObject.name == "Home_Panel") //홈 패널을 클릭한 곳만 이동이 가능하도록 변경
+            //Check Click Panel
+            if (results[0].gameObject.name == "Home_Panel")
             {
+                //Play Animation
                 clickAnim.SetTrigger("click");
+
+                //Target for tracking 's positon change to hit point
                 target.transform.position = hit.point;
             }
+            else return;
         }
     }
 
-    void SetDirection()
-    {
-        //현재 위치와 방향 업데이트
-        curPos = transform.position;
-        direction = (curPos - lastPos).normalized;
-
-        lastPos = curPos;
-        
-    }
-
-    void SetAnimation()
-    {
-        if (direction != Vector3.zero)
-        {
-
-            animator.SetBool("isWalk", true);
-
-            //절댓값 y가 절댓값 x보다 더 크다면 (상하이동)
-            if (Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
-            {
-                if (direction.y > 0f)
-                {
-                    //위로 가는 모션
-                    
-                    animator.SetFloat("dirX", 0f);
-                    animator.SetFloat("dirY", 1f);
-
-                    if (hand.localPosition.x < 0f)
-                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
-                    
-                }
-                else if (direction.y <= 0f)
-                {
-                    animator.SetFloat("dirX", 0f);
-                    animator.SetFloat("dirY", -1f);
-
-                    if (hand.localPosition.x < 0f)
-                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
-                }
-            }
-            else if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
-            {
-                if (direction.x >= 0f)
-                {
-                    animator.SetFloat("dirX", 1f);
-                    animator.SetFloat("dirY", 0f);
-
-                    if (hand.localPosition.x > 0f)
-                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
-                }
-                else if (direction.x < 0f)
-                {
-                    animator.SetFloat("dirX", -1f);
-                    animator.SetFloat("dirY", 0f);
-
-                    if (hand.localPosition.x < 0f)
-                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
-                }
-            }
-        }
-        else if (Vector3.Distance(transform.position, target.transform.position) < 0.3f)
-        {
-            target.transform.position = transform.position;
-            animator.SetBool("isWalk", false);
-        }
-
-
-    }
-
+    //Method for moving control
     void MoveControl()
     {
         if (playerServing.moveStop)
@@ -178,4 +156,95 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isWalk", false);
         }
     }
+
+    //Method for set direction
+    void SetDirection()
+    {
+        //Update Current location and Direction
+        curPos = transform.localPosition;
+        direction = (curPos - lastPos).normalized;
+
+        //Assignment curPos to lastPos (Update lastPos)
+        lastPos = curPos;
+
+        //Set Animation
+        SetAnimation();
+    }
+
+    //Method for set animation
+    void SetAnimation()
+    {
+        //direction is not zero vector
+        if (direction != Vector3.zero)
+        {
+            //Active isWalk
+            animator.SetBool("isWalk", true);
+
+            //up-down move
+            if (Mathf.Abs(direction.x) + 0.2f < Mathf.Abs(direction.y))
+            {
+                //To up
+                if (direction.y > 0f)
+                { 
+                    //Play Moving Up Animation
+                    animator.SetFloat("dirX", 0f);
+                    animator.SetFloat("dirY", 1f);
+
+                    //Change hand position
+                    if (hand.localPosition.x < 0f)
+                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
+                    
+                }
+                //To down
+                else if (direction.y <= 0f)
+                {
+                    //Play Moving Down Animaion
+                    animator.SetFloat("dirX", 0f);
+                    animator.SetFloat("dirY", -1f);
+
+                    //Change hand position
+                    if (hand.localPosition.x < 0f)
+                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
+                }
+            }
+            //left-right move
+            else if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y) + 0.2f)
+            {
+                //To right
+                if (direction.x >= 0f)
+                {
+                    //Play Moving Right Animation
+                    animator.SetFloat("dirX", 1f);
+                    animator.SetFloat("dirY", 0f);
+
+                    //Change hand position
+                    if (hand.localPosition.x > 0f)
+                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
+                }
+                //To left
+                else if (direction.x < 0f)
+                {
+                    //Play Moving Left Animation
+                    animator.SetFloat("dirX", -1f);
+                    animator.SetFloat("dirY", 0f);
+
+                    //Change hand postion
+                    if (hand.localPosition.x < 0f)
+                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
+                }
+            }
+        }
+
+        //To stop around target
+        if (Vector3.Distance(transform.position, target.transform.position) < 0.1f)
+        {
+            //Changet target position to stop player
+            target.transform.position = transform.position;
+
+            //Inactiove Walk Animation
+            animator.SetBool("isWalk", false);
+        }
+    }
+
+
 }

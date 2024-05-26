@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class OrderSystem : MonoBehaviour
 {
-    [SerializeField]
-    private Transform[] tables;
+    //Tables Object
+    [SerializeField] private Transform[] tables;
 
     private Data data;
 

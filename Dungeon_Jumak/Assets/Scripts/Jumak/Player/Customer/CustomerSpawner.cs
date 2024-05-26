@@ -1,10 +1,15 @@
+// System
 using System.Collections;
 using System.Collections.Generic;
+
+// Unity
 using UnityEngine;
 
 /// <summary>
 /// 일정 시간마다 손님을 스폰할 스크립트
 /// </summary>
+
+[DisallowMultipleComponent]
 public class CustomerSpawner : MonoBehaviour
 {
     [SerializeField, Header("최소 스폰 시간")]

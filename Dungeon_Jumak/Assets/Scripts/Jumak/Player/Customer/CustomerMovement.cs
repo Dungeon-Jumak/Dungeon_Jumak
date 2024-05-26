@@ -1,9 +1,13 @@
+// System
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using System.Runtime.CompilerServices;          // 시스템 런타임 컴파일러 서비스 사용
 
+// Unity
+using UnityEngine;
+using UnityEngine.UI;
+
+[DisallowMultipleComponent]
 public class CustomerMovement : MonoBehaviour
 {
     //---자리 관련 변수---//

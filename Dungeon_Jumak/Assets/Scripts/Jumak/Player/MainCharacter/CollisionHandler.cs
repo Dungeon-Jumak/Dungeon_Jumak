@@ -1,8 +1,12 @@
-using UnityEngine;
+// System
 using System.Collections;
 using System.Collections.Generic;
+
+// Unity
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[DisallowMultipleComponent]
 public class CollisionHandler : MonoBehaviour
 {
     private PlayerServing playerServing;
@@ -34,11 +38,6 @@ public class CollisionHandler : MonoBehaviour
         {
             playerServing.ThrowAwayFood();
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-
     }
 
 }

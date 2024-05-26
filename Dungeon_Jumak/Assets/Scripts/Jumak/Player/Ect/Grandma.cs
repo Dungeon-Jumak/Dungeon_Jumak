@@ -8,9 +8,6 @@ public class Grandma : MonoBehaviour
     private GameObject grandmaSpeechBox;
 
     [SerializeField]
-    private AudioManager audioManager;
-
-    [SerializeField]
     private string cookingSound;
 
     [SerializeField]
@@ -18,9 +15,7 @@ public class Grandma : MonoBehaviour
 
     private void Start()
     {
-        audioManager = FindObjectOfType<AudioManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        Invoke("PlayCookingSound", 0.5f);
     }
 
     private void Update()
@@ -42,13 +37,5 @@ public class Grandma : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
             grandmaSpeechBox.SetActive(false);
-    }
-
-    //---cookingSound 관련 함수---//
-    private void PlayCookingSound()
-    {
-        audioManager.Play(cookingSound);
-        audioManager.SetLoop(cookingSound);
-        audioManager.Setvolume(cookingSound, 0.2f);
     }
 }
