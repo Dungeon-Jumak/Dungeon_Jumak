@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [DisallowMultipleComponent]
-public class FireTouch : MonoBehaviour
+public class MakeFire : MonoBehaviour
 {
     //Touch Count
     [Header("감지한 클릭 수")]

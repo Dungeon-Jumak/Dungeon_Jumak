@@ -118,7 +118,7 @@ public class PlayerServing : MonoBehaviour
         foodQueue.Enqueue(foodObject);
 
         //Set Parent foodObject transform to Player hand's transform
-        foodObject.transform.parent = playerMovement.hand.transform; 
+        foodObject.transform.SetParent(playerMovement.hand.transform); 
         foodObject.transform.localPosition = Vector3.zero;
     }
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 //Unity
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class FireFurnace : MonoBehaviour
 {
     //Fire MiniGame Speech Box
