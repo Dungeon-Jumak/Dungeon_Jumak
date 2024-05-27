@@ -107,6 +107,10 @@ public class PlayerServing : MonoBehaviour
         //Play Serving Animation
         animator.SetBool("isServing", true);
 
+        //Change Sprite Renderer
+        SpriteRenderer otherSpriteRenderer = foodObject.GetComponent<SpriteRenderer>();
+        otherSpriteRenderer.sortingLayerName = "Food_Up";
+
         //Change Layer When PickUpFood
         foodObject.layer = 7;
         
