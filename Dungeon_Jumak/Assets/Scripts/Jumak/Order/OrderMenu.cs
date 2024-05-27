@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class OrderMenu : MonoBehaviour
 {
     //--- 음식 먹음을 감지하는 bool 변수 ---//

@@ -5,50 +5,47 @@ using System.Collections.Generic;
 // Unity
 using UnityEngine;
 
-/// <summary>
-/// 일정 시간마다 손님을 스폰할 스크립트
-/// </summary>
-
 [DisallowMultipleComponent]
 public class CustomerSpawner : MonoBehaviour
 {
-    [SerializeField, Header("최소 스폰 시간")]
-    private float minDelayTime = 3f; //최소 딜레이 시간
+    //Min Spwan Delay
+    [Header("최소 스폰 시간")]
+    [SerializeField] private float minDelayTime = 3f;
 
-    [SerializeField, Header("최대 시간과의 간격")]
-    private float delayTerm; 
+    //Term of min and max time
+    [Header("최대 시간과의 간격")]
+    [SerializeField] private float delayTerm; 
 
-    [SerializeField]
-    private GameObject[] customerPrefab; //손님 프리팹
-
-    //---데이터---//
+    //Data
     private Data data;
 
     private void Start()
     {
+        //Get Data
         data = DataManager.Instance.data;
-        // --- 재귀 시작 --- //
+
+        //Start Coroutine
         StartCoroutine(SpawnCustomer());
     }
 
-    // --- 손님 스폰 코루틴 재귀  --- // 
+    //Recursion Coroutine for Spawn Customer
     IEnumerator SpawnCustomer()
     {
-        // 최소 딜레이 시간과 간격 시간에서 랜덤으로 젠 시간 생성
+        //Update Random Delay Time
         float realDelayTime = Random.Range(minDelayTime, minDelayTime + delayTerm + 1);
 
         //Debug.Log("다음 손님이 오는 시간 : " + realDelayTime);
 
-        // 재 계산한 값만큼 대기
+        //Wait Delay Time
         yield return new WaitForSeconds(realDelayTime);
 
-        // 오브젝트 풀링에서 풀을 가져옴
+        //Object Pool -> Get Object
         var customer = ObjectPool.GetObject();
 
-        // 손님의 HeadCount 증가
+        // Increase headcount of customer
         if(data.customerHeadCount < data.maxSeatSize) data.customerHeadCount++;
 
-        // 재귀
+        //Recursion
         StartCoroutine(SpawnCustomer());
     }
 }
