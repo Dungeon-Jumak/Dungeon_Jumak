@@ -5069,69 +5069,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0174326933339484a8400391f0286f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fire: {fileID: 0}
-  touchCount: 0
-  audioManager: {fileID: 0}
-  fireClickSound: fireClickSound
-  data:
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 1
-    isSound: 1
-    isPause: 0
-    maxSeatSize: 12
-    customerHeadCount: 0
-    isAllocated: 
-    isCustomer: 
-    onTables: 
-    isFinEat: 
-    tableMiniGame: 
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0a00000000000000000000000000000000000000
-    curCoin: 500
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 3
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    riceJuiceClear: 0
-    isMiniGame: 0
-    gukbapCount: 0
-    pajeonCount: 0
-    riceJuiceCount: 0
-    nowGukbapPrice: 0
-    nowPajeonPrice: 0
-    nowRiceJuicePrice: 0
-    currentTotalPrice: 0
-    yesterdayTotalPrice: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 
-    isThirdMonster: 0
-    isSkillSuc: 1
-    chairPrice: 000000000000000000000000
-    tablePrice: 000000000000000000000000
-    backgroundPrice: 000000000000000000000000
-    houseLV: 0
-    dansangLV: 0
-    tableLV: 0
-    days: 1
 --- !u!114 &275349685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21912,7 +21849,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.17934787, y: 0.3447941}
   m_AnchorMax: {x: 0.801187, y: 0.88100004}
-  m_AnchoredPosition: {x: 0.40000153, y: -54.000015}
+  m_AnchoredPosition: {x: 0.40000153, y: -54.000023}
   m_SizeDelta: {x: 68.75, y: 54.79}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!95 &1480842454
@@ -23191,7 +23128,7 @@ MonoBehaviour:
   - {fileID: 1856965603}
   - {fileID: 86083890}
   - {fileID: 1615712037}
-  fireManager: {fileID: 0}
+  fireManager: {fileID: 596245847}
   menuCategori: 
   menuValue: 0
 --- !u!4 &1590345070
