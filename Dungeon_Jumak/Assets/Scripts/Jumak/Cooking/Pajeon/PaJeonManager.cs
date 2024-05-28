@@ -8,6 +8,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class PaJeonManager : MonoBehaviour
 {
+    #region Variables
     //Pajeon Animator
     [Header("파전 뒤집는 애니메이터")]
     [SerializeField] private Animator animator;
@@ -52,6 +53,7 @@ public class PaJeonManager : MonoBehaviour
 
     //isPlaying sign
     private bool isPlaying = false;
+    #endregion
 
     private void Start()
     {
@@ -61,108 +63,20 @@ public class PaJeonManager : MonoBehaviour
 
     void Update()
     {
-        //To Detect Touch Down
-        if (Input.GetMouseButtonDown(0) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            //If is playing
-            if (isPlaying)
-            {
-                //Update drag end position each device
-                if (Input.touchCount > 0)
-                {
-                    //Update drag start position by touch position
-                    dragStartPosition = Input.GetTouch(0).position;
-                }
-                else
-                {
-                    //Update drag start position by Mouse position
-                    dragStartPosition = Input.mousePosition;
-                }
-            }
-        }
-        //To Detect Touch Up
-        else if (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
-        {
-            //If is playing
-            if (isPlaying)
-            {
-                //drag end position
-                Vector3 dragEndPosition;
-
-                //Update drag end position each device
-                if (Input.touchCount > 0)
-                {
-                    //Update drag end position by touch position
-                    dragEndPosition = Input.GetTouch(0).position;
-                }
-                else
-                {
-                    //Update drag end position by Mouse position
-                    dragEndPosition = Input.mousePosition;
-                }
-
-                //Update drag arrow direction
-                Vector3 dragArrowDirection = dragEndPosition - dragStartPosition;
-                
-                //Mimimum drag distance
-                float minDragDistance = 20f;
-
-                //if dragArrowDirection's size greater than minimum drag distance
-                if (dragArrowDirection.magnitude > minDragDistance)
-                {
-                    //Compute Distance according to absolute value
-                    if (Mathf.Abs(dragArrowDirection.x) > Mathf.Abs(dragArrowDirection.y))
-                    {
-                        //positive x = right
-                        if (dragArrowDirection.x > 0)
-                        {
-                            //update arrow direction
-                            arrowDirection = "Right";
-
-                            //check arrow direction
-                            CheckArrow(3);
-                        }
-                        //negative x = left
-                        else
-                        {
-                            //update arrow direction
-                            arrowDirection = "Left";
-
-                            //check arrow direction
-                            CheckArrow(2);
-                        }
-                    }
-                    else
-                    {
-                        //positive y = up
-                        if (dragArrowDirection.y > 0)
-                        {
-                            //update arrow direction
-                            arrowDirection = "Up";
-
-                            //check arrow direction
-                            CheckArrow(0);
-                        }
-                        //negative y = down
-                        else
-                        {
-                            //update arrow direction
-                            arrowDirection = "Down";
-
-                            //check arrow direction
-                            CheckArrow(1);
-                        }
-                    }
-                }
-            }
-        }
+        //Start game through button
+        //ChckDrag
+        CheckDrag();
     }
 
+    #region Mehtods Related Start
+
+    //For Asstignment Button
     public void StartButton()
     {
         StartCoroutine(StartGameInDelay());
     }
 
+    //For Delay
     IEnumerator StartGameInDelay()
     {
         yield return new WaitForSeconds(0.1f);
@@ -185,31 +99,9 @@ public class PaJeonManager : MonoBehaviour
         RandomArrowGenerator();
     }
 
-    //Random Arrow Generator
-    public void RandomArrowGenerator()
-    {
-        //define new arrow number array
-        arrowNums = new int[4];
+    #endregion
 
-        //generate random arrow num
-        for (int i = 0; i < arrowNums.Length; i++)
-        {
-            arrowNums[i] = Random.Range(0, arrowPrefabs.Length);
-        }
-
-        //instaniate arrow and place arrow
-        for (int i = 0; i < arrowNums.Length; i++)
-        {
-            //Prefab Instaniate
-            GameObject newArrowPrefab = Instantiate(arrowPrefabs[arrowNums[i]], transform);
-
-            //Place Arrow
-            newArrowPrefab.transform.position = locTransform[i].position;
-
-            //Resize Arrow
-            newArrowPrefab.transform.localScale = new Vector3(0.3f, 0.3f, 1f);
-        }
-    }
+    #region Mehtods Related Checking
 
     //Check Arrow
     void CheckArrow(int arrowNumber)
@@ -300,11 +192,145 @@ public class PaJeonManager : MonoBehaviour
         }
     }
 
+    //To Check Drag
+    public void CheckDrag()
+    {
+        //To Detect Touch Down
+        if (Input.GetMouseButtonDown(0) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            //If is playing
+            if (isPlaying)
+            {
+                //Update drag end position each device
+                if (Input.touchCount > 0)
+                {
+                    //Update drag start position by touch position
+                    dragStartPosition = Input.GetTouch(0).position;
+                }
+                else
+                {
+                    //Update drag start position by Mouse position
+                    dragStartPosition = Input.mousePosition;
+                }
+            }
+        }
+        //To Detect Touch Up
+        else if (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
+        {
+            //If is playing
+            if (isPlaying)
+            {
+                //drag end position
+                Vector3 dragEndPosition;
+
+                //Update drag end position each device
+                if (Input.touchCount > 0)
+                {
+                    //Update drag end position by touch position
+                    dragEndPosition = Input.GetTouch(0).position;
+                }
+                else
+                {
+                    //Update drag end position by Mouse position
+                    dragEndPosition = Input.mousePosition;
+                }
+
+                //Update drag arrow direction
+                Vector3 dragArrowDirection = dragEndPosition - dragStartPosition;
+
+                //Mimimum drag distance
+                float minDragDistance = 20f;
+
+                //if dragArrowDirection's size greater than minimum drag distance
+                if (dragArrowDirection.magnitude > minDragDistance)
+                {
+                    //Compute Distance according to absolute value
+                    if (Mathf.Abs(dragArrowDirection.x) > Mathf.Abs(dragArrowDirection.y))
+                    {
+                        //positive x = right
+                        if (dragArrowDirection.x > 0)
+                        {
+                            //update arrow direction
+                            arrowDirection = "Right";
+
+                            //check arrow direction
+                            CheckArrow(3);
+                        }
+                        //negative x = left
+                        else
+                        {
+                            //update arrow direction
+                            arrowDirection = "Left";
+
+                            //check arrow direction
+                            CheckArrow(2);
+                        }
+                    }
+                    else
+                    {
+                        //positive y = up
+                        if (dragArrowDirection.y > 0)
+                        {
+                            //update arrow direction
+                            arrowDirection = "Up";
+
+                            //check arrow direction
+                            CheckArrow(0);
+                        }
+                        //negative y = down
+                        else
+                        {
+                            //update arrow direction
+                            arrowDirection = "Down";
+
+                            //check arrow direction
+                            CheckArrow(1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #endregion
+
+    #region Methods Related Generate and Remove Arrows
+
+    //Random Arrow Generator
+    public void RandomArrowGenerator()
+    {
+        //define new arrow number array
+        arrowNums = new int[4];
+
+        //generate random arrow num
+        for (int i = 0; i < arrowNums.Length; i++)
+        {
+            arrowNums[i] = Random.Range(0, arrowPrefabs.Length);
+        }
+
+        //instaniate arrow and place arrow
+        for (int i = 0; i < arrowNums.Length; i++)
+        {
+            //Prefab Instaniate
+            GameObject newArrowPrefab = Instantiate(arrowPrefabs[arrowNums[i]], transform);
+
+            //Place Arrow
+            newArrowPrefab.transform.position = locTransform[i].position;
+
+            //Resize Arrow
+            newArrowPrefab.transform.localScale = new Vector3(0.3f, 0.3f, 1f);
+        }
+    }
+
+    //Remove Arrow
     public void RemoveArrow()
     {
         for (int i = arrowNums.Length - 1; i >= 0; i--)
         {
+            //Destroy Arrow Object
             Destroy(transform.GetChild(i).gameObject);
         }
     }
+
+    #endregion
 }

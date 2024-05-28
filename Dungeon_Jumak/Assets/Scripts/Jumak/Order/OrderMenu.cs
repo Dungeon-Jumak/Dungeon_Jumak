@@ -36,6 +36,10 @@ public class OrderMenu : MonoBehaviour
         //--- Initialize Variables ---//
         isEat = false;
 
+        gukBabMax = 50;
+        paJeonMax = 80;
+        riceJuiceMax = 100;
+
         //--- Get Component ---//
         data = DataManager.Instance.data;
         customerMovement = GetComponent<CustomerMovement>();

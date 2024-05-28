@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 60119050}
   - component: {fileID: 60119049}
   m_Layer: 0
-  m_Name: RiceCircle
+  m_Name: Check Kettle
   m_TagString: CheckKettle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5097,9 +5097,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 275349681}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0174326933339484a8400391f0286f5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 918cc56cfeeeb4c47bbd365a9030b8c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  touchCount: 0
+  fireIncreaseRate: 5
 --- !u!114 &275349685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5943,7 +5945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &332557827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6382,9 +6384,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 406654250}
-        m_TargetAssemblyTypeName: PajeonFurnace, Assembly-CSharp
-        m_MethodName: PlayPajeonSound
+      - m_Target: {fileID: 406654253}
+        m_TargetAssemblyTypeName: PaJeonManager, Assembly-CSharp
+        m_MethodName: StartButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7168,6 +7170,7 @@ GameObject:
   - component: {fileID: 406654252}
   - component: {fileID: 406654251}
   - component: {fileID: 406654250}
+  - component: {fileID: 406654253}
   m_Layer: 13
   m_Name: Pajeon_Furnace
   m_TagString: Untagged
@@ -7199,15 +7202,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 406654248}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c868a7b4eb2d0d48ad72e408264677f, type: 3}
+  m_Script: {fileID: 11500000, guid: 27a907d78e093d94f85824838e8386ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pajeonSpeechBox: {fileID: 353562062}
   pajeonMiniGamePopup: {fileID: 961007678}
   player: {fileID: 1590345069}
-  animator: {fileID: 1004220107}
+  noticeAnim: {fileID: 1004220107}
   blackPanel: {fileID: 95345043}
-  pajeonSound: pajeonSound
   jumakScene: {fileID: 1464183232}
 --- !u!61 &406654251
 BoxCollider2D:
@@ -7287,6 +7289,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &406654253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406654248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20f4696ce6c801b4fb70d8de26a6acaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1167108490}
+  furnace: {fileID: 406654250}
+  pajeonImage: {fileID: 1167108488}
+  PaJeonPrefab: {fileID: 5754116617699617044, guid: c4d82e799ddd0f64c95e79b5a8510206,
+    type: 3}
+  locTransform:
+  - {fileID: 337114908}
+  - {fileID: 324404080}
+  - {fileID: 134352341}
+  - {fileID: 1128419996}
+  playerHand: {fileID: 946361064}
+  arrowPrefabs:
+  - {fileID: 5366015378440330095, guid: 0993cf0b36d8db44b8cd7058ea512e52, type: 3}
+  - {fileID: 4606630231770634261, guid: f8be9845571b6024d8bb6d874d6d7330, type: 3}
+  - {fileID: 6182253740691619120, guid: 81291beaa67976e488c66b11bbcbe6a4, type: 3}
+  - {fileID: 2172009987680681406, guid: 41508b3d7aff5af4994aa8e51d4ad3ec, type: 3}
 --- !u!1 &411920807
 GameObject:
   m_ObjectHideFlags: 0
@@ -8246,22 +8276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0157e600edaff1847a91dbd9440015dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 1
-  needIngredients: 0200000000000000000000000000000000000000
-  isIngredients: 0100000000
-  needIngredientNum: 1
-  maxCookNum: 0
-  haveIngredientTMPs:
-  - {fileID: 20079818}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  maxSignHaveIngredient: 99
-  onClick: 0
-  canAdd: 0
-  freeMenu: 0
-  checkNum: 0
 --- !u!114 &482194693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9378,7 +9392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &587767522
 Transform:
   m_ObjectHideFlags: 0
@@ -9532,7 +9546,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 596245846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d3fa566e1d40d940baf50be47bea4e7, type: 3}
+  m_Script: {fileID: 11500000, guid: c887b85f845a1c64b8f2608f5587cdbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gukbabCount: 0
@@ -11486,7 +11500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &734917248
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11516,12 +11530,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 734917247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da8ebe5758a46e542a6ca0415dcb8087, type: 3}
+  m_Script: {fileID: 11500000, guid: 08763192eb16d964986e941951812c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wantCookingFood: 0
   gukbapSetting: {fileID: 1902875262}
-  setFood: {fileID: 734917250}
+  setFood: {fileID: 0}
   confirmPopUp: {fileID: 1503069091}
   chooseFoodPanel: {fileID: 332557826}
   startPanel: {fileID: 1678373884}
@@ -11542,42 +11556,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 734917247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f8e59e5e0620b94b8ecd4ac112fbc8e, type: 3}
+  m_Script: {fileID: 11500000, guid: 188d73c8f82ddc64c85140cf554b1703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gukbabImage: {fileID: 885133071}
-  pajeonImage: {fileID: 1643412914}
-  riceJuiceImage: {fileID: 69133898}
-  gukbabMaxNum: 0
-  pajeonMaxNum: 0
-  riceJuiceMaxNum: 0
-  subGukbabIngredient: 
-  subPajeonIngredient: 
-  subRiceJuiceIngredient: 
-  freeGukbab: 0
-  freePajeon: 0
-  freeRiceJuice: 0
-  gukbabSprites:
-  - {fileID: 21300000, guid: 5b05e71cd5d0fe54db763213d29b079c, type: 3}
-  - {fileID: 21300000, guid: 0f50158de76ca5e4fbd5d1cde6694852, type: 3}
-  gukbabs:
-  - {fileID: 2088391558}
-  - {fileID: 482194692}
-  pajeonSprites:
-  - {fileID: 21300000, guid: 7e8751395f67c48488fe79b77207eac4, type: 3}
-  pajeons:
-  - {fileID: 1934276200}
-  riceJuiceSprites:
-  - {fileID: 21300000, guid: 398ebc33e40f4a04bbef7e6cca122ce5, type: 3}
-  riceJuices:
-  - {fileID: 791043638}
-  foodNums: 
-  gukbabPrefabs:
-  - {fileID: 1110046530495576071, guid: 095ae0a6245436d45989761927674442, type: 3}
-  - {fileID: 1110046530495576071, guid: 5c804ec6332ddd543bb0ce6da49ec871, type: 3}
-  pajeonsPrefabs: []
-  riceJuicePrefabs: []
-  gukbapSetting: {fileID: 1902875262}
+  number: 0
+  needIngredients: 0000000000000000000000000000000000000000
+  isIngredients: 0000000000
+  needIngredientNum: 0
+  maxCookNum: 0
+  haveIngredientTMPs: []
+  maxSignHaveIngredient: 0
+  onClick: 0
+  canAdd: 0
+  freeMenu: 0
+  checkNum: 0
 --- !u!114 &734917251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11587,10 +11579,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 734917247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cb111645998b4948a33f52e2a49f5ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 576fa36f0866d3a498eacf9d9495fc21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: 
+  gukbabImage: {fileID: 0}
+  pajeonImage: {fileID: 0}
+  riceJuiceImage: {fileID: 0}
+  gukbabMaxNum: 0
+  pajeonMaxNum: 0
+  riceJuiceMaxNum: 0
+  subGukbabIngredient: 
+  subPajeonIngredient: 
+  subRiceJuiceIngredient: 
+  freeGukbab: 0
+  freePajeon: 0
+  freeRiceJuice: 0
+  gukbabSprites: []
+  gukbabs: []
+  pajeonSprites: []
+  pajeons: []
+  riceJuiceSprites: []
+  riceJuices: []
+  foodNums: 
+  gukbabPrefabs: []
+  pajeonsPrefabs: []
+  riceJuicePrefabs: []
+  gukbapSetting: {fileID: 0}
 --- !u!1 &738344220
 GameObject:
   m_ObjectHideFlags: 0
@@ -11924,17 +11938,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0157e600edaff1847a91dbd9440015dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 0
-  needIngredients: 0000000000000000000000000000000000000000
-  isIngredients: 0000000000
-  needIngredientNum: 0
-  maxCookNum: 0
-  haveIngredientTMPs: []
-  maxSignHaveIngredient: 0
-  onClick: 0
-  canAdd: 0
-  freeMenu: 1
-  checkNum: 0
 --- !u!114 &791043639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17332,7 +17335,7 @@ GameObject:
   - component: {fileID: 1209648272}
   - component: {fileID: 1209648271}
   m_Layer: 0
-  m_Name: Bottle
+  m_Name: Kettle
   m_TagString: Kettle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17452,15 +17455,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72afcfdb8d921224cbeba0ea58e096d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kettleObject: {fileID: 1209648269}
-  checkKettleObject: {fileID: 60119047}
   blackPanel: {fileID: 95345043}
+  miniGameParent: {fileID: 60119047}
+  kettleCollider: {fileID: 1209648271}
+  checkAreaCollider: {fileID: 60119049}
   successAni: {fileID: 1784518629}
   failureAni: {fileID: 253461298}
   juiceLiquid: {fileID: 1965250547}
+  cup: {fileID: 2014553618}
   juiceInCup: {fileID: 21300000, guid: 398ebc33e40f4a04bbef7e6cca122ce5, type: 3}
   emptyCup: {fileID: 21300000, guid: 6bcc6833596ed954fb2797198e72e6fc, type: 3}
-  cup: {fileID: 2014553618}
   jumakScene: {fileID: 1464183232}
 --- !u!212 &1209648275
 SpriteRenderer:
@@ -19799,7 +19803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1355039056}
   m_Layer: 0
-  m_Name: RiceJuiceMananger
+  m_Name: Rice Juice Manager
   m_TagString: RiceJuiceMiniGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21085,31 +21089,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427034638}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c75a822894979874486559d51b02ff78, type: 3}
+  m_Script: {fileID: 11500000, guid: 20f4696ce6c801b4fb70d8de26a6acaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumakScene: {fileID: 0}
   animator: {fileID: 1167108490}
   furnace: {fileID: 406654250}
   pajeonImage: {fileID: 1167108488}
-  audioManager: {fileID: 0}
-  successSound: 
-  failureSound: 
+  PaJeonPrefab: {fileID: 5754116617699617044, guid: c4d82e799ddd0f64c95e79b5a8510206,
+    type: 3}
   locTransform:
   - {fileID: 337114908}
   - {fileID: 324404080}
   - {fileID: 134352341}
   - {fileID: 1128419996}
-  directionPrefabs:
+  playerHand: {fileID: 946361064}
+  arrowPrefabs:
   - {fileID: 5366015378440330095, guid: 0993cf0b36d8db44b8cd7058ea512e52, type: 3}
   - {fileID: 4606630231770634261, guid: f8be9845571b6024d8bb6d874d6d7330, type: 3}
-  - {fileID: 6182253740691619120, guid: 81291beaa67976e488c66b11bbcbe6a4, type: 3}
   - {fileID: 2172009987680681406, guid: 41508b3d7aff5af4994aa8e51d4ad3ec, type: 3}
-  PaJeonPopUp: {fileID: 961007678}
-  PaJeonPrefab: {fileID: 5754116617699617044, guid: c4d82e799ddd0f64c95e79b5a8510206,
-    type: 3}
+  - {fileID: 6182253740691619120, guid: 81291beaa67976e488c66b11bbcbe6a4, type: 3}
 --- !u!1 &1431538740
 GameObject:
   m_ObjectHideFlags: 0
@@ -21878,7 +21878,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.17934787, y: 0.3447941}
   m_AnchorMax: {x: 0.801187, y: 0.88100004}
-  m_AnchoredPosition: {x: 0.40000153, y: -54.00003}
+  m_AnchoredPosition: {x: 0.40000153, y: -54.000046}
   m_SizeDelta: {x: 68.75, y: 54.79}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!95 &1480842454
@@ -24272,7 +24272,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1694382092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82bd792f17fd1334a9ac6111a80c1c4f, type: 3}
+  m_Script: {fileID: 11500000, guid: d5637e419f5008f4592676b56a18f79d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireSpeechBox: {fileID: 1243691859}
@@ -26570,7 +26570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1902875262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26580,11 +26580,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1902875261}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73ab444d5eae93442bb0a4fd30808c5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 89a7873f0454a82498eb87f73ef09c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wantGukbabCount: 0
-  gukbabPrefab: {fileID: 0}
+  gukbabPrefab: {fileID: 1110046530495576071, guid: 095ae0a6245436d45989761927674442,
+    type: 3}
   baseGukbabPrefab: {fileID: 1110046530495576071, guid: 095ae0a6245436d45989761927674442,
     type: 3}
   fireManager: {fileID: 596245847}
@@ -26740,22 +26741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0157e600edaff1847a91dbd9440015dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 1
-  needIngredients: 0100000000000000000000000000000000000000
-  isIngredients: 0100000000
-  needIngredientNum: 1
-  maxCookNum: 0
-  haveIngredientTMPs:
-  - {fileID: 1716304444}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  maxSignHaveIngredient: 99
-  onClick: 0
-  canAdd: 0
-  freeMenu: 0
-  checkNum: 0
 --- !u!114 &1918239270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27057,17 +27042,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0157e600edaff1847a91dbd9440015dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 0
-  needIngredients: 0000000000000000000000000000000000000000
-  isIngredients: 0000000000
-  needIngredientNum: 0
-  maxCookNum: 0
-  haveIngredientTMPs: []
-  maxSignHaveIngredient: 0
-  onClick: 0
-  canAdd: 0
-  freeMenu: 1
-  checkNum: 0
 --- !u!114 &1934276201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27627,7 +27601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1966199032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28991,17 +28965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0157e600edaff1847a91dbd9440015dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 0
-  needIngredients: 0000000000000000000000000000000000000000
-  isIngredients: 0000000000
-  needIngredientNum: 0
-  maxCookNum: 0
-  haveIngredientTMPs: []
-  maxSignHaveIngredient: 0
-  onClick: 0
-  canAdd: 0
-  freeMenu: 1
-  checkNum: 0
 --- !u!114 &2088391559
 MonoBehaviour:
   m_ObjectHideFlags: 0
