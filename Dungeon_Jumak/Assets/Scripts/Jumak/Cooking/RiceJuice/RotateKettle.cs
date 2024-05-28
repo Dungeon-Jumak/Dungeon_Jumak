@@ -1,47 +1,84 @@
+//Unity
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class RotateKettle : MonoBehaviour
 {
+    //Min Rotation Value
+    [Header("최소 회전 값")]
     [SerializeField] private float minRotation = 80f;
-    [SerializeField] private float maxRotation = 180f;
-    [SerializeField] private float rotationDuration = 3f; //===회전에 걸리는 시간===//
 
-    private float currentRotation; //===현재 회전 각도===//
-    private bool rotatingForward = true; //===현재 회전 방향===//
+    //Max Rotation Value
+    [Header("최대 회전 값")]
+    [SerializeField] private float maxRotation = 180f;
+
+    //Duration of Rotation
+    [Header("한번 회전하는데 걸리는 시간")]
+    [SerializeField] private float rotationDuration = 3f;
+
+    //Current Rotation Angle
+    private float currentRotation;
+
+    //Current Rotation Direction
+    private bool rotationDirection = true;
 
     void Start()
     {
+        //Initialze Current Rotation
         currentRotation = minRotation;
     }
 
     void Update()
     {
-        float rotationAmount = (maxRotation - minRotation) / rotationDuration * Time.deltaTime;
+        KettleRotation();
+    }
+    
+    //For Rotate Kettle
+    private void KettleRotation()
+    {
+        //Compute Step per frame
+        float step = (maxRotation - minRotation) / rotationDuration * Time.deltaTime;
 
-        if (rotatingForward)
+        //If positive direction
+        if (rotationDirection)
         {
-            currentRotation += rotationAmount;
+            //add step to current rotation
+            currentRotation += step;
 
-            //===최대 각도에 도달하면 회전 방향 변경===//
+            //if arrive max rotation
             if (currentRotation >= maxRotation)
             {
+                //Update current rotation
                 currentRotation = maxRotation;
-                rotatingForward = false;
+
+                //1 ~ 4 random rotration duration
+                rotationDuration = Random.Range(1f, 4f);
+
+                //Change Direction : positive -> negative
+                rotationDirection = false;
             }
         }
+        //If negative direction
         else
         {
-            currentRotation -= rotationAmount;
+            //sub step to current rotation
+            currentRotation -= step;
 
-            //===최소 각도에 도달하면 회전 방향 변경===//
+            //if arrive min rotation
             if (currentRotation <= minRotation)
             {
+                //Update current rotation
                 currentRotation = minRotation;
-                rotatingForward = true;
+
+                //1 ~ 4 random rotration duration
+                rotationDuration = Random.Range(1f, 4f);
+
+                //Change Direction : negative -> positive
+                rotationDirection = true;
             }
         }
 
-        //===회전 적용===//
+        //Update Euler Rotation
         transform.rotation = Quaternion.Euler(0f, 0f, currentRotation);
     }
 }

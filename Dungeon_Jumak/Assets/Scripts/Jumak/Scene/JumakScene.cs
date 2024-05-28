@@ -11,17 +11,7 @@ public class JumakScene : BaseScene
     public bool isStart;
     public bool isPause;
 
-    [SerializeField]
-    private BGMManager bgmManager;
-    [SerializeField]
-    private int bgmSoundTrack;
-    [SerializeField]
-    private float maxVolume;
 
-    [SerializeField]
-    private AudioManager audioManager;
-
-    [SerializeField]
     private Data data;
 
     [SerializeField]
@@ -30,19 +20,6 @@ public class JumakScene : BaseScene
     //---해금 할 단상 배열---//
     [SerializeField]
     private GameObject[] Dansangs;
-
-    [SerializeField]
-    private string pauseSound;
-
-    [SerializeField]
-    private GameObject bgmOn;
-    [SerializeField]
-    private GameObject bgmOff;
-
-    [SerializeField]
-    private GameObject soundOn;
-    [SerializeField]
-    private GameObject soundOff;
 
     [SerializeField]
     private GameObject[] JumakSystemObj;
@@ -98,14 +75,15 @@ public class JumakScene : BaseScene
 
     private void Start()
     {
-        data.gukbapCount = 0;
-        data.pajeonCount = 0;
-        data.riceJuiceCount = 0;
+
         playBGM = false;
 
         data = DataManager.Instance.data;
-        bgmManager = FindObjectOfType<BGMManager>();
-        audioManager = FindObjectOfType<AudioManager>();
+
+        data.gukbapCount = 0;
+        data.pajeonCount = 0;
+        data.riceJuiceCount = 0;
+
         fadeController = FindObjectOfType<FadeController>();
 
         for (int i = 0; i < data.onTables.Length; i++)
@@ -116,16 +94,9 @@ public class JumakScene : BaseScene
             data.isFinEat[i] = false;
         }
 
-        bgmManager.Stop();
 
         data.customerHeadCount = 0;
 
-        //---기본 BGM 실행---//
-        bgmManager.Play(bgmSoundTrack);
-        bgmManager.FadeInMusic(maxVolume);
-        bgmManager.SetLoop();
-
-        pauseSound = "pauseSound";
 
         timer = 0;
         isStart = false;
@@ -136,13 +107,8 @@ public class JumakScene : BaseScene
 
     public void Update()
     {
-        UpdateCoin();
-        BGMControl();
-        SoundControl();
-
         UpdateJumakFurniture();
 
-        BGMPlayer();
         coinTMP.text = data.curCoin.ToString() + "전";
         dayTMP.text = data.days.ToString() + " 일차";
 
@@ -191,7 +157,6 @@ public class JumakScene : BaseScene
         StartCoroutine(ActivateTextSequentially());
 
         data.currentTotalPrice = (data.gukbapCount * data.nowGukbapPrice) + (data.riceJuiceCount * data.nowRiceJuicePrice) + (data.pajeonCount * data.nowPajeonPrice);
-        audioManager.AllStop();
     }
 
     private IEnumerator ActivateTextSequentially()
@@ -211,18 +176,6 @@ public class JumakScene : BaseScene
 
         yield return new WaitForSeconds(1f);
 
-        /*
-        compareTotalPrice = data.currentTotalPrice - data.yesterdayTotalPrice;
-        if (compareTotalPrice > 0)
-        {
-            GameObject.Find("Compare_Recipt").GetComponent<TextMeshProUGUI>().text = compareTotalPrice.ToString() + "↑";
-        }
-        else
-        {
-            ameObject.Find("Compare_Recipt").GetComponent<TextMeshProUGUI>().text = compareTotalPrice.ToString() + "↓";
-        }
-        data.yesterdayTotalPrice = data.currentTotalPrice;
-        */
         endPanel = true;
     }
 
@@ -239,108 +192,19 @@ public class JumakScene : BaseScene
         }
     }
 
-    public void BGMPlayer()
-    {
-        if (!data.isPlayBGM)
-        {
-            playBGM = false;
-
-            bgmManager.CancelLoop();
-            bgmManager.Stop();
-        }
-
-        if (!playBGM && data.isPlayBGM)
-        {
-            playBGM = true;
-
-            bgmManager.Play(bgmSoundTrack);
-            bgmManager.FadeInMusic(maxVolume);
-            bgmManager.SetLoop();
-        }
-    }
-
     public void AddRecipe()
     {
         if (data.curMenuUnlockLevel < data.maxMenuUnlockLevel)
         {
-            audioManager.Play(pauseSound);
             data.curMenuUnlockLevel++;
         }
 
     }
 
-    // --- 코인 변경 --- //
-    public void UpdateCoin()
-    {
-        //GameObject.Find("UI_CoinText").GetComponent<TextMeshProUGUI>().text = DataManager.Instance.data.curCoin.ToString() + "전";
-    }
 
     public void ConvertScene(string _sceneName)
     {
-        bgmManager.Stop();
-        audioManager.AllStop();
         SceneManager.LoadScene(_sceneName);
-    }
-
-
-    public void BGMControl()
-    {
-        if (data.isPlayBGM)
-        {
-            bgmOn.SetActive(true);
-            bgmOff.SetActive(false);
-        }
-        else
-        {
-            bgmOn.SetActive(false);
-            bgmOff.SetActive(true);
-        }
-    }
-
-    public void SoundControl()
-    {
-        if (data.isSound)
-        {
-            soundOn.SetActive(true);
-            soundOff.SetActive(false);
-
-            for (int i = 0; i < audioManager.sounds.Length; i++)
-            {
-                audioManager.sounds[i].volume = 1f;
-                audioManager.sounds[i].Setvolume();
-            }
-        }
-        else
-        {
-            soundOn.SetActive(false);
-            soundOff.SetActive(true);
-
-            for (int i = 0; i < audioManager.sounds.Length; i++)
-            {
-                audioManager.sounds[i].volume = 0f;
-                audioManager.sounds[i].Setvolume();
-            }
-        }
-    }
-
-    public void BGMON()
-    {
-        data.isPlayBGM = true;
-    }
-
-    public void BGMOFF()
-    {
-        data.isPlayBGM = false;
-    }
-
-    public void SoundON()
-    {
-        data.isSound = true;
-    }
-
-    public void SoundOFF()
-    {
-        data.isSound = false;
     }
 
     public void InitialTransfrom(GameObject go)

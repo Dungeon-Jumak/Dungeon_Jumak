@@ -1,0 +1,127 @@
+//System
+using System.Collections.Generic;
+
+//Unity
+using UnityEngine;
+using UnityEngine.UI;
+
+[DisallowMultipleComponent]
+public class GukbabGenerator : MonoBehaviour 
+{
+    //Want Cooking Number
+    public int wantGukbabCount;
+
+    //Gukbab Prefab
+    [Header("국밥 프리팹")]
+    public GameObject gukbabPrefab;
+
+    //Base Gukbab Prefab
+    [Header("기본 국밥 프리팹")]
+    [SerializeField] GameObject baseGukbabPrefab;
+
+    //Gukbab List for check gukbab location
+    private List<bool> gukbabList;
+
+    //FireManager Script
+    [Header("파이어 매니저")]
+    [SerializeField] private FireManager fireManager;
+
+    //Previous Count
+    private int previousCount;
+
+    //Index for Place Gukbab
+    [Header("국밥을 배치하기 위한 인덱스 배열")]
+    [SerializeField] private Transform[] idxs;
+
+    void Start()
+    {
+        //Initialize Variables
+        previousCount = fireManager.gukbabCount;
+
+        gukbabList = new List<bool> { false, };
+    }
+
+    void Update()
+    {
+        //Check Gukbab Presence
+        CheckGukbabPresence();
+
+        // Compare GukbabCount 
+        if (fireManager.gukbabCount != previousCount)
+        {
+            // Only Run When gukbab count is increased
+            if (fireManager.gukbabCount > previousCount)
+            {
+                // Get Next Index
+                int index = GetNextAvailableIndex();
+
+                // Can Add Gukbab
+                if (index != -1) 
+                {
+                    //If sold out want gukbab count below zero,
+                    //change prefab to basegukbab
+                    if (wantGukbabCount <= 0) gukbabPrefab = baseGukbabPrefab;
+
+                    //Generate Gukbab and Place Empty Index
+                    GameObject newGukbab = Instantiate(gukbabPrefab, idxs[index].position, Quaternion.identity);
+
+                    //If Want gukbab count greater than zero, decrease count
+                    if(wantGukbabCount > 0) wantGukbabCount--; 
+
+                    //Change parent of newgukbab object
+                    newGukbab.transform.parent = transform;
+
+                    //Place Index Convert true
+                    gukbabList[index] = true;
+                }
+            }
+            //Update previousCount
+            previousCount = fireManager.gukbabCount;
+        }
+    }
+
+    // Find Next Index
+    int GetNextAvailableIndex()
+    {
+        // Find Empty Index
+        for (int i = 0; i < gukbabList.Count; i++)
+        {
+            if (!gukbabList[i]) 
+            {
+                //Return Empty Index
+                return i;
+            }
+        }
+
+        //Return -1 when does not exist empty index
+        return -1;
+    }
+
+    // Check Gukbab Presence
+    void CheckGukbabPresence()
+    {
+        // Search Empty Index
+        for (int i = 0; i < gukbabList.Count; i++)
+        {
+            //Get Coliders
+            Collider2D[] colliders = Physics2D.OverlapPointAll(idxs[i].transform.position);
+
+            //Temp Variable
+            bool gukbapPresent = false;
+            
+            //Search Colliders
+            foreach (Collider2D collider in colliders)
+            {
+                //Detect Gukbab Convert to true
+                if (collider.gameObject.tag.Contains("Gukbab"))
+                {
+                    gukbapPresent = true;
+                    break;
+                }
+            }
+
+            //Update GukbabList
+            gukbabList[i] = gukbapPresent;
+        }
+    }
+}

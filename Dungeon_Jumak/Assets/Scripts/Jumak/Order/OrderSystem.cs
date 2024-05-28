@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class OrderSystem : MonoBehaviour
 {
-    [SerializeField]
-    private Transform[] tables;
+    //Tables Object
+    [SerializeField] private Transform[] tables;
 
     private Data data;
 

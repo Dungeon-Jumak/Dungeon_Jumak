@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class OrderMenu : MonoBehaviour
 {
     //--- 음식 먹음을 감지하는 bool 변수 ---//
@@ -34,6 +35,10 @@ public class OrderMenu : MonoBehaviour
     {
         //--- Initialize Variables ---//
         isEat = false;
+
+        gukBabMax = 50;
+        paJeonMax = 80;
+        riceJuiceMax = 100;
 
         //--- Get Component ---//
         data = DataManager.Instance.data;
