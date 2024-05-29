@@ -1,103 +1,152 @@
+//System
 using System.Collections;
 using System.Collections.Generic;
+
+//Unity
 using UnityEngine;
+
+//TMP
 using TMPro;
 
+[DisallowMultipleComponent]
 public class SetMenu : MonoBehaviour
 {
+    //Button Number
+    [Header("버튼의 번호(0부터 시작)")]
     public int number;
+
+    //Count of Need Ingredient
+    [Header("필요한 재료의 총 갯수")]
+    public int needIngredientNum;
+
+    //Count Each of Need Ingredients
+    [Header("필요한 각 재료의 갯수")]
     public int[] needIngredients = new int[5];
-    public bool[] isIngredients = new bool[5]; //재료 필요 여부에 대한
-    public int needIngredientNum; //재료 갯수
 
-    public int maxCookNum; // 최대 요리 가능 갯수
+    //Max Can Cook Count
+    [Header("음식을 만들 수 있는 최대 갯수")]
+    public int maxCookCount;
 
-    public TextMeshProUGUI[] haveIngredientTMPs;
+    //TMP of Having Ingredient
+    [Header("갖고 있는 재료의 갯수")]
+    [SerializeField] TextMeshProUGUI[] haveIngredientTMPs;
 
-    public int maxSignHaveIngredient; //화면에 보여줄 최대 재료 갯수
-
+    //Max ingredient to show on screen 
+    [Header("최대로 표시할 재료의 갯수")]
+    [SerializeField] int maxSignHaveIngredient;
+    
+    //Check Click
+    [Header("버튼 클릭 여부")]
     public bool onClick = false;
 
+    //Check Can Add
+    [Header("음식을 추가할 수 있는지 여부")]
     public bool canAdd; // 재료가 충분할 시 음식을 추가 여부를 판단하기 위한 변수
 
+    //Check Free Menu
+    [Header("재료 필요 없이 사용할 수 있는 기본 메뉴인지 확인")]
     public bool freeMenu; // 재료 없이 사용할 수 있는 메뉴 인지
 
-    Data data;
+    //Data
+    private Data data;
+
+    //Color
     Color color;
 
-    [SerializeField]
-    private int checkNum; //재료 갯수와 비교하기 위한 변수
+    //Check Count
+    [SerializeField] private int checkNum;
 
     private void Start()
     {
+        //Get Data
         data = DataManager.Instance.data;
 
+        //If is not base menu, start coroutine
         if(!freeMenu)
             StartCoroutine(CheckIngredient());
+        //If is base menu, can add = true
         else canAdd = true;
 
+        //max Sign Have Ingredient is '99'
         maxSignHaveIngredient = 99;
     }
 
+    //Coroutine for Checking Ingredient
     IEnumerator CheckIngredient()
     {
+        //Init Check Num, Check Num is variable to ingredient's count
         checkNum = 0;
 
+        //Chect Ingredient
         for (int i = 0; i < data.ingredient.Length; i++)
         {
-            //해당 블록의 필요 재료일 때
-            if (isIngredients[i])
+            //if need ingredient
+            if (needIngredients[i] > 0)
             {
-                //현재 갖고 있는 재료가 필요한 재료보다 많다면
+                //if current number of ingredient greater than to need ingredient
                 if (data.ingredient[i] >= needIngredients[i])
                 {
+                    //Increase CheckNum
                     checkNum++;
 
-                    int tempMaxCookNum = data.ingredient[i] / needIngredients[i];
+                    //temp variable that can cook max count
+                    int tempmaxCookCount = data.ingredient[i] / needIngredients[i];
                     
-                    if(i == 0 || tempMaxCookNum < maxCookNum)
-                        maxCookNum = tempMaxCookNum;
+                    //if first checking or tempmaxcount less than last max cook count, update max cook count
+                    if(i == 0 || tempmaxCookCount < maxCookCount)
+                        maxCookCount = tempmaxCookCount;
 
-
-
-                    //텍스트 변경
+                    //change text color => if enough ingredient, color is black
                     color = Color.black;
                     haveIngredientTMPs[i].color = color;
 
-                    haveIngredientTMPs[i].text = data.ingredient[i].ToString();
-
+                    //display text (greater than max)
                     if (data.ingredient[i] > maxSignHaveIngredient) 
                         haveIngredientTMPs[i].text = maxSignHaveIngredient.ToString();
+                    //display tex (less than max)
+                    else
+                        haveIngredientTMPs[i].text = data.ingredient[i].ToString();
                 }
+                //lack ingredient
                 else
                 {
+                    //change text color => if lack ingredient, color is red
                     color = Color.red;
                     haveIngredientTMPs[i].color = color;
 
+                    //display text
                     haveIngredientTMPs[i].text = data.ingredient[i].ToString();
                 }
             }
         }
 
-        //만약에 재료 갯수가 모두 있다면 canAdd = true
+        //if all ingredient is enough, can add
         if (checkNum == needIngredientNum) canAdd = true;
+        //if all ingredient is not enough, can't add
         else canAdd = false;
 
+        //yield retrun
         yield return null;
 
+        //recursion coroutine
         StartCoroutine(CheckIngredient());
     }
 
+    //OnClick
     public void OnClick()
     {
+        //If click Button and can add
         if (canAdd)
         {
+            //Convert onclick sign
             onClick = true;
         }
     }
 
+    //OffClick
     public void OffClick()
     {
+        //Convert onclck sign. if is not click button
         onClick = false;
     }
 }
