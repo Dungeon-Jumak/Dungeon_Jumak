@@ -1,47 +1,70 @@
+//System
 using System.Collections;
 using System.Collections.Generic;
+
+//Unity
 using UnityEngine;
 using UnityEngine.UI;
+
+//TMP
 using TMPro;
 
+[DisallowMultipleComponent]
 public class ConfirmFood : MonoBehaviour
 {
+    //Want Coocking Food Count
+    [Header("원하는 음식 조리 갯수")]
     public int wantCookingFood;
 
-    [SerializeField]
-    private GukbabGenerator gukbapSetting;
+    //
+    [Header("국밥을 생성하는 Gukbab Generator 스크립트")]
+    [SerializeField] private GukbabGenerator gukbapSetting;
 
-    [SerializeField]
-    private SetFood setFood;
-    [SerializeField]
-    private GameObject confirmPopUp;
+    //
+    [Header("확정창으로 넘길 때 정보를 불러오기 위한 SetFood 스크립트")]
+    [SerializeField] private SetFood setFood;
 
-    [SerializeField]
-    private GameObject chooseFoodPanel;
-    [SerializeField]
-    private GameObject startPanel;
+    //
+    [Header("확정 팝업 오브젝트")]
+    [SerializeField] private GameObject confirmPopUp;
 
-    //확정을 위한 버튼 배열
-    [SerializeField]
-    private Button[] confirmButtons;
-    //현재 클릭한 확정 버튼
-    [SerializeField]
-    private Button curConfirmButton;
+    //
+    [Header("음식 선택 패널 오브젝트")]
+    [SerializeField] private GameObject chooseFoodPanel;
+    
+    //
+    [Header("게임 시작 패널 오브젝트")]
+    [SerializeField] private GameObject startPanel;
 
-    [SerializeField]
-    private TextMeshProUGUI countTMP;
-    [SerializeField]
-    private Image foodImage;
+    //
+    [Header("확정을 위한 버튼 배열")]
+    [SerializeField] private Button[] confirmButtons;
 
+    //
+    [Header("현재 클릭한 확정 버튼")]
+    [SerializeField] private Button curConfirmButton;
+
+    //
+    [Header("음식의 조리 갯수를 표시하기 위한 TMP")]
+    [SerializeField] private TextMeshProUGUI countTMP;
+
+    //
+    [Header("팝업 가운데 들어가는 음식 이미지")]
+    [SerializeField] private Image foodImage;
+
+    //Max Cooking Count
     private int maxCookingFood;
 
-    Data data;
+    //Data
+    private Data data;
     
+    //Category
     private string category;
 
-    [SerializeField]
-    private bool freeFood;
+    //Check Base Food
+    [SerializeField] private bool freeFood;
 
+    //Check Start Game
     private bool gameStart;
 
     private void Start()
@@ -102,7 +125,7 @@ public class ConfirmFood : MonoBehaviour
         {
             case "Gukbab":
                 category = _category;
-                maxCookingFood = setFood.gukbabMaxNum;
+                maxCookingFood = setFood.gukbabMaxCount;
                 foodImage.sprite = setFood.gukbabImage.sprite;
 
                 freeFood = setFood.freeGukbab;
@@ -112,7 +135,7 @@ public class ConfirmFood : MonoBehaviour
 
             case "Pajeon":
                 category = _category;
-                maxCookingFood = setFood.pajeonMaxNum;
+                maxCookingFood = setFood.pajeonMaxCount;
                 foodImage.sprite = setFood.pajeonImage.sprite;
 
                 freeFood = setFood.freePajeon;
@@ -122,7 +145,7 @@ public class ConfirmFood : MonoBehaviour
 
             case "RiceJuice":
                 category = _category;
-                maxCookingFood = setFood.riceJuiceMaxNum;
+                maxCookingFood = setFood.riceJuiceMaxCount;
                 foodImage.sprite = setFood.riceJuiceImage.sprite;
 
                 freeFood = setFood.freeRiceJuice;

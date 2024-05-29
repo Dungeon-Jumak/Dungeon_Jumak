@@ -1,34 +1,42 @@
+//System
 using System.Collections;
 using System.Collections.Generic;
+
+//Unity
 using UnityEngine;
 using UnityEngine.UI;
 
 //선택한 음식을 Confirm창에 이미지를 보여주기 위한 스크립트
+[DisallowMultipleComponent]
 public class SetFood : MonoBehaviour
 {
-    //현재 클릭한 각 음식의 모습을 보여줄 이미지
+    //Image of click food
     public Image gukbabImage;
     public Image pajeonImage;
     public Image riceJuiceImage;
 
-    public int gukbabMaxNum;
-    public int pajeonMaxNum;
-    public int riceJuiceMaxNum;
+    //Count of can cook food
+    public int gukbabMaxCount;
+    public int pajeonMaxCount;
+    public int riceJuiceMaxCount;
 
-    //뺄 재료의 갯수
+    //Consumption ingredient each of foods
     public int[] subGukbabIngredient;
     public int[] subPajeonIngredient;
     public int[] subRiceJuiceIngredient;
 
+    //Is free or is not free
     public bool freeGukbab;
     public bool freePajeon;
     public bool freeRiceJuice;
 
-    //음식 리스트의 각 스프라이트와 버튼 배열
-    [SerializeField]
-    private Sprite[] gukbabSprites;
-    [SerializeField]
-    private SetMenu[] gukbabs;
+    //Sprties of Gukbabs
+    [Header("각 국밥의 이미지 배열")]
+    [SerializeField] private Sprite[] gukbabSprites;
+
+    //SetMenu of Gukbabs
+    [Header("각 국밥 버튼 배열")]
+    [SerializeField] private SetMenu[] gukbabs;
 
     [SerializeField]
     private Sprite[] pajeonSprites;
@@ -88,7 +96,7 @@ public class SetFood : MonoBehaviour
                         //확정 버튼 이미지 변경
                         gukbabImage.sprite = gukbabSprites[i];
 
-                        gukbabMaxNum = gukbabs[i].maxCookNum;
+                        gukbabMaxCount = gukbabs[i].maxCookCount;
 
                         if(gukbabs[i].freeMenu) freeGukbab = true;
                         else freeGukbab = false;
@@ -106,7 +114,7 @@ public class SetFood : MonoBehaviour
                         pajeons[i].OffClick();
                         pajeonImage.sprite = pajeonSprites[i];
 
-                        pajeonMaxNum = pajeons[i].maxCookNum;
+                        pajeonMaxCount = pajeons[i].maxCookCount;
 
                         if (pajeons[i].freeMenu) freePajeon = true;
                         else freePajeon = false;
@@ -124,7 +132,7 @@ public class SetFood : MonoBehaviour
                         riceJuices[i].OffClick();
                         riceJuiceImage.sprite = riceJuiceSprites[i];
 
-                        riceJuiceMaxNum = riceJuices[i].maxCookNum;
+                        riceJuiceMaxCount = riceJuices[i].maxCookCount;
 
                         if(riceJuices[i].freeMenu) freeRiceJuice = true;
                         else freeRiceJuice = false;
@@ -147,7 +155,7 @@ public class SetFood : MonoBehaviour
             case "Gukbab":
                 for (int i = 0; i < data.ingredient.Length; i++)
                 {
-                    if (gukbabs[gukbabIdx].isIngredients[i])
+                    if (gukbabs[gukbabIdx].needIngredients[i] > data.ingredient[i])
                         data.ingredient[i] -= gukbabs[gukbabIdx].needIngredients[i] * count;
                 }
                 gukbapSetting.gukbabPrefab = gukbabPrefabs[gukbabIdx];
@@ -156,7 +164,7 @@ public class SetFood : MonoBehaviour
             case "Pajeon":
                 for (int i = 0; i < data.ingredient.Length; i++)
                 {
-                    if (pajeons[pajeonIdx].isIngredients[i])
+                    if (pajeons[pajeonIdx].needIngredients[i] > data.ingredient[i])
                         data.ingredient[i] -= pajeons[pajeonIdx].needIngredients[i] * count;
                 }
                 break;
@@ -164,7 +172,7 @@ public class SetFood : MonoBehaviour
             case "RiceJuice":
                 for (int i = 0; i < data.ingredient.Length; i++)
                 {
-                    if (riceJuices[riceJuiceIdx].isIngredients[i])
+                    if (riceJuices[riceJuiceIdx].needIngredients[i] > data.ingredient[i])
                         data.ingredient[i] -= riceJuices[riceJuiceIdx].needIngredients[i] * count;
                 }
                 break;
