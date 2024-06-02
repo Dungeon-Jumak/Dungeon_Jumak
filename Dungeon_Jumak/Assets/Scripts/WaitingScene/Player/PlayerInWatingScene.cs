@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class PlayerInWatingScene : MonoBehaviour
 {
+    //Player animator variable
     [SerializeField]
     private Animator animator;
 
-    //---이동 관련 변수---//
+    //player translation variables
     [SerializeField]
     private Vector3 curPosition;
     [SerializeField]
@@ -16,72 +17,72 @@ public class PlayerInWatingScene : MonoBehaviour
     [SerializeField]
     private float speed;
 
+    //Jumak And Dunjeon sign variables
     [SerializeField]
     private Transform jumakSign;
     [SerializeField]
     private Transform dungeonSign;
+
+    
     [SerializeField]
     private Transform targetTransform;
 
-    [SerializeField]
-    private string hillWalkSound;
-
     void Start()
     {
-        curPosition = new Vector3(0f, -3.8f);
-        isMove = false;
-        speed = 3f;
+        animator = GetComponent<Animator>(); //Animator setting
 
-        animator = GetComponent<Animator>();
+        curPosition = new Vector3(0f, -3.8f); //current position setting
+        isMove = false; //isMove setting
+        speed = 3f; //speed setting
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //If bool variable isMove is true, move to target
         if (isMove)
         {
             MoveToTarget();
         }
     }
 
+    //Go to the selected target location
     private void MoveToTarget()
     {
-        curPosition = transform.position;
-
         float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(curPosition, targetTransform.position, step);
+        transform.position = Vector3.MoveTowards(curPosition, targetTransform.position, step); // Player moving by MoveTowards
+
+        curPosition = transform.position;//Set the current position to curPosition variable
     }
 
-    //주막 방향으로 이동
+    //Go to the JumakSign position
     public void MoveJumak()
     {
-        isMove = true;
+        isMove = true;//Set isMove variable
+        animator.SetInteger("DirX", -1);//Set animator
 
-        animator.SetInteger("DirX", -1);
         targetTransform = jumakSign.transform;
     }
 
-    //던전 방향으로 이동
+    //Go to the Dunjeon position
     public void MoveDungeon()
     {
-        isMove = true;
+        isMove = true;//Set isMove variable
+        animator.SetInteger("DirX", 1);//Set animator
 
-        animator.SetInteger("DirX", 1);
-        DataManager.Instance.data.playerHP = 3;
-        DataManager.Instance.data.runningTime = 0f;
         targetTransform = dungeonSign.transform;
     }
 
-    //상점 방향으로 이동
-    /*
-    public void MoveMarket()
+    //Go to the Market position
+    /*public void MoveMarket()
     {
+        isMove = true;
     }*/
 
-    private void OnTriggerEnter2D(Collider2D col)
+    //OnTrigger function to changing the scene
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (col.CompareTag("Target_Jumak")) GameManager.Scene.LoadScene(Define.Scene.Jumak);
-        else if(col.CompareTag("Target_Dunjeon")) GameManager.Scene.LoadScene(Define.Scene.Map);
+        if (other.CompareTag("Target_Jumak")) GameManager.Scene.LoadScene(Define.Scene.Jumak);
+        else if(other.CompareTag("Target_Dunjeon")) GameManager.Scene.LoadScene(Define.Scene.Map);
         //else if(col.CompareTag("Target_Market")) GameManager.Scene.LoadScene(Define.Scene.Market);
     }
 }

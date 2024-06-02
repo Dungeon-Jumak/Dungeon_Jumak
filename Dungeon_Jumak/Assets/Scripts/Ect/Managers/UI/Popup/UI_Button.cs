@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 
 public class UI_Button : UI_Popup
 {
+    //Button, Text, GameObject 열거형 선언
     enum Buttons
     {
         Start_Button,
@@ -38,7 +39,6 @@ public class UI_Button : UI_Popup
         Bind<TextMeshProUGUI>(typeof(Texts));
         //Bind<GameObject>(typeof(GameObjects));
 
-        GetText((int)Texts.Start_Text).text = "WOW";
         GetButton((int)Buttons.Option_Button).gameObject.AddUIEvent(OnButtonClicked);
     }
 

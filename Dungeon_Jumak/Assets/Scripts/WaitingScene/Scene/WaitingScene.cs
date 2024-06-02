@@ -5,20 +5,24 @@ using UnityEngine;
 
 public class WaitingScene : BaseScene
 {
-    [SerializeField]
-    private Data data;
-
     void Start()
     {
-        data = DataManager.Instance.data;
-        GameManager.Sound.Play("Wait", Define.Sound.Bgm);
+        //GameManager.Sound.Play("Wait", Define.Sound.Bgm);//Play The Bgm Sound in WaitingScene
     }
 
+    //Current Scene Settings
     protected override void Init()
     {
         SceneType = Define.Scene.WaitingScene;
     }
 
+    //Click Sound
+    public void ClickSound()
+    {
+        //GameManager.Sound.Play("PickFood", Define.Sound.Effect);
+    }
+
+    //When convert to next scene
     public override void Clear()
     {
         Debug.Log("Waiting Scene changed!");

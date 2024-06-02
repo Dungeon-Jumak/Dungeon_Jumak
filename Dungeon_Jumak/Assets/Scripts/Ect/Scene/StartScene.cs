@@ -9,10 +9,8 @@ public class StartScene : BaseScene
 
     void Start()
     {
-        data = DataManager.Instance.data;
-        //GameManager.Sound.Play("13 Victory", Define.Sound.Bgm);
-        UI_Button ui = GameManager.UI.ShowPopupUI<UI_Button>();
-        GameManager.UI.ClosePopupUI(ui);
+        data = DataManager.Instance.data;//Data.cs
+        //GameManager.Sound.Play("13 Victory", Define.Sound.Bgm);//Play The Bgm Sound in StartScene
     }
 
     public void ConvertScene()
@@ -20,12 +18,13 @@ public class StartScene : BaseScene
         GameManager.Scene.LoadScene(Define.Scene.WaitingScene);
     }
 
+    //Click Sound
     public void ClickSound()
     {
         //GameManager.Sound.Play("PickFood", Define.Sound.Effect);
     }
 
-    //씬 전환할 때 필요한 기능
+    //When convert to next scene
     public override void Clear()
     {
         Debug.Log("StartScene Scene changed!");
