@@ -7,34 +7,40 @@ public class MapScene : BaseScene
 {
     public GameObject movingPanel;
 
-    [SerializeField]
-    private Data data;
-
     void Start()
     {
-        data = DataManager.Instance.data;
-        GameManager.Sound.Play("Map_Front", Define.Sound.Effect);
+        //GameManager.Sound.Play("Map_Front", Define.Sound.Effect);//Play The Bgm Sound in MapScene
     }
 
+    //Current Scene Settings
     protected override void Init()
     {
         SceneType = Define.Scene.Map;
     }
 
+    //When convert to next scene
     public override void Clear()
     {
         Debug.Log("Map Scene changed!");
     }
 
+    //Activate StartDunjeon panel when select going to dunjeon btn
     public void OpenMovingPanel()
     {
-        movingPanel.SetActive(true);
-        StartCoroutine(LoadSceneAfterDelay(1)); 
+        movingPanel.SetActive(true);//activate the StartDunjeon panel
+        StartCoroutine(LoadSceneAfterDelay(1)); //StartCoroutine with 1 second
     }
 
+    //IEnumerator function
     IEnumerator LoadSceneAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        GameManager.Scene.LoadScene(Define.Scene.MainDunjeon);
+        GameManager.Scene.LoadScene(Define.Scene.Dunjeon);
+    }
+
+    //Convert to WaitingScene
+    public void ConvertScene()
+    {
+        GameManager.Scene.LoadScene(Define.Scene.WaitingScene);
     }
 }

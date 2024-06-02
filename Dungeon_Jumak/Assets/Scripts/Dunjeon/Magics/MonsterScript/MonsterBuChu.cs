@@ -8,7 +8,7 @@ public class MonsterBuChu : MonoBehaviour
     
     private Data data;
 
-    private AudioManager audioManager;
+    //private AudioManager audioManager;
     void Awake()
     {
         data = DataManager.Instance.data;
@@ -16,7 +16,7 @@ public class MonsterBuChu : MonoBehaviour
 
     private void Start()
     {
-        audioManager = FindObjectOfType<AudioManager>();
+        //audioManager = FindObjectOfType<AudioManager>();
         StartCoroutine(StartBattle());
     }
 
@@ -42,7 +42,7 @@ public class MonsterBuChu : MonoBehaviour
     void CallHpFunc()
     {
         if (data.isSound)
-            audioManager.Play("damagedSound");
+            //audioManager.Play("damagedSound");
         data.playerHP -= 0.5f;
     }
 }

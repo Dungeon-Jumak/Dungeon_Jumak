@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MarketScene : MonoBehaviour
 {
-    BGMManager bgmManager;
+    //BGMManager bgmManager;
 
     private void Start()
     {
-        bgmManager = FindObjectOfType<BGMManager>();
+        //bgmManager = FindObjectOfType<BGMManager>();
 
-        bgmManager.Play(7);
+        //bgmManager.Play(7);
     }
 
 
