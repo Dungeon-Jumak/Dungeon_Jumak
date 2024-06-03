@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Dunjeon/Map.unity
     guid: 77fb6cd932af5a840a04685da53c96f2
   - enabled: 1
-    path: Assets/Scenes/Dunjeon/Dunjeon.unity
+    path: Assets/Scenes/Dunjeon/Stage1.unity
     guid: ccc6679b23f272245877e58ae5a0f614
   - enabled: 1
     path: Assets/Scenes/Market.unity

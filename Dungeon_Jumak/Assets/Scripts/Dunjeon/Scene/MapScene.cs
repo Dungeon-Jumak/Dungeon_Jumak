@@ -35,7 +35,7 @@ public class MapScene : BaseScene
     IEnumerator LoadSceneAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        GameManager.Scene.LoadScene(Define.Scene.Dunjeon);
+        GameManager.Scene.LoadScene(Define.Scene.Stage1);
     }
 
     //Convert to WaitingScene

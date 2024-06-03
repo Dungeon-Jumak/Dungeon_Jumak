@@ -11,7 +11,7 @@ public class Define : MonoBehaviour
         StartScene,
         WaitingScene,
         Map,
-        Dunjeon,
+        Stage1,
         Market,
     }
 

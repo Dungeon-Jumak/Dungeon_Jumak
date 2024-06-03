@@ -892,6 +892,7 @@ MonoBehaviour:
     monsterSpawn: 0000
     isThirdMonster: 0
     isSkillSuc: 1
+    isTimerRun: 0
     chairPrice: 00000000000000000000000000000000
     tablePrice: 00000000000000000000000000000000
     backgroundPrice: 00000000000000000000000000000000

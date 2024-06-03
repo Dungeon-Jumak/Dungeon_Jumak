@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using UnityEngine.Rendering;
 
 [Serializable]
@@ -58,14 +59,17 @@ public class Data
     public int currentTotalPrice;
     public int yesterdayTotalPrice;
 
-    //---던전 관련---//
+    //---달리기 관련---//
     public bool isMonster = false;//Monster spawn 여부 확인
     public float runningTime = 0;//달리기 게임 실행 시간
+
+    //---던전 관련---//
     public float playerHP = 3;//HP - 하트 
     public float monsterHP; // 몬스터HP - 하트 
     public bool[] monsterSpawn = new bool[2];//0: 부추, 1: 돼지
     public bool isThirdMonster = false;
     public bool isSkillSuc = true;
+    public bool isTimerRun = false;
 
     //--상점 관련--//
     public int[] chairPrice = new int[3];
