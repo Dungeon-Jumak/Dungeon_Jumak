@@ -180,7 +180,7 @@ public class SetFood : MonoBehaviour
 
     }
 
-    public void ButtonBloker(string category)
+    public void ButtonBlocker(string category)
     {
         switch (category)
         {

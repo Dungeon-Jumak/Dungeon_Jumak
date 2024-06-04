@@ -8,6 +8,7 @@ using UnityEngine;
 //TMP
 using TMPro;
 
+//본 스크립트는 View Port안 Contents들 버튼에 각 부착한 후 각 버튼에 메뉴에 대한 정보를 사전 Setting하도록 한다
 [DisallowMultipleComponent]
 public class SetMenu : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class SetMenu : MonoBehaviour
     public int number;
 
     //Count of Need Ingredient
-    [Header("필요한 재료의 총 갯수")]
+    [Header("필요한 재료 종류의 총 갯수")]
     public int needIngredientNum;
 
     //Count Each of Need Ingredients

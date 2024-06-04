@@ -169,7 +169,7 @@ public class ConfirmFood : MonoBehaviour
                     setFood.subIngredient(category, wantCookingFood);
                     gukbapSetting.wantGukbabCount = wantCookingFood;
                 }
-                setFood.ButtonBloker(category);
+                setFood.ButtonBlocker(category);
                 break;
 
             case "Pajeon":
@@ -177,7 +177,7 @@ public class ConfirmFood : MonoBehaviour
                 {
                     setFood.subIngredient(category, wantCookingFood);
                 }
-                setFood.ButtonBloker(category);
+                setFood.ButtonBlocker(category);
                 break;
 
             case "RiceJuice":
@@ -185,7 +185,7 @@ public class ConfirmFood : MonoBehaviour
                 {
                     setFood.subIngredient(category, wantCookingFood);
                 }
-                setFood.ButtonBloker(category);
+                setFood.ButtonBlocker(category);
                 break;
         }
         curConfirmButton.interactable = false;
