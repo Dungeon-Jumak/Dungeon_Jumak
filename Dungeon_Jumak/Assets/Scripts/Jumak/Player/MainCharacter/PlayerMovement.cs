@@ -27,7 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     //For Distinguish Click Ui and Object
     //For Click Exception Handilng
-    private Canvas m_canvas;
+    [Header("Äµ¹ö½º")]
+    [SerializeField] private Canvas m_canvas;
     //GraphicRaycaster for Click
     private GraphicRaycaster m_gr;
     //PointerEventData for Click
@@ -73,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         //Initialize Variables
-        m_canvas = GameObject.Find("UI_Canvas").GetComponent<Canvas>();
         m_gr = m_canvas.GetComponent<GraphicRaycaster>();
         m_ped = new PointerEventData(null);
 
@@ -134,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             //Check Click Panel
-            if (results[0].gameObject.name == "Home_Panel")
+            if (results[0].gameObject.name == "[Panel] Jumak")
             {
                 //Play Animation
                 clickAnim.SetTrigger("click");

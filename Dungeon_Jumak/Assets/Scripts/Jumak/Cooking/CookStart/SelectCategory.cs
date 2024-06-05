@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public class SelectFood : MonoBehaviour
+public class SelectCategory : MonoBehaviour
 {
     //if click category button, change category
     //Category String
