@@ -236,10 +236,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60f60f23b5ae86448c1b838d07be32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackPanelIdx: 9
+  blackPanelIndex: 0
+  miniGameParent: {fileID: 0}
   riceJuicePrefab: {fileID: 3502175190827869967, guid: 366380a53953f6f498a2ba84f5e26448,
     type: 3}
-  idx: 0
+  tableIdx: 0
 --- !u!58 &2804859513378388579
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -355,73 +356,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   fadeInDuration: 20
-  startY: -0.8
-  endY: 0
-  timer: 0
-  isMiniGame: 0
   shadowRenderer: {fileID: 0}
   orderMenu: {fileID: 7587194474118179910}
-  data:
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 0
-    isSound: 1
-    isPause: 0
-    maxSeatSize: 2
-    curSeatSize: 0
-    isAllocated: 000000000000000000000000
-    isCustomer: 000000000000000000000000
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    tableMiniGame: 000000000000000000000000
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0000000000000000000000000000000000000000
-    curCoin: 0
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 1
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    riceJuiceClear: 0
-    isMiniGame: 0
-    gukbapCount: 0
-    pajeonCount: 0
-    riceJuiceCount: 0
-    nowGukbapPrice: 0
-    nowPajeonPrice: 0
-    nowRiceJuicePrice: 0
-    currentTotalPrice: 0
-    yesterdayTotalPrice: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 0000
-    isThirdMonster: 0
-    isSkillSuc: 1
-    chairPrice: 00000000000000000000000000000000
-    chairLevel: 0
-    tablePrice: 00000000000000000000000000000000
-    tableLevel: 0
-    backgroundPrice: 00000000000000000000000000000000
-    backgroundLevel: 0
-    days: 1
-  audioManager: {fileID: 0}
-  timeOutSound: 
 --- !u!1 &3127954590773575477
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,73 +457,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   fadeInDuration: 20
-  startY: -0.8
-  endY: 0
-  timer: 0
-  isMiniGame: 0
   shadowRenderer: {fileID: 0}
   orderMenu: {fileID: 7587194474118179910}
-  data:
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 0
-    isSound: 1
-    isPause: 0
-    maxSeatSize: 2
-    curSeatSize: 0
-    isAllocated: 000000000000000000000000
-    isCustomer: 000000000000000000000000
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    tableMiniGame: 000000000000000000000000
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0000000000000000000000000000000000000000
-    curCoin: 0
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 1
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    riceJuiceClear: 0
-    isMiniGame: 0
-    gukbapCount: 0
-    pajeonCount: 0
-    riceJuiceCount: 0
-    nowGukbapPrice: 0
-    nowPajeonPrice: 0
-    nowRiceJuicePrice: 0
-    currentTotalPrice: 0
-    yesterdayTotalPrice: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 0000
-    isThirdMonster: 0
-    isSkillSuc: 1
-    chairPrice: 00000000000000000000000000000000
-    chairLevel: 0
-    tablePrice: 00000000000000000000000000000000
-    tableLevel: 0
-    backgroundPrice: 00000000000000000000000000000000
-    backgroundLevel: 0
-    days: 1
-  audioManager: {fileID: 0}
-  timeOutSound: 
 --- !u!1 &3758197614297234253
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,6 +563,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef9382ede82e7548967304a5bb2b5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seatIndex: 0
+  speed: 2
+  speech_Box_Full: {fileID: 773121011443230919, guid: 2a74bbfeb1dfc4d4b98d9d94d4e81aa1,
+    type: 3}
+  numberOfCustomerType: 4
   Route1_Left: []
   Route1_Right: []
   Route2_Left: []
@@ -704,88 +580,6 @@ MonoBehaviour:
   Route5_Right: []
   Route6_Left: []
   Route6_Right: []
-  FinRoute:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  seatIndex: 0
-  StartPoint: {fileID: 0}
-  StopPoint: {fileID: 0}
-  isFull: 0
-  isArrive: 0
-  isReturn: 0
-  isJustreturn: 0
-  CurPosition: {x: 0, y: 0, z: 0}
-  WayPointIndex: 0
-  speed: 2
-  speech_Box_Full: {fileID: 773121011443230919, guid: 2a74bbfeb1dfc4d4b98d9d94d4e81aa1,
-    type: 3}
-  data:
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 0
-    isSound: 1
-    isPause: 0
-    maxSeatSize: 2
-    curSeatSize: 0
-    isAllocated: 000000000000000000000000
-    isCustomer: 000000000000000000000000
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    tableMiniGame: 000000000000000000000000
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0000000000000000000000000000000000000000
-    curCoin: 0
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 1
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    riceJuiceClear: 0
-    isMiniGame: 0
-    gukbapCount: 0
-    pajeonCount: 0
-    riceJuiceCount: 0
-    nowGukbapPrice: 0
-    nowPajeonPrice: 0
-    nowRiceJuicePrice: 0
-    currentTotalPrice: 0
-    yesterdayTotalPrice: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 0000
-    isThirdMonster: 0
-    isSkillSuc: 1
-    chairPrice: 00000000000000000000000000000000
-    chairLevel: 0
-    tablePrice: 00000000000000000000000000000000
-    tableLevel: 0
-    backgroundPrice: 00000000000000000000000000000000
-    backgroundLevel: 0
-    days: 1
-  orderMenu: {fileID: 7587194474118179910}
-  spriteRenderer: {fileID: 0}
-  audioSource: {fileID: 0}
-  audioClips:
-  - {fileID: 8300000, guid: e2309d8f04c4a43439c1733eab553a27, type: 3}
-  - {fileID: 8300000, guid: 0e4049c6651821547a1c1165bf3a85f5, type: 3}
-  jumakScene: {fileID: 0}
 --- !u!114 &7587194474118179910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,72 +593,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEat: 0
-  percentOfMenu: 0
   gukBabMax: 50
   paJeonMax: 100
   riceJuiceMax: 70
-  min: 0
-  max: 50
-  data:
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 0
-    isSound: 1
-    isPause: 0
-    maxSeatSize: 2
-    curSeatSize: 0
-    isAllocated: 000000000000000000000000
-    isCustomer: 000000000000000000000000
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    tableMiniGame: 000000000000000000000000
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0000000000000000000000000000000000000000
-    curCoin: 0
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 1
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    riceJuiceClear: 0
-    isMiniGame: 0
-    gukbapCount: 0
-    pajeonCount: 0
-    riceJuiceCount: 0
-    nowGukbapPrice: 0
-    nowPajeonPrice: 0
-    nowRiceJuicePrice: 0
-    currentTotalPrice: 0
-    yesterdayTotalPrice: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 0000
-    isThirdMonster: 0
-    isSkillSuc: 1
-    chairPrice: 00000000000000000000000000000000
-    chairLevel: 0
-    tablePrice: 00000000000000000000000000000000
-    tableLevel: 0
-    backgroundPrice: 00000000000000000000000000000000
-    backgroundLevel: 0
-    days: 1
-  customerMovement: {fileID: 4285332828292065435}
 --- !u!50 &1181485420420884445
 Rigidbody2D:
   serializedVersion: 4
@@ -1545,70 +1276,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   fadeInDuration: 20
-  startY: -0.8
-  endY: 0
-  timer: 0
-  isMiniGame: 0
   shadowRenderer: {fileID: 0}
   orderMenu: {fileID: 7587194474118179910}
-  data:
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 0
-    isSound: 1
-    isPause: 0
-    maxSeatSize: 2
-    curSeatSize: 0
-    isAllocated: 000000000000000000000000
-    isCustomer: 000000000000000000000000
-    onTables: 000000000000000000000000
-    isFinEat: 000000000000000000000000
-    tableMiniGame: 000000000000000000000000
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0000000000000000000000000000000000000000
-    curCoin: 0
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 1
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    riceJuiceClear: 0
-    isMiniGame: 0
-    gukbapCount: 0
-    pajeonCount: 0
-    riceJuiceCount: 0
-    nowGukbapPrice: 0
-    nowPajeonPrice: 0
-    nowRiceJuicePrice: 0
-    currentTotalPrice: 0
-    yesterdayTotalPrice: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 0000
-    isThirdMonster: 0
-    isSkillSuc: 1
-    chairPrice: 00000000000000000000000000000000
-    chairLevel: 0
-    tablePrice: 00000000000000000000000000000000
-    tableLevel: 0
-    backgroundPrice: 00000000000000000000000000000000
-    backgroundLevel: 0
-    days: 1
-  audioManager: {fileID: 0}
-  timeOutSound: 

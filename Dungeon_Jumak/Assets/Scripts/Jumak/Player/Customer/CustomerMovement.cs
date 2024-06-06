@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;          // 시스템 런타임 컴파일러 서비스 사용
+using UnityEditor.Animations;
+using UnityEditor.PackageManager.Requests;
 
 // Unity
 using UnityEngine;
@@ -21,7 +23,10 @@ public class CustomerMovement : MonoBehaviour
 
     //Speech Box GameObject
     [Header("사람이 가득 찼을 때 나올 말풍선 프리팹")]
-    [SerializeField] private GameObject speech_Box_Full; 
+    [SerializeField] private GameObject speech_Box_Full;
+
+    [Header("랜덤으로 등장하는 손님 종류의 수")]
+    [SerializeField] private int numberOfCustomerType;
 
     //Bool to use sign
     private bool isFull = false;       
@@ -125,6 +130,9 @@ public class CustomerMovement : MonoBehaviour
 
         jumakScene = GameObject.Find("@Scene").GetComponent<JumakScene>();
 
+        //Random Animator Controller
+        ChangeCustomerAnimatorController();
+
         //Initialize Last Position for Set Direction
         lastPosition = transform.position;
 
@@ -152,11 +160,26 @@ public class CustomerMovement : MonoBehaviour
         //Initialize Other Component Variables
         orderMenu.isEat = false;
 
+        //Set New Animator Controller
+        ChangeCustomerAnimatorController();
+
         //Set New Seat
         SetNewSeat();
 
         //ObjectPool -> Return Object
         ObjectPool.ReturnObject(this);
+    }
+
+    //Change Customer Sprite
+    private void ChangeCustomerAnimatorController()
+    {
+        int randomIndex = Random.Range(1, numberOfCustomerType + 1);
+        Debug.Log(randomIndex + "번째 애니메이션 컨트롤러");
+
+        var path = "Animator Override Controller/[A] Customer0" + randomIndex.ToString();
+        var animator = transform.GetComponent<Animator>();
+        animator.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load(path);
+
     }
 
     #region Methods Related Route

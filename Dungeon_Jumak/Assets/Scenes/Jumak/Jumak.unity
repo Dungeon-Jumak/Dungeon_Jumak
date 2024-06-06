@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 7554391}
   - component: {fileID: 7554390}
   m_Layer: 5
-  m_Name: Start_Popup
+  m_Name: '[Pop Up] Receipt'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7303,7 +7303,7 @@ GameObject:
   - component: {fileID: 560930190}
   - component: {fileID: 560930189}
   m_Layer: 5
-  m_Name: Right_Arrow_Image
+  m_Name: '[Image] Right Arrow'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8238,7 +8238,7 @@ GameObject:
   - component: {fileID: 654686794}
   - component: {fileID: 654686793}
   m_Layer: 5
-  m_Name: Pajeon_Recipt
+  m_Name: '[Text] Pajeon'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8351,7 +8351,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &654686794
@@ -8721,6 +8721,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &694791082
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 130183654313981586, guid: f5534039a82a41d4f9f39f232ba175ec,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 130183654313981586, guid: f5534039a82a41d4f9f39f232ba175ec,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.7800002
+      objectReference: {fileID: 0}
+    - target: {fileID: 130183654313981586, guid: f5534039a82a41d4f9f39f232ba175ec,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.5119996
+      objectReference: {fileID: 0}
+    - target: {fileID: 130183654313981586, guid: f5534039a82a41d4f9f39f232ba175ec,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 130183654313981586, guid: f5534039a82a41d4f9f39f232ba175ec,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 130183654313981586, guid: f5534039a82a41d4f9f39f232ba175ec,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 130183654313981586, guid: f5534039a82a41d4f9f39f232ba175ec,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 130183654313981586, guid: f5534039a82a41d4f9f39f232ba175ec,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 130183654313981586, guid: f5534039a82a41d4f9f39f232ba175ec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 130183654313981586, guid: f5534039a82a41d4f9f39f232ba175ec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 130183654313981586, guid: f5534039a82a41d4f9f39f232ba175ec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758197614297234253, guid: f5534039a82a41d4f9f39f232ba175ec,
+        type: 3}
+      propertyPath: m_Name
+      value: Chr_Customer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758197614297234253, guid: f5534039a82a41d4f9f39f232ba175ec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309393953719013940, guid: f5534039a82a41d4f9f39f232ba175ec,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: ed67d42c748ab2a4eb31271f2604d4b2,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f5534039a82a41d4f9f39f232ba175ec, type: 3}
 --- !u!1 &695693092
 GameObject:
   m_ObjectHideFlags: 0
@@ -11303,7 +11383,7 @@ GameObject:
   - component: {fileID: 924713267}
   - component: {fileID: 924713266}
   m_Layer: 5
-  m_Name: RiceJuice_Recipt
+  m_Name: '[Text] RiceJuice'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11416,7 +11496,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &924713267
@@ -12465,7 +12545,7 @@ GameObject:
   - component: {fileID: 1012066560}
   - component: {fileID: 1012066559}
   m_Layer: 5
-  m_Name: Left_Arrow_Image
+  m_Name: '[Image] Left Arrow'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14445,7 +14525,7 @@ GameObject:
   - component: {fileID: 1201918958}
   - component: {fileID: 1201918957}
   m_Layer: 5
-  m_Name: black
+  m_Name: '[Panel] Black'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16970,7 +17050,7 @@ GameObject:
   - component: {fileID: 1385300006}
   - component: {fileID: 1385300005}
   m_Layer: 5
-  m_Name: GukBap_Recipt
+  m_Name: '[Text] Gukbab'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17083,7 +17163,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1385300006
@@ -18588,7 +18668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.17934787, y: 0.3447941}
   m_AnchorMax: {x: 0.801187, y: 0.88100004}
-  m_AnchoredPosition: {x: 0.40000153, y: -54.00006}
+  m_AnchoredPosition: {x: 0.40000153, y: -54.00007}
   m_SizeDelta: {x: 68.75, y: 54.79}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!95 &1480842454
@@ -19100,7 +19180,7 @@ GameObject:
   - component: {fileID: 1527850060}
   - component: {fileID: 1527850059}
   m_Layer: 5
-  m_Name: Total_Recipt
+  m_Name: '[Text] Total'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23949,7 +24029,7 @@ GameObject:
   - component: {fileID: 1971330139}
   - component: {fileID: 1971330138}
   m_Layer: 5
-  m_Name: Compare_Recipt
+  m_Name: '[Text] Compare'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
