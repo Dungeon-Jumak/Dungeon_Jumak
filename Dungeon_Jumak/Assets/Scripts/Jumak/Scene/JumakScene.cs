@@ -110,7 +110,7 @@ public class JumakScene : BaseScene
         UpdateJumakFurniture();
 
         coinTMP.text = data.curCoin.ToString() + "전";
-        dayTMP.text = data.days.ToString() + " 일차";
+        //dayTMP.text = data.days.ToString() + " 일차";
 
         if (isStart && !isPause)
             timer += Time.deltaTime;
@@ -184,12 +184,6 @@ public class JumakScene : BaseScene
         isStart = true;
 
         data.days++;
-
-        startPanel.SetActive(false);
-        for (int i = 0; i < panelForStart.Length; i++)
-        {
-            panelForStart[i].SetActive(true);
-        }
     }
 
     public void AddRecipe()

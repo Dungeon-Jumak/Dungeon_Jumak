@@ -4,10 +4,12 @@ using System.Collections.Generic;
 
 //Unity
 using UnityEngine;
+using UnityEngine.UI;
 
 //TMP
 using TMPro;
 
+//본 스크립트는 View Port안 Contents들 버튼에 각 부착한 후 각 버튼에 메뉴에 대한 정보를 사전 Setting하도록 한다
 [DisallowMultipleComponent]
 public class SetMenu : MonoBehaviour
 {
@@ -15,8 +17,12 @@ public class SetMenu : MonoBehaviour
     [Header("버튼의 번호(0부터 시작)")]
     public int number;
 
+    //Food Image
+    [Header("해당 음식 이미지")]
+    public Image foodImage;
+
     //Count of Need Ingredient
-    [Header("필요한 재료의 총 갯수")]
+    [Header("필요한 재료 종류의 총 갯수")]
     public int needIngredientNum;
 
     //Count Each of Need Ingredients
@@ -29,11 +35,11 @@ public class SetMenu : MonoBehaviour
 
     //TMP of Having Ingredient
     [Header("갖고 있는 재료의 갯수")]
-    [SerializeField] TextMeshProUGUI[] haveIngredientTMPs;
+    [SerializeField] private TextMeshProUGUI[] haveIngredientTMPs;
 
     //Max ingredient to show on screen 
     [Header("최대로 표시할 재료의 갯수")]
-    [SerializeField] int maxSignHaveIngredient;
+    [SerializeField] private int maxSignHaveIngredient;
     
     //Check Click
     [Header("버튼 클릭 여부")]
@@ -51,10 +57,10 @@ public class SetMenu : MonoBehaviour
     private Data data;
 
     //Color
-    Color color;
+    private Color color;
 
     //Check Count
-    [SerializeField] private int checkNum;
+    private int checkNum;
 
     private void Start()
     {
