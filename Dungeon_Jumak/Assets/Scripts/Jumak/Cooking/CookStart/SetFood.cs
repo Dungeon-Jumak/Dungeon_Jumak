@@ -100,6 +100,8 @@ public class SetFood : MonoBehaviour
         //Get Component and Init
         selectCategory = GetComponent<SelectCategory>();
 
+        confirmCount = 0;
+
         data = DataManager.Instance.data;
 
         //Save Init Ingredient
@@ -140,9 +142,10 @@ public class SetFood : MonoBehaviour
             {
                 offObjectsWhenStart[j].SetActive(false);
             }
-        }
 
-        jumakScene.JumakStart();
+            //Jumak Start
+            jumakScene.JumakStart();
+        }
     }
 
     //Method to Check and Active Confirm Popup

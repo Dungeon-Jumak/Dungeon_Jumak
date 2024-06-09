@@ -66,7 +66,7 @@ public class FireManager : MonoBehaviour
     private void Update()
     {
         //if jumakScene is started
-        if (jumakScene.isStart)
+        if (jumakScene.start)
         {
             //Fire System
             FireSystem();

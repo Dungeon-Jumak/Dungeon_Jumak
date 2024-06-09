@@ -101,7 +101,7 @@ public class RiceJuiceOrder : MonoBehaviour
                     miniGameParent.SetActive(true);
 
                     //Active Black Panel
-                    GameObject.Find("Home_Panel").transform.GetChild(blackPanelIndex).gameObject.SetActive(true);
+                    GameObject.Find("[Panel] Jumak").transform.GetChild(blackPanelIndex).gameObject.SetActive(true);
                 }
             }
         }

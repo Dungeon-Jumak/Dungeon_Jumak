@@ -46,7 +46,7 @@ public class FireFurnace : MonoBehaviour
         fireMiniGamePopup.SetActive(true);
 
         //Pause
-        jumakScene.isPause = true;
+        jumakScene.pause = true;
     }
 
     public void ExitFireMiniGame()
@@ -58,7 +58,7 @@ public class FireFurnace : MonoBehaviour
         fireMiniGamePopup.SetActive(false);
 
         //Resume
-        jumakScene.isPause = false;
+        jumakScene.pause = false;
     }
     #endregion
 

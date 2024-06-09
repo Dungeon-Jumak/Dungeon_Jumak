@@ -1,91 +1,118 @@
+//System
 using System.Collections;
 using System.Collections.Generic;
+
+//Unity
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using Unity.VisualScripting;
 
+//TMPro
+using TMPro;
+
+[DisallowMultipleComponent]
 public class JumakScene : BaseScene
 {
-    public bool isStart;
-    public bool isPause;
+    #region Variables
 
+    //For Start
+    [Header("시작 여부를 판단하기 위한 Bool 변수 (Don't touch)")]
+    public bool start;
 
-    private Data data;
+    //For Pause
+    [Header("게임 일시 정지 여부를 판단하기 위한 변수")]
+    public bool pause;
 
-    [SerializeField]
-    private FadeController fadeController;
+    //For End
+    private bool end = false;
 
-    //---해금 할 단상 배열---//
-    [SerializeField]
-    private GameObject[] Dansangs;
+    //Receipt Popup
+    [Header("전표 팝업 오브젝트")]
+    [SerializeField] private GameObject receiptPopup;
 
-    [SerializeField]
-    private GameObject[] JumakSystemObj;
-
-    [SerializeField]
-    private GameObject receiptPopup;
-
+    //Timer
+    [Header("타이머 시간 초")]
     [SerializeField] private float timer;
+
+    //Duration of Timer
+    [Header("주막의 총 운영 시간")]
     [SerializeField] private float duration;
 
-    [SerializeField]
-    private TextMeshProUGUI timerTxt;
+    //Timer TMP
+    [Header("타이머 TMP")]
+    [SerializeField] private TextMeshProUGUI timerTMP;
 
-    [SerializeField]
-    int compareTotalPrice;
+    //Coin TMP
+    [Header("코인 TMP")]
+    [SerializeField] private TextMeshProUGUI coinTMP;
 
-    [SerializeField]
-    private GameObject startPanel;
-    [SerializeField]
-    private GameObject[] panelForStart;
+    //House Sprites
+    [Header("주막 : 하우스 스프라이트 배열")]
+    [SerializeField] private Sprite[] houseSprites;
 
-    [SerializeField]
-    private TextMeshProUGUI coinTMP;
+    //Left Fence Sprites
+    [Header("주막 : 왼쪽 펜스 스프라이트 배열")]
+    [SerializeField] private Sprite[] leftFenceSprites;
 
-    [SerializeField]
-    private TextMeshProUGUI dayTMP;
+    //Right Fence Sprites
+    [Header("주막 : 오른쪽 펜스 스프라이트 배열")]
+    [SerializeField] private Sprite[] rightFenceSprites;
 
-    [SerializeField]
-    private Sprite[] houseSprites;
-    [SerializeField]
-    private Sprite[] leftFenceSprites;
-    [SerializeField]
-    private Sprite[] rightFenceSprites;
-    [SerializeField]
-    private Sprite[] dansangSprites;
-    [SerializeField]
-    private Sprite[] tableSprites;
+    //Dansang Sprites
+    [Header("주막 : 단상 스프라이트 배열")]
+    [SerializeField] private Sprite[] dansangSprites;
 
-    [SerializeField]
-    private SpriteRenderer house;
-    [SerializeField]
-    private SpriteRenderer leftFence;
-    [SerializeField]
-    private SpriteRenderer rightFence;
-    [SerializeField]
-    private SpriteRenderer[] dansangs;
-    [SerializeField]
-    private SpriteRenderer[] tables;
+    //Table Sprites
+    [Header("주막 : 테이블 스프라이트 배열")]
+    [SerializeField] private Sprite[] tableSprites;
 
-    private bool playBGM = false;
-    private bool endPanel = false;
+    //House Sprite Renderer
+    [Header("하우스 스프라이트 렌더러")]
+    [SerializeField] private SpriteRenderer house;
 
+    //Left Fence Sprite Renderer
+    [Header("왼쪽 펜스 스프라이트 렌더러")]
+    [SerializeField] private SpriteRenderer leftFence;
+
+    //Right Fence Sprite Renderer
+    [Header("오른쪽 펜스 스프라이트 렌더러")]
+    [SerializeField] private SpriteRenderer rightFence;
+
+    //Dansang Sprite Renderers
+    [Header("단상 스프라이트 렌더러 배열")]
+    [SerializeField] private SpriteRenderer[] dansangs;
+
+    //Tables Sprite Renderers
+    [Header("테이블 스프라이트 렌더러 배열")]
+    [SerializeField] private SpriteRenderer[] tables;
+
+    //Objects related Jumak System
+    [Header("주막 시스템과 관련된 오브젝트 배열")]
+    [SerializeField] private GameObject[] JumakSystemObj;
+
+    //Data
+    private Data data;
+
+    //Past Coin
+    private int pastCoin;
+
+    #endregion
 
     private void Start()
     {
-
-        playBGM = false;
-
+        //Get Data
         data = DataManager.Instance.data;
 
+        //Initialize Past Coin
+        pastCoin = data.curCoin;
+
+        //Initialze Food Count
         data.gukbapCount = 0;
         data.pajeonCount = 0;
         data.riceJuiceCount = 0;
 
-        fadeController = FindObjectOfType<FadeController>();
-
+        //Initialize Jumak System's Boolean Variables
         for (int i = 0; i < data.onTables.Length; i++)
         {
             data.isAllocated[i] = false;
@@ -94,51 +121,42 @@ public class JumakScene : BaseScene
             data.isFinEat[i] = false;
         }
 
-
+        //Initialize Customer HeadCount
         data.customerHeadCount = 0;
 
-
+        //Initialize Timer Value
         timer = 0;
-        isStart = false;
-        isPause = false;
 
-      
+        //Initialize Jumak Start, Pause, End Boolean Value
+        start = false;
+        pause = false;
+        end = false;
+
+        //Update Jumak Furniture
+        UpdateJumakFurniture();
     }
 
     public void Update()
     {
-        UpdateJumakFurniture();
-
-        coinTMP.text = data.curCoin.ToString() + "전";
-        //dayTMP.text = data.days.ToString() + " 일차";
-
-        if (isStart && !isPause)
-            timer += Time.deltaTime;
-
-        if (timer >= duration)
-        {
-            isStart = false;
-
-            timer -= duration;
-            JumakOff();
-        }
-
-        int newTime = Mathf.FloorToInt(duration - timer);
-        timerTxt.text = newTime.ToString();
-
-        if (endPanel && (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began || Input.GetMouseButtonDown(0)))
-        {
-            SceneManager.LoadScene("WaitingScene");
-        }
-
+        //Jumak System
+        JumakSystem();
     }
 
+    #region Methods
+
+    //Update Jumak Furniture : According to Jumak Furniture's Level
     private void UpdateJumakFurniture()
     {
+        //Update House Sprite
         house.sprite = houseSprites[data.houseLV];
+
+        //Update Left Fence Sprite
         leftFence.sprite = leftFenceSprites[data.houseLV];
+
+        //Update Right Fence Sprite 
         rightFence.sprite = rightFenceSprites[data.houseLV];
 
+        //Update Dansangs and Tables Sprite
         for (int i = 0; i < dansangs.Length; i++)
         {
             dansangs[i].sprite = dansangSprites[data.dansangLV];
@@ -146,69 +164,130 @@ public class JumakScene : BaseScene
         }
     }
 
-    private void JumakOff()
+    //Jumak System
+    private void JumakSystem()
     {
+        //If cur coin greater than past coin, update coin text
+        if (data.curCoin > pastCoin)
+        {
+            //update past coin
+            pastCoin = data.curCoin;
+
+            //update text
+            coinTMP.text = data.curCoin.ToString() + "전";
+        }
+
+        //Call Timer Method
+        Timer();
+
+        //If end and mousebutton down, load waiting scene
+        if (end && Input.GetMouseButtonDown(0))
+            GameManager.Scene.LoadScene(Define.Scene.WaitingScene);
+    }
+
+    //Timer
+    private void Timer()
+    {
+        //If game is started and is not pausing, activate timer
+        if (start && !pause)
+        {
+            timer += Time.deltaTime;
+
+            //If Time Out
+            if (timer >= duration)
+            {
+                //Change Start Sign
+                start = false;
+
+                //Call Clost Jumak Method
+                CloseJumak();
+            }
+
+            //Compute time for display
+            int newTime = Mathf.FloorToInt(duration - timer);
+
+            //Update Timer Text
+            timerTMP.text = newTime.ToString();
+        }
+    }
+
+    //Method to Close Jumak
+    private void CloseJumak()
+    {
+        //InActivate Object related Jumak System
         for (int i = 0; i < JumakSystemObj.Length; i++)
         {
             JumakSystemObj[i].SetActive(false);
         }
+
+        //Active Receipt Popup
         receiptPopup.SetActive(true);
 
+        //Activate Text Sequentially
         StartCoroutine(ActivateTextSequentially());
 
+        //Compute Current Total Price
         data.currentTotalPrice = (data.gukbapCount * data.nowGukbapPrice) + (data.riceJuiceCount * data.nowRiceJuicePrice) + (data.pajeonCount * data.nowPajeonPrice);
     }
 
+    //Method to Activate Text 'Sequentially'
     private IEnumerator ActivateTextSequentially()
     {
+        //WaitForSeconds(1f);
         yield return new WaitForSeconds(1f);
 
+        //Gukbab
         GameObject.Find("GukBap_Recipt").GetComponent<TextMeshProUGUI>().text = "국밥 x " + data.gukbapCount.ToString() + " = " + data.gukbapCount * data.nowGukbapPrice;
+
+        //WaitForSeconds(1f);
         yield return new WaitForSeconds(1f);
 
+        //Pajeon
         GameObject.Find("Pajeon_Recipt").GetComponent<TextMeshProUGUI>().text = "파전 x " + data.pajeonCount.ToString() + " = " + data.pajeonCount * data.nowPajeonPrice;
+
+        //WaitForSeconds(1f);
         yield return new WaitForSeconds(1f);
 
+        //RiceJuice
         GameObject.Find("RiceJuice_Recipt").GetComponent<TextMeshProUGUI>().text = "식혜 x " + data.riceJuiceCount.ToString() + " = " + data.riceJuiceCount * data.nowRiceJuicePrice;
 
+        //WaitForSeconds(1f);
         yield return new WaitForSeconds(1f);
+
+        //Total
         GameObject.Find("Total_Recipt").GetComponent<TextMeshProUGUI>().text = "총 매출 = " + data.currentTotalPrice.ToString() + "전";
 
+        //WaitForSeconds(1f);
         yield return new WaitForSeconds(1f);
 
-        endPanel = true;
+        //Change end sign
+        end = true;
     }
 
+    //Method to Jumak Start
     public void JumakStart()
     {
-        isStart = true;
+        //Change start sign
+        start = true;
 
+        //Increase day
         data.days++;
     }
 
+    //Method to Add Recipe
     public void AddRecipe()
     {
+        //Increase Current Menu Unlock Level
         if (data.curMenuUnlockLevel < data.maxMenuUnlockLevel)
-        {
             data.curMenuUnlockLevel++;
-        }
-
     }
 
-
-    public void ConvertScene(string _sceneName)
-    {
-        SceneManager.LoadScene(_sceneName);
-    }
-
-    public void InitialTransfrom(GameObject go)
-    {
-        go.transform.localPosition = new Vector3(go.transform.localPosition.x, 0, go.transform.localPosition.z);
-    }
-
-    //씬 전환할 때 필요한 기능
+    //For Convert Scene
     public override void Clear()
     {
+        //Debug.Log
         Debug.Log("Jumak Scene changed!");
     }
+
+    #endregion
 }

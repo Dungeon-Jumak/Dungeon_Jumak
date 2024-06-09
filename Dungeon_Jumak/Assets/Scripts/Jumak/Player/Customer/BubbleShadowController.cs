@@ -8,39 +8,53 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class BubbleShadowController : MonoBehaviour
 {
-    public bool isStop;
-    public float fadeInDuration; //그림자가 나타나는 시간
+    //Shadow Duration
+    [Header("대기 시간 : 그림자가 차오르는데 걸리는 시간")]
+    private float fadeInDuration;
 
-    [SerializeField]
-    private SpriteRenderer shadowRenderer; //그림자의 SpriteRenderer 컴포넌트
+    //Shado Sprite Renderer
+    [Header("그림자의 스프라이트 렌더러 컴포넌트")]
+    [SerializeField] private SpriteRenderer shadowRenderer;
 
-    [SerializeField]
-    private OrderMenu orderMenu;
+    //Order Menu
+    [Header("OrderMenu")]
+    [SerializeField] private OrderMenu orderMenu;
 
-    private float startY; //시작 Y 위치
-    private float endY; // 종료 Y 위치
+    //Jumak Scene
+    private JumakScene jumakScene;
 
+    //Start Y Position
+    private float startY;
+
+    //End Y Position
+    private float endY;
+
+    //Timer
     private float timer;
 
     private void Start()
     {
-        //--- 변수 초기화 ---//
-        isStop = false;
+        //Initialize duration
+        fadeInDuration = 12f;
 
-        fadeInDuration = 20f;
-
+        //Get Component : Sprite Renderer
         shadowRenderer = GetComponent<SpriteRenderer>();
 
+        //Get Component : JumakScene
+        jumakScene = GameObject.Find("@Scene").transform.GetComponent<JumakScene>();
+
+        //Initialize Y Position
         startY = -0.8f;
         endY = 0f;
 
+        //Initialize Timer
         timer = 0f;
 
-        //--- 기본 위치 초기화 ---//
+        //Initialize position
         transform.localPosition
             = new Vector3(transform.localPosition.x, startY, transform.localPosition.z);
 
-        //--- 그림자로 기존 말풍선 위를 덮기 위한 SpriteMask 컴포넌트 추가 ---//
+        //Setting Sprite Mask
         SpriteMask spriteMask = GetComponentInParent<SpriteMask>();
 
         if(spriteMask != null)
@@ -49,27 +63,39 @@ public class BubbleShadowController : MonoBehaviour
 
     void Update()
     {
-        //--- 타이머 ---//
-        if(!isStop) timer += Time.deltaTime;
+        //Timer System
+        TimerSystem();
+    }
 
-        //--- 현재 시간에 맞게 그림자의 위치를 재조정 ---//
+    //Timer System
+    private void TimerSystem()
+    {
+        //Increase Timer
+        if (!jumakScene.pause) timer += Time.deltaTime;
+
+        //Update Position
         float newY = Mathf.Lerp(startY, endY, timer / fadeInDuration);
         transform.localPosition = new Vector3(transform.localPosition.x, newY, transform.localPosition.z);
 
-        //--- 타이머의 시간이 다 되었아면 타임 아웃 함수를 호출하고 본 스크립트를 초기화 함---//
+        //If Time Out
         if (timer >= fadeInDuration)
         {
+            //Call OrderMenu's TimeOut() Method
             orderMenu.TimeOut();
+
+            //Initialize
             Initialize();
         }
     }
 
-    //---말풍선 그림자 초기화 함수---//
+    //Initialize timer and position
     public void Initialize()
     {
-        isStop = false;
+        //Init Timer
         timer = 0;
-        transform.localPosition = new Vector3(transform.localPosition.x, startY, transform.localPosition.z);    //그림자 시작 위치 초기화
+
+        //Init Position
+        transform.localPosition = new Vector3(transform.localPosition.x, startY, transform.localPosition.z);
     }
 
 

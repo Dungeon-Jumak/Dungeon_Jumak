@@ -46,7 +46,7 @@ public class PajeonFurnace : MonoBehaviour
             blackPanel.SetActive(true);
 
             //Pause
-            jumakScene.isPause = true;
+            jumakScene.pause = true;
         }
         //Play Notice Animation
         else

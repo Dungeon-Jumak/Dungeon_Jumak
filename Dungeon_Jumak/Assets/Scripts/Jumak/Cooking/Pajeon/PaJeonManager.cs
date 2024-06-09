@@ -138,7 +138,7 @@ public class PaJeonManager : MonoBehaviour
             if (currentIndex >= arrowNums.Length)
             {
                 //Resume
-                jumakScene.isPause = false;
+                jumakScene.pause = false;
 
                 //Debug.Log
                 Debug.Log("성공입니다!");
@@ -171,7 +171,7 @@ public class PaJeonManager : MonoBehaviour
         else
         {
             //Resume
-            jumakScene.isPause = false;
+            jumakScene.pause = false;
 
             //Debug.Log
             Debug.Log("실패입니다.");

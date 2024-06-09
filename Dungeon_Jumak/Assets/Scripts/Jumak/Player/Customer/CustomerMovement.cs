@@ -173,11 +173,19 @@ public class CustomerMovement : MonoBehaviour
     //Change Customer Sprite
     private void ChangeCustomerAnimatorController()
     {
+        //Get Random Index
         int randomIndex = Random.Range(1, numberOfCustomerType + 1);
+
+        //Debug.Log
         Debug.Log(randomIndex + "번째 애니메이션 컨트롤러");
 
+        //Get Path (Animatior Override Controller)
         var path = "Animator Override Controller/[A] Customer0" + randomIndex.ToString();
+
+        //Get Animator Component
         var animator = transform.GetComponent<Animator>();
+
+        //Overriding Animator in path
         animator.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load(path);
 
     }
@@ -318,7 +326,7 @@ public class CustomerMovement : MonoBehaviour
     private void CustomerMovingSystem()
     {
         //Initialize When GameOver
-        if (!jumakScene.isStart) Initialize();
+        if (!jumakScene.start) Initialize();
 
         //Set Direction for Animation
         SetDirection();
