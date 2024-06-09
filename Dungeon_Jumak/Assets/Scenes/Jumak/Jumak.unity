@@ -18227,6 +18227,10 @@ MonoBehaviour:
   - {fileID: 1902875261}
   - {fileID: 1552393906}
   - {fileID: 1966199031}
+  gukbabReceiptTMP: {fileID: 1385300005}
+  pajeonReceiptTMP: {fileID: 654686793}
+  riceJuiceReceiptTMP: {fileID: 924713266}
+  totalReceiptTMP: {fileID: 1527850059}
 --- !u!4 &1464183233
 Transform:
   m_ObjectHideFlags: 0

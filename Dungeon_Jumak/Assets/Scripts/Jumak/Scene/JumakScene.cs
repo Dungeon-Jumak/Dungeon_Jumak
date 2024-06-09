@@ -91,6 +91,22 @@ public class JumakScene : BaseScene
     [Header("주막 시스템과 관련된 오브젝트 배열")]
     [SerializeField] private GameObject[] JumakSystemObj;
 
+    //Gukbab Receipt TMP
+    [Header("국밥 전표 텍스트")]
+    [SerializeField] private TextMeshProUGUI gukbabReceiptTMP;
+
+    //Pajeon Receipt TMP
+    [Header("파전 전표 텍스트")]
+    [SerializeField] private TextMeshProUGUI pajeonReceiptTMP;
+
+    //RiceJuice Receipt TMP
+    [Header("식혜 전표 텍스트")]
+    [SerializeField] private TextMeshProUGUI riceJuiceReceiptTMP;
+
+    //Total Receipt TMP
+    [Header("토탈 가격 전표 텍스트")]
+    [SerializeField] private TextMeshProUGUI totalReceiptTMP;
+
     //Data
     private Data data;
 
@@ -237,25 +253,25 @@ public class JumakScene : BaseScene
         yield return new WaitForSeconds(1f);
 
         //Gukbab
-        GameObject.Find("GukBap_Recipt").GetComponent<TextMeshProUGUI>().text = "국밥 x " + data.gukbapCount.ToString() + " = " + data.gukbapCount * data.nowGukbapPrice;
+        gukbabReceiptTMP.text = "국밥 x " + data.gukbapCount.ToString() + " = " + data.gukbapCount * data.nowGukbapPrice;
 
         //WaitForSeconds(1f);
         yield return new WaitForSeconds(1f);
 
         //Pajeon
-        GameObject.Find("Pajeon_Recipt").GetComponent<TextMeshProUGUI>().text = "파전 x " + data.pajeonCount.ToString() + " = " + data.pajeonCount * data.nowPajeonPrice;
+        pajeonReceiptTMP.text = "파전 x " + data.pajeonCount.ToString() + " = " + data.pajeonCount * data.nowPajeonPrice;
 
         //WaitForSeconds(1f);
         yield return new WaitForSeconds(1f);
 
         //RiceJuice
-        GameObject.Find("RiceJuice_Recipt").GetComponent<TextMeshProUGUI>().text = "식혜 x " + data.riceJuiceCount.ToString() + " = " + data.riceJuiceCount * data.nowRiceJuicePrice;
+        riceJuiceReceiptTMP.text = "식혜 x " + data.riceJuiceCount.ToString() + " = " + data.riceJuiceCount * data.nowRiceJuicePrice;
 
         //WaitForSeconds(1f);
         yield return new WaitForSeconds(1f);
 
         //Total
-        GameObject.Find("Total_Recipt").GetComponent<TextMeshProUGUI>().text = "총 매출 = " + data.currentTotalPrice.ToString() + "전";
+        totalReceiptTMP.text = "총 매출 = " + data.currentTotalPrice.ToString() + "전";
 
         //WaitForSeconds(1f);
         yield return new WaitForSeconds(1f);
