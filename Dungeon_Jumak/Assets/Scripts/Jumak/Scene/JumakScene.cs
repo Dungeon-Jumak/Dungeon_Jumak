@@ -150,6 +150,9 @@ public class JumakScene : BaseScene
 
         //Update Jumak Furniture
         UpdateJumakFurniture();
+
+        //Play BGM
+        PlayBGM();
     }
 
     public void Update()
@@ -159,6 +162,12 @@ public class JumakScene : BaseScene
     }
 
     #region Methods
+
+    //Play BGM
+    private void PlayBGM()
+    {
+        GameManager.Sound.Play("BGM/[B] Jumak", Define.Sound.Bgm);
+    }
 
     //Update Jumak Furniture : According to Jumak Furniture's Level
     private void UpdateJumakFurniture()

@@ -69,6 +69,9 @@ public class PlayerMovement : MonoBehaviour
     //Player's yPos
     private float yPos;
 
+    //Sound Effect
+    private AudioSource effect;
+
     #endregion
 
     private void Start()
@@ -179,6 +182,13 @@ public class PlayerMovement : MonoBehaviour
         {
             //Active isWalk
             animator.SetBool("isWalk", true);
+
+            //Play Walk Sound
+            if(effect != null)
+                effect = GameObject.Find("Effect").GetComponent<AudioSource>();
+
+            if (!effect.isPlaying)
+                GameManager.Sound.Play("[S] Walk Sound1", Define.Sound.Effect);
 
             //up-down move
             if (Mathf.Abs(direction.x) + 0.2f < Mathf.Abs(direction.y))
