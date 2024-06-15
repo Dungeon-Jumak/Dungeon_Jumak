@@ -1,29 +1,19 @@
-// System
-using System.Collections.Generic;
-using System;
+//PathFinding
+using Pathfinding;
 
-// Unity
-using UnityEngine.SceneManagement;
-using static Unity.VisualScripting.Member;
-using Unity.VisualScripting;
+//System
+using System.Collections;
+using System.Collections.Generic;
+
+//Unity
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-// PathFinding
-using Pathfinding;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
-
-
-//This Script For Player Moving
 [DisallowMultipleComponent]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovementInDungeon : MonoBehaviour
 {
     #region Variables
-
-    //Player's Hand
-    [Header("플레이어 손 오브젝트")]
-    public Transform hand;
 
     //For Distinguish Click Ui and Object
     //For Click Exception Handilng
@@ -48,15 +38,12 @@ public class PlayerMovement : MonoBehaviour
     //Player Animator Component
     private Animator animator;
 
-    //RigidBody Component
-    private Rigidbody2D rigidBody;
-
-    //Player Serving Component for Food Serving
-    private PlayerServing playerServing;
-
     //Tracking Object For Click Moving 
     [Header("플레이어가 자동으로 따라갈 타겟")]
     [SerializeField] private Transform target;
+
+    [Header("클릭된지 확인할 패널")]
+    [SerializeField] private GameObject panel;
 
     //Direction Decision
     private Vector3 direction;
@@ -68,9 +55,6 @@ public class PlayerMovement : MonoBehaviour
 
     //Player's yPos
     private float yPos;
-
-    //Sound Effect
-    private AudioSource effect;
 
     #endregion
 
@@ -84,8 +68,6 @@ public class PlayerMovement : MonoBehaviour
 
         //Add Component
         animator = GetComponent<Animator>();
-        rigidBody = GetComponent<Rigidbody2D>();
-        playerServing = GetComponent<PlayerServing>();
 
         //Initialize Location Variables
         target.transform.position = this.transform.position;
@@ -106,10 +88,6 @@ public class PlayerMovement : MonoBehaviour
         //Checking touch HomePanel
         CheckTouchPanel();
 
-        //Moving (Change Target Transform)
-        //Player track target to auto
-        MoveControl();
-
         //Method for Decision Direction
         SetDirection();
     }
@@ -120,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             //Decision ray direction
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             //Return hit object
             hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
@@ -137,26 +115,17 @@ public class PlayerMovement : MonoBehaviour
             }
 
             //Check Click Panel
-            if (results[0].gameObject.name == "[Panel] Jumak")
+            if (results[0].gameObject.name == "[Panel] Stage 1")
             {
                 //Play Animation
                 clickAnim.SetTrigger("click");
+
+                Debug.Log(hit.point);
 
                 //Target for tracking 's positon change to hit point
                 target.transform.position = hit.point;
             }
             else return;
-        }
-    }
-
-    //Method for moving control
-    void MoveControl()
-    {
-        if (playerServing.moveStop)
-        {
-            playerServing.moveStop = false;
-            target.transform.position = transform.position;
-            animator.SetBool("isWalk", false);
         }
     }
 
@@ -183,20 +152,17 @@ public class PlayerMovement : MonoBehaviour
             //Active isWalk
             animator.SetBool("isWalk", true);
 
+
+
             //up-down move
             if (Mathf.Abs(direction.x) + 0.2f < Mathf.Abs(direction.y))
             {
                 //To up
                 if (direction.y > 0f)
-                { 
+                {
                     //Play Moving Up Animation
                     animator.SetFloat("dirX", 0f);
                     animator.SetFloat("dirY", 1f);
-
-                    //Change hand position
-                    if (hand.localPosition.x < 0f)
-                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
-                    
                 }
                 //To down
                 else if (direction.y <= 0f)
@@ -204,10 +170,6 @@ public class PlayerMovement : MonoBehaviour
                     //Play Moving Down Animaion
                     animator.SetFloat("dirX", 0f);
                     animator.SetFloat("dirY", -1f);
-
-                    //Change hand position
-                    if (hand.localPosition.x < 0f)
-                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
                 }
             }
             //left-right move
@@ -219,10 +181,6 @@ public class PlayerMovement : MonoBehaviour
                     //Play Moving Right Animation
                     animator.SetFloat("dirX", 1f);
                     animator.SetFloat("dirY", 0f);
-
-                    //Change hand position
-                    if (hand.localPosition.x > 0f)
-                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
                 }
                 //To left
                 else if (direction.x < 0f)
@@ -230,10 +188,6 @@ public class PlayerMovement : MonoBehaviour
                     //Play Moving Left Animation
                     animator.SetFloat("dirX", -1f);
                     animator.SetFloat("dirY", 0f);
-
-                    //Change hand postion
-                    if (hand.localPosition.x < 0f)
-                        hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
                 }
             }
         }
