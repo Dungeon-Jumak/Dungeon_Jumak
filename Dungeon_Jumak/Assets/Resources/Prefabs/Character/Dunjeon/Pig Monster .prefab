@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5161649748312962801}
   - component: {fileID: 5161649748312962798}
   - component: {fileID: 5161649748312962799}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Pig Monster '
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -164,8 +164,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrack: 0
-  speed: 2.5
+  patrolSpeed: 2
   target: {fileID: 0}
+  trackingSpeed: 2
+  health: 0
+  maxHealth: 0
 --- !u!114 &5161649748312962789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5161649748564591656}
   - component: {fileID: 5161649748564591657}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tracking Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5161649749104125405}
   - component: {fileID: 5161649749104125406}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tracking Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}

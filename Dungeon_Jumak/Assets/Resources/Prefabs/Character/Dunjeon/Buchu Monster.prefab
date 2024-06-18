@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4310319717651680282}
   - component: {fileID: 4310319717651680283}
   - component: {fileID: 4310319717651680284}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Buchu Monster
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -164,8 +164,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrack: 0
-  speed: 2.5
+  patrolSpeed: 2
   target: {fileID: 0}
+  trackingSpeed: 2
+  health: 0
+  maxHealth: 0
 --- !u!114 &4310319717651680260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4310319718007330282}
   - component: {fileID: 4310319718007330283}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tracking Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4310319718834919475}
   - component: {fileID: 4310319718834919474}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tracking Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}

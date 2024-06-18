@@ -6,22 +6,6 @@ using System.Collections.Generic;
 //Unity
 using UnityEngine;
 
-[System.Serializable]
-public class MonsterInfo
-{
-    [Header("몬스터의 현재 체력")]
-    public float health;
-
-    [Header("몬스터의 최대 체력")]
-    public float maxHealth;
-
-    [Header("몬스터의 추격 이동 속도")]
-    public float trackingSpeed;
-
-    [Header("몬스터의 정찰 이동 속도")]
-    public float patrolSpeed;
-}
-
 [DisallowMultipleComponent]
 public class MonsterController : MonoBehaviour
 {
@@ -109,7 +93,11 @@ public class MonsterController : MonoBehaviour
             destination.enabled = true;
             aiPath.enabled = true;
 
+            //Set Target
             destination.target = target.transform;
+
+            //Set Speed
+            aiPath.maxSpeed = trackingSpeed;
         }
         else
         {
