@@ -24,6 +24,7 @@ TagManager:
   - Target_Jumak
   - Target_Junjeon
   - Target_Dunjeon
+  - Attack
   layers:
   - Default
   - TransparentFX

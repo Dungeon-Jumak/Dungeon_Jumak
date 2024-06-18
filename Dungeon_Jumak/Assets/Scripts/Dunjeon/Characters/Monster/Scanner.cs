@@ -19,7 +19,7 @@ public class Scanner : MonoBehaviour
     [SerializeField] private RaycastHit2D[] targets;
 
     [Header("가장 가까운 타겟")]
-    [SerializeField] private Transform nearestTarget;
+    public Transform nearestTarget;
 
     private void FixedUpdate()
     {

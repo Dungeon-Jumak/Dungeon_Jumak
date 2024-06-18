@@ -167,8 +167,8 @@ MonoBehaviour:
   patrolSpeed: 2
   target: {fileID: 0}
   trackingSpeed: 2
-  health: 0
-  maxHealth: 0
+  health: 1
+  maxHealth: 1
 --- !u!114 &4310319717651680260
 MonoBehaviour:
   m_ObjectHideFlags: 0

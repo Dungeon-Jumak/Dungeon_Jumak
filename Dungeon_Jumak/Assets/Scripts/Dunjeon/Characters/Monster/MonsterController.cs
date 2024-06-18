@@ -195,4 +195,27 @@ public class MonsterController : MonoBehaviour
         rigid.MovePosition(rigid.position + newVector);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Attack"))
+            return;
+
+        //Damage !
+        health -= collision.GetComponent<Skills>().damage;
+
+        if (health > 0)
+        {
+            //Live
+        }
+        else
+        {
+            //Die
+            Dead();
+        }
+    }
+
+    private void Dead()
+    {
+        gameObject.SetActive(false);
+    }
 }

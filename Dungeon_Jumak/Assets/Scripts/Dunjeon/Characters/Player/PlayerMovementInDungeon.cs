@@ -134,8 +134,6 @@ public class PlayerMovementInDungeon : MonoBehaviour
         curPos = transform.localPosition;
         direction = (curPos - lastPos).normalized;
 
-        Debug.Log(direction);
-
         //Assignment curPos to lastPos (Update lastPos)
         lastPos = curPos;
 
