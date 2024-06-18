@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be323efc2a71414498d934aca6fd26a, type: 3}
+  m_Name: Item_Weapon_Basic_Wand
+  m_EditorClassIdentifier: 
+  _id: 2
+  _name: "\uBFB0\uB85C\uB871"
+  _tooltip: "\uB108\uBB34 \uC7AC\uBC0C\uB2E4~"
+  _iconSprite: {fileID: 21300000, guid: aa68c4027f53d0e49983af9ed83cb9ae, type: 3}
+  _maxDurability: 100
+  _damage: 30
