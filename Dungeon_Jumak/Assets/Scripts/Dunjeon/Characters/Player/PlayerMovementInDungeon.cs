@@ -46,7 +46,7 @@ public class PlayerMovementInDungeon : MonoBehaviour
     [SerializeField] private GameObject panel;
 
     //Direction Decision
-    private Vector3 direction;
+    public Vector3 direction;
     private Vector3 curPos;
     private Vector3 lastPos;
 
@@ -120,8 +120,6 @@ public class PlayerMovementInDungeon : MonoBehaviour
                 //Play Animation
                 clickAnim.SetTrigger("click");
 
-                Debug.Log(hit.point);
-
                 //Target for tracking 's positon change to hit point
                 target.transform.position = hit.point;
             }
@@ -135,6 +133,8 @@ public class PlayerMovementInDungeon : MonoBehaviour
         //Update Current location and Direction
         curPos = transform.localPosition;
         direction = (curPos - lastPos).normalized;
+
+        Debug.Log(direction);
 
         //Assignment curPos to lastPos (Update lastPos)
         lastPos = curPos;
@@ -152,10 +152,8 @@ public class PlayerMovementInDungeon : MonoBehaviour
             //Active isWalk
             animator.SetBool("isWalk", true);
 
-
-
             //up-down move
-            if (Mathf.Abs(direction.x) + 0.2f < Mathf.Abs(direction.y))
+            if (Mathf.Abs(direction.x) + 0.6f < Mathf.Abs(direction.y))
             {
                 //To up
                 if (direction.y > 0f)
@@ -173,7 +171,7 @@ public class PlayerMovementInDungeon : MonoBehaviour
                 }
             }
             //left-right move
-            else if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y) + 0.2f)
+            else
             {
                 //To right
                 if (direction.x >= 0f)

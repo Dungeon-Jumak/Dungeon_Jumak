@@ -36,7 +36,7 @@ public class BulletAction : MonoBehaviour
             {
                 MonsterController monsterController = collision.gameObject.GetComponent<MonsterController>();
                 Debug.Log("Attack the monster with skill");
-                monsterController.TakeDamage(1);
+                //monsterController.TakeDamage(1);
                 DataManager.Instance.data.isSkillSuc = false;
 
                 a.SetActive(false);

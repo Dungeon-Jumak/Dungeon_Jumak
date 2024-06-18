@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/WaitingScene.unity
     guid: a916bdbfa359b2d4898a1583af499055
   - enabled: 1
-    path: Assets/Scenes/Jumak/Jumak.unity
+    path: Assets/Jumak/Jumak.unity
     guid: 288a4e65869e599449e262d2abfd38c1
   - enabled: 1
     path: Assets/Scenes/Dunjeon/Map.unity
