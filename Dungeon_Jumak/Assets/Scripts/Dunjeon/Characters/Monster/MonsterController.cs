@@ -1,9 +1,26 @@
 //System
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 
 //Unity
 using UnityEngine;
+
+[System.Serializable]
+public class MonsterInfo
+{
+    [Header("몬스터의 현재 체력")]
+    public float health;
+
+    [Header("몬스터의 최대 체력")]
+    public float maxHealth;
+
+    [Header("몬스터의 추격 이동 속도")]
+    public float trackingSpeed;
+
+    [Header("몬스터의 정찰 이동 속도")]
+    public float patrolSpeed;
+}
 
 [DisallowMultipleComponent]
 public class MonsterController : MonoBehaviour
@@ -11,11 +28,23 @@ public class MonsterController : MonoBehaviour
     [Header("플레이어가 근처에 있는지 판단하기 위한 Bool 변수")]
     public bool isTrack;
 
-    [Header("몬스터의 이동 속도")]
-    [SerializeField] private float speed;
+    [Header("몬스터의 패드롤 이동 속도")]
+    [SerializeField] private float patrolSpeed;
 
     [Header("추적할 타겟의 Rigidbody")]
     [SerializeField] private Rigidbody2D target;
+
+    [Header("몬스터의 추적 이동 속도")]
+    [SerializeField] private float trackingSpeed;
+
+    [Header("몬스터의 체력")]
+    [SerializeField] private float health;
+
+    [Header("몬스터의 최대 체력")]
+    [SerializeField] private float maxHealth;
+
+    private AIDestinationSetter destination;
+    private AIPath aiPath;
 
     //Rigidbody 2D
     private Rigidbody2D rigid;
@@ -24,18 +53,37 @@ public class MonsterController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     //isLive Sign
-    private bool isLive = true;
+    private bool isLive;
 
     //isMove Sign
     private bool isMove;
 
+    //moveVector
     private Vector3 moveVector;
+
+    private void OnEnable()
+    {
+        //Initialize
+        target = FindObjectOfType<PlayerMovementInDungeon>().GetComponent<Rigidbody2D>();
+
+        //isLive true
+        isLive = true;
+
+        //Init health
+        health = maxHealth;
+    }
 
     private void Start()
     {
         //Get Component
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        destination = GetComponent<AIDestinationSetter>();
+        aiPath = GetComponent<AIPath>();
+
+        destination.enabled = false;
+        aiPath.enabled = false;
 
         //Initialize
         isMove = false;
@@ -57,14 +105,11 @@ public class MonsterController : MonoBehaviour
         //if monster is tracking player
         if (isTrack)
         {
-            //Check direction vector
-            Vector2 dirVec = target.position - rigid.position;
+            //Setting aipath scipts
+            destination.enabled = true;
+            aiPath.enabled = true;
 
-            //Compute vector for move
-            Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
-
-            //Move monster
-            rigid.MovePosition(rigid.position + nextVec);
+            destination.target = target.transform;
         }
         else
         {
@@ -156,7 +201,7 @@ public class MonsterController : MonoBehaviour
     private void Move()
     {
         //Set New Vector
-        Vector2 newVector = moveVector * speed * Time.deltaTime;
+        Vector2 newVector = moveVector * patrolSpeed * Time.deltaTime;
 
         //Rigid Move position
         rigid.MovePosition(rigid.position + newVector);
