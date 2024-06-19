@@ -63,6 +63,7 @@ public class Dun_PlayerMoving : MonoBehaviour
 
     private void Update()
     {
+
         SetDirection();
         SetAnimation();
 

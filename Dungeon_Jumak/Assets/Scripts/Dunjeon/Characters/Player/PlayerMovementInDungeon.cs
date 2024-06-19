@@ -56,6 +56,8 @@ public class PlayerMovementInDungeon : MonoBehaviour
     //Player's yPos
     private float yPos;
 
+    private float timer;
+
     #endregion
 
     private void Start()
@@ -95,35 +97,48 @@ public class PlayerMovementInDungeon : MonoBehaviour
     //this is method for checking to touch panel
     private void CheckTouchPanel()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
-            //Decision ray direction
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            //Return hit object
-            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-
-            //UI raycasting
-            m_ped.position = Input.mousePosition;
-            List<RaycastResult> results = new List<RaycastResult>();
-            m_gr.Raycast(m_ped, results);
-
-            //Exception handling
-            if (results.Count == 0)
+            //Increase timer
+            timer += Time.deltaTime;
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            if (timer < 0.2f)
             {
-                return;
-            }
+                //Init timer
+                timer = 0f;
 
-            //Check Click Panel
-            if (results[0].gameObject.name == "[Panel] Stage 1")
-            {
-                //Play Animation
-                clickAnim.SetTrigger("click");
+                //Decision ray direction
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                //Target for tracking 's positon change to hit point
-                target.transform.position = hit.point;
+                //Return hit object
+                hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+                //UI raycasting
+                m_ped.position = Input.mousePosition;
+                List<RaycastResult> results = new List<RaycastResult>();
+                m_gr.Raycast(m_ped, results);
+
+                //Exception handling
+                if (results.Count == 0)
+                {
+                    return;
+                }
+
+                //Check Click Panel
+                if (results[0].gameObject.name == "[Panel] Stage 1")
+                {
+                    //Play Animation
+                    clickAnim.SetTrigger("click");
+
+                    //Target for tracking 's positon change to hit point
+                    target.transform.position = hit.point;
+                }
+                else return;
             }
-            else return;
+            else
+                timer = 0f;
         }
     }
 

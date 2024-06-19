@@ -44,6 +44,9 @@ namespace UnistrokeGestureRecognition.Example
         /// </summary>
         private JobHandle? _recognizeJob;
 
+        //Check Touch and Drag
+        private float timer;
+
         private void Awake()
         {
             // Use this class to record the gesture path.
@@ -151,13 +154,22 @@ namespace UnistrokeGestureRecognition.Example
         {
             if (Input.GetMouseButton(0))
             {
-                var screenPosition = Input.mousePosition;
+                //Increase Timer
+                timer += Time.deltaTime;
 
-                Vector2 point = _camera.ScreenToWorldPoint(screenPosition);
-                _gestureRecorder.RecordPoint(new Vector2(screenPosition.x, screenPosition.y));
-                // Show gesture path
-                _pathDrawer.AddPoint(point);
+                if (timer >= 0.1f)
+                {
+                    var screenPosition = Input.mousePosition;
+
+                    Vector2 point = _camera.ScreenToWorldPoint(screenPosition);
+                    _gestureRecorder.RecordPoint(new Vector2(screenPosition.x, screenPosition.y));
+                    // Show gesture path
+                    _pathDrawer.AddPoint(point);
+                }
             }
+            else if (Input.GetMouseButtonUp(0))
+                //Init Timer
+                timer = 0f;
         }
 
 
