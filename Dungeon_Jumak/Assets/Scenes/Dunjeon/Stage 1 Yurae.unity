@@ -833,7 +833,7 @@ GameObject:
   - component: {fileID: 78010557}
   - component: {fileID: 78010558}
   m_Layer: 0
-  m_Name: Skill Caster
+  m_Name: 'Skill Caster 1 : Fire Ball'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -866,15 +866,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182436c4152767f49bc7fa2a4b6f91f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skills:
-  - name: Fire Ball
-    id: 0
-    prefabId: 2
-    damage: 1
-    count: 0
-    canSkill: 1
-    coolTime: 3
-    timer: 0
+  _name: Fire Ball
+  id: 0
+  prefabId: 2
+  damage: 1
+  count: 0
+  per: 0
+  speed: 0
+  canSkill: 1
+  coolTime: 3
+  timer: 0
+  duration: 0
   scanner: {fileID: 1003674243}
   pool: {fileID: 987790493}
 --- !u!1 &103111480
@@ -2815,15 +2817,12 @@ MonoBehaviour:
   _patterns:
   - {fileID: 11400000, guid: 2efaa89e086e81c489b160dbb5247796, type: 2}
   - {fileID: 11400000, guid: cf42164158483364e97fae51bb21ea62, type: 2}
-  - {fileID: 11400000, guid: b726f003ee7fc894795e98d9926f8010, type: 2}
-  - {fileID: 11400000, guid: fef9437f8c4b6fe47a6837a29295ec5f, type: 2}
-  - {fileID: 11400000, guid: e549ad957b417584ca0e372dd879ff68, type: 2}
-  - {fileID: 11400000, guid: cf8b350f44cc7204b9b177e75aa9a903, type: 2}
-  - {fileID: 11400000, guid: e05f96e6515b8fc4f9c0d830896221ec, type: 2}
+  - {fileID: 11400000, guid: a95c43bf7ad3510409eaccf88a7c1e3f, type: 2}
   _newPointMinDistance: 1
   _pathDrawer: {fileID: 244979713}
   _nameController: {fileID: 386234144}
-  skillCaster: {fileID: 78010558}
+  fireBall: {fileID: 78010558}
+  fireShield: {fileID: 1686752119}
 --- !u!1 &383182137
 GameObject:
   m_ObjectHideFlags: 0
@@ -3233,6 +3232,75 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0130911, y: 0.73638535}
   m_EdgeRadius: 0
+--- !u!1001 &432749252
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5161649748312962792, guid: 6d54b1b9b21ab1d41bdf7d5587ba1eb1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161649748312962792, guid: 6d54b1b9b21ab1d41bdf7d5587ba1eb1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161649748312962792, guid: 6d54b1b9b21ab1d41bdf7d5587ba1eb1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161649748312962792, guid: 6d54b1b9b21ab1d41bdf7d5587ba1eb1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161649748312962792, guid: 6d54b1b9b21ab1d41bdf7d5587ba1eb1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161649748312962792, guid: 6d54b1b9b21ab1d41bdf7d5587ba1eb1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161649748312962792, guid: 6d54b1b9b21ab1d41bdf7d5587ba1eb1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161649748312962792, guid: 6d54b1b9b21ab1d41bdf7d5587ba1eb1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161649748312962792, guid: 6d54b1b9b21ab1d41bdf7d5587ba1eb1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161649748312962792, guid: 6d54b1b9b21ab1d41bdf7d5587ba1eb1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161649748312962792, guid: 6d54b1b9b21ab1d41bdf7d5587ba1eb1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161649748312962796, guid: 6d54b1b9b21ab1d41bdf7d5587ba1eb1,
+        type: 3}
+      propertyPath: m_Name
+      value: 'Pig Monster '
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6d54b1b9b21ab1d41bdf7d5587ba1eb1, type: 3}
 --- !u!1 &434288080
 GameObject:
   m_ObjectHideFlags: 0
@@ -6489,6 +6557,7 @@ MonoBehaviour:
   - {fileID: 4310319717651680285, guid: d207d60e10143774ca88e71f4f7c7145, type: 3}
   - {fileID: 5161649748312962796, guid: 6d54b1b9b21ab1d41bdf7d5587ba1eb1, type: 3}
   - {fileID: 8867626343372448243, guid: 69e12ec0111478a44844821eb1fc7d89, type: 3}
+  - {fileID: 2133454469683674753, guid: 224508ff2f030a0439c492c5b3fce993, type: 3}
 --- !u!4 &987790494
 Transform:
   m_ObjectHideFlags: 0
@@ -6746,6 +6815,7 @@ Transform:
   m_Children:
   - {fileID: 2134004941}
   - {fileID: 78010557}
+  - {fileID: 1686752118}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6779,7 +6849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc756d0764f08114298b16cf3a8b9349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanRange: 4
+  scanRange: 3
   targetLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -6815,7 +6885,7 @@ Transform:
   m_Children:
   - {fileID: 1155824506}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1004859788
 MonoBehaviour:
@@ -7922,7 +7992,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155824505}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 11.39, y: 12.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8051,6 +8121,75 @@ Transform:
   m_Father: {fileID: 431070742}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1168120096
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4310319717651680257, guid: d207d60e10143774ca88e71f4f7c7145,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310319717651680257, guid: d207d60e10143774ca88e71f4f7c7145,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310319717651680257, guid: d207d60e10143774ca88e71f4f7c7145,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310319717651680257, guid: d207d60e10143774ca88e71f4f7c7145,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310319717651680257, guid: d207d60e10143774ca88e71f4f7c7145,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310319717651680257, guid: d207d60e10143774ca88e71f4f7c7145,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310319717651680257, guid: d207d60e10143774ca88e71f4f7c7145,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310319717651680257, guid: d207d60e10143774ca88e71f4f7c7145,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310319717651680257, guid: d207d60e10143774ca88e71f4f7c7145,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310319717651680257, guid: d207d60e10143774ca88e71f4f7c7145,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310319717651680257, guid: d207d60e10143774ca88e71f4f7c7145,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310319717651680285, guid: d207d60e10143774ca88e71f4f7c7145,
+        type: 3}
+      propertyPath: m_Name
+      value: Buchu Monster
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d207d60e10143774ca88e71f4f7c7145, type: 3}
 --- !u!1 &1174756992
 GameObject:
   m_ObjectHideFlags: 0
@@ -9255,7 +9394,7 @@ Transform:
   - {fileID: 422778425}
   - {fileID: 1333063629}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1348335409
 GameObject:
@@ -11502,6 +11641,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1686752117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1686752118}
+  - component: {fileID: 1686752119}
+  m_Layer: 0
+  m_Name: 'Skill Caster 2 : Fire Shield'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1686752118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686752117}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1003674241}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1686752119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686752117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182436c4152767f49bc7fa2a4b6f91f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Fire Shield
+  id: 1
+  prefabId: 3
+  damage: 1
+  count: 3
+  per: -1
+  speed: 150
+  canSkill: 1
+  coolTime: 20
+  timer: 0
+  duration: 10
+  scanner: {fileID: 1003674243}
+  pool: {fileID: 987790493}
 --- !u!1 &1694582653
 GameObject:
   m_ObjectHideFlags: 0

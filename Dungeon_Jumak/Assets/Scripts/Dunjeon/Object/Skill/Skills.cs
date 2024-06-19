@@ -14,12 +14,7 @@ public class Skills : MonoBehaviour
     [Header("스킬 관통력")]
     public int per;
 
-    private Rigidbody2D rigid;
-
-    private void Awake()
-    {
-        rigid = GetComponent<Rigidbody2D>();
-    }
+    [SerializeField] private Rigidbody2D rigid;
 
     public void Init(float damage, int per, Vector3 direction)
     {

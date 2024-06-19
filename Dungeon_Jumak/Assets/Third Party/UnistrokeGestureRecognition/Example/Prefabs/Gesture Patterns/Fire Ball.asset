@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d828b2f62a1b3d84b83d3ca66faaea77, type: 3}
-  m_Name: FireBall
+  m_Name: Fire Ball
   m_EditorClassIdentifier: 
   _path:
   - {x: 0, y: 0.9068826}

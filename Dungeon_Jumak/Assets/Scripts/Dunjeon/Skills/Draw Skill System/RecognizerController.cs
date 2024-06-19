@@ -26,8 +26,11 @@ namespace UnistrokeGestureRecognition.Example
         [Header("Name Controller")]
         [SerializeField] private NameController _nameController;
 
-        [Header("Skill Caster")]
-        [SerializeField] private SkillCaster skillCaster;
+        [Header("Fire Ball Caster")]
+        [SerializeField] private SkillCaster fireBall;
+
+        [Header("Fire Shiled Caster")]
+        [SerializeField] private SkillCaster fireShield;
 
         //Camera
         private Camera _camera;
@@ -116,7 +119,11 @@ namespace UnistrokeGestureRecognition.Example
                 switch (recognizedPattern.Name)
                 {
                     case "FireBall":
-                        skillCaster.FireBall();
+                        fireBall.FireBall();
+                        break;
+
+                    case "FireShield":
+                        fireShield.FireShield();
                         break;
 
                     default:
