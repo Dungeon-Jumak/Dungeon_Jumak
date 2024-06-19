@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a2d99776540f1cd459385e7044734e79
+guid: 310012dda487f014f8088eb50b2cbf8a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: '[B] Stage 1 Pig Farm_0'
+      name: '[B] Stage 1 Wish Tree Multiple_0'
       rect:
         serializedVersion: 2
         x: 0
-        y: 248
-        width: 532
-        height: 248
+        y: 182
+        width: 510
+        height: 182
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e32a24a3aed6ea40a6c6950ff04c8e3
-      internalID: -1118523746
+      spriteID: 9149ee1053ffa494da3011e78cb81bf3
+      internalID: 39127729
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: '[B] Stage 1 Pig Farm_1'
+      name: '[B] Stage 1 Wish Tree Multiple_1'
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 532
-        height: 248
+        width: 510
+        height: 182
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da1d5c293228adc40ad61558b3189cb7
-      internalID: -432909343
+      spriteID: 858db59dbb09b32438220eb41a79900c
+      internalID: 1070668341
       vertices: []
       indices: 
       edges: []
@@ -169,8 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      '[B] Stage 1 Pig Farm_0': -1118523746
-      '[B] Stage 1 Pig Farm_1': -432909343
+      '[B] Stage 1 Wish Tree Multiple_0': 39127729
+      '[B] Stage 1 Wish Tree Multiple_1': 1070668341
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

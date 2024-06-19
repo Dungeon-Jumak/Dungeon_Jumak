@@ -29,7 +29,7 @@ public class Skills : MonoBehaviour
 
         if (per > -1)
         {
-            rigid.velocity = direction * 15f;
+            rigid.velocity = direction * 10f;
         }
     }
 
