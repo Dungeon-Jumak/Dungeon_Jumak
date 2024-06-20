@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour
 
     private float timer;
     private float gameSecondsPerRealSecond = 3 * 60f; //3 minutes per second
-    private float secondsInADay = 24 * 60 * 60; 
+    private float secondsInADay = 24 * 60 * 60;
+    private bool isMorning = false;
 
     //Setting GameManager.cs to Singleton system 
     void Awake()
@@ -117,6 +118,12 @@ public class GameManager : MonoBehaviour
                 timer -= secondsInADay;
             }
 
+            if (isMorning)
+            {
+                Debug.Log("하루가 지났습니다!!");
+                isMorning = false;
+            }
+
             DisplayTime();
         }
     }
@@ -129,10 +136,20 @@ public class GameManager : MonoBehaviour
 
         string timeText = string.Format("{0:D2}:{1:D2}", hours, minutes);
         //timeDisplay.text = timeText;
+
+        if (hours >= 0 && hours < 6)
+        {
+            Debug.Log("얼렁 자라!!");
+        }
+
+        if (hours >= 6 && minutes > 0 && minutes < 4)
+        {
+            isMorning= true;
+        }
     }
 
     public void ResetTimer()
     {
-        timer = 6 * 60 * 60;
+        timer = 6 * 60 * 61;
     }
 }
