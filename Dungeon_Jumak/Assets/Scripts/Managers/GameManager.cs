@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Resources;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -14,6 +15,12 @@ public class GameManager : MonoBehaviour
     //GameManager.cs instance variable
     private static GameManager instance;
 
+    //public Text timeDisplay;
+
+    private float timer;
+    private float gameSecondsPerRealSecond = 3 * 60f; //3 minutes per second
+    private float secondsInADay = 24 * 60 * 60; 
+
     //Setting GameManager.cs to Singleton system 
     void Awake()
     {
@@ -21,6 +28,9 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            timer = 6 * 60 * 60;
+            data = DataManager.Instance.data;
         }
         else
         {
@@ -44,10 +54,10 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Create Manager Script Variable
     /// </summary>
-    SceneManagerEx _sceneManager = new SceneManagerEx();//SceneManagerEx »ý¼º
-    ResourceManager _resource = new ResourceManager();//ResourceManager »ý¼º
-    SoundManager _soundManager = new SoundManager();//SoundManager »ý¼º
-    UIManager _ui = new UIManager();//UIManager »ý¼º
+    SceneManagerEx _sceneManager = new SceneManagerEx();//SceneManagerEx Â»Ã½Â¼Âº
+    ResourceManager _resource = new ResourceManager();//ResourceManager Â»Ã½Â¼Âº
+    SoundManager _soundManager = new SoundManager();//SoundManager Â»Ã½Â¼Âº
+    UIManager _ui = new UIManager();//UIManager Â»Ã½Â¼Âº
 
     public static SceneManagerEx Scene { get { return Instance._sceneManager; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
@@ -94,4 +104,35 @@ public class GameManager : MonoBehaviour
         audioManager.AllStop();
         SceneManager.LoadScene(_sceneName);
     }*/
+
+    private void Update()
+    {
+        if (data.timerStart)
+        {
+            timer += Time.deltaTime * gameSecondsPerRealSecond;
+
+            //24 hours (86400 seconds) are exceeded, the timer returns to 0.
+            if (timer >= secondsInADay)
+            {
+                timer -= secondsInADay;
+            }
+
+            DisplayTime();
+        }
+    }
+
+    private void DisplayTime()
+    {
+        int totalMinutes = Mathf.FloorToInt(timer / 60f);
+        int hours = totalMinutes / 60;
+        int minutes = totalMinutes % 60;
+
+        string timeText = string.Format("{0:D2}:{1:D2}", hours, minutes);
+        //timeDisplay.text = timeText;
+    }
+
+    public void ResetTimer()
+    {
+        timer = 6 * 60 * 60;
+    }
 }

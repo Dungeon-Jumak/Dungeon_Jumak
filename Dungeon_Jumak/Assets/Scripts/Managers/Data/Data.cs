@@ -84,4 +84,7 @@ public class Data
     public int tableLV = 0;
 
     public int days = 1;
+
+    //--타이머 관련--//
+    public bool timerStart = false;
 }
