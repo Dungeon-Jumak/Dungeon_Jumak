@@ -36,6 +36,8 @@ public class TrackingRange : MonoBehaviour
         {
             monsterController.isTrack = true;
             StartCoroutine(DisplayTrackingSign());
+
+            circle.enabled = false;
         }
     }
 

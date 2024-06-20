@@ -24,6 +24,8 @@ TagManager:
   - Target_Jumak
   - Target_Junjeon
   - Target_Dunjeon
+  - Attack
+  - Track_Range
   layers:
   - Default
   - TransparentFX
@@ -34,7 +36,7 @@ TagManager:
   - BackGround
   - Food_Up
   - Food_Down
-  - 
+  - Monster
   - LightObstacles
   - LightSource
   - AmbientLight
