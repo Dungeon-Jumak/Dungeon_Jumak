@@ -168,7 +168,7 @@ MonoBehaviour:
   target: {fileID: 0}
   trackingSpeed: 2
   health: 1
-  maxHealth: 1
+  maxHealth: 2
 --- !u!114 &4310319717651680260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circle: {fileID: 4310319718007330283}
-  range: 3
+  range: 5
   trackingSign: {fileID: 4310319718834919473}
 --- !u!114 &4310319717651680282
 MonoBehaviour:
@@ -284,7 +284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4310319718007330282
 Transform:
   m_ObjectHideFlags: 0
@@ -315,7 +315,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 20
 --- !u!1 &4310319718834919473
 GameObject:
   m_ObjectHideFlags: 0

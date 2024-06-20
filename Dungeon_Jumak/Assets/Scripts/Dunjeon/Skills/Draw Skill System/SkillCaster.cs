@@ -61,10 +61,10 @@ public class SkillCaster : MonoBehaviour
 
             //Fire Shield
             case 1:
-                transform.Rotate(Vector3.back * speed * Time.deltaTime);
-
                 if (transform.childCount != 0)
                 {
+                    transform.Rotate(Vector3.back * speed * Time.deltaTime);
+
                     currentDuration += Time.deltaTime;
 
                     if(currentDuration >= duration)
@@ -74,6 +74,10 @@ public class SkillCaster : MonoBehaviour
 
                         Demolition();
                     }
+                }
+                else if (transform.childCount == 0)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
 
                 break;
@@ -184,7 +188,10 @@ public class SkillCaster : MonoBehaviour
 
             //Change Transform
             skill.parent = transform;
-            skill.transform.localPosition = Vector3.zero;
+
+            //Init
+            skill.localPosition = Vector3.zero;
+            skill.localRotation = Quaternion.Euler(0, 0, 0);
 
             //Get Rotation Vector
             Vector3 rotVec = Vector3.forward * 360 * i / count;
@@ -211,8 +218,8 @@ public class SkillCaster : MonoBehaviour
             if (child.gameObject == transform.gameObject) continue;
             else
             {
-                transform.GetChild(0).gameObject.SetActive(false);
-                transform.GetChild(0).parent = pool.transform;
+                child.gameObject.SetActive(false);
+                child.parent = pool.transform;
             }
         }
     }
@@ -223,7 +230,6 @@ public class SkillCaster : MonoBehaviour
         if (canSkill)
         {
             canSkill = false;
-
             Batch();
         }
     }

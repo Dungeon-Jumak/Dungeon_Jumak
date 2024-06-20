@@ -130,7 +130,7 @@ namespace UnistrokeGestureRecognition.Example
                         break;
                 }
 
-                Debug.Log($"{recognizedPattern.Name}: {result.Score}");
+                //Debug.Log($"{recognizedPattern.Name}: {result.Score}");
             }
 
             _recognizeJob = null;

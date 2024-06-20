@@ -55,6 +55,8 @@ public class MonsterController : MonoBehaviour
 
         //Init health
         health = maxHealth;
+
+        isTrack = true;
     }
 
     private void Start()

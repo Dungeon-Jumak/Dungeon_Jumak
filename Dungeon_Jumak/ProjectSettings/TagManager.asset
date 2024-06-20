@@ -25,6 +25,7 @@ TagManager:
   - Target_Junjeon
   - Target_Dunjeon
   - Attack
+  - Track_Range
   layers:
   - Default
   - TransparentFX
