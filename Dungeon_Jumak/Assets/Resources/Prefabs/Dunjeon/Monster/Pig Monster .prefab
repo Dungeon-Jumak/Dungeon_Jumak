@@ -174,7 +174,7 @@ MonoBehaviour:
   attackPower: 1
   dropItemID: 0
   dropPool: {fileID: 0}
-  percent: 100
+  percent: 30
   isLive: 0
 --- !u!114 &5161649748312962789
 MonoBehaviour:
