@@ -14,19 +14,24 @@ public class DayCountSystem : MonoBehaviour
     {
         data = DataManager.Instance.data;
         hasRunOnce = false;
-}
+    }
 
-    // Update is called once per frame
     void Update()
     {
-        if(data.dayCount && !hasRunOnce)
+        if (data.dayCount && !hasRunOnce)
         {
             data.days += 1;
             daysUI.SetActive(true);
             dayTmp.text = data.days.ToString() + "일";
-
             data.dayCount = false;
             hasRunOnce = true;
+            StartCoroutine(HideDaysUI(5f));
         }
+    }
+    private IEnumerator HideDaysUI(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        daysUI.SetActive(false);
+        hasRunOnce = false;
     }
 }
