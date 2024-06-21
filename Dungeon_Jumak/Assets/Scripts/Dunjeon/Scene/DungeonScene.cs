@@ -111,6 +111,7 @@ public class DungeonScene : BaseScene
 
     public void ConvertScene()
     {
+        Time.timeScale = 1f;
         GameManager.Scene.LoadScene(Define.Scene.WaitingScene);
     }
 

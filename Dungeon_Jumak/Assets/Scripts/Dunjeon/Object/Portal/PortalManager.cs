@@ -34,6 +34,8 @@ public class PortalManager : MonoBehaviour
 
     public void StopGame()
     {
+        Time.timeScale = 1f;
+
         //Move Scene
         GameManager.Scene.LoadScene(Define.Scene.WaitingScene);
     }
