@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     private float gameSecondsPerRealSecond = 3 * 60f; //3 minutes per second
     private float secondsInADay = 24 * 60 * 60;
 
+    private GameObject dayTimerTextObject;
+
     //Setting GameManager.cs to Singleton system 
     void Awake()
     {
@@ -35,19 +37,6 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-        }
-    }
-
-    private void OnEnable()
-    {
-        GameObject dayTimerTextObject = GameObject.Find("DayTimer_Text");
-        if (dayTimerTextObject != null)
-        {
-            timeDisplayTmp = dayTimerTextObject.GetComponent<TextMeshProUGUI>();
-        }
-        else
-        {
-            Debug.LogWarning("");
         }
     }
 
@@ -77,12 +66,11 @@ public class GameManager : MonoBehaviour
     public static SoundManager Sound { get { return Instance._soundManager; } }
     public static UIManager UI { get { return Instance._ui; } }
 
-    void Start()
+    public void Start()
     {
         data = DataManager.Instance.data;//Data.cs
 
         _soundManager.Init();//Init the SoundManager.cs
-
     }
 
     //Clear function to control scene and sound memory system when convert current scene
@@ -142,7 +130,10 @@ public class GameManager : MonoBehaviour
         int minutes = totalMinutes % 60;
 
         string timeText = string.Format("{0:D2}:{1:D2}", hours, minutes);
-        timeDisplayTmp.text = timeText;
+
+        dayTimerTextObject = _resource.Load<GameObject>("Prefabs/DayTimer_Text");
+        dayTimerTextObject.GetComponent<TextMeshProUGUI>().text = timeText;
+        Debug.Log(timeText);
 
         if (hours >= 0 && hours < 6)
         {
