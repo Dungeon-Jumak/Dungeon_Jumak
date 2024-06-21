@@ -21,7 +21,13 @@ public class PlayerHPController : MonoBehaviour
     [Header("체력 슬라이더 위치")]
     [SerializeField] private Transform sliderTransform;
 
-    private Coroutine coroutine;
+    private Coroutine hitCoroutine;
+    private Coroutine deactiveCoroutine;
+
+    private void OnEnable()
+    {
+        StopAllCoroutines();
+    }
 
     private void Start()
     {
@@ -48,14 +54,14 @@ public class PlayerHPController : MonoBehaviour
         currentHP -= collision.transform.GetComponent<MonsterController>().attackPower;
 
         //Check Coroutine
-        if(coroutine != null)
+        if (deactiveCoroutine != null)
         {
-            StopAllCoroutines();
+            StopCoroutine(DeActiveSlider());
             StartCoroutine(DeActiveSlider());
         }
-        else if (coroutine == null)
+        else if (deactiveCoroutine == null)
         {
-            coroutine = StartCoroutine(DeActiveSlider());
+            deactiveCoroutine = StartCoroutine(DeActiveSlider());
         }
 
         //Check HP
@@ -67,6 +73,30 @@ public class PlayerHPController : MonoBehaviour
         {
             //Die
         }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (!collision.collider.CompareTag("Monster"))
+            return;
+
+        //Show Slider
+        hpSlider.gameObject.SetActive(true);
+
+        if (hitCoroutine == null)
+        {
+            hitCoroutine = StartCoroutine(HitDelay(collision));
+        }
+
+    }
+
+    IEnumerator HitDelay(Collision2D _collision)
+    {
+        yield return new WaitForSeconds(1f);
+
+        currentHP -= _collision.transform.GetComponent<MonsterController>().attackPower;
+
+        hitCoroutine = null;
     }
 
     //Coroutine for deactive hp slider

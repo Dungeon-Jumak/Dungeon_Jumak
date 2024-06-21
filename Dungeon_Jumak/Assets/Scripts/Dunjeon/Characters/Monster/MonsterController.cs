@@ -36,6 +36,9 @@ public class MonsterController : MonoBehaviour
     //Rigidbody 2D
     private Rigidbody2D rigid;
 
+    //Collider
+    private CapsuleCollider2D coll;
+
     //Sprite Renderer
     private SpriteRenderer spriteRenderer;
 
@@ -43,7 +46,7 @@ public class MonsterController : MonoBehaviour
     private Animator animator;
 
     //isLive Sign
-    private bool isLive;
+    public bool isLive;
 
     //isMove Sign
     private bool isMove;
@@ -69,6 +72,7 @@ public class MonsterController : MonoBehaviour
     {
         //Get Component
         rigid = GetComponent<Rigidbody2D>();
+        coll = GetComponent<CapsuleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         destination = GetComponent<AIDestinationSetter>();
@@ -76,8 +80,8 @@ public class MonsterController : MonoBehaviour
 
         animator = GetComponent<Animator>();
 
-        destination.enabled = false;
-        aiPath.enabled = false;
+        //destination.enabled = false;
+        //aiPath.enabled = false;
 
         //Initialize
         isMove = false;
@@ -229,7 +233,8 @@ public class MonsterController : MonoBehaviour
         }
         else
         {
-            //Die
+            isLive = false;
+
             Dead();
         }
     }
