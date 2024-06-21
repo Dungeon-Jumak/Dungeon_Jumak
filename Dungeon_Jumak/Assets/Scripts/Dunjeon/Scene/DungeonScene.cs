@@ -10,7 +10,7 @@ using UnityEngine.UI;
 using TMPro;
 
 [DisallowMultipleComponent]
-public class DungeonScene : MonoBehaviour
+public class DungeonScene : BaseScene
 {
     [Header("타이머 슬라이더")]
     [SerializeField] private Slider timerSlider;
@@ -28,7 +28,7 @@ public class DungeonScene : MonoBehaviour
     [SerializeField] private float maxTimer;
 
     [Header("게임오버 팝업")]
-    [SerializeField] private GameObject gameOverPopUp;
+    [SerializeField] private GameObject gameClear;
 
     private float currentTimer;
 
@@ -52,6 +52,12 @@ public class DungeonScene : MonoBehaviour
 
     private void Update()
     {
+        if(currentTimer <= 0)
+        {
+            currentTimer = 0f;
+
+        }
+
         //Timer
         currentTimer -= Time.deltaTime;
 
@@ -88,13 +94,13 @@ public class DungeonScene : MonoBehaviour
         }
     }
 
-    public void GameOver()
+    public void GameClear()
     {
         //Stop
         Time.timeScale = 0f;
 
         //Pop Up
-        gameOverPopUp.SetActive(true);
+        gameClear.SetActive(true);
     }
 
     public void ConvertScene()
@@ -102,5 +108,8 @@ public class DungeonScene : MonoBehaviour
         GameManager.Scene.LoadScene(Define.Scene.WaitingScene);
     }
 
-
+    public override void Clear()
+    {
+        Debug.Log("DungeonScene Changed!");
+    }
 }

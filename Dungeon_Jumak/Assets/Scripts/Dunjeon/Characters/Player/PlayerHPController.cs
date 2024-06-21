@@ -21,6 +21,9 @@ public class PlayerHPController : MonoBehaviour
     [Header("체력 슬라이더 위치")]
     [SerializeField] private Transform sliderTransform;
 
+    [Header("게임 오버 팝업")]
+    [SerializeField] private GameObject gameOver;
+
     private Coroutine hitCoroutine;
     private Coroutine deactiveCoroutine;
 
@@ -67,11 +70,14 @@ public class PlayerHPController : MonoBehaviour
         //Check HP
         if (currentHP > 0)
         {
-            //Live
+            //Live : Add Animation
         }
         else
         {
             //Die
+            Time.timeScale = 0f;
+
+            gameOver.SetActive(true);
         }
     }
 
