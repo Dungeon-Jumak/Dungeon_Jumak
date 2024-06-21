@@ -107,6 +107,9 @@ public class JumakScene : BaseScene
     [Header("토탈 가격 전표 텍스트")]
     [SerializeField] private TextMeshProUGUI totalReceiptTMP;
 
+    [Header("레벨 텍스트")]
+    [SerializeField] private TextMeshProUGUI levelText;
+
     //Data
     private Data data;
 
@@ -204,6 +207,8 @@ public class JumakScene : BaseScene
 
         //Call Timer Method
         Timer();
+
+        levelText.text = "LV." + data.curPlayerLV.ToString();
 
         //If end and mousebutton down, load waiting scene
         if (end && Input.GetMouseButtonDown(0))

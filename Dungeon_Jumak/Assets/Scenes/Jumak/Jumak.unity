@@ -19490,6 +19490,7 @@ MonoBehaviour:
   pajeonReceiptTMP: {fileID: 654686793}
   riceJuiceReceiptTMP: {fileID: 924713266}
   totalReceiptTMP: {fileID: 1527850059}
+  levelText: {fileID: 1177058338}
 --- !u!4 &1464183233
 Transform:
   m_ObjectHideFlags: 0
@@ -20026,7 +20027,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.17934787, y: 0.3447941}
   m_AnchorMax: {x: 0.801187, y: 0.88100004}
-  m_AnchoredPosition: {x: 0.40000153, y: -54.000065}
+  m_AnchoredPosition: {x: 0.40000153, y: -54.00007}
   m_SizeDelta: {x: 68.75, y: 54.79}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!95 &1480842454
