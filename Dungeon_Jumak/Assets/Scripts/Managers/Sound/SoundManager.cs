@@ -69,15 +69,18 @@ public class SoundManager : MonoBehaviour
         {
             AudioSource audioSource = new GameObject("SFX").AddComponent<AudioSource>();
             audioSource.transform.parent = GameObject.Find("@Sound").transform;
-            audioSource.loop = loop;
             audioSource.clip = audioClip;
-            audioSource.Play(); 
 
             _effectSources[path] = audioSource;
 
-            if (!loop)
+            if (loop)
             {
-                StartCoroutine(DestroyAudioSourceAfterPlayback(audioSource, audioClip.length, path));
+                audioSource.loop = loop;
+                audioSource.Play();
+            }
+            else if(!loop)
+            {
+                audioSource.PlayOneShot(audioClip);
             }
         }
     }

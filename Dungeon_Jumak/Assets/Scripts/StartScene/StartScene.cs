@@ -10,8 +10,7 @@ public class StartScene : BaseScene
     void Start()
     {
         data = DataManager.Instance.data;//Data.cs
-        GameManager.Sound.Play("BGM/[B] Shop", Define.Sound.Bgm);
-        GameManager.Sound.Play("[S] Hit", Define.Sound.Effect, true);
+        GameManager.Sound.Play("BGM/[B] Shop", Define.Sound.Bgm, true);
     }
 
     //Convert to WaitingScene
@@ -22,9 +21,9 @@ public class StartScene : BaseScene
     }
 
     //Click Sound
-    public void ClickSound()
+    public void ButtonClickSFX()
     {
-        GameManager.Sound.Pause("[S] Hit", Define.Sound.Effect);
+        GameManager.Sound.Play("[S] Push Button", Define.Sound.Effect, false);
     }
 
     //When convert to next scene

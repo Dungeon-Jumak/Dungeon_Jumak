@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -7,7 +8,7 @@ public class WaitingScene : BaseScene
 {
     void Start()
     {
-        //GameManager.Sound.Play("Wait", Define.Sound.Bgm);//Play The Bgm Sound in WaitingScene
+        GameManager.Sound.Play("BGM/[B] Waiting Scene", Define.Sound.Bgm, true);//Play The Bgm Sound in WaitingScene
     }
 
     //Current Scene Settings
@@ -16,10 +17,25 @@ public class WaitingScene : BaseScene
         SceneType = Define.Scene.WaitingScene;
     }
 
-    //Click Sound
-    public void ClickSound()
+    public void ChangeScene(string sceneName)
     {
-        //GameManager.Sound.Play("PickFood", Define.Sound.Effect);
+        StartCoroutine(ChangeSceneAfterDelay(sceneName, 1.0f)); // 1초 지연 후 씬 변경 코루틴 시작
+    }
+
+    private IEnumerator ChangeSceneAfterDelay(string sceneName, float delay)
+    {
+        yield return new WaitForSeconds(delay); // 지연 시간 기다림
+
+        if (Enum.TryParse(sceneName, out Define.Scene scene))
+        {
+            GameManager.Scene.LoadScene(scene);
+        }
+    }
+
+    //Click Sound
+    public void ButtonClickSFX()
+    {
+        GameManager.Sound.Play("[S] Push Button", Define.Sound.Effect, false);
     }
 
     //When convert to next scene

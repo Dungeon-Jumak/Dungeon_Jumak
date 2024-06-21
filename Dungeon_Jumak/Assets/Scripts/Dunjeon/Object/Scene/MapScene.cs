@@ -9,7 +9,7 @@ public class MapScene : BaseScene
 
     void Start()
     {
-        //GameManager.Sound.Play("Map_Front", Define.Sound.Effect);//Play The Bgm Sound in MapScene
+        GameManager.Sound.Play("[B] Map Front", Define.Sound.Bgm, true);
     }
 
     //Current Scene Settings
@@ -28,7 +28,13 @@ public class MapScene : BaseScene
     public void OpenMovingPanel()
     {
         movingPanel.SetActive(true);//activate the StartDunjeon panel
-        StartCoroutine(LoadSceneAfterDelay(1)); //StartCoroutine with 1 second
+        StartCoroutine(LoadSceneAfterDelay(1)); 
+    }
+
+    //Click Sound
+    public void ButtonClickSFX()
+    {
+        GameManager.Sound.Play("[S] Push Button", Define.Sound.Effect, false);
     }
 
     //IEnumerator function
