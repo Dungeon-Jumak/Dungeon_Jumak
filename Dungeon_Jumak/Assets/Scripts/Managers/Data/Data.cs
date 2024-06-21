@@ -85,12 +85,12 @@ public class Data
     public int houseLV = 0;
     public int dansangLV = 0;
     public int tableLV = 0;
-
+    public int days = 0;
 
     //--타이머 및 날짜 관련--//
     public bool timerStart = false;
     public bool dayCount = false;
 
-    public int days = 0;
+    public int Countday = 0;
 
 }

@@ -16,16 +16,16 @@ public class DayCountSystem : MonoBehaviour
         hasRunOnce = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (data.dayCount && !hasRunOnce)
         {
-            data.days += 1;
-            daysUI.SetActive(true);
-            dayTmp.text = data.days.ToString() + "일";
             data.dayCount = false;
             hasRunOnce = true;
-            StartCoroutine(HideDaysUI(5f));
+            daysUI.SetActive(true);
+            data.Countday += 1;
+            dayTmp.text = data.Countday.ToString() + "일";
+            StartCoroutine(HideDaysUI(1f));
         }
     }
     private IEnumerator HideDaysUI(float delay)

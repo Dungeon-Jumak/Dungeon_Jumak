@@ -17,9 +17,11 @@ public class GameManager : MonoBehaviour
 
     private TextMeshProUGUI timeDisplayTmp;
 
+    [SerializeField]
     private float timer;
     private float gameSecondsPerRealSecond = 3 * 60f; //3 minutes per second
     private float secondsInADay = 24 * 60 * 60;
+    private bool IsDay = true;
 
     private GameObject dayTimerTextObject;
 
@@ -140,10 +142,16 @@ public class GameManager : MonoBehaviour
             Debug.Log("얼렁 자라!!");
         }
 
-        if (hours >= 6 && minutes > 0 && minutes < 4)
+        if (hours == 6 && minutes == 1 && IsDay)
         {
+            IsDay = false;
             data.dayCount = true;
         }
+        else if(hours == 7)
+        {
+            IsDay = true;
+        }
+
     }
 
     public void ResetTimer()
