@@ -22,10 +22,13 @@ public class MonsterController : MonoBehaviour
     [SerializeField] private float trackingSpeed;
 
     [Header("몬스터의 체력")]
-    [SerializeField] private float health;
+    public float health;
 
     [Header("몬스터의 최대 체력")]
-    [SerializeField] private float maxHealth;
+    public float maxHealth;
+
+    [Header("몬스터의 공격력")]
+    public float attackPower;
 
     private AIDestinationSetter destination;
     private AIPath aiPath;
@@ -35,6 +38,9 @@ public class MonsterController : MonoBehaviour
 
     //Sprite Renderer
     private SpriteRenderer spriteRenderer;
+
+    //Animator
+    private Animator animator;
 
     //isLive Sign
     private bool isLive;
@@ -68,6 +74,8 @@ public class MonsterController : MonoBehaviour
         destination = GetComponent<AIDestinationSetter>();
         aiPath = GetComponent<AIPath>();
 
+        animator = GetComponent<Animator>();
+
         destination.enabled = false;
         aiPath.enabled = false;
 
@@ -75,7 +83,7 @@ public class MonsterController : MonoBehaviour
         isMove = false;
 
         //Start Patrol Coroutine
-        StartCoroutine(RandomPatrol());
+        //StartCoroutine(RandomPatrol());
     }
 
     //Fixed Update : For Rigid Controll
@@ -118,6 +126,12 @@ public class MonsterController : MonoBehaviour
         if (!isLive)
             return;
 
+        //Up than player
+        if(target.position.y < rigid.position.y)
+            spriteRenderer.sortingOrder = 0;
+        else
+            spriteRenderer.sortingOrder = 2;
+
         //if is tracking
         if (isTrack)
         {
@@ -138,6 +152,7 @@ public class MonsterController : MonoBehaviour
         }
     }
 
+    /*
     //Random Patrol Coroutine
     IEnumerator RandomPatrol()
     {
@@ -187,6 +202,7 @@ public class MonsterController : MonoBehaviour
         //StartCoroutine : recursion
         StartCoroutine(RandomPatrol());
     }
+    */
 
     private void Move()
     {
@@ -204,16 +220,42 @@ public class MonsterController : MonoBehaviour
 
         //Damage !
         health -= collision.GetComponent<Skills>().damage;
+        StartCoroutine(KnockBack(collision.GetComponent<Skills>().knockBack));
 
         if (health > 0)
         {
             //Live
+            animator.SetTrigger("Hit");
         }
         else
         {
             //Die
             Dead();
         }
+    }
+
+    IEnumerator KnockBack(float _knockBack)
+    {
+        //Delay One Frame
+        yield return new WaitForSeconds(0.35f);
+
+        //Get Player Position
+        Vector3 playerPos = target.transform.position;
+
+        //Compute Direction Vector
+        Vector3 dirVec = transform.position - playerPos;
+        
+        //For Use Rigidbody
+        destination.enabled = false;
+        aiPath.enabled = false;
+
+        //Add Force : Knock Back
+        rigid.AddForce(dirVec.normalized * _knockBack, ForceMode2D.Impulse);
+
+        yield return new WaitForFixedUpdate();
+
+        destination.enabled = true;
+        aiPath.enabled = true;
     }
 
     private void Dead()

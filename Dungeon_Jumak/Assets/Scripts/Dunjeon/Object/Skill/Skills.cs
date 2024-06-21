@@ -14,13 +14,17 @@ public class Skills : MonoBehaviour
     [Header("스킬 관통력")]
     public int per;
 
+    [Header("스킬 넉백력")]
+    public float knockBack;
+
     [SerializeField] private Rigidbody2D rigid;
 
-    public void Init(float damage, int per, Vector3 direction)
+    public void Init(float damage, int per, float knockBack, Vector3 direction)
     {
         //initialize
         this.damage = damage;
         this.per = per;
+        this.knockBack = knockBack;
 
         if (per > -1)
         {
