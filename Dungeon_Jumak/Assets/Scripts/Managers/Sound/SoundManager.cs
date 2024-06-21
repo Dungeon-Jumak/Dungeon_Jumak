@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
@@ -60,6 +61,14 @@ public class SoundManager : MonoBehaviour
             AudioSource audioSource = _audioSources[(int)Define.Sound.Bgm];
             audioSource.clip = audioClip;
             audioSource.loop = loop;
+
+            string mixerPath = $"Audio/Audio Mixer";
+            AudioMixer audioMixer = Resources.Load<AudioMixer>(mixerPath);
+
+            AudioMixerGroup[] mixerGroups = audioMixer.FindMatchingGroups("BGM");
+
+            audioSource.outputAudioMixerGroup = mixerGroups[0];
+
             audioSource.Play(); 
 
             _bgmSources[path] = audioSource;
@@ -70,6 +79,13 @@ public class SoundManager : MonoBehaviour
             AudioSource audioSource = new GameObject("SFX").AddComponent<AudioSource>();
             audioSource.transform.parent = GameObject.Find("@Sound").transform;
             audioSource.clip = audioClip;
+
+            string mixerPath = $"Audio/Audio Mixer";
+            AudioMixer audioMixer = Resources.Load<AudioMixer>(mixerPath);
+
+            AudioMixerGroup[] mixerGroups = audioMixer.FindMatchingGroups("SFX");
+
+            audioSource.outputAudioMixerGroup = mixerGroups[0];
 
             _effectSources[path] = audioSource;
 

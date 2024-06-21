@@ -20,6 +20,9 @@ public class Data
     //---설정 관련---//
     public bool isPlayBGM = true;
     public bool isSound = true;
+
+    public float pitch = 0f;
+
     public bool isPause = false;
 
     //---CustomerSystem---//
