@@ -30,14 +30,20 @@ public class MonsterController : MonoBehaviour
     [Header("몬스터의 공격력")]
     public float attackPower;
 
+    [Header("몬스터의 드랍아이템 프리팹 ID")]
+    [SerializeField] private int dropItemID;
+
+    [Header("드랍아이템 풀 매니저")]
+    [SerializeField] private DropItemPoolManager dropPool;
+
+    [Header("드랍 확률")]
+    [SerializeField] private int percent;
+
     private AIDestinationSetter destination;
     private AIPath aiPath;
 
     //Rigidbody 2D
     private Rigidbody2D rigid;
-
-    //Collider
-    private CapsuleCollider2D coll;
 
     //Sprite Renderer
     private SpriteRenderer spriteRenderer;
@@ -72,13 +78,14 @@ public class MonsterController : MonoBehaviour
     {
         //Get Component
         rigid = GetComponent<Rigidbody2D>();
-        coll = GetComponent<CapsuleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         destination = GetComponent<AIDestinationSetter>();
         aiPath = GetComponent<AIPath>();
 
         animator = GetComponent<Animator>();
+
+        dropPool = FindObjectOfType<DropItemPoolManager>();
 
         //destination.enabled = false;
         //aiPath.enabled = false;
@@ -235,6 +242,14 @@ public class MonsterController : MonoBehaviour
         {
             isLive = false;
 
+            int random = Random.Range(0, 100);
+
+            if (random < percent)
+            {
+                //Drop
+                Drop();
+            }
+
             Dead();
         }
     }
@@ -261,6 +276,15 @@ public class MonsterController : MonoBehaviour
 
         destination.enabled = true;
         aiPath.enabled = true;
+    }
+
+    private void Drop()
+    {
+        //Get Pool
+        GameObject dropItem = dropPool.Get(dropItemID);
+
+        //Reposition
+        dropItem.transform.position = transform.position;
     }
 
     private void Dead()

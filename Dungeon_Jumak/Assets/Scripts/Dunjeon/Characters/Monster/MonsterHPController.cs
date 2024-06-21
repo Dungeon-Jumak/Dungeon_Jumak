@@ -54,7 +54,7 @@ public class MonsterHPController : MonoBehaviour
         if (slider == null)
         {
             slider = Instantiate(sliderPrefab);
-            slider.transform.SetParent(GameObject.Find("Monster Hp Bars").transform);
+            slider.transform.SetParent(GameObject.Find("Monster HP Bars").transform);
             slider.transform.localScale = new Vector3(1, 1, 1);
         }
         else

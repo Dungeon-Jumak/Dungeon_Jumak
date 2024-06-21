@@ -51,8 +51,8 @@ public class SkillCaster : MonoBehaviour
     [Header("스캐너")]
     [SerializeField] private Scanner scanner;
 
-    [Header("풀링")]
-    [SerializeField] private MonsterPoolManager pool;
+    [Header("스킬 투사체 풀링")]
+    [SerializeField] private SkillPoolManager pool;
 
     private void Update()
     {
