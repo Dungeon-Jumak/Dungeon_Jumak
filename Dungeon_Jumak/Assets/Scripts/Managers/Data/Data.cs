@@ -86,8 +86,11 @@ public class Data
     public int dansangLV = 0;
     public int tableLV = 0;
 
-    public int days = 1;
 
-    //--타이머 관련--//
+    //--타이머 및 날짜 관련--//
     public bool timerStart = false;
+    public bool dayCount = false;
+
+    public int days = 0;
+
 }
