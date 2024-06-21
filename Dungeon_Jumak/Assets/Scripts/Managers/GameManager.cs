@@ -15,12 +15,11 @@ public class GameManager : MonoBehaviour
     //GameManager.cs instance variable
     private static GameManager instance;
 
-    //public Text timeDisplay;
+    private TextMeshProUGUI timeDisplayTmp;
 
     private float timer;
     private float gameSecondsPerRealSecond = 3 * 60f; //3 minutes per second
     private float secondsInADay = 24 * 60 * 60;
-    private bool isMorning = false;
 
     //Setting GameManager.cs to Singleton system 
     void Awake()
@@ -36,6 +35,19 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnEnable()
+    {
+        GameObject dayTimerTextObject = GameObject.Find("DayTimer_Text");
+        if (dayTimerTextObject != null)
+        {
+            timeDisplayTmp = dayTimerTextObject.GetComponent<TextMeshProUGUI>();
+        }
+        else
+        {
+            Debug.LogWarning("");
         }
     }
 
@@ -70,6 +82,7 @@ public class GameManager : MonoBehaviour
         data = DataManager.Instance.data;//Data.cs
 
         _soundManager.Init();//Init the SoundManager.cs
+
     }
 
     //Clear function to control scene and sound memory system when convert current scene
@@ -118,12 +131,6 @@ public class GameManager : MonoBehaviour
                 timer -= secondsInADay;
             }
 
-            if (isMorning)
-            {
-                Debug.Log("하루가 지났습니다!!");
-                isMorning = false;
-            }
-
             DisplayTime();
         }
     }
@@ -135,7 +142,7 @@ public class GameManager : MonoBehaviour
         int minutes = totalMinutes % 60;
 
         string timeText = string.Format("{0:D2}:{1:D2}", hours, minutes);
-        //timeDisplay.text = timeText;
+        timeDisplayTmp.text = timeText;
 
         if (hours >= 0 && hours < 6)
         {
@@ -144,7 +151,7 @@ public class GameManager : MonoBehaviour
 
         if (hours >= 6 && minutes > 0 && minutes < 4)
         {
-            isMorning= true;
+            data.dayCount = true;
         }
     }
 
