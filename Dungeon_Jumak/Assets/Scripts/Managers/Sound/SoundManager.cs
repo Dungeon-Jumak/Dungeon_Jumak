@@ -4,70 +4,94 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    // Array of AudioSource components, sized according to the number of sounds defined in Define.Sound (e.g., Bgm and Effect)
     AudioSource[] _audioSources = new AudioSource[(int)Define.Sound.MaxCount];
 
-    // Dictionary to store AudioClip objects, facilitating reuse without reloading
-    Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
+    Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();//메모리 관리 위한 오디오 클립 보관 variable
+
+    Dictionary<string, AudioSource> _effectSources = new Dictionary<string, AudioSource>();
+    Dictionary<string, AudioSource> _bgmSources = new Dictionary<string, AudioSource>();
 
     public void Init()
     {
-        GameObject root = GameObject.Find("@Sound");// Find Gameobject @Sound
-        DontDestroyOnLoad(root); 
+        GameObject root = GameObject.Find("@Sound");//@Sound 오브젝트 찾기
+        DontDestroyOnLoad(root);//Root DontDestroy
 
-        // Retrieve all sound type names from the Define.Sound enum
         string[] soundNames = System.Enum.GetNames(typeof(Define.Sound));
 
+        //@sound 오브젝트 하위 오브젝트로 BGM, Effect AudioSource 설정
         for (int i = 0; i < soundNames.Length - 1; i++)
         {
             GameObject go = new GameObject { name = soundNames[i] };
-            _audioSources[i] = go.AddComponent<AudioSource>(); // Add an AudioSource to the new GameObject
-            go.transform.parent = root.transform; // Set the parent of the new GameObject to the root
+            _audioSources[i] = go.AddComponent<AudioSource>(); 
+            go.transform.parent = root.transform; 
         }
 
-        // Set the AudioSource for Bgm to loop
         _audioSources[(int)Define.Sound.Bgm].loop = true;
     }
 
+    //---메모리 활성화를 위한 오디오 소스 Clear 함수---//
     public void Clear()
     {
-        // Stop and clear all audio sources
         foreach (AudioSource audioSource in _audioSources)
         {
             audioSource.clip = null;
             audioSource.Stop();
         }
         _audioClips.Clear(); // Clear all loaded AudioClips
+
+        foreach (var audioSource in _effectSources.Values)
+        {
+            Destroy(audioSource.gameObject);
+        }
+        _effectSources.Clear();
+        _bgmSources.Clear();
     }
 
-    public void Play(string path, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
+    //---BGM, Effect Play 함수
+    public void Play(string path, Define.Sound type = Define.Sound.Effect, bool loop = false)
     {
-        // Format the path to retrieve sound files from the Sounds directory
-        path = $"Sounds/{path}";
+        path = $"Sounds/{path}";//Resource 폴더 내의 경로 설정
 
-        // If the sound type is Bgm
-        if (type == Define.Sound.Bgm) 
+        AudioClip audioClip = GetOrAddAudioClip(path);
+
+        //@sound 오브젝트 하위 BGM AudioSource 오브젝트에 AudioClip 추가
+        if (type == Define.Sound.Bgm)
         {
-            AudioClip audioClip = GetOrAddAudioClip(path);
-            if (audioClip == null)
-            {
-                Debug.Log("clip is missing");
-            }
-
             AudioSource audioSource = _audioSources[(int)Define.Sound.Bgm];
-            audioSource.pitch = pitch;
             audioSource.clip = audioClip;
-            audioSource.Play(); // Play the Bgm continuously
+            audioSource.loop = loop;
+            audioSource.Play(); 
+
+            _bgmSources[path] = audioSource;
         }
-        // If the sound type is Effect
+        //@sound 오브젝트 하위 Effect AudioSource 오브젝트에 AudioClip 추가
         else
         {
-            AudioClip audioClip = GetOrAddAudioClip(path);
-            AudioSource audioSource = _audioSources[(int)Define.Sound.Effect];
-            audioSource.pitch = pitch;
-            audioSource.PlayOneShot(audioClip); // Play the effect once
+            AudioSource audioSource = new GameObject("SFX").AddComponent<AudioSource>();
+            audioSource.transform.parent = GameObject.Find("@Sound").transform;
+            audioSource.loop = loop;
+            audioSource.clip = audioClip;
+            audioSource.Play(); 
+
+            _effectSources[path] = audioSource;
+
+            if (!loop)
+            {
+                StartCoroutine(DestroyAudioSourceAfterPlayback(audioSource, audioClip.length, path));
+            }
         }
     }
+
+    IEnumerator DestroyAudioSourceAfterPlayback(AudioSource audioSource, float length, string path)
+    {
+        yield return new WaitForSeconds(length);
+        if (audioSource != null)
+        {
+            Destroy(audioSource.gameObject);
+            _effectSources.Remove(path);
+        }
+    }
+
 
     // Method to retrieve or load an AudioClip from the dictionary or resources
     AudioClip GetOrAddAudioClip(string path)
@@ -81,5 +105,45 @@ public class SoundManager : MonoBehaviour
         }
 
         return audioClip;
+    }
+
+    public void Pause(string path, Define.Sound type)
+    {
+        path = $"Sounds/{path}";
+
+        if (type == Define.Sound.Bgm)
+        {
+            if (_bgmSources.TryGetValue(path, out AudioSource audioSource))
+            {
+                audioSource.Pause();
+            }
+        }
+        else
+        {
+            if (_effectSources.TryGetValue(path, out AudioSource audioSource))
+            {
+                audioSource.Pause();
+            }
+        }
+    }
+
+    public void Resume(string path, Define.Sound type)
+    {
+        path = $"Sounds/{path}";
+
+        if (type == Define.Sound.Bgm)
+        {
+            if (_bgmSources.TryGetValue(path, out AudioSource audioSource))
+            {
+                audioSource.UnPause();
+            }
+        }
+        else
+        {
+            if (_effectSources.TryGetValue(path, out AudioSource audioSource))
+            {
+                audioSource.UnPause();
+            }
+        }
     }
 }
