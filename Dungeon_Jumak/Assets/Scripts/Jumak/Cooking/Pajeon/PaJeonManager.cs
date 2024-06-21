@@ -73,7 +73,8 @@ public class PaJeonManager : MonoBehaviour
     //For Asstignment Button
     public void StartButton()
     {
-        StartCoroutine(StartGameInDelay());
+        if(playerHand.transform.childCount == 0)
+            StartCoroutine(StartGameInDelay());
     }
 
     //For Delay
