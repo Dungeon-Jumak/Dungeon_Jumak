@@ -19,6 +19,8 @@ public class Grandma : MonoBehaviour
     {
         //Get Component
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        GameManager.Sound.Play("[S] Cooking Sound", Define.Sound.Effect, true);
     }
 
     private void Update()

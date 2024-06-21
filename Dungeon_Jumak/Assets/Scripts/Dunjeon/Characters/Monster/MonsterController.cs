@@ -241,6 +241,11 @@ public class MonsterController : MonoBehaviour
         health -= collision.GetComponent<Skills>().damage;
         StartCoroutine(KnockBack(collision.GetComponent<Skills>().knockBack));
 
+        if (gameObject.name.Contains("Pig Monster"))
+            GameManager.Sound.Play("[S] Pig Hit", Define.Sound.Effect, false);
+        else
+            GameManager.Sound.Play("[S] Monster Hit", Define.Sound.Effect, false);
+
         if (health > 0)
         {
             //Live

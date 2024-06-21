@@ -53,6 +53,8 @@ public class OrderSystem : MonoBehaviour
     //--- 음식의 카테고리와 벨류에 따라 코인을 달리 얻기 위한 메소드 ---//
     private void CoinUpdate(int idx)
     {
+        GameManager.Sound.Play("[S] Get Coin", Define.Sound.Effect, false);
+
         switch (data.menuCategories[idx])
         {
             case "Gukbab":

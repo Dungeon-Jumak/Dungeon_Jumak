@@ -63,14 +63,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 curPos;
     private Vector3 lastPos;
 
-    //Player's xPos
-    private float xPos;
-
-    //Player's yPos
-    private float yPos;
-
-    //Sound Effect
-    private AudioSource effect;
+    private bool isPlayingSound;
 
     #endregion
 
@@ -93,12 +86,15 @@ public class PlayerMovement : MonoBehaviour
         curPos = transform.position;
         lastPos = transform.position;
 
-        xPos = transform.position.x;
-        yPos = transform.position.y;
-
         //Initialize Start Animation
         animator.SetFloat("dirX", 0f);
         animator.SetFloat("dirY", -1f);
+
+        //Sound Setting
+        GameManager.Sound.Play("[S] Walk Sound1", Define.Sound.Effect, true);
+        GameManager.Sound.Pause("[S] Walk Sound1", Define.Sound.Effect);
+
+        isPlayingSound = false;
     }
 
     private void Update()
@@ -180,6 +176,15 @@ public class PlayerMovement : MonoBehaviour
         //direction is not zero vector
         if (direction != Vector3.zero)
         {
+            //Sound Play
+            if (!isPlayingSound)
+            {
+                isPlayingSound = true;
+
+                GameManager.Sound.Resume("[S] Walk Sound1", Define.Sound.Effect);
+            }
+
+
             //Active isWalk
             animator.SetBool("isWalk", true);
 
@@ -237,6 +242,12 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            GameManager.Sound.Pause("[S] Walk Sound1", Define.Sound.Effect);
+
+            isPlayingSound = false;
+        }
 
         //To stop around target
         if (Vector3.Distance(transform.position, target.transform.position) < 0.1f)
@@ -248,6 +259,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isWalk", false);
         }
     }
+
 
 
 }

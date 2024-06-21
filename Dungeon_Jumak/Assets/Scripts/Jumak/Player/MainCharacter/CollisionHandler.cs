@@ -43,6 +43,8 @@ public class CollisionHandler : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Trash"))
         {
+            GameManager.Sound.Play("[S] Throw Away", Define.Sound.Effect, false);
+
             //ThrowAway food on player's hand
             playerServing.ThrowAwayFood();
         }

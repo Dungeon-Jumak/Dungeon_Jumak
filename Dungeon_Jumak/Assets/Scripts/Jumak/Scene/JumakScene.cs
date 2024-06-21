@@ -239,6 +239,9 @@ public class JumakScene : BaseScene
     //Method to Close Jumak
     private void CloseJumak()
     {
+        GameManager.Sound.Pause("[S] Cooking Sound", Define.Sound.Effect);
+        GameManager.Sound.Pause("[S] Walk Sound1", Define.Sound.Effect);
+
         //InActivate Object related Jumak System
         for (int i = 0; i < JumakSystemObj.Length; i++)
         {

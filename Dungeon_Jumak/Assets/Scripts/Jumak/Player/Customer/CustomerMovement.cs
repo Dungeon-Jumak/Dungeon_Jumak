@@ -452,6 +452,10 @@ public class CustomerMovement : MonoBehaviour
         //Play Eating Animation
         animator.SetBool("isEat", true);
 
+        if (!data.menuCategories[seatIndex].Equals("RiceJuice"))
+            GameManager.Sound.Play("[S] Eating Gukbab", Define.Sound.Effect, true);
+        else GameManager.Sound.Play("[S] Drink RiceJuice", Define.Sound.Effect, true);
+
         //Leave 3 seconds later when finish to eat
         Invoke("EatAndLeave", 3f);
     }
@@ -459,6 +463,10 @@ public class CustomerMovement : MonoBehaviour
     //Finish Eating and Leave
     public void EatAndLeave()
     {
+        if (!data.menuCategories[seatIndex].Equals("RiceJuice"))
+            GameManager.Sound.Pause("[S] Eating Gukbab", Define.Sound.Effect);
+        else GameManager.Sound.Pause("[S] Drink RiceJuice", Define.Sound.Effect);
+
         //Play Stand Animation on seat
         animator.SetBool("isEat", false);
         animator.SetBool("isSit", false);
@@ -505,6 +513,8 @@ public class CustomerMovement : MonoBehaviour
         //Play Animation -> Stand
         animator.SetBool("isSit", false);
         animator.SetFloat("dirX", currentDir.x * -1);
+
+        GameManager.Sound.Play("[S] Time Out", Define.Sound.Effect, false);
 
         //Active isReturn for Return
         isReturn = true;

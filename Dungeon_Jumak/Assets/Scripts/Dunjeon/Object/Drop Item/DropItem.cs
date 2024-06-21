@@ -28,6 +28,8 @@ public class DropItem : MonoBehaviour
         if (!collision.CompareTag("Player"))
             return;
 
+        GameManager.Sound.Play("[S] Pick Up Item", Define.Sound.Effect, false);
+
         //Increase Ingredient
         data.ingredient[id]++;
 

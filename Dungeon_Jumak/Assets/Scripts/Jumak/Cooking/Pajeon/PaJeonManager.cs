@@ -86,7 +86,6 @@ public class PaJeonManager : MonoBehaviour
     //Start Game
     public void StartGame()
     {
-        //Has Failed is false
         isPlaying = true;
 
         //Initialize Current Index
@@ -140,8 +139,7 @@ public class PaJeonManager : MonoBehaviour
                 //Resume
                 jumakScene.pause = false;
 
-                //Debug.Log
-                Debug.Log("성공입니다!");
+                GameManager.Sound.Play("[S] MiniGame Success", Define.Sound.Effect, false);
 
                 isPlaying = false;
 
@@ -173,8 +171,7 @@ public class PaJeonManager : MonoBehaviour
             //Resume
             jumakScene.pause = false;
 
-            //Debug.Log
-            Debug.Log("실패입니다.");
+            GameManager.Sound.Play("[S] MiniGame Failure", Define.Sound.Effect, false);
 
             isPlaying = false;
 

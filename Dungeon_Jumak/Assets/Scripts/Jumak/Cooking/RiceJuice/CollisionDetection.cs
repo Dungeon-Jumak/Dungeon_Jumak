@@ -97,7 +97,7 @@ public class CollisionDetection : MonoBehaviour
     private void MiniGameSystem()
     {
         //When can touch and touch down
-        if (canTouch && (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)))
+        if (canTouch && (Input.GetMouseButtonDown(0)))
         {
             //Check Success
             StartCoroutine(CheckingCollider());
@@ -105,13 +105,21 @@ public class CollisionDetection : MonoBehaviour
 
         //If Success Count is three
         if (successCount == 3)
+        {
+            successCount = 0;
             //Success Coroutine
             StartCoroutine(Success());
+        }
+
 
         //If Fail Count is one
         if (failCount == 1)
+        {
+            failCount = 0;
             //Failure Coroutine
             StartCoroutine(Failure());
+        }
+
     }
 
     //Pour Liquid Coroutine
@@ -136,8 +144,7 @@ public class CollisionDetection : MonoBehaviour
         //Check Collision : Correct
         if (kettleCollider.IsTouching(checkAreaCollider))
         {
-            //Debug.Log
-            Debug.Log("성공");
+            GameManager.Sound.Play("[S] MiniGame Success", Define.Sound.Effect, false);
 
             //Success Animation
             successAni.SetTrigger("notice");
@@ -154,8 +161,7 @@ public class CollisionDetection : MonoBehaviour
         //Check Collision : InCorrect
         else
         {
-            //Debug.Log
-            Debug.Log("실패");
+            GameManager.Sound.Play("[S] MiniGame Failure", Define.Sound.Effect, false);
 
             //Failure Animation
             failureAni.SetTrigger("notice");

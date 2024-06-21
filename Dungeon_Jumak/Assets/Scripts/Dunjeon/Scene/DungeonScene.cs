@@ -48,6 +48,9 @@ public class DungeonScene : BaseScene
 
         lastLevel = data.curPlayerLV;
         lastXP = data.curXP;
+
+        //BGM
+        GameManager.Sound.Play("BGM/[B] Dungeon Stage1", Define.Sound.Bgm);
     }
 
     private void Update()
@@ -75,6 +78,9 @@ public class DungeonScene : BaseScene
         {
             //Level Up
             data.curPlayerLV++;
+
+            GameManager.Sound.Play("[S] Level Up", Define.Sound.Effect, false);
+
             data.curXP = data.curXP - data.maxXP;
 
             //Update Max XP

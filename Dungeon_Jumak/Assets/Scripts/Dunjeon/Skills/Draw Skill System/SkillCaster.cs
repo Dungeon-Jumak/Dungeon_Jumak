@@ -105,9 +105,6 @@ public class SkillCaster : MonoBehaviour
         }
 
         CoolTime();
-
-        //Test
-        if(Input.GetKeyDown(KeyCode.Space)) FireShield();
     }
 
     #region Common Method
@@ -167,6 +164,8 @@ public class SkillCaster : MonoBehaviour
         {
             //Skill Cool Time
             canSkill = false;
+
+            GameManager.Sound.Play("[S] Fire Ball", Define.Sound.Effect, false);
 
             //Hide Skill Image
             hideImage.gameObject.SetActive(true);
@@ -254,6 +253,8 @@ public class SkillCaster : MonoBehaviour
         if (canSkill)
         {
             canSkill = false;
+
+            GameManager.Sound.Play("[S] Fire Shield", Define.Sound.Effect, false);
 
             hideImage.gameObject.SetActive(true);
 

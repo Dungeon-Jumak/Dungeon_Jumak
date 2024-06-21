@@ -29,10 +29,12 @@ public class MakeFire : MonoBehaviour
     void Update()
     {
         //Detect Touch
-        if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+        if (Input.GetMouseButtonDown(0))
         {
             //add touch count
             touchCount++;
+
+            GameManager.Sound.Play("[S] Make Fire", Define.Sound.Effect, false);
 
             //detect third touch, data.fireSize less than 100
             if (touchCount % 3 == 0 && data.fireSize <= 100)

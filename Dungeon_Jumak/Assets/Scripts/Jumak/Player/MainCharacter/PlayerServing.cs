@@ -98,6 +98,9 @@ public class PlayerServing : MonoBehaviour
     //Base Method for PickUp Food
     public void PickUpFood(GameObject foodObject)
     {
+        //Play Sound
+        GameManager.Sound.Play("[S] Pick Up Food", Define.Sound.Effect, false);
+
         //Enable Move Stop when Pickup fdood
         moveStop = true;
 
@@ -190,6 +193,8 @@ public class PlayerServing : MonoBehaviour
                 // check customer is sitting table and check categori of menu
                 if (tableObject.transform == tables[i] && !data.onTables[i] && data.isCustomer[i] && menuCategori.Contains(data.menuCategories[i]))
                 {
+                    GameManager.Sound.Play("[S] Place Food", Define.Sound.Effect, false);
+
                     // Stop Player Movement
                     moveStop = true;
 
