@@ -28,6 +28,9 @@ public class SkillCaster : MonoBehaviour
     [Header("스킬 관통력")]
     public int per;
 
+    [Header("스킬 넉백력")]
+    public float knockBack;
+
     [Header("스킬 속도")]
     public float speed;
 
@@ -166,7 +169,7 @@ public class SkillCaster : MonoBehaviour
             fireball.rotation = Quaternion.FromToRotation(Vector3.up, direction);
 
             //Init
-            fireball.GetComponent<Skills>().Init(damage, per, direction);
+            fireball.GetComponent<Skills>().Init(damage, per, knockBack, direction);
         }
         else
         {
@@ -200,10 +203,10 @@ public class SkillCaster : MonoBehaviour
             skill.Rotate(rotVec);
 
             //Translate
-            skill.Translate(skill.up * 1.5f, Space.World);
+            skill.Translate(skill.up * 2f, Space.World);
 
             //Init
-            skill.GetComponent<Skills>().Init(damage, -1, Vector3.zero); // -1 is Infinity Per
+            skill.GetComponent<Skills>().Init(damage, -1, knockBack, Vector3.zero); // -1 is Infinity Per
         }
     }
 
