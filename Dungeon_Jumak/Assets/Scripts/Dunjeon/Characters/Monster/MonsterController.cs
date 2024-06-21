@@ -30,6 +30,18 @@ public class MonsterController : MonoBehaviour
     [Header("몬스터의 공격력")]
     public float attackPower;
 
+    [Header("몬스터의 드랍아이템 프리팹 ID")]
+    [SerializeField] private int dropItemID;
+
+    [Header("드랍아이템 풀 매니저")]
+    [SerializeField] private DropItemPoolManager dropPool;
+
+    [Header("드랍 확률")]
+    [SerializeField] private int percent;
+
+    [Header("몬스터의 경험치량")]
+    [SerializeField] private float xp;
+
     private AIDestinationSetter destination;
     private AIPath aiPath;
 
@@ -42,8 +54,11 @@ public class MonsterController : MonoBehaviour
     //Animator
     private Animator animator;
 
+    //Data
+    private Data data;
+
     //isLive Sign
-    private bool isLive;
+    public bool isLive;
 
     //isMove Sign
     private bool isMove;
@@ -76,8 +91,12 @@ public class MonsterController : MonoBehaviour
 
         animator = GetComponent<Animator>();
 
-        destination.enabled = false;
-        aiPath.enabled = false;
+        dropPool = FindObjectOfType<DropItemPoolManager>();
+
+        data = DataManager.Instance.data;
+
+        //destination.enabled = false;
+        //aiPath.enabled = false;
 
         //Initialize
         isMove = false;
@@ -229,7 +248,19 @@ public class MonsterController : MonoBehaviour
         }
         else
         {
-            //Die
+            isLive = false;
+
+            int random = Random.Range(0, 100);
+
+            if (random < percent)
+            {
+                //Drop
+                Drop();
+            }
+
+            //Increase XP
+            data.curXP += xp;
+
             Dead();
         }
     }
@@ -256,6 +287,15 @@ public class MonsterController : MonoBehaviour
 
         destination.enabled = true;
         aiPath.enabled = true;
+    }
+
+    private void Drop()
+    {
+        //Get Pool
+        GameObject dropItem = dropPool.Get(dropItemID);
+
+        //Reposition
+        dropItem.transform.position = transform.position;
     }
 
     private void Dead()

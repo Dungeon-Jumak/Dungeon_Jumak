@@ -172,6 +172,11 @@ MonoBehaviour:
   health: 1
   maxHealth: 2
   attackPower: 1
+  dropItemID: 1
+  dropPool: {fileID: 0}
+  percent: 30
+  xp: 3
+  isLive: 0
 --- !u!114 &4310319717651680260
 MonoBehaviour:
   m_ObjectHideFlags: 0

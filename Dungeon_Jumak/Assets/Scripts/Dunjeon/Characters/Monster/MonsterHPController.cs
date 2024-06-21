@@ -38,7 +38,7 @@ public class MonsterHPController : MonoBehaviour
     private void FixedUpdate()
     {
         //Reposition and Update Value
-        if (slider != null)
+        if (slider != null && monster.isLive)
         {
             slider.transform.position = sliderTransform.position;
 
@@ -54,7 +54,7 @@ public class MonsterHPController : MonoBehaviour
         if (slider == null)
         {
             slider = Instantiate(sliderPrefab);
-            slider.transform.parent = GameObject.Find("Monster Hp Bars").transform;
+            slider.transform.SetParent(GameObject.Find("Monster HP Bars").transform);
             slider.transform.localScale = new Vector3(1, 1, 1);
         }
         else
