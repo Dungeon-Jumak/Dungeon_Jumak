@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 //Unity
 using UnityEngine;
+using UnityEngine.UI;
 
 
 [DisallowMultipleComponent]
@@ -54,8 +55,22 @@ public class SkillCaster : MonoBehaviour
     [Header("스킬 투사체 풀링")]
     [SerializeField] private SkillPoolManager pool;
 
+    [Header("스킬 하이드 이미지")]
+    [SerializeField] private Image hideImage;
+
+    [Header("스킬 쿨타임 텍스트")]
+    [SerializeField] private Text text;
+
     private void Update()
     {
+        if (hideImage.gameObject.activeSelf)
+        {
+            text.text = Mathf.FloorToInt(coolTime - timer).ToString();
+            hideImage.fillAmount = timer / coolTime;
+        }
+
+
+
         switch (id)
         {
             //Fire Ball
@@ -124,7 +139,10 @@ public class SkillCaster : MonoBehaviour
 
             if (timer > coolTime)
             {
+                //Can Skill
                 canSkill = true;
+
+                hideImage.gameObject.SetActive(false);
 
                 timer = 0f;
             }
@@ -149,6 +167,9 @@ public class SkillCaster : MonoBehaviour
         {
             //Skill Cool Time
             canSkill = false;
+
+            //Hide Skill Image
+            hideImage.gameObject.SetActive(true);
 
             //Get Tartget Position
             Vector3 targetPos = scanner.nearestTarget.position;
@@ -233,6 +254,9 @@ public class SkillCaster : MonoBehaviour
         if (canSkill)
         {
             canSkill = false;
+
+            hideImage.gameObject.SetActive(true);
+
             Batch();
         }
     }

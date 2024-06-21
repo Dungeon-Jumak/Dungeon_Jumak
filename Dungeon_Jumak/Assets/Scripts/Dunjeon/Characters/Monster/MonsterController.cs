@@ -39,6 +39,9 @@ public class MonsterController : MonoBehaviour
     [Header("드랍 확률")]
     [SerializeField] private int percent;
 
+    [Header("몬스터의 경험치량")]
+    [SerializeField] private float xp;
+
     private AIDestinationSetter destination;
     private AIPath aiPath;
 
@@ -50,6 +53,9 @@ public class MonsterController : MonoBehaviour
 
     //Animator
     private Animator animator;
+
+    //Data
+    private Data data;
 
     //isLive Sign
     public bool isLive;
@@ -86,6 +92,8 @@ public class MonsterController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         dropPool = FindObjectOfType<DropItemPoolManager>();
+
+        data = DataManager.Instance.data;
 
         //destination.enabled = false;
         //aiPath.enabled = false;
@@ -249,6 +257,9 @@ public class MonsterController : MonoBehaviour
                 //Drop
                 Drop();
             }
+
+            //Increase XP
+            data.curXP += xp;
 
             Dead();
         }
