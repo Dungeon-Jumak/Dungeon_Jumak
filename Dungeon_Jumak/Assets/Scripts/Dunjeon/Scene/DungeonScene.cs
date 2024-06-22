@@ -119,4 +119,9 @@ public class DungeonScene : BaseScene
     {
         Debug.Log("DungeonScene Changed!");
     }
+
+    public void ButtonClickSFX()
+    {
+        GameManager.Sound.Play("[S] Push Button", Define.Sound.Effect, false);
+    }
 }

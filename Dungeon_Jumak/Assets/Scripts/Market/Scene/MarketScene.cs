@@ -3,20 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MarketScene : MonoBehaviour
+public class MarketScene : BaseScene
 {
-    //BGMManager bgmManager;
-
-    private void Start()
+    void Start()
     {
-        //bgmManager = FindObjectOfType<BGMManager>();
-
-        //bgmManager.Play(7);
+        GameManager.Sound.Play("BGM/[B] Shop", Define.Sound.Bgm, true);
     }
-
 
     public void MoveScene()
     {
         SceneManager.LoadScene("WaitingScene");
+    }
+
+    public void ButtonClickSFX()
+    {
+        GameManager.Sound.Play("[S] Push Button", Define.Sound.Effect, false);
+    }
+
+    protected override void Init()
+    {
+        SceneType = Define.Scene.Market;
+    }
+
+    public override void Clear()
+    {
+        Debug.Log("Market Scene changed!");
     }
 }
