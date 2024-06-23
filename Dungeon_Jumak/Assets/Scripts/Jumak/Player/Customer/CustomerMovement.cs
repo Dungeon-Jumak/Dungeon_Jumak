@@ -2,8 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;          // 시스템 런타임 컴파일러 서비스 사용
-using UnityEditor.Animations;
-using UnityEditor.PackageManager.Requests;
 
 // Unity
 using UnityEngine;

@@ -666,14 +666,13 @@ namespace DJ.InventorySystem
 
         private class PreviewItemSlot : MonoBehaviour { }
 
-        [UnityEditor.InitializeOnLoad]
         private static class Destroyer
         {
             private static Queue<GameObject> targetQueue = new Queue<GameObject>();
 
             static Destroyer()
             { 
-                UnityEditor.EditorApplication.update += () =>
+                //UnityEditor.EditorApplication.update += () =>
                 {
                     for (int i = 0; targetQueue.Count > 0 && i < 100000; i++)
                     {

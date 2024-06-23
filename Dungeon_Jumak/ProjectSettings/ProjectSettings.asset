@@ -250,8 +250,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{inproject}: DJ_Beta.keystore'
-  AndroidKeyaliasName: dj_beta
+  AndroidKeystoreName: "C:/Users/Noh Yu Rae/OneDrive/\uBC14\uD0D5 \uD654\uBA74/soft_lunching.keystore"
+  AndroidKeyaliasName: soft_lunching
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
