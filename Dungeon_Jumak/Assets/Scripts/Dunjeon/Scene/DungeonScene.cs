@@ -124,4 +124,14 @@ public class DungeonScene : BaseScene
     {
         GameManager.Sound.Play("[S] Push Button", Define.Sound.Effect, false);
     }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+    }
 }

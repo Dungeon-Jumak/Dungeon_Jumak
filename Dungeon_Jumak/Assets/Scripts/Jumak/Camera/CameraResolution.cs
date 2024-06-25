@@ -12,6 +12,7 @@ public class CameraResolution : MonoBehaviour
         float scalewidth = 1f / scaleheight;
         if (scaleheight < 1)
         {
+            Debug.Log("이 경우요");
             rect.height = scaleheight;
             rect.y = (1f - scaleheight) / 2f;
         }

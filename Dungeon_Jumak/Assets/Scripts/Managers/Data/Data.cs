@@ -95,5 +95,6 @@ public class Data
     public bool dayCount = false;
 
     public int Countday = 0;
+    public bool IsMorning = false;
 
 }

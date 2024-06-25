@@ -322,5 +322,15 @@ public class JumakScene : BaseScene
         Debug.Log("Jumak Scene changed!");
     }
 
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+    }
+
     #endregion
 }

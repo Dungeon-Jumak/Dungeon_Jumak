@@ -124,6 +124,12 @@ public class GameManager : MonoBehaviour
 
             DisplayTime();
         }
+
+        if(data.IsMorning) 
+        {
+            data.IsMorning = false;
+            ResetTimer();
+        }
     }
 
     private void DisplayTime()
@@ -144,7 +150,7 @@ public class GameManager : MonoBehaviour
             IsDay = false;
             data.dayCount = true;
         }
-        else if(hours == 7)
+        else if(hours == 6 && minutes == 5 && IsDay == false)
         {
             IsDay = true;
         }
@@ -153,6 +159,6 @@ public class GameManager : MonoBehaviour
 
     public void ResetTimer()
     {
-        timer = 6 * 60 * 61;
+        timer = 6 * 60 * 60;
     }
 }
