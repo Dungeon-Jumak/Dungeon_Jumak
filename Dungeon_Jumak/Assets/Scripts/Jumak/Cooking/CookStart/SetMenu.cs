@@ -9,20 +9,19 @@ using UnityEngine.UI;
 //TMP
 using TMPro;
 
-//본 스크립트는 View Port안 Contents들 버튼에 각 부착한 후 각 버튼에 메뉴에 대한 정보를 사전 Setting하도록 한다
 [DisallowMultipleComponent]
 public class SetMenu : MonoBehaviour
 {
     //Button Number
-    [Header("버튼의 번호(0부터 시작)")]
+    [Header("버튼 번호")]
     public int number;
 
     //Food Image
-    [Header("해당 음식 이미지")]
+    [Header("음식 이미지")]
     public Image foodImage;
 
     //Count of Need Ingredient
-    [Header("필요한 재료 종류의 총 갯수")]
+    [Header("필요한 재료 갯수")]
     public int needIngredientNum;
 
     //Count Each of Need Ingredients
@@ -30,28 +29,28 @@ public class SetMenu : MonoBehaviour
     public int[] needIngredients = new int[5];
 
     //Max Can Cook Count
-    [Header("음식을 만들 수 있는 최대 갯수")]
+    [Header("최대 요리 가능 갯수")]
     public int maxCookCount;
 
     //TMP of Having Ingredient
-    [Header("갖고 있는 재료의 갯수")]
+    [Header("갖고 있는 재료 Text")]
     [SerializeField] private TextMeshProUGUI[] haveIngredientTMPs;
 
     //Max ingredient to show on screen 
-    [Header("최대로 표시할 재료의 갯수")]
+    [Header("최대로 만들 수 있는 요리 갯수")]
     [SerializeField] private int maxSignHaveIngredient;
-    
+
     //Check Click
     [Header("버튼 클릭 여부")]
     public bool onClick = false;
 
     //Check Can Add
-    [Header("음식을 추가할 수 있는지 여부")]
-    public bool canAdd; // 재료가 충분할 시 음식을 추가 여부를 판단하기 위한 변수
+    [Header("추가 가능 여부")]
+    public bool canAdd; 
 
     //Check Free Menu
-    [Header("재료 필요 없이 사용할 수 있는 기본 메뉴인지 확인")]
-    public bool freeMenu; // 재료 없이 사용할 수 있는 메뉴 인지
+    [Header("Free Menu 여부")]
+    public bool freeMenu;
 
     //Data
     private Data data;
@@ -68,7 +67,7 @@ public class SetMenu : MonoBehaviour
         data = DataManager.Instance.data;
 
         //If is not base menu, start coroutine
-        if(!freeMenu)
+        if (!freeMenu)
             StartCoroutine(CheckIngredient());
         //If is base menu, can add = true
         else canAdd = true;
@@ -97,9 +96,9 @@ public class SetMenu : MonoBehaviour
 
                     //temp variable that can cook max count
                     int tempmaxCookCount = data.ingredient[i] / needIngredients[i];
-                    
+
                     //if first checking or tempmaxcount less than last max cook count, update max cook count
-                    if(i == 0 || tempmaxCookCount < maxCookCount)
+                    if (i == 0 || tempmaxCookCount < maxCookCount)
                         maxCookCount = tempmaxCookCount;
 
                     //change text color => if enough ingredient, color is black
@@ -107,7 +106,7 @@ public class SetMenu : MonoBehaviour
                     haveIngredientTMPs[i].color = color;
 
                     //display text (greater than max)
-                    if (data.ingredient[i] > maxSignHaveIngredient) 
+                    if (data.ingredient[i] > maxSignHaveIngredient)
                         haveIngredientTMPs[i].text = maxSignHaveIngredient.ToString();
                     //display tex (less than max)
                     else
