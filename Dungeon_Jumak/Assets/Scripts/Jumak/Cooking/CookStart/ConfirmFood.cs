@@ -52,15 +52,6 @@ public class ConfirmFood : MonoBehaviour
     [Header("팝업 가운데 들어가는 음식 이미지")]
     [SerializeField] private Image foodImage;
 
-    //Max Cooking Count
-    private int maxCookingFood;
-
-    //Data
-    private Data data;
-    
-    //Category
-    private string category;
-
     //Check Base Food
     [SerializeField] private bool freeFood;
 
@@ -69,8 +60,6 @@ public class ConfirmFood : MonoBehaviour
 
     private void Start()
     {
-        data = DataManager.Instance.data;
-
         for (int i = 0; i < confirmButtons.Length; i++)
             confirmButtons[i].interactable = true;
 

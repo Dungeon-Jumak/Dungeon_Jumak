@@ -1599,7 +1599,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1401750332}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4750,7 +4750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &332557827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4803,6 +4803,7 @@ RectTransform:
   m_Children:
   - {fileID: 33711192}
   - {fileID: 413297114}
+  - {fileID: 1595204817}
   m_Father: {fileID: 275265096}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5928,7 +5929,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 40}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &413297115
@@ -6039,7 +6040,6 @@ GameObject:
   - component: {fileID: 437027509}
   - component: {fileID: 437027512}
   - component: {fileID: 437027511}
-  - component: {fileID: 437027510}
   m_Layer: 5
   m_Name: '[Frame] Level'
   m_TagString: UI
@@ -6068,74 +6068,6 @@ RectTransform:
   m_AnchoredPosition: {x: 40.48001, y: -26.5}
   m_SizeDelta: {x: 179.12, y: 179.12}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &437027510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437027508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 437027511}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 95345043}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!114 &437027511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6605,8 +6537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188d73c8f82ddc64c85140cf554b1703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: 
-  value: 0
+  number: 0
   foodImage: {fileID: 1380813276}
   needIngredientNum: 1
   needIngredients: 0200000000000000000000000000000000000000
@@ -6621,78 +6552,6 @@ MonoBehaviour:
   onClick: 0
   canAdd: 0
   freeMenu: 0
-  data:
-    curXP: 0
-    maxXP: 5
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 1
-    isSound: 1
-    pitch: 0
-    isPause: 0
-    maxSeatSize: 12
-    customerHeadCount: 0
-    isAllocated: 
-    isCustomer: 
-    onTables: 
-    isFinEat: 
-    tableMiniGame: 
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0a00000000000000000000000000000000000000
-    curCoin: 500
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 3
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    successRiceJuiceMiniGame: 0
-    isMiniGame: 0
-    gukbapCount: 0
-    pajeonCount: 0
-    riceJuiceCount: 0
-    nowGukbapPrice: 0
-    nowPajeonPrice: 0
-    nowRiceJuicePrice: 0
-    currentTotalPrice: 0
-    yesterdayTotalPrice: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 
-    isThirdMonster: 0
-    isSkillSuc: 1
-    isTimerRun: 0
-    chairPrice: 000000000000000000000000
-    tablePrice: 000000000000000000000000
-    backgroundPrice: 000000000000000000000000
-    houseLV: 0
-    dansangLV: 0
-    tableLV: 0
-    days: 0
-    timerStart: 0
-    dayCount: 0
-    Countday: 0
-  color:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
-  checkNum: 0
 --- !u!114 &482194693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7622,6 +7481,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grandmaSpeechBox: {fileID: 884549860}
+  choosePanel: {fileID: 332557826}
+  jumak: {fileID: 1464183232}
 --- !u!95 &587767524
 Animator:
   serializedVersion: 5
@@ -7823,7 +7684,7 @@ RectTransform:
   - {fileID: 1304785424}
   - {fileID: 1552777462}
   m_Father: {fileID: 1401750332}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.28800002, y: 0.84616655}
   m_AnchorMax: {x: 0.363, y: 0.86}
@@ -7860,7 +7721,7 @@ PrefabInstance:
     - target: {fileID: 5565818131560699326, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -511.25827
+      value: -505
       objectReference: {fileID: 0}
     - target: {fileID: 5565818131636680189, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
@@ -9667,8 +9528,13 @@ MonoBehaviour:
   offObjectsWhenStart:
   - {fileID: 332557826}
   - {fileID: 1503069091}
-  confirmPopUp: {fileID: 1503069091}
+  choosePopUp: {fileID: 332557826}
   jumakScene: {fileID: 1464183232}
+  images:
+  - {fileID: 390243843}
+  - {fileID: 1621286912}
+  - {fileID: 219011054}
+  grandmaSpeechBox: {fileID: 884549860}
 --- !u!114 &734917252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10256,8 +10122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188d73c8f82ddc64c85140cf554b1703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: 
-  value: 0
+  number: 0
   foodImage: {fileID: 319011378}
   needIngredientNum: 0
   needIngredients: 0000000000000000000000000000000000000000
@@ -10267,78 +10132,6 @@ MonoBehaviour:
   onClick: 0
   canAdd: 0
   freeMenu: 1
-  data:
-    curXP: 0
-    maxXP: 5
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 1
-    isSound: 1
-    pitch: 0
-    isPause: 0
-    maxSeatSize: 12
-    customerHeadCount: 0
-    isAllocated: 
-    isCustomer: 
-    onTables: 
-    isFinEat: 
-    tableMiniGame: 
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0a00000000000000000000000000000000000000
-    curCoin: 500
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 3
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    successRiceJuiceMiniGame: 0
-    isMiniGame: 0
-    gukbapCount: 0
-    pajeonCount: 0
-    riceJuiceCount: 0
-    nowGukbapPrice: 0
-    nowPajeonPrice: 0
-    nowRiceJuicePrice: 0
-    currentTotalPrice: 0
-    yesterdayTotalPrice: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 
-    isThirdMonster: 0
-    isSkillSuc: 1
-    isTimerRun: 0
-    chairPrice: 000000000000000000000000
-    tablePrice: 000000000000000000000000
-    backgroundPrice: 000000000000000000000000
-    houseLV: 0
-    dansangLV: 0
-    tableLV: 0
-    days: 0
-    timerStart: 0
-    dayCount: 0
-    Countday: 0
-  color:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
-  checkNum: 0
 --- !u!114 &791043639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11099,22 +10892,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 95345043}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 587767523}
+        m_TargetAssemblyTypeName: Grandma, Assembly-CSharp
+        m_MethodName: OnChoosePanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12049,7 +11830,7 @@ RectTransform:
   - {fileID: 134352341}
   - {fileID: 1128419996}
   m_Father: {fileID: 1401750332}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13520,7 +13301,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1401750332}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -13764,82 +13545,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 950, y: 1863.41}
   m_Pivot: {x: 0.5, y: 1}
---- !u!1 &1144304129
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1144304130}
-  - component: {fileID: 1144304133}
-  - component: {fileID: 1144304132}
-  m_Layer: 5
-  m_Name: '[Button] Sign'
-  m_TagString: UI
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1144304130
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144304129}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1401750332}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -38, y: -12.201172}
-  m_SizeDelta: {x: 130, y: 130}
-  m_Pivot: {x: 1, y: 0}
---- !u!114 &1144304132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144304129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 336d86088b19a364cbe237c828552886, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1144304133
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144304129}
-  m_CullTransparentMesh: 1
 --- !u!1 &1145746032
 GameObject:
   m_ObjectHideFlags: 0
@@ -18017,13 +17722,13 @@ RectTransform:
   - {fileID: 1243691863}
   - {fileID: 353562066}
   - {fileID: 884549861}
-  - {fileID: 1144304130}
   - {fileID: 1110674278}
   - {fileID: 596245849}
   - {fileID: 95345046}
   - {fileID: 961007681}
   - {fileID: 1513881633}
   - {fileID: 1423555518}
+  - {fileID: 1582985274}
   - {fileID: 615808841}
   m_Father: {fileID: 275265096}
   m_RootOrder: 0
@@ -18425,7 +18130,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1401750332}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -19946,7 +19651,7 @@ RectTransform:
   - {fileID: 275349682}
   - {fileID: 88270414}
   m_Father: {fileID: 1401750332}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -20906,6 +20611,139 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1582985273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1582985274}
+  - component: {fileID: 1582985277}
+  - component: {fileID: 1582985276}
+  - component: {fileID: 1582985275}
+  m_Layer: 5
+  m_Name: '[Button] Jumak Exit'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1582985274
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582985273}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1401750332}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.08, y: 708.54}
+  m_SizeDelta: {x: 194.69, y: 196.92}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1582985275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582985273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1582985276}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 734917251}
+        m_TargetAssemblyTypeName: SetFood, Assembly-CSharp
+        m_MethodName: ExitJumak
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1582985276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582985273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1582985277
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582985273}
+  m_CullTransparentMesh: 1
 --- !u!1 &1586816089
 GameObject:
   m_ObjectHideFlags: 0
@@ -20991,7 +20829,7 @@ MonoBehaviour:
   - {fileID: 86083890}
   - {fileID: 1615712037}
   fireManager: {fileID: 596245847}
-  menuCategori: 
+  menuCategory: 
   menuValue: 0
 --- !u!4 &1590345070
 Transform:
@@ -21309,6 +21147,139 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1595204816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1595204817}
+  - component: {fileID: 1595204820}
+  - component: {fileID: 1595204819}
+  - component: {fileID: 1595204818}
+  m_Layer: 5
+  m_Name: '[Button] Exit'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1595204817
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595204816}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99992067, y: 0.99992067, z: 0.99992067}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 332557829}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -41.30005, y: -469.30005}
+  m_SizeDelta: {x: 88.94, y: 91.14}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &1595204818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595204816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1595204819}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 734917251}
+        m_TargetAssemblyTypeName: SetFood, Assembly-CSharp
+        m_MethodName: CancelJumak
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1595204819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595204816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8862745, g: 0.16470589, b: 0.13333334, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: d39501b085d2e4262864da757517d6dc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1595204820
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595204816}
+  m_CullTransparentMesh: 1
 --- !u!1 &1597418108
 GameObject:
   m_ObjectHideFlags: 0
@@ -24621,8 +24592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188d73c8f82ddc64c85140cf554b1703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: 
-  value: 0
+  number: 0
   foodImage: {fileID: 465846419}
   needIngredientNum: 0
   needIngredients: 0000000000000000000000000000000000000000
@@ -24632,78 +24602,6 @@ MonoBehaviour:
   onClick: 0
   canAdd: 0
   freeMenu: 1
-  data:
-    curXP: 0
-    maxXP: 5
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 1
-    isSound: 1
-    pitch: 0
-    isPause: 0
-    maxSeatSize: 12
-    customerHeadCount: 0
-    isAllocated: 
-    isCustomer: 
-    onTables: 
-    isFinEat: 
-    tableMiniGame: 
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0a00000000000000000000000000000000000000
-    curCoin: 500
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 3
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    successRiceJuiceMiniGame: 0
-    isMiniGame: 0
-    gukbapCount: 0
-    pajeonCount: 0
-    riceJuiceCount: 0
-    nowGukbapPrice: 0
-    nowPajeonPrice: 0
-    nowRiceJuicePrice: 0
-    currentTotalPrice: 0
-    yesterdayTotalPrice: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 
-    isThirdMonster: 0
-    isSkillSuc: 1
-    isTimerRun: 0
-    chairPrice: 000000000000000000000000
-    tablePrice: 000000000000000000000000
-    backgroundPrice: 000000000000000000000000
-    houseLV: 0
-    dansangLV: 0
-    tableLV: 0
-    days: 0
-    timerStart: 0
-    dayCount: 0
-    Countday: 0
-  color:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
-  checkNum: 0
 --- !u!114 &1934276201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26073,8 +25971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188d73c8f82ddc64c85140cf554b1703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: 
-  value: 0
+  number: 0
   foodImage: {fileID: 683808620}
   needIngredientNum: 0
   needIngredients: 0000000000000000000000000000000000000000
@@ -26084,78 +25981,6 @@ MonoBehaviour:
   onClick: 0
   canAdd: 0
   freeMenu: 1
-  data:
-    curXP: 0
-    maxXP: 5
-    curPlayerLV: 1
-    maxPlayerLV: 0
-    isPlayBGM: 1
-    isSound: 1
-    pitch: 0
-    isPause: 0
-    maxSeatSize: 12
-    customerHeadCount: 0
-    isAllocated: 
-    isCustomer: 
-    onTables: 
-    isFinEat: 
-    tableMiniGame: 
-    menuCategories:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    menuLV: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ingredient: 0a00000000000000000000000000000000000000
-    curCoin: 500
-    maxCoin: 999999
-    curUnlockLevel: 1
-    maxUnlockLevel: 6
-    curMenuUnlockLevel: 3
-    maxMenuUnlockLevel: 3
-    fireSize: 100
-    successRiceJuiceMiniGame: 0
-    isMiniGame: 0
-    gukbapCount: 0
-    pajeonCount: 0
-    riceJuiceCount: 0
-    nowGukbapPrice: 0
-    nowPajeonPrice: 0
-    nowRiceJuicePrice: 0
-    currentTotalPrice: 0
-    yesterdayTotalPrice: 0
-    isMonster: 0
-    runningTime: 0
-    playerHP: 3
-    monsterHP: 0
-    monsterSpawn: 
-    isThirdMonster: 0
-    isSkillSuc: 1
-    isTimerRun: 0
-    chairPrice: 000000000000000000000000
-    tablePrice: 000000000000000000000000
-    backgroundPrice: 000000000000000000000000
-    houseLV: 0
-    dansangLV: 0
-    tableLV: 0
-    days: 0
-    timerStart: 0
-    dayCount: 0
-    Countday: 0
-  color:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
-  checkNum: 0
 --- !u!114 &2088391559
 MonoBehaviour:
   m_ObjectHideFlags: 0

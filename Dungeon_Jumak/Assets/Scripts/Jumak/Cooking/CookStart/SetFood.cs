@@ -76,12 +76,18 @@ public class SetFood : MonoBehaviour
     //Count of currnet confirmed food
     private int confirmCount;
 
-    //Confirm Popup
-    [Header("확정 팝업 오브젝트")]
-    [SerializeField] private GameObject confirmPopUp;
+    //Choose
+    [Header("선택 팝업 오브젝트")]
+    [SerializeField] private GameObject choosePopUp;
 
     [Header("주막 씬")]
     [SerializeField] private JumakScene jumakScene;
+
+    [Header("확정 프레임 이미지")]
+    [SerializeField] private Image[] images;
+
+    [Header("할머니 말풍선 팝업")]
+    [SerializeField] private GameObject grandmaSpeechBox;
 
     //Init Data
     private int[] initIngredient;
@@ -143,6 +149,8 @@ public class SetFood : MonoBehaviour
                 offObjectsWhenStart[j].SetActive(false);
             }
 
+            grandmaSpeechBox.SetActive(false);
+
             //Jumak Start
             jumakScene.JumakStart();
         }
@@ -176,6 +184,9 @@ public class SetFood : MonoBehaviour
                         //Assign max cook count
                         maxCookCount = gukbabs[i].maxCookCount;
 
+                        //Set WantCookingFood Count
+                        wantCookingFood = maxCookCount;
+
                         //If is free is not free
                         freeFood = gukbabs[i].freeMenu;
 
@@ -202,6 +213,9 @@ public class SetFood : MonoBehaviour
 
                         //Assign max cook count
                         maxCookCount = pajeons[i].maxCookCount;
+
+                        //Set WantCookingFood Count
+                        wantCookingFood = maxCookCount;
 
                         //If is free is not free
                         freeFood = pajeons[i].freeMenu;
@@ -230,6 +244,9 @@ public class SetFood : MonoBehaviour
                         //Assign max cook count
                         maxCookCount = riceJuices[i].maxCookCount;
 
+                        //Set WantCookingFood Count
+                        wantCookingFood = maxCookCount;
+
                         //If is free is not free
                         freeFood = riceJuices[i].freeMenu;
 
@@ -253,8 +270,8 @@ public class SetFood : MonoBehaviour
             //increase want cooking food count
             wantCookingFood++;
 
-            //modular arithmetic -> if count greater than max count, count is zero 
-            wantCookingFood %= maxCookCount + 1;
+            if (wantCookingFood > maxCookCount)
+                wantCookingFood = 0;
         }
     }
 
@@ -267,8 +284,8 @@ public class SetFood : MonoBehaviour
             //decrease want cooking food count
             wantCookingFood--;
 
-            //modular arithmetic -> if count greater than max count, count is zero 
-            wantCookingFood %= maxCookCount + 1;
+            if (wantCookingFood < 0)
+                wantCookingFood = maxCookCount;
         }
     }
 
@@ -342,20 +359,7 @@ public class SetFood : MonoBehaviour
     //Close Confirm Popup
     public void CloseConfirmPopUp()
     {
-        confirmPopUp.SetActive(false);
-    }
-
-    //Canel Jumak
-    public void CancelJumak()
-    {
-        //Undo ingredients
-        for (int i = 0; i < initIngredient.Length; i++)
-        {
-            data.ingredient[i] = initIngredient[i];
-        }
-
-        //Back Waiting Scene
-        GameManager.Scene.LoadScene(Define.Scene.WaitingScene);
+        confirmPopup.SetActive(false);
     }
 
     //Method for Subtract Ingredient
@@ -420,5 +424,48 @@ public class SetFood : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    //Reset Method
+    public void CancelJumak()
+    {
+        confirmCount = 0;
+
+        choosePopUp.SetActive(false);
+
+        //Reset Ingredient
+        for (int i = 0; i < data.ingredient.Length; i++)
+        {
+            data.ingredient[i] = initIngredient[i];
+        }
+
+        //Interactable Button
+        for (int j = 0; j < gukbabs.Length; j++)
+        {
+            gukbabs[j].gameObject.GetComponent<Button>().interactable = true;
+        }
+
+        for (int j = 0; j < pajeons.Length; j++)
+        {
+            pajeons[j].gameObject.GetComponent<Button>().interactable = true;
+        }
+
+        for (int j = 0; j < riceJuices.Length; j++)
+        {
+            riceJuices[j].gameObject.GetComponent<Button>().interactable = true;
+        }
+
+        //Reset Sprite
+        for (int k = 0; k < images.Length; k++)
+        {
+            images[k].sprite = null;
+        }
+    }
+
+    //Exit Jumak
+    public void ExitJumak()
+    {
+        //Back Waiting Scene
+        GameManager.Scene.LoadScene(Define.Scene.WaitingScene);
     }
 }

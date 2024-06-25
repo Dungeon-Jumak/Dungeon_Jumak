@@ -67,7 +67,7 @@ public class FireFurnace : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         //Detect Player Stay in Collider
-        if(collision.CompareTag("Player"))
+        if(collision.CompareTag("Player") && jumakScene.start)
             //Active Speech box
             fireSpeechBox.gameObject.SetActive(true);
     }
@@ -76,7 +76,7 @@ public class FireFurnace : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         //Detect Player Exit in Collider
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && jumakScene.start)
             //Inactive Speech box
             fireSpeechBox.gameObject.SetActive(false);
     }

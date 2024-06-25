@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2706001375254767488}
   - component: {fileID: 9028560328725426379}
   - component: {fileID: 5924112111576492597}
-  - component: {fileID: 2804859513378388579}
+  - component: {fileID: 7354165323311117287}
   m_Layer: 0
   m_Name: Speech_Box_RiceJuice
   m_TagString: SpeechBox
@@ -241,8 +241,8 @@ MonoBehaviour:
   riceJuicePrefab: {fileID: 3502175190827869967, guid: 366380a53953f6f498a2ba84f5e26448,
     type: 3}
   tableIdx: 0
---- !u!58 &2804859513378388579
-CircleCollider2D:
+--- !u!70 &7354165323311117287
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -254,9 +254,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.6035984, y: -0.8345164}
-  serializedVersion: 2
-  m_Radius: 1.5403016
+  m_Offset: {x: 1.1157379, y: -1.2118452}
+  m_Size: {x: 1.6424698, y: 2.2078865}
+  m_Direction: 0
 --- !u!1 &2739704952682996551
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,8 +354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfef575f641bb347900f87f3e9b34c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStop: 0
-  fadeInDuration: 20
   shadowRenderer: {fileID: 0}
   orderMenu: {fileID: 7587194474118179910}
 --- !u!1 &3127954590773575477
@@ -455,8 +453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfef575f641bb347900f87f3e9b34c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStop: 0
-  fadeInDuration: 20
   shadowRenderer: {fileID: 0}
   orderMenu: {fileID: 7587194474118179910}
 --- !u!1 &3758197614297234253
@@ -1274,7 +1270,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfef575f641bb347900f87f3e9b34c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStop: 0
-  fadeInDuration: 20
   shadowRenderer: {fileID: 0}
   orderMenu: {fileID: 7587194474118179910}

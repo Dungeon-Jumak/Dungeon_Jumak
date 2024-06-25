@@ -74,7 +74,7 @@ public class PajeonFurnace : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         //Active Pajeon MiniGame Speech Box when player is staying
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && jumakScene.start)
             pajeonSpeechBox.gameObject.SetActive(true);
     }
 
@@ -82,7 +82,7 @@ public class PajeonFurnace : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         //InActive Pajeon MiniGame Speech Box when player exit
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && jumakScene.start)
             pajeonSpeechBox.gameObject.SetActive(false);
     }
 

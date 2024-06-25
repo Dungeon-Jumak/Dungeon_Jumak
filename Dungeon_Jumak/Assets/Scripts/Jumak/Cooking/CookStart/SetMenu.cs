@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 //TMP
 using TMPro;
+using Unity.VisualScripting;
 
 [DisallowMultipleComponent]
 public class SetMenu : MonoBehaviour
@@ -66,18 +67,21 @@ public class SetMenu : MonoBehaviour
         //Get Data
         data = DataManager.Instance.data;
 
-        //If is not base menu, start coroutine
-        if (!freeMenu)
-            StartCoroutine(CheckIngredient());
-        //If is base menu, can add = true
-        else canAdd = true;
-
         //max Sign Have Ingredient is '99'
         maxSignHaveIngredient = 99;
     }
 
+    private void Update()
+    {
+        if (!freeMenu)
+        {
+            CheckIngredient();
+        }
+        else canAdd = true;
+    }
+
     //Coroutine for Checking Ingredient
-    IEnumerator CheckIngredient()
+    private void CheckIngredient()
     {
         //Init Check Num, Check Num is variable to ingredient's count
         checkNum = 0;
@@ -129,12 +133,6 @@ public class SetMenu : MonoBehaviour
         if (checkNum == needIngredientNum) canAdd = true;
         //if all ingredient is not enough, can't add
         else canAdd = false;
-
-        //yield retrun
-        yield return null;
-
-        //recursion coroutine
-        StartCoroutine(CheckIngredient());
     }
 
     //OnClick

@@ -9,6 +9,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEditor.UI;
 
 // This is Script For Player Serving
 [DisallowMultipleComponent]
@@ -36,7 +37,7 @@ public class PlayerServing : MonoBehaviour
 
     //Categori of Menu
     [Header("음식 카테고리")]
-    [SerializeField] private string menuCategori;
+    [SerializeField] private string menuCategory;
     //Value of Menu
     [Header("음식 벨류")]
     [SerializeField] private int menuValue;
@@ -136,19 +137,8 @@ public class PlayerServing : MonoBehaviour
             //Call PickUpFood Method
             PickUpFood(foodObject);
 
-            //Switch about gukbab's tag for add value
-            switch (foodObject.tag)
-            {
-                case "Gukbab":
-                    menuCategori = "Gukbab";
-                    menuValue = 1; 
-                    break;
-                case "PigGukbab":
-                    menuCategori = "Gukbab";
-                    menuValue = 2;
-                    break;
-                    //add other gukbab!
-            }
+            menuCategory = "Gukbab";
+            menuValue = foodScript.value;
 
             //Decrease Gukbab Count
             if (foodObject.tag.Contains("Gukbab")) fireManager.gukbabCount--;
@@ -166,15 +156,8 @@ public class PlayerServing : MonoBehaviour
             //Call PickUpFood Method
             PickUpFood(foodObject);
 
-            //Switch about pajeon's tag for add value
-            switch (foodObject.tag)
-            {
-                case "Pajeon":
-                    menuCategori = "Pajeon";
-                    menuValue = 1;
-                    break;
-                    //add other paejon!
-            }
+            menuCategory = "Pajeon";
+            menuValue = foodScript.value;        
         }
     }
     #endregion
@@ -191,7 +174,7 @@ public class PlayerServing : MonoBehaviour
             {
                 // find collision table and check table is empty,
                 // check customer is sitting table and check categori of menu
-                if (tableObject.transform == tables[i] && !data.onTables[i] && data.isCustomer[i] && menuCategori.Contains(data.menuCategories[i]))
+                if (tableObject.transform == tables[i] && !data.onTables[i] && data.isCustomer[i] && menuCategory.Contains(data.menuCategories[i]))
                 {
                     GameManager.Sound.Play("[S] Place Food", Define.Sound.Effect, false);
 

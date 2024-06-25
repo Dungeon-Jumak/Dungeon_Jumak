@@ -14,6 +14,9 @@ public class FoodScript : MonoBehaviour
     //Check isOnTable (not Serving table)
     [SerializeField] private bool isOnTable = false;
 
+    [Header("음식의 벨류")]
+    public int value;
+
     public bool IsOnTable
     {
         get { return isOnTable; }

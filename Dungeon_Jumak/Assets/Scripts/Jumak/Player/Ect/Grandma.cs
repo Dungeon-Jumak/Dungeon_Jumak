@@ -12,6 +12,12 @@ public class Grandma : MonoBehaviour
     [Header("할머니 상호작용 말풍선")]
     [SerializeField] private GameObject grandmaSpeechBox;
 
+    [Header("음식 선택창 게임 오브젝트")]
+    [SerializeField] private GameObject choosePanel;
+
+    [Header("주막 씬 오브젝트")]
+    [SerializeField] private JumakScene jumak;
+
     //SpriteRenderer component to change renderer
     private SpriteRenderer spriteRenderer;
 
@@ -36,14 +42,23 @@ public class Grandma : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         //Active SpeechBox when player stay grandma collider
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !jumak.start)
             grandmaSpeechBox.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         //InActive SpeechBox when player exit grandma collider
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !jumak.start)
             grandmaSpeechBox.SetActive(false);
+    }
+
+    public void OnChoosePanel()
+    {
+        if (!jumak.start)
+        {
+            choosePanel.SetActive(true);
+        }
+
     }
 }

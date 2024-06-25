@@ -29,7 +29,7 @@ public class RiceJuiceOrder : MonoBehaviour
     private bool playerInCollider = false;
 
     //Circle Collider for Detect Player
-    private CircleCollider2D circleCollider;
+    private CapsuleCollider2D capsuleCollider;
 
     //Player Serving Script
     private PlayerServing player;
@@ -40,10 +40,10 @@ public class RiceJuiceOrder : MonoBehaviour
 
     void Start()
     {
-        blackPanelIndex = 9;
+        blackPanelIndex = 8;
 
         //Get Component
-        circleCollider = GetComponent<CircleCollider2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
         player = FindObjectOfType<PlayerServing>();
 
         //Get Data
@@ -75,7 +75,7 @@ public class RiceJuiceOrder : MonoBehaviour
                 mousePosition.z = transform.position.z;
 
                 //is not playing minigame and click minigame area
-                if (circleCollider.OverlapPoint(mousePosition) && !data.isMiniGame)
+                if (capsuleCollider.OverlapPoint(mousePosition) && !data.isMiniGame)
                 {
                     //Debug.Log
                     Debug.Log("°¨Áö");
