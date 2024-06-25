@@ -3,14 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using UnityEngine;
+using TMPro;
 
 public class WaitingScene : BaseScene
 {
     public GameObject[] gameObjects;
 
+    //TimerText 관련 변수들
+    public GameObject timerObj;
+
     void Start()
     {
         GameManager.Sound.Play("BGM/[B] Waiting Scene", Define.Sound.Bgm, true);//Play The Bgm Sound in WaitingScene
+    }
+
+    void Update()
+    {
+        timerObj.GetComponent<TextMeshProUGUI>().text = GameManager.Instance.timerText;
     }
 
     void OnEnable()

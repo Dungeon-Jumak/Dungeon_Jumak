@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     private bool IsDay = true;
 
     private GameObject dayTimerTextObject;
+    public string timerText;
 
     //Setting GameManager.cs to Singleton system 
     void Awake()
@@ -131,11 +132,7 @@ public class GameManager : MonoBehaviour
         int hours = totalMinutes / 60;
         int minutes = totalMinutes % 60;
 
-        string timeText = string.Format("{0:D2}:{1:D2}", hours, minutes);
-
-        dayTimerTextObject = _resource.Load<GameObject>("Prefabs/DayTimer_Text");
-        dayTimerTextObject.GetComponent<TextMeshProUGUI>().text = timeText;
-        Debug.Log(timeText);
+        timerText = string.Format("{0:D2}:{1:D2}", hours, minutes);
 
         if (hours >= 0 && hours < 6)
         {
