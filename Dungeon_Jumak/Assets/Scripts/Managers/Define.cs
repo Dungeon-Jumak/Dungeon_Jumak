@@ -13,6 +13,7 @@ public class Define : MonoBehaviour
         Map,
         Stage1,
         Market,
+        House,
     }
 
     public enum Sound

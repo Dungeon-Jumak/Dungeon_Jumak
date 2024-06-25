@@ -3,14 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using UnityEngine;
+using TMPro;
 
 public class WaitingScene : BaseScene
 {
     public GameObject[] gameObjects;
 
+    //TimerText °ü·Ã º¯¼öµé
+    public GameObject timerObj;
+
     void Start()
     {
         GameManager.Sound.Play("BGM/[B] Waiting Scene", Define.Sound.Bgm, true);//Play The Bgm Sound in WaitingScene
+    }
+
+    void Update()
+    {
+        timerObj.GetComponent<TextMeshProUGUI>().text = GameManager.Instance.timerText;
     }
 
     void OnEnable()
@@ -26,12 +35,12 @@ public class WaitingScene : BaseScene
 
     public void ChangeScene(string sceneName)
     {
-        StartCoroutine(ChangeSceneAfterDelay(sceneName, 1.0f)); // 1ÃÊ Áö¿¬ ÈÄ ¾À º¯°æ ÄÚ·çÆ¾ ½ÃÀÛ
+        StartCoroutine(ChangeSceneAfterDelay(sceneName, 1.0f)); // 1ì´ˆ ì§€ì—° í›„ ì”¬ ë³€ê²½ ì½”ë£¨í‹´ ì‹œì‘
     }
 
     private IEnumerator ChangeSceneAfterDelay(string sceneName, float delay)
     {
-        yield return new WaitForSeconds(delay); // Áö¿¬ ½Ã°£ ±â´Ù¸²
+        yield return new WaitForSeconds(delay); // ì§€ì—° ì‹œê°„ ê¸°ë‹¤ë¦¼
 
         if (Enum.TryParse(sceneName, out Define.Scene scene))
         {
@@ -51,7 +60,7 @@ public class WaitingScene : BaseScene
         Debug.Log("Waiting Scene changed!");
     }
 
-    // °ÔÀÓ ¿ÀºêÁ§Æ®¸¦ ºñÈ°¼ºÈ­ÇÏ´Â ¸Ş¼­µå
+    // ê²Œì„ ì˜¤ë¸Œì íŠ¸ë¥¼ ë¹„í™œì„±í™”í•˜ëŠ” ë©”ì„œë“œ
     private void DisableGameObjects()
     {
         foreach (GameObject obj in gameObjects)
