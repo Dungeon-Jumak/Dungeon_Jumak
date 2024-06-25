@@ -1,0 +1,44 @@
+Dark - Complete Grunge UI (v2.1.7)
+
+Online documentation: https://docs.michsky.com/docs/dark-ui/
+
+Contact me via:
+E-mail: https://www.michsky.com/contact
+Discord: https://discord.gg/VXpHyUt
+Twitter: https://twitter.com/michskyHQ
+YouTube: https://www.youtube.com/c/michsky
+Reddit: https://www.reddit.com/u/michsky
+Website: https://www.michsky.com
+
+Special thanks to:
+Takashi Sakai (https://github.com/mob-sakai)
+
+Changelog v2.0.0
+----------------------------------------
+• Added UI manager
+• Added custom gamepad handler (BETA)
+• Added button manager
+• Added custom editor layout
+• Added filter manager
+• Added input system support
+• Added new icons
+• Added modular gamepad layout (xbox)
+• Added ripple option for main buttons
+• New documentation
+• New modular splash screen system
+• New modular window managing system
+• New gamepad mapping layout
+• Improved demo scenes
+• Improved dropdown manager
+• Improved modal manager
+• Improved performance (up to 10x)
+• Improved quality manager
+• Improved sliced sprites
+• Improved slider manager
+• Improved SRP compatibility
+• Improved switch manager
+• Improved transition manager
+• Fixed shader related warnings
+• Fixed compatibility issues with the other packages
+... and lots of other improvements & fixes.
+----------------------------------------
