@@ -11,6 +11,8 @@ public class Data
     //데이터에 있는 값을 다른 스크립트를 사용하기 위해서는 싱글톤으로서 사용하면 됨
     //ex) Data data = DataManager.Instance.data; => 이를 통해 Data.cs에 있는 변수값을 사용할 수 있음
 
+    public float gameTime = 21600f;
+
     public float curXP = 0;
     public float maxXP = 5;
 
@@ -39,7 +41,7 @@ public class Data
     public int[] menuLV = new int[12];              //각 테이블에 있는 메뉴의 벨류
     public int[] ingredient = new int[5] {10, 0, 0, 0, 0};           //0: 돼지고기, 1: 부추, 2: 콩나물, 3: 오징어, 4: 소고기
 
-    public int curCoin = 500;
+    public int curCoin = 0;
     public int maxCoin = 999999;
 
     //---자리 해금 레벨---//

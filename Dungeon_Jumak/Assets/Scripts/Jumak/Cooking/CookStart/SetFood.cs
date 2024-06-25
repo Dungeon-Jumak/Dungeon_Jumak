@@ -89,6 +89,9 @@ public class SetFood : MonoBehaviour
     [Header("할머니 말풍선 팝업")]
     [SerializeField] private GameObject grandmaSpeechBox;
 
+    [Header("주막 출입구 버튼")]
+    [SerializeField] private Button exitButton;
+
     //Init Data
     private int[] initIngredient;
 
@@ -148,6 +151,8 @@ public class SetFood : MonoBehaviour
             {
                 offObjectsWhenStart[j].SetActive(false);
             }
+
+            exitButton.enabled = false;
 
             grandmaSpeechBox.SetActive(false);
 

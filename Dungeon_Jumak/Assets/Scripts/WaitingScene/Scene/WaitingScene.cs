@@ -9,9 +9,6 @@ public class WaitingScene : BaseScene
 {
     public GameObject[] gameObjects;
 
-    //TimerText ���� ������
-    public GameObject timerObj;
-
     void Start()
     {
         GameManager.Sound.Play("BGM/[B] Waiting Scene", Define.Sound.Bgm, true);//Play The Bgm Sound in WaitingScene
@@ -19,7 +16,6 @@ public class WaitingScene : BaseScene
 
     void Update()
     {
-        timerObj.GetComponent<TextMeshProUGUI>().text = GameManager.Instance.timerText;
     }
 
     void OnEnable()
@@ -35,12 +31,12 @@ public class WaitingScene : BaseScene
 
     public void ChangeScene(string sceneName)
     {
-        StartCoroutine(ChangeSceneAfterDelay(sceneName, 1.0f)); // 1초 지연 후 씬 변경 코루틴 시작
+        StartCoroutine(ChangeSceneAfterDelay(sceneName, 1.0f));
     }
 
     private IEnumerator ChangeSceneAfterDelay(string sceneName, float delay)
     {
-        yield return new WaitForSeconds(delay); // 지연 시간 기다림
+        yield return new WaitForSeconds(delay);
 
         if (Enum.TryParse(sceneName, out Define.Scene scene))
         {
@@ -60,7 +56,6 @@ public class WaitingScene : BaseScene
         Debug.Log("Waiting Scene changed!");
     }
 
-    // 게임 오브젝트를 비활성화하는 메서드
     private void DisableGameObjects()
     {
         foreach (GameObject obj in gameObjects)

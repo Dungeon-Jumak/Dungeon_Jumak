@@ -32,8 +32,6 @@ public class DungeonScene : BaseScene
 
     private float currentTimer;
 
-    private int lastLevel;
-
     private float lastXP;
 
     private Data data;
@@ -46,7 +44,6 @@ public class DungeonScene : BaseScene
         //Get Data
         data = DataManager.Instance.data;
 
-        lastLevel = data.curPlayerLV;
         lastXP = data.curXP;
 
         //BGM
@@ -58,7 +55,6 @@ public class DungeonScene : BaseScene
         if(currentTimer <= 0)
         {
             currentTimer = 0f;
-
         }
 
         //Timer
@@ -85,13 +81,6 @@ public class DungeonScene : BaseScene
 
             //Update Max XP
             data.maxXP *= 2;
-        }
-
-        //when level update
-        if (lastLevel < data.curPlayerLV)
-        {
-            lastLevel = data.curPlayerLV;
-            levelText.text = "LV." + lastLevel.ToString();
         }
 
         if (lastXP < data.curXP)

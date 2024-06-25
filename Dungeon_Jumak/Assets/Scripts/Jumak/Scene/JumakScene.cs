@@ -123,9 +123,6 @@ public class JumakScene : BaseScene
         //Get Data
         data = DataManager.Instance.data;
 
-        //Initialize Past Coin
-        pastCoin = data.curCoin;
-
         //Initialze Food Count
         data.gukbapCount = 0;
         data.pajeonCount = 0;
@@ -195,20 +192,8 @@ public class JumakScene : BaseScene
     //Jumak System
     private void JumakSystem()
     {
-        //If cur coin greater than past coin, update coin text
-        if (data.curCoin > pastCoin)
-        {
-            //update past coin
-            pastCoin = data.curCoin;
-
-            //update text
-            coinTMP.text = data.curCoin.ToString() + "전";
-        }
-
         //Call Timer Method
         Timer();
-
-        levelText.text = "LV." + data.curPlayerLV.ToString();
 
         //If end and mousebutton down, load waiting scene
         if (end && Input.GetMouseButtonDown(0))

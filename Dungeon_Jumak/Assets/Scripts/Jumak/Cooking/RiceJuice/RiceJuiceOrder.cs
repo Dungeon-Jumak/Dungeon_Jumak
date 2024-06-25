@@ -40,7 +40,7 @@ public class RiceJuiceOrder : MonoBehaviour
 
     void Start()
     {
-        blackPanelIndex = 8;
+        blackPanelIndex = 7;
 
         //Get Component
         capsuleCollider = GetComponent<CapsuleCollider2D>();
