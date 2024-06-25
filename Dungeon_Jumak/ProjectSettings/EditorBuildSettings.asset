@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Market.unity
     guid: 1d2f22a420bc01d418b0e95e235f4740
+  - enabled: 1
+    path: Assets/Scenes/House.unity
+    guid: ca727d2b974f0b141aafe51d0ceddb8b
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000,
       guid: 68abe7202c4a8cb45a7b1691ff9da0ad, type: 2}
