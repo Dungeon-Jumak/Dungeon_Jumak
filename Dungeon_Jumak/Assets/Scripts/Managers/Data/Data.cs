@@ -11,7 +11,7 @@ public class Data
     //데이터에 있는 값을 다른 스크립트를 사용하기 위해서는 싱글톤으로서 사용하면 됨
     //ex) Data data = DataManager.Instance.data; => 이를 통해 Data.cs에 있는 변수값을 사용할 수 있음
 
-    public float gameTime = 21600f;
+    public float gameTime = 0f;
 
     public float curXP = 0;
     public float maxXP = 5;

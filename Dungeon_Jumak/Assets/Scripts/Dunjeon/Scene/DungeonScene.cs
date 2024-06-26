@@ -80,7 +80,7 @@ public class DungeonScene : BaseScene
             data.curXP = data.curXP - data.maxXP;
 
             //Update Max XP
-            data.maxXP *= 2;
+            data.maxXP *= 5;
         }
 
         if (lastXP < data.curXP)
