@@ -6370,10 +6370,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
+    gameTime: 21600
+    curXP: 0
+    maxXP: 5
     curPlayerLV: 1
     maxPlayerLV: 0
     isPlayBGM: 0
     isSound: 1
+    pitch: 0
     isPause: 0
     maxSeatSize: 2
     customerHeadCount: 0
@@ -6429,6 +6433,10 @@ MonoBehaviour:
     dansangLV: 0
     tableLV: 0
     days: 1
+    timerStart: 0
+    dayCount: 0
+    Countday: 0
+    IsMorning: 0
 --- !u!4 &1854808336
 Transform:
   m_ObjectHideFlags: 0
