@@ -1,33 +1,58 @@
-//System
 using System.Collections;
 using System.Collections.Generic;
-
-//Unity
 using UnityEngine;
 using UnityEngine.UI;
 
 [DisallowMultipleComponent]
 public class PortalManager : MonoBehaviour
 {
-    [Header("리턴 팝업")]
+    [Header("리턴 성공시 팝업")]
     [SerializeField] private GameObject returnPopup;
+
+    [Header("리턴 실패시 팝업")]
+    [SerializeField] private GameObject notReturnPopup;
+
+    [Header("Collider를 비활성화할 포탈 게임 오브젝트")]
+    [SerializeField] private GameObject portal;
+
+    private bool isOver30Second = false;
+
+    private void Start()
+    {
+        // Starting timer for portal
+        StartCoroutine(ReturnTimeCountdown());
+    }
+
+    private IEnumerator ReturnTimeCountdown()
+    {
+        yield return new WaitForSeconds(30f);
+        isOver30Second = true;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!collision.collider.CompareTag("Player"))
             return;
 
-        //Return Pop up Active
-        returnPopup.SetActive(true);
-        
+        if (isOver30Second)
+        {
+            //Return Pop up Active
+            returnPopup.SetActive(true);
+        }
+        else
+        {
+            //Not Return Pop up Active
+            notReturnPopup.SetActive(true);
+        }
+
         //Pause
         Time.timeScale = 0f;
     }
 
-    //Return : Continue Game
     public void Continue()
     {
         returnPopup.SetActive(false);
+        notReturnPopup.SetActive(false);
 
         Time.timeScale = 1f;
     }
@@ -38,5 +63,21 @@ public class PortalManager : MonoBehaviour
 
         //Move Scene
         GameManager.Scene.LoadScene(Define.Scene.WaitingScene);
+    }
+
+    public void DisableColliderForSeconds()
+    {
+        StartCoroutine(DisableColliderCoroutine());
+    }
+
+    private IEnumerator DisableColliderCoroutine()
+    {
+        BoxCollider2D collider = portal.GetComponent<BoxCollider2D>();
+        if (collider != null)
+        {
+            collider.enabled = false;
+            yield return new WaitForSeconds(3f);
+            collider.enabled = true;
+        }
     }
 }
