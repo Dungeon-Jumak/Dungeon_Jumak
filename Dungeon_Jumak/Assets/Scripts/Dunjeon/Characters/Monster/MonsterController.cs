@@ -69,7 +69,7 @@ public class MonsterController : MonoBehaviour
     private void OnEnable()
     {
         //Initialize
-        target = FindObjectOfType<PlayerMovementInDungeon>().GetComponent<Rigidbody2D>();
+        target = FindObjectOfType<PlayerMovement_Dun>().GetComponent<Rigidbody2D>();
 
         //isLive true
         isLive = true;
