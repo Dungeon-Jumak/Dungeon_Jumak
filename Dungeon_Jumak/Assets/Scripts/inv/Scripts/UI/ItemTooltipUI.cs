@@ -16,9 +16,8 @@ namespace DJ.InventorySystem
         [SerializeField]
         private Text _contentText;
 
-
-        private RectTransform _rt;
-        private CanvasScaler _canvasScaler;
+        private RectTransform rt;
+        private CanvasScaler canvasScaler;
 
         private static readonly Vector2 LeftTop = new Vector2(0f, 1f);
         private static readonly Vector2 LeftBottom = new Vector2(0f, 0f);
@@ -33,9 +32,9 @@ namespace DJ.InventorySystem
 
         private void Init()
         {
-            TryGetComponent(out _rt);
-            _rt.pivot = LeftTop;
-            _canvasScaler = GetComponentInParent<CanvasScaler>();
+            TryGetComponent(out rt);
+            rt.pivot = LeftTop;
+            canvasScaler = GetComponentInParent<CanvasScaler>();
 
             DisableAllChildrenRaycastTarget(transform);
         }
@@ -66,22 +65,22 @@ namespace DJ.InventorySystem
         public void SetRectPosition(RectTransform slotRect)
         {
             //===해상도 대응===//
-            float wRatio = Screen.width / _canvasScaler.referenceResolution.x;
-            float hRatio = Screen.height / _canvasScaler.referenceResolution.y;
+            float wRatio = Screen.width / canvasScaler.referenceResolution.x;
+            float hRatio = Screen.height / canvasScaler.referenceResolution.y;
             float ratio = 
-                wRatio * (1f - _canvasScaler.matchWidthOrHeight) +
-                hRatio * (_canvasScaler.matchWidthOrHeight);
+                wRatio * (1f - canvasScaler.matchWidthOrHeight) +
+                hRatio * (canvasScaler.matchWidthOrHeight);
 
             float slotWidth = slotRect.rect.width * ratio;
             float slotHeight = slotRect.rect.height * ratio;
 
             //===툴팁 초기 위치 설정 : 우하단===//
-            _rt.position = slotRect.position + new Vector3(slotWidth, -slotHeight);
-            Vector2 pos = _rt.position;
+            rt.position = slotRect.position + new Vector3(slotWidth, -slotHeight);
+            Vector2 pos = rt.position;
 
             //===툴팁 크기===//
-            float width = _rt.rect.width * ratio;
-            float height = _rt.rect.height * ratio;
+            float width = rt.rect.width * ratio;
+            float height = rt.rect.height * ratio;
 
             //===우측, 하단이 잘렸는지 여부===//
             bool rightTruncated = pos.x + width > Screen.width;
@@ -93,17 +92,17 @@ namespace DJ.InventorySystem
             //===오른쪽만 잘림 => 슬롯의 Left Bottom 방향으로 표시===//
             if (R && !B)
             {
-                _rt.position = new Vector2(pos.x - width - slotWidth, pos.y);
+                rt.position = new Vector2(pos.x - width - slotWidth, pos.y);
             }
             //===아래쪽만 잘림 => 슬롯의 Right Top 방향으로 표시===//
             else if (!R && B)
             {
-                _rt.position = new Vector2(pos.x, pos.y + height + slotHeight);
+                rt.position = new Vector2(pos.x, pos.y + height + slotHeight);
             }
             //===모두 잘림 => 슬롯의 Left Top 방향으로 표시===//
             else if (R && B)
             {
-                _rt.position = new Vector2(pos.x - width - slotWidth, pos.y + height + slotHeight);
+                rt.position = new Vector2(pos.x - width - slotWidth, pos.y + height + slotHeight);
             }
             //===잘리지 않음 => 슬롯의 Right Bottom(초기) 방향으로 표시===//
         }

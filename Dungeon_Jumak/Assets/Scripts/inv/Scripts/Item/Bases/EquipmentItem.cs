@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 namespace DJ.InventorySystem
 {
     //===장비 아이템 스크립트===//
@@ -32,8 +30,5 @@ namespace DJ.InventorySystem
             EquipmentData = data;
             Durability = data.MaxDurability;
         }
-
-        // Item Data 외의 필드값에 대한 매개변수를 갖는 생성자는 추가로 제공하지 않음
-        // 자식들에서 모두 추가해줘야 하므로 유지보수면에서 불편
     }
 }

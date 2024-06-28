@@ -7,17 +7,15 @@ using UnityEngine.UI;
 
 namespace DJ  
 {
-    //===인벤토리 UI 위에 띄울 버리기 기능 팝업 관리===//
     public class InventoryPopupUI : MonoBehaviour
     {
         //===아이템 버릴 시 뜨는 팝업 요소===//
-        [Header("Confirmation Popup")]
-        [SerializeField] private GameObject _confirmationPopupObject;
-        [SerializeField] private Text   _confirmationItemNameText;
-        [SerializeField] private Text   _confirmationText;
-        [SerializeField] private Button _confirmationOkButton;  
-        [SerializeField] private Button _confirmationCancelButton;
-
+        [Header("버릴 시 확인 Popup")]
+        [SerializeField] private GameObject confirmationPopupObject;
+        [SerializeField] private Text confirmationItemNameText;
+        [SerializeField] private Text confirmationText;
+        [SerializeField] private Button confirmationOkButton;  
+        [SerializeField] private Button confirmationCancelButton;
 
         //===확인 버튼 눌렀을 때 동작할 이벤트===//
         private event Action OnConfirmationOK;
@@ -31,15 +29,15 @@ namespace DJ
 
         private void Update()
         {
-            if (_confirmationPopupObject.activeSelf)
+            if (confirmationPopupObject.activeSelf)
             {
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    _confirmationOkButton.onClick?.Invoke();
+                    confirmationOkButton.onClick?.Invoke();
                 }
                 else if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    _confirmationCancelButton.onClick?.Invoke();
+                    confirmationCancelButton.onClick?.Invoke();
                 }
             }
         }
@@ -55,12 +53,12 @@ namespace DJ
         private void InitUIEvents()
         {
             //===확인/취소 팝업===//
-            _confirmationOkButton.onClick.AddListener(HidePanel);
-            _confirmationOkButton.onClick.AddListener(HideConfirmationPopup);
-            _confirmationOkButton.onClick.AddListener(() => OnConfirmationOK?.Invoke());
+            confirmationOkButton.onClick.AddListener(HidePanel);
+            confirmationOkButton.onClick.AddListener(HideConfirmationPopup);
+            confirmationOkButton.onClick.AddListener(() => OnConfirmationOK?.Invoke());
 
-            _confirmationCancelButton.onClick.AddListener(HidePanel);
-            _confirmationCancelButton.onClick.AddListener(HideConfirmationPopup);
+            confirmationCancelButton.onClick.AddListener(HidePanel);
+            confirmationCancelButton.onClick.AddListener(HideConfirmationPopup);
         }
 
         private void ShowPanel() => gameObject.SetActive(true);
@@ -68,10 +66,10 @@ namespace DJ
 
         private void ShowConfirmationPopup(string itemName)
         {
-            _confirmationItemNameText.text = itemName;
-            _confirmationPopupObject.SetActive(true);
+            confirmationItemNameText.text = itemName;
+            confirmationPopupObject.SetActive(true);
         }
-        private void HideConfirmationPopup() => _confirmationPopupObject.SetActive(false);
+        private void HideConfirmationPopup() => confirmationPopupObject.SetActive(false);
         private void SetConfirmationOKEvent(Action handler) => OnConfirmationOK = handler;
     }
 }
