@@ -161,8 +161,6 @@ public class JumakScene : BaseScene
         JumakSystem();
     }
 
-    #region Methods
-
     //Play BGM
     private void PlayBGM()
     {
@@ -292,20 +290,8 @@ public class JumakScene : BaseScene
         data.days++;
     }
 
-    //Method to Add Recipe
-    public void AddRecipe()
-    {
-        //Increase Current Menu Unlock Level
-        if (data.curMenuUnlockLevel < data.maxMenuUnlockLevel)
-            data.curMenuUnlockLevel++;
-    }
 
-    //For Convert Scene
-    public override void Clear()
-    {
-        //Debug.Log
-        Debug.Log("Jumak Scene changed!");
-    }
+    #region Pause and Resume
 
     public void Pause()
     {
@@ -318,4 +304,13 @@ public class JumakScene : BaseScene
     }
 
     #endregion
+
+    //For Convert Scene
+    public override void Clear()
+    {
+        //Debug.Log
+        Debug.Log("Jumak Scene changed!");
+    }
+
+
 }
