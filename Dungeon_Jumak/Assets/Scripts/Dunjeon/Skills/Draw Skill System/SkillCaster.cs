@@ -1,12 +1,10 @@
 //System
-using System;
 using System.Collections;
 using System.Collections.Generic;
 
 //Unity
 using UnityEngine;
 using UnityEngine.UI;
-
 
 [DisallowMultipleComponent]
 public class SkillCaster : MonoBehaviour
@@ -69,8 +67,6 @@ public class SkillCaster : MonoBehaviour
             hideImage.fillAmount = timer / coolTime;
         }
 
-
-
         switch (id)
         {
             //Fire Ball
@@ -99,6 +95,10 @@ public class SkillCaster : MonoBehaviour
                 }
 
                 break;
+            
+            //Fire Flooring
+            case 2:
+                break;
 
             default:
                 break;
@@ -120,6 +120,10 @@ public class SkillCaster : MonoBehaviour
 
             //Fire Shield
             case 1:
+                break;
+
+            //Fire Flooring
+            case 3:
                 break;
 
             default:
@@ -260,6 +264,48 @@ public class SkillCaster : MonoBehaviour
 
             Batch();
         }
+    }
+
+    #endregion
+
+    #region fire flooring
+
+    //Fire Flooring : Fire Flooring Casting Method
+    public void FireFlooring()
+    {
+        SpawnObjects();
+    }
+
+    void SpawnObjects()
+    {
+        //Player Position
+        Vector3 basePosition = transform.position;
+
+        //Spawn Fire Flooring object in random position around the player
+        for (int i = 0; i < 2; i++)
+        {
+            Vector3 randomPosition = new Vector3(
+                Random.Range(basePosition.x - 5f, basePosition.x + 5f),
+                Random.Range(basePosition.y - 5f, basePosition.y + 5f),
+                basePosition.z
+            );
+
+            //Pooling
+            GameObject skill = pool.Get(prefabId);
+
+            //Change position by random
+            skill.transform.position = randomPosition;
+            skill.transform.rotation = Quaternion.identity;
+
+            //Coroutine to destroy after delay
+            StartCoroutine(ReturnToPoolAfterDelay(skill, 3f, prefabId));
+        }
+    }
+
+    private IEnumerator ReturnToPoolAfterDelay(GameObject skill, float delay, int index)
+    {
+        yield return new WaitForSeconds(delay);
+        pool.ReturnToPool(skill, index);
     }
 
     #endregion

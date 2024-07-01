@@ -60,4 +60,10 @@ public class SkillPoolManager : MonoBehaviour
         //return object
         return select;
     }
+
+    public void ReturnToPool(GameObject obj, int index)
+    {
+        obj.SetActive(false);
+        pools[index].Add(obj);
+    }
 }

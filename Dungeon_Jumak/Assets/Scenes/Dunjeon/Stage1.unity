@@ -1489,6 +1489,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &149870844
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8003522974688925427, guid: f863823d1c6bf5046803706f22683219,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003522974688925427, guid: f863823d1c6bf5046803706f22683219,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003522974688925427, guid: f863823d1c6bf5046803706f22683219,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003522974688925427, guid: f863823d1c6bf5046803706f22683219,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003522974688925427, guid: f863823d1c6bf5046803706f22683219,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003522974688925427, guid: f863823d1c6bf5046803706f22683219,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003522974688925427, guid: f863823d1c6bf5046803706f22683219,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003522974688925427, guid: f863823d1c6bf5046803706f22683219,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003522974688925427, guid: f863823d1c6bf5046803706f22683219,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003522974688925427, guid: f863823d1c6bf5046803706f22683219,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003522974688925427, guid: f863823d1c6bf5046803706f22683219,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003522974688925437, guid: f863823d1c6bf5046803706f22683219,
+        type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f863823d1c6bf5046803706f22683219, type: 3}
 --- !u!1 &156755135
 GameObject:
   m_ObjectHideFlags: 0
@@ -3893,6 +3962,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 8867626343372448243, guid: 69e12ec0111478a44844821eb1fc7d89, type: 3}
   - {fileID: 2133454469683674753, guid: 224508ff2f030a0439c492c5b3fce993, type: 3}
+  - {fileID: 9057781477125418744, guid: 4e42fa2eb13270648ad11bdfbd0b38cd, type: 3}
 --- !u!1 &352200656
 GameObject:
   m_ObjectHideFlags: 0
@@ -8569,6 +8639,66 @@ Transform:
   m_Father: {fileID: 841678256}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &866875707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 866875708}
+  - component: {fileID: 866875709}
+  m_Layer: 0
+  m_Name: 'Skill Caster 3 : Fire Flooring'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &866875708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866875707}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1708373654}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &866875709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866875707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182436c4152767f49bc7fa2a4b6f91f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Fire Flooring
+  id: 2
+  prefabId: 2
+  damage: 1
+  count: 3
+  per: -1
+  knockBack: 10
+  speed: 150
+  canSkill: 1
+  coolTime: 25
+  timer: 0
+  duration: 15
+  scanner: {fileID: 74237083}
+  pool: {fileID: 348910746}
+  hideImage: {fileID: 1567793151}
+  text: {fileID: 655510134}
 --- !u!1 &880514762
 GameObject:
   m_ObjectHideFlags: 0
@@ -9407,7 +9537,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 10.304228
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -10591,6 +10721,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1086503412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1086503413}
+  m_Layer: 0
+  m_Name: '@Sound'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1086503413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086503412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.36919034, y: -1.4501445, z: -0.18629637}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1087778134
 GameObject:
   m_ObjectHideFlags: 0
@@ -17950,6 +18111,7 @@ Transform:
   m_Children:
   - {fileID: 928730122}
   - {fileID: 1178293221}
+  - {fileID: 866875708}
   m_Father: {fileID: 74237084}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22028,14 +22190,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _patterns:
-  - {fileID: 11400000, guid: 2efaa89e086e81c489b160dbb5247796, type: 2}
   - {fileID: 11400000, guid: cf42164158483364e97fae51bb21ea62, type: 2}
+  - {fileID: 11400000, guid: 2efaa89e086e81c489b160dbb5247796, type: 2}
   - {fileID: 11400000, guid: a95c43bf7ad3510409eaccf88a7c1e3f, type: 2}
   _newPointMinDistance: 1
   _pathDrawer: {fileID: 1466228396}
   _nameController: {fileID: 790185816}
   fireBall: {fileID: 928730123}
   fireShield: {fileID: 1178293220}
+  fireFlooring: {fileID: 866875709}
 --- !u!1 &2069767801
 GameObject:
   m_ObjectHideFlags: 0

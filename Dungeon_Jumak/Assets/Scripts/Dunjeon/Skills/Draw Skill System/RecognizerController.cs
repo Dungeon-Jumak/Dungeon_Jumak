@@ -2,12 +2,12 @@
 using System;
 using System.Collections.Generic;
 
-//UnitStroke
-using UnistrokeGestureRecognition;
-
 //Unity
 using Unity.Jobs;
 using UnityEngine;
+
+//UnitStroke
+using UnistrokeGestureRecognition;
 
 //NameSpace
 namespace UnistrokeGestureRecognition.Example
@@ -31,6 +31,9 @@ namespace UnistrokeGestureRecognition.Example
 
         [Header("Fire Shiled Caster")]
         [SerializeField] private SkillCaster fireShield;
+
+        [Header("Fire Flooring Caster")]
+        [SerializeField] private SkillCaster fireFlooring;
 
         //Camera
         private Camera _camera;
@@ -124,6 +127,10 @@ namespace UnistrokeGestureRecognition.Example
 
                     case "FireShield":
                         fireShield.FireShield();
+                        break;
+
+                    case "FireFlooring":
+                        fireFlooring.FireFlooring();
                         break;
 
                     default:
