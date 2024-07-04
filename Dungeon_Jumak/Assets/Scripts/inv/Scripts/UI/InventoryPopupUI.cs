@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 namespace DJ  
@@ -12,8 +13,8 @@ namespace DJ
         //===아이템 버릴 시 뜨는 팝업 요소===//
         [Header("버릴 시 확인 Popup")]
         [SerializeField] private GameObject confirmationPopupObject;
-        [SerializeField] private Text confirmationItemNameText;
-        [SerializeField] private Text confirmationText;
+        [SerializeField] private TextMeshProUGUI confirmationItemNameText;
+        [SerializeField] private TextMeshProUGUI confirmationText;
         [SerializeField] private Button confirmationOkButton;  
         [SerializeField] private Button confirmationCancelButton;
 

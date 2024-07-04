@@ -23,7 +23,7 @@ namespace DJ.InventorySystem
         [SerializeField] private float contentAreaPadding = 20f;
 
         [Header("각 슬롯의 크기")]
-        [Range(32, 64)]
+        [Range(0, 64)]
         [SerializeField] private float slotSize = 64f;
 
         [Space]

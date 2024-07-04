@@ -9,12 +9,12 @@ namespace DJ.InventorySystem
         public int Capacity { get; private set; }
 
         [Header("초기 슬롯 수용 제한")]
-        [SerializeField, Range(8, 64)]
+        [SerializeField, Range(8, 81)]
         private int initalCapacity = 32;
 
         [Header("최대 수용 한도(아이템 배열 크기)")]
-        [SerializeField, Range(8, 64)]
-        private int maxCapacity = 64;
+        [SerializeField, Range(8, 81)]
+        private int maxCapacity = 81;
 
         [Header("인벤토리 UI")]
         [SerializeField]
