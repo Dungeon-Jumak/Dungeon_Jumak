@@ -15,13 +15,13 @@ public class WaitingScene : BaseScene
 {
     public GameObject[] gameObjects;
 
-    [Header("·Îµù ÆĞ³Î")]
+    [Header("ë¡œë”© íŒ¨ë„")]
     public GameObject loadingPanel;
 
-    [Header("¹öÆ° ÀÌ¹ÌÁö ¹è¿­")]
+    [Header("ë²„íŠ¼ ì´ë¯¸ì§€ ë°°ì—´")]
     public Image[] images;
 
-    [Header("½ºÆ®·ÎÅ© ½ºÇÁ¶óÀÌÆ® ¹è¿­")]
+    [Header("ìŠ¤íŠ¸ë¡œí¬ ìŠ¤í”„ë¼ì´íŠ¸ ë°°ì—´")]
     public Sprite[] strokes;
 
     void Start()
