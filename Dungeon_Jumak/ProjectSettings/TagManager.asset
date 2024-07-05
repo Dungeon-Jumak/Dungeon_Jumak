@@ -11,7 +11,6 @@ TagManager:
   - RiceJuiceMiniGame
   - Kettle
   - CheckKettle
-  - Obstacle
   - Monster
   - Recovery
   - floor
@@ -20,7 +19,6 @@ TagManager:
   - RiceJuice
   - Gukbab
   - SpeechBox
-  - PigGukbab
   - Target_Jumak
   - Target_Junjeon
   - Target_Dunjeon
