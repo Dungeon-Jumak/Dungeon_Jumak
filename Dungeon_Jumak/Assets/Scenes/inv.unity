@@ -671,8 +671,8 @@ MonoBehaviour:
   toggleFilterWeapons: {fileID: 800572110}
   toggleFilterIngredients: {fileID: 2059233976}
   mouseReversed: 0
-  __showPreview: 1
-  __previewAlpha: 0.134
+  showPreview: 0
+  previewAlpha: 0.1
 --- !u!1 &134450342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1858,8 +1858,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confirmationPopupObject: {fileID: 198620234}
-  confirmationItemNameText: {fileID: 1761493012}
-  confirmationText: {fileID: 278217038}
+  confirmationItemNameText: {fileID: 0}
+  confirmationText: {fileID: 0}
   confirmationOkButton: {fileID: 1705501466}
   confirmationCancelButton: {fileID: 1030015486}
 --- !u!1 &459341949
@@ -5020,7 +5020,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3

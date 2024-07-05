@@ -35,7 +35,6 @@ namespace DJ.InventorySystem
             TryGetComponent(out rt);
             rt.pivot = LeftTop;
             canvasScaler = GetComponentInParent<CanvasScaler>();
-
             DisableAllChildrenRaycastTarget(transform);
         }
 

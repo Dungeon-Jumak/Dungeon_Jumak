@@ -227,7 +227,7 @@ namespace DJ.InventorySystem
             return raycastList[0].gameObject.GetComponent<T>();
         }
 
-        //===슬롯에 포인터가 올라가는/빠져나갈 때===//
+        //===슬롯에 포인터가 올라가거나 빠져나갈 때===//
         private void OnPointerEnterAndExit()
         {
             //===이전 프레임의 슬롯===//
@@ -320,9 +320,10 @@ namespace DJ.InventorySystem
 
             if (Input.GetMouseButton(leftClick))
             {
-                //===위치 이동===//
-                beginDragIconTransform.position =
-                    beginDragIconPoint + (Input.mousePosition - beginDragCursorPoint);
+                Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mouseWorldPos.z = 0f;
+
+                beginDragIconTransform.position = mouseWorldPos;
             }
         }
 
@@ -342,7 +343,7 @@ namespace DJ.InventorySystem
                     //===드래그 완료===//
                     EndDrag();
 
-                    //===해당 슬롯의 하이라이트 이미지를 아이콘보다 잎에 위치===//
+                    //===해당 슬롯의 하이라이트 이미지를 아이콘보다 앞에 위치===//
                     beginDragSlot.SetHighlightOnTop(true);
 
                     //===참조 제거===//
