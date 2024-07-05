@@ -246,6 +246,35 @@ public class MonsterController : MonoBehaviour
         else
             GameManager.Sound.Play("[S] Monster Hit", Define.Sound.Effect, false);
 
+        CheckHealth();
+    }
+
+    #region For FireFlooring
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Attack_Floor"))
+            return;
+
+        //Damage with delay 1f
+        StartCoroutine(RuduceHealthAfterDelay(collision));
+
+        CheckHealth();
+    }
+
+    private IEnumerator RuduceHealthAfterDelay(Collider2D collision)
+    {
+        yield return new WaitForSeconds(1f);
+
+        //Damage
+        health -= collision.GetComponent<Skills>().damage;
+        Debug.Log("Monster attacked by floor ! ");
+    }
+
+    #endregion
+
+    private void CheckHealth()
+    {
         if (health > 0)
         {
             //Live

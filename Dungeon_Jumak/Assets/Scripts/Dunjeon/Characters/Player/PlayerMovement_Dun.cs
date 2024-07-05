@@ -75,7 +75,7 @@ public class PlayerMovement_Dun : MonoBehaviour
         animator.SetFloat("dirY", -1f);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         CheckTouchPanel();
 

@@ -26,6 +26,7 @@ TagManager:
   - Target_Dunjeon
   - Attack
   - Track_Range
+  - Attack_Floor
   layers:
   - Default
   - TransparentFX
@@ -41,7 +42,7 @@ TagManager:
   - LightSource
   - AmbientLight
   - Environment
-  - 
+  - VFX
   - 
   - 
   - 
@@ -86,4 +87,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3870797167
+    locked: 0
+  - name: VFX
+    uniqueID: 3997653081
     locked: 0
