@@ -13,8 +13,6 @@ using TMPro;
 
 public class WaitingScene : BaseScene
 {
-    public GameObject[] gameObjects;
-
     [Header("로딩 패널")]
     public GameObject loadingPanel;
 
@@ -28,11 +26,6 @@ public class WaitingScene : BaseScene
     protected override void Init()
     {
         SceneType = Define.Scene.WaitingScene;
-    }
-
-    void OnEnable()
-    {
-        DisableGameObjects();
     }
 
     void Start()
@@ -67,15 +60,6 @@ public class WaitingScene : BaseScene
     public override void Clear()
     {
         Debug.Log("Waiting Scene changed!");
-    }
-
-    private void DisableGameObjects()
-    {
-        foreach (GameObject obj in gameObjects)
-        {
-            if (obj != null)
-                obj.SetActive(false);
-        }
     }
 
     public void ActiveStroke(int index)

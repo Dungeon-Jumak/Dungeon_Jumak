@@ -22,19 +22,16 @@ public class DayCountSystem : MonoBehaviour
     {
         //DataManager
         data = DataManager.Instance.data;
-    }
-
-    private void OnEnable()
-    {
-        //Update the calender's texts
-        dayText.text = data.Countday.ToString() + "일";
-        seasonText.text = data.CountSeason;
 
         //Active calender
         calenderPopup.SetActive(true);
 
+        //Update the calender's texts
+        dayText.text = data.Countday.ToString() + "일";
+        seasonText.text = data.CountSeason;
+
         //Nonactive calender
-        StartCoroutine(HideCalenderPanel(1f));
+        StartCoroutine(HideCalenderPanel(2f));
     }
 
     //Coroutine for hide calender

@@ -105,16 +105,16 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //Level System
-        LevelSystem();
+        //LevelSystem();
 
         //Coin System
-        CoinSystem();
+        //CoinSystem();
 
         //Game Timer System
-        GameTimerSystem();
+        //GameTimerSystem();
     }
 
-    #region Level System
+    /*#region Level System
 
     private void LevelSystem()
     {
@@ -137,9 +137,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    #endregion
+    #endregion*/
 
-    #region Coin System
+    /*#region Coin System
 
     private void CoinSystem()
     {
@@ -161,9 +161,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    #endregion
+    #endregion */
 
-    #region Game Timer System
+    /*#region Game Timer System
 
     private void TimerSlider()
     {
@@ -246,6 +246,7 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+    */
 
     #region Ect.
 
