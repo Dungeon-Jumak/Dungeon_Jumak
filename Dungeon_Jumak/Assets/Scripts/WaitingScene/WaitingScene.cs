@@ -24,13 +24,10 @@ public class WaitingScene : BaseScene
     [Header("스트로크 스프라이트 배열")]
     public Sprite[] strokes;
 
-    void Start()
+    //Current Scene Settings
+    protected override void Init()
     {
-        GameManager.Sound.Play("BGM/[B] Waiting Scene", Define.Sound.Bgm, true);//Play The Bgm Sound in WaitingScene
-    }
-
-    void Update()
-    {
+        SceneType = Define.Scene.WaitingScene;
     }
 
     void OnEnable()
@@ -38,16 +35,16 @@ public class WaitingScene : BaseScene
         DisableGameObjects();
     }
 
-    //Current Scene Settings
-    protected override void Init()
+    void Start()
     {
-        SceneType = Define.Scene.WaitingScene;
+        GameManager.Sound.Play("BGM/[B] Waiting Scene", Define.Sound.Bgm, true);//Play The Bgm Sound in WaitingScene
     }
 
+    //Change to next scene with loading panel
     public void ChangeScene(string sceneName)
     {
-        loadingPanel.SetActive(true);
         StartCoroutine(ChangeSceneAfterDelay(sceneName, 2f));
+        loadingPanel.SetActive(true);
     }
 
     private IEnumerator ChangeSceneAfterDelay(string sceneName, float delay)

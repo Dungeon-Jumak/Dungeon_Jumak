@@ -83,8 +83,9 @@ public class Data
     //--타이머 및 날짜 관련--//
     public bool timerStart = false;
     public bool dayCount = false;
+    public int Countday = 1;
+    public string CountSeason = "봄";
 
-    public int Countday = 0;
     public bool IsMorning = false;
 
 }

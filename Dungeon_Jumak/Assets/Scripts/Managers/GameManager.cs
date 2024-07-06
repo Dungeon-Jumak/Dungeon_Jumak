@@ -139,7 +139,6 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-
     #region Coin System
 
     private void CoinSystem()

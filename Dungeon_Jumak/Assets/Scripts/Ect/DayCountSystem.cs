@@ -1,37 +1,47 @@
+//System
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
+
+//Engine
 using UnityEngine;
+
+//Text
+using TMPro;
 
 public class DayCountSystem : MonoBehaviour
 {
     private Data data;
-    [SerializeField] private TextMeshProUGUI dayTmp;
-    [SerializeField] private GameObject daysUI;
-    private bool hasRunOnce = false;
 
-    void Start()
+    [SerializeField] private GameObject calenderPopup;
+
+    //Date variable
+    [SerializeField] private TextMeshProUGUI dayText;
+    [SerializeField] private TextMeshProUGUI seasonText;
+
+    private void Start()
     {
+        //DataManager
         data = DataManager.Instance.data;
-        hasRunOnce = false;
     }
 
-    void FixedUpdate()
+    private void OnEnable()
     {
-        if (data.dayCount && !hasRunOnce)
-        {
-            data.dayCount = false;
-            hasRunOnce = true;
-            daysUI.SetActive(true);
-            data.Countday += 1;
-            dayTmp.text = data.Countday.ToString() + "일";
-            StartCoroutine(HideDaysUI(1f));
-        }
+        //Update the calender's texts
+        dayText.text = data.Countday.ToString() + "일";
+        seasonText.text = data.CountSeason;
+
+        //Active calender
+        calenderPopup.SetActive(true);
+
+        //Nonactive calender
+        StartCoroutine(HideCalenderPanel(1f));
     }
-    private IEnumerator HideDaysUI(float delay)
+
+    //Coroutine for hide calender
+    private IEnumerator HideCalenderPanel(float delay)
     {
         yield return new WaitForSeconds(delay);
-        daysUI.SetActive(false);
-        hasRunOnce = false;
+
+        calenderPopup.SetActive(false);
     }
 }
