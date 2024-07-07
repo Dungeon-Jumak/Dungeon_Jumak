@@ -86,6 +86,4 @@ public class Data
     public int Countday = 1;
     public string CountSeason = "봄";
 
-    public bool IsMorning = false;
-
 }
