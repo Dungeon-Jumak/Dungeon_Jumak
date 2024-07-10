@@ -1,9 +1,0 @@
-
-
- *Changelog:
-
-   v1.1
-   Fix a typo in readme.txt
-
-   v1.2
-   Updated the contact.txt

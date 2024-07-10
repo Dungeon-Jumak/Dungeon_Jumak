@@ -3246,7 +3246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 221648100}
   m_Layer: 5
-  m_Name: '[Buy Receipe'
+  m_Name: '[Buy Receipe] Buy Receipe'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
