@@ -16,7 +16,6 @@ public class StartScene : BaseScene
     //Convert to WaitingScene
     public void ConvertScene()
     {
-        data.timerStart = true;
         GameManager.Scene.LoadScene(Define.Scene.WaitingScene);
     }
 

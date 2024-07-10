@@ -48,6 +48,35 @@ public class DungeonScene : BaseScene
 
         //BGM
         GameManager.Sound.Play("BGM/[B] Dungeon Stage1", Define.Sound.Bgm);
+
+        //Time System
+        data.timeNum++;
+        {
+            if (data.timeNum >= data.time.Length)
+            {
+                data.timeNum = 0;
+
+                //Increase Day Count
+                data.day++;
+
+                if (data.day > data.maxDay)
+                {
+                    //Init day
+                    data.day = 1;
+
+                    //Increase Season Number
+                    data.seasonNum++;
+
+                    //Init Season Number
+                    if (data.seasonNum >= data.season.Length)
+                    {
+                        data.seasonNum = 0;
+
+                        data.year++;
+                    }
+                }
+            }
+        }
     }
 
     private void Update()

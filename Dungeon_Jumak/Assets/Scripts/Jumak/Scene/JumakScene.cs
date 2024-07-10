@@ -286,8 +286,34 @@ public class JumakScene : BaseScene
         //Change start sign
         start = true;
 
-        //Increase day
-        data.days++;
+        //Time System
+        data.timeNum++;
+        {
+            if (data.timeNum >= data.time.Length)
+            {
+                data.timeNum = 0;
+
+                //Increase Day Count
+                data.day++;
+
+                if (data.day > data.maxDay)
+                {
+                    //Init day
+                    data.day = 1;
+
+                    //Increase Season Number
+                    data.seasonNum++;
+
+                    //Init Season Number
+                    if (data.seasonNum >= data.season.Length)
+                    {
+                        data.seasonNum = 0;
+
+                        data.year++;
+                    }
+                }
+            }
+        }
     }
 
 

@@ -40,10 +40,6 @@ public class GameManager : MonoBehaviour
     [Header("타이머 오브젝트")]
     [SerializeField] private GameObject timer;
 
-    private float gameSecondsPerRealSecond = 3 * 60f; //3 minutes per second
-    private float secondsInADay = 24 * 60 * 60;
-    private bool IsDay = true;
-
     public string timerText;
 
     //Setting GameManager.cs to Singleton system 
@@ -110,12 +106,15 @@ public class GameManager : MonoBehaviour
         //Coin System
         //CoinSystem();
 
-        //Game Timer System
-        //GameTimerSystem();
+
+
+
+
+
     }
 
-    /*#region Level System
-
+    #region Level System
+    /*
     private void LevelSystem()
     {
         if (data.timerStart)
@@ -136,11 +135,11 @@ public class GameManager : MonoBehaviour
 
         }
     }
+    */
+    #endregion
 
-    #endregion*/
-
-    /*#region Coin System
-
+    #region Coin System
+    /*
     private void CoinSystem()
     {
         if (data.timerStart)
@@ -160,93 +159,9 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-    #endregion */
-
-    /*#region Game Timer System
-
-    private void TimerSlider()
-    {
-        if (data.timerStart)
-        {
-            if (timer == null)
-            {
-                timer = GameObject.Find("[Timer] Timer");
-            }
-
-            if (timer != null)
-            {
-                timer.GetComponent<Timer>().timeRemaining = 480 - (data.gameTime / gameSecondsPerRealSecond);
-            }
-        }
-    }
-
-    private void GameTimerSystem()
-    {
-        if (data.timerStart)
-        {
-            if (timerObj == null)
-            {
-                timerObj = GameObject.Find("[Text] Main Timer");
-            }
-
-            if (timerObj != null)
-            {
-                data.gameTime += Time.deltaTime * gameSecondsPerRealSecond;
-
-                //24 hours (86400 seconds) are exceeded, the timer returns to 0.
-                if (data.gameTime >= secondsInADay)
-                {
-                    data.gameTime -= secondsInADay;
-                }
-
-                DisplayTime();
-
-                timerObj.GetComponent<TextMeshProUGUI>().text = timerText;
-            }
-
-            TimerSlider();
-        }
-
-        if (data.IsMorning)
-        {
-            data.IsMorning = false;
-            ResetTimer();
-        }
-    }
-
-    private void DisplayTime()
-    {
-        int totalMinutes = Mathf.FloorToInt(data.gameTime / 60f);
-        int hours = totalMinutes / 60;
-        int minutes = totalMinutes % 60;
-
-        timerText = string.Format("{0:D2} : {1:D2}", hours, minutes);
-
-        if (hours >= 0 && hours < 6)
-        {
-            Debug.Log("얼렁 자라!!");
-        }
-
-        if (hours == 6 && minutes == 1 && IsDay)
-        {
-            IsDay = false;
-            data.dayCount = true;
-        }
-        else if(hours == 6 && minutes == 5 && IsDay == false)
-        {
-            IsDay = true;
-        }
-
-    }
-
-    public void ResetTimer()
-    {
-        data.gameTime = 6 * 60 * 60;
-    }
-
-    #endregion
     */
+    #endregion 
+
 
     #region Ect.
 

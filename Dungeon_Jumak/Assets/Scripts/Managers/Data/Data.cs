@@ -11,8 +11,6 @@ public class Data
     //데이터에 있는 값을 다른 스크립트를 사용하기 위해서는 싱글톤으로서 사용하면 됨
     //ex) Data data = DataManager.Instance.data; => 이를 통해 Data.cs에 있는 변수값을 사용할 수 있음
 
-    public float gameTime = 21600f;
-
     public float curXP = 0;
     public float maxXP = 5;
 
@@ -78,12 +76,17 @@ public class Data
     public int houseLV = 0;
     public int dansangLV = 0;
     public int tableLV = 0;
-    public int days = 0;
 
-    //--타이머 및 날짜 관련--//
-    public bool timerStart = false;
-    public bool dayCount = false;
-    public int Countday = 1;
-    public string CountSeason = "봄";
+    //--시간 관련--//
+    public string[] time = new string[2] {"오전", "오후"};
+    public int timeNum = 0; // 0 or 1
+
+    public int day = 1;
+    public int maxDay = 20;
+
+    public string[] season = new string[4] { "봄", "여름", "가을", "겨울" };
+    public int seasonNum = 0;
+
+    public int year = 0;
 
 }

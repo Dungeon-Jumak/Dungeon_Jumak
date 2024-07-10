@@ -15,6 +15,7 @@ public class DayCountSystem : MonoBehaviour
     [SerializeField] private GameObject calenderPopup;
 
     //Date variable
+    [SerializeField] private TextMeshProUGUI yearText;
     [SerializeField] private TextMeshProUGUI dayText;
     [SerializeField] private TextMeshProUGUI seasonText;
 
@@ -27,8 +28,11 @@ public class DayCountSystem : MonoBehaviour
         calenderPopup.SetActive(true);
 
         //Update the calender's texts
-        dayText.text = data.Countday.ToString() + "일";
-        seasonText.text = data.CountSeason;
+        if (data.year >= 1)
+            yearText.text = "경영 " + data.year.ToString() + "년차";
+
+        dayText.text = data.day.ToString() + "일";
+        seasonText.text = data.season[data.seasonNum];
 
         //Nonactive calender
         StartCoroutine(HideCalenderPanel(2f));
