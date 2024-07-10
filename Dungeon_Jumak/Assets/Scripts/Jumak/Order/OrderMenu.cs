@@ -49,21 +49,6 @@ public class OrderMenu : MonoBehaviour
 
     void Update()
     {
-        //--- 현재 메뉴 해금 레벨에 따라 max값을 바꿈 ---//
-        //*** 해금을 어떻게 추가 할 것인지에 대한 확실한 기획이 나오면 코드 변경 ***//
-        switch (data.curMenuUnlockLevel)
-        {
-            case 1:
-                max = 50; //국밥
-                break;
-            case 2:
-                max = 80; //파전
-                break;
-            case 3:
-                max = 100; //식혜
-                break;
-        }
-
         //--- 음식을 먹고 있지 않을때 ---//
         if (!isEat)
         {

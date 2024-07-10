@@ -42,13 +42,9 @@ public class Data
     public int curCoin = 0;
     public int maxCoin = 999999;
 
-    //---자리 해금 레벨---//
-    public int curUnlockLevel = 1;
-    public int maxUnlockLevel = 6;
-
-    //---메뉴 해금 레벨---//
-    public int curMenuUnlockLevel = 3;
-    public int maxMenuUnlockLevel = 3;
+    //---해금 관련---//
+    public bool[] unlockMenuIndex = new bool[9];
+    
 
     //---미니게임 관련---//
     public float fireSize = 100f;
