@@ -86,4 +86,7 @@ public class Data
     public int Countday = 1;
     public string CountSeason = "봄";
 
+    //--도감 관련--//
+    public int EncyclopediaIndex = 0;
+
 }
