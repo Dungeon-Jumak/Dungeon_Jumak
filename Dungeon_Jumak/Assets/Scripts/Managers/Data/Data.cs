@@ -85,4 +85,7 @@ public class Data
 
     public int year = 0;
 
+    //--도감 관련--//
+    public int EncyclopediaIndex = 0;
+
 }
