@@ -61,9 +61,9 @@ public class OrderSystem : MonoBehaviour
                 switch (data.menuLV[idx])
                 {
                     case 1:
-                        data.curCoin += 5;
+                        data.curCoin += 1;
                         data.gukbapCount++;
-                        data.nowGukbapPrice = 5;
+                        data.nowGukbapPrice = 1;
                         break;
                     case 2:
                         data.curCoin += 10;
@@ -71,24 +71,24 @@ public class OrderSystem : MonoBehaviour
                         data.nowGukbapPrice = 10;
                         break;
                     case 3:
-                        data.curCoin += 15;
-                        data.gukbapCount++;
-                        data.nowGukbapPrice = 15;
-                        break;
-                    case 4:
-                        data.curCoin += 8;
-                        data.gukbapCount++;
-                        data.nowGukbapPrice = 8;
-                        break;
-                    case 5:
-                        data.curCoin += 15;
-                        data.gukbapCount++;
-                        data.nowGukbapPrice = 15;
-                        break;
-                    case 6:
                         data.curCoin += 20;
                         data.gukbapCount++;
                         data.nowGukbapPrice = 20;
+                        break;
+                    case 4:
+                        data.curCoin += 15;
+                        data.gukbapCount++;
+                        data.nowGukbapPrice = 15;
+                        break;
+                    case 5:
+                        data.curCoin += 30;
+                        data.gukbapCount++;
+                        data.nowGukbapPrice = 30;
+                        break;
+                    case 6:
+                        data.curCoin += 50;
+                        data.gukbapCount++;
+                        data.nowGukbapPrice = 50;
                         break;
                     default:
                         break;
@@ -99,39 +99,24 @@ public class OrderSystem : MonoBehaviour
                 switch (data.menuLV[idx])
                 {
                     case 1:
-                        data.curCoin += 7;
+                        data.curCoin += 1;
                         data.pajeonCount++;
-                        data.nowPajeonPrice = 7;
+                        data.nowPajeonPrice = 1;
                         break;
                     case 2:
-                        data.curCoin += 9;
+                        data.curCoin += 5;
                         data.pajeonCount++;
-                        data.nowPajeonPrice = 9;
+                        data.nowPajeonPrice = 5;
                         break;
                     case 3:
-                        data.curCoin += 10;
+                        data.curCoin += 30;
                         data.pajeonCount++;
-                        data.nowPajeonPrice = 10;
+                        data.nowPajeonPrice = 30;
                         break;
                     case 4:
-                        data.curCoin += 13;
+                        data.curCoin += 60;
                         data.pajeonCount++;
-                        data.nowPajeonPrice = 13;
-                        break;
-                    case 5:
-                        data.curCoin += 15;
-                        data.pajeonCount++;
-                        data.nowPajeonPrice = 15;
-                        break;
-                    case 6:
-                        data.curCoin += 13;
-                        data.pajeonCount++;
-                        data.nowPajeonPrice = 13;
-                        break;
-                    case 7:
-                        data.curCoin += 15;
-                        data.pajeonCount++;
-                        data.nowPajeonPrice = 15;
+                        data.nowPajeonPrice = 60;
                         break;
                     default:
                         break;

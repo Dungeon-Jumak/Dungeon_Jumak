@@ -43,7 +43,7 @@ public class Data
     public int maxCoin = 999999;
 
     //---해금 관련---//
-    public bool[] unlockMenuIndex = new bool[9];
+    public bool[] unlockMenuIndex = new bool[10];
     
 
     //---미니게임 관련---//
