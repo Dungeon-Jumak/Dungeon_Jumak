@@ -7,10 +7,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1814315751473787963, guid: e9459def1a517a24ba482f9e639df7ff,
+    - target: {fileID: 1814315750780951127, guid: e9459def1a517a24ba482f9e639df7ff,
         type: 3}
-      propertyPath: m_Name
-      value: CFXR Electric Explosion + Text
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814315750780951127, guid: e9459def1a517a24ba482f9e639df7ff,
+        type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814315751330794181, guid: e9459def1a517a24ba482f9e639df7ff,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814315751330794181, guid: e9459def1a517a24ba482f9e639df7ff,
+        type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1814315751473787960, guid: e9459def1a517a24ba482f9e639df7ff,
         type: 3}
@@ -32,85 +47,70 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1982527270323826060, guid: e9459def1a517a24ba482f9e639df7ff,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5436942370444870116, guid: e9459def1a517a24ba482f9e639df7ff,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1814315751473787961, guid: e9459def1a517a24ba482f9e639df7ff,
         type: 3}
       propertyPath: startDelay.scalar
       value: 0.15
       objectReference: {fileID: 0}
-    - target: {fileID: 5861905151455563100, guid: e9459def1a517a24ba482f9e639df7ff,
+    - target: {fileID: 1814315751473787963, guid: e9459def1a517a24ba482f9e639df7ff,
         type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_Name
+      value: CFXR Electric Explosion + Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814315751803888719, guid: e9459def1a517a24ba482f9e639df7ff,
+        type: 3}
+      propertyPath: playOnAwake
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814315751803888719, guid: e9459def1a517a24ba482f9e639df7ff,
+        type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814315752123704141, guid: e9459def1a517a24ba482f9e639df7ff,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814315752123704141, guid: e9459def1a517a24ba482f9e639df7ff,
+        type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982527270323826060, guid: e9459def1a517a24ba482f9e639df7ff,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2284946593139140907, guid: e9459def1a517a24ba482f9e639df7ff,
         type: 3}
       propertyPath: startDelay.scalar
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 1814315750780951127, guid: e9459def1a517a24ba482f9e639df7ff,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1814315750780951127, guid: e9459def1a517a24ba482f9e639df7ff,
-        type: 3}
-      propertyPath: startDelay.scalar
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1814315751330794181, guid: e9459def1a517a24ba482f9e639df7ff,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1814315751330794181, guid: e9459def1a517a24ba482f9e639df7ff,
-        type: 3}
-      propertyPath: startDelay.scalar
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1814315751803888719, guid: e9459def1a517a24ba482f9e639df7ff,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1814315751803888719, guid: e9459def1a517a24ba482f9e639df7ff,
-        type: 3}
-      propertyPath: startDelay.scalar
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1814315752123704141, guid: e9459def1a517a24ba482f9e639df7ff,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1814315752123704141, guid: e9459def1a517a24ba482f9e639df7ff,
-        type: 3}
-      propertyPath: startDelay.scalar
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4206700193894082016, guid: e9459def1a517a24ba482f9e639df7ff,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4206700193894082016, guid: e9459def1a517a24ba482f9e639df7ff,
-        type: 3}
-      propertyPath: startDelay.scalar
-      value: 0.15
-      objectReference: {fileID: 0}
     - target: {fileID: 2798993986454973101, guid: e9459def1a517a24ba482f9e639df7ff,
         type: 3}
       propertyPath: startDelay.scalar
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206700193894082016, guid: e9459def1a517a24ba482f9e639df7ff,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206700193894082016, guid: e9459def1a517a24ba482f9e639df7ff,
+        type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436942370444870116, guid: e9459def1a517a24ba482f9e639df7ff,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5861905151455563100, guid: e9459def1a517a24ba482f9e639df7ff,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9459def1a517a24ba482f9e639df7ff, type: 3}
@@ -127,15 +127,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2483441359232571903}
     m_Modifications:
-    - target: {fileID: 7326259519129268681, guid: 2f9fd40248ceca4448762efa309bfef7,
+    - target: {fileID: 2719572799181794467, guid: 2f9fd40248ceca4448762efa309bfef7,
         type: 3}
-      propertyPath: m_Name
-      value: CFXR _Zap_ (invert)
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 7326259519129268681, guid: 2f9fd40248ceca4448762efa309bfef7,
+    - target: {fileID: 2719572799181794467, guid: 2f9fd40248ceca4448762efa309bfef7,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719572799181794467, guid: 2f9fd40248ceca4448762efa309bfef7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719572799181794467, guid: 2f9fd40248ceca4448762efa309bfef7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2719572799181794467, guid: 2f9fd40248ceca4448762efa309bfef7,
         type: 3}
@@ -154,6 +164,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2719572799181794467, guid: 2f9fd40248ceca4448762efa309bfef7,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719572799181794467, guid: 2f9fd40248ceca4448762efa309bfef7,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -166,16 +181,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2719572799181794467, guid: 2f9fd40248ceca4448762efa309bfef7,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2719572799181794467, guid: 2f9fd40248ceca4448762efa309bfef7,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2719572799181794467, guid: 2f9fd40248ceca4448762efa309bfef7,
         type: 3}
@@ -192,20 +197,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2719572799181794467, guid: 2f9fd40248ceca4448762efa309bfef7,
+    - target: {fileID: 7326259519129268681, guid: 2f9fd40248ceca4448762efa309bfef7,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
+      propertyPath: m_Name
+      value: CFXR _Zap_ (invert)
       objectReference: {fileID: 0}
-    - target: {fileID: 2719572799181794467, guid: 2f9fd40248ceca4448762efa309bfef7,
+    - target: {fileID: 7326259519129268681, guid: 2f9fd40248ceca4448762efa309bfef7,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2719572799181794467, guid: 2f9fd40248ceca4448762efa309bfef7,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f9fd40248ceca4448762efa309bfef7, type: 3}

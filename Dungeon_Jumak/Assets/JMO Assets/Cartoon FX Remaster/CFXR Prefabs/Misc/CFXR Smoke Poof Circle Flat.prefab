@@ -7,10 +7,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4301057783707249758, guid: 74ccf31d718fbea49a5c201d4b7c5af2,
+    - target: {fileID: 468644890304462930, guid: 74ccf31d718fbea49a5c201d4b7c5af2,
         type: 3}
-      propertyPath: m_Name
-      value: CFXR Smoke Poof Circle Flat
+      propertyPath: m_RenderAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209169473702292027, guid: 74ccf31d718fbea49a5c201d4b7c5af2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1209169473702292027, guid: 74ccf31d718fbea49a5c201d4b7c5af2,
         type: 3}
@@ -29,6 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1209169473702292027, guid: 74ccf31d718fbea49a5c201d4b7c5af2,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209169473702292027, guid: 74ccf31d718fbea49a5c201d4b7c5af2,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.70710677
       objectReference: {fileID: 0}
@@ -41,16 +51,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1209169473702292027, guid: 74ccf31d718fbea49a5c201d4b7c5af2,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1209169473702292027, guid: 74ccf31d718fbea49a5c201d4b7c5af2,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1209169473702292027, guid: 74ccf31d718fbea49a5c201d4b7c5af2,
         type: 3}
@@ -67,10 +67,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 468644890304462930, guid: 74ccf31d718fbea49a5c201d4b7c5af2,
+    - target: {fileID: 4301057783707249758, guid: 74ccf31d718fbea49a5c201d4b7c5af2,
         type: 3}
-      propertyPath: m_RenderAlignment
-      value: 2
+      propertyPath: m_Name
+      value: CFXR Smoke Poof Circle Flat
       objectReference: {fileID: 0}
     - target: {fileID: 7000817145789585468, guid: 74ccf31d718fbea49a5c201d4b7c5af2,
         type: 3}

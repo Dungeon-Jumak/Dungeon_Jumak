@@ -17,16 +17,6 @@ PrefabInstance:
       propertyPath: particleTime
       value: 0.09999962
       objectReference: {fileID: 0}
-    - target: {fileID: 5574681216130791759, guid: e2bcbfe255630d940a1c29c71f4af76f,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.6459998
-      objectReference: {fileID: 0}
-    - target: {fileID: 5574681216130791759, guid: e2bcbfe255630d940a1c29c71f4af76f,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.4690001
-      objectReference: {fileID: 0}
     - target: {fileID: 5574681216130791758, guid: e2bcbfe255630d940a1c29c71f4af76f,
         type: 3}
       propertyPath: m_RootOrder
@@ -47,10 +37,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5574681216130791759, guid: e2bcbfe255630d940a1c29c71f4af76f,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.4690001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574681216130791759, guid: e2bcbfe255630d940a1c29c71f4af76f,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.6459998
+      objectReference: {fileID: 0}
     - target: {fileID: 5574681216921148905, guid: e2bcbfe255630d940a1c29c71f4af76f,
         type: 3}
-      propertyPath: m_Intensity
-      value: 0
+      propertyPath: m_Color.g
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: 5574681216921148905, guid: e2bcbfe255630d940a1c29c71f4af76f,
         type: 3}
@@ -59,8 +59,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5574681216921148905, guid: e2bcbfe255630d940a1c29c71f4af76f,
         type: 3}
-      propertyPath: m_Color.g
-      value: 0.51
+      propertyPath: m_Intensity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2bcbfe255630d940a1c29c71f4af76f, type: 3}

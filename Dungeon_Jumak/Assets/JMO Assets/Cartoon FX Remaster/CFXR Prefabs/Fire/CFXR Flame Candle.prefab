@@ -7,15 +7,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2421226186157800132, guid: af304c622ca86a045a1280a5154d2bb1,
+    - target: {fileID: 2421226186157800131, guid: af304c622ca86a045a1280a5154d2bb1,
         type: 3}
-      propertyPath: m_Name
-      value: CFXR Flamme Candle
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2421226186157800132, guid: af304c622ca86a045a1280a5154d2bb1,
+    - target: {fileID: 2421226186157800131, guid: af304c622ca86a045a1280a5154d2bb1,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2421226186157800131, guid: af304c622ca86a045a1280a5154d2bb1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2421226186157800131, guid: af304c622ca86a045a1280a5154d2bb1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2421226186157800131, guid: af304c622ca86a045a1280a5154d2bb1,
         type: 3}
@@ -34,6 +44,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2421226186157800131, guid: af304c622ca86a045a1280a5154d2bb1,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2421226186157800131, guid: af304c622ca86a045a1280a5154d2bb1,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -45,16 +60,6 @@ PrefabInstance:
     - target: {fileID: 2421226186157800131, guid: af304c622ca86a045a1280a5154d2bb1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2421226186157800131, guid: af304c622ca86a045a1280a5154d2bb1,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2421226186157800131, guid: af304c622ca86a045a1280a5154d2bb1,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2421226186157800131, guid: af304c622ca86a045a1280a5154d2bb1,
@@ -72,20 +77,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2421226186157800131, guid: af304c622ca86a045a1280a5154d2bb1,
+    - target: {fileID: 2421226186157800132, guid: af304c622ca86a045a1280a5154d2bb1,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
+      propertyPath: m_Name
+      value: CFXR Flame Candle
       objectReference: {fileID: 0}
-    - target: {fileID: 2421226186157800131, guid: af304c622ca86a045a1280a5154d2bb1,
+    - target: {fileID: 2421226186157800132, guid: af304c622ca86a045a1280a5154d2bb1,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2421226186157800131, guid: af304c622ca86a045a1280a5154d2bb1,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2421226186157800133, guid: af304c622ca86a045a1280a5154d2bb1,
         type: 3}
@@ -94,18 +94,8 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 94ef692e9d05cb748aa09d827d566c78, type: 2}
     - target: {fileID: 3098611530547898630, guid: af304c622ca86a045a1280a5154d2bb1,
         type: 3}
-      propertyPath: animatedLights.Array.data[0].intensityEnd
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3098611530547898630, guid: af304c622ca86a045a1280a5154d2bb1,
-        type: 3}
       propertyPath: particleTime
       value: 0.05998949
-      objectReference: {fileID: 0}
-    - target: {fileID: 3098611530547898630, guid: af304c622ca86a045a1280a5154d2bb1,
-        type: 3}
-      propertyPath: animatedLights.Array.data[0].intensityStart
-      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3098611530547898630, guid: af304c622ca86a045a1280a5154d2bb1,
         type: 3}
@@ -122,10 +112,15 @@ PrefabInstance:
       propertyPath: animatedLights.Array.data[0].rangeStart
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 8891276448460042506, guid: af304c622ca86a045a1280a5154d2bb1,
+    - target: {fileID: 3098611530547898630, guid: af304c622ca86a045a1280a5154d2bb1,
         type: 3}
-      propertyPath: m_Intensity
+      propertyPath: animatedLights.Array.data[0].intensityEnd
       value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098611530547898630, guid: af304c622ca86a045a1280a5154d2bb1,
+        type: 3}
+      propertyPath: animatedLights.Array.data[0].intensityStart
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8891276448460042506, guid: af304c622ca86a045a1280a5154d2bb1,
         type: 3}
@@ -134,13 +129,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8891276448460042506, guid: af304c622ca86a045a1280a5154d2bb1,
         type: 3}
+      propertyPath: m_Color.b
+      value: 0.37647066
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891276448460042506, guid: af304c622ca86a045a1280a5154d2bb1,
+        type: 3}
       propertyPath: m_Color.g
       value: 0.562353
       objectReference: {fileID: 0}
     - target: {fileID: 8891276448460042506, guid: af304c622ca86a045a1280a5154d2bb1,
         type: 3}
-      propertyPath: m_Color.b
-      value: 0.37647066
+      propertyPath: m_Intensity
+      value: 3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af304c622ca86a045a1280a5154d2bb1, type: 3}

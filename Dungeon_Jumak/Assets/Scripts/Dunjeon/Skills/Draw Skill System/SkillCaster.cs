@@ -290,21 +290,41 @@ public class SkillCaster : MonoBehaviour
                 basePosition.z
             );
 
-            //Pooling
-            GameObject skill = pool.Get(prefabId);
+            //Pooling skill water
+            GameObject skillWater = pool.Get(prefabId);
 
             //Change position by random
-            skill.transform.position = randomPosition;
-            skill.transform.rotation = Quaternion.identity;
+            skillWater.transform.position = randomPosition;
+            skillWater.transform.rotation = Quaternion.identity;
 
-            //Coroutine to destroy after delay
-            StartCoroutine(ReturnToPoolAfterDelay(skill, 3f, prefabId));
+            StartCoroutine(ReturnToPoolSkillWater(skillWater, 1f, prefabId, randomPosition));
         }
     }
 
-    private IEnumerator ReturnToPoolAfterDelay(GameObject skill, float delay, int index)
+    private IEnumerator ReturnToPoolSkillWater(GameObject skill, float delay, int index, Vector3 randomPos)
     {
         yield return new WaitForSeconds(delay);
+
+        //Return
+        pool.ReturnToPool(skill, index);
+
+        //Pooling
+        GameObject skillFloor = pool.Get(prefabId + 1);
+
+        //Change position by random
+        skillFloor.transform.position = randomPos;
+        skillFloor.transform.rotation = Quaternion.identity;
+
+        //Coroutine
+        StartCoroutine(ReturnToPoolSkillFloor(skillFloor, 3f, prefabId + 1));
+
+    }
+
+    private IEnumerator ReturnToPoolSkillFloor(GameObject skill, float delay, int index)
+    {
+        yield return new WaitForSeconds(delay);
+
+        //Return
         pool.ReturnToPool(skill, index);
     }
 
