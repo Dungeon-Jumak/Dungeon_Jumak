@@ -25,6 +25,8 @@ TagManager:
   - Attack
   - Track_Range
   - Attack_Floor
+  - FxTemporaire
+  - Attack_Shield
   layers:
   - Default
   - TransparentFX
@@ -40,8 +42,8 @@ TagManager:
   - LightSource
   - AmbientLight
   - Environment
-  - VFX
-  - 
+  - VFX_Down
+  - VFX_Up
   - 
   - 
   - 
@@ -61,6 +63,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: VFX_Down
+    uniqueID: 3997653081
     locked: 0
   - name: BackGround
     uniqueID: 489776729
@@ -83,9 +88,9 @@ TagManager:
   - name: Above Object
     uniqueID: 3700751555
     locked: 0
+  - name: VFX_Up
+    uniqueID: 304887591
+    locked: 0
   - name: UI
     uniqueID: 3870797167
-    locked: 0
-  - name: VFX
-    uniqueID: 3997653081
     locked: 0

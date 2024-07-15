@@ -48,42 +48,42 @@ public class MonsterHPController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Attack"))
-            return;
-
-        if (slider == null)
+        if (collision.CompareTag("Attack_Shield") || collision.CompareTag("Attack") || collision.CompareTag("Attack_Floor"))
         {
-            slider = Instantiate(sliderPrefab);
-            slider.transform.SetParent(GameObject.Find("[Slider] Monster HP Bars").transform);
-            slider.transform.localScale = new Vector3(1, 1, 1);
-        }
-        else
-            slider.gameObject.SetActive(true);
-
-        if (monster.health > 0)
-        {
-            if (coroutine != null)
+            if (slider == null)
             {
-                //Stop Coroutine
-                StopAllCoroutines();
-                //Start Coroutine
-                StartCoroutine(DeActiveSlider());
+                slider = Instantiate(sliderPrefab);
+                slider.transform.SetParent(GameObject.Find("[Slider] Monster HP Bars").transform);
+                slider.transform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+                slider.gameObject.SetActive(true);
+
+            if (monster.health > 0)
+            {
+                if (coroutine != null)
+                {
+                    //Stop Coroutine
+                    StopAllCoroutines();
+                    //Start Coroutine
+                    StartCoroutine(DeActiveSlider());
+                }
+                else
+                {
+                    coroutine = StartCoroutine(DeActiveSlider());
+                }
             }
             else
             {
-                coroutine = StartCoroutine(DeActiveSlider());
+                Destroy(slider);
             }
-        }
-        else
-        {
-            Destroy(slider);
         }
     }
 
     //DeActive Slider
     IEnumerator DeActiveSlider()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         //Init null
         slider.gameObject.SetActive(false);

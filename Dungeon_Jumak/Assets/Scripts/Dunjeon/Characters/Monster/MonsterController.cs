@@ -66,6 +66,9 @@ public class MonsterController : MonoBehaviour
     //moveVector
     private Vector3 moveVector;
 
+    //For Fire Flooring
+    private bool isDamaging = false;
+
     private void OnEnable()
     {
         //Initialize
@@ -241,10 +244,19 @@ public class MonsterController : MonoBehaviour
         health -= collision.GetComponent<Skills>().damage;
         StartCoroutine(KnockBack(collision.GetComponent<Skills>().knockBack));
 
-        if (gameObject.name.Contains("Pig Monster"))
-            GameManager.Sound.Play("[S] Pig Hit", Define.Sound.Effect, false);
-        else
-            GameManager.Sound.Play("[S] Monster Hit", Define.Sound.Effect, false);
+        CheckHealth();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Attack_Shield"))
+            return;
+
+        //Damage !
+        health -= collision.gameObject.GetComponent<Skills>().damage;
+
+        //KnockBack
+        StartCoroutine(KnockBack(collision.gameObject.GetComponent<Skills>().knockBack));
 
         CheckHealth();
     }
@@ -256,19 +268,23 @@ public class MonsterController : MonoBehaviour
         if (!collision.CompareTag("Attack_Floor"))
             return;
 
-        //Damage with delay 1f
-        StartCoroutine(RuduceHealthAfterDelay(collision));
-
-        CheckHealth();
+        if (!isDamaging)
+        {
+            StartCoroutine(RuduceHealthAfterDelay(collision));
+        }
     }
 
     private IEnumerator RuduceHealthAfterDelay(Collider2D collision)
     {
+        isDamaging = true;
         yield return new WaitForSeconds(1f);
 
-        //Damage
+        // Damage
         health -= collision.GetComponent<Skills>().damage;
-        Debug.Log("Monster attacked by floor ! ");
+        Debug.Log("Monster attacked by floor!");
+
+        isDamaging = false;
+        CheckHealth();
     }
 
     #endregion
@@ -335,5 +351,9 @@ public class MonsterController : MonoBehaviour
     private void Dead()
     {
         gameObject.SetActive(false);
+    }
+
+    private void DamageEffect()
+    {
     }
 }

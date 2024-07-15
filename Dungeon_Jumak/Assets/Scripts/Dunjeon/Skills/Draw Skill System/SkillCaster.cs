@@ -72,30 +72,9 @@ public class SkillCaster : MonoBehaviour
             //Fire Ball
             case 0:
                 break;
-
             //Fire Shield
             case 1:
-                if (transform.childCount != 0)
-                {
-                    transform.Rotate(Vector3.back * speed * Time.deltaTime);
-
-                    currentDuration += Time.deltaTime;
-
-                    if(currentDuration >= duration)
-                    {
-                        //init current duration
-                        currentDuration = 0f;
-
-                        Demolition();
-                    }
-                }
-                else if (transform.childCount == 0)
-                {
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
-                }
-
                 break;
-            
             //Fire Flooring
             case 2:
                 break;
@@ -205,52 +184,6 @@ public class SkillCaster : MonoBehaviour
 
     #region Fire Shield
 
-    //Fire Shield : Fire Shield Batch Method
-    private void Batch()
-    {
-        for (int i = 0; i < count; i++)
-        {
-            //Pooling
-            Transform skill = pool.Get(prefabId).transform;
-
-            //Change Transform
-            skill.parent = transform;
-
-            //Init
-            skill.localPosition = Vector3.zero;
-            skill.localRotation = Quaternion.Euler(0, 0, 0);
-
-            //Get Rotation Vector
-            Vector3 rotVec = Vector3.forward * 360 * i / count;
-
-            //Rotation
-            skill.Rotate(rotVec);
-
-            //Translate
-            skill.Translate(skill.up * 2f, Space.World);
-
-            //Init
-            skill.GetComponent<Skills>().Init(damage, -1, knockBack, Vector3.zero); // -1 is Infinity Per
-        }
-    }
-
-    //Fire Shield : Fire Shield Demolition Method
-    private void Demolition()
-    {
-        Transform[] childs = GetComponentsInChildren<Transform>();
-
-        //Un Pool
-        foreach (var child in childs)
-        {
-            if (child.gameObject == transform.gameObject) continue;
-            else
-            {
-                child.gameObject.SetActive(false);
-                child.parent = pool.transform;
-            }
-        }
-    }
-
     //Fire Shield : Fire Shield Casteing Method
     public void FireShield()
     {
@@ -264,6 +197,34 @@ public class SkillCaster : MonoBehaviour
 
             Batch();
         }
+    }
+
+    //Fire Shield : Fire Shield Batch Method
+    private void Batch()
+    {
+        for (int i = 0; i < count; i++)
+        {
+            //Pooling
+            GameObject skill = pool.Get(prefabId);
+
+            //Change Transform
+            skill.transform.parent = transform;
+
+            //Init
+            skill.transform.localPosition = Vector3.zero;
+            skill.transform.localRotation = Quaternion.Euler(90, 0, 0);
+
+            StartCoroutine(ReturnToPoolFireFlooring(skill, 5f, prefabId));
+        }
+    }
+
+    //Fire Shield : Fire Shield Return Method
+    private IEnumerator ReturnToPoolFireFlooring(GameObject skill, float delay, int index)
+    {
+        yield return new WaitForSeconds(delay);
+
+        //Return
+        pool.ReturnToPool(skill, index);
     }
 
     #endregion

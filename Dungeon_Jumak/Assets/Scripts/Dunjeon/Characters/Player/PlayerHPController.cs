@@ -40,7 +40,7 @@ public class PlayerHPController : MonoBehaviour
     private void FixedUpdate()
     {
         //Reposition
-        hpSlider.transform.position = sliderTransform.position + new Vector3(0f,2f,0f);
+        hpSlider.transform.position = sliderTransform.position + new Vector3(0f, 1.5f, 0f);
 
         //Update Slider's Value
         hpSlider.value = currentHP / maxHP;
