@@ -1,6 +1,8 @@
 //System
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
+
 
 //Unity
 using UnityEngine;
@@ -184,52 +186,70 @@ public class SkillCaster : MonoBehaviour
 
     #region Fire Shield
 
-    //Fire Shield : Fire Shield Casteing Method
     public void FireShield()
     {
         if (canSkill)
         {
             canSkill = false;
-
             GameManager.Sound.Play("[S] Fire Shield", Define.Sound.Effect, false);
-
             hideImage.gameObject.SetActive(true);
-
             Batch();
         }
     }
 
-    //Fire Shield : Fire Shield Batch Method
     private void Batch()
     {
+        GameObject skillRound = pool.Get(prefabId+1);
+
+        skillRound.transform.parent = transform;
+
+        skillRound.transform.localPosition = Vector3.zero;
+        skillRound.transform.localRotation = Quaternion.Euler(90, 0, 0);
+
         for (int i = 0; i < count; i++)
         {
             //Pooling
-            GameObject skill = pool.Get(prefabId);
+            Transform skill = pool.Get(prefabId).transform;
 
             //Change Transform
-            skill.transform.parent = transform;
+            skill.parent = transform;
 
             //Init
-            skill.transform.localPosition = Vector3.zero;
-            skill.transform.localRotation = Quaternion.Euler(90, 0, 0);
+            skill.localPosition = Vector3.zero;
+            skill.localRotation = Quaternion.Euler(0, 0, 0);
 
-            StartCoroutine(ReturnToPoolFireFlooring(skill, 5f, prefabId));
+            //Get Rotation Vector
+            Vector3 rotVec = Vector3.forward * 360 * i / count;
+
+            //Rotation
+            skill.Rotate(rotVec);
+
+            //Translate
+            skill.Translate(skill.up * 2f, Space.World);
+
+            //Init
+            skill.GetComponent<Skills>().Init(damage, -1, knockBack, Vector3.zero); // -1 is Infinity Per
         }
     }
 
-    //Fire Shield : Fire Shield Return Method
-    private IEnumerator ReturnToPoolFireFlooring(GameObject skill, float delay, int index)
+    private void Demolition()
     {
-        yield return new WaitForSeconds(delay);
-
-        //Return
-        pool.ReturnToPool(skill, index);
+        Transform[] childs = GetComponentsInChildren<Transform>();
+        //Un Pool
+        foreach (var child in childs)
+        {
+            if (child.gameObject == transform.gameObject) continue;
+            else
+            {
+                child.gameObject.SetActive(false);
+                child.parent = pool.transform;
+            }
+        }
     }
 
     #endregion
 
-    #region fire flooring
+    #region Fire Flooring
 
     //Fire Flooring : Fire Flooring Casting Method
     public void FireFlooring()
@@ -278,7 +298,6 @@ public class SkillCaster : MonoBehaviour
 
         //Coroutine
         StartCoroutine(ReturnToPoolSkillFloor(skillFloor, 3f, prefabId + 1));
-
     }
 
     private IEnumerator ReturnToPoolSkillFloor(GameObject skill, float delay, int index)

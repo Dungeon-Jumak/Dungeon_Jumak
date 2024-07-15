@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57de3e5f935f7a4ead4f6daf7ed15cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderPrefab: {fileID: 8312024744670009016, guid: 9709a17563e27e643b9df48de70edd52,
+  sliderPrefab: {fileID: 1062497200800020443, guid: 0efc1fc15813fbc449a2a63a89e1eb73,
     type: 3}
   sliderTransform: {fileID: 1589462319317824334}
 --- !u!114 &5161649748312962801

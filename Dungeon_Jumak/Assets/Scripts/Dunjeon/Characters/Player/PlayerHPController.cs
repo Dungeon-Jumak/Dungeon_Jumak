@@ -107,7 +107,6 @@ public class PlayerHPController : MonoBehaviour
         hitCoroutine = null;
     }
 
-    //Coroutine for deactive hp slider
     IEnumerator DeActiveSlider()
     {
         yield return new WaitForSeconds(3f);

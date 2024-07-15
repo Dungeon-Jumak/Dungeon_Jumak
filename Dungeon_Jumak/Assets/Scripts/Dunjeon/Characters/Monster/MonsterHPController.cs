@@ -48,35 +48,37 @@ public class MonsterHPController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Attack_Shield") || collision.CompareTag("Attack") || collision.CompareTag("Attack_Floor"))
-        {
-            if (slider == null)
-            {
-                slider = Instantiate(sliderPrefab);
-                slider.transform.SetParent(GameObject.Find("[Slider] Monster HP Bars").transform);
-                slider.transform.localScale = new Vector3(1, 1, 1);
-            }
-            else
-                slider.gameObject.SetActive(true);
+        if (!(collision.CompareTag("Attack_Shield") || collision.CompareTag("Attack_Ball") || collision.CompareTag("Attack_Floor")))
+            return;
 
-            if (monster.health > 0)
+        if (slider == null)
+        {
+            slider = Instantiate(sliderPrefab);
+            slider.transform.SetParent(GameObject.Find("[Slider] Monster HP Bars").transform);
+            slider.transform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            slider.gameObject.SetActive(true);
+        }
+
+        if (monster.health > 0)
+        {
+            if (coroutine != null)
             {
-                if (coroutine != null)
-                {
-                    //Stop Coroutine
-                    StopAllCoroutines();
-                    //Start Coroutine
-                    StartCoroutine(DeActiveSlider());
-                }
-                else
-                {
-                    coroutine = StartCoroutine(DeActiveSlider());
-                }
+                //Stop Coroutine
+                StopAllCoroutines();
+                //Start Coroutine
+                StartCoroutine(DeActiveSlider());
             }
             else
             {
-                Destroy(slider);
+                coroutine = StartCoroutine(DeActiveSlider());
             }
+        }
+        else
+        {
+            Destroy(slider);
         }
     }
 

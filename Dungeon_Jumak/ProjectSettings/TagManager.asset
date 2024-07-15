@@ -22,11 +22,11 @@ TagManager:
   - Target_Jumak
   - Target_Junjeon
   - Target_Dunjeon
-  - Attack
   - Track_Range
   - Attack_Floor
   - FxTemporaire
   - Attack_Shield
+  - Attack_Ball
   layers:
   - Default
   - TransparentFX

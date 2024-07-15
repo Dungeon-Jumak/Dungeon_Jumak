@@ -88,24 +88,14 @@ public class MonsterController : MonoBehaviour
         //Get Component
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         destination = GetComponent<AIDestinationSetter>();
         aiPath = GetComponent<AIPath>();
-
         animator = GetComponent<Animator>();
-
         dropPool = FindObjectOfType<DropItemPoolManager>();
-
         data = DataManager.Instance.data;
-
-        //destination.enabled = false;
-        //aiPath.enabled = false;
 
         //Initialize
         isMove = false;
-
-        //Start Patrol Coroutine
-        //StartCoroutine(RandomPatrol());
     }
 
     //Fixed Update : For Rigid Controll
@@ -174,58 +164,6 @@ public class MonsterController : MonoBehaviour
         }
     }
 
-    /*
-    //Random Patrol Coroutine
-    IEnumerator RandomPatrol()
-    {
-        //if mode is changed, stop all coroutines...
-        if (isTrack) StopAllCoroutines();
-
-        isMove = true;
-
-        //0 : Up, 1 : Down, 2 : Right, 3 : Left, 4 : Stop
-        int random = Random.Range(0, 5);
-
-        //Set Direction
-        switch (random)
-        {
-            case 0:
-                moveVector = Vector2.up;
-                break;
-
-            case 1:
-                moveVector = Vector2.down;
-                break;
-
-            case 2:
-                moveVector = Vector2.right;
-                break;
-
-            case 3:
-                moveVector = Vector2.left;
-                break;
-
-            case 4:
-                moveVector = Vector2.zero;
-                break;
-
-            default:
-                break;
-        }
-
-        //Random Delay
-        yield return new WaitForSeconds(Random.Range(1f, 3f));
-
-        //Convert isMove
-        isMove = false;
-
-        yield return new WaitForSeconds(Random.Range(0f, 2f));
-
-        //StartCoroutine : recursion
-        StartCoroutine(RandomPatrol());
-    }
-    */
-
     private void Move()
     {
         //Set New Vector
@@ -235,22 +173,32 @@ public class MonsterController : MonoBehaviour
         rigid.MovePosition(rigid.position + newVector);
     }
 
+    #region For FireBall
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Attack"))
+        if (!collision.CompareTag("Attack_Ball"))
             return;
 
         //Damage !
         health -= collision.GetComponent<Skills>().damage;
+
+        //KnockBack
         StartCoroutine(KnockBack(collision.GetComponent<Skills>().knockBack));
 
         CheckHealth();
     }
 
+    #endregion
+
+    #region For FireShield
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!collision.gameObject.CompareTag("Attack_Shield"))
             return;
+        Debug.Log("nucback");
+
 
         //Damage !
         health -= collision.gameObject.GetComponent<Skills>().damage;
@@ -260,6 +208,8 @@ public class MonsterController : MonoBehaviour
 
         CheckHealth();
     }
+
+    #endregion
 
     #region For FireFlooring
 
@@ -277,13 +227,14 @@ public class MonsterController : MonoBehaviour
     private IEnumerator RuduceHealthAfterDelay(Collider2D collision)
     {
         isDamaging = true;
+
         yield return new WaitForSeconds(1f);
 
         // Damage
         health -= collision.GetComponent<Skills>().damage;
-        Debug.Log("Monster attacked by floor!");
 
         isDamaging = false;
+
         CheckHealth();
     }
 
@@ -291,11 +242,12 @@ public class MonsterController : MonoBehaviour
 
     private void CheckHealth()
     {
+        //Live
         if (health > 0)
         {
-            //Live
             animator.SetTrigger("Hit");
         }
+        //Dead
         else
         {
             isLive = false;
@@ -304,7 +256,7 @@ public class MonsterController : MonoBehaviour
 
             if (random < percent)
             {
-                //Drop
+                //Item drop
                 Drop();
             }
 
@@ -317,6 +269,8 @@ public class MonsterController : MonoBehaviour
 
     IEnumerator KnockBack(float _knockBack)
     {
+        Debug.Log("nucback");
+
         //Delay One Frame
         yield return new WaitForSeconds(0.35f);
 
@@ -353,7 +307,30 @@ public class MonsterController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    #region Damage Effect
+
     private void DamageEffect()
     {
+        StartCoroutine(Effect());
     }
+
+    private IEnumerator Effect()
+    {
+        // Set transparency to 50%
+        SetTransparency(0.5f);
+
+        yield return new WaitForSeconds(0.3f);
+
+        // Set transparency back to 100%
+        SetTransparency(1.0f);
+    }
+
+    private void SetTransparency(float alpha)
+    {
+        Color color = spriteRenderer.color;
+        color.a = alpha;
+        spriteRenderer.color = color;
+    }
+
+    #endregion
 }
