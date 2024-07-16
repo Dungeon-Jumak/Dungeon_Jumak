@@ -15,6 +15,9 @@ public class FireManager : MonoBehaviour
     //Count of Gukbab
     public int gukbabCount;
 
+    [Header("불 세기")]
+    public float fireSize;
+
     //Timer Slider for Check Generate Gukbab
     [Header("타이머 슬라이더")]
     [SerializeField] private Slider timeSlider;
@@ -29,9 +32,6 @@ public class FireManager : MonoBehaviour
 
     //Current Time for Cooking Gukbab
     private float currentCookingTime;
-
-    //Data
-    private Data data;
 
     //Jumak Scene
     private JumakScene jumakScene;
@@ -48,19 +48,15 @@ public class FireManager : MonoBehaviour
     [Header("불 이미지 감소 비율")]
     [SerializeField] private float decreaseRate;
 
-
     private void Start()
     {
+        currentCookingTime = usuallyCookingTime;
+
         gukbabCount = 0;
 
-        //Get Components
-        data = DataManager.Instance.data;
         jumakScene = FindObjectOfType<JumakScene>();
 
-        //Initialize Variables
-        if (data.fireSize <= 50) currentCookingTime = slowCookingTime;
-        else currentCookingTime = usuallyCookingTime;
-
+        fireSize = 100f;
     }
 
     private void Update()
@@ -77,10 +73,10 @@ public class FireManager : MonoBehaviour
     private void FireSystem()
     {
         //Rescale fire image
-        fireImage.transform.localScale = Vector3.one * (data.fireSize / 100f);
+        fireImage.transform.localScale = Vector3.one * (fireSize / 100f);
 
         //Update fire size text
-        fireSizeTMP.text = Mathf.FloorToInt(data.fireSize) + "%";
+        fireSizeTMP.text = Mathf.FloorToInt(fireSize) + "%";
 
         //Timer Condition : current Cooking Time greater than 0, gukbab count less than 5
         if (currentCookingTime > 0f && gukbabCount < 5)
@@ -89,7 +85,7 @@ public class FireManager : MonoBehaviour
             currentCookingTime -= Time.deltaTime;
 
             //Decrease Fire Image Size
-            data.fireSize -= decreaseRate * Time.deltaTime;
+            fireSize -= decreaseRate * Time.deltaTime;
         }
         //Generate Gukbab Condition : cuurent Cooking Time below 0, gukbab count less than 5
         else if (currentCookingTime <= 0f && gukbabCount < 5)
@@ -98,22 +94,22 @@ public class FireManager : MonoBehaviour
             gukbabCount++;
 
             //Update currentCookingTime
-            if (data.fireSize <= 50f) currentCookingTime = slowCookingTime;
+            if (fireSize <= 50f) currentCookingTime = slowCookingTime;
             else currentCookingTime = usuallyCookingTime;
         }
 
         //Mediate fire size
-        if (data.fireSize < 0f)
+        if (fireSize < 0f)
         {
-            data.fireSize = 0f;
+            fireSize = 0f;
         }
-        else if (data.fireSize > 100f)
+        else if (fireSize > 100f)
         {
-            data.fireSize = 100f;
+            fireSize = 100f;
         }
 
         //Update Time Slider Value
-        if (data.fireSize <= 50) timeSlider.value = currentCookingTime / slowCookingTime;
+        if (fireSize <= 50) timeSlider.value = currentCookingTime / slowCookingTime;
         else timeSlider.value = currentCookingTime / slowCookingTime;
     }
 

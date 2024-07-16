@@ -75,9 +75,6 @@ public class CollisionDetection : MonoBehaviour
         //Empty Cup
         cup.sprite = emptyCup;
 
-        //Pause
-        jumakScene.pause = true;
-
         //GameStart Sign
         canTouch = true;
 
@@ -191,9 +188,6 @@ public class CollisionDetection : MonoBehaviour
 
         //Inactive MiniGame Manager
         miniGameParent.SetActive(false);
-        
-        //Resume
-        jumakScene.pause = false;
 
         //avoid duplication
         Invoke("DelayNextMiniGame", 0.5f);
@@ -210,9 +204,6 @@ public class CollisionDetection : MonoBehaviour
 
         //Inactive MiniGame Manager
         miniGameParent.SetActive(false);
-
-        //Resume
-        jumakScene.pause = false;
 
         //avoid duplication
         Invoke("DelayNextMiniGame", 0.5f);

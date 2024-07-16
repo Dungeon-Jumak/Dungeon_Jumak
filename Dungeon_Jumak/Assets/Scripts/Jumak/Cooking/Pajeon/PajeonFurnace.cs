@@ -45,9 +45,6 @@ public class PajeonFurnace : MonoBehaviour
             //Active Black Panel
             blackPanel.SetActive(true);
 
-            //Pause
-            jumakScene.pause = true;
-
             GameManager.Sound.Play("[S] Baking Pajeon", Define.Sound.Effect, true);
         }
         //Play Notice Animation

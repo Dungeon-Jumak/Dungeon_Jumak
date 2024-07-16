@@ -17,14 +17,8 @@ public class MakeFire : MonoBehaviour
     [Header("불 크기 증가치")]
     [SerializeField] private float fireIncreaseRate = 5f;
 
-    //Data
-    private Data data;
-
-    private void Start()
-    {
-        //Get Data
-        data = DataManager.Instance.data;
-    }
+    [Header("파이어 매니저")]
+    [SerializeField] private FireManager fireManager;
 
     void Update()
     {
@@ -35,12 +29,12 @@ public class MakeFire : MonoBehaviour
             touchCount++;
 
             //detect third touch, data.fireSize less than 100
-            if (touchCount % 3 == 0 && data.fireSize <= 100)
+            if (touchCount % 3 == 0 && fireManager.fireSize <= 100)
             {
                 GameManager.Sound.Play("[S] Make Fire", Define.Sound.Effect, false);
 
                 //Increase Fire
-                data.fireSize += fireIncreaseRate;
+                fireManager.fireSize += fireIncreaseRate;
 
                 //Initialize Touch Count
                 touchCount = 0;

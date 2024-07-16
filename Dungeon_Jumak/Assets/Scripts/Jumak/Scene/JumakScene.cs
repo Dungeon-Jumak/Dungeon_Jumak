@@ -135,6 +135,10 @@ public class JumakScene : BaseScene
             data.isCustomer[i] = false;
             data.onTables[i] = false;
             data.isFinEat[i] = false;
+            data.tableMiniGame[i] = false;
+
+            data.menuCategories[i] = "";
+            data.menuLV[i] = 0;
         }
 
         //Initialize Customer HeadCount
