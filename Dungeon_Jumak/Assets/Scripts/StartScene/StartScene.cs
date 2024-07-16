@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class StartScene : BaseScene
 {
-    [SerializeField]
     private Data data;
 
     void Start()

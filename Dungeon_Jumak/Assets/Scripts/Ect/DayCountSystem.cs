@@ -25,7 +25,8 @@ public class DayCountSystem : MonoBehaviour
         data = DataManager.Instance.data;
 
         //Active calender
-        calenderPopup.SetActive(true);
+        if (!data.isFirstStart)
+            calenderPopup.SetActive(true);
 
         //Update the calender's texts
         if (data.year >= 1)
