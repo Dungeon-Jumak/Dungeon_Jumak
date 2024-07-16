@@ -20,7 +20,7 @@ public class GukbabGenerator : MonoBehaviour
     [SerializeField] GameObject baseGukbabPrefab;
 
     //Gukbab List for check gukbab location
-    private List<bool> gukbabList;
+    [SerializeField] private List<bool> gukbabList;
 
     //FireManager Script
     [Header("파이어 매니저")]
@@ -36,9 +36,7 @@ public class GukbabGenerator : MonoBehaviour
     void Start()
     {
         //Initialize Variables
-        previousCount = fireManager.gukbabCount;
-
-        gukbabList = new List<bool> { false, };
+        previousCount = 0;
     }
 
     void Update()
