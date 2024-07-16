@@ -15,7 +15,7 @@ public class DialogSystem : MonoBehaviour
     [SerializeField] private Speaker[] speakers;
 
     [Header("현재 분기의 대사 목록 배열")]
-    [SerializeField] private DialogData[] dialogs;
+    public DialogData[] dialogs;
 
     [Header("자동 시작 여부")]
     [SerializeField] private bool isAutoStart = true;
@@ -23,14 +23,21 @@ public class DialogSystem : MonoBehaviour
     //For Check First Time
     private bool isFirst = true;
 
-    //For Check Button Click
-    private bool isButtClick = false;
+    //For Check Finish Dialog
+    public bool isFinDialog = false;
 
     //Current Dialog Index
     [SerializeField] private int currentDialogIndex = -1;
 
     //Current Speaker Index
     [SerializeField] private int currentSpeakerIndex = 0;
+
+    Data data;
+
+    private void Start()
+    {
+        data = DataManager.Instance.data;
+    }
 
     //Set Up Method
     private void SetUp()
@@ -75,6 +82,8 @@ public class DialogSystem : MonoBehaviour
             //SetActive false
             for (int i = 0; i < speakers.Length; i++)
             {
+                isFinDialog = true;
+
                 //Set Active False
                 SetActiveObjects(speakers[i], false);
 
@@ -99,7 +108,12 @@ public class DialogSystem : MonoBehaviour
         SetActiveObjects(speakers[currentSpeakerIndex], true);
 
         //Set Cureent Speaker name text
-        speakers[currentSpeakerIndex].name.text = dialogs[currentDialogIndex].name;
+        if (dialogs[currentDialogIndex].speakerIndex == 0)
+        {
+            if (data.playerName == "") speakers[currentSpeakerIndex].name.text = "나";
+            else speakers[currentSpeakerIndex].name.text = data.playerName;
+        }
+        else speakers[currentSpeakerIndex].name.text = dialogs[currentDialogIndex].name;
 
         //Set Current Speaker dialog text
         speakers[currentSpeakerIndex].dialog.text = dialogs[currentDialogIndex].dialogeue;
@@ -117,7 +131,7 @@ public class DialogSystem : MonoBehaviour
         Color color = speaker.image.color;
 
         //Change Alpha value
-        color.a = visible == true ? 1 : 0.2f;
+        color.a = visible == true ? 1 : 0;
 
         //Change Color
         speaker.image.color = color;
