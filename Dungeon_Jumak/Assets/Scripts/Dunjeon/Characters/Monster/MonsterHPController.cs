@@ -35,7 +35,7 @@ public class MonsterHPController : MonoBehaviour
         monster = GetComponent<MonsterController>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         //Reposition and Update Value
         if (slider != null && monster.isLive)

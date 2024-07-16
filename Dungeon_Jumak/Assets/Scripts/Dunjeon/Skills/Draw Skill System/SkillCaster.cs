@@ -41,7 +41,7 @@ public class SkillCaster : MonoBehaviour
     [Header("스킬 쿨타임")]
     public float coolTime;
 
-    [Header("스킬 대기 시간")]
+    [Header("스킬 대기 시간 (진행 중)")]
     public float timer;
 
     [Header("스킬 지속 시간")]
@@ -58,14 +58,10 @@ public class SkillCaster : MonoBehaviour
     [Header("스킬 하이드 이미지")]
     [SerializeField] private Image hideImage;
 
-    [Header("스킬 쿨타임 텍스트")]
-    [SerializeField] private Text text;
-
     private void Update()
     {
         if (hideImage.gameObject.activeSelf)
         {
-            text.text = Mathf.FloorToInt(coolTime - timer).ToString();
             hideImage.fillAmount = timer / coolTime;
         }
 
@@ -76,6 +72,23 @@ public class SkillCaster : MonoBehaviour
                 break;
             //Fire Shield
             case 1:
+                if (transform.childCount != 0)
+                {
+                    transform.Rotate(Vector3.back * speed * Time.deltaTime);
+                    currentDuration += Time.deltaTime;
+                    if (currentDuration >= duration)
+                    {
+                        //init current duration
+                        currentDuration = 0f;
+                        Demolition();
+                        hideImage.gameObject.SetActive(true);
+                    }
+                }
+                else if (transform.childCount == 0)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+
                 break;
             //Fire Flooring
             case 2:
@@ -115,13 +128,12 @@ public class SkillCaster : MonoBehaviour
     //!Common Method : CoolTime
     private void CoolTime()
     {
-        if (!canSkill)
+        if (!canSkill && hideImage.gameObject.activeSelf)
         {
             timer += Time.deltaTime;
 
             if (timer > coolTime)
             {
-                //Can Skill
                 canSkill = true;
 
                 hideImage.gameObject.SetActive(false);
@@ -147,7 +159,6 @@ public class SkillCaster : MonoBehaviour
 
         if (canSkill)
         {
-            //Skill Cool Time
             canSkill = false;
 
             GameManager.Sound.Play("[S] Fire Ball", Define.Sound.Effect, false);
@@ -175,10 +186,8 @@ public class SkillCaster : MonoBehaviour
 
             //Init
             fireball.GetComponent<Skills>().Init(damage, per, knockBack, direction);
-        }
-        else
-        {
-            Debug.Log("스킬 쿨타임이 " + (coolTime - timer) + "초 남았습니다!");
+
+            hideImage.gameObject.SetActive(true);
         }
     }
 
@@ -191,8 +200,8 @@ public class SkillCaster : MonoBehaviour
         if (canSkill)
         {
             canSkill = false;
+
             GameManager.Sound.Play("[S] Fire Shield", Define.Sound.Effect, false);
-            hideImage.gameObject.SetActive(true);
             Batch();
         }
     }
@@ -255,6 +264,8 @@ public class SkillCaster : MonoBehaviour
     public void FireFlooring()
     {
         SpawnObjects();
+
+        canSkill = false;
     }
 
     void SpawnObjects()
@@ -306,6 +317,8 @@ public class SkillCaster : MonoBehaviour
 
         //Return
         pool.ReturnToPool(skill, index);
+
+        hideImage.gameObject.SetActive(true);
     }
 
     #endregion

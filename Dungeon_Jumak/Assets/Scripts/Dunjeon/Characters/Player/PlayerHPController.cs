@@ -26,6 +26,7 @@ public class PlayerHPController : MonoBehaviour
 
     private Coroutine hitCoroutine;
     private Coroutine deactiveCoroutine;
+    private SpriteRenderer spriteRenderer;
 
     private void OnEnable()
     {
@@ -35,12 +36,14 @@ public class PlayerHPController : MonoBehaviour
     private void Start()
     {
         currentHP = maxHP;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         //Reposition
-        hpSlider.transform.position = sliderTransform.position + new Vector3(0f, 1.5f, 0f);
+        hpSlider.transform.position = sliderTransform.position + new Vector3(0f, 1.3f, 0f);
 
         //Update Slider's Value
         hpSlider.value = currentHP / maxHP;

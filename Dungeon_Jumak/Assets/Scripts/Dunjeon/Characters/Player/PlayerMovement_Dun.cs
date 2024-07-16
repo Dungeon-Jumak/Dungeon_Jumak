@@ -1,8 +1,5 @@
-//System
 using System.Collections;
 using System.Collections.Generic;
-
-//Unity
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -26,27 +23,17 @@ public class PlayerMovement_Dun : MonoBehaviour
     [SerializeField] private Vector3 direction;
 
     [Header("플레이어 이동 속도")]
-    public float moveSpeed = 1f;
+    public float moveSpeed = 1.5f;
 
     private GraphicRaycaster m_gr;
-
     private PointerEventData m_ped;
-
     private RaycastHit2D hit;
-
     private Animator animator;
-
     private Vector3 curPos;
     private Vector3 lastPos;
-
-    //Player's xPos
     private float xPos;
-
-    //Player's yPos
     private float yPos;
-
     private float timer;
-
     private bool isMoving = false;
 
     #endregion
@@ -55,7 +42,6 @@ public class PlayerMovement_Dun : MonoBehaviour
     {
         m_gr = m_canvas.GetComponent<GraphicRaycaster>();
         m_ped = new PointerEventData(null);
-
         hit.point = transform.position;
 
         //Add Component
@@ -63,19 +49,17 @@ public class PlayerMovement_Dun : MonoBehaviour
 
         //---Initialize Location Variables---//
         target.transform.position = this.transform.position;
-
         curPos = transform.position;
         lastPos = transform.position;
-
         xPos = transform.position.x;
         yPos = transform.position.y;
 
         //---Initialize Start Animation---//
-        animator.SetFloat("dirX", 0f);
-        animator.SetFloat("dirY", -1f);
+        animator.SetFloat("dirX", -1f);
+        animator.SetFloat("dirY", 0f);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         CheckTouchPanel();
 
@@ -90,49 +74,40 @@ public class PlayerMovement_Dun : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            isMoving = true;
             timer += Time.deltaTime;
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            isMoving = true;
             if (timer < 0.2f)
             {
                 timer = 0f;
+                isMoving = true;
 
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                //Return hit object
                 hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-                //UI raycasting
                 m_ped.position = Input.mousePosition;
                 List<RaycastResult> results = new List<RaycastResult>();
                 m_gr.Raycast(m_ped, results);
 
-                //Exception handling
                 if (results.Count == 0) return;
 
-                //Check Click Panel
                 if (results[0].gameObject.name == "[Panel] Stage 1")
                 {
-                    //Set target pos by hit pos
                     target.transform.position = hit.point;
-                    isMoving = true;
                 }
-                else return;
             }
             else
+            {
                 timer = 0f;
+            }
         }
     }
 
     void SetDirection()
     {
-        //Update Current location and Direction
         curPos = transform.localPosition;
         direction = (curPos - lastPos).normalized;
-
         lastPos = curPos;
 
         SetAnimation();
@@ -140,48 +115,31 @@ public class PlayerMovement_Dun : MonoBehaviour
 
     void SetAnimation()
     {
-        //direction is not zero vector
         if (direction != Vector3.zero)
         {
             animator.SetBool("isWalk", true);
 
-            if (Mathf.Abs(direction.x) + 0.6f < Mathf.Abs(direction.y))
+            // Calculate the angle in degrees
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            // Check direction based on angle
+            if (angle > -90 && angle <= 90)
             {
-                //To up
-                if (direction.y > 0f)
-                {
-                    animator.SetFloat("dirX", 0f);
-                    animator.SetFloat("dirY", 1f);
-                }
-                //To down
-                else if (direction.y <= 0f)
-                {
-                    animator.SetFloat("dirX", 0f);
-                    animator.SetFloat("dirY", -1f);
-                }
+                // Right
+                animator.SetFloat("dirX", 1f);
+                animator.SetFloat("dirY", 0f);
             }
             else
             {
-                //To right
-                if (direction.x >= 0f)
-                {
-                    animator.SetFloat("dirX", 1f);
-                    animator.SetFloat("dirY", 0f);
-                }
-                //To left
-                else if (direction.x < 0f)
-                {
-                    animator.SetFloat("dirX", -1f);
-                    animator.SetFloat("dirY", 0f);
-                }
+                // Left
+                animator.SetFloat("dirX", -1f);
+                animator.SetFloat("dirY", 0f);
             }
         }
-
-        /*if (Vector3.Distance(transform.position, target.transform.position) < 0.1f)
+        else
         {
-            //Inactivate Walk Animation
             animator.SetBool("isWalk", false);
-        }*/
+        }
     }
 
     void MoveTowardsTarget()
@@ -191,8 +149,8 @@ public class PlayerMovement_Dun : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.position) < 0.1f)
         {
-            Vector3 moveDirection = (target.position - transform.position).normalized;
-            target.position += moveDirection * 0.1f;
+            isMoving = false;
+            animator.SetBool("isWalk", false);
         }
     }
 

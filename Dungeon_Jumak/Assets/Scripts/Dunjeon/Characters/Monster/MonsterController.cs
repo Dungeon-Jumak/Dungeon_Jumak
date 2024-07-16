@@ -99,7 +99,7 @@ public class MonsterController : MonoBehaviour
     }
 
     //Fixed Update : For Rigid Controll
-    private void FixedUpdate()
+    private void Update()
     {
         //Run only isLive
         if (!isLive)
@@ -195,18 +195,23 @@ public class MonsterController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Attack_Shield"))
+        if (!collision.gameObject.CompareTag("Attack_Shield") && !collision.gameObject.CompareTag("Player"))
             return;
-        Debug.Log("nucback");
 
+        if (collision.gameObject.CompareTag("Attack_Shield"))
+        {
+            //Damage !
+            health -= collision.gameObject.GetComponent<Skills>().damage;
 
-        //Damage !
-        health -= collision.gameObject.GetComponent<Skills>().damage;
+            //KnockBack
+            StartCoroutine(KnockBack(collision.gameObject.GetComponent<Skills>().knockBack));
 
-        //KnockBack
-        StartCoroutine(KnockBack(collision.gameObject.GetComponent<Skills>().knockBack));
-
-        CheckHealth();
+            CheckHealth();
+        }
+        else
+        {
+            StartCoroutine(KnockBack(300f));
+        }
     }
 
     #endregion
@@ -272,7 +277,7 @@ public class MonsterController : MonoBehaviour
         Debug.Log("nucback");
 
         //Delay One Frame
-        yield return new WaitForSeconds(0.35f);
+        yield return new WaitForSeconds(0.035f);
 
         //Get Player Position
         Vector3 playerPos = target.transform.position;
