@@ -137,9 +137,6 @@ public class PaJeonManager : MonoBehaviour
             //if success
             if (currentIndex >= arrowNums.Length)
             {
-                //Resume
-                jumakScene.pause = false;
-
                 GameManager.Sound.Play("[S] MiniGame Success", Define.Sound.Effect, false);
 
                 isPlaying = false;
@@ -169,9 +166,6 @@ public class PaJeonManager : MonoBehaviour
         //if fail
         else
         {
-            //Resume
-            jumakScene.pause = false;
-
             GameManager.Sound.Play("[S] MiniGame Failure", Define.Sound.Effect, false);
 
             isPlaying = false;
