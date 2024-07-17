@@ -272,7 +272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd87b1d163da6e41b59f074b5e65b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinText: {fileID: 0}
 --- !u!1 &45090066
 GameObject:
   m_ObjectHideFlags: 0
@@ -2245,32 +2244,27 @@ PrefabInstance:
     - target: {fileID: 5565818131550532451, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5565818131550532451, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5565818131560699326, guid: fc34e33d957ee944cbdd8a081261583f,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -507.26688
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5565818131906441785, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5565818131906441785, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5565818131906441785, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5565818132693342226, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
@@ -2326,21 +2320,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 666
-      objectReference: {fileID: 0}
-    - target: {fileID: 5565818132693342227, guid: fc34e33d957ee944cbdd8a081261583f,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.99992067
-      objectReference: {fileID: 0}
-    - target: {fileID: 5565818132693342227, guid: fc34e33d957ee944cbdd8a081261583f,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.99992067
-      objectReference: {fileID: 0}
-    - target: {fileID: 5565818132693342227, guid: fc34e33d957ee944cbdd8a081261583f,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 190.09898
       objectReference: {fileID: 0}
     - target: {fileID: 5565818132693342227, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
@@ -2412,16 +2391,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 738129198}
-    - target: {fileID: 5565818132837050779, guid: fc34e33d957ee944cbdd8a081261583f,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 5565818132837050779, guid: fc34e33d957ee944cbdd8a081261583f,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc34e33d957ee944cbdd8a081261583f, type: 3}
 --- !u!224 &965972360 stripped
@@ -2719,6 +2688,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1054220874}
   - component: {fileID: 1054220875}
+  - component: {fileID: 1054220876}
   m_Layer: 0
   m_Name: '@Scene'
   m_TagString: Untagged
@@ -2754,6 +2724,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CoinText: {fileID: 1554904362}
+--- !u!114 &1054220876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054220872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cd87b1d163da6e41b59f074b5e65b23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1149220272
 GameObject:
   m_ObjectHideFlags: 0

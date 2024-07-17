@@ -9,15 +9,10 @@ public class MarketCoin : MonoBehaviour
 {
     private Data data;
 
-    public TextMeshProUGUI CoinText;
-
     void Awake()
     {
         data = DataManager.Instance.data;
+        //data.curCoin = 100000;
     }
 
-    void Update()
-    {
-        CoinText.text = data.curCoin.ToString();
-    }
 }
