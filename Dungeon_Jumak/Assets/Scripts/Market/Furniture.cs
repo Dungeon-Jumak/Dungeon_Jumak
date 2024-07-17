@@ -7,9 +7,16 @@ using UnityEngine.UI;
 public class Furniture : MonoBehaviour
 {
     private Data data;
-    public TextMeshPro chairPriceText;
-    public TextMeshPro tablePriceText;
-    public TextMeshPro backgroundPriceText;
+
+    [Header("상품 텍스트")]
+    public TextMeshProUGUI ChairText;
+    public TextMeshProUGUI TableText;
+    public TextMeshProUGUI BackgroundText;
+
+    [Header("가격 텍스트")]
+    public TextMeshProUGUI ChairPriceText;
+    public TextMeshProUGUI TablePriceText;
+    public TextMeshProUGUI BackgroundPriceText;
 
     void Awake()
     {
@@ -18,19 +25,13 @@ public class Furniture : MonoBehaviour
 
     void Start()
     {
-        data.chairPrice = new int[] { 10, 20, 30 };
-        data.tablePrice = new int[] { 20, 30, 40 };
-        data.backgroundPrice = new int[] { 30, 40, 50 };
+        data.chairPrice = new int[] { 100, 250, 650 };
+        data.tablePrice = new int[] { 150, 400, 900 };
+        data.backgroundPrice = new int[] { 500, 1200, 3000 };
 
-        ChairUI();
-        TableUI();
-        BackgroundUI();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        ChairUpdateUI();
+        TableUpdateUI();
+        BackgroundUpdateUI();
     }
 
     public void ChairBuySystem()
@@ -39,39 +40,39 @@ public class Furniture : MonoBehaviour
         {
             data.curCoin -= data.chairPrice[data.dansangLV];
             data.dansangLV += 1;
-            ChairUI();
+            ChairUpdateUI();
         }
         else if (data.dansangLV >= data.chairPrice.Length)
         {
             Debug.Log("MAX");
-            ChairUI();
+            ChairUpdateUI();
         }
     }
 
-    public void ChairUI()
+    public void ChairUpdateUI()
     {
         if (data.dansangLV < data.chairPrice.Length - 1)
         {
-            GameObject.Find("ChairPrice_Text").GetComponent<TextMeshProUGUI>().text = data.chairPrice[data.dansangLV].ToString();
+            ChairPriceText.text = data.chairPrice[data.dansangLV].ToString() + "전";
         }
         else
         {
-            GameObject.Find("ChairPrice_Text").GetComponent<TextMeshProUGUI>().text = "MAX";
+            ChairPriceText.text = "MAX";
         }
 
         switch (data.dansangLV)
         {
             case 0:
-                GameObject.Find("Chair_Text").GetComponent<TextMeshProUGUI>().text = "평범한 마루";
+                ChairText.text = "낡은 마루";
                 break;
             case 1:
-                GameObject.Find("Chair_Text").GetComponent<TextMeshProUGUI>().text = "중급 마루";
+                ChairText.text = "평범한 마루";
                 break;
             case 2:
-                GameObject.Find("Chair_Text").GetComponent<TextMeshProUGUI>().text = "고급 마루";
+                ChairText.text = "고-급 마루";
                 break;
             default:
-                GameObject.Find("Chair_Text").GetComponent<TextMeshProUGUI>().text = "";
+                ChairText.text = "";
                 break;
         }
     }
@@ -82,39 +83,39 @@ public class Furniture : MonoBehaviour
         {
             data.curCoin -= data.tablePrice[data.tableLV];
             data.tableLV += 1;
-            TableUI();
+            TableUpdateUI();
         }
         else if (data.tableLV >= data.tablePrice.Length)
         {
             Debug.Log("MAX");
-            TableUI();
+            TableUpdateUI();
         }
     }
 
-    public void TableUI()
+    public void TableUpdateUI()
     {
         if (data.tableLV < data.tablePrice.Length - 1)
         {
-            GameObject.Find("TablePrice_Text").GetComponent<TextMeshProUGUI>().text = data.tablePrice[data.tableLV].ToString();
+            TablePriceText.text = data.tablePrice[data.tableLV].ToString() + "전";
         }
         else
         {
-            GameObject.Find("TablePrice_Text").GetComponent<TextMeshProUGUI>().text = "MAX";
+            TablePriceText.text = "MAX";
         }
 
         switch (data.tableLV)
         {
             case 0:
-                GameObject.Find("Table_Text").GetComponent<TextMeshProUGUI>().text = "낡은 상";
+                TableText.text = "낡은 밥상";
                 break;
             case 1:
-                GameObject.Find("Table_Text").GetComponent<TextMeshProUGUI>().text = "평범한 손님 상";
+                TableText.text = "평범한 밥상";
                 break;
             case 2:
-                GameObject.Find("Table_Text").GetComponent<TextMeshProUGUI>().text = "고-급 상";
+                TableText.text = "고-급 밥상";
                 break;
             default:
-                GameObject.Find("Table_Text").GetComponent<TextMeshProUGUI>().text = "";
+                TableText.text = "";
                 break;
         }
     }
@@ -125,39 +126,39 @@ public class Furniture : MonoBehaviour
         {
             data.curCoin -= data.backgroundPrice[data.houseLV];
             data.houseLV += 1;
-            BackgroundUI();
+            BackgroundUpdateUI();
         }
         else if (data.houseLV >= data.backgroundPrice.Length)
         {
             Debug.Log("MAX");
-            BackgroundUI();
+            BackgroundUpdateUI();
         }
     }
 
-    public void BackgroundUI()
+    public void BackgroundUpdateUI()
     {
         if (data.houseLV < data.backgroundPrice.Length - 1)
         {
-            GameObject.Find("BackgroundPrice_Text").GetComponent<TextMeshProUGUI>().text = data.backgroundPrice[data.houseLV].ToString();
+            BackgroundPriceText.text = data.backgroundPrice[data.houseLV].ToString() + "전";
         }
         else
         {
-            GameObject.Find("BackgroundPrice_Text").GetComponent<TextMeshProUGUI>().text = "MAX";
+            BackgroundPriceText.text = "MAX";
         }
 
         switch (data.houseLV)
         {
             case 0:
-                GameObject.Find("Backgr_Text").GetComponent<TextMeshProUGUI>().text = "초가집";
+                BackgroundText.text = "초가집";
                 break;
             case 1:
-                GameObject.Find("Backgr_Text").GetComponent<TextMeshProUGUI>().text = "기와집";
+                BackgroundText.text = "기와집";
                 break;
             case 2:
-                GameObject.Find("Backgr_Text").GetComponent<TextMeshProUGUI>().text = "삐까뻔쩍 고급 기와집";
+                BackgroundText.text = "고-급 기와집";
                 break;
             default:
-                GameObject.Find("Backgr_Text").GetComponent<TextMeshProUGUI>().text = "";
+                BackgroundText.text = "";
                 break;
         }
     }
