@@ -37,30 +37,15 @@ public class Settings : MonoBehaviour
 
         audioSlider.value = data.pitch;
 
-        audioMixer.SetFloat("BGM", 0f);
-        audioMixer.SetFloat("SFX", 0f);
-
         if (data.isPlayBGM)
-        {
-            musicOnToggle.SetActive(true);
-            musicOffToggle.SetActive(false);
-        }
+            MusicON();
         else
-        {
-            musicOnToggle.SetActive(false);
-            musicOffToggle.SetActive(true);
-        }
+            MusicOFF();
 
         if (data.isSound)
-        {
-            effectOnToggle.SetActive(true);
-            effectOffToggle.SetActive(false);
-        }
+            EffectON();
         else
-        {
-            effectOnToggle.SetActive(false);
-            effectOffToggle.SetActive(true);
-        }
+            EffectOFF();
     }
 
     private void Update()
@@ -70,10 +55,9 @@ public class Settings : MonoBehaviour
 
         audioMixer.SetFloat("Master", audioSlider.value);
 
-        if(audioSlider.value == -80f)
+        if(audioSlider.value <= -70f)
         {
-            MusicOFF();
-            EffectOFF();
+            audioSlider.value = -70f;
         }
     }
 

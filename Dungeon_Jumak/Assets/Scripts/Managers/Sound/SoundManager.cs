@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Schema;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,7 +75,7 @@ public class SoundManager : MonoBehaviour
             _bgmSources[path] = audioSource;
         }
         //@sound 오브젝트 하위 Effect AudioSource 오브젝트에 AudioClip 추가
-        else
+        else if (type == Define.Sound.Effect)
         {
             AudioSource audioSource = new GameObject("SFX").AddComponent<AudioSource>();
             audioSource.transform.parent = GameObject.Find("@Sound").transform;

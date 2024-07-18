@@ -23,8 +23,7 @@ AudioMixerGroupController:
   m_Name: BGM
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: eb4640dd2afcb374e99f1833bcc58a3f
-  m_Children:
-  - {fileID: 1779403318849503440}
+  m_Children: []
   m_Volume: b1e0858d7469d1942aa3d5705afc38cb
   m_Pitch: e8c0e30f9b96e5f4eb5fd70b781b2f03
   m_Send: 00000000000000000000000000000000
@@ -55,7 +54,7 @@ AudioMixerController:
   - guid: 439bfe49935ecb44b951a88b34bf2635
     name: Master
   - guid: 02f7f3a885a3e3c40a4e7556c39d7aec
-    name: MyExposedParam 2
+    name: SFX
   m_AudioMixerGroupViews:
   - guids:
     - f432be861ac019e47984674898678824
@@ -75,6 +74,7 @@ AudioMixerGroupController:
   m_GroupID: f432be861ac019e47984674898678824
   m_Children:
   - {fileID: -4286833831392311153}
+  - {fileID: 1779403318849503440}
   m_Volume: 439bfe49935ecb44b951a88b34bf2635
   m_Pitch: b9edb387b495598439104404a31f2ab0
   m_Send: 00000000000000000000000000000000
@@ -108,7 +108,9 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: c74fe51f466c9954a908c7d37b82bfff
   m_FloatValues:
-    b1e0858d7469d1942aa3d5705afc38cb: -29.6
+    02f7f3a885a3e3c40a4e7556c39d7aec: 0.04171243
+    439bfe49935ecb44b951a88b34bf2635: 0
+    b1e0858d7469d1942aa3d5705afc38cb: 0
   m_TransitionOverrides: {}
 --- !u!244 &1703830207126846735
 AudioMixerEffectController:

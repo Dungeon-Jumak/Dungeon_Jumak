@@ -83,9 +83,6 @@ public class SetFood : MonoBehaviour
     [Header("주막 씬")]
     [SerializeField] private JumakScene jumakScene;
 
-    [Header("확정 프레임 이미지")]
-    [SerializeField] private Image[] images;
-
     [Header("할머니 말풍선 팝업")]
     [SerializeField] private GameObject grandmaSpeechBox;
 
@@ -461,9 +458,9 @@ public class SetFood : MonoBehaviour
         }
 
         //Reset Sprite
-        for (int k = 0; k < images.Length; k++)
+        for (int k = 0; k < confirmImagesInFrame.Length; k++)
         {
-            images[k].sprite = null;
+            confirmImagesInFrame[k].sprite = null;
         }
     }
 
