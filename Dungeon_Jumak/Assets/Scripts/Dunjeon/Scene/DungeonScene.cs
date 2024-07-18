@@ -12,22 +12,22 @@ using TMPro;
 [DisallowMultipleComponent]
 public class DungeonScene : BaseScene
 {
-    [Header("Å¸ÀÌ¸Ó ½½¶óÀÌ´õ")]
+    [Header("íƒ€ì´ë¨¸ ìŠ¬ë¼ì´ë”")]
     [SerializeField] private Slider timerSlider;
 
-    [Header("°æÇèÄ¡ ½½¶óÀÌ´õ")]
+    [Header("ê²½í—˜ì¹˜ ìŠ¬ë¼ì´ë”")]
     [SerializeField] private Slider xpSlider;
 
-    [Header("°æÇèÄ¡ ÅØ½ºÆ®")]
+    [Header("ê²½í—˜ì¹˜ í…ìŠ¤íŠ¸")]
     [SerializeField] private TextMeshProUGUI xpText;
 
-    [Header("·¹º§ ÅØ½ºÆ®")]
+    [Header("ë ˆë²¨ í…ìŠ¤íŠ¸")]
     [SerializeField] private TextMeshProUGUI levelText;
 
-    [Header("´øÀü Á¦ÇÑ ½Ã°£")]
+    [Header("ë˜ì „ ì œí•œ ì‹œê°„")]
     [SerializeField] private float maxTimer;
 
-    [Header("°ÔÀÓ¿À¹ö ÆË¾÷")]
+    [Header("ê²Œì„ì˜¤ë²„ íŒì—…")]
     [SerializeField] private GameObject gameClear;
 
     private float currentTimer;
@@ -81,7 +81,7 @@ public class DungeonScene : BaseScene
 
     private void Update()
     {
-        if(currentTimer <= 0)
+        if (currentTimer <= 0)
         {
             currentTimer = 0f;
         }

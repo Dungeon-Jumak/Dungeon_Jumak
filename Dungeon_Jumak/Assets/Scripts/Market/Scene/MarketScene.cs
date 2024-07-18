@@ -2,11 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MarketScene : BaseScene
 {
-    public TextMeshProUGUI CoinText;
+    [Header("경험치 슬라이더")]
+    [SerializeField] private Slider xpSlider;
+
+    [Header("코인 텍스트")]
+    [SerializeField] private TextMeshProUGUI coinText;
+
+    [Header("레벨 텍스트")]
+    [SerializeField] private TextMeshProUGUI levelText;
+
+    private float lastXP;
+
     private Data data;
 
     void Awake()
@@ -16,7 +27,9 @@ public class MarketScene : BaseScene
 
     void Update()
     {
-        CoinText.text = data.curCoin.ToString() + "전";
+        coinText.text = data.curCoin.ToString() + "전";
+
+        xpSlider.value = data.curXP / data.maxXP;
     }
 
     void Start()

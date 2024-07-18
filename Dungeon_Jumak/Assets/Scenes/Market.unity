@@ -1092,7 +1092,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -424170129
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: d702dd3eeb4c141f58a7b9b5fd5b8358, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3112,7 +3112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c6276d17c5bd24ab26e9f4285d9dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinText: {fileID: 1875235116}
+  xpSlider: {fileID: 1469465426}
+  coinText: {fileID: 1875235116}
+  levelText: {fileID: 641638431}
 --- !u!114 &1054220876
 MonoBehaviour:
   m_ObjectHideFlags: 0
