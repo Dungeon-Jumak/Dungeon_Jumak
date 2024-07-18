@@ -1,12 +1,11 @@
-//System
+// System
 using System.Collections;
 using System.Collections.Generic;
 
-//Unity
+// Unity
 using UnityEngine;
 using UnityEngine.UI;
 
-[DisallowMultipleComponent]
 public class PlayerHPController : MonoBehaviour
 {
     [Header("플레이어의 현재 체력")]
@@ -24,9 +23,14 @@ public class PlayerHPController : MonoBehaviour
     [Header("게임 오버 팝업")]
     [SerializeField] private GameObject gameOver;
 
+    [Header("사망시 활성화될 플레이어 스프라이트")]
+    [SerializeField] private GameObject deadSprite;    
+    
+    [Header("사망시 활성화될 플레이어 스프라이트")]
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
     private Coroutine hitCoroutine;
     private Coroutine deactiveCoroutine;
-    private SpriteRenderer spriteRenderer;
 
     private void OnEnable()
     {
@@ -42,10 +46,10 @@ public class PlayerHPController : MonoBehaviour
 
     private void Update()
     {
-        //Reposition
+        // Reposition
         hpSlider.transform.position = sliderTransform.position + new Vector3(0f, 1.3f, 0f);
 
-        //Update Slider's Value
+        // Update Slider's Value
         hpSlider.value = currentHP / maxHP;
     }
 
@@ -54,12 +58,12 @@ public class PlayerHPController : MonoBehaviour
         if (!collision.collider.CompareTag("Monster"))
             return;
 
-        //Show Slider
+        // Show Slider
         hpSlider.gameObject.SetActive(true);
 
         currentHP -= collision.transform.GetComponent<MonsterController>().attackPower;
 
-        //Check Coroutine
+        // Check Coroutine
         if (deactiveCoroutine != null)
         {
             StopCoroutine(DeActiveSlider());
@@ -70,19 +74,21 @@ public class PlayerHPController : MonoBehaviour
             deactiveCoroutine = StartCoroutine(DeActiveSlider());
         }
 
-        //Check HP
+        // Check HP
         if (currentHP > 0)
         {
-            //Live : Add Animation
-
+            // Live : Add Animation
             GameManager.Sound.Play("[S] Player Hit", Define.Sound.Effect, false);
         }
         else
         {
-            //Die
-            Time.timeScale = 0f;
+            // Die
+            hpSlider.gameObject.SetActive(false);
+            spriteRenderer.enabled = false;
 
-            gameOver.SetActive(true);
+            deadSprite.SetActive(true);
+
+            StartCoroutine(Die());
         }
     }
 
@@ -91,29 +97,40 @@ public class PlayerHPController : MonoBehaviour
         if (!collision.collider.CompareTag("Monster"))
             return;
 
-        //Show Slider
+        // Show Slider
         hpSlider.gameObject.SetActive(true);
 
         if (hitCoroutine == null)
         {
             hitCoroutine = StartCoroutine(HitDelay(collision));
         }
-
     }
 
-    IEnumerator HitDelay(Collision2D _collision)
+    private IEnumerator HitDelay(Collision2D _collision)
     {
         yield return new WaitForSeconds(1f);
 
-        currentHP -= _collision.transform.GetComponent<MonsterController>().attackPower;
+        currentHP -= _collision.gameObject.GetComponent<MonsterController>().attackPower;
 
         hitCoroutine = null;
     }
 
-    IEnumerator DeActiveSlider()
+    private IEnumerator DeActiveSlider()
     {
         yield return new WaitForSeconds(3f);
 
         hpSlider.gameObject.SetActive(false);
+    }
+
+    private IEnumerator Die()
+    { 
+        // Wait for 1 second
+        yield return new WaitForSeconds(1f);
+
+        // Show Game Over Panel
+        gameOver.SetActive(true);
+
+        // Pause the game
+        Time.timeScale = 0f;
     }
 }

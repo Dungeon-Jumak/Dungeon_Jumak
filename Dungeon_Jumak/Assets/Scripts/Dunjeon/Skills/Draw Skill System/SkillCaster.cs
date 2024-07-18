@@ -263,13 +263,16 @@ public class SkillCaster : MonoBehaviour
     //Fire Flooring : Fire Flooring Casting Method
     public void FireFlooring()
     {
-        SpawnObjects();
-
-        canSkill = false;
+        if (canSkill)
+        {
+            SpawnObjects();
+        }
     }
 
     void SpawnObjects()
     {
+        canSkill = false;
+
         //Player Position
         Vector3 basePosition = transform.position;
 
