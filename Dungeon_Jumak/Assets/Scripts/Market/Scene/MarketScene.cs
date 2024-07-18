@@ -16,7 +16,7 @@ public class MarketScene : BaseScene
 
     void Update()
     {
-        CoinText.text = data.curCoin.ToString();
+        CoinText.text = data.curCoin.ToString() + "전";
     }
 
     void Start()
