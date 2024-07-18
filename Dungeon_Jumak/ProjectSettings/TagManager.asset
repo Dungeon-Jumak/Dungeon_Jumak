@@ -44,7 +44,7 @@ TagManager:
   - Environment
   - VFX_Down
   - VFX_Up
-  - 
+  - Background_Map
   - 
   - 
   - 
@@ -63,6 +63,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background_Map
+    uniqueID: 2638250421
     locked: 0
   - name: VFX_Down
     uniqueID: 3997653081
