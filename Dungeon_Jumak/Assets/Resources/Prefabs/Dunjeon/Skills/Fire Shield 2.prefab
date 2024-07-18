@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 163511132847868345, guid: 768e051a05ce8a641a55162ac081181a,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 163511132847868345, guid: 768e051a05ce8a641a55162ac081181a,
         type: 3}
@@ -40,17 +40,17 @@ PrefabInstance:
     - target: {fileID: 7226074999559476081, guid: 768e051a05ce8a641a55162ac081181a,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.23137252
+      value: 0.1412127
       objectReference: {fileID: 0}
     - target: {fileID: 7226074999559476081, guid: 768e051a05ce8a641a55162ac081181a,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.30679947
+      value: 0.4217724
       objectReference: {fileID: 0}
     - target: {fileID: 7226074999559476081, guid: 768e051a05ce8a641a55162ac081181a,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.8235294
+      value: 0.8018868
       objectReference: {fileID: 0}
     - target: {fileID: 7387704997612856446, guid: 768e051a05ce8a641a55162ac081181a,
         type: 3}

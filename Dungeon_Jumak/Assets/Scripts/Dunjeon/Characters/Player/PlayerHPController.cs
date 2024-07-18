@@ -29,6 +29,9 @@ public class PlayerHPController : MonoBehaviour
     [Header("사망시 활성화될 플레이어 스프라이트")]
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    [Header("사망시 활성화될 플레이어 스프라이트")]
+    [SerializeField] private ParticleSystem plarticleForPlayer;
+
     private Coroutine hitCoroutine;
     private Coroutine deactiveCoroutine;
 
@@ -57,6 +60,8 @@ public class PlayerHPController : MonoBehaviour
     {
         if (!collision.collider.CompareTag("Monster"))
             return;
+
+        plarticleForPlayer.Play();
 
         // Show Slider
         hpSlider.gameObject.SetActive(true);
@@ -117,7 +122,7 @@ public class PlayerHPController : MonoBehaviour
 
     private IEnumerator DeActiveSlider()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
 
         hpSlider.gameObject.SetActive(false);
     }

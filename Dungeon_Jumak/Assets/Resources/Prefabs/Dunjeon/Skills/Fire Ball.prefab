@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 4333637354549323736, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4333637354549323736, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}
@@ -100,7 +100,7 @@ PrefabInstance:
     - target: {fileID: 4333637355060481310, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4333637355060481310, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}
@@ -160,17 +160,17 @@ PrefabInstance:
     - target: {fileID: 5509305661550462182, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}
       propertyPath: m_Range
-      value: 8
+      value: 7.0877447
       objectReference: {fileID: 0}
     - target: {fileID: 5509305661550462182, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}
       propertyPath: m_Intensity
-      value: 0
+      value: 3.5438724
       objectReference: {fileID: 0}
     - target: {fileID: 5509305661840162656, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5509305661840162656, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}
@@ -245,12 +245,12 @@ PrefabInstance:
     - target: {fileID: 5509305661840162659, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.13725491
+      value: 0.008318774
       objectReference: {fileID: 0}
     - target: {fileID: 5509305661840162659, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.5294118
+      value: 0.8396226
       objectReference: {fileID: 0}
     - target: {fileID: 5509305661840162659, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}
@@ -340,7 +340,7 @@ PrefabInstance:
     - target: {fileID: 5509305662281031646, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5509305662281031646, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}

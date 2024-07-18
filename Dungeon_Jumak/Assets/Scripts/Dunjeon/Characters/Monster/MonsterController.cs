@@ -210,7 +210,7 @@ public class MonsterController : MonoBehaviour
         }
         else
         {
-            StartCoroutine(KnockBack(50f));
+            StartCoroutine(KnockBack(20f));
         }
     }
 
