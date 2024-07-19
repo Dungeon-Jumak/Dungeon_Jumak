@@ -30,8 +30,11 @@ public class DungeonScene : BaseScene
     [Header("게임오버 팝업")]
     [SerializeField] private GameObject gameClear;
 
-    [Header("던전 밤 레이어")]
+    [Header("던전 배경 밤 레이어")]
     [SerializeField] private GameObject dunNightImg;
+
+    [Header("헤더 밤 레이어")]
+    [SerializeField] private GameObject headerNightImg;
 
     private float currentTimer;
 
@@ -46,8 +49,13 @@ public class DungeonScene : BaseScene
 
         if (data.timeNum == 1)
         {
-            //Dunjeon Night
             dunNightImg.SetActive(true);
+            headerNightImg.SetActive(true);
+        }
+        else
+        {
+            dunNightImg.SetActive(false);
+            headerNightImg.SetActive(false);
         }
 
         //Init
@@ -169,9 +177,6 @@ public class DungeonScene : BaseScene
     {
         Time.timeScale = 1f;
         GameManager.Scene.LoadScene(Define.Scene.WaitingScene);
-
-        //NonActive dunjeon night img
-        dunNightImg.SetActive(false);
     }
 
     public override void Clear()
