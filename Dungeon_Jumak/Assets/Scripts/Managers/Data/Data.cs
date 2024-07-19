@@ -41,11 +41,11 @@ public class Data
 
     public string[] menuCategories = new string[12]; //각 자리에 있는 메뉴의 카테고리
     public int[] menuLV = new int[12];              //각 테이블에 있는 메뉴의 벨류
-    public int[] ingredient = new int[5] {0, 0, 0, 0, 0};           //0: 돼지고기, 1: 부추, 2: 콩나물, 3: 오징어, 4: 소고기
+    public int[] ingredient = new int[5] {10, 10, 10, 10, 10};           //0: 돼지고기, 1: 부추, 2: 콩나물, 3: 오징어, 4: 소고기
 
     //---Money---//
 
-    public int curCoin = 0;
+    public int curCoin = 1000;
     public int maxCoin = 999999;
 
     //---해금 관련---//

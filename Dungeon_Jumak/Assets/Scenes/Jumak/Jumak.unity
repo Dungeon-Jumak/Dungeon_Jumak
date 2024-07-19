@@ -5142,6 +5142,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5565818131441784421, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565818131441784421, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565818131441784421, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1864944404}
@@ -5150,20 +5160,40 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: EffectON
       objectReference: {fileID: 0}
+    - target: {fileID: 5565818131441784421, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Settings, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565818131441784421, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5565818131550532451, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5565818131550532451, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5565818131560699326, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
       propertyPath: m_SizeDelta.x
       value: -505
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565818131636680189, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565818131636680189, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5565818131636680189, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
@@ -5175,20 +5205,40 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: EffectOFF
       objectReference: {fileID: 0}
+    - target: {fileID: 5565818131636680189, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Settings, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5565818131906441785, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5565818131906441785, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5565818131906441785, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565818131906441785, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 4.3999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565818132069359533, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565818132069359533, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5565818132069359533, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
@@ -5200,6 +5250,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MusicOFF
       objectReference: {fileID: 0}
+    - target: {fileID: 5565818132069359533, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Settings, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565818132069359533, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565818132069359533, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565818132519910703, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565818132519910703, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5565818132519910703, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5209,6 +5284,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MusicON
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565818132519910703, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Settings, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5565818132693342226, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
@@ -5324,6 +5404,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565818132774203641, guid: fc34e33d957ee944cbdd8a081261583f,
+        type: 3}
+      propertyPath: m_Name
+      value: Button_DJ
       objectReference: {fileID: 0}
     - target: {fileID: 5565818132837050779, guid: fc34e33d957ee944cbdd8a081261583f,
         type: 3}
@@ -9144,7 +9229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -15, y: -25.999939}
+  m_AnchoredPosition: {x: -15, y: -26}
   m_SizeDelta: {x: 128, y: 128}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &444908695
@@ -11907,8 +11992,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1302967615
-  m_SortingLayer: 7
+  m_SortingLayerID: 1149754795
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 406afb8cf18ec554ba3826b998fb4125, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -14813,7 +14898,6 @@ MonoBehaviour:
   timer: 0
   duration: 60
   timerTMP: {fileID: 744084115}
-  coinTMP: {fileID: 966641978}
   houseSprites:
   - {fileID: 21300000, guid: 2bc998523b81d664ba6dcbdbffac124e, type: 3}
   - {fileID: 21300000, guid: f0e5c4e524f05714c8a61821824703c1, type: 3}
@@ -14860,7 +14944,6 @@ MonoBehaviour:
   pajeonReceiptTMP: {fileID: 1862235592}
   riceJuiceReceiptTMP: {fileID: 32211407}
   totalReceiptTMP: {fileID: 1733759899}
-  levelText: {fileID: 0}
   outText: {fileID: 798297718}
 --- !u!4 &790389331
 Transform:
@@ -19772,7 +19855,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.539
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

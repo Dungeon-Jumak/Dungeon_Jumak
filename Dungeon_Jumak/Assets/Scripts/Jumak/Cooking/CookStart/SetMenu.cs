@@ -95,6 +95,9 @@ public class SetMenu : MonoBehaviour
                 //if current number of ingredient greater than to need ingredient
                 if (data.ingredient[i] >= needIngredients[i])
                 {
+                    //First Checking
+                    if (checkNum == 0) maxCookCount = data.ingredient[i] / needIngredients[i];
+
                     //Increase CheckNum
                     checkNum++;
 
@@ -102,7 +105,7 @@ public class SetMenu : MonoBehaviour
                     int tempmaxCookCount = data.ingredient[i] / needIngredients[i];
 
                     //if first checking or tempmaxcount less than last max cook count, update max cook count
-                    if (i == 0 || tempmaxCookCount > maxCookCount)
+                    if (i == 0 || tempmaxCookCount < maxCookCount)
                     {
                         if (tempmaxCookCount > 99) maxCookCount = 99;
                         else maxCookCount = tempmaxCookCount;

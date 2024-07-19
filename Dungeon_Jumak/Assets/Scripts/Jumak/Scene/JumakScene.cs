@@ -43,10 +43,6 @@ public class JumakScene : BaseScene
     [Header("타이머 TMP")]
     [SerializeField] private TextMeshProUGUI timerTMP;
 
-    //Coin TMP
-    [Header("코인 TMP")]
-    [SerializeField] private TextMeshProUGUI coinTMP;
-
     //House Sprites
     [Header("주막 : 하우스 스프라이트 배열")]
     [SerializeField] private Sprite[] houseSprites;
@@ -107,17 +103,11 @@ public class JumakScene : BaseScene
     [Header("토탈 가격 전표 텍스트")]
     [SerializeField] private TextMeshProUGUI totalReceiptTMP;
 
-    [Header("레벨 텍스트")]
-    [SerializeField] private TextMeshProUGUI levelText;
-
     [Header("나가기 텍스트")]
     [SerializeField] private GameObject outText;
 
     //Data
     private Data data;
-
-    //Past Coin
-    private int pastCoin;
 
     #endregion
 
@@ -236,6 +226,7 @@ public class JumakScene : BaseScene
     {
         GameManager.Sound.Pause("[S] Cooking Sound", Define.Sound.Effect);
         GameManager.Sound.Pause("[S] Walk Sound1", Define.Sound.Effect);
+        GameManager.Sound.Pause("[S] Eating Gukbab", Define.Sound.Effect);
 
         //InActivate Object related Jumak System
         for (int i = 0; i < JumakSystemObj.Length; i++)

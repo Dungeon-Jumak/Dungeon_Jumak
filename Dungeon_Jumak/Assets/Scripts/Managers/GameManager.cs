@@ -101,23 +101,17 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //Level System
-        //LevelSystem();
+        LevelSystem();
 
         //Coin System
-        //CoinSystem();
-
-
-
-
-
-
+        CoinSystem();
     }
 
     #region Level System
-    /*
+
     private void LevelSystem()
     {
-        if (data.timerStart)
+        if (SceneManager.GetActiveScene().name != "StartScene")
         {
             if (levelObj == null)
             {
@@ -135,31 +129,31 @@ public class GameManager : MonoBehaviour
 
         }
     }
-    */
+
     #endregion
 
     #region Coin System
-    /*
+
     private void CoinSystem()
     {
-        if (data.timerStart)
+        if (SceneManager.GetActiveScene().name != "StartScene")
         {
             if (coinObj == null)
             {
                 coinObj = GameObject.Find("[Text] Coin");
 
                 if (coinObj != null)
-                    coinObj.GetComponent<TextMeshProUGUI>().text = data.curCoin.ToString();
+                    coinObj.GetComponent<TextMeshProUGUI>().text = data.curCoin.ToString() + "전";
             }
 
             if (lastCoin != data.curCoin)
             {
                 lastCoin = data.curCoin;
-                coinObj.GetComponent<TextMeshProUGUI>().text = lastCoin.ToString();
+                coinObj.GetComponent<TextMeshProUGUI>().text = lastCoin.ToString() + "전";
             }
         }
     }
-    */
+
     #endregion 
 
 

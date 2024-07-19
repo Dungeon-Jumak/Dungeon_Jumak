@@ -200,8 +200,6 @@ public class PlayerMovement : MonoBehaviour
                     //Change hand position
                     if (hand.localPosition.x < 0f)
                         hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
-
-                    jangbanSpriteRenderer.sortingLayerName = "Food_Down";
                     
                 }
                 //To down
@@ -215,7 +213,6 @@ public class PlayerMovement : MonoBehaviour
                     if (hand.localPosition.x < 0f)
                         hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
 
-                    jangbanSpriteRenderer.sortingLayerName = "Food_Up";
                 }
             }
             //left-right move
