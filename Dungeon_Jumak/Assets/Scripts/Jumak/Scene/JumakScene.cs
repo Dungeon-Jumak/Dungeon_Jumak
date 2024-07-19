@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 //Unity
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using Unity.VisualScripting;
@@ -105,6 +106,9 @@ public class JumakScene : BaseScene
 
     [Header("나가기 텍스트")]
     [SerializeField] private GameObject outText;
+
+    [Header("타이머 슬라이더")]
+    [SerializeField] private Slider timerSlider;
 
     //Data
     private Data data;
@@ -212,6 +216,10 @@ public class JumakScene : BaseScene
                 //Call Clost Jumak Method
                 CloseJumak();
             }
+
+            //Udate Timer Slider
+            float sliderValue = 1 - (timer / duration);
+            timerSlider.value = sliderValue;
 
             //Compute time for display
             int newTime = Mathf.FloorToInt(duration - timer);
