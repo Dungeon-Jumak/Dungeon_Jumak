@@ -30,6 +30,9 @@ public class DungeonScene : BaseScene
     [Header("게임오버 팝업")]
     [SerializeField] private GameObject gameClear;
 
+    [Header("던전 밤 레이어")]
+    [SerializeField] private GameObject dunNightImg;
+
     private float currentTimer;
 
     private float lastXP;
@@ -38,11 +41,17 @@ public class DungeonScene : BaseScene
 
     private void Start()
     {
-        //Init
-        currentTimer = maxTimer;
-
         //Get Data
         data = DataManager.Instance.data;
+
+        if (data.timeNum == 1)
+        {
+            //Dunjeon Night
+            dunNightImg.SetActive(true);
+        }
+
+        //Init
+        currentTimer = maxTimer;
 
         lastXP = data.curXP;
 
@@ -125,12 +134,44 @@ public class DungeonScene : BaseScene
 
         //Pop Up
         gameClear.SetActive(true);
+
+        //Time System
+        data.timeNum++;
+        {
+            if (data.timeNum >= data.time.Length)
+            {
+                data.timeNum = 0;
+
+                //Increase Day Count
+                data.day++;
+
+                if (data.day > data.maxDay)
+                {
+                    //Init day
+                    data.day = 1;
+
+                    //Increase Season Number
+                    data.seasonNum++;
+
+                    //Init Season Number
+                    if (data.seasonNum >= data.season.Length)
+                    {
+                        data.seasonNum = 0;
+
+                        data.year++;
+                    }
+                }
+            }
+        }
     }
 
     public void ConvertScene()
     {
         Time.timeScale = 1f;
         GameManager.Scene.LoadScene(Define.Scene.WaitingScene);
+
+        //NonActive dunjeon night img
+        dunNightImg.SetActive(false);
     }
 
     public override void Clear()
