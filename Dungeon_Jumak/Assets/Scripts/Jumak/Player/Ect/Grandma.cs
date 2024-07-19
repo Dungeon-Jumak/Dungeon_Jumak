@@ -18,6 +18,9 @@ public class Grandma : MonoBehaviour
     [Header("주막 씬 오브젝트")]
     [SerializeField] private JumakScene jumak;
 
+    [Header("할머니를 가리키는 화살표 오브젝트")]
+    [SerializeField] private SpriteRenderer targetArrow;
+
     //SpriteRenderer component to change renderer
     private SpriteRenderer spriteRenderer;
 
@@ -36,6 +39,8 @@ public class Grandma : MonoBehaviour
             spriteRenderer.sortingLayerName = "UpThanPlayer"; 
         else
             spriteRenderer.sortingLayerName = "Player";
+
+        if (jumak.start) targetArrow.gameObject.SetActive(false);
     }
 
     //OnTriggerStay

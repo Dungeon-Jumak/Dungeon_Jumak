@@ -92,6 +92,9 @@ public class SetFood : MonoBehaviour
     [Header("파전 미니게임 매니저")]
     [SerializeField] private PaJeonManager pajeonManager;
 
+    [Header("확정 시 해금 버튼이 안눌리게 하기 위한 블로커")]
+    [SerializeField] private GameObject[] confirmBlocker;
+
     //Init Data
     private int[] initIngredient;
 
@@ -316,6 +319,8 @@ public class SetFood : MonoBehaviour
                 //Button Blocking
                 ButtonBlocker();
 
+                confirmBlocker[0].SetActive(true);
+
                 confirmImagesInFrame[0].color = new Color(1, 1, 1, 1);
 
                 //Update Confirm Image in Frame
@@ -339,6 +344,8 @@ public class SetFood : MonoBehaviour
                 //Button Blocking
                 ButtonBlocker();
 
+                confirmBlocker[1].SetActive(true);
+
                 confirmImagesInFrame[1].color = new Color(1, 1, 1, 1);
 
                 //Update Confirm Image in Frame
@@ -357,6 +364,8 @@ public class SetFood : MonoBehaviour
 
                 //Button Blocking
                 ButtonBlocker();
+
+                confirmBlocker[2].SetActive(true);
 
                 confirmImagesInFrame[2].color = new Color(1, 1, 1, 1);
 
@@ -493,6 +502,16 @@ public class SetFood : MonoBehaviour
         for (int k = 0; k < confirmImagesInFrame.Length; k++)
         {
             confirmImagesInFrame[k].sprite = null;
+        }
+
+        for (int i = 0; i < confirmBlocker.Length; i++)
+        {
+            confirmBlocker[i].SetActive(false);
+        }
+
+        for (int i = 0; i < confirmImagesInFrame.Length; i++)
+        {
+            confirmImagesInFrame[i].color = new Color(1, 1, 1, 0);
         }
     }
 
