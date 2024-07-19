@@ -170,22 +170,28 @@ public class PaJeonManager : MonoBehaviour
         //if fail
         else
         {
-            GameManager.Sound.Play("[S] MiniGame Failure", Define.Sound.Effect, false);
-
-            isPlaying = false;
-
-            //Get PlayerServing
-            PlayerServing playerServing = GameObject.Find("Chr_Player").GetComponent<PlayerServing>();
-
-            //isCarrying false
-            playerServing.isCarryingFood = false;
-
-            //Remove Arrow
-            RemoveArrow();
-
-            //Exit Pajeon MiniGame
-            furnace.ExitPajeonMiniGame();
+            Fail();
         }
+    }
+
+    public void Fail()
+    {
+        GameManager.Sound.Play("[S] MiniGame Failure", Define.Sound.Effect, false);
+
+        isPlaying = false;
+
+        //Get PlayerServing
+        PlayerServing playerServing = GameObject.Find("Chr_Player").GetComponent<PlayerServing>();
+
+        //isCarrying false
+        playerServing.isCarryingFood = false;
+
+        //Remove Arrow
+        RemoveArrow();
+
+        //Exit Pajeon MiniGame
+        furnace.ExitPajeonMiniGame();
+
     }
 
     //To Check Drag
