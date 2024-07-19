@@ -27,9 +27,9 @@ public class MarketScene : BaseScene
 
     void Update()
     {
-        coinText.text = data.curCoin.ToString() + "전";
+        //coinText.text = data.curCoin.ToString() + "전";
 
-        xpSlider.value = data.curXP / data.maxXP;
+        //xpSlider.value = data.curXP / data.maxXP;
     }
 
     void Start()
