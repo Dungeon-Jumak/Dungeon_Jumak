@@ -14,49 +14,49 @@ using TMPro;
 public class Tutorial : MonoBehaviour
 {
     //Common
-    [Header("Æ©Åä¸®¾ó ´ëÈ­ ½ºÅ©¸³Æ® ¹è¿­")]
+    [Header("íŠœí† ë¦¬ì–¼ ëŒ€í™” ìŠ¤í¬ë¦½íŠ¸ ë°°ì—´")]
     [SerializeField] private DialogSystem[] dialogSystem;
 
-    [Header("ÇöÀç ´ëÈ­ ½ºÅ©¸³Æ® ÀÎµ¦½º")]
+    [Header("í˜„ì¬ ëŒ€í™” ìŠ¤í¬ë¦½íŠ¸ ì¸ë±ìŠ¤")]
     [SerializeField] private int currentDialogSystemIndex;
 
-    [Header("´ÙÀÌ¾î·Î±× ÀÔ·Â ¹æÁö ÆĞ³Î")]
+    [Header("ë‹¤ì´ì–´ë¡œê·¸ ì…ë ¥ ë°©ì§€ íŒ¨ë„")]
     [SerializeField] private GameObject basePanel;
 
-    [Header("Áı Æ©Åä¸®¾ó ½ÃÀÛ ½ÅÈ£")]
+    [Header("ì§‘ íŠœí† ë¦¬ì–¼ ì‹œì‘ ì‹ í˜¸")]
     [SerializeField] private bool houseTutorial = false;
 
-    [Header("Æ©Åä¸®¾ó ¹öÆ° ¿ÀºêÁ§Æ® ¹è¿­")]
+    [Header("íŠœí† ë¦¬ì–¼ ë²„íŠ¼ ì˜¤ë¸Œì íŠ¸ ë°°ì—´")]
     [SerializeField] private Button[] tutorialButtons;
 
-    [Header("´ëÈ­Ã¢ ÆĞ³Î")]
+    [Header("ëŒ€í™”ì°½ íŒ¨ë„")]
     [SerializeField] private GameObject dialogPanel;
 
-    [Header("°ÔÀÓ ÁøÇà °ü·Ã È°¼ºÈ­ ¿ÀºêÁ§Æ®")]
+    [Header("ê²Œì„ ì§„í–‰ ê´€ë ¨ í™œì„±í™” ì˜¤ë¸Œì íŠ¸")]
     [SerializeField] private GameObject[] activeObject;
 
     Data data;
 
     //Story 1
-    [Header("´Ğ³×ÀÓ ÀÔ·Â ÆË¾÷")]
+    [Header("ë‹‰ë„¤ì„ ì…ë ¥ íŒì—…")]
     [SerializeField] private GameObject inputNamePopUp;
 
-    [Header("´Ğ³×ÀÓ ÀÔ·Â ÇÊµå")]
+    [Header("ë‹‰ë„¤ì„ ì…ë ¥ í•„ë“œ")]
     [SerializeField] private TextMeshProUGUI nameInputField;
 
-    [Header("´Ğ³×ÀÓ È®Á¤ ÆË¾÷")]
-    [SerializeField] private Text confirmPopupText;
+    [Header("ë‹‰ë„¤ì„ í™•ì • íŒì—…")]
+    [SerializeField] private TextMeshProUGUI confirmPopupText;
 
     //House Tutorial
-    [Header("Áı Æ©Åä¸®¾ó ¿ÀºêÁ§Æ®")]
+    [Header("ì§‘ íŠœí† ë¦¬ì–¼ ì˜¤ë¸Œì íŠ¸")]
     [SerializeField] private GameObject houseObject;
 
     //Jumak Tutorial
-    [Header("ÁÖ¸· Æ©Åä¸®¾ó ¿ÀºêÁ§Æ®")]
+    [Header("ì£¼ë§‰ íŠœí† ë¦¬ì–¼ ì˜¤ë¸Œì íŠ¸")]
     [SerializeField] private GameObject jumakObject;
 
     //Dungeon Tutorial
-    [Header("´øÀü Æ©Åä¸®¾ó ¿ÀºêÁ§Æ®")]
+    [Header("ë˜ì „ íŠœí† ë¦¬ì–¼ ì˜¤ë¸Œì íŠ¸")]
     [SerializeField] private GameObject dungeonObject;
 
     private void Start()
@@ -80,7 +80,7 @@ public class Tutorial : MonoBehaviour
     private void Update()
     {
         if (currentDialogSystemIndex == 1)
-            confirmPopupText.text = nameInputField.text + "ÀÌ½Å°¡¿ä?";
+            confirmPopupText.text = nameInputField.text + "ì´ì‹ ê°€ìš”?";
 
         //Check Finish Story 1
         switch (currentDialogSystemIndex)
