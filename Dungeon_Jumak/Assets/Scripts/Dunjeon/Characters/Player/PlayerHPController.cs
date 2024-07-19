@@ -115,7 +115,10 @@ public class PlayerHPController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        currentHP -= _collision.gameObject.GetComponent<MonsterController>().attackPower;
+        if(_collision.gameObject.GetComponent<MonsterController>().attackPower != null)
+        {
+            currentHP -= _collision.gameObject.GetComponent<MonsterController>().attackPower;
+        }
 
         hitCoroutine = null;
     }
@@ -130,7 +133,7 @@ public class PlayerHPController : MonoBehaviour
     private IEnumerator Die()
     { 
         // Wait for 1 second
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         // Show Game Over Panel
         gameOver.SetActive(true);

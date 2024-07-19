@@ -35,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 4310319717651680285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.3, y: 5.59, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6753134617623648236}
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1149754795
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 01720515c1163664b9a32088c578b69c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -175,7 +175,7 @@ MonoBehaviour:
   attackPower: 1
   dropItemID: 1
   dropPool: {fileID: 0}
-  percent: 30
+  percent: 100
   xp: 3
   isLive: 0
 --- !u!114 &4310319717651680260
@@ -411,7 +411,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 395830841
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1ee535ec2f3f04ac98d999d11743111e, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -526,7 +526,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1149754795
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ecbca85a8522b454a936e3f4ff151faf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
