@@ -8,30 +8,30 @@ public class SoundManager : MonoBehaviour
 {
     AudioSource[] _audioSources = new AudioSource[(int)Define.Sound.MaxCount];
 
-    Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();//¸Ş¸ğ¸® °ü¸® À§ÇÑ ¿Àµğ¿À Å¬¸³ º¸°ü variable
+    Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();//ë©”ëª¨ë¦¬ ê´€ë¦¬ ìœ„í•œ ì˜¤ë””ì˜¤ í´ë¦½ ë³´ê´€ variable
 
     Dictionary<string, AudioSource> _effectSources = new Dictionary<string, AudioSource>();
     Dictionary<string, AudioSource> _bgmSources = new Dictionary<string, AudioSource>();
 
     public void Init()
     {
-        GameObject root = GameObject.Find("@Sound");//@Sound ¿ÀºêÁ§Æ® Ã£±â
+        GameObject root = GameObject.Find("@Sound");//@Sound ì˜¤ë¸Œì íŠ¸ ì°¾ê¸°
         DontDestroyOnLoad(root);//Root DontDestroy
 
         string[] soundNames = System.Enum.GetNames(typeof(Define.Sound));
 
-        //@sound ¿ÀºêÁ§Æ® ÇÏÀ§ ¿ÀºêÁ§Æ®·Î BGM, Effect AudioSource ¼³Á¤
+        //@sound ì˜¤ë¸Œì íŠ¸ í•˜ìœ„ ì˜¤ë¸Œì íŠ¸ë¡œ BGM, Effect AudioSource ì„¤ì •
         for (int i = 0; i < soundNames.Length - 1; i++)
         {
             GameObject go = new GameObject { name = soundNames[i] };
-            _audioSources[i] = go.AddComponent<AudioSource>(); 
-            go.transform.parent = root.transform; 
+            _audioSources[i] = go.AddComponent<AudioSource>();
+            go.transform.parent = root.transform;
         }
 
         _audioSources[(int)Define.Sound.Bgm].loop = true;
     }
 
-    //---¸Ş¸ğ¸® È°¼ºÈ­¸¦ À§ÇÑ ¿Àµğ¿À ¼Ò½º Clear ÇÔ¼ö---//
+    //---ë©”ëª¨ë¦¬ í™œì„±í™”ë¥¼ ìœ„í•œ ì˜¤ë””ì˜¤ ì†ŒìŠ¤ Clear í•¨ìˆ˜---//
     public void Clear()
     {
         foreach (AudioSource audioSource in _audioSources)
@@ -49,14 +49,14 @@ public class SoundManager : MonoBehaviour
         _bgmSources.Clear();
     }
 
-    //---BGM, Effect Play ÇÔ¼ö
+    //---BGM, Effect Play í•¨ìˆ˜
     public void Play(string path, Define.Sound type = Define.Sound.Effect, bool loop = false)
     {
-        path = $"Sounds/{path}";//Resource Æú´õ ³»ÀÇ °æ·Î ¼³Á¤
+        path = $"Sounds/{path}";//Resource í´ë” ë‚´ì˜ ê²½ë¡œ ì„¤ì •
 
         AudioClip audioClip = GetOrAddAudioClip(path);
 
-        //@sound ¿ÀºêÁ§Æ® ÇÏÀ§ BGM AudioSource ¿ÀºêÁ§Æ®¿¡ AudioClip Ãß°¡
+        //@sound ì˜¤ë¸Œì íŠ¸ í•˜ìœ„ BGM AudioSource ì˜¤ë¸Œì íŠ¸ì— AudioClip ì¶”ê°€
         if (type == Define.Sound.Bgm)
         {
             AudioSource audioSource = _audioSources[(int)Define.Sound.Bgm];
@@ -70,11 +70,11 @@ public class SoundManager : MonoBehaviour
 
             audioSource.outputAudioMixerGroup = mixerGroups[0];
 
-            audioSource.Play(); 
+            audioSource.Play();
 
             _bgmSources[path] = audioSource;
         }
-        //@sound ¿ÀºêÁ§Æ® ÇÏÀ§ Effect AudioSource ¿ÀºêÁ§Æ®¿¡ AudioClip Ãß°¡
+        //@sound ì˜¤ë¸Œì íŠ¸ í•˜ìœ„ Effect AudioSource ì˜¤ë¸Œì íŠ¸ì— AudioClip ì¶”ê°€
         else if (type == Define.Sound.Effect)
         {
             AudioSource audioSource = new GameObject("SFX").AddComponent<AudioSource>();
@@ -95,7 +95,7 @@ public class SoundManager : MonoBehaviour
                 audioSource.loop = loop;
                 audioSource.Play();
             }
-            else if(!loop)
+            else if (!loop)
             {
                 audioSource.PlayOneShot(audioClip);
             }
