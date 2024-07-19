@@ -110,6 +110,9 @@ public class JumakScene : BaseScene
     [Header("타이머 슬라이더")]
     [SerializeField] private Slider timerSlider;
 
+    [Header("공통 헤더 저녁 배경")]
+    [SerializeField] private GameObject nightBackGround;
+
     //Data
     private Data data;
 
@@ -148,6 +151,8 @@ public class JumakScene : BaseScene
         start = false;
         pause = false;
         end = false;
+
+        CheckTime();
 
         //Update Jumak Furniture
         UpdateJumakFurniture();
@@ -338,6 +343,12 @@ public class JumakScene : BaseScene
     }
 
     #endregion
+
+    public void CheckTime()
+    {
+        if (data.timeNum == 0) nightBackGround.SetActive(false);
+        else nightBackGround.SetActive(true);
+    }
 
     //For Convert Scene
     public override void Clear()

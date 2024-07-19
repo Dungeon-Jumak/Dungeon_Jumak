@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
 
     private float lastXp;
 
+    [Header("공통헤더 밤 배경")]
+    [SerializeField] private GameObject nightBackGround;
+
     public string timerText;
 
     //Setting GameManager.cs to Singleton system 
