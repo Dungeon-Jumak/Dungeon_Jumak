@@ -51,6 +51,8 @@ public class MonsterHPController : MonoBehaviour
         if (!(collision.CompareTag("Attack_Shield") || collision.CompareTag("Attack_Ball") || collision.CompareTag("Attack_Floor")))
             return;
 
+        GameManager.Sound.Play("SFX/Dunjeon/[S] Pig Hit", Define.Sound.Effect, false);
+
         if (slider == null)
         {
             slider = Instantiate(sliderPrefab);
