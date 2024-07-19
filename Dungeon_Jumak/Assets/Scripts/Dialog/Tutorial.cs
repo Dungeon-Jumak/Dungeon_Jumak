@@ -45,7 +45,13 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameInputField;
 
     [Header("닉네임 확정 팝업")]
+    [SerializeField] private GameObject nameConfirmPopUp;
+
+    [Header("닉네임 확정 텍스트")]
     [SerializeField] private TextMeshProUGUI confirmPopupText;
+
+    [Header("재시도 텍스트")]
+    [SerializeField] private GameObject retryText;
 
     //House Tutorial
     [Header("집 튜토리얼 오브젝트")]
@@ -58,6 +64,9 @@ public class Tutorial : MonoBehaviour
     //Dungeon Tutorial
     [Header("던전 튜토리얼 오브젝트")]
     [SerializeField] private GameObject dungeonObject;
+
+    [Header("최대 이름 길이")]
+    [SerializeField] private int maxNameLength = 9;
 
     private void Start()
     {
@@ -206,11 +215,38 @@ public class Tutorial : MonoBehaviour
 
     public void ConfirmName()
     {
-        //Save Player Name
-        data.playerName = nameInputField.text;
+        if (nameInputField.text.Length > maxNameLength)
+        {
+            nameConfirmPopUp.SetActive(false);
 
-        //Start Story 2
-        StartStory2();
+            retryText.SetActive(true);
+        }
+        else
+        {
+            data.playerName = nameInputField.text;
+
+            inputNamePopUp.SetActive(false);
+
+            nameConfirmPopUp.SetActive(false);
+
+            //Start Story 2
+            StartStory2();
+        }
+    }
+
+    private bool IsKorean(char ch)
+    {
+        if ((0xAC00 <= ch && ch <= 0XD7A3) || (0x3131 <= ch && ch <= 0x318E))
+            return true;
+        else return false;
+    }
+
+    private bool IsEnglish(char ch)
+    {
+        if ((0x61 <= ch && ch <= 0x7A) || (0x41 <= ch && ch <= 0x5A))
+            return true;
+        else
+            return false;
     }
 
     private void StartStory1()
