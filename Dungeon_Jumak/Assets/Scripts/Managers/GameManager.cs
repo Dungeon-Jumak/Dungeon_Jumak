@@ -33,12 +33,10 @@ public class GameManager : MonoBehaviour
 
     private int lastLevel;
 
-    //Timer System
-    [Header("타이머 텍스트를 불러오기 위한 오브젝트")]
-    [SerializeField] private GameObject timerObj;
+    [Header("경험치 슬라이더 오브젝트")]
+    [SerializeField] private GameObject xpObj;
 
-    [Header("타이머 오브젝트")]
-    [SerializeField] private GameObject timer;
+    private float lastXp;
 
     public string timerText;
 
@@ -94,6 +92,7 @@ public class GameManager : MonoBehaviour
 
         lastCoin = data.curCoin;
         lastLevel = data.curPlayerLV;
+        lastXp = data.curXP;
 
         _soundManager.Init();//Init the SoundManager.cs
     }
@@ -105,13 +104,15 @@ public class GameManager : MonoBehaviour
 
         //Coin System
         CoinSystem();
+
+        XPSystem();
     }
 
     #region Level System
 
     private void LevelSystem()
     {
-        if (SceneManager.GetActiveScene().name != "StartScene" && SceneManager.GetActiveScene().name != "Map")
+        if (SceneManager.GetActiveScene().name != "StartScene" && SceneManager.GetActiveScene().name != "Map" && SceneManager.GetActiveScene().name != "WaitingScene")
         {
             if (levelObj == null)
             {
@@ -136,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     private void CoinSystem()
     {
-        if (SceneManager.GetActiveScene().name != "StartScene")
+        if (SceneManager.GetActiveScene().name != "StartScene" && SceneManager.GetActiveScene().name != "Map" && SceneManager.GetActiveScene().name != "WaitingScene")
         {
             if (coinObj == null)
             {
@@ -154,11 +155,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    #endregion 
+    #endregion
+
+    #region XP System
+
+    private void XPSystem()
+    {
+        if (SceneManager.GetActiveScene().name != "StartScene" && SceneManager.GetActiveScene().name != "Map" && SceneManager.GetActiveScene().name != "WaitingScene")
+        {
+            if (xpObj == null)
+            {
+                xpObj = GameObject.Find("[Slider] XpSlider");
+
+                if (xpObj != null)
+                    xpObj.GetComponent<Slider>().value = data.curXP / data.maxXP;
+            }
+
+            if (lastXp != data.curXP)
+            {
+                lastXp = data.curXP;
+                xpObj.GetComponent<Slider>().value = data.curXP / data.maxXP;
+            }
+        }
+    }
+    #endregion
 
 
     #region Ect.
-
     //Clear function to control scene and sound memory system when convert current scene
     public static void Clear()
     {
