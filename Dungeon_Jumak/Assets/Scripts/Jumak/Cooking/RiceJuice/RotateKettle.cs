@@ -14,7 +14,7 @@ public class RotateKettle : MonoBehaviour
 
     //Duration of Rotation
     [Header("한번 회전하는데 걸리는 시간")]
-    [SerializeField] private float rotationDuration = 1f;
+    [SerializeField] private float rotationDuration = 0.5f;
 
     //Current Rotation Angle
     private float currentRotation;
@@ -52,7 +52,7 @@ public class RotateKettle : MonoBehaviour
                 currentRotation = maxRotation;
 
                 //1 ~ 4 random rotration duration
-                rotationDuration = Random.Range(0.5f, 1.5f);
+                rotationDuration = Random.Range(0.3f, 0.7f);
 
                 //Change Direction : positive -> negative
                 rotationDirection = false;

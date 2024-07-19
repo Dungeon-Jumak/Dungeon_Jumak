@@ -54,6 +54,9 @@ public class CollisionDetection : MonoBehaviour
     [Header("ÁÖ¸·¾À")]
     [SerializeField] private JumakScene jumakScene;
 
+    [Header("¼Õ´Ô ½ºÆ÷³Ê")]
+    [SerializeField] private CustomerSpawner customerSpawner;
+
     //Input Enabled Sign
     private bool canTouch = true;
 
@@ -77,6 +80,8 @@ public class CollisionDetection : MonoBehaviour
 
         //GameStart Sign
         canTouch = true;
+
+        jumakScene.pause = true;
 
         //Stop All Coroutines -> Avoid Duplication
         StopAllCoroutines();
@@ -189,6 +194,10 @@ public class CollisionDetection : MonoBehaviour
         //Inactive MiniGame Manager
         miniGameParent.SetActive(false);
 
+        customerSpawner.gameObject.SetActive(true);
+
+        jumakScene.pause = false;
+
         //avoid duplication
         Invoke("DelayNextMiniGame", 0.5f);
     }
@@ -204,6 +213,10 @@ public class CollisionDetection : MonoBehaviour
 
         //Inactive MiniGame Manager
         miniGameParent.SetActive(false);
+
+        customerSpawner.gameObject.SetActive(true);
+
+        jumakScene.pause = false;
 
         //avoid duplication
         Invoke("DelayNextMiniGame", 0.5f);

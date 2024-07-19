@@ -1,6 +1,7 @@
 // System
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 // Unity
 using UnityEngine;
@@ -23,7 +24,10 @@ public class CustomerSpawner : MonoBehaviour
     {
         //Get Data
         data = DataManager.Instance.data;
+    }
 
+    private void OnEnable()
+    {
         //Start Coroutine
         StartCoroutine(SpawnCustomer());
     }

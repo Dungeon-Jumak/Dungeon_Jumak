@@ -25,6 +25,12 @@ public class RiceJuiceOrder : MonoBehaviour
     [Header("충돌한 테이블의 인덱스")]
     [SerializeField] private int tableIdx; //부딪힌 테이블의 인덱스
 
+    [Header("주막 씬 스크립트")]
+    [SerializeField] private JumakScene jumakScene;
+
+    [Header("손님 스포너")]
+    [SerializeField] private CustomerSpawner customerSpawner;
+
     //Sign Player In Collider
     private bool playerInCollider = false;
 
@@ -40,7 +46,7 @@ public class RiceJuiceOrder : MonoBehaviour
 
     void Start()
     {
-        blackPanelIndex = 7;
+        blackPanelIndex = 8;
 
         //Get Component
         capsuleCollider = GetComponent<CapsuleCollider2D>();
@@ -48,6 +54,10 @@ public class RiceJuiceOrder : MonoBehaviour
 
         //Get Data
         data = DataManager.Instance.data;
+
+        jumakScene = FindObjectOfType<JumakScene>();
+
+        customerSpawner = GameObject.Find("Customer Manager").transform.GetChild(0).GetComponent<CustomerSpawner>();
     }
 
     void Update()
@@ -77,9 +87,6 @@ public class RiceJuiceOrder : MonoBehaviour
                 //is not playing minigame and click minigame area
                 if (capsuleCollider.OverlapPoint(mousePosition) && !data.isMiniGame)
                 {
-                    //Debug.Log
-                    Debug.Log("감지");
-
                     //Convert mini game sign
                     data.isMiniGame = true;
 
@@ -102,6 +109,8 @@ public class RiceJuiceOrder : MonoBehaviour
 
                     //Active Black Panel
                     GameObject.Find("[Panel] Jumak").transform.GetChild(blackPanelIndex).gameObject.SetActive(true);
+
+                    customerSpawner.gameObject.SetActive(false);
                 }
             }
         }

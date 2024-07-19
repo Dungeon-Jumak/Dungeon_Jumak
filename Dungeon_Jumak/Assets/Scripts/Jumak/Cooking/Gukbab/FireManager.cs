@@ -44,6 +44,9 @@ public class FireManager : MonoBehaviour
     [Header("불 이미지")]
     [SerializeField] private Image fireImage;
 
+    [Header("불 오브젝트")]
+    [SerializeField] private Transform fireObject;
+
     //Fire Image Decrease Rate
     [Header("불 이미지 감소 비율")]
     [SerializeField] private float decreaseRate;
@@ -74,6 +77,7 @@ public class FireManager : MonoBehaviour
     {
         //Rescale fire image
         fireImage.transform.localScale = Vector3.one * (fireSize / 100f);
+        fireObject.localScale = Vector3.one * (fireSize / 333f);
 
         //Update fire size text
         fireSizeTMP.text = Mathf.FloorToInt(fireSize) + "%";

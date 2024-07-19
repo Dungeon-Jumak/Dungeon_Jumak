@@ -110,6 +110,9 @@ public class JumakScene : BaseScene
     [Header("레벨 텍스트")]
     [SerializeField] private TextMeshProUGUI levelText;
 
+    [Header("나가기 텍스트")]
+    [SerializeField] private GameObject outText;
+
     //Data
     private Data data;
 
@@ -289,6 +292,8 @@ public class JumakScene : BaseScene
     {
         //Change start sign
         start = true;
+
+        outText.SetActive(false);
 
         //Time System
         data.timeNum++;

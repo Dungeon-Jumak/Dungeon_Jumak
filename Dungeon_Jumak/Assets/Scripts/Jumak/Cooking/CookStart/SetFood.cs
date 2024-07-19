@@ -89,6 +89,9 @@ public class SetFood : MonoBehaviour
     [Header("주막 출입구 버튼")]
     [SerializeField] private Button exitButton;
 
+    [Header("파전 미니게임 매니저")]
+    [SerializeField] private PaJeonManager pajeonManager;
+
     //Init Data
     private int[] initIngredient;
 
@@ -273,7 +276,7 @@ public class SetFood : MonoBehaviour
             wantCookingFood++;
 
             if (wantCookingFood > maxCookCount)
-                wantCookingFood = 0;
+                wantCookingFood = 1;
         }
     }
 
@@ -286,7 +289,7 @@ public class SetFood : MonoBehaviour
             //decrease want cooking food count
             wantCookingFood--;
 
-            if (wantCookingFood < 0)
+            if (wantCookingFood < 1)
                 wantCookingFood = maxCookCount;
         }
     }
@@ -313,6 +316,8 @@ public class SetFood : MonoBehaviour
                 //Button Blocking
                 ButtonBlocker();
 
+                confirmImagesInFrame[0].color = new Color(1, 1, 1, 1);
+
                 //Update Confirm Image in Frame
                 confirmImagesInFrame[0].sprite = gukbabs[foodIndex].foodImage.sprite;
 
@@ -325,10 +330,16 @@ public class SetFood : MonoBehaviour
                 {
                     //Subtract Ingredient
                     SubIngredient();
+
+                    pajeonManager.curRemainPajeonCount = wantCookingFood;
+
+                    pajeonManager.paJeonPrefab = pajeonsPrefabs[foodIndex];
                 }
 
                 //Button Blocking
                 ButtonBlocker();
+
+                confirmImagesInFrame[1].color = new Color(1, 1, 1, 1);
 
                 //Update Confirm Image in Frame
                 confirmImagesInFrame[1].sprite = pajeons[foodIndex].foodImage.sprite;
@@ -346,6 +357,8 @@ public class SetFood : MonoBehaviour
 
                 //Button Blocking
                 ButtonBlocker();
+
+                confirmImagesInFrame[2].color = new Color(1, 1, 1, 1);
 
                 //Update Confirm Image in Frame
                 confirmImagesInFrame[2].sprite = riceJuices[foodIndex].foodImage.sprite;
@@ -375,7 +388,13 @@ public class SetFood : MonoBehaviour
                 for (int i = 0; i < data.ingredient.Length; i++)
                 {
                     if (gukbabs[foodIndex].needIngredients[i] <= data.ingredient[i])
+                    {
+                        if (wantCookingFood > maxCookCount)
+                        {
+                            wantCookingFood = maxCookCount;
+                        }
                         data.ingredient[i] -= gukbabs[foodIndex].needIngredients[i] * wantCookingFood;
+                    }
                 }
                 break;
 
@@ -383,7 +402,14 @@ public class SetFood : MonoBehaviour
                 for (int i = 0; i < data.ingredient.Length; i++)
                 {
                     if (pajeons[foodIndex].needIngredients[i] <= data.ingredient[i])
+                    {
+                        if (wantCookingFood > maxCookCount)
+                        {
+                            wantCookingFood = maxCookCount;
+                        }
                         data.ingredient[i] -= pajeons[foodIndex].needIngredients[i] * wantCookingFood;
+                    }
+
                 }
                 break;
 
@@ -391,7 +417,13 @@ public class SetFood : MonoBehaviour
                 for (int i = 0; i < data.ingredient.Length; i++)
                 {
                     if (riceJuices[foodIndex].needIngredients[i] <= data.ingredient[i])
+                    {
+                        if (wantCookingFood > maxCookCount)
+                        {
+                            wantCookingFood = maxCookCount;
+                        }
                         data.ingredient[i] -= riceJuices[foodIndex].needIngredients[i] * wantCookingFood;
+                    }
                 }
                 break;
         }

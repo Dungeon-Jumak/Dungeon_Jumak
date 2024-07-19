@@ -31,7 +31,7 @@ public class SetMenu : MonoBehaviour
 
     //Max Can Cook Count
     [Header("최대 요리 가능 갯수")]
-    public int maxCookCount;
+    public int maxCookCount = 0;
 
     //TMP of Having Ingredient
     [Header("갖고 있는 재료 Text")]
@@ -102,8 +102,11 @@ public class SetMenu : MonoBehaviour
                     int tempmaxCookCount = data.ingredient[i] / needIngredients[i];
 
                     //if first checking or tempmaxcount less than last max cook count, update max cook count
-                    if (i == 0 || tempmaxCookCount < maxCookCount)
-                        maxCookCount = tempmaxCookCount;
+                    if (i == 0 || tempmaxCookCount > maxCookCount)
+                    {
+                        if (tempmaxCookCount > 99) maxCookCount = 99;
+                        else maxCookCount = tempmaxCookCount;
+                    }
 
                     //change text color => if enough ingredient, color is black
                     color = Color.black;

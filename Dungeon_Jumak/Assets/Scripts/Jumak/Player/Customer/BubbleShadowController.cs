@@ -20,6 +20,8 @@ public class BubbleShadowController : MonoBehaviour
     [Header("OrderMenu")]
     [SerializeField] private OrderMenu orderMenu;
 
+    Data data;
+
     //Jumak Scene
     private JumakScene jumakScene;
 
@@ -34,6 +36,8 @@ public class BubbleShadowController : MonoBehaviour
 
     private void Start()
     {
+        data = DataManager.Instance.data;
+
         //Initialize duration
         fadeInDuration = 12f;
 
@@ -78,7 +82,7 @@ public class BubbleShadowController : MonoBehaviour
         transform.localPosition = new Vector3(transform.localPosition.x, newY, transform.localPosition.z);
 
         //If Time Out
-        if (timer >= fadeInDuration)
+        if (timer >= fadeInDuration && !jumakScene.pause)
         {
             //Call OrderMenu's TimeOut() Method
             orderMenu.TimeOut();

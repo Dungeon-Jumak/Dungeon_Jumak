@@ -22,8 +22,14 @@ public class PaJeonManager : MonoBehaviour
     [SerializeField] private GameObject pajeonImage;
 
     //Pajeon Prefab
+    [Header("손에 들 기본 파전 프리팹")]
+    [SerializeField] GameObject basePaJeonPrefab;
+
     [Header("손에 들 파전 프리팹")]
-    [SerializeField] GameObject PaJeonPrefab;
+    public GameObject paJeonPrefab;
+
+    [Header("남은 파전 요리의 갯수")]
+    public int curRemainPajeonCount;
 
     //Location Transform Array for place arrowDirections
     [Header("화살표 배치를 위한 위치 트랜스폼 배열")]
@@ -32,9 +38,6 @@ public class PaJeonManager : MonoBehaviour
     //Player's Hand
     [Header("파전을 들 플레이어 손 오브젝트")]
     [SerializeField] private Transform playerHand;
-
-    //Jumak Scene Script
-    private JumakScene jumakScene;
 
     //Drage Start Position
     private Vector3 dragStartPosition;
@@ -54,12 +57,6 @@ public class PaJeonManager : MonoBehaviour
     //isPlaying sign
     private bool isPlaying = false;
     #endregion
-
-    private void Start()
-    {
-        //Get Component
-        jumakScene = FindObjectOfType<JumakScene>();
-    }
 
     void Update()
     {
@@ -94,6 +91,8 @@ public class PaJeonManager : MonoBehaviour
 
         //Initialize Drag Start Position
         dragStartPosition = Vector3.zero;
+
+        //Instantiate pajeon prefab
 
         //Random Gen
         RandomArrowGenerator();
@@ -137,12 +136,17 @@ public class PaJeonManager : MonoBehaviour
             //if success
             if (currentIndex >= arrowNums.Length)
             {
+
+                if (curRemainPajeonCount <= 0)
+                    paJeonPrefab = basePaJeonPrefab;
+
+                curRemainPajeonCount--;
+
                 GameManager.Sound.Play("[S] MiniGame Success", Define.Sound.Effect, false);
 
                 isPlaying = false;
 
-                //Instantiate pajeon prefab
-                GameObject newPajeonPrefab = Instantiate(PaJeonPrefab, playerHand.position, Quaternion.identity);
+                GameObject newPajeonPrefab = Instantiate(paJeonPrefab, playerHand.position, Quaternion.identity);
 
                 //Get PlayerServing
                 PlayerServing playerServing = GameObject.Find("Chr_Player").GetComponent<PlayerServing>();

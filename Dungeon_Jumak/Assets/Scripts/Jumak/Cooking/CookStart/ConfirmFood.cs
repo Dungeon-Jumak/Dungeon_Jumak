@@ -16,39 +16,30 @@ public class ConfirmFood : MonoBehaviour
     [Header("원하는 음식 조리 갯수")]
     public int wantCookingFood;
 
-    //
     [Header("국밥을 생성하는 Gukbab Generator 스크립트")]
     [SerializeField] private GukbabGenerator gukbapSetting;
 
-    //
     [Header("확정창으로 넘길 때 정보를 불러오기 위한 SetFood 스크립트")]
     [SerializeField] private SetFood setFood;
 
-    //
     [Header("확정 팝업 오브젝트")]
     [SerializeField] private GameObject confirmPopUp;
 
-    //
     [Header("음식 선택 패널 오브젝트")]
     [SerializeField] private GameObject chooseFoodPanel;
     
-    //
     [Header("게임 시작 패널 오브젝트")]
     [SerializeField] private GameObject startPanel;
 
-    //
     [Header("확정을 위한 버튼 배열")]
     [SerializeField] private Button[] confirmButtons;
 
-    //
     [Header("현재 클릭한 확정 버튼")]
     [SerializeField] private Button curConfirmButton;
 
-    //
     [Header("음식의 조리 갯수를 표시하기 위한 TMP")]
     [SerializeField] private TextMeshProUGUI countTMP;
 
-    //
     [Header("팝업 가운데 들어가는 음식 이미지")]
     [SerializeField] private Image foodImage;
 

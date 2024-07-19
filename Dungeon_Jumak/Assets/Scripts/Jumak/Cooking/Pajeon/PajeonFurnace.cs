@@ -33,6 +33,9 @@ public class PajeonFurnace : MonoBehaviour
     [Header("주막 씬 스크립트")]
     [SerializeField] private JumakScene jumakScene;
 
+    [Header("손님 스포너")]
+    [SerializeField] private CustomerSpawner customerSpawner;
+
     //To Start Pajeon MiniGame
     public void StartPajeonMiniGame()
     {
@@ -44,6 +47,10 @@ public class PajeonFurnace : MonoBehaviour
 
             //Active Black Panel
             blackPanel.SetActive(true);
+
+            customerSpawner.gameObject.SetActive(false);
+
+            jumakScene.pause = true;
 
             GameManager.Sound.Play("[S] Baking Pajeon", Define.Sound.Effect, true);
         }
@@ -63,6 +70,10 @@ public class PajeonFurnace : MonoBehaviour
 
         //InActive Black Panel
         blackPanel.gameObject.SetActive(false);
+
+        customerSpawner.gameObject.SetActive(true);
+
+        jumakScene.pause = false;
 
         GameManager.Sound.Pause("[S] Baking Pajeon", Define.Sound.Effect);
     }

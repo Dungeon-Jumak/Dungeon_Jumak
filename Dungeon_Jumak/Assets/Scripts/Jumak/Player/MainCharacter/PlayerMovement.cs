@@ -25,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("플레이어 손 오브젝트")]
     public Transform hand;
 
+    [Header("플레이어 쟁반 게임 오브젝트")]
+    [SerializeField] private SpriteRenderer jangbanSpriteRenderer;
+
     //For Distinguish Click Ui and Object
     //For Click Exception Handilng
     [Header("캔버스")]
@@ -46,10 +49,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator clickAnim;
 
     //Player Animator Component
-    private Animator animator;
-
-    //RigidBody Component
-    private Rigidbody2D rigidBody;
+    public Animator animator;
 
     //Player Serving Component for Food Serving
     private PlayerServing playerServing;
@@ -77,7 +77,6 @@ public class PlayerMovement : MonoBehaviour
 
         //Add Component
         animator = GetComponent<Animator>();
-        rigidBody = GetComponent<Rigidbody2D>();
         playerServing = GetComponent<PlayerServing>();
 
         //Initialize Location Variables
@@ -201,6 +200,8 @@ public class PlayerMovement : MonoBehaviour
                     //Change hand position
                     if (hand.localPosition.x < 0f)
                         hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
+
+                    jangbanSpriteRenderer.sortingLayerName = "Food_Down";
                     
                 }
                 //To down
@@ -213,6 +214,8 @@ public class PlayerMovement : MonoBehaviour
                     //Change hand position
                     if (hand.localPosition.x < 0f)
                         hand.localPosition = new Vector3(hand.localPosition.x * -1, hand.localPosition.y, hand.localPosition.z);
+
+                    jangbanSpriteRenderer.sortingLayerName = "Food_Up";
                 }
             }
             //left-right move
@@ -250,7 +253,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //To stop around target
-        if (Vector3.Distance(transform.position, target.transform.position) < 0.1f)
+        if (Vector3.Distance(transform.position, target.transform.position) < 0.3f)
         {
             //Changet target position to stop player
             target.transform.position = transform.position;

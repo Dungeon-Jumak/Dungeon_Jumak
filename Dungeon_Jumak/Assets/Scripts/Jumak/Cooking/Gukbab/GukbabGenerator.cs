@@ -33,6 +33,9 @@ public class GukbabGenerator : MonoBehaviour
     [Header("국밥을 배치하기 위한 인덱스 배열")]
     [SerializeField] private Transform[] idxs;
 
+    [Header("주막 씬")]
+    [SerializeField] private JumakScene jumakScene;
+
     void Start()
     {
         //Initialize Variables
@@ -41,41 +44,45 @@ public class GukbabGenerator : MonoBehaviour
 
     void Update()
     {
-        //Check Gukbab Presence
-        CheckGukbabPresence();
-
-        // Compare GukbabCount 
-        if (fireManager.gukbabCount != previousCount)
+        if (!jumakScene.pause)
         {
-            // Only Run When gukbab count is increased
-            if (fireManager.gukbabCount > previousCount)
+            //Check Gukbab Presence
+            CheckGukbabPresence();
+
+            // Compare GukbabCount 
+            if (fireManager.gukbabCount != previousCount)
             {
-                // Get Next Index
-                int index = GetNextAvailableIndex();
-
-                // Can Add Gukbab
-                if (index != -1) 
+                // Only Run When gukbab count is increased
+                if (fireManager.gukbabCount > previousCount)
                 {
-                    //If sold out want gukbab count below zero,
-                    //change prefab to basegukbab
-                    if (wantGukbabCount <= 0) gukbabPrefab = baseGukbabPrefab;
+                    // Get Next Index
+                    int index = GetNextAvailableIndex();
 
-                    //Generate Gukbab and Place Empty Index
-                    GameObject newGukbab = Instantiate(gukbabPrefab, idxs[index].position, Quaternion.identity);
+                    // Can Add Gukbab
+                    if (index != -1)
+                    {
+                        //If sold out want gukbab count below zero,
+                        //change prefab to basegukbab
+                        if (wantGukbabCount <= 0) gukbabPrefab = baseGukbabPrefab;
 
-                    //If Want gukbab count greater than zero, decrease count
-                    if(wantGukbabCount > 0) wantGukbabCount--; 
+                        //Generate Gukbab and Place Empty Index
+                        GameObject newGukbab = Instantiate(gukbabPrefab, idxs[index].position, Quaternion.identity);
 
-                    //Change parent of newgukbab object
-                    newGukbab.transform.parent = transform;
+                        //If Want gukbab count greater than zero, decrease count
+                        if (wantGukbabCount > 0) wantGukbabCount--;
 
-                    //Place Index Convert true
-                    gukbabList[index] = true;
+                        //Change parent of newgukbab object
+                        newGukbab.transform.parent = transform;
+
+                        //Place Index Convert true
+                        gukbabList[index] = true;
+                    }
                 }
+                //Update previousCount
+                previousCount = fireManager.gukbabCount;
             }
-            //Update previousCount
-            previousCount = fireManager.gukbabCount;
         }
+
     }
 
     // Find Next Index

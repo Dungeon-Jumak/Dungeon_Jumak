@@ -20,17 +20,14 @@ public class FireFurnace : MonoBehaviour
     [Header("블랙 패널")]
     [SerializeField] private GameObject blackPanel;
 
-    //Player
-    private PlayerMovement player;
-
     //Jumak Scene
     private JumakScene jumakScene;
+
+    [SerializeField] private CustomerSpawner customerSpawner;
 
 
     private void Start()
     {
-        //Get Component
-        player = FindObjectOfType<PlayerMovement>();
         jumakScene = FindObjectOfType<JumakScene>();
     }
 
@@ -42,6 +39,10 @@ public class FireFurnace : MonoBehaviour
         //Active Black Panel
         blackPanel.SetActive(true);
 
+        customerSpawner.gameObject.SetActive(false);
+
+        jumakScene.pause = true;
+
         //Active Popup
         fireMiniGamePopup.SetActive(true);
     }
@@ -50,6 +51,10 @@ public class FireFurnace : MonoBehaviour
     {
         //Inactive Black Panel
         blackPanel.SetActive(false);
+
+        customerSpawner.gameObject.SetActive(true);
+
+        jumakScene.pause = false;
 
         //Inactive Popup
         fireMiniGamePopup.SetActive(false);
