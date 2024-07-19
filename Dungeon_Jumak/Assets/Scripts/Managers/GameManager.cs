@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
 
     private void LevelSystem()
     {
-        if (SceneManager.GetActiveScene().name != "StartScene")
+        if (SceneManager.GetActiveScene().name != "StartScene" && SceneManager.GetActiveScene().name != "Map")
         {
             if (levelObj == null)
             {
