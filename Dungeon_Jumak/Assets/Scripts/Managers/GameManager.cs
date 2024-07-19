@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
         {
             if (xpObj == null)
             {
-                xpObj = GameObject.Find("[Slider] XpSlider");
+                xpObj = GameObject.Find("[Slider] Xp");
 
                 if (xpObj != null)
                     xpObj.GetComponent<Slider>().value = data.curXP / data.maxXP;

@@ -29821,7 +29821,7 @@ GameObject:
   - component: {fileID: 1404613591}
   - component: {fileID: 1404613592}
   m_Layer: 5
-  m_Name: '[Slider] XpSlider'
+  m_Name: '[Slider] Xp'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
