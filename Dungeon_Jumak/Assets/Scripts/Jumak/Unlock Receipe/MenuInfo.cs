@@ -24,9 +24,6 @@ public class MenuInfo : MonoBehaviour
     [Header("레시피 구매 확정 팝업")]
     [SerializeField] private GameObject confirmBuyPopUp;
 
-    [Header("레시미 구매 확정 팝업 텍스트")]
-    [SerializeField] private Text confirmText;
-
     [Header("레시피 구매 확정 팝업 확인 버튼")]
     [SerializeField] private Button buttonOfConfirmPopUp;
 
@@ -96,8 +93,6 @@ public class MenuInfo : MonoBehaviour
             blackFrontPanel.SetActive(true);
 
             confirmBuyPopUp.SetActive(true);
-
-            confirmText.text = menuName.ToString() + " 레시피를 구매하겠습니까?";
 
             buttonOfConfirmPopUp.onClick.AddListener(ConfrimUnlcokMenu);
         }
