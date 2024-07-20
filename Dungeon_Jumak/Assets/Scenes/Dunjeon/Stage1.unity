@@ -10241,7 +10241,7 @@ MonoBehaviour:
   knockBack: 30
   speed: 0
   canSkill: 1
-  coolTime: 3
+  coolTime: 2
   timer: 0
   duration: 3
   scanner: {fileID: 74237083}
