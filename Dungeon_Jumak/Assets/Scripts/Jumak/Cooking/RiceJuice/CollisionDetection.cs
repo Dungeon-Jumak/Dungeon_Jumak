@@ -146,7 +146,7 @@ public class CollisionDetection : MonoBehaviour
         //Check Collision : Correct
         if (kettleCollider.IsTouching(checkAreaCollider))
         {
-            GameManager.Sound.Play("[S] MiniGame Success", Define.Sound.Effect, false);
+            GameManager.Sound.Play("SFX/Jumak/[S] MiniGame Success", Define.Sound.Effect, false);
 
             //Success Animation
             successAni.SetTrigger("notice");
@@ -163,7 +163,7 @@ public class CollisionDetection : MonoBehaviour
         //Check Collision : InCorrect
         else
         {
-            GameManager.Sound.Play("[S] MiniGame Failure", Define.Sound.Effect, false);
+            GameManager.Sound.Play("SFX/Jumak/[S] MiniGame Failure", Define.Sound.Effect, false);
 
             //Failure Animation
             failureAni.SetTrigger("notice");

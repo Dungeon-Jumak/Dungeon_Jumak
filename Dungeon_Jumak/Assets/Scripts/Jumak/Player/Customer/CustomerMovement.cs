@@ -462,8 +462,8 @@ public class CustomerMovement : MonoBehaviour
     public void EatAndLeave()
     {
         if (!data.menuCategories[seatIndex].Equals("RiceJuice"))
-            GameManager.Sound.Pause("[S] Eating Gukbab", Define.Sound.Effect);
-        else GameManager.Sound.Pause("[S] Drink RiceJuice", Define.Sound.Effect);
+            GameManager.Sound.Pause("SFX/Jumak/[S] Eating Gukbab", Define.Sound.Effect);
+        else GameManager.Sound.Pause("SFX/Jumak/[S] Drink RiceJuice", Define.Sound.Effect);
 
         //Play Stand Animation on seat
         animator.SetBool("isEat", false);

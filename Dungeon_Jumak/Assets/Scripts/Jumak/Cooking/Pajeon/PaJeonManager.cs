@@ -142,7 +142,7 @@ public class PaJeonManager : MonoBehaviour
 
                 curRemainPajeonCount--;
 
-                GameManager.Sound.Play("[S] MiniGame Success", Define.Sound.Effect, false);
+                GameManager.Sound.Play("SFX/Jumak/[S] MiniGame Success", Define.Sound.Effect, false);
 
                 isPlaying = false;
 
@@ -176,7 +176,7 @@ public class PaJeonManager : MonoBehaviour
 
     public void Fail()
     {
-        GameManager.Sound.Play("[S] MiniGame Failure", Define.Sound.Effect, false);
+        GameManager.Sound.Play("SFX/Jumak/[S] MiniGame Failure", Define.Sound.Effect, false);
 
         isPlaying = false;
 

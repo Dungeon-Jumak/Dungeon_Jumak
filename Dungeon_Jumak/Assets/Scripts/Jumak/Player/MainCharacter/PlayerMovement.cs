@@ -90,8 +90,8 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("dirY", -1f);
 
         //Sound Setting
-        GameManager.Sound.Play("[S] Walk Sound1", Define.Sound.Effect, true);
-        GameManager.Sound.Pause("[S] Walk Sound1", Define.Sound.Effect);
+        GameManager.Sound.Play("SFX/Jumak/[S] Walk Sound1", Define.Sound.Effect, true);
+        GameManager.Sound.Pause("SFX/Jumak/[S] Walk Sound1", Define.Sound.Effect);
 
         isPlayingSound = false;
     }
@@ -180,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 isPlayingSound = true;
 
-                GameManager.Sound.Resume("[S] Walk Sound1", Define.Sound.Effect);
+                GameManager.Sound.Resume("SFX/Jumak/[S] Walk Sound1", Define.Sound.Effect);
             }
 
 
@@ -244,7 +244,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            GameManager.Sound.Pause("[S] Walk Sound1", Define.Sound.Effect);
+            GameManager.Sound.Pause("SFX/Jumak/[S] Walk Sound1", Define.Sound.Effect);
 
             isPlayingSound = false;
         }

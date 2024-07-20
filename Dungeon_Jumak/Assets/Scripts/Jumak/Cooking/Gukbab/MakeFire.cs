@@ -31,7 +31,7 @@ public class MakeFire : MonoBehaviour
             //detect third touch, data.fireSize less than 100
             if (touchCount % 3 == 0 && fireManager.fireSize <= 100)
             {
-                GameManager.Sound.Play("[S] Make Fire", Define.Sound.Effect, false);
+                GameManager.Sound.Play("SFX/Jumak/[S] Make Fire", Define.Sound.Effect, false);
 
                 //Increase Fire
                 fireManager.fireSize += fireIncreaseRate;

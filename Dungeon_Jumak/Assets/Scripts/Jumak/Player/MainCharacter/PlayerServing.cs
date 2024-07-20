@@ -65,9 +65,6 @@ public class PlayerServing : MonoBehaviour
     //Method of DataInitialize
     public void DataInitialize()
     {
-        //Debug Log Initial Table
-        Debug.Log("모든 테이블이 초기화 됩니다.");
-
         //Initialize Customer Count 
         data.customerHeadCount = 0;
 
@@ -99,7 +96,7 @@ public class PlayerServing : MonoBehaviour
     public void PickUpFood(GameObject foodObject)
     {
         //Play Sound
-        GameManager.Sound.Play("[S] Pick Up Food", Define.Sound.Effect, false);
+        GameManager.Sound.Play("SFX/Jumak/[S] Pick Up Food", Define.Sound.Effect, false);
 
         //Enable Move Stop when Pickup fdood
         moveStop = true;
@@ -175,7 +172,7 @@ public class PlayerServing : MonoBehaviour
                 // check customer is sitting table and check categori of menu
                 if (tableObject.transform == tables[i] && !data.onTables[i] && data.isCustomer[i] && menuCategory.Contains(data.menuCategories[i]))
                 {
-                    GameManager.Sound.Play("[S] Place Food", Define.Sound.Effect, false);
+                    GameManager.Sound.Play("SFX/Jumak/[S] Place Food", Define.Sound.Effect, false);
 
                     // Stop Player Movement
                     moveStop = true;
