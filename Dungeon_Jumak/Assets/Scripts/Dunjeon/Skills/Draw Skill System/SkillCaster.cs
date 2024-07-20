@@ -160,7 +160,7 @@ public class SkillCaster : MonoBehaviour
         {
             canSkill = false;
 
-            GameManager.Sound.Play("[S] Fire Ball", Define.Sound.Effect, false);
+            GameManager.Sound.Play("SFX/Dunjeon/[S] Fire Ball", Define.Sound.Effect, false);
 
             //Hide Skill Image
             hideImage.gameObject.SetActive(true);
@@ -200,7 +200,7 @@ public class SkillCaster : MonoBehaviour
         {
             canSkill = false;
 
-            GameManager.Sound.Play("[S] Fire Shield", Define.Sound.Effect, false);
+            GameManager.Sound.Play("SFX/Dunjeon/[S] Fire Shield", Define.Sound.Effect, false);
             Batch();
         }
     }

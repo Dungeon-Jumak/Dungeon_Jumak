@@ -83,7 +83,7 @@ public class PlayerHPController : MonoBehaviour
         if (currentHP > 0)
         {
             // Live : Add Animation
-            GameManager.Sound.Play("[S] Player Hit", Define.Sound.Effect, false);
+            GameManager.Sound.Play("SFX/Dunjeon/[S] Player Hit", Define.Sound.Effect, false);
         }
         else
         {

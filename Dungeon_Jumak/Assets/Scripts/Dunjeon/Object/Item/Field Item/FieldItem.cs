@@ -43,6 +43,8 @@ public class FieldItem : MonoBehaviour
         if (!collision.CompareTag("Player"))
             return;
 
+        GameManager.Sound.Play("SFX/Dunjeon/[S] Pick Up Item", Define.Sound.Effect, false);
+
         //Active item
         magnetic.Play();
 

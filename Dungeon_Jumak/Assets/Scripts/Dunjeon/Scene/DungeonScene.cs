@@ -121,7 +121,7 @@ public class DungeonScene : BaseScene
             //Level Up
             data.curPlayerLV++;
 
-            GameManager.Sound.Play("[S] Level Up", Define.Sound.Effect, false);
+            GameManager.Sound.Play("Dunjeon/[S] Level Up", Define.Sound.Effect, false);
 
             data.curXP = data.curXP - data.maxXP;
 
