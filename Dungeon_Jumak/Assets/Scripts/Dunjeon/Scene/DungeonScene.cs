@@ -129,10 +129,10 @@ public class DungeonScene : BaseScene
             data.maxXP *= 5;
         }
 
-        if (lastXP < data.curXP)
-        {
-            xpText.text = data.curXP.ToString() + " / " + data.maxXP.ToString();
-        }
+        //if (lastXP < data.curXP)
+        //{
+        //    xpText.text = data.curXP.ToString() + " / " + data.maxXP.ToString();
+        //}
     }
 
     public void GameClear()

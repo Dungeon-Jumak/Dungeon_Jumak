@@ -8111,7 +8111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.057000004, y: 0.81100005}
   m_AnchorMax: {x: 0.155, y: 0.86}
-  m_AnchoredPosition: {x: 174.00002, y: 2.5}
+  m_AnchoredPosition: {x: 174.00003, y: 2.5}
   m_SizeDelta: {x: -0.8000263, y: 2}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &382198629
@@ -12955,7 +12955,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 952196436}
   m_HandleRect: {fileID: 0}
@@ -15572,7 +15572,6 @@ MonoBehaviour:
   unlockPrice: 300
   canNotBuyPopUp: {fileID: 63407283}
   confirmBuyPopUp: {fileID: 1601824210}
-  confirmText: {fileID: 0}
   buttonOfConfirmPopUp: {fileID: 338030463}
   blackFrontPanel: {fileID: 2019125319}
   objs:
@@ -18783,7 +18782,6 @@ MonoBehaviour:
   unlockPrice: 300
   canNotBuyPopUp: {fileID: 63407283}
   confirmBuyPopUp: {fileID: 1601824210}
-  confirmText: {fileID: 0}
   buttonOfConfirmPopUp: {fileID: 338030463}
   blackFrontPanel: {fileID: 2019125319}
   objs:
@@ -19174,6 +19172,7 @@ GameObject:
   - component: {fileID: 981342308}
   - component: {fileID: 981342307}
   - component: {fileID: 981342306}
+  - component: {fileID: 981342309}
   m_Layer: 5
   m_Name: '[Pop Up] Pajeon MiniGame'
   m_TagString: UI
@@ -19245,6 +19244,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000001899898, y: 0.000000007450581}
   m_SizeDelta: {x: 1047, y: 1749}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &981342309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981342305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43fc07147d9d6464ea07151453b371c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pajeonSR: {fileID: 6095327}
+  pajeonManager: {fileID: 120909772}
 --- !u!1 &987597049
 GameObject:
   m_ObjectHideFlags: 0
@@ -24180,7 +24193,6 @@ MonoBehaviour:
   unlockPrice: 700
   canNotBuyPopUp: {fileID: 63407283}
   confirmBuyPopUp: {fileID: 1601824210}
-  confirmText: {fileID: 0}
   buttonOfConfirmPopUp: {fileID: 338030463}
   blackFrontPanel: {fileID: 2019125319}
   objs:
@@ -28992,7 +29004,6 @@ MonoBehaviour:
   unlockPrice: 100
   canNotBuyPopUp: {fileID: 63407283}
   confirmBuyPopUp: {fileID: 1601824210}
-  confirmText: {fileID: 0}
   buttonOfConfirmPopUp: {fileID: 338030463}
   blackFrontPanel: {fileID: 2019125319}
   objs:
@@ -31943,7 +31954,6 @@ MonoBehaviour:
   unlockPrice: 200
   canNotBuyPopUp: {fileID: 63407283}
   confirmBuyPopUp: {fileID: 1601824210}
-  confirmText: {fileID: 0}
   buttonOfConfirmPopUp: {fileID: 338030463}
   blackFrontPanel: {fileID: 2019125319}
   objs:
@@ -32193,7 +32203,6 @@ MonoBehaviour:
   unlockPrice: 300
   canNotBuyPopUp: {fileID: 63407283}
   confirmBuyPopUp: {fileID: 1601824210}
-  confirmText: {fileID: 0}
   buttonOfConfirmPopUp: {fileID: 338030463}
   blackFrontPanel: {fileID: 2019125319}
   objs:
@@ -42402,7 +42411,6 @@ GameObject:
   - component: {fileID: 2121816118}
   - component: {fileID: 2121816115}
   - component: {fileID: 2121816117}
-  - component: {fileID: 2121816116}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -42453,18 +42461,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &2121816116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121816114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f969137a8ebb4134891443d8c80c4613, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!81 &2121816117
 AudioListener:
   m_ObjectHideFlags: 0
