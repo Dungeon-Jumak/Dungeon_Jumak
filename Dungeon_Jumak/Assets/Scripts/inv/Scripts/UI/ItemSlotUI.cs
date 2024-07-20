@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 namespace DJ.InventorySystem
 {
@@ -16,7 +17,7 @@ namespace DJ.InventorySystem
         [SerializeField] private Image iconImage;
 
         [Header("아이템 개수 표시 텍스트")]
-        [SerializeField] private Text amountText;
+        [SerializeField] private TextMeshProUGUI amountText;
 
         [Space]
 

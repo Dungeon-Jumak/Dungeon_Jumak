@@ -8,10 +8,10 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class DropItem : MonoBehaviour
 {
-    [Header("µå¶ø ¾ÆÀÌÅÛ ÀÌ¸§ (È®ÀÎ¿ë")]
+    [Header("ë“œë ì•„ì´í…œ ì´ë¦„ (í™•ì¸ìš©")]
     [SerializeField] private string _name;
 
-    [Header("µå¶ø ¾ÆÀÌÅÛ ID = Data ID")]
+    [Header("ë“œë ì•„ì´í…œ ID = Data ID")]
     [SerializeField] private int id;
 
     private Data data;

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54dc616d8cbcfa74fa0dc62d7a0043c7, type: 3}
-  m_Name: Item_Ingredients_Pig
+  m_Name: Item_Ingredients_Buchu
   m_EditorClassIdentifier: 
-  _id: 1
-  _name: "\uB3FC\uC9C0\uACE0\uAE30"
-  _tooltip: "\uBB34\uB824 1++"
-  _iconSprite: {fileID: 21300000, guid: dd3f79dbbaf41f0469a34aabd90e171c, type: 3}
+  _id: 2
+  _name: "\uBD80\uCD94"
+  _tooltip: "\uC2E0\uC120 \uADF8 \uC7A1\uCC44"
+  _iconSprite: {fileID: 21300000, guid: 91a294b80515fee40974568d23f23529, type: 3}
   _maxAmount: 99
   _value: 0

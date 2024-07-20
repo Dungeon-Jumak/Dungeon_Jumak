@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class HouseScene : BaseScene
 {
+    [SerializeField]
+    private GameObject Inventory;
+
+    private void Start()
+    {
+        Inventory.gameObject.SetActive(false);
+    }
+
     protected override void Init()
     {
         SceneType = Define.Scene.House;

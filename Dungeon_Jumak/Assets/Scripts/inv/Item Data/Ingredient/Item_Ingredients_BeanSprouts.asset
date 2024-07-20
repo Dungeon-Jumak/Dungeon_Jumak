@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54dc616d8cbcfa74fa0dc62d7a0043c7, type: 3}
+  m_Name: Item_Ingredients_BeanSprouts
+  m_EditorClassIdentifier: 
+  _id: 3
+  _name: "\uCF69\uB098\uBB3C"
+  _tooltip: 
+  _iconSprite: {fileID: 21300000, guid: 2ad2f0282abb5814993dd433e1727831, type: 3}
+  _maxAmount: 99
+  _value: 0
