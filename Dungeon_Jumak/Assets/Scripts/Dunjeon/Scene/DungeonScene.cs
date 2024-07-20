@@ -30,20 +30,27 @@ public class DungeonScene : BaseScene
     [Header("게임오버 팝업")]
     [SerializeField] private GameObject gameClear;
 
+    [Header("타임오버 팝업")]
+    [SerializeField] private GameObject timeOut;
+
     [Header("던전 배경 밤 레이어")]
     [SerializeField] private GameObject dunNightImg;
 
     [Header("헤더 밤 레이어")]
     [SerializeField] private GameObject headerNightImg;
 
-    private float currentTimer;
+    [SerializeField] private float currentTimer;
 
     private float lastXP;
+
+    private bool isStop;
 
     private Data data;
 
     private void Start()
     {
+        isStop = false;
+
         //Get Data
         data = DataManager.Instance.data;
 
@@ -65,6 +72,58 @@ public class DungeonScene : BaseScene
 
         //BGM
         GameManager.Sound.Play("BGM/[B] Dungeon Stage1", Define.Sound.Bgm);
+    }
+
+    private void Update()
+    {
+        if (currentTimer > 0 && !isStop)
+        {
+            //Timer
+            currentTimer -= Time.deltaTime;
+        }
+
+        if (currentTimer <= 0 && !isStop)
+        {
+            isStop = true;
+            TimeOut();
+        }
+
+        //Update Timer Value
+        timerSlider.value = currentTimer / maxTimer;
+        //Update Xp Value
+        xpSlider.value = data.curXP / data.maxXP;
+
+        LevelUp();
+    }
+
+    private void LevelUp()
+    {
+        if (data.curXP >= data.maxXP)
+        {
+            //Level Up
+            data.curPlayerLV++;
+
+            GameManager.Sound.Play("Dunjeon/[S] Level Up", Define.Sound.Effect, false);
+
+            data.curXP = data.curXP - data.maxXP;
+
+            //Update Max XP
+            data.maxXP *= 5;
+        }
+
+        //if (lastXP < data.curXP)
+        //{
+        //    xpText.text = data.curXP.ToString() + " / " + data.maxXP.ToString();
+        //}
+    }
+
+    public void TimeOut()
+    {
+        //Stop
+        Time.timeScale = 0f;
+
+        //Pop Up
+        timeOut.SetActive(true);
 
         //Time System
         data.timeNum++;
@@ -94,45 +153,6 @@ public class DungeonScene : BaseScene
                 }
             }
         }
-    }
-
-    private void Update()
-    {
-        if (currentTimer <= 0)
-        {
-            currentTimer = 0f;
-        }
-
-        //Timer
-        currentTimer -= Time.deltaTime;
-
-        //Update Timer Value
-        timerSlider.value = currentTimer / maxTimer;
-        //Update Xp Value
-        xpSlider.value = data.curXP / data.maxXP;
-
-        LevelUp();
-    }
-
-    private void LevelUp()
-    {
-        if (data.curXP >= data.maxXP)
-        {
-            //Level Up
-            data.curPlayerLV++;
-
-            GameManager.Sound.Play("Dunjeon/[S] Level Up", Define.Sound.Effect, false);
-
-            data.curXP = data.curXP - data.maxXP;
-
-            //Update Max XP
-            data.maxXP *= 5;
-        }
-
-        //if (lastXP < data.curXP)
-        //{
-        //    xpText.text = data.curXP.ToString() + " / " + data.maxXP.ToString();
-        //}
     }
 
     public void GameClear()
