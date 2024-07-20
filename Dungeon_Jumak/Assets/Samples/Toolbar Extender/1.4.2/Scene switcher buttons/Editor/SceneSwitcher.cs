@@ -60,6 +60,11 @@ namespace UnityToolbarExtender.Examples
                 SceneHelper.OpenScene("Map", 1);
             }
 
+            if (GUILayout.Button(new GUIContent("Stage1", "Stage1 Scene")))
+            {
+                SceneHelper.OpenScene("Stage1", 1);
+            }
+
             if (GUILayout.Button(new GUIContent("Jumak", "Jumak Scene")))
             {
                 SceneHelper.OpenScene("Jumak", 2);

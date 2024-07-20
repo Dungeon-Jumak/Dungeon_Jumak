@@ -12955,7 +12955,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 952196436}
   m_HandleRect: {fileID: 0}
@@ -15572,7 +15572,6 @@ MonoBehaviour:
   unlockPrice: 300
   canNotBuyPopUp: {fileID: 63407283}
   confirmBuyPopUp: {fileID: 1601824210}
-  confirmText: {fileID: 0}
   buttonOfConfirmPopUp: {fileID: 338030463}
   blackFrontPanel: {fileID: 2019125319}
   objs:
@@ -18783,7 +18782,6 @@ MonoBehaviour:
   unlockPrice: 300
   canNotBuyPopUp: {fileID: 63407283}
   confirmBuyPopUp: {fileID: 1601824210}
-  confirmText: {fileID: 0}
   buttonOfConfirmPopUp: {fileID: 338030463}
   blackFrontPanel: {fileID: 2019125319}
   objs:
@@ -24195,7 +24193,6 @@ MonoBehaviour:
   unlockPrice: 700
   canNotBuyPopUp: {fileID: 63407283}
   confirmBuyPopUp: {fileID: 1601824210}
-  confirmText: {fileID: 0}
   buttonOfConfirmPopUp: {fileID: 338030463}
   blackFrontPanel: {fileID: 2019125319}
   objs:
@@ -29007,7 +29004,6 @@ MonoBehaviour:
   unlockPrice: 100
   canNotBuyPopUp: {fileID: 63407283}
   confirmBuyPopUp: {fileID: 1601824210}
-  confirmText: {fileID: 0}
   buttonOfConfirmPopUp: {fileID: 338030463}
   blackFrontPanel: {fileID: 2019125319}
   objs:
@@ -31958,7 +31954,6 @@ MonoBehaviour:
   unlockPrice: 200
   canNotBuyPopUp: {fileID: 63407283}
   confirmBuyPopUp: {fileID: 1601824210}
-  confirmText: {fileID: 0}
   buttonOfConfirmPopUp: {fileID: 338030463}
   blackFrontPanel: {fileID: 2019125319}
   objs:
@@ -32208,7 +32203,6 @@ MonoBehaviour:
   unlockPrice: 300
   canNotBuyPopUp: {fileID: 63407283}
   confirmBuyPopUp: {fileID: 1601824210}
-  confirmText: {fileID: 0}
   buttonOfConfirmPopUp: {fileID: 338030463}
   blackFrontPanel: {fileID: 2019125319}
   objs:
