@@ -101,6 +101,8 @@ public class DungeonScene : BaseScene
         if (currentTimer <= 0)
         {
             currentTimer = 0f;
+
+            GameClear();
         }
 
         //Timer

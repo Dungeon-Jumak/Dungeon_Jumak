@@ -10006,7 +10006,7 @@ MonoBehaviour:
   _name: Fire Flooring
   id: 2
   prefabId: 3
-  damage: 1
+  damage: 2
   count: 3
   per: -1
   knockBack: 0

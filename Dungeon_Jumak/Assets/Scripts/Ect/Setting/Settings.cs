@@ -99,7 +99,7 @@ public class Settings : MonoBehaviour
         //Off Toggle DeActive
         effectOffToggle.SetActive(false);
 
-        audioMixer.SetFloat("SFX", 0f);
+        audioMixer.SetFloat("SFX", -7f);
     }
 
     public void EffectOFF()
