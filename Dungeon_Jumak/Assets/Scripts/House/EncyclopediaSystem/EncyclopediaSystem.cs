@@ -12,9 +12,12 @@ public class EncyclopediaSystem : MonoBehaviour
     public FoodData[] foodDataArray;
     public SpriteRenderer[] foodImageArray;
 
+    public int MonsterID;
+    public int FoodID;
+
     private Data data;
 
-    void Start()
+    void Awake()
     {
         data = DataManager.Instance.data;
     }
@@ -46,19 +49,27 @@ public class EncyclopediaSystem : MonoBehaviour
 
     public void OnFoodRegister()
     {
-        foreach (FoodData foodData in foodDataArray)
+        for (int i = 0; i < data.unlockMenuIndex.Length; i++)
         {
-            if (foodData.unlock == true)
+            if (data.unlockMenuIndex[i] == true)
             {
-                if (foodData.foodId < foodImageArray.Length && foodData.foodId >= 0)
+                foodDataArray[i].unlock = true;
+
+                foreach (FoodData foodData in foodDataArray)
                 {
-                    foodImageArray[foodData.foodId].color = Color.white;
+                    if (foodData.unlock == true)
+                    {
+                        if (foodData.foodId < foodImageArray.Length && foodData.foodId >= 0)
+                        {
+                            foodImageArray[foodData.foodId].color = Color.white;
+                        }
+                        //break;
+                    }
+                    else
+                    {
+                        foodImageArray[foodData.foodId].color = Color.black;
+                    }
                 }
-                break;
-            }
-            else
-            {
-                foodImageArray[foodData.foodId].color = Color.black;
             }
         }
     }

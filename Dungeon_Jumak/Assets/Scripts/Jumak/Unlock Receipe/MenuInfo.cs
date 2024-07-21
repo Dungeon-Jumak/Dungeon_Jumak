@@ -9,34 +9,34 @@ using UnityEngine.UI;
 [DisallowMultipleComponent]
 public class MenuInfo : MonoBehaviour
 {
-    [Header("¹öÆ° ¹øÈ£ ÀÎµ¦½º")]
+    [Header("ë²„íŠ¼ ë²ˆí˜¸ ì¸ë±ìŠ¤")]
     [SerializeField] private int buttonIndex;
 
-    [Header("¸Ş´º ÀÌ¸§")]
+    [Header("ë©”ë‰´ ì´ë¦„")]
     [SerializeField] private string menuName;
 
-    [Header("¸Ş´º ÇØ±İ °¡°İ")]
+    [Header("ë©”ë‰´ í•´ê¸ˆ ê°€ê²©")]
     [SerializeField] private int unlockPrice;
 
-    [Header("±¸¸Å ºÒ°¡ ÆË¾÷")]
+    [Header("êµ¬ë§¤ ë¶ˆê°€ íŒì—…")]
     [SerializeField] private GameObject canNotBuyPopUp;
 
-    [Header("·¹½ÃÇÇ ±¸¸Å È®Á¤ ÆË¾÷")]
+    [Header("ë ˆì‹œí”¼ êµ¬ë§¤ í™•ì • íŒì—…")]
     [SerializeField] private GameObject confirmBuyPopUp;
 
-    [Header("·¹½ÃÇÇ ±¸¸Å È®Á¤ ÆË¾÷ È®ÀÎ ¹öÆ°")]
+    [Header("ë ˆì‹œí”¼ êµ¬ë§¤ í™•ì • íŒì—… í™•ì¸ ë²„íŠ¼")]
     [SerializeField] private Button buttonOfConfirmPopUp;
 
-    [Header("Black FrontÇü ÆĞ³Î")]
+    [Header("Black Frontí˜• íŒ¨ë„")]
     [SerializeField] private GameObject blackFrontPanel;
 
-    [Header("¹öÆ° ÀÌ¹ÌÁö ¹è¿­")]
+    [Header("ë²„íŠ¼ ì´ë¯¸ì§€ ë°°ì—´")]
     [SerializeField] private GameObject[] objs;
 
-    [Header("Lock ÀÌ¹ÌÁö")]
+    [Header("Lock ì´ë¯¸ì§€")]
     [SerializeField] private GameObject lockImage;
 
-    [Header("Lcok ¹öÆ°")]
+    [Header("Lcok ë²„íŠ¼")]
     [SerializeField] private GameObject lockButton;
 
 
@@ -62,7 +62,7 @@ public class MenuInfo : MonoBehaviour
             chooseButton.interactable = true;
 
             lockButton.SetActive(false);
-        }   
+        }
     }
 
 
