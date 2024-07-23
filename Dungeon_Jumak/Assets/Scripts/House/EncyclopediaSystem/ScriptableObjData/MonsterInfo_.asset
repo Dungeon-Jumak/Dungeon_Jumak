@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterId: 0
   monsterName: "\uBD80\uCD94"
-  unlock: 1
+  unlock: 0
