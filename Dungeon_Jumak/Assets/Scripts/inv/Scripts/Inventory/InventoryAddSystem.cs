@@ -10,15 +10,11 @@ public class InventoryAddSystem : MonoBehaviour
     public Inventory inventory;
 
     public ItemData[] itemDataArray;
-
-
-
     private void Awake()
     {
         data = DataManager.Instance.data;
     }
 
-    // Update is called once per frame
     void Start()
     {
         for (int i = 0; i < data.ingredient.Length; i++)

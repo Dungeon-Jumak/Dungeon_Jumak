@@ -91,6 +91,8 @@ public class Data
     public int year = 0;
 
     //--도감 관련--//
-    public int EncyclopediaIndex = 0;
+    public int encyclopediaIndex = 0;
 
+    //--마력석 관련--//
+    public int magicStone;
 }
