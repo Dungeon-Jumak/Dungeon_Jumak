@@ -10,15 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d828b2f62a1b3d84b83d3ca66faaea77, type: 3}
-  m_Name: Fire Ball
+  m_Name: '[3] Fire Flooring 4'
   m_EditorClassIdentifier: 
   _path:
-  - {x: 0, y: 0.9068826}
-  - {x: 1, y: 0.8987854}
-  - {x: 1, y: 0.093117416}
-  _scalingMode: 0
+  - {x: 0, y: 0.99559474}
+  - {x: 0.0036363637, y: 0.00440526}
+  - {x: 0.9890909, y: 0}
+  - {x: 1, y: 0.99559474}
+  - {x: 0.0036363637, y: 1}
+  _scalingMode: 1
   _editorPath:
-  - {x: 53, y: 49}
-  - {x: 300, y: 51}
-  - {x: 300, y: 250}
-  _name: FireBall
+  - {x: 76, y: 48}
+  - {x: 77, y: 273}
+  - {x: 348, y: 274}
+  - {x: 351, y: 48}
+  - {x: 77, y: 47}
+  _name: FireFlooring

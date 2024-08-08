@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d828b2f62a1b3d84b83d3ca66faaea77, type: 3}
-  m_Name: Fire Shield
+  m_Name: '[2] Fire Shield 2'
   m_EditorClassIdentifier: 
   _path:
-  - {x: 0, y: 0.9068826}
-  - {x: 0, y: 0.097166}
   - {x: 1, y: 0.093117416}
+  - {x: 0, y: 0.097166}
+  - {x: 0, y: 0.9068826}
   _scalingMode: 0
   _editorPath:
-  - {x: 53, y: 49}
-  - {x: 53, y: 249}
   - {x: 300, y: 250}
+  - {x: 53, y: 249}
+  - {x: 53, y: 49}
   _name: FireShield
