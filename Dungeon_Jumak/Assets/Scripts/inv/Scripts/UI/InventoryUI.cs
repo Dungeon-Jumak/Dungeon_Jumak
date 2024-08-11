@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
+using TMPro;
 
 namespace DJ.InventorySystem
 {
@@ -53,6 +55,14 @@ namespace DJ.InventorySystem
         [SerializeField] private Toggle toggleFilterWeapons;
         [SerializeField] private Toggle toggleFilterIngredients;
 
+        [Header("장비 패널")]
+        [SerializeField] private GameObject equipmentPanel;
+        [SerializeField] private TextMeshProUGUI equipmentNameText;
+        [SerializeField] private TextMeshProUGUI equipmentTooltipText;
+        [SerializeField] private Image newWeaponImage;  // 무기 이미지
+        [SerializeField] private Image newArmorImage;   // 갑옷 이미지
+        [SerializeField] private Button confirmButton;
+
         [Space]
         [SerializeField] private bool mouseReversed = false;
 
@@ -83,7 +93,9 @@ namespace DJ.InventorySystem
         private Vector3 beginDragCursorPoint; 
 
         private int beginDragSlotSiblingIndex;
-        
+
+        private bool CheckRaycast = true;
+
         //===인벤토리 UI 내 아이템 카테고리 옵션===//
         private enum FilterOption
         {
@@ -98,6 +110,7 @@ namespace DJ.InventorySystem
             InitSlots();
             InitButtonEvents();
             InitToggleEvents();
+            InitEquipmentPanelEvents();
         }
 
         private void Update()
@@ -107,8 +120,9 @@ namespace DJ.InventorySystem
             OnPointerEnterAndExit();
             if(showTooltip) ShowOrHideItemTooltip();
             OnPointerDown();
-            OnPointerDrag();
-            OnPointerUp();
+            //OnPointerDrag();
+            //OnPointerUp();
+            Debug.Log(beginDragSlot);
         }
 
         //===초기 설정===//
@@ -211,6 +225,11 @@ namespace DJ.InventorySystem
             }
         }
 
+        private void InitEquipmentPanelEvents()
+        {
+            confirmButton.onClick.AddListener(OnConfirmButtonClicked);
+        }
+
         private bool IsOverUI()
             => EventSystem.current.IsPointerOverGameObject();
 
@@ -287,123 +306,178 @@ namespace DJ.InventorySystem
         //===슬롯을 클릭하는 경우===//
         private void OnPointerDown()
         {
-            if (Input.GetMouseButtonDown(leftClick))
+            if (Input.GetMouseButtonDown(0) && CheckRaycast)
             {
                 beginDragSlot = RaycastAndGetFirstComponent<ItemSlotUI>();
 
-                //===아이템을 갖고 있는 슬롯인 경우===//
                 if (beginDragSlot != null && beginDragSlot.HasItem && beginDragSlot.IsAccessible)
                 {
-                    //===위치 기억===//
-                    beginDragIconTransform = beginDragSlot.IconRect.transform;
-                    beginDragIconPoint = beginDragIconTransform.position;
-                    beginDragCursorPoint = Input.mousePosition;
+                    ItemData itemData = inventory.GetItemData(beginDragSlot.Index);
 
-                    //===가장 위에 표시===//
-                    beginDragSlotSiblingIndex = beginDragSlot.transform.GetSiblingIndex();
-                    beginDragSlot.transform.SetAsLastSibling();
-
-                    //===해당 슬롯의 하이라이트 이미지를 아이콘보다 뒤에 위치===//
-                    beginDragSlot.SetHighlightOnTop(false);
+                    if (itemData is EquipmentItemData equipmentItem)
+                    {
+                        CheckRaycast = false;
+                        ShowEquipmentPanel(equipmentItem);
+                    }
+                    else
+                    {
+                        beginDragSlot = null;
+                    }
                 }
-                else
+            }
+
+            //if (Input.GetMouseButtonDown(leftClick))
+            //{
+            //    beginDragSlot = RaycastAndGetFirstComponent<ItemSlotUI>();
+
+            //    //===아이템을 갖고 있는 슬롯인 경우===//
+            //    if (beginDragSlot != null && beginDragSlot.HasItem && beginDragSlot.IsAccessible)
+            //    {
+            //        //===위치 기억===//
+            //        beginDragIconTransform = beginDragSlot.IconRect.transform;
+            //        beginDragIconPoint = beginDragIconTransform.position;
+            //        beginDragCursorPoint = Input.mousePosition;
+
+            //        //===가장 위에 표시===//
+            //        beginDragSlotSiblingIndex = beginDragSlot.transform.GetSiblingIndex();
+            //        beginDragSlot.transform.SetAsLastSibling();
+
+            //        //===해당 슬롯의 하이라이트 이미지를 아이콘보다 뒤에 위치===//
+            //        beginDragSlot.SetHighlightOnTop(false);
+            //    }
+            //    else
+            //    {
+            //        beginDragSlot = null;
+            //    }
+        }
+
+        private void ShowEquipmentPanel(EquipmentItemData equipmentItem)
+        {
+            equipmentNameText.text = equipmentItem.Name;
+            equipmentTooltipText.text = equipmentItem.Tooltip;
+            equipmentPanel.SetActive(true);
+        }
+
+        public void OnConfirmButtonClicked()
+        {
+            if (beginDragSlot != null)
+            {
+                ItemData itemData = inventory.GetItemData(beginDragSlot.Index);
+
+                if (itemData is EquipmentItemData equipmentItem)
                 {
-                    beginDragSlot = null;
+                    if (equipmentItem is WeaponItemData)
+                    {
+                        newWeaponImage.sprite = itemData.IconSprite; // Weapon의 이미지 업데이트
+                    }
+                    else if (equipmentItem is ArmorItemData)
+                    {
+                        newArmorImage.sprite = itemData.IconSprite; // Armor의 이미지 업데이트
+                    }
+
+                    equipmentPanel.SetActive(false);
+                    CheckRaycast = true;
                 }
             }
         }
+
+        public void EquimentCancel()
+        {
+            CheckRaycast = true;
+        }
+
 
         //===드래그하는 도중===//
-        private void OnPointerDrag()
-        {
-            if(beginDragSlot == null) return;
+        //private void OnPointerDrag()
+        //{
+        //    if(beginDragSlot == null) return;
 
-            if (Input.GetMouseButton(leftClick))
-            {
-                Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mouseWorldPos.z = 0f;
+        //    if (Input.GetMouseButton(leftClick))
+        //    {
+        //        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //        mouseWorldPos.z = 0f;
 
-                beginDragIconTransform.position = mouseWorldPos;
-            }
-        }
+        //        beginDragIconTransform.position = mouseWorldPos;
+        //    }
+        //}
 
         //===클릭을 뗄 경우===//
-        private void OnPointerUp()
-        {
-            if (Input.GetMouseButtonUp(leftClick))
-            {
-                if (beginDragSlot != null)
-                {
-                    //===위치 복원===//
-                    beginDragIconTransform.position = beginDragIconPoint;
+        //private void OnPointerUp()
+        //{
+        //    if (Input.GetMouseButtonUp(leftClick))
+        //    {
+        //        if (beginDragSlot != null)
+        //        {
+        //            //===위치 복원===//
+        //            beginDragIconTransform.position = beginDragIconPoint;
 
-                    //===UI 순서 복원===//
-                    beginDragSlot.transform.SetSiblingIndex(beginDragSlotSiblingIndex);
+        //            //===UI 순서 복원===//
+        //            beginDragSlot.transform.SetSiblingIndex(beginDragSlotSiblingIndex);
 
-                    //===드래그 완료===//
-                    EndDrag();
+        //            //===드래그 완료===//
+        //            EndDrag();
 
-                    //===해당 슬롯의 하이라이트 이미지를 아이콘보다 앞에 위치===//
-                    beginDragSlot.SetHighlightOnTop(true);
+        //            //===해당 슬롯의 하이라이트 이미지를 아이콘보다 앞에 위치===//
+        //            beginDragSlot.SetHighlightOnTop(true);
 
-                    //===참조 제거===//
-                    beginDragSlot = null;
-                    beginDragIconTransform = null;
-                }
-            }
-        }
+        //            //===참조 제거===//
+        //            beginDragSlot = null;
+        //            beginDragIconTransform = null;
+        //        }
+        //    }
+        //}
 
-        private void EndDrag()
-        {
-            ItemSlotUI endDragSlot = RaycastAndGetFirstComponent<ItemSlotUI>();
+        //private void EndDrag()
+        //{
+        //    ItemSlotUI endDragSlot = RaycastAndGetFirstComponent<ItemSlotUI>();
 
-            //===아이템 교환 및이동===//
-            if (endDragSlot != null && endDragSlot.IsAccessible)
-            {
-                bool isSeparation = false;
+        //    //===아이템 교환 및이동===//
+        //    if (endDragSlot != null && endDragSlot.IsAccessible)
+        //    {
+        //        bool isSeparation = false;
 
-                if(!isSeparation)
-                    TrySwapItems(beginDragSlot, endDragSlot);
+        //        if(!isSeparation)
+        //            TrySwapItems(beginDragSlot, endDragSlot);
 
-                UpdateTooltipUI(endDragSlot);
-                return;
-            }
+        //        UpdateTooltipUI(endDragSlot);
+        //        return;
+        //    }
 
-            //===버리는 기능===//
-            if (!IsOverUI())
-            {
-                //===확인 팝업 출력===//
-                int index = beginDragSlot.Index;
-                string itemName = inventory.GetItemName(index);
-                int amount = inventory.GetCurrentAmount(index);
+        //    //===버리는 기능===//
+        //    if (!IsOverUI())
+        //    {
+        //        //===확인 팝업 출력===//
+        //        int index = beginDragSlot.Index;
+        //        string itemName = inventory.GetItemName(index);
+        //        int amount = inventory.GetCurrentAmount(index);
 
-                if (amount > 1)
-                    itemName += $" x{amount}";
+        //        if (amount > 1)
+        //            itemName += $" x{amount}";
 
-                if (showRemovingPopup)
-                    popup.OpenConfirmationPopup(() => TryRemoveItem(index), itemName);
-                else
-                    TryRemoveItem(index);
-            }
-        }
+        //        if (showRemovingPopup)
+        //            popup.OpenConfirmationPopup(() => TryRemoveItem(index), itemName);
+        //        else
+        //            TryRemoveItem(index);
+        //    }
+        //}
 
-        //===인벤토리에서 아이템 제거===//
-        private void TryRemoveItem(int index)
-        {
-            inventory.Remove(index);
-        }
+        ////===인벤토리에서 아이템 제거===//
+        //private void TryRemoveItem(int index)
+        //{
+        //    inventory.Remove(index);
+        //}
 
-        //===두 슬롯의 아이템 교환===//
-        private void TrySwapItems(ItemSlotUI from, ItemSlotUI to)
-        {
-            if (from == to)
-            {
-                return;
-            }
+        ////===두 슬롯의 아이템 교환===//
+        //private void TrySwapItems(ItemSlotUI from, ItemSlotUI to)
+        //{
+        //    if (from == to)
+        //    {
+        //        return;
+        //    }
 
-            from.SwapOrMoveIcon(to);
-            inventory.Swap(from.Index, to.Index);
-        }
+        //    from.SwapOrMoveIcon(to);
+        //    inventory.Swap(from.Index, to.Index);
+        //}
 
         //===툴팁 UI 데이터 업데이트===//
         private void UpdateTooltipUI(ItemSlotUI slot)
@@ -443,7 +517,6 @@ namespace DJ.InventorySystem
         //===아이템 개수 텍스트 출력===//
         public void SetItemAmountText(int index, int amount)
         {
-            //===amount가 1 이하일 경우 텍스트 미표시===//
             slotUIList[index].SetItemAmount(amount);
         }
 

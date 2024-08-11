@@ -313,38 +313,38 @@ namespace DJ.InventorySystem
         }
 
         //=== 두 인덱스의 아이템 위치를 교체===//
-        public void Swap(int indexA, int indexB)
-        {
-            if (!IsValidIndex(indexA)) return;
-            if (!IsValidIndex(indexB)) return;
+        //public void Swap(int indexA, int indexB)
+        //{
+        //    if (!IsValidIndex(indexA)) return;
+        //    if (!IsValidIndex(indexB)) return;
 
-            Item itemA = items[indexA];
-            Item itemB = items[indexB];
+        //    Item itemA = items[indexA];
+        //    Item itemB = items[indexB];
 
-            if (itemA != null && itemB != null && itemA.Data == itemB.Data && itemA is CountableItem ciA && itemB is CountableItem ciB)
-            {
-                int maxAmount = ciB.MaxAmount;
-                int sum = ciA.Amount + ciB.Amount;
+        //    if (itemA != null && itemB != null && itemA.Data == itemB.Data && itemA is CountableItem ciA && itemB is CountableItem ciB)
+        //    {
+        //        int maxAmount = ciB.MaxAmount;
+        //        int sum = ciA.Amount + ciB.Amount;
 
-                if (sum <= maxAmount)
-                {
-                    ciA.SetAmount(0);
-                    ciB.SetAmount(sum);
-                }
-                else
-                {
-                    ciA.SetAmount(sum - maxAmount);
-                    ciB.SetAmount(maxAmount);
-                }
-            }
-            else
-            {
-                items[indexA] = itemB;
-                items[indexB] = itemA;
-            }
+        //        if (sum <= maxAmount)
+        //        {
+        //            ciA.SetAmount(0);
+        //            ciB.SetAmount(sum);
+        //        }
+        //        else
+        //        {
+        //            ciA.SetAmount(sum - maxAmount);
+        //            ciB.SetAmount(maxAmount);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        items[indexA] = itemB;
+        //        items[indexB] = itemA;
+        //    }
 
-            UpdateSlot(indexA, indexB);
-        }
+        //    UpdateSlot(indexA, indexB);
+        //}
 
         public void SeparateAmount(int indexA, int indexB, int amount)
         {
