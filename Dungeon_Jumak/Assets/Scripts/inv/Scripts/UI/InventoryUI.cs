@@ -122,7 +122,6 @@ namespace DJ.InventorySystem
             OnPointerDown();
             //OnPointerDrag();
             //OnPointerUp();
-            Debug.Log(beginDragSlot);
         }
 
         //===초기 설정===//
@@ -312,6 +311,18 @@ namespace DJ.InventorySystem
 
                 if (beginDragSlot != null && beginDragSlot.HasItem && beginDragSlot.IsAccessible)
                 {
+                    //===위치 기억===//
+                    beginDragIconTransform = beginDragSlot.IconRect.transform;
+                    beginDragIconPoint = beginDragIconTransform.position;
+                    beginDragCursorPoint = Input.mousePosition;
+
+                    //===가장 위에 표시===//
+                    beginDragSlotSiblingIndex = beginDragSlot.transform.GetSiblingIndex();
+                    beginDragSlot.transform.SetAsLastSibling();
+
+                    //===해당 슬롯의 하이라이트 이미지를 아이콘보다 뒤에 위치===//
+                    beginDragSlot.SetHighlightOnTop(false);
+
                     ItemData itemData = inventory.GetItemData(beginDragSlot.Index);
 
                     if (itemData is EquipmentItemData equipmentItem)

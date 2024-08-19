@@ -220,11 +220,15 @@ namespace DJ.InventorySystem
         public void SetItemAmount(int amount)
         {
             if (HasItem && amount > 1)
+            {
                 ShowText();
-
+            }
             //===amount가 1 이하일 경우 텍스트 미표시===//
             else
+            {
+                Debug.Log("tset");
                 HideText();
+            }
 
             amountText.text = amount.ToString();
         }
@@ -284,6 +288,7 @@ namespace DJ.InventorySystem
                     highlightImage.color.g,
                     highlightImage.color.b,
                     currentHLAlpha
+
                 );
 
                 yield return null;
