@@ -9,11 +9,8 @@ using UnityEngine.UI;
 [DisallowMultipleComponent]
 public class StoryHost : MonoBehaviour
 {
-    [Header("만화 페이지")]
-    [SerializeField] private GameObject[] pages;
-
     [Header("만화 컷")]
-    [SerializeField] private Image[] cuts;
+    [SerializeField] private GameObject[] cuts;
 
     [Header("시작 씬")]
     [SerializeField] private StartScene startScene;
@@ -35,59 +32,21 @@ public class StoryHost : MonoBehaviour
 
     IEnumerator StartStory()
     {
-        pages[0].SetActive(true);
-
-        yield return new WaitForSeconds(1f);
-
-        StartCoroutine(FadeInCut(cutIndex));
-
-        yield return new WaitForSeconds(2f);
-
-        StartCoroutine(FadeInCut(cutIndex));
-
-        yield return new WaitForSeconds(3f);
-
-        pages[1].SetActive(true);
-
-        yield return new WaitForSeconds(1f);
-
-        StartCoroutine(FadeInCut(cutIndex));
-
-        yield return new WaitForSeconds(2f);
-
-        StartCoroutine(FadeInCut(cutIndex));
-
-        yield return new WaitForSeconds(3f);
-
-        pages[2].SetActive(true);
-
-        yield return new WaitForSeconds(1f);
-
-        StartCoroutine(FadeInCut(cutIndex));
-
-        yield return new WaitForSeconds(2f);
-
-        StartCoroutine(FadeInCut(cutIndex));
-
-        yield return new WaitForSeconds(3f);
-
-        for (int i = 0; i < pages.Length; i++)
+        for (int i = 0; i < cuts.Length; i++)
         {
-            pages[i].SetActive(false);
+            Debug.Log("실행");
+
+            cuts[cutIndex].SetActive(true);
+
+            yield return new WaitForSeconds(3f);
+
+            if (cutIndex != 3) cuts[cutIndex].SetActive(false);
+
+            cutIndex++;
         }
 
         startScene.ConvertScene();
     }
 
-    IEnumerator FadeInCut(int idx)
-    {
-        for (float i = 0; i <= 1; i += 0.1f)
-        {
-            cuts[idx].color = new Color(1, 1, 1, i);
-            yield return new WaitForSeconds(0.01f);
-        }
-
-        cutIndex++;
-    }
 
 }
