@@ -82,6 +82,7 @@ public class Data
     public string[] time = new string[2] {"오전", "오후"};
     public int timeNum = 0; // 0 or 1
 
+    public int lastday = 0;
     public int day = 1;
     public int maxDay = 20;
 

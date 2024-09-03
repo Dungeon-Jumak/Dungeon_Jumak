@@ -26,7 +26,13 @@ public class DayCountSystem : MonoBehaviour
 
         //Active calender
         if (!data.isFirstStart)
-            calenderPopup.SetActive(true);
+        {
+            if (data.lastday != data.day)
+            {
+                calenderPopup.SetActive(true);
+                data.lastday = data.day;
+            }
+        }
 
         //Update the calender's texts
         if (data.year >= 1)
