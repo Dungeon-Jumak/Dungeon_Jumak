@@ -547,7 +547,7 @@ GameObject:
   - component: {fileID: 31031845}
   - component: {fileID: 31031846}
   m_Layer: 0
-  m_Name: BackGround_2
+  m_Name: BackGround_Night
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -930,7 +930,7 @@ GameObject:
   - component: {fileID: 74237087}
   - component: {fileID: 74237094}
   m_Layer: 0
-  m_Name: Chr_Player
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -965,8 +965,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1708373654}
   - {fileID: 1840936692}
+  - {fileID: 1708373654}
   - {fileID: 991821468}
   - {fileID: 1420514032}
   m_Father: {fileID: 0}
@@ -5009,7 +5009,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -64.999985, y: 21}
+  m_AnchoredPosition: {x: -65, y: 21}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &365252134
@@ -10043,7 +10043,7 @@ Transform:
   - {fileID: 829235964}
   - {fileID: 1116793883}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &847992593
 GameObject:
@@ -11250,7 +11250,7 @@ GameObject:
   - component: {fileID: 973066161}
   - component: {fileID: 973066163}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: '[Camera] MainCamera'
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16284,8 +16284,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377668675}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.93, z: 0}
-  m_LocalScale: {x: 0.20000002, y: 0.20000002, z: 0.20000002}
+  m_LocalPosition: {x: 0, y: -0.867, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 991821468}
@@ -16355,7 +16355,7 @@ GameObject:
   - component: {fileID: 1385482019}
   - component: {fileID: 1385482018}
   m_Layer: 13
-  m_Name: BackGround_1
+  m_Name: BackGround_Day
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17187,7 +17187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1420514032}
   m_Layer: 0
-  m_Name: '[VFX]'
+  m_Name: VFXEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18378,7 +18378,7 @@ GameObject:
   - component: {fileID: 1539375511}
   - component: {fileID: 1539375510}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: MonsterSpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -20396,7 +20396,7 @@ Transform:
   - {fileID: 1178293221}
   - {fileID: 866875708}
   m_Father: {fileID: 74237084}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1713042173
 GameObject:
@@ -21422,7 +21422,7 @@ RectTransform:
   m_Children:
   - {fileID: 1955642773}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -22074,7 +22074,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 74237084}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1855129596
 GameObject:
