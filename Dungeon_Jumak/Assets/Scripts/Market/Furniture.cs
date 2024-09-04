@@ -7,16 +7,19 @@ using UnityEngine.UI;
 public class Furniture : MonoBehaviour
 {
     private Data data;
+    public ConfirmBuy confirmBuy;
 
-    [Header("상품 텍스트")]
-    public TextMeshProUGUI ChairText;
-    public TextMeshProUGUI TableText;
-    public TextMeshProUGUI BackgroundText;
+    [Header("변경 버튼 배열")]
+    public GameObject[] ChairChangeBtn;
+    public GameObject[] TableChangeBtn;
+    public GameObject[] BackgroundChangeBtn;
 
-    [Header("가격 텍스트")]
-    public TextMeshProUGUI ChairPriceText;
-    public TextMeshProUGUI TablePriceText;
-    public TextMeshProUGUI BackgroundPriceText;
+    [Header("적용 버튼 배열")]
+    public GameObject[] ChairApplyBtn;
+    public GameObject[] TableApplyBtn;
+    public GameObject[] BackgroundApplyBtn;
+
+    private int Level;
 
     void Awake()
     {
@@ -28,138 +31,151 @@ public class Furniture : MonoBehaviour
         data.chairPrice = new int[] { 100, 250, 650 };
         data.tablePrice = new int[] { 150, 400, 900 };
         data.backgroundPrice = new int[] { 500, 1200, 3000 };
-
-        ChairUpdateUI();
-        TableUpdateUI();
-        BackgroundUpdateUI();
+        data.curCoin = 1000000;
+        UpdateButtonStates("Chair");
+        UpdateButtonStates("Table");
+        UpdateButtonStates("Background");
     }
 
-    public void ChairBuySystem()
+    public void GetFurnitureLevel(int LV)
     {
-        if (data.dansangLV < data.chairPrice.Length - 1 && data.curCoin - data.chairPrice[data.dansangLV] >= 0)
-        {
-            data.curCoin -= data.chairPrice[data.dansangLV];
-            data.dansangLV += 1;
-            ChairUpdateUI();
-        }
-        else if (data.dansangLV >= data.chairPrice.Length)
-        {
-            Debug.Log("MAX");
-            ChairUpdateUI();
-        }
+        Level = LV;
     }
 
-    public void ChairUpdateUI()
+    public void TryBuyFurniture(string type)
     {
-        if (data.dansangLV < data.chairPrice.Length - 1)
-        {
-            ChairPriceText.text = data.chairPrice[data.dansangLV].ToString() + "전";
-        }
-        else
-        {
-            ChairPriceText.text = "MAX";
-        }
+        int currentLevel = Level;
+        int[] prices = GetPriceArray(type);
+        bool[] checkBuyArray = GetCheckBuyArray(type);
 
-        switch (data.dansangLV)
+        if (currentLevel < prices.Length && data.curCoin >= prices[currentLevel] && !checkBuyArray[currentLevel])
         {
-            case 0:
-                ChairText.text = "낡은 마루";
-                break;
-            case 1:
-                ChairText.text = "평범한 마루";
-                break;
-            case 2:
-                ChairText.text = "고-급 마루";
-                break;
-            default:
-                ChairText.text = "";
-                break;
+            confirmBuy.Show(
+                $"정말로 {type}을(를) 구매하시겠습니까? 가격: {prices[currentLevel]}",
+                () => BuyFurniture(type),  // 확인 버튼 클릭 시 구매 수행
+                () => { }  // 취소 버튼 클릭 시 아무 작업도 하지 않음
+            );
         }
     }
 
-    public void TableBuySystem()
+    public void ChangeFurniture(string type, int LV)
     {
-        if (data.tableLV < data.tablePrice.Length - 1 && data.curCoin - data.tablePrice[data.tableLV] >= 0)
+        SetFurnitureLevel(type, LV);
+        UpdateButtonStates(type);
+    }
+
+    private void BuyFurniture(string type)
+    {
+        int currentLevel = Level;
+
+        if (currentLevel < GetPriceArray(type).Length && data.curCoin >= GetPriceArray(type)[currentLevel])
         {
-            data.curCoin -= data.tablePrice[data.tableLV];
-            data.tableLV += 1;
-            TableUpdateUI();
-        }
-        else if (data.tableLV >= data.tablePrice.Length)
-        {
-            Debug.Log("MAX");
-            TableUpdateUI();
+            if (!GetCheckBuyArray(type)[currentLevel])
+            {
+                data.curCoin -= GetPriceArray(type)[currentLevel];
+                GetCheckBuyArray(type)[currentLevel] = true;
+            }
+
+            SetFurnitureLevel(type, currentLevel);
+            UpdateButtonStates(type);
         }
     }
 
-    public void TableUpdateUI()
+    private void UpdateButtonStates(string type)
     {
-        if (data.tableLV < data.tablePrice.Length - 1)
-        {
-            TablePriceText.text = data.tablePrice[data.tableLV].ToString() + "전";
-        }
-        else
-        {
-            TablePriceText.text = "MAX";
-        }
+        GameObject[] changeButtons = GetChangeButtons(type);
+        GameObject[] applyButtons = GetApplyButtons(type);
+        bool[] checkBuyArray = GetCheckBuyArray(type);
+        int currentLevel = GetCurrentLevel(type);
 
-        switch (data.tableLV)
+        foreach (var btn in changeButtons) btn.SetActive(false);
+        foreach (var btn in applyButtons) btn.SetActive(false);
+
+        for (int i = 0; i < checkBuyArray.Length; i++)
         {
-            case 0:
-                TableText.text = "낡은 밥상";
+            if (checkBuyArray[i])
+            {
+                if (currentLevel == i)
+                {
+                    applyButtons[i].SetActive(true);
+                }
+                else
+                {
+                    changeButtons[i].SetActive(true);
+                }
+            }
+        }
+    }
+
+    private void SetFurnitureLevel(string type, int LV)
+    {
+        switch (type)
+        {
+            case "Chair":
+                data.dansangLV = LV;
                 break;
-            case 1:
-                TableText.text = "평범한 밥상";
+            case "Table":
+                data.tableLV = LV;
                 break;
-            case 2:
-                TableText.text = "고-급 밥상";
-                break;
-            default:
-                TableText.text = "";
+            case "Background":
+                data.houseLV = LV;
                 break;
         }
     }
 
-    public void BackgroundBuySystem()
+    private int[] GetPriceArray(string type)
     {
-        if (data.houseLV < data.backgroundPrice.Length - 1 && data.curCoin - data.backgroundPrice[data.houseLV] >= 0)
+        switch (type)
         {
-            data.curCoin -= data.backgroundPrice[data.houseLV];
-            data.houseLV += 1;
-            BackgroundUpdateUI();
-        }
-        else if (data.houseLV >= data.backgroundPrice.Length)
-        {
-            Debug.Log("MAX");
-            BackgroundUpdateUI();
+            case "Chair": return data.chairPrice;
+            case "Table": return data.tablePrice;
+            case "Background": return data.backgroundPrice;
+            default: return new int[0];
         }
     }
 
-    public void BackgroundUpdateUI()
+    private bool[] GetCheckBuyArray(string type)
     {
-        if (data.houseLV < data.backgroundPrice.Length - 1)
+        switch (type)
         {
-            BackgroundPriceText.text = data.backgroundPrice[data.houseLV].ToString() + "전";
+            case "Chair": return data.checkBuyChair;
+            case "Table": return data.checkBuyTable;
+            case "Background": return data.checkBuyBackground;
+            default: return new bool[0];
         }
-        else
-        {
-            BackgroundPriceText.text = "MAX";
-        }
+    }
 
-        switch (data.houseLV)
+    private GameObject[] GetChangeButtons(string type)
+    {
+        switch (type)
         {
-            case 0:
-                BackgroundText.text = "초가집";
-                break;
-            case 1:
-                BackgroundText.text = "기와집";
-                break;
-            case 2:
-                BackgroundText.text = "고-급 기와집";
-                break;
-            default:
-                BackgroundText.text = "";
-                break;
+            case "Chair": return ChairChangeBtn;
+            case "Table": return TableChangeBtn;
+            case "Background": return BackgroundChangeBtn;
+            default: return new GameObject[0];
+        }
+    }
+
+    private GameObject[] GetApplyButtons(string type)
+    {
+        switch (type)
+        {
+            case "Chair": return ChairApplyBtn;
+            case "Table": return TableApplyBtn;
+            case "Background": return BackgroundApplyBtn;
+            default: return new GameObject[0];
+        }
+    }
+
+    private int GetCurrentLevel(string type)
+    {
+        switch (type)
+        {
+            case "Chair": return data.dansangLV;
+            case "Table": return data.tableLV;
+            case "Background": return data.houseLV;
+            default: return -1;
         }
     }
 }
+

@@ -68,10 +68,12 @@ public class Data
 
     //--상점 관련--//
     public int[] chairPrice = new int[3];
-
     public int[] tablePrice = new int[3];
-
     public int[] backgroundPrice = new int[3];
+
+    public bool[] checkBuyChair = new bool[3] { true, false, false };
+    public bool[] checkBuyTable = new bool[3] { true, false, false };
+    public bool[] checkBuyBackground = new bool[3] { true, false, false };
 
     //--가구 관련--//
     public int houseLV = 0;
